@@ -79,32 +79,12 @@ class Player
         return $this->infojson[$key];
     }
 
-    public function getName()
-    {
-        return $this->get('displayname');
-    }
-
-    public function getUUID()
-    {
-        return $this->get('uuid');
-    }
-
-    public function getRank()
-    {
-        return $this->get('packageRank');
-    }
-
-    public function getStats()
-    {
-        return $this->get('stats');
-    }
-
     public function getGuild()
     {
         if ($this->guild != null)
             return $this->guild;
 
-        $id = json_decode(http_get('https://api.hypixel.net/findGuild?key=' . $this->api_key . '&byPlayer' . $this->getName()));
+        $id = json_decode(http_get('https://api.hypixel.net/findGuild?key=' . $this->api_key . '&byPlayer' . $this->get('displayname')));
         if ($id['succes']) {
             $guild = json_decode(http_get('https://api.hypixel.net/guild?key=' . $this->api_key . '&id' . $id['_id']));
             if ($guild['success'])
