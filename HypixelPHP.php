@@ -3,7 +3,7 @@
 /**
  * HypixelPHP
  *
- * @author Plancke @f6design
+ * @author Plancke
  * @version 1.0.0
  * @link  http://plancke.nl
  *
