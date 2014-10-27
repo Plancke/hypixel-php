@@ -5,6 +5,8 @@ ini_set('html_errors', 0);
 error_reporting(-1);
 
 include_once('HypixelPHP.php');
-$HypixelPHP = new HypixelPHP(array('api_key'=>'67082701-0ff4-4d88-b32c-167323f9c908'));
+$HypixelPHP = new HypixelPHP(array('api_key'=>'63ba5ba5-d858-4399-9ff2-82d0322bf6a2'));
 $player = $HypixelPHP->get_player(array('name'=>'Plancke'));
-print_r($player->getRaw());
+print($player->get('displayname'));
+$guild = $HypixelPHP->get_guild(array('byName'=>'PainBall'));
+print_r($guild->get('members.0.rank'));
