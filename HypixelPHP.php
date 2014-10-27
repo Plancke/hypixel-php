@@ -12,15 +12,19 @@ class HypixelPHP
 {
     private $options;
 
-    public function  __construct($options = array())
+    public function  __construct($input = array())
     {
-
         $this->options = array_merge(
             array(
                 'api_key' => ''
             ),
-            $options
+            $input
         );
+    }
+
+    public function getKey()
+    {
+        return $this->options['api_key'];
     }
 
     public function get_player($keypair = array())
@@ -29,25 +33,24 @@ class HypixelPHP
             array(
                 'name' => '',
                 'uuid' => '',
-                'id' => ''
+                'id'   => ''
             ),
             $keypair
         );
 
-        $response = array('succes' => 'false');
+        $response = array('success' => 'false');
         foreach ($pairs as $key => $val) {
             if ($val != '') {
-                $response = json_decode(http_get('https://api.hypixel.net/player?key=' . $this->options['api_key'] . '&' . $key . '=' . $val));
+                $response = json_decode(file_get_contents('https://api.hypixel.net/player?key=' . $this->options['api_key'] . '&' . $key . '=' . $val), true);
                 break;
             }
         }
 
-        if ($response['succes'])
+        if ($response['success'])
             return new Player($this->options['api_key'], $response);
 
-        return null;
+        return "";
     }
-
 
 }
 
@@ -59,12 +62,12 @@ class Player
 
     public function __construct($api_key, $json)
     {
-        $this->infojson = $json;
+        $this->infojson = $json['player'];
         $this->api_key = $api_key;
         $this->guild = $this->getGuild();
     }
 
-    public function getAPI()
+    public function getKey()
     {
         return $this->api_key;
     }
@@ -84,11 +87,13 @@ class Player
         if ($this->guild != null)
             return $this->guild;
 
-        $id = json_decode(http_get('https://api.hypixel.net/findGuild?key=' . $this->api_key . '&byPlayer' . $this->get('displayname')));
-        if ($id['succes']) {
-            $guild = json_decode(http_get('https://api.hypixel.net/guild?key=' . $this->api_key . '&id' . $id['_id']));
-            if ($guild['success'])
-                return new Guild($this->api_key, $guild);
+        echo 'https://api.hypixel.net/findGuild?key=' . $this->api_key . '&byPlayer=' . $this->get('displayname');
+
+        $response = json_decode(file_get_contents('https://api.hypixel.net/findGuild?key=' . $this->getKey() . '&byPlayer=' . $this->get('displayname')), true);
+        if ($response['success']) {
+            $response = json_decode(file_get_contents('https://api.hypixel.net/guild?key=' . $this->getKey() . '&id=' . $response['guild']), true);
+            if ($response['success'])
+                return new Guild($this->api_key, $response);
         }
         return null;
     }
@@ -101,11 +106,11 @@ class Guild
 
     public function __construct($api_key, $json)
     {
-        $this->infojson = $json;
+        $this->infojson = $json['guild'];
         $this->api_key = $api_key;
     }
 
-    public function getAPI()
+    public function getKey()
     {
         return $this->api_key;
     }
