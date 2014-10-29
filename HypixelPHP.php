@@ -112,8 +112,6 @@ class HypixelPHP
                         mkdir(dirname($filename), 0777, true);
                     }
 
-
-
                     // new/update entry
                     $response = $this->fetch('player', $key, $val);
                     if ($response['success']) {
