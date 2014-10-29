@@ -102,7 +102,7 @@ class HypixelPHP
                 }
 
                 if ($key == 'name') {
-                    $filename = $this->options['cache_folder_player'] . $key . '/' . implode('/', str_split($val, 1)) . '.json';
+                    $filename = $this->options['cache_folder_player'] . $key . '/' . $this->getCacheFileName($val) . '.json';
                     if (file_exists($filename)) {
                         if (time() - $this->options['cache_time'] < filemtime($filename)) {
                             // get cache
@@ -209,6 +209,17 @@ class HypixelPHP
             }
         }
         return new Guild('');
+    }
+
+    private function getCacheFileName($input)
+    {
+        if(strlen($input) < 3 )
+        {
+            return implode('/', str_split($input, 1));
+        }
+
+        return substr($input, 0, 1) . '/' . substr($input, 1, 1) . '/' . substr($input, 2);
+
     }
 
 }
