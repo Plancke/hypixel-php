@@ -16,17 +16,34 @@ class HypixelPHP
     {
         $this->options = array_merge(
             array(
-                'api_key'                => '',
-                'base_cache_file_guild'  => 'guild.{ID}.json',
-                'base_cache_file_player' => 'player.{NAME}.json'
+                'api_key'                  => '',
+                'cache_file_player_ids'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/ids/playerids.json',
+                'base_cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/'
             ),
             $input
         );
+
+        if(!file_exists($this->options['cache_file_player_ids']))
+        {
+            $file = fopen($this->options['cache_file_player_ids'], 'w');
+            fwrite($file, json_encode(array()));
+            fclose($file);
+        }
     }
 
+    public function setKey($key)
+    {
+        $this->options['api_key'] = $key;
+    }
     public function getKey()
     {
         return $this->options['api_key'];
+    }
+
+    public function fetch($request, $key, $val)
+    {
+        $response = file_get_contents('https://api.hypixel.net/' . $request . '?key=' . $this->getKey() . '&' . $key . '=' . $val);
+        return json_decode($response, true);
     }
 
     public function getPlayer($keypair = array())
@@ -34,81 +51,49 @@ class HypixelPHP
         $pairs = array_merge(
             array(
                 'name' => '',
-                'uuid' => '',
-                'id'   => ''
+                'uuid' => ''
             ),
             $keypair
         );
 
-        $response = array('success' => 'false');
         foreach ($pairs as $key => $val) {
             if ($val != '') {
-                $response = json_decode(file_get_contents('https://api.hypixel.net/player?key=' . $this->getKey() . '&' . $key . '=' . $val), true);
-                break;
-            }
-        }
-
-        if ($response['success'])
-            return new Player($response);
-
-        throw new Exception('Failed:' . $response['cause']);
-    }
-
-    public function getGuild($keypair = array())
-    {
-        $pairs = array_merge(
-            array(
-                'byPlayer' => '',
-                'byName' => '',
-                'id' => ''
-            ),
-            $keypair
-        );
-
-        $response = array('success' => 'false');
-        foreach ($pairs as $key => $val) {
-            if ($val != '') {
-                if($key == 'id')
+                if($key == 'uuid')
                 {
-                    $response = array('success'=>'true', 'guild'=>$val);
-                    break;
-                }
-
-                $response = json_decode(file_get_contents('https://api.hypixel.net/findGuild?key=' . $this->getKey() . '&' . $key . '=' . $val), true);
-                break;
-            }
-        }
-
-        if ($response['success']) {
-            $filename = str_replace('{ID}', $response['guild'], $this->options['base_cache_file_guild']);
-            if(file_exists($filename))
-            {
-                if(filemtime($filename) < date() - 60)
-                {
-                    $response = json_decode(file_get_contents('https://api.hypixel.net/guild?key=' . $this->getKey() . '&id=' . $response['guild']), true);
-                    if ($response['success'])
+                    $file = fopen($this->options['cache_file_player_ids'], 'w');
+                    $content = fread($file, filesize($this->options['cache_file_player_ids']));
+                    $content = json_decode($content, true);
+                    if(array_key_exists($val, $content))
                     {
-                        $guild = new Guild($response);
-                        $file = fopen($filename, 'w');
-                        fwrite($file, $guild->getraw());
-                        fclose($file);
+                        if(time() - 600 > $content[$val]['timestamp'])
+                        {
+                            // overwrite old entry cache time exceeded
+                            $content[$val] = array(
+                                'name'=>'',
+                                'timestamp'=>time()
+                            );
+                        }
                     }
                     else
                     {
-                        throw new Exception('Failed:' . $response['cause']);
+                        // new entry
+                        $response = $this->fetch('player', $key, $val);
+                        $player = new Player($response);
+                        $content[$val] = array(
+                            'name' => $player->getName(),
+                            'timestamp' => time()
+                        );
+                        return $player;
                     }
                 }
-
-                $file = fopen($filename, 'w');
-                $content = fread($file, filesize($filename));
-                fclose($file);
-                return $content;
+                $response = $this->fetch('player', $key, $val);
+                break;
             }
-
-
         }
-        return null;
+
+
     }
+
 }
 
 class Object
@@ -153,34 +138,6 @@ class Player extends Object
     }
 
     public function getFirstJoin()
-    {
-        return get('created');
-    }
-
-    public function getPlayerGuild($HypixelAPI)
-    {
-        return $HypixelAPI->getGuild(array('byPlayer'=>getName()));
-    }
-}
-
-class Guild extends Object
-{
-    public function __construct($json)
-    {
-        $this->infojson = $json['guild'];
-    }
-
-    public function getName()
-    {
-        return get('name', true);
-    }
-
-    public function getTag()
-    {
-        return get('tag', true);
-    }
-
-    public function getCreated()
     {
         return get('created');
     }
