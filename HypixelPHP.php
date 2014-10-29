@@ -131,7 +131,7 @@ class HypixelPHP
             }
         }
 
-        return new Player("");
+        return new Player('');
     }
 
     public function getGuild($keypair = array())
@@ -149,7 +149,7 @@ class HypixelPHP
             $val = strtolower($val);
             if ($val != '') {
                 if ($key == 'byPlayer') {
-                    $filename = $this->options['cache_folder_guild'] . $this->options['cache_byPlayer_table'];
+                    $filename = $this->options['cache_folder_guild'] . $this->options['cache_'.$key.'_table'];
                     if (!file_exists($filename)) {
                         $file = fopen($filename, 'w');
                         fwrite($file, json_encode(array()));
@@ -182,44 +182,6 @@ class HypixelPHP
 
                         return $this->getGuild(array('id'=>$response['guild']));
                     }
-
-                }
-
-                if ($key == 'byName') {
-                    $filename = $this->options['cache_folder_guild'] . $this->options['cache_byName_table'];
-                    if (!file_exists($filename)) {
-                        $file = fopen($filename, 'w');
-                        fwrite($file, json_encode(array()));
-                        fclose($file);
-                        $content = array();
-                    }
-                    else
-                    {
-                        $file = fopen($filename, 'r');
-                        $content = json_decode(fread($file, filesize($filename)), true);
-                        fclose($file);
-                    }
-
-                    if(array_key_exists($val, $content))
-                    {
-                        if(time() - $this->options['cache_time'] < $content[$val]['timestamp'])
-                        {
-                            // get cache
-                            return $this->getGuild(array('id'=>$content[$val]['guild']));
-                        }
-                    }
-
-                    // new/update entry
-                    $response = $this->fetch('findGuild', $key, $val);
-                    if ($response['success']) {
-                        $content[$val] = array('timestamp'=>time(), 'guild'=>$response['guild']);
-                        $file = fopen($filename, 'w');
-                        fwrite($file, json_encode($content));
-                        fclose($file);
-
-                        return $this->getGuild(array('id'=>$response['guild']));
-                    }
-
                 }
 
                 if ($key == 'id') {
