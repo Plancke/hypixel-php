@@ -146,7 +146,6 @@ class HypixelPHP
         );
 
         foreach ($pairs as $key => $val) {
-            $val = strtolower($val);
             if ($val != '') {
                 if ($key == 'byPlayer' || $key == 'byName') {
                     $filename = $this->options['cache_folder_guild'] . $this->options['cache_' . $key . '_table'];
