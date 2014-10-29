@@ -16,18 +16,17 @@ class HypixelPHP
     {
         $this->options = array_merge(
             array(
-                'api_key'                  => '',
-                'cache_file_player_ids'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/ids/playerids.json',
-                'base_cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/'
+                'api_key'             => '',
+                'cache_time'          => '10',
+                'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/',
+                'cache_uuid_table'    => 'uuid_table.json'
+
             ),
             $input
         );
 
-        if(!file_exists($this->options['cache_file_player_ids']))
-        {
-            $file = fopen($this->options['cache_file_player_ids'], 'w');
-            fwrite($file, json_encode(array()));
-            fclose($file);
+        if(!file_exists($this->options['cache_folder_player'])) {
+            mkdir($this->options['cache_folder_player'], 0777, true);
         }
     }
 
@@ -57,41 +56,78 @@ class HypixelPHP
         );
 
         foreach ($pairs as $key => $val) {
+            $val = strtolower($val);
             if ($val != '') {
-                if($key == 'uuid')
-                {
-                    $file = fopen($this->options['cache_file_player_ids'], 'w');
-                    $content = fread($file, filesize($this->options['cache_file_player_ids']));
-                    $content = json_decode($content, true);
+                if ($key == 'uuid') {
+                    $filename = $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/' . $this->options['cache_uuid_table'];
+                    if (!file_exists($filename)) {
+                        $file = fopen($filename, 'w');
+                        fwrite($file, json_encode(array()));
+                        fclose($file);
+                        $content = array();
+                    }
+                    else
+                    {
+                        $file = fopen($filename, 'r');
+                        $content = json_decode(fread($file, filesize($filename)), true);
+                        fclose($file);
+                    }
+
                     if(array_key_exists($val, $content))
                     {
-                        if(time() - 600 > $content[$val]['timestamp'])
+                        if(time() - $this->options['cache_time'] < $content[$val]['timestamp'])
                         {
-                            // overwrite old entry cache time exceeded
-                            $content[$val] = array(
-                                'name'=>'',
-                                'timestamp'=>time()
-                            );
+                            // get cache
+                            return $this->getPlayer(array('name'=>$content[$val]['name']));
+                        }
+                    }
+
+                    // new/update entry
+                    $response = $this->fetch('player', $key, $val);
+                    if ($response['success']) {
+                        $content[$val] = array('timestamp'=>time(), 'name'=>$response['player']['displayname']);
+                        $file = fopen($filename, 'w');
+                        fwrite($file, json_encode($content));
+                        fclose($file);
+
+                        return new Player($response);
+                    }
+
+                }
+
+                if ($key == 'name') {
+                    $filename = $this->options['cache_folder_player'] . $key . '/' . implode('/', str_split($val, 1)) . '.json';
+                    if (file_exists($filename)) {
+                        if (time() - $this->options['cache_time'] < filemtime($filename)) {
+                            // get cache
+                            $file = fopen($filename, 'r');
+                            $content = fread($file, filesize($filename));
+                            fclose($file);
+
+                            return new Player(json_decode($content, true));
                         }
                     }
                     else
                     {
-                        // new entry
-                        $response = $this->fetch('player', $key, $val);
-                        $player = new Player($response);
-                        $content[$val] = array(
-                            'name' => $player->getName(),
-                            'timestamp' => time()
-                        );
-                        return $player;
+                        mkdir(dirname($filename), 0777, true);
+                    }
+
+
+
+                    // new/update entry
+                    $response = $this->fetch('player', $key, $val);
+                    if ($response['success']) {
+                        $file = fopen($filename, 'w');
+                        fwrite($file, json_encode($response));
+                        fclose($file);
+
+                        return new Player($response);
                     }
                 }
-                $response = $this->fetch('player', $key, $val);
-                break;
             }
         }
 
-
+        return new Player("");
     }
 
 }
@@ -121,7 +157,7 @@ class Object
 
     public function getId()
     {
-        return get('id', true);
+        return $this->get('_id', true);
     }
 }
 
@@ -134,11 +170,11 @@ class Player extends Object
 
     public function getName()
     {
-        return get('displayname', true);
+        return $this->get('displayname', true);
     }
 
-    public function getFirstJoin()
+    public function getStats()
     {
-        return get('created');
+        return $this->get('stats', true);
     }
 }
