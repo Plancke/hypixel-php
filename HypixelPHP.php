@@ -17,7 +17,7 @@ class HypixelPHP
         $this->options = array_merge(
             array(
                 'api_key'              => '',
-                'cache_time'           => '10',
+                'cache_time'           => '600',
                 'cache_folder_player'  => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/',
                 'cache_uuid_table'     => 'uuid_table.json',
                 'cache_folder_guild'   => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild/',
