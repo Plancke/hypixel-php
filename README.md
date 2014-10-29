@@ -18,5 +18,18 @@ To interact with the API you need an API key, you can get a key by doing "/api" 
      
 All of these options are optional. They are provided above withtheir default values.
 
+Once you have the API Object you can call the getter functions
+
+    $player = $HypixelAPI->getPlayer(array(
+        'name' => '',
+        'uuid' => ''
+    ));
+    
+    $player = $HypixelAPI->getGuild(array(
+        'byPlayer' => '',
+        'byName'   => '',
+        'id'       => ''
+    ));
+
 ## Caching
 Caching is employed because we want to remove as much strain as possible from the Hypixel DB, thus providing us with more pleasure on the server. The Public API will throttle if there is too much traffic and this intends to avoid that from happening.
