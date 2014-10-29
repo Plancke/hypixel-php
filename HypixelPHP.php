@@ -148,39 +148,35 @@ class HypixelPHP
         foreach ($pairs as $key => $val) {
             $val = strtolower($val);
             if ($val != '') {
-                if ($key == 'byPlayer') {
-                    $filename = $this->options['cache_folder_guild'] . $this->options['cache_'.$key.'_table'];
+                if ($key == 'byPlayer' || $key == 'byName') {
+                    $filename = $this->options['cache_folder_guild'] . $this->options['cache_' . $key . '_table'];
                     if (!file_exists($filename)) {
                         $file = fopen($filename, 'w');
                         fwrite($file, json_encode(array()));
                         fclose($file);
                         $content = array();
-                    }
-                    else
-                    {
+                    } else {
                         $file = fopen($filename, 'r');
                         $content = json_decode(fread($file, filesize($filename)), true);
                         fclose($file);
                     }
 
-                    if(array_key_exists($val, $content))
-                    {
-                        if(time() - $this->options['cache_time'] < $content[$val]['timestamp'])
-                        {
+                    if (array_key_exists($val, $content)) {
+                        if (time() - $this->options['cache_time'] < $content[$val]['timestamp']) {
                             // get cache
-                            return $this->getGuild(array('guild'=>$content[$val]['guild']));
+                            return $this->getGuild(array('id' => $content[$val]['guild']));
                         }
                     }
 
                     // new/update entry
                     $response = $this->fetch('findGuild', $key, $val);
                     if ($response['success']) {
-                        $content[$val] = array('timestamp'=>time(), 'guild'=>$response['guild']);
+                        $content[$val] = array('timestamp' => time(), 'guild' => $response['guild']);
                         $file = fopen($filename, 'w');
                         fwrite($file, json_encode($content));
                         fclose($file);
 
-                        return $this->getGuild(array('id'=>$response['guild']));
+                        return $this->getGuild(array('id' => $response['guild']));
                     }
                 }
 
