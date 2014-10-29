@@ -16,17 +16,23 @@ class HypixelPHP
     {
         $this->options = array_merge(
             array(
-                'api_key'             => '',
-                'cache_time'          => '10',
-                'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/',
-                'cache_uuid_table'    => 'uuid_table.json'
-
+                'api_key'              => '',
+                'cache_time'           => '10',
+                'cache_folder_player'  => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/',
+                'cache_uuid_table'     => 'uuid_table.json',
+                'cache_folder_guild'   => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild/',
+                'cache_byPlayer_table' => 'byPlayer_table.json',
+                'cache_byName_table'   => 'byName_table.json'
             ),
             $input
         );
 
         if(!file_exists($this->options['cache_folder_player'])) {
             mkdir($this->options['cache_folder_player'], 0777, true);
+        }
+
+        if(!file_exists($this->options['cache_folder_guild'])) {
+            mkdir($this->options['cache_folder_guild'], 0777, true);
         }
     }
 
@@ -59,7 +65,7 @@ class HypixelPHP
             $val = strtolower($val);
             if ($val != '') {
                 if ($key == 'uuid') {
-                    $filename = $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/' . $this->options['cache_uuid_table'];
+                    $filename = $this->options['cache_folder_player'] . $this->options['cache_uuid_table'];
                     if (!file_exists($filename)) {
                         $file = fopen($filename, 'w');
                         fwrite($file, json_encode(array()));
@@ -128,6 +134,126 @@ class HypixelPHP
         return new Player("");
     }
 
+    public function getGuild($keypair = array())
+    {
+        $pairs = array_merge(
+            array(
+                'byPlayer' => '',
+                'byName'   => '',
+                'id'       => ''
+            ),
+            $keypair
+        );
+
+        foreach ($pairs as $key => $val) {
+            $val = strtolower($val);
+            if ($val != '') {
+                if ($key == 'byPlayer') {
+                    $filename = $this->options['cache_folder_guild'] . $this->options['cache_byPlayer_table'];
+                    if (!file_exists($filename)) {
+                        $file = fopen($filename, 'w');
+                        fwrite($file, json_encode(array()));
+                        fclose($file);
+                        $content = array();
+                    }
+                    else
+                    {
+                        $file = fopen($filename, 'r');
+                        $content = json_decode(fread($file, filesize($filename)), true);
+                        fclose($file);
+                    }
+
+                    if(array_key_exists($val, $content))
+                    {
+                        if(time() - $this->options['cache_time'] < $content[$val]['timestamp'])
+                        {
+                            // get cache
+                            return $this->getGuild(array('guild'=>$content[$val]['guild']));
+                        }
+                    }
+
+                    // new/update entry
+                    $response = $this->fetch('findGuild', $key, $val);
+                    if ($response['success']) {
+                        $content[$val] = array('timestamp'=>time(), 'guild'=>$response['guild']);
+                        $file = fopen($filename, 'w');
+                        fwrite($file, json_encode($content));
+                        fclose($file);
+
+                        return $this->getGuild(array('id'=>$response['guild']));
+                    }
+
+                }
+
+                if ($key == 'byName') {
+                    $filename = $this->options['cache_folder_guild'] . $this->options['cache_byName_table'];
+                    if (!file_exists($filename)) {
+                        $file = fopen($filename, 'w');
+                        fwrite($file, json_encode(array()));
+                        fclose($file);
+                        $content = array();
+                    }
+                    else
+                    {
+                        $file = fopen($filename, 'r');
+                        $content = json_decode(fread($file, filesize($filename)), true);
+                        fclose($file);
+                    }
+
+                    if(array_key_exists($val, $content))
+                    {
+                        if(time() - $this->options['cache_time'] < $content[$val]['timestamp'])
+                        {
+                            // get cache
+                            return $this->getGuild(array('id'=>$content[$val]['guild']));
+                        }
+                    }
+
+                    // new/update entry
+                    $response = $this->fetch('findGuild', $key, $val);
+                    if ($response['success']) {
+                        $content[$val] = array('timestamp'=>time(), 'guild'=>$response['guild']);
+                        $file = fopen($filename, 'w');
+                        fwrite($file, json_encode($content));
+                        fclose($file);
+
+                        return $this->getGuild(array('id'=>$response['guild']));
+                    }
+
+                }
+
+                if ($key == 'id') {
+                    $filename = $this->options['cache_folder_guild'] . $key . '/' . $val . '.json';
+                    if (file_exists($filename)) {
+                        if (time() - $this->options['cache_time'] < filemtime($filename)) {
+                            // get cache
+                            $file = fopen($filename, 'r');
+                            $content = fread($file, filesize($filename));
+                            fclose($file);
+
+                            return new Guild(json_decode($content, true));
+                        }
+                    }
+                    else
+                    {
+                        mkdir(dirname($filename), 0777, true);
+                    }
+
+                    // new/update entry
+                    $response = $this->fetch('guild', $key, $val);
+                    if ($response['success']) {
+                        $file = fopen($filename, 'w');
+                        fwrite($file, json_encode($response));
+                        fclose($file);
+
+                        return new Guild($response);
+                    }
+                }
+            }
+        }
+        return new Guild('');
+    }
+
 }
 
 class Object
@@ -174,5 +300,23 @@ class Player extends Object
     public function getStats()
     {
         return $this->get('stats', true);
+    }
+}
+
+class Guild extends Object
+{
+    public function __construct($json)
+    {
+        $this->infojson = $json['guild'];
+    }
+
+    public function getName()
+    {
+        return $this->get('name', true);
+    }
+
+    public function getTag()
+    {
+        return $this->get('tag', true);
     }
 }
