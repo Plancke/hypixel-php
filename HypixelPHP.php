@@ -224,7 +224,7 @@ class HypixelPHP
 
 }
 
-class Object
+class HypixelObject
 {
     public  $infojson;
 
@@ -253,7 +253,7 @@ class Object
     }
 }
 
-class Player extends Object
+class Player extends HypixelObject
 {
     public function __construct($json)
     {
@@ -271,8 +271,10 @@ class Player extends Object
     }
 }
 
-class Guild extends Object
+class Guild extends HypixelObject
 {
+    private $members;
+
     public function __construct($json)
     {
         $this->infojson = $json['guild'];
@@ -286,5 +288,49 @@ class Guild extends Object
     public function getTag()
     {
         return $this->get('tag', true);
+    }
+
+    public function getMemberList()
+    {
+        if($this->members != null)
+            return $this->members;
+        $this->members = new MemberList($this->infojson['members']);
+        return $this->getMemberList();
+    }
+}
+
+class MemberList
+{
+    private $list;
+
+    public function __construct($json)
+    {
+        $masters = array();
+        $officers = array();
+        $members = array();
+
+        foreach($json as $player)
+        {
+            $rank = $player['rank'];
+            if($rank == 'GUILDMASTER') {
+                array_push($masters, $player);
+            }
+
+            if($rank == 'OFFICER') {
+                array_push($officers, $player);
+            }
+
+            if($rank == 'MEMBER') {
+                array_push($members, $player);
+            }
+
+        }
+
+        $this->list = array('masters'=>$masters, 'officers'=>$officers, 'members'=>$members);
+    }
+
+    public function getList()
+    {
+        return $this->list;
     }
 }
