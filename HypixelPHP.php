@@ -38,7 +38,10 @@ class HypixelPHP
 
     public function set($input)
     {
-        $this->options = array_merge($this->options,$input);
+        foreach($input as $key=>$val)
+        {
+            $this->options[$key] = $val;
+        }
     }
 
     public function setKey($key)
@@ -287,7 +290,7 @@ class Player extends HypixelObject
 
     public function getRank()
     {
-        return ($this->get('rank', true) == 'Normal' || $this->get('rank', true) == null) ? ($this->get('packageRank', true) ? $this->get('packageRank', true) : 'DEFAULT') : $this->get('rank', true);
+        return ($this->get('rank', true) == 'NORMAL' || $this->get('rank', true) == null) ? ($this->get('packageRank', true) ? $this->get('packageRank', true) : 'DEFAULT') : $this->get('rank', true);
     }
 }
 
@@ -325,28 +328,20 @@ class MemberList
 
     public function __construct($json)
     {
-        $masters = array();
-        $officers = array();
-        $members = array();
+        $list = array();
 
         foreach($json as $player)
         {
             $rank = $player['rank'];
-            if($rank == 'GUILDMASTER') {
-                array_push($masters, $player);
+            if(!in_array($rank, array_keys($list)))
+            {
+                $list[$rank] = array();
             }
 
-            if($rank == 'OFFICER') {
-                array_push($officers, $player);
-            }
-
-            if($rank == 'MEMBER') {
-                array_push($members, $player);
-            }
-
+            array_push($list[$rank], $player);
         }
 
-        $this->list = array('masters'=>$masters, 'officers'=>$officers, 'members'=>$members);
+        $this->list = $list;
     }
 
     public function getList()
