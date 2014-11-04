@@ -36,6 +36,11 @@ class HypixelPHP
         }
     }
 
+    public function set($input)
+    {
+        $this->options = array_merge($this->options,$input);
+    }
+
     public function setKey($key)
     {
         $this->options['api_key'] = $key;
@@ -268,6 +273,16 @@ class Player extends HypixelObject
     public function getStats()
     {
         return $this->get('stats', true);
+    }
+
+    public function isPreEULA()
+    {
+        return $this->get('eulaCoins', true);
+    }
+
+    public function getLevel()
+    {
+        return $this->get('networkLevel', true);
     }
 }
 
