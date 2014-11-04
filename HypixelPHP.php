@@ -136,7 +136,7 @@ class HypixelPHP
             }
         }
 
-        return new Player('');
+        return null;
     }
 
     public function getGuild($keypair = array())
@@ -213,7 +213,7 @@ class HypixelPHP
                 }
             }
         }
-        return new Guild('');
+        return null;
     }
 
     private function getCacheFileName($input)
