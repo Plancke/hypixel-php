@@ -282,7 +282,12 @@ class Player extends HypixelObject
 
     public function getLevel()
     {
-        return $this->get('networkLevel', true);
+        return $this->get('networkLevel', true) + 1;
+    }
+
+    public function getRank()
+    {
+        return ($this->get('rank', true) == 'Normal' || $this->get('rank', true) == null) ? ($this->get('packageRank', true) ? $this->get('packageRank', true) : 'DEFAULT') : $this->get('rank', true);
     }
 }
 
