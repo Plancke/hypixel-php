@@ -332,7 +332,7 @@ class MemberList
 
     public function __construct($json)
     {
-        $list = array();
+        $list = array("GUILDMASTER"=>array(), "OFFICER"=>array(), "MEMBER"=>array());
 
         foreach($json as $player)
         {
