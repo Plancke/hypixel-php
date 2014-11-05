@@ -290,7 +290,25 @@ class Player extends HypixelObject
 
     public function getRank()
     {
-        return ($this->get('rank', true) == 'NORMAL' || $this->get('rank', true) == null) ? ($this->get('packageRank', true) ? $this->get('packageRank', true) : 'DEFAULT') : $this->get('rank', true);
+        if($this->get('rank', true) == 'NORMAL' || $this->get('rank', true) == null)
+        {
+            if($this->get('packageRank', true))
+            {
+                return $this->get('packageRank', true);
+            }
+            elseif($this->get('newPackageRank', true))
+            {
+                return $this->get('newPackageRank', true);
+            }
+            else
+            {
+                return 'DEFAULT';
+            }
+        }
+        else
+        {
+            return $this->get('rank', true);
+        }
     }
 }
 
