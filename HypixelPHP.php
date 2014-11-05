@@ -270,7 +270,7 @@ class Player extends HypixelObject
 
     public function getName()
     {
-        return $this->get('displayname', true) ? $this->get('displayname', true) : $this->get('knownAliases', true)[0];
+        return $this->get('displayname', true) ? $this->get('displayname', true) : $this->get('knownAliases', true);
     }
 
     public function getStats()
@@ -329,6 +329,11 @@ class Guild extends HypixelObject
     public function getTag()
     {
         return $this->get('tag', true);
+    }
+
+    public function getCoins()
+    {
+        return $this->get('coins', true);
     }
 
     public function getMemberList()
