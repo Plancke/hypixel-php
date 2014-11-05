@@ -270,7 +270,7 @@ class Player extends HypixelObject
 
     public function getName()
     {
-        return $this->get('displayname', true);
+        return $this->get('displayname', true) ? $this->get('displayname', true) : $this->get('knownAliases', true)[0];
     }
 
     public function getStats()
