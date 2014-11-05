@@ -312,10 +312,6 @@ class Guild extends HypixelObject
     {
         return $this->get('tag', true);
     }
-    public function getCoins()
-    {
-        return $this->get('coins', true);
-    }
 
     public function getMemberList()
     {
