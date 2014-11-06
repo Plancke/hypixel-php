@@ -55,7 +55,7 @@ class HypixelPHP
 
     public function fetch($request, $key, $val)
     {
-        $response = file_get_contents('https://api.hypixel.net/' . $request . '?key=' . $this->getKey() . '&' . $key . '=' . $val);
+        $response = @file_get_contents('https://api.hypixel.net/' . $request . '?key=' . $this->getKey() . '&' . $key . '=' . $val);
         return json_decode($response, true);
     }
 
