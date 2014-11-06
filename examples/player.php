@@ -20,3 +20,6 @@ foreach(array_keys($allstats->getRaw()) as $game)
     }
     echo '</ul><br />';
 }
+
+echo $player->getStats()->getGame('Paintball')->get('kills', 0);
+echo $player->getStats()->getGame('Paintball')->get('deaths', 0);
