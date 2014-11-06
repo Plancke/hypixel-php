@@ -118,7 +118,7 @@ class HypixelPHP
                             $content = fread($file, filesize($filename));
                             fclose($file);
 
-                            return new Player(json_decode($content, true));
+                            return new Player(json_decode($content, true)['player']);
                         }
                     }
                     else
@@ -133,7 +133,7 @@ class HypixelPHP
                         fwrite($file, json_encode($response));
                         fclose($file);
 
-                        return new Player($response);
+                        return new Player($response['player']);
                     }
                 }
             }
@@ -196,7 +196,7 @@ class HypixelPHP
                             $content = fread($file, filesize($filename));
                             fclose($file);
 
-                            return new Guild(json_decode($content, true));
+                            return new Guild(json_decode($content, true)['guild']);
                         }
                     }
                     else
@@ -211,7 +211,7 @@ class HypixelPHP
                         fwrite($file, json_encode($response));
                         fclose($file);
 
-                        return new Guild($response);
+                        return new Guild($response['guild']);
                     }
                 }
             }
@@ -234,25 +234,25 @@ class HypixelPHP
 
 class HypixelObject
 {
-    public  $infojson;
+    public  $json;
 
     public function getRaw()
     {
-        return $this->infojson;
+        return $this->json;
     }
 
-    public function get($key, $implicit = false)
+    public function get($key, $implicit = false, $default = null)
     {
         if(!$implicit)
         {
-            $return = $this->infojson;
+            $return = $this->json;
             foreach(explode(".", $key) as $split)
             {
                 $return = $return[$split];
             }
-            return $return;
+            return $return ? $return : $default;
         }
-        return $this->infojson[$key];
+        return in_array($key, array_keys($this->json)) ? $this->json[$key] : $default;
     }
 
     public function getId()
@@ -265,7 +265,7 @@ class Player extends HypixelObject
 {
     public function __construct($json)
     {
-        $this->infojson = $json['player'];
+        $this->json = $json;
     }
 
     public function getName()
@@ -273,9 +273,14 @@ class Player extends HypixelObject
         return $this->get('displayname', true) ? $this->get('displayname', true) : $this->get('knownAliases', true)[0];
     }
 
-    public function getStats()
+    public function getStatsRaw()
     {
         return $this->get('stats', true);
+    }
+
+    public function getStats()
+    {
+        return new Stats($this->get('stats', true));
     }
 
     public function isPreEULA()
@@ -312,13 +317,39 @@ class Player extends HypixelObject
     }
 }
 
+class Stats extends HypixelObject
+{
+    public function __construct($json)
+    {
+        $this->json = $json;
+    }
+
+    public function getGame($game)
+    {
+        return new GameStats($this->json[$game]);
+    }
+}
+
+class GameStats extends HypixelObject
+{
+    public function __construct($json)
+    {
+        $this->json = $json;
+    }
+
+    public function get($field, $default = null)
+    {
+        return in_array($field, array_keys($this->json)) ? $this->json[$field] : $default;
+    }
+}
+
 class Guild extends HypixelObject
 {
     private $members;
 
     public function __construct($json)
     {
-        $this->infojson = $json['guild'];
+        $this->json = $json;
     }
 
     public function getName()
@@ -340,7 +371,7 @@ class Guild extends HypixelObject
     {
         if($this->members != null)
             return $this->members;
-        $this->members = new MemberList($this->infojson['members']);
+        $this->members = new MemberList($this->json['members']);
         return $this->getMemberList();
     }
 }
