@@ -124,7 +124,7 @@ class HypixelPHP
                     }
                     else
                     {
-                        mkdir(dirname($filename), 0777, true);
+                        @mkdir(dirname($filename), 0777, true);
                     }
 
                     // new/update entry
@@ -203,7 +203,7 @@ class HypixelPHP
                     }
                     else
                     {
-                        mkdir(dirname($filename), 0777, true);
+                        @mkdir(dirname($filename), 0777, true);
                     }
 
                     // new/update entry
