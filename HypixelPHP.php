@@ -104,7 +104,7 @@ class HypixelPHP
                         fwrite($file, json_encode($content));
                         fclose($file);
 
-                        return new Player($response);
+                        return new Player($response, $this->options['api_key']);
                     }
 
                 }
@@ -119,7 +119,7 @@ class HypixelPHP
                             fclose($file);
 
                             $json = json_decode($content, true);
-                            return new Player($json['player']);
+                            return new Player($json['player'], $this->options['api_key']);
                         }
                     }
                     else
@@ -134,7 +134,7 @@ class HypixelPHP
                         fwrite($file, json_encode($response));
                         fclose($file);
 
-                        return new Player($response['player']);
+                        return new Player($response['player'], $this->options['api_key']);
                     }
                 }
             }
@@ -198,7 +198,7 @@ class HypixelPHP
                             fclose($file);
 
                             $json = json_decode($content, true);
-                            return new Guild($json['guild']);
+                            return new Guild($json['guild'], $this->options['api_key']);
                         }
                     }
                     else
@@ -213,7 +213,7 @@ class HypixelPHP
                         fwrite($file, json_encode($response));
                         fclose($file);
 
-                        return new Guild($response['guild']);
+                        return new Guild($response['guild'], $this->options['api_key']);
                     }
                 }
             }
@@ -236,7 +236,14 @@ class HypixelPHP
 
 class HypixelObject
 {
-    public  $infojson;
+    public $infojson;
+    public $apiKey;
+
+    public function __construct($json, $apiKey)
+    {
+        $this->infojson = $json;
+        $this->apiKey = $apiKey;
+    }
 
     public function getRaw()
     {
@@ -265,9 +272,11 @@ class HypixelObject
 
 class Player extends HypixelObject
 {
-    public function __construct($json)
+
+    public function getSession()
     {
-        $this->infojson = $json;
+        $HypixelPHP = new HypixelPHP(array('api_key'=>$this->apiKey));
+        return $HypixelPHP->fetch('session', 'player', $this->getName());
     }
 
     public function getName()
@@ -353,11 +362,6 @@ class GameStats extends HypixelObject
 class Guild extends HypixelObject
 {
     private $members;
-
-    public function __construct($json)
-    {
-        $this->infojson = $json;
-    }
 
     public function getName()
     {
