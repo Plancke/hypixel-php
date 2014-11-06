@@ -118,7 +118,8 @@ class HypixelPHP
                             $content = fread($file, filesize($filename));
                             fclose($file);
 
-                            return new Player(json_decode($content, true)['player']);
+                            $json = json_decode($content, true);
+                            return new Player($json['player']);
                         }
                     }
                     else
@@ -196,7 +197,8 @@ class HypixelPHP
                             $content = fread($file, filesize($filename));
                             fclose($file);
 
-                            return new Guild(json_decode($content, true)['guild']);
+                            $json = json_decode($content, true);
+                            return new Guild($json['guild']);
                         }
                     }
                     else
@@ -270,7 +272,15 @@ class Player extends HypixelObject
 
     public function getName()
     {
-        return $this->get('displayname', true) ? $this->get('displayname', true) : $this->get('knownAliases', true)[0];
+        if($this->get('displayname', true))
+        {
+            return $this->get('displayname', true);
+        }
+        else
+        {
+            $aliases = $this->get('knownAliases', true);
+            return $aliases[0];
+        }
     }
 
     public function getStats()
