@@ -234,25 +234,25 @@ class HypixelPHP
 
 class HypixelObject
 {
-    public  $json;
+    public  $infojson;
 
     public function getRaw()
     {
-        return $this->json;
+        return $this->infojson;
     }
 
     public function get($key, $implicit = false, $default = null)
     {
         if(!$implicit)
         {
-            $return = $this->json;
+            $return = $this->infojson;
             foreach(explode(".", $key) as $split)
             {
                 $return = $return[$split];
             }
             return $return ? $return : $default;
         }
-        return in_array($key, array_keys($this->json)) ? $this->json[$key] : $default;
+        return in_array($key, array_keys($this->infojson)) ? $this->infojson[$key] : $default;
     }
 
     public function getId()
@@ -265,17 +265,12 @@ class Player extends HypixelObject
 {
     public function __construct($json)
     {
-        $this->json = $json;
+        $this->infojson = $json;
     }
 
     public function getName()
     {
         return $this->get('displayname', true) ? $this->get('displayname', true) : $this->get('knownAliases', true)[0];
-    }
-
-    public function getStatsRaw()
-    {
-        return $this->get('stats', true);
     }
 
     public function getStats()
@@ -321,12 +316,12 @@ class Stats extends HypixelObject
 {
     public function __construct($json)
     {
-        $this->json = $json;
+        $this->infojson = $json;
     }
 
     public function getGame($game)
     {
-        return new GameStats($this->json[$game]);
+        return new GameStats(isset($this->infojson[$game]) ? $this->infojson[$game] : null);
     }
 }
 
@@ -334,12 +329,14 @@ class GameStats extends HypixelObject
 {
     public function __construct($json)
     {
-        $this->json = $json;
+        $this->infojson = $json;
     }
 
     public function get($field, $default = null)
     {
-        return in_array($field, array_keys($this->json)) ? $this->json[$field] : $default;
+        if($this->infojson == null)
+            return $default;
+        return in_array($field, array_keys($this->infojson)) ? $this->infojson[$field] : $default;
     }
 }
 
@@ -349,7 +346,7 @@ class Guild extends HypixelObject
 
     public function __construct($json)
     {
-        $this->json = $json;
+        $this->infojson = $json;
     }
 
     public function getName()
@@ -371,7 +368,7 @@ class Guild extends HypixelObject
     {
         if($this->members != null)
             return $this->members;
-        $this->members = new MemberList($this->json['members']);
+        $this->members = new MemberList($this->infojson['members']);
         return $this->getMemberList();
     }
 }
