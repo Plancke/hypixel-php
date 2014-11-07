@@ -156,6 +156,7 @@ class HypixelPHP
 
         foreach ($pairs as $key => $val) {
             if ($val != '') {
+                $val = str_replace(' ', '%20', $val);
                 if ($key == 'byPlayer' || $key == 'byName') {
                     $filename = $this->options['cache_folder_guild'] . $this->options['cache_' . $key . '_table'];
                     if (!file_exists($filename)) {
@@ -292,24 +293,24 @@ class Player extends HypixelObject
         }
         else
         {
-            $aliases = $this->get('knownAliases', true);
+            $aliases = $this->get('knownAliases', true, array());
             return $aliases[0];
         }
     }
 
     public function getStats()
     {
-        return new Stats($this->get('stats', true));
+        return new Stats($this->get('stats', true, array()));
     }
 
     public function isPreEULA()
     {
-        return $this->get('eulaCoins', true);
+        return $this->get('eulaCoins', true, false);
     }
 
     public function getLevel()
     {
-        return $this->get('networkLevel', true) + 1;
+        return $this->get('networkLevel', true, 0) + 1;
     }
 
     public function getBooster()
