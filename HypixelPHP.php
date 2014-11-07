@@ -257,7 +257,12 @@ class HypixelObject
             $return = $this->infojson;
             foreach(explode(".", $key) as $split)
             {
-                $return = $return[$split];
+                if(in_array($split, array_keys($return))) {
+                    $return = $return[$split];
+                } else {
+                    return $default;
+                }
+
             }
             return $return ? $return : $default;
         }
