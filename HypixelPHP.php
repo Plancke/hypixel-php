@@ -313,16 +313,22 @@ class Player extends HypixelObject
         return $this->get('networkLevel', true, 0) + 1;
     }
 
+    public function isStaff()
+    {
+        $rank = $this->get('rank', true);
+        if($rank == 'NORMAL' || $rank == null)
+            return false;
+        return true;
+    }
+
     public function getBooster()
     {
         $ranks = array('DEFAULT', 'VIP', 'VIP+', 'MVP', 'MVP+');
         $pre = $this->getRank(true, true);
-
         $flip = array_flip($ranks);
         $rankKey = $flip[$pre] + 1;
-        $levelkey = floor($this->getLevel() / 25) + 1;
-
-        return ($rankKey > $levelkey) ? $rankKey : $levelkey;
+        $levelKey = floor($this->getLevel() / 25) + 1;
+        return ($rankKey > $levelKey) ? $rankKey : $levelKey;
     }
 
     public function getRank($package = true, $preEULA = false)
@@ -331,8 +337,28 @@ class Player extends HypixelObject
         {
             $keys = array('newPackageRank', 'packageRank');
             if($preEULA) $keys = array_reverse($keys);
-            $rank = $this->get('rank', true);
-            if($rank == 'NORMAL')
+
+            if(!$this->isStaff()) {
+                if (!$this->isPreEULA())
+                {
+                    if($this->get($keys[0], true))
+                    {
+                        return str_replace('_PLUS', '+', $this->get($keys[0], true));
+                    }
+                }
+                else
+                {
+                    foreach($keys as $key)
+                    {
+                        if($this->get($key, true))
+                        {
+                            return str_replace('_PLUS', '+', $this->get($key, true));
+                        }
+                    }
+                }
+
+            }
+            else
             {
                 foreach($keys as $key)
                 {
@@ -342,24 +368,14 @@ class Player extends HypixelObject
                     }
                 }
             }
-            else
-            {
-                if($this->get($keys[0], true))
-                {
-                    return str_replace('_PLUS', '+', $this->get($keys[0], true));
-                }
-            }
-            return 'DEFAULT';
         }
         else
         {
             $rank = $this->get('rank', true);
-            if($rank == 'NORMAL' || $rank == null)
-            {
-                return $this->getRank(true, $preEULA);
-            }
+            if(!$this->isStaff()) return $this->getRank(true, $preEULA);
             return $rank;
         }
+        return 'DEFAULT';
     }
 }
 
