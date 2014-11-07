@@ -307,26 +307,52 @@ class Player extends HypixelObject
         return $this->get('networkLevel', true) + 1;
     }
 
-    public function getRank()
+    public function getBooster()
     {
-        if($this->get('rank', true) == 'NORMAL' || $this->get('rank', true) == null)
+        $ranks = array('DEFAULT', 'VIP', 'VIP+', 'MVP', 'MVP+');
+        $pre = $this->getRank(true, true);
+
+        $flip = array_flip($ranks);
+        $rankKey = $flip[$pre] + 1;
+        $levelkey = floor($this->getLevel() / 25) + 1;
+
+        return ($rankKey > $levelkey) ? $rankKey : $levelkey;
+    }
+
+    public function getRank($package = true, $preEULA = false)
+    {
+        if($package)
         {
-            if($this->get('packageRank', true))
+            $keys = array('newPackageRank', 'packageRank');
+            if($preEULA) $keys = array_reverse($keys);
+            $rank = $this->get('rank', true);
+            if($rank == 'NORMAL')
             {
-                return $this->get('packageRank', true);
-            }
-            elseif($this->get('newPackageRank', true))
-            {
-                return $this->get('newPackageRank', true);
+                foreach($keys as $key)
+                {
+                    if($this->get($key, true))
+                    {
+                        return str_replace('_PLUS', '+', $this->get($key, true));
+                    }
+                }
             }
             else
             {
-                return 'DEFAULT';
+                if($this->get($keys[0], true))
+                {
+                    return str_replace('_PLUS', '+', $this->get($keys[0], true));
+                }
             }
+            return 'DEFAULT';
         }
         else
         {
-            return $this->get('rank', true);
+            $rank = $this->get('rank', true);
+            if($rank == 'NORMAL' || $rank == null)
+            {
+                return $this->getRank(true, $preEULA);
+            }
+            return $rank;
         }
     }
 }
@@ -366,6 +392,11 @@ class Guild extends HypixelObject
     public function getName()
     {
         return $this->get('name', true);
+    }
+
+    public function canTag()
+    {
+        return $this->get('canTag', true);
     }
 
     public function getTag()
