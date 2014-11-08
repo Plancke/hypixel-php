@@ -285,6 +285,12 @@ class Player extends HypixelObject
         return $HypixelPHP->fetch('session', 'player', $this->getName());
     }
 
+    public function getFriends()
+    {
+        $HypixelPHP = new HypixelPHP(array('api_key'=>$this->apiKey));
+        return $HypixelPHP->fetch('friends', 'player', $this->getName());
+    }
+
     public function getName()
     {
         if($this->get('displayname', true))
@@ -323,6 +329,7 @@ class Player extends HypixelObject
 
     public function getBooster()
     {
+        if($this->getRank(false) == 'YOUTUBER') return 7;
         $ranks = array('DEFAULT', 'VIP', 'VIP+', 'MVP', 'MVP+');
         $pre = $this->getRank(true, true);
         $flip = array_flip($ranks);
