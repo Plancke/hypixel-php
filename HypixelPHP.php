@@ -463,7 +463,14 @@ class Guild extends HypixelObject
         $upgrades = array(0,5,5,5,5,5,5,5,5,10,5,5,5,5,5,5,5,10);
         $base = 25;
 
-        return $base + $upgrades[$this->get('memberSizeLevel', true, 0)];
+        $total = 0;
+        for($i = 0; $i <= $this->get('memberSizeLevel', true, 0); $i++)
+        {
+            @$total += $upgrades[$i];
+        }
+
+        $total += $base;
+        return $total;
     }
 }
 
