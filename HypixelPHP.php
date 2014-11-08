@@ -438,16 +438,33 @@ class Guild extends HypixelObject
         $this->members = new MemberList($this->infojson['members']);
         return $this->getMemberList();
     }
+
+    public function getMemberCount()
+    {
+        if($this->members == null)
+            $this->members = new MemberList($this->infojson['members']);
+        return $this->members->getMemberCount();
+    }
+
+    public function getMaxMembers()
+    {
+        $upgrades = array(0,5,5,5,5,5,5,5,5,10,5,5,5,5,5,5,5,10);
+        $base = 25;
+
+        return $base + $upgrades[$this->get('memberSizeLevel', true, 0)];
+    }
 }
 
 class MemberList
 {
     private $list;
+    private $count;
 
     public function __construct($json)
     {
         $list = array("GUILDMASTER"=>array(), "OFFICER"=>array(), "MEMBER"=>array());
 
+        $this->count = sizeof($json);
         foreach($json as $player)
         {
             $rank = $player['rank'];
@@ -465,5 +482,10 @@ class MemberList
     public function getList()
     {
         return $this->list;
+    }
+
+    public function getMemberCount()
+    {
+        return $this->count;
     }
 }
