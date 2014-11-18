@@ -243,7 +243,7 @@ class HypixelPHP
 class HypixelObject
 {
     public $infojson;
-    public $apiKey;
+    public $api;
 
     public function __construct($json, $api)
     {
