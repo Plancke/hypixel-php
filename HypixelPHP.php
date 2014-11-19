@@ -408,20 +408,33 @@ class Player extends HypixelObject {
         {
             $keys = array('newPackageRank', 'packageRank');
             if($preEULA) $keys = array_reverse($keys);
-
-            if($this->isStaff() && $this->isPreEULA())
+            if(!$this->isStaff()) {
+                if (!$this->isPreEULA())
+                {
+                    if($this->get($keys[0], true))
+                    {
+                        return str_replace('_PLUS', '+', $this->get($keys[0], true));
+                    }
+                }
+                else
+                {
+                    foreach($keys as $key)
+                    {
+                        if($this->get($key, true))
+                        {
+                            return str_replace('_PLUS', '+', $this->get($key, true));
+                        }
+                    }
+                }
+            }
+            else
             {
                 foreach($keys as $key)
                 {
                     if($this->get($key, true))
                     {
-                        return $this->get($key, true);
+                        return str_replace('_PLUS', '+', $this->get($key, true));
                     }
-                }
-            } else {
-                if($this->get($keys[0], true))
-                {
-                    return $this->get($keys[0], true);
                 }
             }
         }
