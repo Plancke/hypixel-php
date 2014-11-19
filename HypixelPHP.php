@@ -4,7 +4,7 @@
  * HypixelPHP
  *
  * @author Plancke
- * @version 1.0.0
+ * @version 1.1.0
  * @link  http://plancke.nl
  *
  */
@@ -472,7 +472,6 @@ class Stats extends HypixelObject {
         return new GameStats(isset($this->JSONArray[$game]) ? $this->JSONArray[$game] : null, $this->api);
     }
 }
-
 class GameStats extends HypixelObject { /* Dummy for now */ }
 
 class Session extends HypixelObject {
@@ -545,7 +544,6 @@ class Guild extends HypixelObject
         return $total;
     }
 }
-
 class MemberList extends HypixelObject {
     private $list;
     private $count;
