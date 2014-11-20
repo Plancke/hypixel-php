@@ -95,7 +95,7 @@ class HypixelPHP
             if ($val != '') {
                 if ($key == 'uuid') {
                     $filename = $this->options['cache_folder_player'] . $this->options['cache_uuid_table'];
-                    $content = $this->getContent($filename);
+                    $content = json_decode($this->getContent($filename), true);
 
                     if(array_key_exists($val, $content))
                     {
@@ -116,11 +116,11 @@ class HypixelPHP
 
                 if ($key == 'name') {
                     $filename = $this->options['cache_folder_player'] . $key . '/' . $this->getCacheFileName($val) . '.json';
+
                     if (file_exists($filename)) {
                         if (time() - $this->options['cache_time'] < filemtime($filename)) {
-                            $content = $this->getContent($filename);
-                            $json = json_decode($content, true);
-                            return new Player($json, $this);
+                            $content = json_decode($this->getContent($filename), true);
+                            return new Player($content, $this);
                         }
                     } else {
                         @mkdir(dirname($filename), 0777, true);
@@ -134,9 +134,8 @@ class HypixelPHP
                 }
             }
         }
-        return null;
+        return new Player(null, $this);
     }
-
     public function getGuild($keypair = array())
     {
         $pairs = array_merge(
@@ -153,7 +152,7 @@ class HypixelPHP
                 $val = str_replace(' ', '%20', $val);
                 if ($key == 'byPlayer' || $key == 'byName') {
                     $filename = $this->options['cache_folder_guild'] . $this->options['cache_' . $key . '_table'];
-                    $content = $this->getContent($filename);
+                    $content = json_decode($this->getContent($filename), true);
 
                     if (array_key_exists($val, $content)) {
                         if (time() - $this->options['cache_time'] < $content[$val]['timestamp']) {
@@ -174,9 +173,8 @@ class HypixelPHP
                     $filename = $this->options['cache_folder_guild'] . $key . '/' . $val . '.json';
                     if (file_exists($filename)) {
                         if (time() - $this->options['cache_time'] < filemtime($filename)) {
-                            $content = $this->getContent($filename);
-                            $json = json_decode($content, true);
-                            return new Guild($json['guild'], $this);
+                            $content = json_decode($this->getContent($filename), true);
+                            return new Guild($content['guild'], $this);
                         }
                     } else {
                         @mkdir(dirname($filename), 0777, true);
@@ -191,9 +189,8 @@ class HypixelPHP
                 }
             }
         }
-        return null;
+        return new Guild(null, $this);
     }
-
     public function getSession($keypair = array())
     {
         $pairs = array_merge(
@@ -226,9 +223,8 @@ class HypixelPHP
                 }
             }
         }
-        return null;
+        return new Session(null, $this);;
     }
-
     public function getFriends($keypair = array())
     {
         $pairs = array_merge(
@@ -261,15 +257,16 @@ class HypixelPHP
                 }
             }
         }
-        return null;
+        return new Friends(null, $this);
     }
 
     private function getContent($filename)
     {
-        $content = array();
+        @mkdir(dirname($filename), 0777, true);
+        $content = json_encode(array());
         if (!file_exists($filename)) {
             $file = fopen($filename, 'w');
-            fwrite($file, json_encode($content));
+            fwrite($file, $content);
             fclose($file);
         } else {
             $file = fopen($filename, 'r');
@@ -281,6 +278,7 @@ class HypixelPHP
 
     private function setContent($filename, $content)
     {
+        @mkdir(dirname($filename), 0777, true);
         $file = fopen($filename, 'w');
         fwrite($file, $content);
         fclose($file);
@@ -304,6 +302,10 @@ class HypixelObject {
     {
         $this->JSONArray = $json;
         $this->api = $api;
+    }
+
+    public function isNull() {
+        return $this->getRaw() == null;
     }
 
     public function getRaw()
