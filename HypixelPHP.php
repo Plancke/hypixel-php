@@ -315,6 +315,7 @@ class HypixelObject {
 
     public function get($key, $implicit = false, $default = null)
     {
+        if($this->isNull()) return $default;
         if(!$implicit)
         {
             $return = $this->JSONArray;
