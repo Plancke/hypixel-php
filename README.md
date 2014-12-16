@@ -1,6 +1,8 @@
 # Hypixel PHP
 
 A PHP class for fetching Player/Guild information from the Public HypixelAPI
+Since version 1.2.0 data is saved in a different way. This'll require you to
+cache everything again. This is fully automatic.
 
 ## Usage
 
