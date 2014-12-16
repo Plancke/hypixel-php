@@ -243,7 +243,7 @@ class HypixelPHP
                         if (time() - $this->options['cache_time'] < filemtime($filename)) {
                             $content = $this->getContent($filename);
                             $json = json_decode($content, true);
-                            return new Session($json, $this);
+                            return new Friends($json, $this);
                         }
                     } else {
                         @mkdir(dirname($filename), 0777, true);
@@ -252,7 +252,7 @@ class HypixelPHP
                     $response = $this->fetch('friends', $key, $val);
                     if ($response['success']) {
                         $this->setContent($filename, json_encode($response['records']));
-                        return new Session($response['records'], $this);
+                        return new Friends($response['records'], $this);
                     }
                 }
             }
