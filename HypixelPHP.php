@@ -80,7 +80,7 @@ class HypixelPHP
     }
 
     public function getCacheTime() {
-        return $this->getCacheTime();
+        return $this->options['cache_time'];
     }
 
     public function fetch($request, $key = '', $val = '')
