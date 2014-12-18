@@ -667,7 +667,6 @@ class Achievements extends HypixelObject {
                 $availableGamesList[$gameName][] = $achievement;
             }
         }
-        //return $availableGamesList[$key];
         if(count($availableGamesList) <= 0)
             return null;
         $tmpGameList = $availableGamesList;
@@ -675,20 +674,11 @@ class Achievements extends HypixelObject {
             if(in_array($subGame, array_keys($tmpGameList))) $tmpGameList = $tmpGameList[$subGame];
             else return null;
         }
-        //if(in_array($key, array_keys($availableGamesList))){
         $ret = array();
         foreach($tmpGameList as $game => $achievement){
-            /* if(in_array($key, array("arcade","tntgames"))){
-                $ret[] = array();
-                foreach($achievement as $subGame => $achievement2){
-                    $ret[count($ret)-1][$subGame] = new OneTimeAchievement($achievement2, $this->player);
-                }
-            }else */
             $ret[] = new OneTimeAchievement($achievement, $this->player);
         }
         return $ret;
-        //}else
-        //    return array("none");
     }
 
     public function hasAchievement($ach){
@@ -772,6 +762,13 @@ class Guild extends HypixelObject {
             return $this->members;
         $this->members = new MemberList($this->JSONArray['members'], $this->api);
         return $this->getMemberList();
+    }
+
+    public function getMemberCount()
+    {
+        if($this->members == null)
+            $this->members = new MemberList($this->JSONArray['members'], $this->api);
+        return $this->members->getMemberCount();
     }
 
     public function getMaxMembers() {
