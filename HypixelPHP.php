@@ -714,13 +714,13 @@ class Achievements extends HypixelObject
     const GAME_ARENA = "arena";
 
     const GAME_ARCADE = "arcade";
-    //const GAME_ARCADE_CREEPERATTACK = GAME_ARCADE . ".creeper";
+    const GAME_ARCADE_CREEPERATTACK = "arcade.creeper";
 
     const GAME_TNTGAMES = "tntgames";
-    //const GAME_TNTGAMES_WIZARDS = GAME_TNTGAMES . ".wizards";
-    //const GAME_TNTGAMES_BOW = GAME_TNTGAMES . ".bow";
-    //const GAME_TNTGAMES_TNT_RUN = GAME_TNTGAMES . ".tnt.run";
-    //const GAME_TNTGAMES_TNT_TAG = GAME_TNTGAMES . ".tnt.tag";
+    const GAME_TNTGAMES_WIZARDS = "tntgames.wizards";
+    const GAME_TNTGAMES_BOW = "tntgames.bow";
+    const GAME_TNTGAMES_TNT_RUN = "tntgames.tnt.run";
+    const GAME_TNTGAMES_TNT_TAG = "tntgames.tnt.tag";
 
 
     private $player;
@@ -749,7 +749,6 @@ class Achievements extends HypixelObject
                 $availableGamesList[$gameName][] = $achievement;
             }
         }
-        //return $availableGamesList[$key];
         if (count($availableGamesList) <= 0)
             return null;
         $tmpGameList = $availableGamesList;
@@ -757,20 +756,11 @@ class Achievements extends HypixelObject
             if (in_array($subGame, array_keys($tmpGameList))) $tmpGameList = $tmpGameList[$subGame];
             else return null;
         }
-        //if(in_array($key, array_keys($availableGamesList))){
         $ret = array();
         foreach ($tmpGameList as $game => $achievement) {
-            /* if(in_array($key, array("arcade","tntgames"))){
-                $ret[] = array();
-                foreach($achievement as $subGame => $achievement2){
-                    $ret[count($ret)-1][$subGame] = new OneTimeAchievement($achievement2, $this->player);
-                }
-            }else */
             $ret[] = new OneTimeAchievement($achievement, $this->player);
         }
         return $ret;
-        //}else
-        //    return array("none");
     }
 
     public function hasAchievement($ach)
@@ -900,6 +890,11 @@ class Guild extends HypixelObject
 
         $total += $base;
         return $total;
+    }
+
+    public function getMemberCount()
+    {
+        return $this->getMemberList()->getMemberCount();
     }
 }
 
