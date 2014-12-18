@@ -18,7 +18,7 @@ class HypixelPHP
         $this->options = array_merge(
             array(
                 'api_key' => '',
-                'cache_time' => '600',
+                'cache_time' => 600,
                 'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/',
                 'cache_uuid_table' => 'uuid_table.json',
                 'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild/',
@@ -79,7 +79,8 @@ class HypixelPHP
         return file_get_contents(str_replace('{{NAME}}', $name, $url)) == "true";
     }
 
-    public function getCacheTime() {
+    public function getCacheTime()
+    {
         return $this->options['cache_time'];
     }
 
@@ -124,15 +125,12 @@ class HypixelPHP
                             if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
                                 $this->set(array('cache_time' => self::MAX_CACHE_TIME));
                                 return $this->getPlayer($pairs);
-                            } elseif ($this->getCacheTime() >= self::MAX_CACHE_TIME) {
-                                return new Player(null, $this);
                             }
                         }
                         $content[$val] = array('timestamp' => time(), 'name' => $response['player']['displayname']);
                         $this->setCache($filename, $content);
                         return new Player($response['player'], $this);
                     }
-
                 }
 
                 if ($key == 'name') {
@@ -151,8 +149,6 @@ class HypixelPHP
                             if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
                                 $this->set(array('cache_time' => self::MAX_CACHE_TIME));
                                 return $this->getPlayer($pairs);
-                            } elseif ($this->getCacheTime() >= self::MAX_CACHE_TIME) {
-                                return new Player(null, $this);
                             }
                         }
                         $this->setCache($filename, $response['player']);
@@ -181,12 +177,13 @@ class HypixelPHP
                 if ($key == 'byPlayer' || $key == 'byName') {
                     $filename = $this->options['cache_folder_guild'] . $this->options['cache_' . $key . '_table'];
                     $content = json_decode($this->getCache($filename), true);
-                    if (is_array($content))
+                    if (is_array($content)) {
                         if (array_key_exists($val, $content)) {
                             if (time() - $this->getCacheTime() < $content[$val]['timestamp']) {
                                 return $this->getGuild(array('id' => $content[$val]['guild']));
                             }
                         }
+                    }
 
                     // new/update entry
                     $response = $this->fetch('findGuild', $key, $val);
@@ -195,8 +192,6 @@ class HypixelPHP
                             if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
                                 $this->set(array('cache_time' => self::MAX_CACHE_TIME));
                                 return $this->getGuild($pairs);
-                            } elseif ($this->getCacheTime() >= self::MAX_CACHE_TIME) {
-                                return new Guild(null, $this);
                             }
                         }
                         $content[$val] = array('timestamp' => time(), 'guild' => $response['guild']);
@@ -221,8 +216,6 @@ class HypixelPHP
                             if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
                                 $this->set(array('cache_time' => self::MAX_CACHE_TIME));
                                 return $this->getGuild($pairs);
-                            } elseif ($this->getCacheTime() >= self::MAX_CACHE_TIME) {
-                                return new Guild(null, $this);
                             }
                         }
                         $this->setCache($filename, $response['guild']);
@@ -261,8 +254,6 @@ class HypixelPHP
                             if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
                                 $this->set(array('cache_time' => self::MAX_CACHE_TIME));
                                 return $this->getSession($pairs);
-                            } elseif ($this->getCacheTime() >= self::MAX_CACHE_TIME) {
-                                return new Session(null, $this);
                             }
                         }
                         $this->setCache($filename, $response['session']);
@@ -271,7 +262,7 @@ class HypixelPHP
                 }
             }
         }
-        return new Session(null, $this);;
+        return new Session(null, $this);
     }
 
     public function getFriends($keypair = array())
@@ -297,12 +288,10 @@ class HypixelPHP
 
                     $response = $this->fetch('friends', $key, $val);
                     if ($response['success']) {
-                        if ($response['record'] == null) {
+                        if ($response['records'] == null) {
                             if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
                                 $this->set(array('cache_time' => self::MAX_CACHE_TIME));
                                 return $this->getFriends($pairs);
-                            } elseif ($this->getCacheTime() >= self::MAX_CACHE_TIME) {
-                                return new Friends(null, $this);
                             }
                         }
                         $this->setCache($filename, json_encode($response['records']));
@@ -321,7 +310,7 @@ class HypixelPHP
             if (time() - $this->getCacheTime() < filemtime($filename)) {
                 $content = $this->getCache($filename);
                 $json = json_decode($content, true);
-                return new Boosters($json['record'], $this);
+                return new Boosters($json['record'], $this, true);
             }
         }
 
@@ -340,7 +329,7 @@ class HypixelPHP
             if (time() - $this->getCacheTime() < filemtime($filename)) {
                 $content = $this->getCache($filename);
                 $json = json_decode($content, true);
-                return new Leaderboards($json['record'], $this);
+                return new Leaderboards($json['record'], $this, true);
             }
         }
 
@@ -805,7 +794,7 @@ class OneTimeAchievement
         if ($this->isNull()) {
             return "";
         }
-        $this->name;
+        return $this->name;
     }
 }
 
