@@ -19,7 +19,7 @@ $HypixelAPI = new HypixelAPI(array(
     'cache_byName_table'    => 'byName_table.json',
     'cache_folder_friends'  => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends/',
     'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions/',
-    'version'               => '1.1'
+    'version'               => '1.2'
  ));
  ```
      
