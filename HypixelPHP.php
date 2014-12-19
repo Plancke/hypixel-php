@@ -873,15 +873,11 @@ class Guild extends HypixelObject
 
     public function getMaxMembers()
     {
-        $upgrades = array(0, 5, 5, 5, 5, 5, 5, 5, 5, 10, 5, 5, 5, 5, 5, 5, 5, 10);
-        $base = 25;
-
-        $total = 0;
-        for ($i = 0; $i <= $this->get('memberSizeLevel', true, 0); $i++) {
-            @$total += $upgrades[$i];
+        $total = 25;
+        $level = $this->get('memberSizeLevel', true, -1);
+        if ($level >= 0) {
+            $total += 5 * $level;
         }
-
-        $total += $base;
         return $total;
     }
 
