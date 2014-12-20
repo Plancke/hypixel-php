@@ -76,7 +76,7 @@ class HypixelPHP
 
     public function hasPaid($name, $url = 'http://www.minecraft.net/haspaid.jsp?user={{NAME}}')
     {
-        return file_get_contents(str_replace('{{NAME}}', $name, $url)) == "true";
+        return @file_get_contents(str_replace('{{NAME}}', $name, $url)) == "true";
     }
 
     public function getCacheTime()
@@ -90,8 +90,19 @@ class HypixelPHP
         if ($key != '' && $val != '') {
             $requestURL .= '&' . $key . '=' . $val;
         }
-        $response = @file_get_contents($requestURL);
-        return json_decode($response, true);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $requestURL);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        $output = curl_exec($ch);
+        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if ($status != '200') {
+            $output = json_encode(array("success" => false));
+        }
+        return json_decode($output, true);
     }
 
     public function getPlayer($keypair = array())
