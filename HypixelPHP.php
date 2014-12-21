@@ -84,6 +84,11 @@ class HypixelPHP
         return $this->options['cache_time'];
     }
 
+    public function setCacheTime($cache_time = 600)
+    {
+        $this->set(array('cache_time' => $cache_time));
+    }
+
     public function fetch($request, $key = '', $val = '')
     {
         $requestURL = 'https://api.hypixel.net/' . $request . '?key=' . $this->getKey();
@@ -121,7 +126,6 @@ class HypixelPHP
                 if ($key == 'uuid') {
                     $filename = $this->options['cache_folder_player'] . $this->options['cache_uuid_table'];
                     $content = json_decode($this->getCache($filename), true);
-
                     if (is_array($content)) {
                         if (array_key_exists($val, $content)) {
                             if (time() - $this->getCacheTime() < $content[$val]['timestamp']) {
@@ -132,21 +136,16 @@ class HypixelPHP
 
                     $response = $this->fetch('player', $key, $val);
                     if ($response['success']) {
-                        if ($response['player'] == null) {
-                            if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
-                                $this->set(array('cache_time' => self::MAX_CACHE_TIME));
-                                return $this->getPlayer($pairs);
-                            }
+                        if ($response['player'] != null) {
+                            $content[$val] = array('timestamp' => time(), 'name' => $response['player']['displayname']);
+                            $this->setCache($filename, $content);
+                            return new Player($response['player'], $this);
                         }
-                        $content[$val] = array('timestamp' => time(), 'name' => $response['player']['displayname']);
-                        $this->setCache($filename, $content);
-                        return new Player($response['player'], $this);
                     }
                 }
 
                 if ($key == 'name') {
                     $filename = $this->options['cache_folder_player'] . $key . '/' . $this->getCacheFileName($val) . '.json';
-
                     if (file_exists($filename)) {
                         if (time() - $this->getCacheTime() < filemtime($filename)) {
                             $content = json_decode($this->getCache($filename), true);
@@ -156,17 +155,17 @@ class HypixelPHP
 
                     $response = $this->fetch('player', $key, $val);
                     if ($response['success']) {
-                        if ($response['player'] == null) {
-                            if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
-                                $this->set(array('cache_time' => self::MAX_CACHE_TIME));
-                                return $this->getPlayer($pairs);
-                            }
+                        if ($response['player'] != null) {
+                            $this->setCache($filename, $response['player']);
+                            return new Player($response['player'], $this);
                         }
-                        $this->setCache($filename, $response['player']);
-                        return new Player($response['player'], $this);
                     }
                 }
             }
+        }
+        if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
+            $this->setCacheTime(self::MAX_CACHE_TIME);
+            return $this->getPlayer($pairs);
         }
         return new Player(null, $this);
     }
@@ -196,18 +195,13 @@ class HypixelPHP
                         }
                     }
 
-                    // new/update entry
                     $response = $this->fetch('findGuild', $key, $val);
                     if ($response['success']) {
-                        if ($response['guild'] == null) {
-                            if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
-                                $this->set(array('cache_time' => self::MAX_CACHE_TIME));
-                                return $this->getGuild($pairs);
-                            }
+                        if ($response['guild'] != null) {
+                            $content[$val] = array('timestamp' => time(), 'guild' => $response['guild']);
+                            $this->setCache($filename, $content);
+                            return $this->getGuild(array('id' => $response['guild']));
                         }
-                        $content[$val] = array('timestamp' => time(), 'guild' => $response['guild']);
-                        $this->setCache($filename, $content);
-                        return $this->getGuild(array('id' => $response['guild']));
                     }
                 }
 
@@ -223,17 +217,18 @@ class HypixelPHP
                     // new/update entry
                     $response = $this->fetch('guild', $key, $val);
                     if ($response['success']) {
-                        if ($response['guild'] == null) {
-                            if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
-                                $this->set(array('cache_time' => self::MAX_CACHE_TIME));
-                                return $this->getGuild($pairs);
-                            }
+                        if ($response['guild'] != null) {
+                            $this->setCache($filename, $response['guild']);
+                            return new Guild($response['guild'], $this);
                         }
-                        $this->setCache($filename, $response['guild']);
-                        return new Guild($response['guild'], $this);
                     }
                 }
+
             }
+        }
+        if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
+            $this->setCacheTime(self::MAX_CACHE_TIME);
+            return $this->getGuild($pairs);
         }
         return new Guild(null, $this);
     }
@@ -299,17 +294,17 @@ class HypixelPHP
 
                     $response = $this->fetch('friends', $key, $val);
                     if ($response['success']) {
-                        if ($response['records'] == null) {
-                            if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
-                                $this->set(array('cache_time' => self::MAX_CACHE_TIME));
-                                return $this->getFriends($pairs);
-                            }
+                        if ($response['records'] != null) {
+                            $this->setCache($filename, json_encode($response['records']));
+                            return new Friends($response['records'], $this);
                         }
-                        $this->setCache($filename, json_encode($response['records']));
-                        return new Friends($response['records'], $this);
                     }
                 }
             }
+        }
+        if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
+            $this->setCacheTime(self::MAX_CACHE_TIME);
+            return $this->getFriends($pairs);
         }
         return new Friends(null, $this);
     }
@@ -623,38 +618,6 @@ class Player extends HypixelObject
         $rankKey = $flip[$pre] + 1;
         $levelKey = floor($this->getLevel() / 25) + 1;
         return ($rankKey > $levelKey) ? $rankKey : $levelKey;
-    }
-
-    public function getRankOld($package = true, $preEULA = false)
-    {
-        if ($package) {
-            $keys = array('newPackageRank', 'packageRank');
-            if ($preEULA) $keys = array_reverse($keys);
-            if (!$this->isStaff()) {
-                if (!$this->isPreEULA()) {
-                    if ($this->get($keys[0], true)) {
-                        return str_replace('_PLUS', '+', $this->get($keys[0], true));
-                    }
-                } else {
-                    foreach ($keys as $key) {
-                        if ($this->get($key, true)) {
-                            return str_replace('_PLUS', '+', $this->get($key, true));
-                        }
-                    }
-                }
-            } else {
-                foreach ($keys as $key) {
-                    if ($this->get($key, true)) {
-                        return str_replace('_PLUS', '+', $this->get($key, true));
-                    }
-                }
-            }
-        } else {
-            $rank = $this->get('rank', true);
-            if (!$this->isStaff()) return $this->getRank(true, $preEULA);
-            return $rank;
-        }
-        return 'DEFAULT';
     }
 
     public function getRank($package = true, $preEULA = false)
