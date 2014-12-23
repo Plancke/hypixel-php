@@ -409,7 +409,10 @@ class HypixelPHP
     {
         $write = array();
         $write['timestamp'] = time();
-        $write['record'] = json_decode($content);
+        if (!is_array($content)) {
+            $content = json_decode($content, true);
+        }
+        $write['record'] = $content;
 
         $this->setFileContent($filename, json_encode($write));
     }
