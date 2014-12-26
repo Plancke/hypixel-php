@@ -1090,7 +1090,7 @@ class Booster
      */
     public function isActive()
     {
-        return $this->json['length'] == $this->json['originalLength'];
+        return $this->getLength() != $this->getLength(true);
     }
 
     /**
