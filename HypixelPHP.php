@@ -589,7 +589,7 @@ class Player extends HypixelObject
         }
     }
 
-    public function getColoredName($rankOptions = array(false, false), $extraCSS = '')
+    public function getFormattedPrefix($rankOptions = array(false, false))
     {
         $playerRank = $this->getRank($rankOptions[0], $rankOptions[1]);
         $rankInfo = $this->api->getRankInfo($playerRank);
@@ -607,7 +607,21 @@ class Player extends HypixelObject
                 $prefix = str_replace('+', '<span style="color: #' . $rankInfo['colors']['plus'] . ';">+</span>', $prefix);
             }
         }
-        return '<span style="color: #' . $rankInfo['colors']['front'] . ';' . $extraCSS . '">' . $prefix . $this->getName() . '</span>';
+        return $prefix;
+    }
+
+    public function getPrefixedName($rankOptions = array(false, false), $extraCSS = '')
+    {
+        $playerRank = $this->getRank($rankOptions[0], $rankOptions[1]);
+        $rankInfo = $this->api->getRankInfo($playerRank);
+        return '<span style="color: #' . $rankInfo['colors']['front'] . ';' . $extraCSS . '">' . $this->getFormattedPrefix($rankOptions) . $this->getName() . '</span>';
+    }
+
+    public function getColoredName($rankOptions = array(false, false), $extraCSS = '')
+    {
+        $playerRank = $this->getRank($rankOptions[0], $rankOptions[1]);
+        $rankInfo = $this->api->getRankInfo($playerRank);
+        return '<span style="color: #' . $rankInfo['colors']['front'] . ';' . $extraCSS . '">' . $this->getName() . '</span>';
     }
 
     public function getUUID()
@@ -637,8 +651,8 @@ class Player extends HypixelObject
 
     public function isStaff()
     {
-        $rank = $this->get('rank', true);
-        if ($rank == 'NORMAL' || $rank == null)
+        $rank = $this->get('rank', true, 'NORMAL');
+        if ($rank == 'NORMAL')
             return false;
         return true;
     }
@@ -929,8 +943,170 @@ class MemberList extends HypixelObject
     }
 }
 
+class GameTypes
+{
+    const QUAKE = 2;
+    const WALLS = 3;
+    const PAINTBALL = 4;
+    const BSG = 5;
+    const TNTGAMES = 6;
+    const VAMPIREZ = 7;
+    const MEGAWALLS = 13;
+    const ARCADE = 14;
+    const ARENA = 17;
+    const UHC = 20;
+    const MCGO = 21;
+
+    public static function fromID($id)
+    {
+        switch ($id) {
+            case 2:
+                return new GameType('quake', 'Quake', 'Quake', 2);
+                break;
+            case 3:
+                return new GameType('walls', 'Walls', 'Walls', 3);
+                break;
+            case 4:
+                return new GameType('paintball', 'Paintball', 'PB', 4);
+                break;
+            case 5:
+                return new GameType('hungergames', 'Blitz Survival Games', 'BSG', 5);
+                break;
+            case 6:
+                return new GameType('tntgames', 'TNT Games', 'TNT', 6);
+                break;
+            case 7:
+                return new GameType('vampirez', 'VampireZ', 'VampZ', 7);
+                break;
+            case 13:
+                return new GameType('walls3', 'MegaWalls', 'MW', 13);
+                break;
+            case 14:
+                return new GameType('arcade', 'Arcade', 'Arcade', 14);
+                break;
+            case 17:
+                return new GameType('arena', 'Arena', 'Arena', 17);
+                break;
+            case 20:
+                return new GameType('uhc', 'UHC Champions', 'UHC', 20);
+                break;
+            case 21:
+                return new GameType('mcgo', 'Cops and Crims', 'CaC', 21);
+                break;
+        }
+        return null;
+    }
+}
+
+class GameType
+{
+    private $db, $name, $short, $id;
+
+    public function __construct($db, $name, $short, $id)
+    {
+        $this->db = $db;
+        $this->name = $name;
+        $this->short = $short;
+        $this->id = $id;
+    }
+
+    public function getDb()
+    {
+        return $this->db;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getShort()
+    {
+        return $this->short;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+}
+
 class Boosters extends HypixelObject
-{ /* Dummy for now */
+{
+    public function getQueue($gameType, $max = 10)
+    {
+        $return = array(
+            'boosters' => array(),
+            'total' => 0
+        );
+        foreach ($this->JSONArray as $boosterJSON) {
+            $booster = new Booster($boosterJSON);
+            if ($booster->getGameTypeID() == $gameType) {
+                if ($return['total'] < $max) {
+                    array_push($return['boosters'], $booster);
+                }
+                $return['total']++;
+            }
+        }
+        return $return;
+    }
+}
+
+class Booster
+{
+    private $json;
+
+    public function __construct($json)
+    {
+        $this->json = $json;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOwner()
+    {
+        return $this->json['purchaser'];
+    }
+
+    /**
+     * @return int
+     */
+    public function getGameTypeID()
+    {
+        return $this->json['gameType'];
+    }
+
+    /**
+     * @return GameType|null
+     */
+    public function getGameType()
+    {
+        return GameTypes::fromID($this->json['gameType']);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->json['length'] == $this->json['originalLength'];
+    }
+
+    /**
+     * @param bool $original
+     * @return int
+     */
+    public function getLength($original = false)
+    {
+        if ($original)
+            return $this->json['originalLength'];
+        return $this->json['length'];
+    }
+
+    public function getActivateTime() {
+        return $this->json['dateActivated'];
+    }
 }
 
 class Leaderboards extends HypixelObject
