@@ -1,9 +1,6 @@
 # Hypixel PHP
 
 A PHP class for fetching Player/Guild information from the Public HypixelAPI
-Since version 1.2 data is saved in a different way. This'll require you to
-cache everything again. This is fully automatic. 
-Guild cache handling should be faster now.
 
 ## Usage
 
@@ -24,7 +21,7 @@ $HypixelAPI = new HypixelAPI(array(
  ));
  ```
      
-All of these options are optional. They are provided above withtheir default values.
+All of these options are optional. They are provided above with their default values.
 
 Once you have the API Object you can call the getter functions
 
@@ -48,6 +45,3 @@ $friends = $HypixelAPI->getFriends(array(
     'player' => ''
 ));
 ```
-
-## Caching
-Caching is employed because we want to remove as much strain as possible from the Hypixel DB, thus providing us with more pleasure on the server. The Public API will throttle if there is too much traffic and this intends to avoid that from happening.
