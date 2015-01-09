@@ -11,16 +11,16 @@ To interact with the API you need an API key, you can get a key by doing "/api" 
 
 ```PHP
 $HypixelAPI = new HypixelAPI(array(
-    'api_key'               => '',
-    'cache_time'            => '600',
-    'cache_folder_player'   => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player/',
-    'cache_uuid_table'      => 'uuid_table.json',
-    'cache_folder_guild'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild/',
-    'cache_byPlayer_table'  => 'byPlayer_table.json',
-    'cache_byName_table'    => 'byName_table.json',
-    'cache_folder_friends'  => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends/',
-    'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions/',
-    'version'               => '1.2'
+    'api_key' => '',
+    'cache_time' => 600,
+    'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
+    'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
+    'cache_folder_friends' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends',
+    'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions',
+    'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
+    'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
+    'debug' => false,
+    'use_curl' => true
  ));
  ```
      
