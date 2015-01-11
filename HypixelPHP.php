@@ -168,7 +168,8 @@ class HypixelPHP
                 if ($key == 'uuid') {
                     $content = $this->getCache($filename);
                     if ($content != null) {
-                        if (time() - $this->getCacheTime() < $content['timestamp']) {
+                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                        if (time() - $this->getCacheTime() < $timestamp) {
                             $this->debug('Getting Cached data!');
                             return $this->getPlayer(array('name' => $content['name']));
                         }
@@ -186,7 +187,8 @@ class HypixelPHP
                     if (file_exists($filename) || $this->hasPaid($val)) {
                         $content = $this->getCache($filename);
                         if ($content != null) {
-                            if (time() - $this->getCacheTime() < $content['timestamp']) {
+                            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                            if (time() - $this->getCacheTime() < $timestamp) {
                                 return new Player($content, $this);
                             }
                         }
@@ -232,7 +234,8 @@ class HypixelPHP
                 if ($key == 'byPlayer' || $key == 'byName') {
                     $content = $this->getCache($filename);
                     if ($content != null) {
-                        if (time() - $this->getCacheTime() < $content['timestamp']) {
+                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                        if (time() - $this->getCacheTime() < $timestamp) {
                             return $this->getGuild(array('id' => $content['guild']));
                         }
                     }
@@ -248,7 +251,8 @@ class HypixelPHP
                 if ($key == 'id') {
                     $content = $this->getCache($filename);
                     if ($content != null) {
-                        if (time() - $this->getCacheTime() < $content['timestamp']) {
+                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                        if (time() - $this->getCacheTime() < $timestamp) {
                             return new Guild($content, $this);
                         }
                     }
@@ -289,7 +293,8 @@ class HypixelPHP
                     $filename = $this->options['cache_folder_sessions'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
                     $content = $this->getCache($filename);
                     if ($content != null) {
-                        if (time() - $this->getCacheTime() < $content['timestamp']) {
+                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                        if (time() - $this->getCacheTime() < $timestamp) {
                             return new Session($content, $this);
                         }
                     }
@@ -330,7 +335,8 @@ class HypixelPHP
                     $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
                     $content = $this->getCache($filename);
                     if ($content != null) {
-                        if (time() - $this->getCacheTime() < $content['timestamp']) {
+                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                        if (time() - $this->getCacheTime() < $timestamp) {
                             return new Friends($content, $this);
                         }
                     }
@@ -361,7 +367,8 @@ class HypixelPHP
         $filename = $this->options['cache_boosters'];
         $content = $this->getCache($filename);
         if ($content != null) {
-            if (time() - $this->getCacheTime() < $content['timestamp']) {
+            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+            if (time() - $this->getCacheTime() < $timestamp) {
                 return new Boosters($content, $this);
             }
         }
@@ -389,7 +396,8 @@ class HypixelPHP
         $filename = $this->options['cache_leaderboards'];
         $content = $this->getCache($filename);
         if ($content != null) {
-            if (time() - $this->getCacheTime() < $content['timestamp']) {
+            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+            if (time() - $this->getCacheTime() < $timestamp) {
                 return new Leaderboards($content, $this);
             }
         }
