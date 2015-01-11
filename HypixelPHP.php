@@ -77,9 +77,9 @@ class HypixelPHP
         return $this->options;
     }
 
-    public function hasPaid($name, $url = 'https://mcapi.ca/other/haspaid/%NAME%')
+    public function hasPaid($name, $url = 'https://mcapi.ca/other/haspaid/{{NAME}}')
     {
-        $hasPaid = $this->getUrlContents(str_replace("%NAME%", $name, $url));
+        $hasPaid = $this->getUrlContents(str_replace("{{NAME}}", $name, $url));
         $this->debug('Premium (' . $name . '): ' . ($hasPaid['premium'] ? 'true' : 'false'));
         return $hasPaid['premium'];
     }
