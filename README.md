@@ -44,4 +44,6 @@ $session = $HypixelAPI->getSession(array(
 $friends = $HypixelAPI->getFriends(array(
     'player' => ''
 ));
+// or
+$friends = $HypixelAPI->getPlayer($input)->getFriends();
 ```

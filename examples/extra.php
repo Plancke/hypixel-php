@@ -1,8 +1,8 @@
 <?php
 include_once('HypixelPHP.php');
-$HypixelPHP = new HypixelPHP(array('api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'));
+$HypixelPHP = new HypixelPHP\HypixelPHP(array('api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'));
 $player = $HypixelPHP->getPlayer(array('name' => 'Plancke'));
-if (!$player->isNull()) {
+if ($player != null) {
     echo $player->getName();
 
     // automatically saves the file again!
@@ -14,7 +14,7 @@ if (!$player->isNull()) {
         'hidden' => true,
         'cool' => true
     ));
-    //instead of
+    // instead of
     $player->setExtra(array('hidden' => true));
     $player->setExtra(array('cool' => true));
 

@@ -1,7 +1,8 @@
 <?php
-$HypixelPHP = new HypixelPHP(array('api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'));
+include_once('HypixelPHP.php');
+$HypixelPHP = new HypixelPHP\HypixelPHP(array('api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'));
 $guild = $HypixelPHP->getGuild(array('byName' => 'PainBall'));
-if (!$guild->isNull()) {
+if ($guild != null) {
     $memberlist = $guild->getMemberList()->getList();
 
     echo 'Guild Name: ' . $guild->getName();
