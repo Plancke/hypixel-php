@@ -21,11 +21,16 @@ $HypixelAPI = new HypixelAPI(array(
     'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions',
     'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
     'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
+<<<<<<< HEAD
+    'debug' => false,
+    'log' => false,
+=======
     'cache_keyInfo' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo.json',
     'achievements_file' => $_SERVER['DOCUMENT_ROOT'] . '/hypixel/assets/achievements.json',
     'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
     'logging' => true,
     'debug' => true,
+>>>>>>> 10f249cf27c208497cfd9610fb9dea7b31508bf2
     'use_curl' => true
  ));
  ```
