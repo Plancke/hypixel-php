@@ -18,16 +18,17 @@ class HypixelPHP
     {
         $this->options = array_merge(
             array(
-                'api_key' => '',
-                'cache_time' => 600,
-                'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
-                'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
-                'cache_folder_friends' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends',
-                'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions',
-                'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
-                'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
+                'api_key' => '', // Your Hypixel API-key
+                'cache_time' => 600, // Time to cache statistics, in seconds
+                'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player', // Cache folder for playerdata
+                'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild', // Cache folder for guild data
+                'cache_folder_friends' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends', // Cache folder for friend data
+                'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions', // Cache folder for session data
+                'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json', // Cache file for booster data
+                'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json', // Cache file for leaderboards
                 'cache_keyInfo' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo.json',
-                'debug' => false,
+                'debug' => false, // Enable or disable debug messages
+                'log' => false, // Enable or disable logging to file
                 'use_curl' => true
             ),
             $input
@@ -158,7 +159,24 @@ class HypixelPHP
 
     public function log($string)
     {
-        file_put_contents('fetch.log', '[' . date("Y-m-d H:i:s") . '] ' . $string . "\r\n", FILE_APPEND);
+        if($this->options['log']) {
+            $dirName = $this->options['logs'] . DIRECTORY_SEPARATOR . date("Y-m-d");
+            if (!file_exists($dirName)) {
+                mkdir($dirName, 0777, true);
+            }
+            $scanDir = array_diff(scandir($dirName), array('.', '..'));
+            $numberOfLogs = sizeof($scanDir);
+            if ($numberOfLogs == 0) {
+                $numberOfLogs++;
+            }
+            $filename = $dirName . DIRECTORY_SEPARATOR . $numberOfLogs . '.log';
+            if (file_exists($filename)) {
+                if (filesize($filename) > 25600000) {
+                    $filename = $dirName . DIRECTORY_SEPARATOR . ($numberOfLogs + 1) . '.log';
+                }
+            }
+            file_put_contents($filename, '[' . date("H:i:s") . '] ' . $string . "\r\n", FILE_APPEND);
+        }
     }
 
     public function fetch($request, $key = null, $val = null)
