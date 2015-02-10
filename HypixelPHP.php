@@ -20,6 +20,7 @@ class HypixelPHP
             array(
                 'api_key' => '',
                 'cache_time' => 600,
+                'timeout' => 2,
                 'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
                 'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
                 'cache_folder_friends' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends',
@@ -27,7 +28,10 @@ class HypixelPHP
                 'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
                 'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
                 'cache_keyInfo' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo.json',
-                'debug' => false,
+                'achievements_file' => $_SERVER['DOCUMENT_ROOT'] . '/hypixel/assets/achievements.json',
+                'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
+                'logging' => true,
+                'debug' => true,
                 'use_curl' => true
             ),
             $input
@@ -44,6 +48,9 @@ class HypixelPHP
         }
         if (!file_exists($this->options['cache_folder_sessions'])) {
             mkdir($this->options['cache_folder_sessions'], 0777, true);
+        }
+        if (!file_exists($this->options['log_folder'])) {
+            mkdir($this->options['log_folder'], 0777, true);
         }
     }
 
@@ -64,6 +71,9 @@ class HypixelPHP
         if ($this->options['debug']) {
             echo '<!-- ' . $message . ' -->';
         }
+        if ($this->options['logging']) {
+            $this->log($message);
+        }
     }
 
     public function setKey($key)
@@ -76,33 +86,17 @@ class HypixelPHP
         return $this->options['api_key'];
     }
 
-    public function getKeyInfo()
-    {
-        $filename = $this->options['cache_keyInfo'];
-        $content = $this->getCache($filename);
-        if ($content != null) {
-            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-            if (time() - $this->getCacheTime() < $timestamp) {
-                $this->debug('Getting Cached data!');
-                return new KeyInfo($content, $this);
-            }
-        }
-
-        $response = $this->fetch('key');
-        if ($response['success'] == true) {
-            $this->debug(json_encode($response));
-            $content = array('timestamp' => time(), 'record' => $response['record']);
-            $this->setFileContent($filename, json_encode($content));
-            return new KeyInfo($content, $this);
-        }
-        return null;
-    }
-
     public function getOptions()
     {
         return $this->options;
     }
 
+    /**
+     * Checks if $name is a paid account
+     * @param $name
+     * @param string $url
+     * @return bool
+     */
     public function hasPaid($name, $url = 'https://mcapi.ca/other/haspaid/{{NAME}}')
     {
         $hasPaid = $this->getUrlContents(str_replace("{{NAME}}", $name, $url));
@@ -111,9 +105,13 @@ class HypixelPHP
         return $hasPaid['premium'];
     }
 
-    public function getUrlContents($url)
+    /**
+     * @param $url
+     * @param int $timeout
+     * @return array|mixed json decoded array of response or error json
+     */
+    public function getUrlContents($url, $timeout = 2)
     {
-        $timeout = 2;
         $errorOut = array("success" => false, 'cause' => 'Timeout');
         if ($this->options['use_curl']) {
             $ch = curl_init();
@@ -146,6 +144,10 @@ class HypixelPHP
         }
     }
 
+    /**
+     * Returns the currently set cache threshold
+     * @return int
+     */
     public function getCacheTime()
     {
         return $this->options['cache_time'];
@@ -156,92 +158,124 @@ class HypixelPHP
         $this->set(array('cache_time' => $cache_time));
     }
 
+    /**
+     * Log $string to log files
+     * Directory setup:
+     *  - LOG_FOLDER/DATE/1.log
+     *  - LOG_FOLDER/DATE/2.log
+     * separated every 25MB
+     * @param $string
+     */
     public function log($string)
     {
-        file_put_contents('fetch.log', '[' . date("Y-m-d H:i:s") . '] ' . $string . "\r\n", FILE_APPEND);
+        $dirName = $this->options['log_folder'] . DIRECTORY_SEPARATOR . date("Y-m-d");
+        if (!file_exists($dirName)) {
+            mkdir($dirName, 0777, true);
+        }
+        $scanDir = array_diff(scandir($dirName), array('.', '..'));
+        $numberOfLogs = sizeof($scanDir);
+        if ($numberOfLogs == 0) {
+            $numberOfLogs++;
+        }
+        $filename = $dirName . DIRECTORY_SEPARATOR . $numberOfLogs . '.log';
+        if (file_exists($filename)) {
+            if (filesize($filename) > 25600000) {
+                $filename = $dirName . DIRECTORY_SEPARATOR . ($numberOfLogs + 1) . '.log';
+            }
+        }
+        file_put_contents($filename, '[' . date("H:i:s") . '] ' . $string . "\r\n", FILE_APPEND);
     }
 
-    public function fetch($request, $key = null, $val = null)
+    public function fetch($request, $key = null, $val = null, $timeout = -1)
     {
         if ($this->getCacheTime() >= self::MAX_CACHE_TIME) {
             $return = array("success" => false, 'cause' => 'Max Cache Time!');
             return $return;
         }
-        $this->log('Starting Fetch: ' . $this->getKey() . ' - ' . $request . '?' . $key . '=' . $val);
-        $this->debug('Starting Fetch: ' . $request . '?' . $key . '=' . $val);
+
+        if ($timeout < 0) {
+            $timeout = $this->options['timeout'];
+        }
+
         $requestURL = 'https://api.hypixel.net/' . $request . '?key=' . $this->getKey();
+        $debug = $request;
         if ($key != null && $val != null) {
             $val = trim($val);
             $val = str_replace(' ', '%20', $val);
             $requestURL .= '&' . $key . '=' . $val;
+            $debug .= '?' . $key . '=' . $val;
         }
+        $this->debug('Starting Fetch: ' . $debug);
 
-        $response = $this->getUrlContents($requestURL);
+        $response = $this->getUrlContents($requestURL, $timeout);
         if ($response['success'] == false) {
             if (!array_key_exists('cause', $response)) {
                 $response['cause'] = 'Unknown';
             }
-            $this->log('Fetch Failed: ' . $response['cause']);
             $this->debug('Fetch Failed: ' . $response['cause']);
         } else {
-            $this->log('Fetch Successful');
             $this->debug('Fetch successful!');
         }
         return $response;
     }
 
+    /**
+     * @param array $keyPair
+     * @return Player|null
+     */
     public function getPlayer($keyPair = array())
     {
         $pairs = array_merge(
             array(
-                'name' => '',
-                'uuid' => ''
+                'name' => null,
+                'uuid' => null
             ),
             $keyPair
         );
 
         foreach ($pairs as $key => $val) {
-            if ($val != null) {
+            if ($val != null && $val != '') {
                 $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
                 if ($key == 'uuid') {
                     $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                         if (time() - $this->getCacheTime() < $timestamp) {
-                            $this->debug('Getting Cached data!');
-                            return $this->getPlayer(array('name' => $content['name']));
+                            return new Player($content, $this);
                         }
                     }
 
                     $response = $this->fetch('player', $key, $val);
                     if ($response['success'] == 'true') {
-                        $content = array('timestamp' => time(), 'name' => $response['player']['displayname']);
-                        $this->setFileContent($filename, json_encode($content));
-                        return $this->getPlayer(array('name' => $content['name']));
+                        $PLAYER = new Player(array(
+                            'record' => $response['player'],
+                            'extra' => $content['extra']
+                        ), $this);
+                        $PLAYER->setExtra(array('filename' => $filename));
+                        $this->setCache($filename, $PLAYER);
+                        return $PLAYER;
                     }
-                }
-
-                if ($key == 'name') {
+                } else if ($key == 'name') {
                     if (file_exists($filename) || $this->hasPaid($val)) {
                         $content = $this->getCache($filename);
                         if ($content != null) {
                             $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                             if (time() - $this->getCacheTime() < $timestamp) {
-                                return new Player($content, $this);
+                                if (array_key_exists("uuid", $content)) {
+                                    return $this->getPlayer(array('uuid' => $content['uuid']));
+                                }
                             }
                         }
 
-                        $response = $this->fetch('player', $key, $val);
-                        if ($response['success'] == 'true') {
-                            if ($response['player'] != null) {
-                                $PLAYER = new Player(array(
-                                    'record' => $response['player'],
-                                    'extra' => $content['extra']
-                                ), $this);
-                                $PLAYER->setExtra(array('filename' => $filename));
-                                $this->setCache($filename, $PLAYER);
-                                return $PLAYER;
-                            }
+                        $response = $this->getUrlContents('https://api.mojang.com/users/profiles/minecraft/' . $val);
+                        if (isset($response['name']) && isset($response['id'])) {
+                            $content = array(
+                                'timestamp' => time(),
+                                'name' => $response['name'],
+                                'uuid' => $response['id']
+                            );
+                            $this->setFileContent($filename, json_encode($content));
+                            return $this->getPlayer(array('uuid' => $content['uuid']));
                         }
                     }
                 }
@@ -254,10 +288,17 @@ class HypixelPHP
         return null;
     }
 
+    /**
+     * get Guild of Player
+     * @param array $keyPair
+     * @return Guild|null
+     */
     public function getGuild($keyPair = array())
     {
         $pairs = array_merge(
             array(
+                'player' => null,
+                'byUuid' => null,
                 'byPlayer' => null,
                 'byName' => null,
                 'id' => null
@@ -266,15 +307,23 @@ class HypixelPHP
         );
 
         foreach ($pairs as $key => $val) {
-            if ($val != null) {
-                if ($key == 'byPlayer' && $val != null) {
-                    if (!$this->hasPaid($val)) {
-                        continue;
-                    }
+            if ($val != null && $val != '') {
+                if ($key == 'player') {
+                    /* @var $val Player */
+                    return $this->getGuild(array('byPlayer' => $val->getName()));
+                    // return $this->getGuild(array('byUuid' => $val->getUUID());
                 }
+
                 $filename = $this->options['cache_folder_guild'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
 
-                if ($key == 'byPlayer' || $key == 'byName') {
+                if ($key == 'byPlayer' || $key == 'byName' || $key == 'byUuid') {
+                    if ($key == 'byPlayer') {
+                        if (!file_exists($filename) && !$this->hasPaid($val)) {
+                            $this->debug('File does not exist and ' . $val . ' is not premium!');
+                            continue;
+                        }
+                    }
+
                     $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
@@ -286,7 +335,7 @@ class HypixelPHP
                         }
                     }
 
-                    $response = $this->fetch('findGuild', $key, $val);
+                    $response = $this->fetch('findGuild', $key, $val, 5);
                     if ($response['success'] == 'true') {
                         $content = array('timestamp' => time(), 'guild' => $response['guild']);
                         $this->setFileContent($filename, json_encode($content));
@@ -323,6 +372,11 @@ class HypixelPHP
         return null;
     }
 
+    /**
+     * Get Session of Player
+     * @param array $keyPair
+     * @return Session|null
+     */
     public function getSession($keyPair = array())
     {
         $pairs = array_merge(
@@ -333,10 +387,10 @@ class HypixelPHP
         );
 
         foreach ($pairs as $key => $val) {
-            if ($val != null) {
+            if ($val != null && $val != '') {
                 if ($key == 'player') {
-
-                    $filename = $this->options['cache_folder_sessions'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
+                    /* @var $val Player */
+                    $filename = $this->options['cache_folder_sessions'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val->getName()) . '.json';
                     $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
@@ -345,7 +399,7 @@ class HypixelPHP
                         }
                     }
 
-                    $response = $this->fetch('session', $key, $val);
+                    $response = $this->fetch('session', $key, $val->getName());
                     if ($response['success'] == 'true') {
                         $SESSION = new Session(array(
                             'record' => $response['session'],
@@ -366,6 +420,11 @@ class HypixelPHP
         return null;
     }
 
+    /**
+     * get Friends of Player
+     * @param array $keyPair
+     * @return Friends|null
+     */
     public function getFriends($keyPair = array())
     {
         $pairs = array_merge(
@@ -376,9 +435,10 @@ class HypixelPHP
         );
 
         foreach ($pairs as $key => $val) {
-            if ($val != null) {
+            if ($val != null && $val != '') {
                 if ($key == 'player') {
-                    $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
+                    /* @var $val Player */
+                    $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val->getName()) . '.json';
                     $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
@@ -387,7 +447,7 @@ class HypixelPHP
                         }
                     }
 
-                    $response = $this->fetch('friends', $key, $val);
+                    $response = $this->fetch('friends', $key, $val->getName());
                     if ($response['success'] == 'true') {
                         $FRIENDS = new Friends(array(
                             'record' => $response['records'],
@@ -408,6 +468,10 @@ class HypixelPHP
         return null;
     }
 
+    /**
+     * get boosters
+     * @return Boosters|null
+     */
     public function getBoosters()
     {
         $filename = $this->options['cache_boosters'];
@@ -437,6 +501,10 @@ class HypixelPHP
         return null;
     }
 
+    /**
+     * get Leaderboards, Hypixel Format
+     * @return Leaderboards|null
+     */
     public function getLeaderboards()
     {
         $filename = $this->options['cache_leaderboards'];
@@ -462,6 +530,36 @@ class HypixelPHP
         if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
             $this->setCacheTime(self::MAX_CACHE_TIME);
             return $this->getLeaderboards();
+        }
+        return null;
+    }
+
+    /**
+     * get info about currently set API Key
+     * @return KeyInfo|null
+     */
+    public function getKeyInfo()
+    {
+        $filename = $this->options['cache_keyInfo'];
+        $content = $this->getCache($filename);
+        if ($content != null) {
+            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+            if (time() - $this->getCacheTime() < $timestamp) {
+                $this->debug('Getting Cached data!');
+                return new KeyInfo($content, $this);
+            }
+        }
+
+        $response = $this->fetch('key');
+        if ($response['success'] == true) {
+            $content = array('timestamp' => time(), 'record' => $response['record']);
+            $this->setFileContent($filename, json_encode($content));
+            return new KeyInfo($content, $this);
+        }
+
+        if ($this->getCacheTime() < self::MAX_CACHE_TIME) {
+            $this->setCacheTime(self::MAX_CACHE_TIME);
+            return $this->getKeyInfo();
         }
         return null;
     }
@@ -524,106 +622,41 @@ class HypixelPHP
         $this->setFileContent($filename, $content);
     }
 
-    public function getRanks()
+    /**
+     * Parses MC encoded colors to HTML
+     * @param $string
+     * @return string
+     */
+    public function parseColors($string)
     {
-        $ranks = array(
-            'ADMIN' => array(
-                'prefix' => 'ADMIN',
-                'colors' => array(
-                    'front' => 'FF5555',
-                    'back' => '3F1515'
-                )
-            ),
-            'JR DEV' => array(
-                'prefix' => 'JR DEV',
-                'colors' => array(
-                    'front' => '55FF55',
-                    'back' => '153F15'
-                )
-            ),
-            'MODERATOR' => array(
-                'prefix' => 'MOD',
-                'colors' => array(
-                    'front' => '00AA00',
-                    'back' => '002A00'
-                )
-            ),
-            'HELPER' => array(
-                'prefix' => 'HELPER',
-                'colors' => array(
-                    'front' => '0000AA',
-                    'back' => '00002A'
-                )
-            ),
-            'JR HELPER' => array(
-                'prefix' => 'JR HELPER',
-                'colors' => array(
-                    'front' => '0000AA',
-                    'back' => '00002A'
-                )
-            ),
-            'YOUTUBER' => array(
-                'prefix' => 'YT',
-                'colors' => array(
-                    'front' => 'FFAA00',
-                    'back' => '2A2A00'
-                )
-            ),
-            'MVP+' => array(
-                'prefix' => 'MVP+',
-                'colors' => array(
-                    'front' => '22CCCC',
-                    'back' => '153F3F',
-                    'plus' => 'FF5555'
-                )
-            ),
-            'MVP' => array(
-                'prefix' => 'MVP',
-                'colors' => array(
-                    'front' => '22CCCC',
-                    'back' => '153F3F'
-                )
-            ),
-            'VIP+' => array(
-                'prefix' => 'VIP+',
-                'colors' => array(
-                    'front' => '22CC22',
-                    'back' => '153F15',
-                    'plus' => 'FFAA00'
-                )
-            ),
-            'VIP' => array(
-                'prefix' => 'VIP',
-                'colors' => array(
-                    'front' => '22CC22',
-                    'back' => '153F15'
-                )
-            ),
-            'DEFAULT' => array(
-                'colors' => array(
-                    'front' => 'AAAAAA',
-                    'back' => 'A2A2A2'
-                )
-            ),
-            'NONE' => array(
-                'prefix' => 'NONE',
-                'colors' => array(
-                    'front' => 'AAAAAA',
-                    'back' => 'A2A2A2'
-                )
-            )
+        $MCColors = array(
+            "0" => "#000000",
+            "1" => "#0000AA",
+            "2" => "#008000",
+            "3" => "#00AAAA",
+            "4" => "#AA0000",
+            "5" => "#AA00AA",
+            "6" => "#FFAA00",
+            "7" => "#AAAAAA",
+            "8" => "#555555",
+            "9" => "#5555FF",
+            "a" => "#55FF55",
+            "b" => "#55FFFF",
+            "c" => "#FF5555",
+            "d" => "#FF55FF",
+            "e" => "#FFFF55",
+            "f" => "#FFFFFF"
         );
 
-        return $ranks;
-    }
-
-    public function getRankInfo($rank = 'NONE')
-    {
-        $rankInfo = $this->getRanks();
-        if (!array_key_exists($rank, $rankInfo)) {
-            $rank = 'NONE';
+        if (strpos($string, "§") == -1) {
+            return $string;
         }
-        return $rankInfo[$rank];
+        $d = explode("§", $string);
+        $out = '';
+        foreach ($d as $part) {
+            $out = $out . "<span style='color:" . $MCColors[substr($part, 0, 1)] . "'>" . substr($part, 1) . "</span>";
+        }
+        return $out;
     }
 }
 
@@ -647,15 +680,14 @@ class HypixelObject
         }
     }
 
-    /** @deprecated */
-    public function isNull()
-    {
-        return !array_key_exists('record', $this->JSONArray);
-    }
-
     public function getRaw()
     {
         return $this->JSONArray;
+    }
+
+    public function getRecord()
+    {
+        return $this->JSONArray['record'];
     }
 
     public function get($key, $implicit = false, $default = null)
@@ -680,10 +712,15 @@ class HypixelObject
 
     public function isCached()
     {
-        return $this->getCacheTime() > 0;
+        return $this->getCachedTime() > 0;
     }
 
-    public function getCacheTime()
+    public function isCacheExpired()
+    {
+        return time() - $this->api->getCacheTime() > $this->getCachedTime();
+    }
+
+    public function getCachedTime()
     {
         return $this->JSONArray['timestamp'];
     }
@@ -692,13 +729,12 @@ class HypixelObject
     {
         $anyChange = false;
         foreach ($input as $key => $val) {
-            if ($val == null) {
-                unset($this->JSONArray['extra'][$key]);
-                $anyChange = true;
-                continue;
-            }
             if (array_key_exists($key, $this->JSONArray['extra'])) {
-                if ($this->JSONArray['extra'][$key] == $val) {
+                if ($val == null) {
+                    unset($this->JSONArray['extra'][$key]);
+                    $anyChange = true;
+                    continue;
+                } else if ($this->JSONArray['extra'][$key] == $val) {
                     $anyChange = true;
                     continue;
                 }
@@ -733,14 +769,31 @@ class KeyInfo extends HypixelObject
 
 class Player extends HypixelObject
 {
+    /**
+     * get Session of Player
+     * @return Session|null
+     */
     public function getSession()
     {
         return $this->api->getSession(array('player' => $this->getName()));
     }
 
+    /**
+     * get Friends of Player
+     * @return Friends|null
+     */
     public function getFriends()
     {
         return $this->api->getFriends(array('player' => $this->getName()));
+    }
+
+    /**
+     * get Guild of Player
+     * @return Guild|null
+     */
+    public function getGuild()
+    {
+        return $this->api->getGuild(array('player' => $this));
     }
 
     public function getName()
@@ -752,43 +805,31 @@ class Player extends HypixelObject
             if (sizeof($aliases) == 0) {
                 return $this->get('playername', true);
             }
-            return $aliases[0];
+            return end($aliases);
         }
     }
 
-    public function getFormattedPrefix($rankOptions = array(false, false))
+    /**
+     * get Colored name of Player, with prefix or not
+     * @param array $rankOptions
+     * @param bool $prefix
+     * @return string
+     */
+    public function getFormattedName($rankOptions = array(false, false), $prefix = true)
     {
         $playerRank = $this->getRank($rankOptions[0], $rankOptions[1]);
-        $rankInfo = $this->api->getRankInfo($playerRank);
-        $rankPrefix = $this->getPrefix();
-        if ($rankPrefix != null) {
-            /*
-            if (array_key_exists('prefix', $rankInfo)) {
-                return '<span style="color: #' . $rankInfo['colors']['front'] . ';' . $extraCSS . '">' . $prefix . $this->getName() . '</span>';
-            }*/
-        }
-        $prefix = '';
-        if (array_key_exists('prefix', $rankInfo)) {
-            $prefix = '[' . $rankInfo['prefix'] . '] ';
-            if (array_key_exists('plus', $rankInfo['colors'])) {
-                $prefix = str_replace('+', '<span style="color: #' . $rankInfo['colors']['plus'] . ';">+</span>', $prefix);
+        $rankInfo = $this->getRankInfo($playerRank);
+        if ($prefix) {
+            $rankPrefix = $this->getPrefix();
+            if ($rankPrefix != null) {
+                $out = $rankPrefix . ' ' . $this->getName();
+            } else {
+                $out = $rankInfo['prefix'] . ' ' . $this->getName();
             }
+        } else {
+            $out = $rankInfo['color'] . $this->getName();
         }
-        return $prefix;
-    }
-
-    public function getPrefixedName($rankOptions = array(false, false), $extraCSS = '')
-    {
-        $playerRank = $this->getRank($rankOptions[0], $rankOptions[1]);
-        $rankInfo = $this->api->getRankInfo($playerRank);
-        return '<span style="color: #' . $rankInfo['colors']['front'] . ';' . $extraCSS . '">' . $this->getFormattedPrefix($rankOptions) . $this->getName() . '</span>';
-    }
-
-    public function getColoredName($rankOptions = array(false, false), $extraCSS = '')
-    {
-        $playerRank = $this->getRank($rankOptions[0], $rankOptions[1]);
-        $rankInfo = $this->api->getRankInfo($playerRank);
-        return '<span style="color: #' . $rankInfo['colors']['front'] . ';' . $extraCSS . '">' . $this->getName() . '</span>';
+        return $this->api->parseColors($out);
     }
 
     public function getUUID()
@@ -813,7 +854,7 @@ class Player extends HypixelObject
 
     public function getPrefix()
     {
-        return $this->get('prefix', true);
+        return $this->get('prefix', false, null);
     }
 
     public function isStaff()
@@ -824,17 +865,28 @@ class Player extends HypixelObject
         return true;
     }
 
+    /**
+     * get Current Multiplier, accounts for level and Pre-EULA rank
+     * @return float|int
+     */
     public function getMultiplier()
     {
         if ($this->getRank(false) == 'YOUTUBER') return 7;
         $ranks = array('DEFAULT', 'VIP', 'VIP+', 'MVP', 'MVP+');
         $pre = $this->getRank(true, true);
+        if ($pre == 'NONE') $pre = 'DEFAULT';
         $flip = array_flip($ranks);
         $rankKey = $flip[$pre] + 1;
         $levelKey = floor($this->getLevel() / 25) + 1;
         return ($rankKey > $levelKey) ? $rankKey : $levelKey;
     }
 
+    /**
+     * get Rank
+     * @param bool $package
+     * @param bool $preEULA
+     * @return mixed
+     */
     public function getRank($package = true, $preEULA = false)
     {
         $return = 'DEFAULT';
@@ -863,9 +915,8 @@ class Player extends HypixelObject
                 }
             }
         } else {
-            $rank = $this->get('rank', true);
             if (!$this->isStaff()) return $this->getRank(true, $preEULA);
-            $return = $rank;
+            $return = $this->get('rank', true);
         }
         if ($return == 'NONE' && $preEULA) {
             return $this->getRank($package, !$preEULA);
@@ -873,129 +924,94 @@ class Player extends HypixelObject
         return str_replace('_', ' ', str_replace('_PLUS', '+', $return));
     }
 
+    /**
+     * get Player achievement points
+     * @return int
+     */
     public function getAchievementPoints()
     {
-        return 'WIP';
+        return 0;
+    }
+
+    public function getRanks()
+    {
+        $ranks = array(
+            'ADMIN' => array(
+                'prefix' => '§c[ADMIN]',
+                'color' => '§c'
+            ),
+            'MODERATOR' => array(
+                'prefix' => '§2[MOD]',
+                'color' => '§2'
+            ),
+            'HELPER' => array(
+                'prefix' => '§9[HELPER]',
+                'color' => '§9'
+            ),
+            'JR HELPER' => array(
+                'prefix' => '§9[JR HELPER]',
+                'color' => '§9'
+            ),
+            'YOUTUBER' => array(
+                'prefix' => '§6[YT]',
+                'color' => '§6'
+            ),
+            'MVP+' => array(
+                'prefix' => '§b[MVP§c+§b]',
+                'color' => '§b'
+            ),
+            'MVP' => array(
+                'prefix' => '§b[MVP]',
+                'color' => '§b'
+            ),
+            'VIP+' => array(
+                'prefix' => '§a[VIP§6+§a]',
+                'color' => '§a'
+            ),
+            'VIP' => array(
+                'prefix' => '§a[VIP]',
+                'color' => '§a'
+            ),
+            'DEFAULT' => array(
+                'prefix' => '§7',
+                'color' => '§7'
+            ),
+            'NONE' => array(
+                'prefix' => '§7[NONE]',
+                'color' => '§7'
+            )
+        );
+
+        return $ranks;
+    }
+
+    public function getRankInfo($rank = 'NONE')
+    {
+        $rankInfo = $this->getRanks();
+        if (!array_key_exists($rank, $rankInfo)) {
+            $rank = 'NONE';
+        }
+        return $rankInfo[$rank];
     }
 
     public function get($key, $implicit = false, $default = null)
     {
         if ($key == 'achievementPoints') {
             return $this->getAchievementPoints();
+        } elseif ($key == 'multiplier') {
+            return $this->getMultiplier();
+        } elseif ($key == 'rank_packageRank') {
+            return $this->getRank(true, true);
+        } elseif ($key == 'rank_rank') {
+            return $this->getRank(false, false);
         }
+
+        if ($key == 'stats.MCGO.totalKills') {
+            return $this->get('stats.MCGO.cop_kills', false, 0) + $this->get('stats.MCGO.criminal_kills', false, 0);
+        }
+
         return parent::get($key, $implicit, $default);
     }
-}
-
-class Achievements extends HypixelObject
-{
-    const GAME_GENERAL = "general";
-    const GAME_QUAKE = "quake";
-    const GAME_PAINTBALL = "paintball";
-    const GAME_WALLS = "walls";
-    const GAME_VAMPIREZ = "vampirez";
-    const GAME_BLITZ = "blitz";
-    const GAME_MEGAWALLS = "walls3";
-    const GAME_ARENA = "arena";
-
-    const GAME_ARCADE = "arcade";
-    const GAME_ARCADE_CREEPERATTACK = "arcade.creeper";
-
-    const GAME_TNTGAMES = "tntgames";
-    const GAME_TNTGAMES_WIZARDS = "tntgames.wizards";
-    const GAME_TNTGAMES_BOW = "tntgames.bow";
-    const GAME_TNTGAMES_TNT_RUN = "tntgames.tnt.run";
-    const GAME_TNTGAMES_TNT_TAG = "tntgames.tnt.tag";
-
-
-    private $player;
-
-    public function __construct($json, $api, $player)
-    {
-        parent::__construct($json, $api);
-        $this->player = $player;
-    }
-
-    public function getByGame($key/* should be the game name */)
-    {
-        $achievements = $this->JSONArray;
-        $availableGamesList = array();
-        foreach ($achievements as $achievement) {
-            $explode = explode('_', $achievement);
-            $gameName = $explode[0];
-            if (!in_array($gameName, array_keys($availableGamesList))) {
-                $availableGamesList[$gameName] = array();
-            }
-            if (in_array($gameName, array("arcade", "tntgames"))) {
-                $subGameName = $explode[1];
-                if (!in_array($subGameName, array_keys($availableGamesList[$gameName]))) $availableGamesList[$gameName][$subGameName] = array();
-                $availableGamesList[$gameName][$subGameName][] = $achievement;
-            } else {
-                $availableGamesList[$gameName][] = $achievement;
-            }
-        }
-        if (count($availableGamesList) <= 0)
-            return null;
-        $tmpGameList = $availableGamesList;
-        foreach (explode('.', $key) as $subGame) {
-            if (in_array($subGame, array_keys($tmpGameList))) $tmpGameList = $tmpGameList[$subGame];
-            else return null;
-        }
-        $ret = array();
-        foreach ($tmpGameList as $game => $achievement) {
-            $ret[] = new OneTimeAchievement($achievement, $this->player);
-        }
-        return $ret;
-    }
-
-    public function hasAchievement($ach)
-    {
-        return in_array($ach, $this->JSONArray);
-    }
-}
-
-class OneTimeAchievement
-{
-
-    private $name;
-    private $player;
-
-    public function __construct($key = null, $player = null)
-    {
-        $this->name = $key;
-        $this->player = $player;
-    }
-
-    public function isNull()
-    {
-        return $this->name == null || !is_string($this);
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getDescription()
-    {
-        // not done for now
-    }
-
-    public function __toString()
-    {
-        if ($this->isNull()) {
-            return "";
-        }
-        return $this->name;
-    }
-}
-
-class TieredAchievement
-{
-}
-
-class Tier
-{
 }
 
 class Stats extends HypixelObject
@@ -1023,6 +1039,11 @@ class GameStats extends HypixelObject
     {
         return $this->get('packages', false, array());
     }
+
+    public function getCoins()
+    {
+        return $this->get('coins', false, 0);
+    }
 }
 
 class Session extends HypixelObject
@@ -1032,7 +1053,7 @@ class Session extends HypixelObject
         return $this->get('players', true);
     }
 
-    public function getGame()
+    public function getGameType()
     {
         return $this->get('gameType', true);
     }
@@ -1095,6 +1116,36 @@ class Guild extends HypixelObject
     public function getMemberCount()
     {
         return $this->getMemberList()->getMemberCount();
+    }
+
+    /**
+     * get coin history of Guild or Player in Guild
+     * @param null $player
+     * @return array
+     */
+    public function getGuildCoinHistory($player = null)
+    {
+        $coinHistory = array();
+        $record = $this->getRecord();
+        if ($player != null) {
+            /* @var $player Player */
+            $memberList = $this->getMemberList()->getList();
+            foreach ($memberList as $rank => $list) {
+                foreach ($list as $p) {
+                    if (isset($p['uuid'])) {
+                        if ($player->getUUID() == $p['uuid']) {
+                            $record = $p;
+                        }
+                    }
+                }
+            }
+        }
+        foreach ($record as $key => $val) {
+            if (strpos($key, 'dailyCoins') !== false) {
+                $coinHistory[substr($key, strpos($key, '-') + 1)] = $val;
+            }
+        }
+        return $coinHistory;
     }
 }
 
@@ -1227,7 +1278,7 @@ class GameType
 
 class Boosters extends HypixelObject
 {
-    public function getQueue($gameType = GameTypes::ARCADE, $max = 10)
+    public function getQueue($gameType = GameTypes::ARCADE, $max = 999)
     {
         $return = array(
             'boosters' => array(),
@@ -1245,13 +1296,19 @@ class Boosters extends HypixelObject
         return $return;
     }
 
-    public function getBoosters($playerName)
+    /**
+     * @param Player $player
+     * @return Booster[]
+     */
+    public function getBoosters(Player $player)
     {
         $boosters = array();
         foreach ($this->JSONArray['record'] as $boosterInfo) {
-            $booster = new Booster($boosterInfo, $this->api);
-            if (strtolower($booster->getOwner()) == strtolower($playerName)) {
-                array_push($boosters, $booster);
+            if (isset($boosterInfo['purchaserUuid'])) {
+                if ($boosterInfo['purchaserUuid'] == $player->getUUID()) {
+                    $booster = new Booster($boosterInfo, $this->api);
+                    array_push($boosters, $booster);
+                }
             }
         }
         return $boosters;
@@ -1270,20 +1327,19 @@ class Booster
     }
 
     /**
-     * @return string
+     * @return Player
      */
     public function getOwner()
     {
-        if (isset($this->info['purchaser'])) {
-            return $this->info['purchaser'];
-        }
         $oldTime = $this->api->getCacheTime();
         $this->api->setCacheTime(HypixelPHP::MAX_CACHE_TIME - 1);
-        $player = $this->api->getPlayer(array('uuid' => $this->info['purchaserUuid']));
+        $player = $this->api->getPlayer(array(
+            'name' => (isset($this->info['purchaser']) ? $this->info['purchaser'] : null),
+            'uuid' => (isset($this->info['purchaserUuid']) ? $this->info['purchaserUuid'] : null)
+        ));
         $this->api->setCacheTime($oldTime);
         if ($player != null) {
-            /** @var $player Player */
-            return $player->getName();
+            return $player;
         }
         return null;
     }
