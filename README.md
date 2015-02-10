@@ -39,20 +39,26 @@ $player = $HypixelAPI->getPlayer(array(
     'name' => '',
     'uuid' => ''
 ));
-
+```
+```PHP
 $guild = $HypixelAPI->getGuild(array(
+    'player'   => '';
     'byPlayer' => '',
+    'byUuid'   => '', // Not yet supported
     'byName'   => '',
     'id'       => ''
 ));
-
+$HypixelAPI->getPlayer($input)->getGuild();
+```
+```PHP
 $session = $HypixelAPI->getSession(array(
     'player' => ''
 ));
-
+$session = $HypixelAPI->getPlayer($input)->getSession();
+```
+```PHP
 $friends = $HypixelAPI->getFriends(array(
     'player' => ''
 ));
-// or
 $friends = $HypixelAPI->getPlayer($input)->getFriends();
 ```
