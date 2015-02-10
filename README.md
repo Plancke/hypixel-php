@@ -17,6 +17,7 @@ $HypixelAPI = new HypixelAPI(array(
     'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
     'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
     'debug' => false,
+    'log' => false,
     'use_curl' => true
  ));
  ```
