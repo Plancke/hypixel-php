@@ -487,6 +487,30 @@ class HypixelPHP
                         $this->setCache($filename, $FRIENDS);
                         return $FRIENDS;
                     }
+                } else if ($key == 'uuid') {
+
+                    // Todo make it that when using Player->getFriends() it uses the UUID.
+
+                    /* @var $val Player */
+                    $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val->getName()) . '.json';
+                    $content  = $this->getCache($filename);
+                    if ($content != null) {
+                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                        if (time() - $this->getCacheTime() < $timestamp) {
+                            return new Friends($content, $this);
+                        }
+                    }
+
+                    $response = $this->fetch('friends', $key, $val->getUUID());
+                    if ($response['success'] == 'true') {
+                        $FRIENDS = new Friends(array(
+                            'record' => $response['records'],
+                            'extra'  => $content['extra']
+                        ), $this);
+                        $FRIENDS->setExtra(array('filename' => $filename));
+                        $this->setCache($filename, $FRIENDS);
+                        return $FRIENDS;
+                    }
                 }
             }
         }
