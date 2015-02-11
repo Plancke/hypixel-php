@@ -727,7 +727,7 @@ class HypixelPHP
 
     /**
      * Function to get and cache UUID from username.
-     * @param        $username
+     * @param string $username
      * @param string $url
      *
      * @return string|bool
@@ -742,9 +742,6 @@ class HypixelPHP
             $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
             if (time() - $this->getCacheTime('uuid') < $timestamp) {
                 if (isset($content['uuid'])) return $content['uuid'];
-            } else {
-                $this->debug(time() - $this->getCacheTime('uuid'));
-                $this->debug($timestamp);
             }
         }
 
@@ -927,7 +924,7 @@ class Player extends HypixelObject
      */
     public function getSession()
     {
-        return $this->api->getSession(array('player' => $this->getName()));
+        return $this->api->getSession(array('player' => $this));
     }
 
     /**
