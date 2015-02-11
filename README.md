@@ -14,6 +14,7 @@ To interact with the API you need an API key, you can get a key by doing "/api" 
 $HypixelAPI = new HypixelAPI(array(
     'api_key' => '',
     'cache_time' => 600,
+    'cache_uuid_time' => 864000,
     'timeout' => 2,
     'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
     'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
