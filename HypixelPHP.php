@@ -1,6 +1,8 @@
 <?php
 namespace HypixelPHP;
 
+use DateTime;
+
 /**
  * HypixelPHP
  *
@@ -1318,6 +1320,7 @@ class Friends extends HypixelObject
 class Guild extends HypixelObject
 {
     private $members;
+    private $sortHistory;
 
     /**
      * @return array|null
@@ -1389,27 +1392,47 @@ class Guild extends HypixelObject
      */
     public function getGuildCoinHistory($player = null)
     {
-        $coinHistory = array();
-        $record = $this->getRecord();
-        if ($player != null) {
-            /* @var $player Player */
-            $memberList = $this->getMemberList()->getList();
-            foreach ($memberList as $rank => $list) {
-                foreach ($list as $p) {
-                    if (isset($p['uuid'])) {
-                        if ($player->getUUID() == $p['uuid']) {
-                            $record = $p;
+        if ($this->sortHistory == null) {
+            $coinHistory = array();
+            $record = $this->getRecord();
+            if ($player != null) {
+                /* @var $player Player */
+                $memberList = $this->getMemberList()->getList();
+                foreach ($memberList as $rank => $list) {
+                    foreach ($list as $p) {
+                        if (isset($p['uuid'])) {
+                            if ($player->getUUID() == $p['uuid']) {
+                                $record = $p;
+                            }
                         }
                     }
                 }
             }
-        }
-        foreach ($record as $key => $val) {
-            if (strpos($key, 'dailyCoins') !== false) {
-                $coinHistory[substr($key, strpos($key, '-') + 1)] = $val;
+            foreach ($record as $key => $val) {
+                if (strpos($key, 'dailyCoins') !== false) {
+                    $coinHistory[substr($key, strpos($key, '-') + 1)] = $val;
+                }
             }
+
+            $sortHistory = array();
+            foreach ($coinHistory as $DATE => $AMOUNT) {
+                array_push($sortHistory, array($DATE, $AMOUNT));
+            }
+
+            usort($sortHistory, function ($a, $b) {
+                $ad = new DateTime($a[0]);
+                $bd = new DateTime($b[0]);
+
+                if ($ad == $bd) {
+                    return 0;
+                }
+
+                return $ad < $bd ? 1 : -1;
+            });
+            $this->sortHistory = $sortHistory;
         }
-        return $coinHistory;
+
+        return $this->sortHistory;
     }
 }
 
