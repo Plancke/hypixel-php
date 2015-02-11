@@ -735,7 +735,7 @@ class HypixelPHP
     public function getUUID($username, $url = 'https://api.mojang.com/users/profiles/minecraft/%s')
     {
         $uuidURL = sprintf($url, $username); // sprintf may be faster than str_replace
-        $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . 'player' . DIRECTORY_SEPARATOR . $this->getCacheFileName($username) . '.json';
+        $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . 'name' . DIRECTORY_SEPARATOR . $this->getCacheFileName($username) . '.json';
 
         $content = $this->getCache($filename);
         if ($content != null) {
