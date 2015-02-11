@@ -21,18 +21,17 @@ class HypixelPHP
     {
         $this->options = array_merge(
             array(
-                'api_key'               => '', // Your Hypixel API-key
-                'cache_time'            => 600, // Time to cache statistics, in seconds
+                'api_key'               => '',
+                'cache_time'            => 600,
                 'cache_uuid_time'       => 864000, // Time to cache UUIDs for playernames, in seconds. Playernames don't change often, so why cache them not a little longer?
-                'timeout' => 2, // Timeout to wait for connecting and waiting on the API server and other sites, in seconds. Longer may be more stable, but also more annoying to end-users.
-                'cache_folder_player'   => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player', // Cache folder for playerdata
-                'cache_folder_guild'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild', // Cache folder for guild data
-                'cache_folder_friends'  => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends', // Cache folder for friend data
-                'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions', // Cache folder for session data
-                'cache_folder_uuids'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/uuids', // Cache folder to store playernames and their uuids in.
-                'cache_boosters'        => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json', // Cache file for booster data
-                'cache_leaderboards'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json', // Cache file for leaderboards
-                'cache_keyInfo'         => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo.json', // Cache file for storing keyInfo
+                'timeout' => 2,
+                'cache_folder_player'   => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
+                'cache_folder_guild'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
+                'cache_folder_friends'  => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends',
+                'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions',
+                'cache_boosters'        => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
+                'cache_leaderboards'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
+                'cache_keyInfo'         => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo.json',
                 'achievements_file' => $_SERVER['DOCUMENT_ROOT'] . '/hypixel/assets/achievements.json',
                 'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
                 'logging' => true,
@@ -53,9 +52,6 @@ class HypixelPHP
         }
         if (!file_exists($this->options['cache_folder_sessions'])) {
             mkdir($this->options['cache_folder_sessions'], 0777, true);
-        }
-        if (!file_exists($this->options['cache_folder_uuids'])) {
-            mkdir($this->options['cache_folder_uuids'], 0777, true);
         }
         if (!file_exists($this->options['log_folder'])) {
             mkdir($this->options['log_folder'], 0777, true);
@@ -138,6 +134,7 @@ class HypixelPHP
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
             $curlOut = curl_exec($ch);
             if ($curlOut === false) {
                 $errorOut['cause'] = curl_error($ch);
@@ -294,26 +291,8 @@ class HypixelPHP
                     }
                 } else if ($key == 'name') {
                     if (file_exists($filename) || $this->hasPaid($val)) {
-                        $content = $this->getCache($filename);
-                        if ($content != null) {
-                            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-                            if (time() - $this->getCacheTime() < $timestamp) {
-                                if (array_key_exists("uuid", $content)) {
-                                    return $this->getPlayer(array('uuid' => $content['uuid']));
-                                }
-                            }
-                        }
-
-                        $response = $this->getUrlContents('https://api.mojang.com/users/profiles/minecraft/' . $val);
-                        if (isset($response['name']) && isset($response['id'])) {
-                            $content = array(
-                                'timestamp' => time(),
-                                'name' => $response['name'],
-                                'uuid' => $response['id']
-                            );
-                            $this->setFileContent($filename, json_encode($content));
-                            return $this->getPlayer(array('uuid' => $content['uuid']));
-                        }
+                        $uuid = $this->getUUID($val);
+                        return $this->getPlayer(array('uuid' => $uuid));
                     }
                 } else if($key == 'unknown') {
                     $this->debug('Determining type.');
@@ -744,6 +723,7 @@ class HypixelPHP
     }
 
     /**
+     * Function to get and cache UUID from username.
      * @param        $username
      * @param string $url
      *
@@ -752,16 +732,13 @@ class HypixelPHP
     public function getUUID($username, $url = 'https://api.mojang.com/users/profiles/minecraft/%s')
     {
         $uuidURL  = sprintf($url, $username); // sprintf may be faster than str_replace
-        $filename = $this->options['cache_folder_uuids'] . DIRECTORY_SEPARATOR . $this->getCacheFileName($username) . '.json';
+        $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . 'player' . DIRECTORY_SEPARATOR . $this->getCacheFileName($username) . '.json';
 
         $content = $this->getCache($filename);
         if ($content != null) {
             $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
             if (time() - $this->getCacheTime('uuid') < $timestamp) {
-                $this->debug('UUID for username still in cache.');
-                $this->debug($username . ' => ' . $content['id']);
-                if (isset($content['id'])) return $content['id'];
-                $this->debug('UUID was not found in cached file.');
+                if (isset($content['uuid'])) return $content['uuid'];
             } else {
                 $this->debug(time() - $this->getCacheTime('uuid'));
                 $this->debug($timestamp);
@@ -771,8 +748,12 @@ class HypixelPHP
         $response = $this->getUrlContents($uuidURL);
         if (isset($response['id'])) {
             $this->debug('UUID for username fetched!');
-            $response['timestamp'] = time();
-            $this->setFileContent($filename, json_encode($response));
+            $content = array(
+                'timestamp' => time(),
+                'name'      => $response['name'],
+                'uuid'      => $response['id']
+            );
+            $this->setFileContent($filename, json_encode($content));
             $this->debug($username . ' => ' . $response['id']);
             return $response['id'];
         }
