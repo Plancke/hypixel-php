@@ -933,7 +933,7 @@ class Player extends HypixelObject
      */
     public function getFriends()
     {
-        return $this->api->getFriends(array('player' => $this->getName()));
+        return $this->api->getFriends(array('player' => $this));
     }
 
     /**
