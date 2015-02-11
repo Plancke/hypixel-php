@@ -22,7 +22,6 @@ $HypixelAPI = new HypixelAPI(array(
     'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
     'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
     'cache_keyInfo' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo.json',
-    'achievements_file' => $_SERVER['DOCUMENT_ROOT'] . '/hypixel/assets/achievements.json',
     'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
     'logging' => true,
     'debug' => true,
@@ -36,8 +35,9 @@ Once you have the API Object you can call the getter functions
 
 ```PHP
 $player = $HypixelAPI->getPlayer(array(
-    'name' => '',
-    'uuid' => ''
+    'name'    => '',
+    'uuid'    => '',
+    'unknown' => ''
 ));
 ```
 ```PHP
