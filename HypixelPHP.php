@@ -21,18 +21,17 @@ class HypixelPHP
     {
         $this->options = array_merge(
             array(
-                'api_key'               => '',
-                'cache_time'            => 600,
-                'cache_uuid_time'       => 864000, // Time to cache UUIDs for playernames, in seconds. Playernames don't change often, so why cache them not a little longer?
+                'api_key' => '',
+                'cache_time' => 600,
+                'cache_uuid_time' => 864000, // Time to cache UUIDs for playernames, in seconds. Playernames don't change often, so why cache them not a little longer?
                 'timeout' => 2,
-                'cache_folder_player'   => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
-                'cache_folder_guild'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
-                'cache_folder_friends'  => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends',
+                'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
+                'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
+                'cache_folder_friends' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends',
                 'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions',
-                'cache_boosters'        => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
-                'cache_leaderboards'    => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
-                'cache_keyInfo'         => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo.json',
-                'achievements_file' => $_SERVER['DOCUMENT_ROOT'] . '/hypixel/assets/achievements.json',
+                'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
+                'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
+                'cache_keyInfo' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo.json',
                 'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
                 'logging' => true,
                 'debug' => true,
@@ -174,7 +173,7 @@ class HypixelPHP
     }
 
     /**
-     * @param int  $cache_time
+     * @param int $cache_time
      * @param null $for
      */
     public function setCacheTime($cache_time = 600, $for = null)
@@ -262,7 +261,8 @@ class HypixelPHP
         $pairs = array_merge(
             array(
                 'name' => null,
-                'uuid' => null
+                'uuid' => null,
+                'unknown' => null
             ),
             $keyPair
         );
@@ -271,6 +271,7 @@ class HypixelPHP
             if ($val != null && $val != '') {
                 $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
                 if ($key == 'uuid') {
+                    if (!strlen($val) == 32) continue;
                     $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
@@ -294,7 +295,7 @@ class HypixelPHP
                         $uuid = $this->getUUID($val);
                         return $this->getPlayer(array('uuid' => $uuid));
                     }
-                } else if($key == 'unknown') {
+                } else if ($key == 'unknown') {
                     $this->debug('Determining type.');
                     $type = $this->getType($val);
                     if ($type == 'username') {
@@ -731,7 +732,7 @@ class HypixelPHP
      */
     public function getUUID($username, $url = 'https://api.mojang.com/users/profiles/minecraft/%s')
     {
-        $uuidURL  = sprintf($url, $username); // sprintf may be faster than str_replace
+        $uuidURL = sprintf($url, $username); // sprintf may be faster than str_replace
         $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . 'player' . DIRECTORY_SEPARATOR . $this->getCacheFileName($username) . '.json';
 
         $content = $this->getCache($filename);
@@ -750,8 +751,8 @@ class HypixelPHP
             $this->debug('UUID for username fetched!');
             $content = array(
                 'timestamp' => time(),
-                'name'      => $response['name'],
-                'uuid'      => $response['id']
+                'name' => $response['name'],
+                'uuid' => $response['id']
             );
             $this->setFileContent($filename, json_encode($content));
             $this->debug($username . ' => ' . $response['id']);
