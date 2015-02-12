@@ -487,6 +487,30 @@ class HypixelPHP
                         $this->setCache($filename, $FRIENDS);
                         return $FRIENDS;
                     }
+                } else if ($key == 'uuid') {
+
+                    // Todo make it that when using Player->getFriends() it uses the UUID.
+
+                    /* @var $val Player */
+                    $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val->getName()) . '.json';
+                    $content  = $this->getCache($filename);
+                    if ($content != null) {
+                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                        if (time() - $this->getCacheTime() < $timestamp) {
+                            return new Friends($content, $this);
+                        }
+                    }
+
+                    $response = $this->fetch('friends', $key, $val->getUUID());
+                    if ($response['success'] == 'true') {
+                        $FRIENDS = new Friends(array(
+                            'record' => $response['records'],
+                            'extra'  => $content['extra']
+                        ), $this);
+                        $FRIENDS->setExtra(array('filename' => $filename));
+                        $this->setCache($filename, $FRIENDS);
+                        return $FRIENDS;
+                    }
                 }
             }
         }
@@ -727,7 +751,7 @@ class HypixelPHP
 
     /**
      * Function to get and cache UUID from username.
-     * @param        $username
+     * @param string $username
      * @param string $url
      *
      * @return string|bool
@@ -742,9 +766,6 @@ class HypixelPHP
             $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
             if (time() - $this->getCacheTime('uuid') < $timestamp) {
                 if (isset($content['uuid'])) return $content['uuid'];
-            } else {
-                $this->debug(time() - $this->getCacheTime('uuid'));
-                $this->debug($timestamp);
             }
         }
 
@@ -927,7 +948,7 @@ class Player extends HypixelObject
      */
     public function getSession()
     {
-        return $this->api->getSession(array('player' => $this->getName()));
+        return $this->api->getSession(array('player' => $this));
     }
 
     /**
@@ -936,7 +957,7 @@ class Player extends HypixelObject
      */
     public function getFriends()
     {
-        return $this->api->getFriends(array('player' => $this->getName()));
+        return $this->api->getFriends(array('player' => $this));
     }
 
     /**
