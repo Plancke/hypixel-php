@@ -114,9 +114,9 @@ class HypixelPHP
      * @param string $url
      * @return bool
      */
-    public function hasPaid($name, $url = 'https://mcapi.ca/other/haspaid/{{NAME}}')
+    public function hasPaid($name, $url = 'https://mcapi.ca/other/haspaid/%s')
     {
-        $hasPaid = $this->getUrlContents(str_replace("{{NAME}}", $name, $url));
+        $hasPaid = $this->getUrlContents(sprintf($url, $name));
         if (!isset($hasPaid['premium'])) return false;
         $this->debug('Premium (' . $name . '): ' . ($hasPaid['premium'] ? 'true' : 'false'));
         return $hasPaid['premium'];
@@ -338,7 +338,7 @@ class HypixelPHP
 
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == 'player') {
+                if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
                     return $this->getGuild(array('byPlayer' => $val->getName()));
                     // return $this->getGuild(array('byUuid' => $val->getUUID());
@@ -411,16 +411,33 @@ class HypixelPHP
     {
         $pairs = array_merge(
             array(
-                'player' => null
+                'player' => null,
+                'name' => null,
+                'uuid' => null
             ),
             $keyPair
         );
 
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == 'player') {
+                if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
-                    $filename = $this->options['cache_folder_sessions'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val->getName()) . '.json';
+                    return $this->getSession(array('name' => $val->getName()));
+                    // return $this->getSession(array('uuid' => $val->getUUID()));
+                }
+
+                $filename = $this->options['cache_folder_sessions'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
+
+                if ($key == 'name') {
+                    /*
+                     * TODO : Uncomment when UUID is used, remove other code in this if statement
+                     *
+                    if (file_exists($filename) || $this->hasPaid($val)) {
+                        $uuid = $this->getUUID($val);
+                        return $this->getPlayer(array('uuid' => $uuid));
+                    }
+                    */
+
                     $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
@@ -429,7 +446,26 @@ class HypixelPHP
                         }
                     }
 
-                    $response = $this->fetch('session', $key, $val->getName());
+                    $response = $this->fetch('session', $key, $val);
+                    if ($response['success'] == 'true') {
+                        $SESSION = new Session(array(
+                            'record' => $response['session'],
+                            'extra' => $content['extra']
+                        ), $this);
+                        $SESSION->setExtra(array('filename' => $filename));
+                        $this->setCache($filename, $SESSION);
+                        return $SESSION;
+                    }
+                } elseif ($key == 'uuid') {
+                    $content = $this->getCache($filename);
+                    if ($content != null) {
+                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                        if (time() - $this->getCacheTime() < $timestamp) {
+                            return new Session($content, $this);
+                        }
+                    }
+
+                    $response = $this->fetch('session', $key, $val);
                     if ($response['success'] == 'true') {
                         $SESSION = new Session(array(
                             'record' => $response['session'],
@@ -459,16 +495,33 @@ class HypixelPHP
     {
         $pairs = array_merge(
             array(
-                'player' => null
+                'player' => null,
+                'name' => null,
+                'uuid' => null
             ),
             $keyPair
         );
 
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == 'player') {
+                if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
-                    $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val->getName()) . '.json';
+                    return $this->getFriends(array('name' => $val->getName()));
+                    // return $this->getFriends(array('uuid' => $val->getUUID()));
+                }
+
+                $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
+
+                if ($key == 'name') {
+                    /*
+                     * TODO : Uncomment when UUID is used, remove other code in this if statement
+                     *
+                    if (file_exists($filename) || $this->hasPaid($val)) {
+                        $uuid = $this->getUUID($val);
+                        return $this->getFriends(array('uuid' => $uuid));
+                    }
+                    */
+
                     $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
@@ -477,7 +530,7 @@ class HypixelPHP
                         }
                     }
 
-                    $response = $this->fetch('friends', $key, $val->getName());
+                    $response = $this->fetch('friends', $key, $val);
                     if ($response['success'] == 'true') {
                         $FRIENDS = new Friends(array(
                             'record' => $response['records'],
@@ -487,13 +540,8 @@ class HypixelPHP
                         $this->setCache($filename, $FRIENDS);
                         return $FRIENDS;
                     }
-                } else if ($key == 'uuid') {
-
-                    // Todo make it that when using Player->getFriends() it uses the UUID.
-
-                    /* @var $val Player */
-                    $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val->getName()) . '.json';
-                    $content  = $this->getCache($filename);
+                } elseif ($key == 'uuid') {
+                    $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                         if (time() - $this->getCacheTime() < $timestamp) {
@@ -501,11 +549,11 @@ class HypixelPHP
                         }
                     }
 
-                    $response = $this->fetch('friends', $key, $val->getUUID());
+                    $response = $this->fetch('friends', $key, $val);
                     if ($response['success'] == 'true') {
                         $FRIENDS = new Friends(array(
                             'record' => $response['records'],
-                            'extra'  => $content['extra']
+                            'extra' => $content['extra']
                         ), $this);
                         $FRIENDS->setExtra(array('filename' => $filename));
                         $this->setCache($filename, $FRIENDS);
@@ -758,7 +806,7 @@ class HypixelPHP
      */
     public function getUUID($username, $url = 'https://api.mojang.com/users/profiles/minecraft/%s')
     {
-        $uuidURL = sprintf($url, $username); // sprintf may be faster than str_replace
+        $uuidURL = sprintf($url, $username);
         $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . 'name' . DIRECTORY_SEPARATOR . $this->getCacheFileName($username) . '.json';
 
         $content = $this->getCache($filename);
