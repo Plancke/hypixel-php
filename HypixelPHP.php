@@ -338,7 +338,7 @@ class HypixelPHP
 
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == 'player') {
+                if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
                     return $this->getGuild(array('byPlayer' => $val->getName()));
                     // return $this->getGuild(array('byUuid' => $val->getUUID());
@@ -420,7 +420,7 @@ class HypixelPHP
 
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == 'player') {
+                if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
                     return $this->getSession(array('name' => $val->getName()));
                     // return $this->getSession(array('uuid' => $val->getUUID()));
@@ -504,7 +504,7 @@ class HypixelPHP
 
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == 'player') {
+                if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
                     return $this->getFriends(array('name' => $val->getName()));
                     // return $this->getFriends(array('uuid' => $val->getUUID()));
