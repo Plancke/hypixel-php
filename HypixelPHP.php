@@ -530,7 +530,7 @@ class HypixelPHP
                         }
                     }
 
-                    $response = $this->fetch('friends', $key, $val);
+                    $response = $this->fetch('friends', 'player', $val);
                     if ($response['success'] == 'true') {
                         $FRIENDS = new Friends(array(
                             'record' => $response['records'],
@@ -1371,14 +1371,7 @@ class Session extends HypixelObject
  */
 class Friends extends HypixelObject
 {
-    /**
-     * @param            $json
-     * @param HypixelPHP $api
-     */
-    public function __construct($json, HypixelPHP $api)
-    {
-        parent::__construct(array('record' => $json), $api);
-    }
+
 }
 
 /**
@@ -1807,12 +1800,4 @@ class Booster
  */
 class Leaderboards extends HypixelObject
 {
-    /**
-     * @param            $json
-     * @param HypixelPHP $api
-     */
-    public function __construct($json, HypixelPHP $api)
-    {
-        parent::__construct(array('record' => $json), $api);
-    }
 }
