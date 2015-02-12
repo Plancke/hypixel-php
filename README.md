@@ -53,13 +53,17 @@ $HypixelAPI->getPlayer($input)->getGuild();
 ```
 ```PHP
 $session = $HypixelAPI->getSession(array(
-    'player' => ''
+    'player' => '',
+    'name' => '',
+    'uuid' => '' // Not yet supported
 ));
 $session = $HypixelAPI->getPlayer($input)->getSession();
 ```
 ```PHP
 $friends = $HypixelAPI->getFriends(array(
-    'player' => ''
+    'player' => '',
+    'name' => '',
+    'uuid' => '' // Not yet supported
 ));
 $friends = $HypixelAPI->getPlayer($input)->getFriends();
 ```
