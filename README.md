@@ -45,7 +45,7 @@ $player = $HypixelAPI->getPlayer(array(
 $guild = $HypixelAPI->getGuild(array(
     'player'   => '';
     'byPlayer' => '',
-    'byUuid'   => '', // Not yet supported
+    'byUuid'   => '',
     'byName'   => '',
     'id'       => ''
 ));
@@ -55,7 +55,7 @@ $HypixelAPI->getPlayer($input)->getGuild();
 $session = $HypixelAPI->getSession(array(
     'player' => '',
     'name' => '',
-    'uuid' => '' // Not yet supported
+    'uuid' => ''
 ));
 $session = $HypixelAPI->getPlayer($input)->getSession();
 ```
@@ -63,7 +63,7 @@ $session = $HypixelAPI->getPlayer($input)->getSession();
 $friends = $HypixelAPI->getFriends(array(
     'player' => '',
     'name' => '',
-    'uuid' => '' // Not yet supported
+    'uuid' => ''
 ));
 $friends = $HypixelAPI->getPlayer($input)->getFriends();
 ```

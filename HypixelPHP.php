@@ -340,8 +340,7 @@ class HypixelPHP
             if ($val != null && $val != '') {
                 if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
-                    return $this->getGuild(array('byPlayer' => $val->getName()));
-                    // return $this->getGuild(array('byUuid' => $val->getUUID());
+                    return $this->getGuild(array('byUuid' => $val->getUUID()));
                 }
 
                 $filename = $this->options['cache_folder_guild'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
@@ -422,39 +421,15 @@ class HypixelPHP
             if ($val != null && $val != '') {
                 if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
-                    return $this->getSession(array('name' => $val->getName()));
-                    // return $this->getSession(array('uuid' => $val->getUUID()));
+                    return $this->getSession(array('uuid' => $val->getUUID()));
                 }
 
                 $filename = $this->options['cache_folder_sessions'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
 
                 if ($key == 'name') {
-                    /*
-                     * TODO : Uncomment when UUID is used, remove other code in this if statement
-                     *
                     if (file_exists($filename) || $this->hasPaid($val)) {
                         $uuid = $this->getUUID($val);
                         return $this->getPlayer(array('uuid' => $uuid));
-                    }
-                    */
-
-                    $content = $this->getCache($filename);
-                    if ($content != null) {
-                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-                        if (time() - $this->getCacheTime() < $timestamp) {
-                            return new Session($content, $this);
-                        }
-                    }
-
-                    $response = $this->fetch('session', $key, $val);
-                    if ($response['success'] == 'true') {
-                        $SESSION = new Session(array(
-                            'record' => $response['session'],
-                            'extra' => $content['extra']
-                        ), $this);
-                        $SESSION->setExtra(array('filename' => $filename));
-                        $this->setCache($filename, $SESSION);
-                        return $SESSION;
                     }
                 } elseif ($key == 'uuid') {
                     $content = $this->getCache($filename);
@@ -506,39 +481,15 @@ class HypixelPHP
             if ($val != null && $val != '') {
                 if ($key == 'player' && $val instanceof Player) {
                     /* @var $val Player */
-                    return $this->getFriends(array('name' => $val->getName()));
-                    // return $this->getFriends(array('uuid' => $val->getUUID()));
+                    return $this->getFriends(array('uuid' => $val->getUUID()));
                 }
 
                 $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
 
                 if ($key == 'name') {
-                    /*
-                     * TODO : Uncomment when UUID is used, remove other code in this if statement
-                     *
                     if (file_exists($filename) || $this->hasPaid($val)) {
                         $uuid = $this->getUUID($val);
                         return $this->getFriends(array('uuid' => $uuid));
-                    }
-                    */
-
-                    $content = $this->getCache($filename);
-                    if ($content != null) {
-                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-                        if (time() - $this->getCacheTime() < $timestamp) {
-                            return new Friends($content, $this);
-                        }
-                    }
-
-                    $response = $this->fetch('friends', 'player', $val);
-                    if ($response['success'] == 'true') {
-                        $FRIENDS = new Friends(array(
-                            'record' => $response['records'],
-                            'extra' => $content['extra']
-                        ), $this);
-                        $FRIENDS->setExtra(array('filename' => $filename));
-                        $this->setCache($filename, $FRIENDS);
-                        return $FRIENDS;
                     }
                 } elseif ($key == 'uuid') {
                     $content = $this->getCache($filename);
