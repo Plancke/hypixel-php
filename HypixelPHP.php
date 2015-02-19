@@ -300,11 +300,11 @@ class HypixelPHP
                     }
                 } else if ($key == 'unknown') {
                     $this->debug('Determining type.', false);
-                    $type = $this->getType($val);
-                    if ($type == 'username') {
+                    $type = InputType::getType($val);
+                    if ($type == InputType::USERNAME) {
                         $this->debug('Input is username, fetching UUID.', false);
                         $uuid = $this->getUUID($val);
-                    } else if ($type == 'uuid') {
+                    } else if ($type == InputType::UUID) {
                         $uuid = $val;
                     } else {
                         return null;
@@ -738,19 +738,6 @@ class HypixelPHP
     }
 
     /**
-     * Determine if the $input is a playername or UUID.
-     * UUIDs have a length of 32 chars, and usernames a max. length of 16 chars.
-     * @param string $input
-     *
-     * @return string
-     */
-    public static function getType($input)
-    {
-        if (strlen($input) === 32) return 'uuid';
-        return 'username';
-    }
-
-    /**
      * Function to get and cache UUID from username.
      * @param string $username
      * @param string $url
@@ -791,6 +778,25 @@ class HypixelPHP
     }
 
 
+}
+
+class InputType
+{
+    const UUID = 0;
+    const USERNAME = 1;
+
+    /**
+     * Determine if the $input is a playername or UUID.
+     * UUIDs have a length of 32 chars, and usernames a max. length of 16 chars.
+     * @param string $input
+     *
+     * @return int
+     */
+    public static function getType($input)
+    {
+        if (strlen($input) === 32) return InputType::UUID;
+        return InputType::USERNAME;
+    }
 }
 
 /**
@@ -1498,6 +1504,15 @@ class MemberList extends HypixelObject
             if (!in_array($rank, array_keys($list))) {
                 $list[$rank] = array();
             }
+
+            $coinHistory = [];
+            foreach ($player as $key => $val) {
+                if (strpos($key, 'dailyCoins') !== false) {
+                    $coinHistory[substr($key, strpos($key, '-') + 1)] = $val;
+                    unset($player[$key]);
+                }
+            }
+            $player['coinHistory'] = $coinHistory;
 
             array_push($list[$rank], $player);
         }
