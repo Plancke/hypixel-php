@@ -35,35 +35,35 @@ All of these options are optional. They are provided above with their default va
 Once you have the API Object you can call the getter functions
 
 ```PHP
-$player = $HypixelAPI->getPlayer(array(
-    'name'    => '',
-    'uuid'    => '',
-    'unknown' => ''
-));
+$player = $HypixelAPI->getPlayer([
+    'name'    => null,
+    'uuid'    => null,
+    'unknown' => null
+]);
 ```
 ```PHP
-$guild = $HypixelAPI->getGuild(array(
-    'player'   => '';
-    'byPlayer' => '',
-    'byUuid'   => '',
-    'byName'   => '',
-    'id'       => ''
-));
+$guild = $HypixelAPI->getGuild([
+    'player'   => null,
+    'byPlayer' => null,
+    'byUuid'   => null,
+    'byName'   => null,
+    'id'       => null
+]);
 $HypixelAPI->getPlayer($input)->getGuild();
 ```
 ```PHP
-$session = $HypixelAPI->getSession(array(
-    'player' => '',
-    'name' => '',
-    'uuid' => ''
-));
+$session = $HypixelAPI->getSession([
+    'player' => null,
+    'name' => null,
+    'uuid' => null
+]);
 $session = $HypixelAPI->getPlayer($input)->getSession();
 ```
 ```PHP
-$friends = $HypixelAPI->getFriends(array(
-    'player' => '',
-    'name' => '',
-    'uuid' => ''
-));
+$friends = $HypixelAPI->getFriends([
+    'player' => null,
+    'name' => null,
+    'uuid' => null
+]);
 $friends = $HypixelAPI->getPlayer($input)->getFriends();
 ```

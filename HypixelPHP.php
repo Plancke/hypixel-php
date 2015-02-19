@@ -76,13 +76,14 @@ class HypixelPHP
 
     /**
      * @param $message
+     * @param bool $log
      */
-    public function debug($message)
+    public function debug($message, $log = true)
     {
         if ($this->options['debug']) {
             echo '<!-- ' . $message . ' -->';
         }
-        if ($this->options['logging']) {
+        if ($log && $this->options['logging']) {
             $this->log($message);
         }
     }
@@ -298,14 +299,15 @@ class HypixelPHP
                         return $this->getPlayer(array('uuid' => $uuid));
                     }
                 } else if ($key == 'unknown') {
-                    $this->debug('Determining type.');
-                    $type = $this->getType($val);
-                    if ($type == 'username') {
-                        $this->debug('Input is username, fetching UUID.');
+                    $this->debug('Determining type.', false);
+                    $type = InputType::getType($val);
+                    if ($type == InputType::USERNAME) {
+                        $this->debug('Input is username, fetching UUID.', false);
                         $uuid = $this->getUUID($val);
-                    } else {
-                        $this->debug('Input is already UUID.');
+                    } else if ($type == InputType::UUID) {
                         $uuid = $val;
+                    } else {
+                        return null;
                     }
                     return $this->getPlayer(['uuid' => $uuid]);
                 }
@@ -736,19 +738,6 @@ class HypixelPHP
     }
 
     /**
-     * Determine if the $input is a playername or UUID.
-     * UUIDs have a length of 32 chars, and usernames a max. length of 16 chars.
-     * @param string $input
-     *
-     * @return string
-     */
-    public static function getType($input)
-    {
-        if (strlen($input) === 32) return 'uuid';
-        return 'username';
-    }
-
-    /**
      * Function to get and cache UUID from username.
      * @param string $username
      * @param string $url
@@ -789,6 +778,25 @@ class HypixelPHP
     }
 
 
+}
+
+class InputType
+{
+    const UUID = 0;
+    const USERNAME = 1;
+
+    /**
+     * Determine if the $input is a playername or UUID.
+     * UUIDs have a length of 32 chars, and usernames a max. length of 16 chars.
+     * @param string $input
+     *
+     * @return int
+     */
+    public static function getType($input)
+    {
+        if (strlen($input) === 32) return InputType::UUID;
+        return InputType::USERNAME;
+    }
 }
 
 /**
@@ -918,7 +926,7 @@ class HypixelObject
     public function saveCache()
     {
         if (array_key_exists('filename', $this->getExtra())) {
-            $this->api->debug('Saving cache file');
+            $this->api->debug('Saving cache file', false);
             $this->api->setCache($this->JSONArray['extra']['filename'], $this);
         }
     }
@@ -941,6 +949,8 @@ class KeyInfo extends HypixelObject
  */
 class Player extends HypixelObject
 {
+    private $guild;
+
     /**
      * get Session of Player
      * @return Session|null
@@ -965,7 +975,10 @@ class Player extends HypixelObject
      */
     public function getGuild()
     {
-        return $this->api->getGuild(array('player' => $this));
+        if ($this->guild == null) {
+            $this->guild = $this->api->getGuild(array('player' => $this));
+        }
+        return $this->guild;
     }
 
     /**
@@ -988,12 +1001,14 @@ class Player extends HypixelObject
      * get Colored name of Player, with prefix or not
      * @param array $rankOptions
      * @param bool $prefix
+     * @param bool $guildTag
      * @return string
      */
-    public function getFormattedName($rankOptions = array(false, false), $prefix = true)
+    public function getFormattedName($rankOptions = array(false, false), $prefix = true, $guildTag = false)
     {
         $playerRank = $this->getRank($rankOptions[0], $rankOptions[1]);
         $rankInfo = $this->getRankInfo($playerRank);
+        $out = $rankInfo['color'] . $this->getName();
         if ($prefix) {
             $rankPrefix = $this->getPrefix();
             if ($rankPrefix != null) {
@@ -1001,10 +1016,25 @@ class Player extends HypixelObject
             } else {
                 $out = $rankInfo['prefix'] . ' ' . $this->getName();
             }
-        } else {
-            $out = $rankInfo['color'] . $this->getName();
+        }
+        if ($guildTag) {
+            $tag = $this->getGuildTag();
+            if ($tag != '') {
+                $out .= ' §7[' . $tag . ']';
+            }
         }
         return $this->api->parseColors($out);
+    }
+
+    public function getGuildTag()
+    {
+        $guild = $this->getGuild();
+        if ($guild != null) {
+            if ($guild->canTag()) {
+                return $guild->getTag();
+            }
+        }
+        return '';
     }
 
     /**
@@ -1356,7 +1386,7 @@ class Guild extends HypixelObject
      */
     public function getTag()
     {
-        return $this->get('tag', true);
+        return $this->get('tag', true, '');
     }
 
     /**
@@ -1474,6 +1504,15 @@ class MemberList extends HypixelObject
             if (!in_array($rank, array_keys($list))) {
                 $list[$rank] = array();
             }
+
+            $coinHistory = [];
+            foreach ($player as $key => $val) {
+                if (strpos($key, 'dailyCoins') !== false) {
+                    $coinHistory[substr($key, strpos($key, '-') + 1)] = $val;
+                    unset($player[$key]);
+                }
+            }
+            $player['coinHistory'] = $coinHistory;
 
             array_push($list[$rank], $player);
         }
