@@ -284,7 +284,7 @@ class HypixelPHP
                     }
 
                     $response = $this->fetch('player', $key, $val);
-                    if ($response['success'] == 'true') {
+                    if ($response['success'] == true) {
                         $PLAYER = new Player(array(
                             'record' => $response['player'],
                             'extra' => $content['extra']
@@ -367,7 +367,7 @@ class HypixelPHP
                     }
 
                     $response = $this->fetch('findGuild', $key, $val, 5);
-                    if ($response['success'] == 'true') {
+                    if ($response['success'] == true) {
                         $content = array('timestamp' => time(), 'guild' => $response['guild']);
                         $this->setFileContent($filename, json_encode($content));
                         return $this->getGuild(array('id' => $response['guild']));
@@ -384,7 +384,7 @@ class HypixelPHP
                     }
 
                     $response = $this->fetch('guild', $key, $val);
-                    if ($response['success'] == 'true') {
+                    if ($response['success'] == true) {
                         $GUILD = new Guild(array(
                             'record' => $response['guild'],
                             'extra' => $content['extra']
@@ -443,7 +443,7 @@ class HypixelPHP
                     }
 
                     $response = $this->fetch('session', $key, $val);
-                    if ($response['success'] == 'true') {
+                    if ($response['success'] == true) {
                         $SESSION = new Session(array(
                             'record' => $response['session'],
                             'extra' => $content['extra']
@@ -503,7 +503,7 @@ class HypixelPHP
                     }
 
                     $response = $this->fetch('friends', $key, $val);
-                    if ($response['success'] == 'true') {
+                    if ($response['success'] == true) {
                         $FRIENDS = new Friends(array(
                             'record' => $response['records'],
                             'extra' => $content['extra']
@@ -539,7 +539,7 @@ class HypixelPHP
         }
 
         $response = $this->fetch('boosters');
-        if ($response['success'] == 'true') {
+        if ($response['success'] == true) {
             $BOOSTERS = new Boosters(array(
                 'record' => $response['boosters'],
                 'extra' => $content['extra']
@@ -572,7 +572,7 @@ class HypixelPHP
         }
 
         $response = $this->fetch('leaderboards');
-        if ($response['success'] == 'true') {
+        if ($response['success'] == true) {
             $LEADERBOARDS = new Leaderboards(array(
                 'record' => $response['leaderboards'],
                 'extra' => $content['extra']
@@ -726,7 +726,7 @@ class HypixelPHP
             "f" => "#FFFFFF"
         );
 
-        if (strpos($string, "§") == -1) {
+        if (strpos($string, "§") === false) {
             return $string;
         }
         $d = explode("§", $string);
@@ -876,7 +876,7 @@ class HypixelObject
      */
     public function isCached()
     {
-        return $this->getCachedTime() > 0;
+        return abs(time() - $this->getCachedTime()) > 1;
     }
 
     /**
@@ -1278,6 +1278,15 @@ class Stats extends HypixelObject
         $game = $this->get($game, true, null);
         return new GameStats($game, $this->api);
     }
+
+    public function getGameFromID($id)
+    {
+        $gameType = GameTypes::fromID($id);
+        if ($gameType != null) {
+            return $this->getGame($gameType->getDb());
+        }
+        return null;
+    }
 }
 
 /**
@@ -1311,6 +1320,11 @@ class GameStats extends HypixelObject
     {
         return $this->get('coins', false, 0);
     }
+
+    public function getInt($string)
+    {
+        return $this->get($string, false, 0);
+    }
 }
 
 /**
@@ -1325,7 +1339,7 @@ class Session extends HypixelObject
      */
     public function getPlayers()
     {
-        return $this->get('players', true);
+        return $this->get('players', true, array());
     }
 
     /**
@@ -1386,7 +1400,7 @@ class Guild extends HypixelObject
      */
     public function getTag()
     {
-        return $this->get('tag', true, '');
+        return $this->api->parseColors($this->get('tag', true, ''));
     }
 
     /**
@@ -1546,14 +1560,15 @@ class GameTypes
     const QUAKE = 2;
     const WALLS = 3;
     const PAINTBALL = 4;
-    const BSG = 5;
+    const HUNGERGAMES = 5;
     const TNTGAMES = 6;
     const VAMPIREZ = 7;
-    const MEGAWALLS = 13;
+    const WALLS3 = 13;
     const ARCADE = 14;
     const ARENA = 17;
     const UHC = 20;
     const MCGO = 21;
+    const BATTLEGROUND = 23;
 
     /**
      * @param $id
@@ -1564,38 +1579,43 @@ class GameTypes
     {
         switch ($id) {
             case 2:
-                return new GameType('quake', 'Quake', 'Quake', 2);
-                break;
+                return new GameType('Quake', 'Quake', 'Quake', 2);
             case 3:
-                return new GameType('walls', 'Walls', 'Walls', 3);
-                break;
+                return new GameType('Walls', 'Walls', 'Walls', 3);
             case 4:
-                return new GameType('paintball', 'Paintball', 'PB', 4);
-                break;
+                return new GameType('Paintball', 'Paintball', 'PB', 4);
             case 5:
-                return new GameType('hungergames', 'Blitz Survival Games', 'BSG', 5);
-                break;
+                return new GameType('HungerGames', 'Blitz Survival Games', 'BSG', 5);
             case 6:
-                return new GameType('tntgames', 'TNT Games', 'TNT', 6);
-                break;
+                return new GameType('TNTGames', 'TNT Games', 'TNT', 6);
             case 7:
-                return new GameType('vampirez', 'VampireZ', 'VampZ', 7);
-                break;
+                return new GameType('VampireZ', 'VampireZ', 'VampZ', 7);
             case 13:
-                return new GameType('walls3', 'MegaWalls', 'MW', 13);
-                break;
+                return new GameType('Walls3', 'MegaWalls', 'MW', 13);
             case 14:
-                return new GameType('arcade', 'Arcade', 'Arcade', 14);
-                break;
+                return new GameType('Arcade', 'Arcade', 'Arcade', 14);
             case 17:
-                return new GameType('arena', 'Arena', 'Arena', 17);
-                break;
+                return new GameType('Arena', 'Arena', 'Arena', 17);
             case 20:
-                return new GameType('uhc', 'UHC Champions', 'UHC', 20);
-                break;
+                return new GameType('UHC', 'UHC Champions', 'UHC', 20);
             case 21:
-                return new GameType('mcgo', 'Cops and Crims', 'CaC', 21);
-                break;
+                return new GameType('MCGO', 'Cops and Crims', 'CaC', 21);
+            case 23:
+                return new GameType('Battleground', 'Warlords', 'Warlords', 23);
+            default:
+                return null;
+        }
+    }
+
+    public static function fromDbName($db)
+    {
+        foreach (GameTypes::getAllTypes() as $id) {
+            $gameType = GameTypes::fromID($id);
+            if ($gameType != null) {
+                if ($gameType->getDb() == $db) {
+                    return $gameType;
+                }
+            }
         }
         return null;
     }
