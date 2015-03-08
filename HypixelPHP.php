@@ -1350,7 +1350,7 @@ class GameStats extends HypixelObject
      */
     public function getCoins()
     {
-        return $this->getCoins('coins');
+        return $this->getInt('coins');
     }
 }
 
