@@ -52,7 +52,7 @@ class Weapon
         'BREAD' => 'Runic Axe', 'MUSHROOM_STEW' => 'Lunar Relic', 'RABBIT_STEW' => 'Bludgeon',
         'COOKED_RABBIT' => 'Cudgel', 'COOKED_CHICKEN' => 'Tenderizer', 'BAKED_POTATO' => 'Broccomace',
         'COOKED_SALMON' => 'Felflame Blade', 'COOKED_MUTTON' => 'Amaranth', 'COOKED_BEEF' => 'Armblade',
-        'COOKED_PORKCHOP' => 'Gemini', 'GOLDEN_CARROT' => 'Void Edge'
+        'GRILLED_PORK' => 'Gemini', 'GOLDEN_CARROT' => 'Void Edge'
     ];
     private $colors = [
         'COMMON' => '§a',
