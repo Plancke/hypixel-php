@@ -5,11 +5,11 @@
  * @param $img
  * @param $font
  * @param $fontSize
- * @param $x
- * @param $y
+ * @param $startX
+ * @param $startY
  * @param $string
  */
-function addMCColorString(&$img, $font, $fontSize, $x, $y, $string)
+function addMCColorString(&$img, $font, $fontSize, $startX, $startY, $string)
 {
     $MCColors = array(
         "0" => "#000000",
@@ -34,15 +34,16 @@ function addMCColorString(&$img, $font, $fontSize, $x, $y, $string)
         $string = '§7' . $string;
     }
 
-    $y += $fontSize + 4;
+    $currentX = $startX;
+    $currentY = $startY + 16;
     foreach (explode("§", $string) as $part) {
         $rgb = hex2rgb($MCColors[substr($part, 0, 1)]);
         $color = imagecolorallocate($img, $rgb[0], $rgb[1], $rgb[2]);
 
         $part = substr($part, 1);
         $bbox = imagettfbbox($fontSize, 0, $font, $part);
-        imagettftext($img, $fontSize, 0, $x, $y, $color, $font, $part);
-        $y += ($bbox[4] - $bbox[0]);
+        imagettftext($img, $fontSize, 0, $currentX, $currentY, $color, $font, $part);
+        $currentX += ($bbox[4] - $bbox[0]);
     }
 }
 
