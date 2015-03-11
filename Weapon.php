@@ -3,6 +3,41 @@
 /**
  * Class Weapon
  * @author Plancke, LCastr0
+ *
+ *
+ * HOW DOES IT WORK
+ * ----------------
+ *
+ * 1. Weapon Prefix:
+ * @see{Weapon::getPrefix()}
+ * The prefix is determined by the overall score. Lets take a Legendary weapon as an example.
+ * We need to know 3 values to start off. MIN, MAX, and PREFIX_COUNT.
+ * MIN, MAX are the scores a legendary has at least/most respectively.
+ * PREFIX_COUNT is the amount of prefixes for that Weapon category
+ *
+ * (MAX - MIN) / PREFIX_COUNT = DIFF
+ *
+ * DIFF now means the values of a 'slice' in between those MIN/MAX values.
+ * To get the prefix we can now get the weapon's TOTAL_SCORE and the corresponding slice will be the weapon's prefix.
+ *
+ *
+ * 2. Material Name
+ * @see{Weapon::getMaterialName()}
+ * The Material Name works via a Map which converts the Bukkit MaterialType into the displayed name.
+ *
+ *
+ * 3. Spec Name
+ * The weapon array contains a sub-array which contains a 'spec' and 'playerClass' field.
+ * Together these form up the spec name.
+ * playerClass is the zero-based index of the multiple classes @see{PlayerClasses}.
+ * spec is the zero-based index of the multiple spec for that class @see{PlayerClass}.
+ *
+ *
+ * 4. Ability Name
+ * The weapon array contains an 'ability' field. that field refers to the
+ * zero-based index of the ability according to the location in your hotbar.
+ * combine this mapping with the Spec.
+ *
  */
 class Weapon
 {
@@ -14,7 +49,7 @@ class Weapon
         "EPIC" => ['min' => 450, 'max' => 604],
         "LEGENDARY" => ['min' => 595, 'max' => 805]
     ];
-    private $descriptions = [
+    private $prefixes = [
         "COMMON" => [
             "Crumbly", "Flimsy", "Rough", "Honed", "Refined", "Balanced"
         ],
@@ -208,10 +243,10 @@ class Weapon
 
     function getName()
     {
-        $description = $this->getDescription();
+        $prefix = $this->getPrefix();
         $material = $this->getMaterialName();
         $specialization = $this->getPlayerClass()->getSpec()->getName();
-        return $description . " " . $material . " of the " . $specialization;
+        return $prefix . " " . $material . " of the " . $specialization;
     }
 
     function getPlayerClass()
@@ -224,13 +259,13 @@ class Weapon
         return isset($this->materialMap[$this->getMaterial()]) ? $this->materialMap[$this->getMaterial()] : $this->getMaterial();
     }
 
-    function getDescription()
+    function getPrefix()
     {
-        $names = $this->descriptions[$this->getCategory()];
+        $names = $this->prefixes[$this->getCategory()];
         $namesInt = intval(count($names));
 
         $score = $this->getScore();
-        $diff = ($this->getMaxScore() - $this->getMinScore()) / sizeof($this->descriptions[$this->getCategory()]);
+        $diff = ($this->getMaxScore() - $this->getMinScore()) / sizeof($this->prefixes[$this->getCategory()]);
 
         for ($i = 0; $i < $namesInt; $i++) {
             $left = $this->getMinScore() + $diff * ($i + 1);
@@ -253,7 +288,7 @@ class Weapon
     }
 
     /**
-     * @return Ability
+     * @return Ability|null
      */
     function getAbility()
     {
