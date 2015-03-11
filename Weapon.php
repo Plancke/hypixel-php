@@ -36,7 +36,7 @@
  * 4. Ability Name
  * The weapon array contains an 'ability' field. that field refers to the
  * zero-based index of the ability according to the location in your hotbar.
- * combine this mapping with the Spec.
+ * combine this mapping with the Spec to get the name.
  *
  */
 class Weapon
