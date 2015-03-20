@@ -41,8 +41,8 @@ function addMCColorString(&$img, $font, $fontSize, $startX, $startY, $string)
         $color = imagecolorallocate($img, $rgb[0], $rgb[1], $rgb[2]);
 
         $part = substr($part, 1);
-        $bbox = imagettfbbox($fontSize, 0, $font, $part);
-        imagettftext($img, $fontSize, 0, $currentX, $currentY, $color, $font, $part);
+
+        $bbox = imagettftext($img, $fontSize, 0, $currentX, $currentY, $color, $font, $part);
         $currentX += ($bbox[4] - $bbox[0]);
     }
 }
