@@ -11,7 +11,7 @@
  */
 function addMCColorString(&$img, $font, $fontSize, $startX, $startY, $string)
 {
-    $MCColors = array(
+    $MCColors = [
         "0" => "#000000",
         "1" => "#0000AA",
         "2" => "#008000",
@@ -28,7 +28,7 @@ function addMCColorString(&$img, $font, $fontSize, $startX, $startY, $string)
         "d" => "#FF55FF",
         "e" => "#FFFF55",
         "f" => "#FFFFFF"
-    );
+    ];
 
     if (strpos($string, "§") === false) {
         $string = '§7' . $string;
