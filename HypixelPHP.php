@@ -14,6 +14,7 @@ use DateTime;
 class HypixelPHP
 {
     private $options;
+    private $getUrlError = null;
     const MAX_CACHE_TIME = 999999999999;
 
     /**
@@ -137,15 +138,18 @@ class HypixelPHP
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+            curl_setopt($ch, CURLOPT_TIMEOUT_MS, $timeout * 1000);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, $timeout * 1000);
             $curlOut = curl_exec($ch);
             if ($curlOut === false) {
                 $errorOut['cause'] = curl_error($ch);
+                $this->getUrlError = ['errorCause' => $errorOut['cause'], 'status' => null, 'throttle' => null];
+                curl_close($ch);
                 return $errorOut;
             }
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
+            $this->getUrlError = ['errorCause' => null, 'status' => $status, 'throttle' => isset($response['throttle'])];
             if ($status != '200') {
                 return $errorOut;
             }
@@ -788,6 +792,14 @@ class HypixelPHP
         return false;
     }
 
+    /**
+     * Get the last error and status code associated with the last cURL fetch.
+     * @return null|array
+     */
+    public function getUrlError()
+    {
+        return $this->getUrlError;
+    }
 
 }
 
