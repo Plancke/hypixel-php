@@ -794,7 +794,7 @@ class HypixelPHP
 
     /**
      * Get the last error and status code associated with the last cURL fetch.
-     * @return array
+     * @return null|array
      */
     public function getUrlError()
     {
