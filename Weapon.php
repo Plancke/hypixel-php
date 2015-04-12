@@ -96,6 +96,7 @@ class Weapon
         'LEGENDARY' => '§6'
     ];
     private $abilities = [];
+    private $forced_upgrade_level = -1;
 
     function __construct($WEAPON)
     {
@@ -134,6 +135,16 @@ class Weapon
             $this->abilities[$class][$slot] = [];
         }
         array_push($this->abilities[$class][$slot], $ability);
+    }
+
+    function setForcedUpgradeLevel($level)
+    {
+        $this->forced_upgrade_level = $level;
+    }
+
+    function isForcedUpgrade()
+    {
+        return $this->forced_upgrade_level >= 0;
     }
 
     function getDamage()
@@ -238,6 +249,12 @@ class Weapon
 
     function getUpgradeAmount()
     {
+        if ($this->isForcedUpgrade()) {
+            if ($this->forced_upgrade_level > $this->getMaxUpgrades()) {
+                return $this->getMaxUpgrades();
+            }
+            return $this->forced_upgrade_level;
+        }
         return $this->getStat('upgradeTimes');
     }
 
