@@ -124,6 +124,13 @@ class Weapon
         $this->addAbility(2, 1, new Ability("Consecrate", "Avenger", "DAMAGE"));
         $this->addAbility(2, 1, new Ability("Consecrate", "Crusader", "DAMAGE"));
         $this->addAbility(2, 4, new Ability("Hammer of Light", "Protector", "HEAL"));
+        // Shaman
+        $this->addAbility(3, 0, new Ability("Lightning Bolt", "Thunderlord", "DAMAGE"));
+        $this->addAbility(3, 0, new Ability("Earthen Spike", "Earthwarden", "DAMAGE"));
+        $this->addAbility(3, 1, new Ability("Chain Lightning", "Thunderlord", "DAMAGE"));
+        $this->addAbility(3, 1, new Ability("Boulder", "Earthwarden", "DAMAGE"));
+        $this->addAbility(3, 2, new Ability("Windfury", "Thunderlord", "DAMAGE"));
+        $this->addAbility(3, 2, new Ability("Earthliving Weapon", "Earthwarden", "HEAL"));
     }
 
     private function addAbility($class, $slot, $ability)
@@ -325,6 +332,7 @@ class PlayerClasses
     const MAGE = 0;
     const WARRIOR = 1;
     const PALADIN = 2;
+    const SHAMAN = 3;
 
     public static function fromID($ID, $SPEC)
     {
@@ -335,6 +343,8 @@ class PlayerClasses
                 return new PlayerClass("warrior", $SPEC, 1);
             case 2:
                 return new PlayerClass("paladin", $SPEC, 2);
+            case 3:
+                return new PlayerClass("shaman", $SPEC, 3);
         }
         return null;
     }
@@ -349,7 +359,8 @@ class PlayerClass
     private $specs = [
         0 => [0 => "Pyromancer", 1 => "Cryomancer", 2 => "Aquamancer"],
         1 => [0 => "Berserker", 1 => "Defender"],
-        2 => [0 => "Avenger", 1 => "Crusader", 2 => "Protector"]
+        2 => [0 => "Avenger", 1 => "Crusader", 2 => "Protector"],
+        3 => [0 => "Thunderlord", 1 => "Earthwarden"],
     ];
 
     function __construct($name, $spec, $id)
