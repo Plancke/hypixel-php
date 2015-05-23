@@ -143,17 +143,19 @@ class HypixelPHP
             $curlOut = curl_exec($ch);
             if ($curlOut === false) {
                 $errorOut['cause'] = curl_error($ch);
-                $this->getUrlError = ['errorCause' => $errorOut['cause'], 'status' => null, 'throttle' => null];
+                $this->getUrlError = ['errorCause' => $errorOut['cause']];
                 curl_close($ch);
                 return $errorOut;
             }
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
-            $this->getUrlError = ['errorCause' => null, 'status' => $status, 'throttle' => isset($response['throttle'])];
+            $this->getUrlError = ['errorCause' => null, 'status' => $status];
             if ($status != '200') {
                 return $errorOut;
             }
-            return json_decode($curlOut, true);
+            $json_out = json_decode($curlOut, true);
+            $this->getUrlError = ['status' => $status, 'throttle' => isset($json_out['throttle']) ? $json_out['throttle'] : false];
+            return $json_out;
         } else {
             $ctx = stream_context_create(array(
                     'https' => array(
@@ -1358,11 +1360,38 @@ class GameStats extends HypixelObject
     }
 
     /**
+     * @param $package
+     * @return bool
+     */
+    public function hasPackage($package)
+    {
+        return in_array($package, $this->getArray('packages'));
+    }
+
+    /**
      * @return int
      */
     public function getCoins()
     {
         return $this->getInt('coins');
+    }
+
+    /**
+     * @param $stat
+     * @return array|null|string|int
+     */
+    public function getWeeklyStat($stat)
+    {
+        return $this->get($stat . '_' . TimeUtils::getWeeklyOscillation());
+    }
+
+    /**
+     * @param $stat
+     * @return array|null|string|int
+     */
+    public function getMonthlyStat($stat)
+    {
+        return $this->get($stat . '_' . TimeUtils::getMonthlyOscillation());
     }
 }
 
@@ -1608,6 +1637,7 @@ class GameTypes
     const UHC = 20;
     const MCGO = 21;
     const BATTLEGROUND = 23;
+    const GINGERBREAD = 25;
 
     /**
      * @param $id
@@ -1641,6 +1671,8 @@ class GameTypes
                 return new GameType('MCGO', 'Cops and Crims', 'CaC', 21);
             case 23:
                 return new GameType('Battleground', 'Warlords', 'Warlords', 23);
+            case 25:
+                return new GameType('Gingerbread', 'Turbo Kart Racers', 'TKR', 25);
             default:
                 return null;
         }
@@ -1849,4 +1881,55 @@ class Booster
  */
 class Leaderboards extends HypixelObject
 {
+}
+
+/**
+ * Class TimeUtils
+ *
+ * @package HypixelPHP
+ */
+class TimeUtils
+{
+    /**
+     * @return string
+     */
+    public static function getWeeklyOscillation()
+    {
+        date_default_timezone_set("America/New_York");
+        $epoch = 1417237200000;
+        $milli = round(microtime(true) * 1000);
+
+        $delta = abs($milli - $epoch);
+        $osc = $delta / 604800000;
+
+        return $osc % 2 == 0 ? "a" : "b";
+    }
+
+    /**
+     * @return string
+     */
+    public static function getMonthlyOscillation()
+    {
+        date_default_timezone_set("America/New_York");
+        $epoch = 1417410000000;
+
+        $dateStart = new DateTime(date("Y-m-d"));
+        $dateEnd = new DateTime(date("Y-m-d", $epoch / 1000));
+
+        $diffYear = $dateEnd->format("Y") - $dateStart->format("Y");
+        /* @var $diffYear int */
+        $diffMonth = $diffYear * 12 + TimeUtils::getJavaMonth($dateEnd) - TimeUtils::getJavaMonth($dateStart);
+
+        return $diffMonth % 2 == 0 ? "a" : "b";
+    }
+
+    /**
+     * @param DateTime $date
+     * @return int
+     */
+    public static function getJavaMonth(DateTime $date)
+    {
+        date_default_timezone_set("America/New_York");
+        return $date->format("n") - 1;
+    }
 }
