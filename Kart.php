@@ -101,15 +101,15 @@ class Part
     {
         $level = $this->getLevel();
         if ($level == 15) {
-            return '$5';
+            return '§5';
         } else if ($level >= 11 && $level <= 14) {
-            return '$d';
+            return '§d';
         } else if ($level >= 7 && $level <= 10) {
-            return '$9';
+            return '§9';
         } else if ($level >= 3 && $level <= 6) {
-            return '$a';
+            return '§a';
         }
-        return '$7';
+        return '§7';
     }
 
     function getPrefix()
