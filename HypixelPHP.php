@@ -1672,7 +1672,7 @@ class GameTypes
             case 23:
                 return new GameType('Battleground', 'Warlords', 'Warlords', 23);
             case 25:
-                return new GameType('Gingerbread', 'Turbo Kart Racers', 'TKR', 25);
+                return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', 25);
             default:
                 return null;
         }
