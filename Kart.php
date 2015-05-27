@@ -13,17 +13,23 @@ class Kart
 
     function __construct($ENGINE, $TURBOCHARGER, $FRAME)
     {
-        $this->ENGINE = $this->convert($ENGINE);
-        $this->TURBOCHARGER = $this->convert($TURBOCHARGER);
-        $this->FRAME = $this->convert($FRAME);
+        $this->ENGINE = $this->convert($ENGINE)['GingerbreadPart'];
+        $this->TURBOCHARGER = $this->convert($TURBOCHARGER)['GingerbreadPart'];
+        $this->FRAME = $this->convert($FRAME)['GingerbreadPart'];
     }
 
     function convert($input)
     {
         if (is_string($input)) {
-            return json_decode($input, true);
+            return json_decode($this->fix_json($input), true);
         }
         return $input;
+    }
+
+    function fix_json($s) {
+        $s = preg_replace('/(\w+):/i', '"\1":', $s);
+        $s = preg_replace('/:(\w+)/i', ':"\1"', $s);
+        return $s;
     }
 
     function getEngine()
@@ -70,7 +76,7 @@ class Part
 
     function __construct($PART)
     {
-        $this->PART;
+        $this->PART = $PART;
     }
 
     function getType()
