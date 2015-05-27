@@ -70,7 +70,7 @@ class Part
 
     function __construct($PART)
     {
-        $this->PART;
+        $this->PART = $PART;
     }
 
     function getType()
