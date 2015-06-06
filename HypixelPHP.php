@@ -448,7 +448,7 @@ class HypixelPHP
                 if ($key == 'name') {
                     if (file_exists($filename) || $this->hasPaid($val)) {
                         $uuid = $this->getUUID($val);
-                        return $this->getPlayer(array('uuid' => $uuid));
+                        return $this->getSession(array('uuid' => $uuid));
                     }
                 } elseif ($key == 'uuid') {
                     $content = $this->getCache($filename);
