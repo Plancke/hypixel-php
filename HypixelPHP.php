@@ -366,10 +366,8 @@ class HypixelPHP
 
                 if ($key == 'byPlayer' || $key == 'byName' || $key == 'byUuid') {
                     if ($key == 'byPlayer') {
-                        if (!file_exists($filename) && !$this->hasPaid($val)) {
-                            $this->debug('File does not exist and ' . $val . ' is not premium!');
-                            continue;
-                        }
+                        $uuid = $this->getUuid($val);
+                        return $this->getGuild(array('byUuid' => $uuid));
                     }
 
                     $content = $this->getCache($filename);
@@ -448,7 +446,7 @@ class HypixelPHP
                 if ($key == 'name') {
                     if (file_exists($filename) || $this->hasPaid($val)) {
                         $uuid = $this->getUUID($val);
-                        return $this->getPlayer(array('uuid' => $uuid));
+                        return $this->getSession(array('uuid' => $uuid));
                     }
                 } elseif ($key == 'uuid') {
                     $content = $this->getCache($filename);
