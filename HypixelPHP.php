@@ -1674,7 +1674,7 @@ class GameTypes
             case 25:
                 return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', 25);
             case 50:
-                return new GameType('Adventure', 'Adventure', 'Adv', 50);
+                return new GameType('Adventure', 'Adventure', 'Adventure', 50);
             case 51:
                 return new GameType('SkyWars', 'SkyWars', 'SkyWars', 51);
             default:
