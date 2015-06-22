@@ -25,8 +25,10 @@ class HypixelPHP
         $this->options = array_merge(
             array(
                 'api_key' => '',
-                'cache_time' => 600,
-                'cache_uuid_time' => 864000, // Time to cache UUIDs for playernames, in seconds. Playernames don't change often, so why cache them not a little longer?
+                'cache_times' => [
+                    'overall' => 900, // 15 min
+                    'uuid' => 864000, // 1 day
+                ],
                 'timeout' => 2,
                 'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
                 'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
@@ -59,7 +61,10 @@ class HypixelPHP
             mkdir($this->options['log_folder'], 0777, true);
         }
 
-        $this->options['original_cache_time'] = $this->options['cache_time'];
+        $old_debug = $this->options['debug'];
+        $this->set(['debug' => false]);
+        $this->setCacheTime($this->getCacheTime(), 'original');
+        $this->set(['debug' => $old_debug]);
     }
 
     /**
@@ -70,7 +75,11 @@ class HypixelPHP
         foreach ($input as $key => $val) {
             if ($key != 'api_key' && $key != 'debug') {
                 if ($this->options[$key] != $val) {
-                    $this->debug('Setting ' . $key . ' to ' . $val);
+                    if (is_array($val)) {
+                        $this->debug('Setting ' . $key . ' to ' . json_encode($val));
+                    } else {
+                        $this->debug('Setting ' . $key . ' to ' . $val);
+                    }
                 }
             }
             $this->options[$key] = $val;
@@ -178,9 +187,13 @@ class HypixelPHP
      */
     public function getCacheTime($for = null)
     {
-        if ($for === null) return $this->options['cache_time'];
-        if ($for === 'uuid') return $this->options['cache_uuid_time'];
-        return $this->options['cache_time'];
+        if ($for == null) {
+            $for = 'overall';
+        }
+        if (isset($this->options['cache_times'][$for])) {
+            return $this->options['cache_times'][$for];
+        }
+        return HypixelPHP::MAX_CACHE_TIME;
     }
 
     /**
@@ -189,7 +202,7 @@ class HypixelPHP
      */
     public function getOriginalCacheTime()
     {
-        return $this->options['original_cache_time'];
+        return $this->getCacheTime('original');
     }
 
     /**
@@ -198,9 +211,12 @@ class HypixelPHP
      */
     public function setCacheTime($cache_time = 600, $for = null)
     {
-        if ($for === null) $this->set(['cache_time' => $cache_time]);
-        if ($for === 'uuid') $this->set(['cache_uuid_time' => $cache_time]);
-        $this->set(['cache_time' => $cache_time]);
+        $cache_times = $this->options['cache_times'];
+        if ($for == null) {
+            $for = 'overall';
+        }
+        $cache_times[$for] = $cache_time;
+        $this->set(['cache_times' => $cache_times]);
     }
 
     /**
@@ -722,6 +738,7 @@ class HypixelPHP
      */
     public function parseColors($string)
     {
+        if ($string == null) return null;
         $MCColors = array(
             "0" => "#000000",
             "1" => "#0000AA",
@@ -921,11 +938,12 @@ class HypixelObject
     }
 
     /**
+     * @param int $extra
      * @return bool
      */
-    public function isCacheExpired()
+    public function isCacheExpired($extra = 0)
     {
-        return time() - $this->api->getOriginalCacheTime() > $this->getCachedTime();
+        return time() - $this->api->getOriginalCacheTime() - $extra > $this->getCachedTime();
     }
 
     public function getCachedTime()
@@ -1138,14 +1156,18 @@ class Player extends HypixelObject
      */
     public function getMultiplier()
     {
-        if ($this->getRank(false) == 'YOUTUBER') return 7;
         $ranks = array('DEFAULT', 'VIP', 'VIP+', 'MVP', 'MVP+');
-        $pre = $this->getRank(true, true);
+        $pre = $this->getPackageRank();
         if ($pre == 'NONE') $pre = 'DEFAULT';
         $flip = array_flip($ranks);
         $rankKey = $flip[$pre] + 1;
         $levelKey = min(floor($this->getLevel() / 25) + 1, 5);
         return ($rankKey > $levelKey) ? $rankKey : $levelKey;
+    }
+
+    public function getPackageRank()
+    {
+        return str_replace('_', ' ', str_replace('_PLUS', '+', $this->get('packageRank', true, 'DEFAULT')));
     }
 
     /**
@@ -1636,7 +1658,6 @@ class GameTypes
     const MCGO = 21;
     const BATTLEGROUND = 23;
     const GINGERBREAD = 25;
-    const ADVENTURE = 50;
     const SKYWARS = 51;
 
     /**
@@ -1673,8 +1694,6 @@ class GameTypes
                 return new GameType('Battleground', 'Warlords', 'Warlords', 23);
             case 25:
                 return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', 25);
-            case 50:
-                return new GameType('Adventure', 'Adventure', 'Adventure', 50);
             case 51:
                 return new GameType('SkyWars', 'SkyWars', 'SkyWars', 51);
             default:
