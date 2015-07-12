@@ -659,9 +659,6 @@ class HypixelPHP
     {
         $content = null;
         if (file_exists($filename)) {
-            if (!file_exists(dirname($filename))) {
-                @mkdir(dirname($filename), 0777, true);
-            }
             $this->debug('Getting contents of ' . $filename);
             $file = fopen($filename, 'r+');
             if (filesize($filename) > 0) {
@@ -1058,29 +1055,19 @@ class Player extends HypixelObject
 
     /**
      * get Colored name of Player, with prefix or not
-     * @param array $rankOptions
      * @param bool $prefix
      * @param bool $guildTag
      * @return string
      */
-    public function getFormattedName($rankOptions = array(false, false), $prefix = true, $guildTag = false)
+    public function getFormattedName($prefix = true, $guildTag = false)
     {
-        $playerRank = $this->getRank($rankOptions[0], $rankOptions[1]);
-        $rankInfo = $this->getRankInfo($playerRank);
-        $out = $rankInfo['color'] . $this->getName();
+        $rank = $this->getRank(false);
+        $out = $rank->getColor() . $this->getName();
         if ($prefix) {
-            $rankPrefix = $this->getPrefix();
-            if ($rankPrefix != null) {
-                $out = $rankPrefix . ' ' . $this->getName();
-            } else {
-                $out = $rankInfo['prefix'] . ' ' . $this->getName();
-            }
+            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix()) . ' ' . $this->getName();
         }
         if ($guildTag) {
-            $tag = $this->getGuildTag();
-            if ($tag != '') {
-                $out .= ' §7[' . $tag . ']';
-            }
+            $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
         }
         return $this->api->parseColors($out);
     }
@@ -1096,7 +1083,7 @@ class Player extends HypixelObject
                 return $guild->getTag();
             }
         }
-        return '';
+        return null;
     }
 
     /**
@@ -1156,27 +1143,27 @@ class Player extends HypixelObject
      */
     public function getMultiplier()
     {
-        $ranks = array('DEFAULT', 'VIP', 'VIP+', 'MVP', 'MVP+');
-        $pre = $this->getPackageRank();
-        if ($pre == 'NONE') $pre = 'DEFAULT';
-        $flip = array_flip($ranks);
-        $rankKey = $flip[$pre] + 1;
-        $levelKey = min(floor($this->getLevel() / 25) + 1, 5);
-        return ($rankKey > $levelKey) ? $rankKey : $levelKey;
-    }
-
-    public function getPackageRank()
-    {
-        return str_replace('_', ' ', str_replace('_PLUS', '+', $this->get('packageRank', true, 'DEFAULT')));
+        if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) return 7;
+        $pre = $this->getRank(true, true, false);
+        if ($pre != null) {
+            $eulaMultiplier = 1;
+            if (array_key_exists('eulaMultiplier', $pre->getOptions())) {
+                $eulaMultiplier = $pre->getOptions()['eulaMultiplier'];
+            }
+            $levelMultiplier = min(floor($this->getLevel() / 25) + 1, 5);
+            return ($eulaMultiplier > $levelMultiplier) ? $eulaMultiplier : $levelMultiplier;
+        }
+        return 1;
     }
 
     /**
      * get Rank
      * @param bool $package
      * @param bool $preEULA
-     * @return mixed
+     * @param bool $doSwap
+     * @return Rank
      */
-    public function getRank($package = true, $preEULA = false)
+    public function getRank($package = true, $preEULA = false, $doSwap = true)
     {
         $return = 'DEFAULT';
         if ($package) {
@@ -1207,88 +1194,29 @@ class Player extends HypixelObject
             if (!$this->isStaff()) return $this->getRank(true, $preEULA);
             $return = $this->get('rank', true);
         }
-        if ($return == 'NONE' && $preEULA) {
+        if ($return == 'NONE' && $preEULA && $doSwap) {
             return $this->getRank($package, !$preEULA);
         }
-        return str_replace('_', ' ', str_replace('_PLUS', '+', $return));
+        $returnRank = RankTypes::fromName($return);
+        if ($returnRank == null)
+            $returnRank = RankTypes::fromID(RankTypes::NON_DONOR);
+        return $returnRank;
     }
 
-    /**
-     * get Player achievement points
-     * @return int
-     */
-    public function getAchievementPoints()
+    function getUnderlyingRank($preEula = false)
     {
-        return 0;
+        if ($this->isStaff()) {
+            return $this->getRank(true, $preEula);
+        }
+        return null;
     }
 
     /**
      * @return array
      */
-    public function getRanks()
+    public function getAchievementPoints()
     {
-        $ranks = array(
-            'ADMIN' => array(
-                'prefix' => '§c[ADMIN]',
-                'color' => '§c'
-            ),
-            'MODERATOR' => array(
-                'prefix' => '§2[MOD]',
-                'color' => '§2'
-            ),
-            'HELPER' => array(
-                'prefix' => '§9[HELPER]',
-                'color' => '§9'
-            ),
-            'JR HELPER' => array(
-                'prefix' => '§9[JR HELPER]',
-                'color' => '§9'
-            ),
-            'YOUTUBER' => array(
-                'prefix' => '§6[YT]',
-                'color' => '§6'
-            ),
-            'MVP+' => array(
-                'prefix' => '§b[MVP§c+§b]',
-                'color' => '§b'
-            ),
-            'MVP' => array(
-                'prefix' => '§b[MVP]',
-                'color' => '§b'
-            ),
-            'VIP+' => array(
-                'prefix' => '§a[VIP§6+§a]',
-                'color' => '§a'
-            ),
-            'VIP' => array(
-                'prefix' => '§a[VIP]',
-                'color' => '§a'
-            ),
-            'DEFAULT' => array(
-                'prefix' => '§7',
-                'color' => '§7'
-            ),
-            'NONE' => array(
-                'prefix' => '§7[NONE]',
-                'color' => '§7'
-            )
-        );
-
-        return $ranks;
-    }
-
-    /**
-     * @param string $rank
-     *
-     * @return mixed
-     */
-    public function getRankInfo($rank = 'NONE')
-    {
-        $rankInfo = $this->getRanks();
-        if (!array_key_exists($rank, $rankInfo)) {
-            $rank = 'NONE';
-        }
-        return $rankInfo[$rank];
+        return 0;
     }
 
     /**
@@ -1300,21 +1228,178 @@ class Player extends HypixelObject
      */
     public function get($key, $implicit = false, $default = null)
     {
-        if ($key == 'achievementPoints') {
-            return $this->getAchievementPoints();
-        } elseif ($key == 'multiplier') {
-            return $this->getMultiplier();
-        } elseif ($key == 'rank_packageRank') {
-            return $this->getRank(true, true);
-        } elseif ($key == 'rank_rank') {
-            return $this->getRank(false, false);
-        }
-
-        if ($key == 'stats.MCGO.totalKills') {
-            return $this->get('stats.MCGO.cop_kills', false, 0) + $this->get('stats.MCGO.criminal_kills', false, 0);
-        }
-
         return parent::get($key, $implicit, $default);
+    }
+}
+
+class RankTypes
+{
+    const NORMAL = 0;
+    const NON_DONOR = 1;
+    const VIP = 2;
+    const VIP_PLUS = 3;
+    const MVP = 4;
+    const MVP_PLUS = 5;
+
+    const ADMIN = 100;
+    const MODERATOR = 90;
+    const HELPER = 80;
+    const JR_HELPER = 70;
+    const YOUTUBER = 60;
+
+    /**
+     * @param $id
+     *
+     * @return Rank|null
+     */
+    public static function fromID($id)
+    {
+        switch ($id) {
+            case RankTypes::NORMAL:
+                return new Rank(RankTypes::NORMAL, 'NONE', array(
+                    'prefix' => '§7',
+                    'color' => '§7',
+                ));
+            case RankTypes::NON_DONOR:
+                return new Rank(RankTypes::NON_DONOR, 'NON_DONOR', array(
+                    'prefix' => '§7',
+                    'color' => '§7'
+                ));
+            case RankTypes::VIP:
+                return new Rank(RankTypes::VIP, 'VIP', array(
+                    'prefix' => '§a[VIP]',
+                    'color' => '§a',
+                    'eulaMultiplier' => 2
+                ));
+            case RankTypes::VIP_PLUS:
+                return new Rank(RankTypes::VIP_PLUS, 'VIP_PLUS', array(
+                    'prefix' => '§a[VIP§6+§a]',
+                    'color' => '§a',
+                    'eulaMultiplier' => 3
+                ));
+            case RankTypes::MVP:
+                return new Rank(RankTypes::MVP, 'MVP', array(
+                    'prefix' => '§b[MVP]',
+                    'color' => '§b',
+                    'eulaMultiplier' => 4
+                ));
+            case RankTypes::MVP_PLUS:
+                return new Rank(RankTypes::MVP_PLUS, 'MVP_PLUS', array(
+                    'prefix' => '§b[MVP§c+§b]',
+                    'color' => '§b',
+                    'eulaMultiplier' => 5
+                ));
+            case RankTypes::YOUTUBER:
+                return new Rank(RankTypes::YOUTUBER, 'YOUTUBER', array(
+                    'prefix' => '§6[YT]',
+                    'color' => '§6',
+                    'eulaMultiplier' => 7
+                ));
+            case RankTypes::JR_HELPER:
+                return new Rank(RankTypes::JR_HELPER, 'JR_HELPER', array(
+                    'prefix' => '§9[JR HELPER]',
+                    'color' => '§9'
+                ), true);
+            case RankTypes::HELPER:
+                return new Rank(RankTypes::HELPER, 'HELPER', array(
+                    'prefix' => '§9[HELPER]',
+                    'color' => '§9'
+                ), true);
+            case RankTypes::MODERATOR:
+                return new Rank(RankTypes::MODERATOR, 'MODERATOR', array(
+                    'prefix' => '§2[MOD]',
+                    'color' => '§2'
+                ), true);
+            case RankTypes::ADMIN:
+                return new Rank(RankTypes::ADMIN, 'ADMIN', array(
+                    'prefix' => '§c[ADMIN]',
+                    'color' => '§c'
+                ), true);
+            default:
+                return null;
+        }
+    }
+
+    public static function fromName($db)
+    {
+        foreach (RankTypes::getAllTypes() as $id) {
+            $rank = RankTypes::fromID($id);
+            if ($rank != null) {
+                if ($rank->getName() == $db) {
+                    return $rank;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getAllTypes()
+    {
+        $obj = new \ReflectionClass ('\HypixelPHP\RankTypes');
+        return $obj->getConstants();
+    }
+}
+
+class Rank
+{
+    private $name, $id, $options, $staff;
+
+    /**
+     * @param $id
+     * @param $name
+     * @param $options
+     * @param bool $staff
+     */
+    public function __construct($id, $name, $options, $staff = false)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->options = $options;
+        $this->staff = $staff;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getCleanName()
+    {
+        if ($this->name == 'NON_DONOR') return 'DEFAULT';
+        return str_replace("_", ' ', str_replace('_PLUS', '+', $this->name));
+    }
+
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    public function isStaff()
+    {
+        return $this->staff;
+    }
+
+    public function getPrefix()
+    {
+        return isset($this->options['prefix']) ? $this->options['prefix'] : null;
+    }
+
+    public function getColor()
+    {
+        return isset($this->options['color']) ? $this->options['color'] : null;
+    }
+
+    public function __toString()
+    {
+        return json_encode([$this->name => $this->options]);
     }
 }
 
@@ -1572,7 +1657,7 @@ class Guild extends HypixelObject
                     return 0;
                 }
 
-                return $ad < $bd ? 1 : -1;
+                return $ad < $bd ? 0 : 1;
             });
             $this->sortHistory = $sortHistory;
         }
