@@ -1,8 +1,8 @@
 <?php
 include_once('HypixelPHP.php');
-$HypixelPHP = new HypixelPHP\HypixelPHP(array('api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'));
+$HypixelPHP = new HypixelPHP\HypixelPHP(['api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx']);
 // get a player object using the hypixel api object
-$player = $HypixelPHP->getPlayer(array('name' => 'Plancke'));
+$player = $HypixelPHP->getPlayer(['name' => 'Plancke']);
 if ($player != null) {
     echo $player->getName();
 
