@@ -5,11 +5,12 @@ $player = $HypixelPHP->getPlayer(['name' => 'Plancke']);
 if ($player != null) {
     echo $player->getName();
 
-    // automatically saves the file again!
+    // automatically saves the file again
     // combine multiple changes into the input
     // array rather than doing seperate
     // statements, less file saving!
 
+    // use
     $player->setExtra([
         'hidden' => true,
         'cool' => true
