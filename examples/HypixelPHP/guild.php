@@ -27,6 +27,7 @@ if ($guild != null) {
                 continue;
             }
             if ($player == null) {
+                echo '<li>player==null</li>';
                 continue;
             }
 
