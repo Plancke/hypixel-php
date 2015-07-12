@@ -8,7 +8,7 @@ if ($player != null) {
     echo '<br>';
     echo 'Formatted Name: ' . $player->getFormattedName(true, true);
     echo '<br>';
-    echo 'Paintball Kills: ' . $player->getStats()->getGame('Paintball')->get('kills', 0);
+    echo 'Paintball Kills: ' . $player->getStats()->getGameFromID(\HypixelPHP\GameTypes::PAINTBALL)->get('kills', 0);
     echo '<br>';
     echo 'Rank: ' . $player->getRank();
     echo '<br>';
