@@ -3,14 +3,14 @@ include_once('HypixelPHP.php');
 $HypixelPHP = new HypixelPHP\HypixelPHP(array('api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'));
 $guild = $HypixelPHP->getGuild(array('byName' => 'PainBall'));
 if ($guild != null) {
-    $memberlist = $guild->getMemberList()->getList();
+    $memberList = $guild->getMemberList()->getList();
 
     echo 'Guild Name: ' . $guild->getName();
     if ($guild->canTag()) {
         echo 'Guild Tag: ' . $guild->getTag();
     }
 
-    foreach ($memberlist as $rank => $members) {
+    foreach ($memberList as $rank => $members) {
         echo "<h1>$rank</h1>";
 
         // Don't want to load players here, big guilds would
@@ -19,10 +19,18 @@ if ($guild != null) {
         echo '<ul>';
         $HypixelPHP->set(array('cache_time' => $HypixelPHP::MAX_CACHE_TIME));
         foreach ($members as $member) {
-            $player = $HypixelPHP->getPlayer(array('name' => $member['name']));
-            $player_name = $player->getName();
+            if (isset($member['uuid'])) {
+                $player = $HypixelPHP->getPlayer(array('uuid' => $member['uuid']));
+            } else if (isset($member['name'])) {
+                $player = $HypixelPHP->getPlayer(array('name' => $member['name']));
+            } else {
+                continue;
+            }
+            if ($player == null) {
+                continue;
+            }
 
-            echo "<li>$player_name</li>";
+            echo '<li>' . $player->getName() . '</li>';
         }
 
         echo '</ul>';
