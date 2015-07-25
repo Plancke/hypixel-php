@@ -304,6 +304,7 @@ class HypixelPHP
         );
 
         foreach ($pairs as $key => $val) {
+            if ($key == 'uuid') $val = str_replace("-", "", $val);
             if ($val != null && $val != '') {
                 $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
                 if ($key == 'uuid') {
@@ -1171,12 +1172,12 @@ class Player extends HypixelObject
             if ($preEULA) $keys = array_reverse($keys);
             if (!$this->isStaff()) {
                 if (!$this->isPreEULA()) {
-                    if ($this->get($keys[0], true)) {
+                    if ($this->get($keys[0], true) != null) {
                         $return = $this->get($keys[0], true);
                     }
                 } else {
                     foreach ($keys as $key) {
-                        if ($this->get($key, true)) {
+                        if ($this->get($key, true) != null) {
                             $return = $this->get($key, true);
                             break;
                         }
@@ -1184,7 +1185,7 @@ class Player extends HypixelObject
                 }
             } else {
                 foreach ($keys as $key) {
-                    if ($this->get($key, true)) {
+                    if ($this->get($key, true) != null) {
                         $return = $this->get($key, true);
                         break;
                     }
@@ -1373,7 +1374,7 @@ class Rank
 
     public function getCleanName()
     {
-        if ($this->name == 'NON_DONOR') return 'DEFAULT';
+        if ($this->name == 'NON_DONOR' || $this->name == 'NONE') return 'DEFAULT';
         return str_replace("_", ' ', str_replace('_PLUS', '+', $this->name));
     }
 
