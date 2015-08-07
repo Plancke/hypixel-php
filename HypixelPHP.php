@@ -1550,9 +1550,6 @@ class Friends extends HypixelObject
  */
 class Guild extends HypixelObject
 {
-    private $members;
-    private $sortHistory;
-
     /**
      * @return string
      */
@@ -1590,9 +1587,7 @@ class Guild extends HypixelObject
      */
     public function getMemberList()
     {
-        if ($this->members == null)
-            $this->members = new MemberList($this->get('members'), $this->api);
-        return $this->members;
+        return new MemberList($this->get('members'), $this->api);
     }
 
     /**
@@ -1618,52 +1613,36 @@ class Guild extends HypixelObject
 
     /**
      * get coin history of Guild or Player in Guild
-     * @param null $player
      * @return array
      */
-    public function getGuildCoinHistory($player = null)
+    public function getGuildCoinHistory()
     {
-        if ($this->sortHistory == null) {
-            $coinHistory = [];
-            $record = $this->getRecord();
-            if ($player != null) {
-                /* @var $player Player */
-                $memberList = $this->getMemberList()->getList();
-                foreach ($memberList as $rank => $list) {
-                    foreach ($list as $p) {
-                        if (isset($p['uuid'])) {
-                            if ($player->getUUID() == $p['uuid']) {
-                                $record = $p;
-                            }
-                        }
-                    }
-                }
+        $coinHistory = [];
+        $record = $this->getRecord();
+        foreach ($record as $key => $val) {
+            if (strpos($key, 'dailyCoins') !== false) {
+                $EXPLOSION = explode('-', $key);
+                $coinHistory[$EXPLOSION[1] . '-' . ($EXPLOSION[2] + 1) . '-' . $EXPLOSION[3]] = $val;
             }
-            foreach ($record as $key => $val) {
-                if (strpos($key, 'dailyCoins') !== false) {
-                    $coinHistory[substr($key, strpos($key, '-') + 1)] = $val;
-                }
-            }
-
-            $sortHistory = [];
-            foreach ($coinHistory as $DATE => $AMOUNT) {
-                array_push($sortHistory, [$DATE, $AMOUNT]);
-            }
-
-            usort($sortHistory, function ($a, $b) {
-                $ad = new DateTime($a[0]);
-                $bd = new DateTime($b[0]);
-
-                if ($ad == $bd) {
-                    return 0;
-                }
-
-                return $ad < $bd ? 0 : 1;
-            });
-            $this->sortHistory = $sortHistory;
         }
 
-        return $this->sortHistory;
+        $sortHistory = [];
+        foreach ($coinHistory as $DATE => $AMOUNT) {
+            array_push($sortHistory, [$DATE, $AMOUNT]);
+        }
+
+        usort($sortHistory, function ($a, $b) {
+            $ad = new DateTime($a[0]);
+            $bd = new DateTime($b[0]);
+
+            if ($ad == $bd) {
+                return 0;
+            }
+
+            return $ad < $bd ? 0 : 1;
+        });
+
+        return $sortHistory;
     }
 }
 
@@ -1696,13 +1675,14 @@ class MemberList extends HypixelObject
             $coinHistory = [];
             foreach ($player as $key => $val) {
                 if (strpos($key, 'dailyCoins') !== false) {
-                    $coinHistory[substr($key, strpos($key, '-') + 1)] = $val;
+                    $EXPLOSION = explode('-', $key);
+                    $coinHistory[$EXPLOSION[1] . '-' . ($EXPLOSION[2] + 1) . '-' . $EXPLOSION[3]] = $val;
                     unset($player[$key]);
                 }
             }
             $player['coinHistory'] = $coinHistory;
 
-            array_push($list[$rank], $player);
+            array_push($list[$rank], new GuildMember($player, $api));
         }
         $this->list = $list;
     }
@@ -1721,6 +1701,65 @@ class MemberList extends HypixelObject
     public function getMemberCount()
     {
         return $this->count;
+    }
+}
+
+/**
+ * Class GuildMember
+ *
+ * @package HypixelPHP
+ */
+class GuildMember
+{
+    private $coinHistory;
+    private $uuid, $name;
+    private $joined;
+    private $api;
+
+    /**
+     * @param $member
+     * @param HypixelPHP $api
+     */
+    public function __construct($member, $api)
+    {
+        if (isset($member['coinHistory']))
+            $this->coinHistory = $member['coinHistory'];
+        if (isset($member['uuid']))
+            $this->uuid = $member['uuid'];
+        if (isset($member['name']))
+            $this->name = $member['name'];
+        if (isset($member['joined']))
+            $this->joined = $member['joined'];
+        $this->api = $api;
+    }
+
+    /**
+     * @return Player
+     * @internal param $HypixelPHP
+     */
+    public function getPlayer()
+    {
+        if (isset($this->uuid)) {
+            return $this->api->getPlayer(['uuid' => $this->uuid]);
+        } else if (isset($this->name)) {
+            return $this->api->getPlayer(['name' => $this->name]);
+        }
+        return null;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCoinHistory()
+    {
+        return $this->coinHistory;
+    }
+
+    /**
+     * @return int
+     */
+    public function getJoinTimeStamp() {
+        return $this->joined;
     }
 }
 
