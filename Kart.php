@@ -26,7 +26,8 @@ class Kart
         return $input;
     }
 
-    function fix_json($s) {
+    function fix_json($s)
+    {
         $s = preg_replace('/(\w+):/i', '"\1":', $s);
         $s = preg_replace('/:(\w+)/i', ':"\1"', $s);
         return $s;
@@ -97,6 +98,7 @@ class Part
     function getLevel()
     {
         $LEVEL = 0;
+        if (!isset($this->PART['Attributes'])) return $LEVEL;
         foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
             $LEVEL += $ATTRIBUTE['Level'];
         }
@@ -121,6 +123,11 @@ class Part
     function getPrefix()
     {
         return $this->PREFIXES[$this->getLevel()];
+    }
+
+    function getName()
+    {
+        return $this->getPrefix() . ' ' . ucfirst(strtolower($this->getRarity())) . ' ' . ucfirst(strtolower($this->getType()));
     }
 
     function getAttributeLevel($TYPE)
