@@ -98,7 +98,7 @@ class Part
     function getLevel()
     {
         $LEVEL = 0;
-        if (!isset($this->PART['Attributes'])) return $LEVEL;
+        if (!array_key_exists('Attributes', $this->PART)) return $LEVEL;
         foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
             $LEVEL += $ATTRIBUTE['Level'];
         }
