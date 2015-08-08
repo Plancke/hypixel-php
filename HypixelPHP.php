@@ -1735,7 +1735,6 @@ class GuildMember
 
     /**
      * @return Player
-     * @internal param $HypixelPHP
      */
     public function getPlayer()
     {
