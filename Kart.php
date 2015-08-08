@@ -132,6 +132,7 @@ class Part
 
     function getAttributeLevel($TYPE)
     {
+        if (!array_key_exists('Attributes', $this->PART)) return 0;
         foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
             if ($ATTRIBUTE['KartAttributeType'] == $TYPE) {
                 return $ATTRIBUTE['Level'];
