@@ -2015,9 +2015,20 @@ class Booster
         return $this->info['length'];
     }
 
+    /**
+     * @return int
+     */
     public function getActivateTime()
     {
         return $this->info['dateActivated'];
+    }
+
+    /**
+     * @return array
+     */
+    public function getInfo()
+    {
+        return $this->info;
     }
 }
 
