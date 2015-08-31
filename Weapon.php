@@ -130,7 +130,7 @@ class Weapon
         $this->addAbility(3, 1, new Ability("Chain Lightning", "Thunderlord", "DAMAGE"));
         $this->addAbility(3, 1, new Ability("Boulder", "Earthwarden", "DAMAGE"));
         $this->addAbility(3, 2, new Ability("Windfury", "Thunderlord", "DAMAGE"));
-        $this->addAbility(3, 2, new Ability("Earthliving Weapon", "Earthwarden", "HEAL"));
+        $this->addAbility(3, 3, new Ability("Chain Healing", "Earthwarden", "HEAL"));
     }
 
     private function addAbility($class, $slot, $ability)

@@ -1,22 +1,23 @@
 <?php
 include_once('HypixelPHP.php');
-$HypixelPHP = new HypixelPHP\HypixelPHP(array('api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'));
-$player = $HypixelPHP->getPlayer(array('name' => 'Plancke'));
+$HypixelPHP = new HypixelPHP\HypixelPHP(['api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx']);
+$player = $HypixelPHP->getPlayer(['name' => 'Plancke']);
 if ($player != null) {
     echo $player->getName();
 
-    // automatically saves the file again!
+    // automatically saves the file again
     // combine multiple changes into the input
     // array rather than doing seperate
     // statements, less file saving!
 
-    $player->setExtra(array(
+    // use
+    $player->setExtra([
         'hidden' => true,
         'cool' => true
-    ));
+    ]);
     // instead of
-    $player->setExtra(array('hidden' => true));
-    $player->setExtra(array('cool' => true));
+    $player->setExtra(['hidden' => true]);
+    $player->setExtra(['cool' => true]);
 
     // Example use
     $extra = $player->getExtra();
