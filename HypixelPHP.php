@@ -713,6 +713,9 @@ class HypixelPHP
             return null;
         }
         $content = json_decode($content, true);
+        if ($content == null) {
+            return null;
+        }
         if (!array_key_exists('extra', $content)) {
             $content['extra'] = [];
         }
