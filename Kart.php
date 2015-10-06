@@ -5,52 +5,44 @@
  * @author Plancke
  *
  */
-class Kart
-{
+class Kart {
     public $ENGINE;
     public $TURBOCHARGER;
     public $FRAME;
 
-    function __construct($ENGINE, $TURBOCHARGER, $FRAME)
-    {
+    function __construct($ENGINE, $TURBOCHARGER, $FRAME) {
         $this->ENGINE = $this->convert($ENGINE)['GingerbreadPart'];
         $this->TURBOCHARGER = $this->convert($TURBOCHARGER)['GingerbreadPart'];
         $this->FRAME = $this->convert($FRAME)['GingerbreadPart'];
     }
 
-    function convert($input)
-    {
+    function convert($input) {
         if (is_string($input)) {
             return json_decode($this->fix_json($input), true);
         }
         return $input;
     }
 
-    function fix_json($s)
-    {
+    function fix_json($s) {
         $s = preg_replace('/(\w+):/i', '"\1":', $s);
         $s = preg_replace('/:(\w+)/i', ':"\1"', $s);
         return $s;
     }
 
-    function getEngine()
-    {
+    function getEngine() {
         return new Engine($this->ENGINE);
     }
 
-    function getTurbocharger()
-    {
+    function getTurbocharger() {
         return new Turbocharger($this->TURBOCHARGER);
     }
 
-    function getFrame()
-    {
+    function getFrame() {
         return new Frame($this->FRAME);
     }
 }
 
-class Part
-{
+class Part {
     private $PART;
     private $PREFIXES = [
         "Default",
@@ -75,28 +67,23 @@ class Part
         "Eternal"
     ];
 
-    function __construct($PART)
-    {
+    function __construct($PART) {
         $this->PART = $PART;
     }
 
-    function getType()
-    {
+    function getType() {
         return $this->PART['PartType'];
     }
 
-    function getRarity()
-    {
+    function getRarity() {
         return $this->PART['PartRarity'];
     }
 
-    function getAttributes()
-    {
+    function getAttributes() {
         return $this->PART['Attributes'];
     }
 
-    function getLevel()
-    {
+    function getLevel() {
         $LEVEL = 0;
         if (!array_key_exists('Attributes', $this->PART)) return $LEVEL;
         foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
@@ -105,8 +92,7 @@ class Part
         return $LEVEL;
     }
 
-    function getColor()
-    {
+    function getColor() {
         $level = $this->getLevel();
         if ($level == 15) {
             return '§5';
@@ -120,18 +106,15 @@ class Part
         return '§7';
     }
 
-    function getPrefix()
-    {
+    function getPrefix() {
         return $this->PREFIXES[$this->getLevel()];
     }
 
-    function getName()
-    {
+    function getName() {
         return $this->getPrefix() . ' ' . ucfirst(strtolower($this->getRarity())) . ' ' . ucfirst(strtolower($this->getType()));
     }
 
-    function getAttributeLevel($TYPE)
-    {
+    function getAttributeLevel($TYPE) {
         if (!array_key_exists('Attributes', $this->PART)) return 0;
         foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
             if ($ATTRIBUTE['KartAttributeType'] == $TYPE) {
@@ -142,56 +125,44 @@ class Part
     }
 }
 
-class Engine extends Part
-{
-    function getRecovery()
-    {
+class Engine extends Part {
+    function getRecovery() {
         return $this->getAttributeLevel('RECOVERY');
     }
 
-    function getTopSpeed()
-    {
+    function getTopSpeed() {
         return $this->getAttributeLevel('TOP_SPEED');
     }
 
-    function getAcceleration()
-    {
+    function getAcceleration() {
         return $this->getAttributeLevel('ACCELERATION');
     }
 }
 
-class Turbocharger extends Part
-{
-    function getDriftingEfficiency()
-    {
+class Turbocharger extends Part {
+    function getDriftingEfficiency() {
         return $this->getAttributeLevel('DRIFTING_EFFICIENCY');
     }
 
-    function getBrakes()
-    {
+    function getBrakes() {
         return $this->getAttributeLevel('BRAKES');
     }
 
-    function getBoosterSpeed()
-    {
+    function getBoosterSpeed() {
         return $this->getAttributeLevel('BOOSTER_SPEED');
     }
 }
 
-class Frame extends Part
-{
-    function getStartPosition()
-    {
+class Frame extends Part {
+    function getStartPosition() {
         return $this->getAttributeLevel('START_POSITION');
     }
 
-    function getTraction()
-    {
+    function getTraction() {
         return $this->getAttributeLevel('TRACTION');
     }
 
-    function getHandling()
-    {
+    function getHandling() {
         return $this->getAttributeLevel('HANDLING');
     }
 }

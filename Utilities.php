@@ -9,8 +9,7 @@
  * @param $startY
  * @param $string
  */
-function addMCColorString(&$img, $font, $fontSize, $startX, $startY, $string)
-{
+function addMCColorString(&$img, $font, $fontSize, $startX, $startY, $string) {
     $MCColors = [
         "0" => "#000000",
         "1" => "#0000AA",
@@ -52,8 +51,7 @@ function addMCColorString(&$img, $font, $fontSize, $startX, $startY, $string)
  * @param $hex
  * @return array
  */
-function hex2rgb($hex)
-{
+function hex2rgb($hex) {
     $hex = str_replace("#", "", $hex);
 
     if (strlen($hex) == 3) {
