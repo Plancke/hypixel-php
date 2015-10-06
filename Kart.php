@@ -85,6 +85,7 @@ class Part {
 
     function getLevel() {
         $LEVEL = 0;
+        if ($this->PART == null) return 0;
         if (!array_key_exists('Attributes', $this->PART)) return $LEVEL;
         foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
             $LEVEL += $ATTRIBUTE['Level'];
@@ -115,6 +116,7 @@ class Part {
     }
 
     function getAttributeLevel($TYPE) {
+        if ($this->PART == null) return 0;
         if (!array_key_exists('Attributes', $this->PART)) return 0;
         foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
             if ($ATTRIBUTE['KartAttributeType'] == $TYPE) {
