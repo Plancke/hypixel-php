@@ -312,28 +312,24 @@ class HypixelPHP {
                         $this->setCache($filename, $PLAYER);
                         return $PLAYER;
                     }
+                } else if ($key == 'name') {
+                    if (file_exists($filename) || $this->hasPaid($val)) {
+                        $uuid = $this->getUUID($val);
+                        return $this->getPlayer(['uuid' => $uuid]);
+                    }
                 } else {
-                    if ($key == 'name') {
-                        if (file_exists($filename) || $this->hasPaid($val)) {
+                    if ($key == 'unknown') {
+                        $this->debug('Determining type.', false);
+                        $type = InputType::getType($val);
+                        if ($type == InputType::USERNAME) {
+                            $this->debug('Input is username, fetching UUID.', false);
                             $uuid = $this->getUUID($val);
-                            return $this->getPlayer(['uuid' => $uuid]);
+                        } else if ($type == InputType::UUID) {
+                            $uuid = $val;
+                        } else {
+                            return null;
                         }
-                    } else {
-                        if ($key == 'unknown') {
-                            $this->debug('Determining type.', false);
-                            $type = InputType::getType($val);
-                            if ($type == InputType::USERNAME) {
-                                $this->debug('Input is username, fetching UUID.', false);
-                                $uuid = $this->getUUID($val);
-                            } else {
-                                if ($type == InputType::UUID) {
-                                    $uuid = $val;
-                                } else {
-                                    return null;
-                                }
-                            }
-                            return $this->getPlayer(['uuid' => $uuid]);
-                        }
+                        return $this->getPlayer(['uuid' => $uuid]);
                     }
                 }
             }
@@ -927,10 +923,8 @@ class HypixelObject {
                     unset($this->JSONArray['extra'][$key]);
                     $anyChange = true;
                     continue;
-                } else {
-                    if ($this->JSONArray['extra'][$key] == $val) {
-                        continue;
-                    }
+                } else if ($this->JSONArray['extra'][$key] == $val) {
+                    continue;
                 }
             }
             $this->api->debug('Extra \'' . $key . '\' set to ' . $val);
@@ -1646,10 +1640,8 @@ class GuildMember {
     public function getPlayer() {
         if (isset($this->uuid)) {
             return $this->api->getPlayer(['uuid' => $this->uuid]);
-        } else {
-            if (isset($this->name)) {
-                return $this->api->getPlayer(['name' => $this->name]);
-            }
+        } else if (isset($this->name)) {
+            return $this->api->getPlayer(['name' => $this->name]);
         }
         return null;
     }
