@@ -1,0 +1,186 @@
+{
+  "kitprices": [
+    0,
+    100,
+    1000,
+    2000,
+    4000,
+    16000,
+    50000,
+    100000,
+    250000,
+    1000000
+  ],
+  "kits": {
+    "armorer": {
+      "icon": "assets/minecraft/items/299-0.png",
+      "display": "Armorer"
+    },
+    "meatmaster": {
+      "icon": "assets/minecraft/items/364-0.png",
+      "display": "Meat Master"
+    },
+    "knight": {
+      "icon": "assets/minecraft/items/268-0.png",
+      "display": "Knight"
+    },
+    "hunter": {
+      "icon": "assets/minecraft/items/175-2.png",
+      "display": "Hunter"
+    },
+    "fisherman": {
+      "icon": "assets/minecraft/items/346-0.png",
+      "display": "Fisherman"
+    },
+    "speleologist": {
+      "icon": "assets/minecraft/items/271-0.png",
+      "display": "Speleologist"
+    },
+    "archer": {
+      "icon": "assets/minecraft/items/261-0.png",
+      "display": "Archer"
+    },
+    "scout": {
+      "icon": "assets/minecraft/items/swiftnesspotion300_icon32.png",
+      "display": "Scout"
+    },
+    "baker": {
+      "icon": "assets/minecraft/items/297-0.png",
+      "display": "Baker"
+    },
+    "astronaut": {
+      "cost": 75000,
+      "icon": "assets/minecraft/items/305-0.png",
+      "display": "Astronaut"
+    },
+    "troll": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/30-0.png",
+      "display": "Troll"
+    },
+    "creepertamer": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/383-50.png",
+      "display": "Creepertamer"
+    },
+    "blaze": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/383-61.png",
+      "display": "Blaze"
+    },
+    "wolftamer": {
+      "cost": 75000,
+      "icon": "assets/minecraft/items/383-95.png",
+      "display": "Wolftamer"
+    },
+    "rogue": {
+      "cost": 75000,
+      "icon": "assets/minecraft/items/276-0.png",
+      "display": "Rogue"
+    },
+    "slimeyslime": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/383-55.png",
+      "display": "Slimey Slime"
+    },
+    "toxicologist": {
+      "cost": 75000,
+      "icon": "assets/minecraft/items/poisonsplash130_icon32.png",
+      "display": "Toxicologist"
+    },
+    "pigman": {
+      "cost": 15000,
+      "icon": "assets/minecraft/items/383-57.png",
+      "display": "Pigman"
+    },
+    "necromancer": {
+      "cost": 75000,
+      "icon": "assets/minecraft/items/383-54.png",
+      "display": "Necromancer"
+    },
+    "arachnologist": {
+      "cost": 75000,
+      "icon": "assets/minecraft/items/383-52.png",
+      "display": "Arachnologist"
+    },
+    "reddragon": {
+      "cost": 125000,
+      "icon": "assets/minecraft/items/383-62.png",
+      "display": "Red Dragon"
+    },
+    "horsetamer": {
+      "cost": 235000,
+      "icon": "assets/minecraft/items/383-100.png",
+      "display": "Horsetamer"
+    },
+    "tim": {
+      "cost": 75000,
+      "icon": "assets/minecraft/items/384-0.png",
+      "display": "Tim"
+    },
+    "snowman": {
+      "cost": 385000,
+      "reqLevel": 55,
+      "icon": "assets/minecraft/items/383-56.png",
+      "display": "Snowman"
+    },
+    "shadow knight": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/299.png",
+      "display": "Shadow Knight"
+    },
+    "paladin": {
+      "cost": 45000,
+      "reqLevel": 55,
+      "icon": "assets/minecraft/items/307.png",
+      "display": "Paladin"
+    }
+  },
+  "tauntability": 1000,
+  "blitzpowerups": {
+    "apocalypse": {
+      "cost": 2200,
+      "display": "Apocalypse"
+    },
+    "assassin": {
+      "cost": 2200,
+      "display": "Assassin"
+    },
+    "dragonborn": {
+      "cost": 2200,
+      "display": "Dragonborn"
+    },
+    "explosion": {
+      "cost": 2200,
+      "display": "Explosion"
+    },
+    "imprison": {
+      "cost": 2200,
+      "display": "Imprison"
+    },
+    "firebreather": {
+      "cost": 2200,
+      "display": "Fire Breather"
+    },
+    "darknight": {
+      "cost": 2200,
+      "display": "Darknight"
+    },
+    "vaulthunter": {
+      "cost": 2200,
+      "display": "Vault Hunter"
+    },
+    "witherwarrior": {
+      "cost": 2200,
+      "display": "Wither Warrior"
+    },
+    "holywarrior": {
+      "cost": 2200,
+      "display": "Holy Warrior"
+    },
+    "robinhood": {
+      "cost": 2200,
+      "display": "Robinhood"
+    }
+  }
+}
