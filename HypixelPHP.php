@@ -1,5 +1,5 @@
 <?php
-namespace HypixelPHP_Old;
+namespace HypixelPHP;
 
 use DateTime;
 
