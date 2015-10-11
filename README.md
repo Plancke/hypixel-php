@@ -57,6 +57,7 @@ $guild = $HypixelAPI->getGuild(
         'id'       => null
     ]
 );
+
 $HypixelAPI->getPlayer($input)->getGuild();
 ```
 ```PHP
