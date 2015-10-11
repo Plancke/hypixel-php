@@ -1,0 +1,386 @@
+{
+  "perks": {
+    "endurance": {
+      "display": "Endurance",
+      "increment": 7500,
+      "max": 50
+    },
+    "godfather": {
+      "display": "Godfather",
+      "increment": 5000,
+      "max": 50
+    },
+    "superluck": {
+      "display": "Superluck",
+      "costs": [
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2500,
+        5000,
+        5500,
+        6000,
+        7000,
+        8000,
+        9000,
+        10000,
+        12500,
+        15000,
+        17500,
+        20000
+      ]
+    },
+    "fortune": {
+      "display": "Fortune",
+      "costs": [
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        6000,
+        7000,
+        8000,
+        9000,
+        10000,
+        20000,
+        30000,
+        40000,
+        50000,
+        60000,
+        70000,
+        80000,
+        90000,
+        100000,
+        200000
+      ]
+    },
+    "headstart": {
+      "display": "HeadStart",
+      "costs": [
+        10000,
+        25000,
+        45000,
+        70000,
+        100000
+      ]
+    },
+    "transfusion": {
+      "display": "Transfusion",
+      "costs": [
+        100,
+        500,
+        1000,
+        7500,
+        12000,
+        18000,
+        24000,
+        30000,
+        38000,
+        45000
+      ]
+    },
+    "adrenaline": {
+      "display": "Adrenaline",
+      "increment": 10000,
+      "max": 10
+    }
+  },
+  "killstreaks": {
+    "flashbang": {
+      "display": "Flashbang",
+      "desc": "A smoke grenade with an area of effect",
+      "cost": 2500,
+      "killcoins": 2
+    },
+    "tripleshot": {
+      "display": "Triple Shot",
+      "desc": "Throw three balls at once",
+      "cost": 2500,
+      "killcoins": 3
+    },
+    "strongarm": {
+      "display": "Strong Arm",
+      "desc": "Throw more snowballs faster",
+      "cost": 0,
+      "killcoins": 4
+    },
+    "plusthree": {
+      "display": "+3",
+      "desc": "Regain 3 lives for your team",
+      "cost": 0,
+      "killcoins": 5
+    },
+    "creeperhead": {
+      "display": "Creeper Head",
+      "desc": "Spawn creepers to fight for you",
+      "cost": 2500,
+      "killcoins": 8
+    },
+    "rambo": {
+      "display": "RAMBO",
+      "desc": "Respawn instantly with no loss of lives",
+      "cost": 0,
+      "killcoins": 10
+    },
+    "tntrain": {
+      "display": "TNT Rain",
+      "desc": "Rain TNT down on your enemies.",
+      "cost": 2500,
+      "killcoins": 10
+    },
+    "plusten": {
+      "display": "+10",
+      "desc": "Regain 10 lives for your team.",
+      "cost": 2500,
+      "killcoins": 15
+    },
+    "nuke": {
+      "display": "Nuke",
+      "desc": "Destroys the enemy team with 100% accuracy",
+      "cost": 5500,
+      "killcoins": 25
+    },
+    "ammo": {
+      "display": "Ammo",
+      "desc": "Get a stack of 32 snowballs",
+      "cost": 0,
+      "killcoins": 3
+    },
+    "leeroyjenkins": {
+      "display": "LEEROYJENKINS",
+      "desc": "Spawn 30 chickens on the enemy spawn",
+      "cost": 0,
+      "killcoins": 5
+    },
+    "superstrongarm": {
+      "display": "Super Strong Arm",
+      "desc": "A stronger variant of strongarm",
+      "cost": 2500,
+      "killcoins": 7
+    },
+    "teamammo": {
+      "display": "Team Ammo",
+      "desc": "32 paintballs for everyone in your team",
+      "cost": 0,
+      "killcoins": 5
+    },
+    "revenge": {
+      "display": "Revenge",
+      "desc": "Kills the player who killed you last",
+      "cost": 0,
+      "killcoins": 10
+    },
+    "lightning": {
+      "display": "Lightning",
+      "desc": "Strike down enemies within 10 blocks",
+      "cost": 2500,
+      "killcoins": 12
+    },
+    "enderpearl": {
+      "display": "Enderpearl",
+      "desc": "Teleport to where you last died.",
+      "cost": 2500,
+      "killcoins": 15
+    },
+    "endereye": {
+      "display": "Endereye",
+      "desc": "Swap places with a random enemy.",
+      "cost": 2500,
+      "killcoins": 15
+    },
+    "forcefield": {
+      "display": "Force Field",
+      "desc": "Reflect paintballs for 15 seconds",
+      "cost": 6500,
+      "killcoins": 50
+    },
+    "bomberman": {
+      "display": "Bomber Man",
+      "desc": "Explode all enemies within 20 blocks, also kills yourself!",
+      "cost": 2500,
+      "killcoins": 20
+    },
+    "backstab": {
+      "display": "Backstab",
+      "desc": "Teleport to where your next kill dies",
+      "cost": 2500,
+      "killcoins": 7
+    },
+    "sentry": {
+      "display": "Sentry",
+      "desc": "Spawn a Sentry that kills for you!",
+      "cost": 2500,
+      "killcoins": 7
+    },
+    "quintupleshot": {
+      "display": "Quintuple Shot",
+      "desc": "Shoot 5 paintballs at once",
+      "cost": 5000,
+      "killcoins": 9
+    },
+    "landmine": {
+      "display": "Landmine",
+      "desc": "Spawn a Landmine where you're standing.",
+      "cost": 2500,
+      "killcoins": 3
+    }
+  },
+  "hats": {
+    "tnt_hat": {
+      "cost": 4200,
+      "display": "TNT"
+    },
+    "speed_hat": {
+      "cost": 3000,
+      "display": "Speed"
+    },
+    "snow_hat": {
+      "cost": 4200,
+      "display": "Snow"
+    },
+    "hard_hat": {
+      "cost": 4200,
+      "display": "Hard"
+    },
+    "ender_hat": {
+      "cost": 4200,
+      "display": "Ender"
+    },
+    "hat_of_darkness": {
+      "cost": 4200,
+      "display": "Dark"
+    },
+    "trololol_hat": {
+      "cost": 4200,
+      "display": "Troll"
+    },
+    "normal_hat": {
+      "cost": 2000,
+      "display": "Normal"
+    },
+    "drunk_hat": {
+      "cost": 4200,
+      "display": "Drunk"
+    },
+    "squid_hat": {
+      "cost": 4200,
+      "display": "Squid"
+    },
+    "spider_hat": {
+      "cost": 4200,
+      "display": "Spider"
+    },
+    "shaky_hat": {
+      "cost": 4200,
+      "display": "Shaky"
+    },
+    "vip_agentk_hat": {
+      "cost": 75000,
+      "display": "AgentK"
+    },
+    "vip_kevinkool_hat": {
+      "cost": 75000,
+      "display": "KevinKool"
+    },
+    "vip_rezzus_hat": {
+      "cost": 100000,
+      "display": "Rezzus"
+    },
+    "vip_neonmaster_hat": {
+      "cost": 75000,
+      "display": "Mystery"
+    },
+    "vip_hypixel_hat": {
+      "cost": 75000,
+      "display": "hypixel"
+    },
+    "vip_codename_b_hat": {
+      "cost": 75000,
+      "display": "codename_b"
+    },
+    "vip_paintballkitty_hat": {
+      "cost": 75000,
+      "display": "PaintBallKitty"
+    },
+    "vip_noxyd_hat": {
+      "cost": 50000,
+      "display": "NoxyD"
+    },
+    "vip_ghost_hat": {
+      "cost": 50000,
+      "display": "Ghost"
+    }
+  },
+  "teams": {
+    "1": [
+      "red",
+      "yellow",
+      "orange",
+      "white"
+    ],
+    "2": [
+      "blue",
+      "aqua",
+      "green",
+      "purple"
+    ]
+  },
+  "maps": {
+    "Herobrine": {
+      "size": "large",
+      "players": 32,
+      "team": 2
+    },
+    "Victorian": {
+      "size": "large",
+      "players": 28,
+      "team": 1
+    },
+    "OhCanada": {
+      "size": "normal",
+      "players": 24,
+      "team": 1
+    },
+    "Swamps": {
+      "size": "normal",
+      "players": 16,
+      "team": 1
+    },
+    "Mansion": {
+      "size": "small",
+      "players": 16,
+      "team": 0
+    },
+    "Lalaland": {
+      "size": "normal",
+      "players": 24,
+      "team": 0
+    },
+    "Babyland": {
+      "size": "normal",
+      "players": 24,
+      "team": 1
+    },
+    "Juice": {
+      "size": "normal",
+      "players": 24,
+      "team": 2
+    },
+    "LaMente": {
+      "size": "medium",
+      "players": 24,
+      "team": 1
+    },
+    "Egypt": {
+      "size": "medium",
+      "players": 24,
+      "team": 2
+    }
+  }
+}

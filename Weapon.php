@@ -39,8 +39,7 @@
  * combine this mapping with the Spec to get the name.
  *
  */
-class Weapon
-{
+class Weapon {
     public $WEAPON;
 
     private $scores = [
@@ -98,8 +97,7 @@ class Weapon
     private $abilities = [];
     private $forced_upgrade_level = -1;
 
-    function __construct($WEAPON)
-    {
+    function __construct($WEAPON) {
         $this->WEAPON = $WEAPON;
 
         /* Load abilities */
@@ -133,8 +131,7 @@ class Weapon
         $this->addAbility(3, 3, new Ability("Chain Healing", "Earthwarden", "HEAL"));
     }
 
-    private function addAbility($class, $slot, $ability)
-    {
+    private function addAbility($class, $slot, $ability) {
         if (!isset($this->abilities[$class])) {
             $this->abilities[$class] = [];
         }
@@ -144,64 +141,52 @@ class Weapon
         array_push($this->abilities[$class][$slot], $ability);
     }
 
-    function setForcedUpgradeLevel($level)
-    {
+    function setForcedUpgradeLevel($level) {
         $this->forced_upgrade_level = $level;
     }
 
-    function isForcedUpgrade()
-    {
+    function isForcedUpgrade() {
         return $this->forced_upgrade_level >= 0;
     }
 
-    function getDamage()
-    {
+    function getDamage() {
         return $this->getStat('damage');
     }
 
-    function getMinMaxDamage()
-    {
+    function getMinMaxDamage() {
         $fifteen = $this->getDamage() * 0.15;
         return [$this->getDamage() - $fifteen, $this->getDamage() + $fifteen];
     }
 
-    function getCritChance()
-    {
+    function getCritChance() {
         return $this->getStat('chance');
     }
 
-    function getCritMultiplier()
-    {
+    function getCritMultiplier() {
         return $this->getStat('multiplier');
     }
 
-    function getAbilityBoost()
-    {
+    function getAbilityBoost() {
         return $this->getStat('abilityBoost');
     }
 
-    function getHealth()
-    {
+    function getHealth() {
         return $this->getStat('health');
     }
 
-    function getEnergy()
-    {
+    function getEnergy() {
         return $this->getStat('energy');
     }
 
-    function getCooldown()
-    {
+    function getCooldown() {
         return $this->getStat('cooldown');
     }
 
-    function getSpeed()
-    {
+    function getSpeed() {
         return $this->getStat('movement');
     }
 
-    function getStat($key)
-    {
+    function getStat($key) {
         $stat = isset($this->WEAPON[$key]) ? $this->WEAPON[$key] : 0;
         if (array_key_exists($key, $this->upgradePercentages)) {
             $stat *= 1 + ($this->getUpgradeAmount() * $this->upgradePercentages[$key] / 100);
@@ -209,8 +194,7 @@ class Weapon
         return $stat;
     }
 
-    function getScore()
-    {
+    function getScore() {
         $score = 0;
         $score += $this->getDamage();
         $score += $this->getCritChance();
@@ -224,38 +208,31 @@ class Weapon
         return $score;
     }
 
-    function getMinScore()
-    {
+    function getMinScore() {
         return $this->scores[$this->getCategory()]['min'];
     }
 
-    function getMaxScore()
-    {
+    function getMaxScore() {
         return $this->scores[$this->getCategory()]['max'];
     }
 
-    function getMaterial()
-    {
+    function getMaterial() {
         return $this->WEAPON['material'];
     }
 
-    function getCategory()
-    {
+    function getCategory() {
         return $this->WEAPON['category'];
     }
 
-    function isCrafted()
-    {
+    function isCrafted() {
         return isset($this->WEAPON['crafted']) ? $this->WEAPON['crafted'] : false;
     }
 
-    function getMaxUpgrades()
-    {
+    function getMaxUpgrades() {
         return $this->getStat('upgradeMax');
     }
 
-    function getUpgradeAmount()
-    {
+    function getUpgradeAmount() {
         if ($this->isForcedUpgrade()) {
             if ($this->forced_upgrade_level > $this->getMaxUpgrades()) {
                 return $this->getMaxUpgrades();
@@ -265,26 +242,22 @@ class Weapon
         return $this->getStat('upgradeTimes');
     }
 
-    function getName()
-    {
+    function getName() {
         $prefix = $this->getPrefix();
         $material = $this->getMaterialName();
         $specialization = $this->getPlayerClass()->getSpec()->getName();
         return $prefix . " " . $material . " of the " . $specialization;
     }
 
-    function getPlayerClass()
-    {
+    function getPlayerClass() {
         return PlayerClasses::fromId($this->WEAPON['spec']['playerClass'], $this->WEAPON['spec']['spec']);
     }
 
-    function getMaterialName()
-    {
+    function getMaterialName() {
         return isset($this->materialMap[$this->getMaterial()]) ? $this->materialMap[$this->getMaterial()] : $this->getMaterial();
     }
 
-    function getPrefix()
-    {
+    function getPrefix() {
         $names = $this->prefixes[$this->getCategory()];
         $namesInt = intval(count($names));
 
@@ -301,21 +274,18 @@ class Weapon
         return end($names);
     }
 
-    function getColor()
-    {
+    function getColor() {
         return $this->colors[$this->getCategory()];
     }
 
-    function getID()
-    {
+    function getID() {
         return $this->WEAPON['id'];
     }
 
     /**
      * @return Ability|null
      */
-    function getAbility()
-    {
+    function getAbility() {
         $ABILITIES = $this->abilities[$this->getPlayerClass()->getID()][$this->WEAPON['ability']];
         foreach ($ABILITIES as $ABILITY) {
             /* @var $ABILITY Ability */
@@ -327,15 +297,13 @@ class Weapon
     }
 }
 
-class PlayerClasses
-{
+class PlayerClasses {
     const MAGE = 0;
     const WARRIOR = 1;
     const PALADIN = 2;
     const SHAMAN = 3;
 
-    public static function fromID($ID, $SPEC)
-    {
+    public static function fromID($ID, $SPEC) {
         switch ($ID) {
             case 0:
                 return new PlayerClass("mage", $SPEC, 0);
@@ -350,8 +318,7 @@ class PlayerClasses
     }
 }
 
-class PlayerClass
-{
+class PlayerClass {
     private $name;
     private $spec;
     private $id;
@@ -363,81 +330,67 @@ class PlayerClass
         3 => [0 => "Thunderlord", 1 => "Earthwarden"],
     ];
 
-    function __construct($name, $spec, $id)
-    {
+    function __construct($name, $spec, $id) {
         $this->name = $name;
         $this->spec = $spec;
         $this->id = $id;
     }
 
-    function getID()
-    {
+    function getID() {
         return $this->id;
     }
 
-    function getName()
-    {
+    function getName() {
         return $this->name;
     }
 
-    function getDisplay()
-    {
+    function getDisplay() {
         return ucfirst($this->name);
     }
 
-    function getSpec()
-    {
+    function getSpec() {
         return new Spec($this->specs[$this->id][$this->spec], $this->spec);
     }
 }
 
-class Spec
-{
+class Spec {
     private $name;
     private $id;
 
-    function __construct($name, $id)
-    {
+    function __construct($name, $id) {
         $this->name = $name;
         $this->id = $id;
     }
 
-    function getName()
-    {
+    function getName() {
         return $this->name;
     }
 
-    function getID()
-    {
+    function getID() {
         return $this->id;
     }
 }
 
-class Ability
-{
+class Ability {
     private $name;
     private $type;
     private $spec;
 
-    function __construct($name, $spec, $type)
-    {
+    function __construct($name, $spec, $type) {
         $this->name = $name;
         $this->spec = $spec;
         $this->type = $type;
     }
 
-    function getName()
-    {
+    function getName() {
         return $this->name;
     }
 
-    function getSpec()
-    {
+    function getSpec() {
         return $this->spec;
     }
 
-    function getType()
-    {
+    function getType() {
         return $this->type;
     }
 }

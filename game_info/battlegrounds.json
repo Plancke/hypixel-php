@@ -1,0 +1,106 @@
+{
+  "classes": {
+    "mage": {
+      "spec": {
+        "pyromancer": {
+          "display": "Pyromancer",
+          "cost": 0
+        },
+        "cryomancer": {
+          "display": "Cryomancer",
+          "cost": 5000
+        },
+        "aquamancer": {
+          "display": "Aquamancer",
+          "cost": 15000
+        }
+      },
+      "display": "Mage"
+    },
+    "warrior": {
+      "spec": {
+        "berserker": {
+          "display": "Berserker",
+          "cost": 0
+        },
+        "defender": {
+          "display": "Defender",
+          "cost": 15000
+        }
+      },
+      "display": "Warrior"
+    },
+    "paladin": {
+      "spec": {
+        "avenger": {
+          "display": "Avenger",
+          "cost": 0
+        },
+        "crusader": {
+          "display": "Crusader",
+          "cost": 5000
+        },
+        "protector": {
+          "display": "Protector",
+          "cost": 15000
+        }
+      },
+      "display": "Paladin"
+    },
+    "shaman": {
+      "spec": {
+        "thunderlord": {
+          "display": "Thunderlord",
+          "cost": 0
+        },
+        "earthwarden": {
+          "display": "Earthwarden",
+          "cost": 15000
+        }
+      }
+    }
+  },
+  "classUpgrades": {
+    "skill": {
+      "fields": [
+        "skill1",
+        "skill2",
+        "skill3",
+        "skill4",
+        "skill5"
+      ],
+      "costs": [
+        1560,
+        2350,
+        3750,
+        6400,
+        11500,
+        21900,
+        43750,
+        91900,
+        202500
+      ]
+    },
+    "combat": {
+      "fields": [
+        "energy",
+        "health",
+        "cooldown",
+        "critchance",
+        "critmultiplier"
+      ],
+      "costs": [
+        780,
+        1175,
+        1875,
+        3200,
+        5750,
+        10950,
+        21875,
+        45950,
+        101250
+      ]
+    }
+  },
+  "repairCost": 10
+}

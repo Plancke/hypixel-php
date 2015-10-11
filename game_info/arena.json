@@ -1,0 +1,174 @@
+{
+  "skills": {
+    "offensive": {
+      "boulder_toss": {
+        "display": "Boulder Toss",
+        "cost": 2800,
+        "energy": 80
+      },
+      "cookie_shotgun": {
+        "display": "Cookie Shotgun",
+        "cost": 12000,
+        "energy": 60
+      },
+      "fireball": {
+        "display": "Fireball",
+        "cost": 0,
+        "energy": 40
+      },
+      "flame_breath": {
+        "display": "Flame Breath",
+        "cost": 25000,
+        "energy": 60
+      },
+      "freezing_breath": {
+        "display": "Freezing Breath",
+        "cost": 25000,
+        "energy": 80
+      },
+      "guided_pig_2000": {
+        "display": "Guided Pig 2000",
+        "cost": 0,
+        "energy": 100
+      },
+      "lightning_strike": {
+        "display": "Lightning Strike",
+        "cost": 1200,
+        "energy": 70
+      },
+      "melon_launcher": {
+        "display": "Melon Launcher",
+        "cost": 9000,
+        "energy": 60
+      },
+      "proximity_mine": {
+        "display": "Proximity Mine",
+        "cost": 12000,
+        "energy": 100
+      },
+      "rocket_chicken": {
+        "display": "Rocket Chicken",
+        "cost": 1000,
+        "energy": 30
+      },
+      "seismic_wave": {
+        "display": "Seismic Wave",
+        "cost": 12000,
+        "energy": 100
+      },
+      "snowball": {
+        "display": "Snowball",
+        "cost": 120,
+        "energy": 20
+      }
+    },
+    "utility": {
+      "barricade": {
+        "display": "Barricade",
+        "cost": 600,
+        "cooldown": 30
+      },
+      "bull_charge": {
+        "display": "Bull Charge",
+        "cost": 0,
+        "cooldown": 40
+      },
+      "golemfall": {
+        "display": "Golemfall",
+        "cost": 12000,
+        "cooldown": 40
+      },
+      "polymorph": {
+        "display": "Polymorph",
+        "cost": 12000,
+        "cooldown": 40
+      },
+      "shadow_step": {
+        "display": "Shadow Step",
+        "cost": 3600,
+        "cooldown": 40
+      },
+      "swap": {
+        "display": "Swap",
+        "cost": 12000,
+        "cooldown": 30
+      },
+      "wall_of_vines": {
+        "display": "Wall of Vines",
+        "cost": 3600,
+        "cooldown": 30
+      }
+    },
+    "support": {
+      "bone_shield": {
+        "display": "Bone Shield",
+        "cost": 2400,
+        "cooldown": 30
+      },
+      "healing_totem": {
+        "display": "Healing Totem",
+        "cost": 0,
+        "cooldown": 40
+      },
+      "holy_water": {
+        "display": "Holy Water",
+        "cost": 600,
+        "cooldown": 30
+      },
+      "life_leech": {
+        "display": "Life Leech",
+        "cost": 12000,
+        "cooldown": 30
+      },
+      "song_of_power": {
+        "display": "Song of Power",
+        "cost": 4500,
+        "cooldown": 60
+      },
+      "star_shield": {
+        "display": "Star Shield",
+        "cost": 0,
+        "cooldown": 45
+      },
+      "tree_of_lifeTree of Life": {
+        "display": "Tree of Life",
+        "cost": 12000,
+        "cooldown": 40
+      }
+    },
+    "ultimate": {
+      "shield_wall": {
+        "display": "shield_wall",
+        "cost": 0
+      },
+      "berserk": {
+        "display": "Beserk",
+        "cost": 1200
+      },
+      "arachnid": {
+        "display": "Broodmother",
+        "cost": 25000
+      }
+    }
+  },
+  "runes": {
+    "types": {
+      "damage": {
+      },
+      "speed": {
+      },
+      "energy": {
+      },
+      "slowing": {
+      }
+    },
+    "prices": [
+      3250,
+      13000,
+      29250,
+      52000,
+      81250,
+      117000
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "classes": {
+    "skeleton": {
+      "display": "Skeleton",
+      "head": "MHF_Skeleton"
+    },
+    "zombie": {
+      "display": "Zombie",
+      "head": "MHF_Zombie"
+    },
+    "creeper": {
+      "display": "Creeper",
+      "head": "MHF_Creeper"
+    },
+    "enderman": {
+      "display": "Enderman",
+      "head": "MHF_Enderman"
+    },
+    "herobrine": {
+      "display": "Herobrine",
+      "head": "MHF_Herobrine"
+    },
+    "spider": {
+      "display": "Spider",
+      "head": "MHF_Spider"
+    },
+    "squid": {
+      "display": "Squid",
+      "head": "MHF_Squid"
+    },
+    "dreadlord": {
+      "display": "Dreadlord",
+      "cost": 10000,
+      "hero": true,
+      "head": "Banald"
+    },
+    "shaman": {
+      "display": "Shaman",
+      "cost": 10000,
+      "hero": true,
+      "head": "Zumelos"
+    },
+    "arcanist": {
+      "display": "Arcanist",
+      "cost": 10000,
+      "hero": true,
+      "head": "Gonuld"
+    },
+    "golem": {
+      "display": "Golem",
+      "cost": 10000,
+      "hero": true,
+      "head": "MHF_Golem"
+    },
+    "blaze": {
+      "display": "Blaze",
+      "cost": 15000,
+      "hero": true,
+      "head": "MHF_Blaze"
+    },
+    "pigman": {
+      "display": "Pigman",
+      "cost": 15000,
+      "hero": true,
+      "head": "MHF_Pig"
+    },
+    "pirate": {
+      "display": "Pirate",
+      "cost": 15000,
+      "hero": true,
+      "head": "samsamsam1234"
+    },
+    "hunter": {
+      "display": "Hunter",
+      "cost": 15000,
+      "hero": true,
+      "head": "3rdDegreeNinja"
+    }
+  },
+  "levels": {
+    "heroMultiplier": 2,
+    "costs": [
+      0,
+      100,
+      250,
+      600,
+      1200,
+      3500,
+      6500,
+      8500,
+      14000
+    ]
+  },
+  "prestige": {
+    "cost": 250000,
+    "heroMultiplier": 2,
+    "display": "Prestiged"
+  },
+  "fields": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "g"
+  ],
+  "enderchest": {
+    "cost": 10000,
+    "heroMultiplier": 1.5,
+    "display": "Enderchest"
+  }
+}

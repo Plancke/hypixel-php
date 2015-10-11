@@ -79,3 +79,8 @@ $friends = $HypixelAPI->getFriends(
 );
 $friends = $HypixelAPI->getPlayer($input)->getFriends();
 ```
+
+# Hypixel GameInfo
+
+The Game Info folder contains JSON files that have specific game items from the games that can be used in various locations.
+If a game received an update/change we need to add data there.
