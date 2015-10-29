@@ -1089,17 +1089,13 @@ class Player extends HypixelObject {
      * @return int
      */
     public function getMultiplier() {
-        if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) return 7;
-        $pre = $this->getRank(true, true, ['packageRank']);
-        if ($pre != null) {
-            $eulaMultiplier = 1;
-            if (array_key_exists('eulaMultiplier', $pre->getOptions())) {
-                $eulaMultiplier = $pre->getOptions()['eulaMultiplier'];
-            }
-            $levelMultiplier = min(floor($this->getLevel() / 25) + 1, 5);
-            return ($eulaMultiplier > $levelMultiplier) ? $eulaMultiplier : $levelMultiplier;
+        if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) {
+            return RankTypes::fromID(RankTypes::YOUTUBER)->getMultiplier();
         }
-        return 1;
+        $pre = $this->getRank(true, true, ['packageRank']);
+        $eulaMultiplier = $pre != null ? $pre->getMultiplier() : 1;
+        $levelMultiplier = min(floor($this->getLevel() / 25) + 1, 5);
+        return ($eulaMultiplier > $levelMultiplier) ? $eulaMultiplier : $levelMultiplier;
     }
 
     /**
@@ -1311,6 +1307,10 @@ class Rank {
 
     public function getColor() {
         return isset($this->options['color']) ? $this->options['color'] : null;
+    }
+
+    public function getMultiplier() {
+        return isset($this->options['eulaMultiplier']) ? $this->options['eulaMultiplier'] : 1;
     }
 
     public function __toString() {
