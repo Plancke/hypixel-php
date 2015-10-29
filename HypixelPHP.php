@@ -1101,14 +1101,12 @@ class Player extends HypixelObject {
     /**
      * get Rank
      * @param bool $package
-     * @param bool $preEULA
      * @param array $rankKeys
      * @return Rank
      */
-    public function getRank($package = true, $preEULA = false, $rankKeys = ['newPackageRank', 'packageRank']) {
+    public function getRank($package = true, $rankKeys = ['newPackageRank', 'packageRank']) {
         $returnRank = null;
         if ($package) {
-            if ($preEULA) $rankKeys = array_reverse($rankKeys);
             $returnRank = null;
             foreach ($rankKeys as $key) {
                 $rank = RankTypes::fromName($this->get($key));
@@ -1122,20 +1120,13 @@ class Player extends HypixelObject {
                 }
             }
         } else {
-            if (!$this->isStaff()) return $this->getRank(true, $preEULA);
+            if (!$this->isStaff()) return $this->getRank(true);
             $returnRank = RankTypes::fromName($this->get('rank'));
         }
         if ($returnRank == null) {
             $returnRank = RankTypes::fromID(RankTypes::NON_DONOR);
         }
         return $returnRank;
-    }
-
-    function getUnderlyingRank($preEula = false) {
-        if ($this->isStaff()) {
-            return $this->getRank(true, $preEula);
-        }
-        return null;
     }
 
     /**
