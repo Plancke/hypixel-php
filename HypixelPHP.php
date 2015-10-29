@@ -1090,7 +1090,7 @@ class Player extends HypixelObject {
      */
     public function getMultiplier() {
         if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) return 7;
-        $pre = $this->getRank(true, true, false);
+        $pre = $this->getRank(true, true, ['packageRank']);
         if ($pre != null) {
             $eulaMultiplier = 1;
             if (array_key_exists('eulaMultiplier', $pre->getOptions())) {
@@ -1106,18 +1106,16 @@ class Player extends HypixelObject {
      * get Rank
      * @param bool $package
      * @param bool $preEULA
+     * @param array $rankKeys
      * @return Rank
      */
-    public function getRank($package = true, $preEULA = false) {
+    public function getRank($package = true, $preEULA = false, $rankKeys = ['newPackageRank', 'packageRank']) {
         $returnRank = null;
         if ($package) {
-            $keys = ['newPackageRank' => null, 'packageRank' => null];
-            foreach (array_keys($keys) as $key) {
-                $keys[$key] = RankTypes::fromName($this->get($key));
-            }
-            if ($preEULA) $keys = array_reverse($keys);
+            if ($preEULA) $rankKeys = array_reverse($rankKeys);
             $returnRank = null;
-            foreach ($keys as $key => $rank) {
+            foreach ($rankKeys as $key) {
+                $rank = RankTypes::fromName($this->get($key));
                 if ($rank != null) {
                     if ($returnRank == null) $returnRank = $rank;
                     /** @var $rank \HypixelPHP\Rank */
