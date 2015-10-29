@@ -1056,7 +1056,7 @@ class Player extends HypixelObject {
      * @return bool
      */
     public function isPreEULA() {
-        return $this->get('eulaCoins', true, false);
+        return $this->get('packageRank', true, null) != null;
     }
 
     /**
@@ -1106,43 +1106,31 @@ class Player extends HypixelObject {
      * get Rank
      * @param bool $package
      * @param bool $preEULA
-     * @param bool $doSwap
      * @return Rank
      */
-    public function getRank($package = true, $preEULA = false, $doSwap = true) {
-        $return = 'DEFAULT';
+    public function getRank($package = true, $preEULA = false) {
+        $returnRank = null;
         if ($package) {
-            $keys = ['newPackageRank', 'packageRank'];
+            $keys = ['newPackageRank' => null, 'packageRank' => null];
+            foreach (array_keys($keys) as $key) {
+                $keys[$key] = RankTypes::fromName($this->get($key));
+            }
             if ($preEULA) $keys = array_reverse($keys);
-            if (!$this->isStaff()) {
-                if (!$this->isPreEULA()) {
-                    if ($this->get($keys[0], true) != null) {
-                        $return = $this->get($keys[0], true);
-                    }
-                } else {
-                    foreach ($keys as $key) {
-                        if ($this->get($key, true) != null) {
-                            $return = $this->get($key, true);
-                            break;
-                        }
-                    }
-                }
-            } else {
-                foreach ($keys as $key) {
-                    if ($this->get($key, true) != null) {
-                        $return = $this->get($key, true);
-                        break;
+            $returnRank = null;
+            foreach ($keys as $key => $rank) {
+                if ($rank != null) {
+                    if ($returnRank == null) $returnRank = $rank;
+                    /** @var $rank \HypixelPHP\Rank */
+                    /** @var $returnRank \HypixelPHP\Rank */
+                    if ($rank->getId() > $returnRank->getId()) {
+                        $returnRank = $rank;
                     }
                 }
             }
         } else {
             if (!$this->isStaff()) return $this->getRank(true, $preEULA);
-            $return = $this->get('rank', true);
+            $returnRank = RankTypes::fromName($this->get('rank'));
         }
-        if ($return == 'NONE' && $preEULA && $doSwap) {
-            return $this->getRank($package, !$preEULA);
-        }
-        $returnRank = RankTypes::fromName($return);
         if ($returnRank == null) {
             $returnRank = RankTypes::fromID(RankTypes::NON_DONOR);
         }
