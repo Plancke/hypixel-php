@@ -32,7 +32,7 @@ $HypixelAPI = new HypixelAPI(
          'use_curl' => true
     ]
 );
- ```
+```
      
 All of these options are optional. They are provided above with their default values.
 

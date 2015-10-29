@@ -1056,7 +1056,7 @@ class Player extends HypixelObject {
      * @return bool
      */
     public function isPreEULA() {
-        return $this->get('eulaCoins', true, false);
+        return $this->get('packageRank', true, null) != null;
     }
 
     /**
@@ -1090,7 +1090,7 @@ class Player extends HypixelObject {
      */
     public function getMultiplier() {
         if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) return 7;
-        $pre = $this->getRank(true, true, false);
+        $pre = $this->getRank(true, true, ['packageRank']);
         if ($pre != null) {
             $eulaMultiplier = 1;
             if (array_key_exists('eulaMultiplier', $pre->getOptions())) {
@@ -1106,43 +1106,29 @@ class Player extends HypixelObject {
      * get Rank
      * @param bool $package
      * @param bool $preEULA
-     * @param bool $doSwap
+     * @param array $rankKeys
      * @return Rank
      */
-    public function getRank($package = true, $preEULA = false, $doSwap = true) {
-        $return = 'DEFAULT';
+    public function getRank($package = true, $preEULA = false, $rankKeys = ['newPackageRank', 'packageRank']) {
+        $returnRank = null;
         if ($package) {
-            $keys = ['newPackageRank', 'packageRank'];
-            if ($preEULA) $keys = array_reverse($keys);
-            if (!$this->isStaff()) {
-                if (!$this->isPreEULA()) {
-                    if ($this->get($keys[0], true) != null) {
-                        $return = $this->get($keys[0], true);
-                    }
-                } else {
-                    foreach ($keys as $key) {
-                        if ($this->get($key, true) != null) {
-                            $return = $this->get($key, true);
-                            break;
-                        }
-                    }
-                }
-            } else {
-                foreach ($keys as $key) {
-                    if ($this->get($key, true) != null) {
-                        $return = $this->get($key, true);
-                        break;
+            if ($preEULA) $rankKeys = array_reverse($rankKeys);
+            $returnRank = null;
+            foreach ($rankKeys as $key) {
+                $rank = RankTypes::fromName($this->get($key));
+                if ($rank != null) {
+                    if ($returnRank == null) $returnRank = $rank;
+                    /** @var $rank \HypixelPHP\Rank */
+                    /** @var $returnRank \HypixelPHP\Rank */
+                    if ($rank->getId() > $returnRank->getId()) {
+                        $returnRank = $rank;
                     }
                 }
             }
         } else {
             if (!$this->isStaff()) return $this->getRank(true, $preEULA);
-            $return = $this->get('rank', true);
+            $returnRank = RankTypes::fromName($this->get('rank'));
         }
-        if ($return == 'NONE' && $preEULA && $doSwap) {
-            return $this->getRank($package, !$preEULA);
-        }
-        $returnRank = RankTypes::fromName($return);
         if ($returnRank == null) {
             $returnRank = RankTypes::fromID(RankTypes::NON_DONOR);
         }
