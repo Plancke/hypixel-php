@@ -385,7 +385,7 @@ class HypixelPHP {
                     }
 
                     $response = $this->fetch('findGuild', $key, $val, 5);
-                    if ($response['success'] == true) {
+                    if ($response['success'] == true && $response['guild'] != null) {
                         $content = ['timestamp' => time(), 'guild' => $response['guild']];
                         $this->setFileContent($filename, json_encode($content));
                         return $this->getGuild(['id' => $response['guild']]);
