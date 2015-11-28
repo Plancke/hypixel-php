@@ -1645,6 +1645,13 @@ class GuildMember {
     public function getJoinTimeStamp() {
         return $this->joined;
     }
+
+    /**
+     * @return string
+     */
+    public function getUuid() {
+        return $this->uuid;
+    }
 }
 
 /**
