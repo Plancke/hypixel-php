@@ -1665,6 +1665,7 @@ class GameTypes {
     const BATTLEGROUND = 23;
     const GINGERBREAD = 25;
     const SKYWARS = 51;
+    const TRUECOMBAT = 52;
 
     /**
      * @param $id
@@ -1701,6 +1702,8 @@ class GameTypes {
                 return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', 25);
             case 51:
                 return new GameType('SkyWars', 'SkyWars', 'SkyWars', 51);
+            case 52:
+                return new GameType('TrueCombat', 'Crazy Walls', 'CrazyWalls', 52);
             default:
                 return null;
         }
