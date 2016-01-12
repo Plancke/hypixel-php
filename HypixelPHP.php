@@ -1663,6 +1663,7 @@ class GameTypes {
     const UHC = 20;
     const MCGO = 21;
     const BATTLEGROUND = 23;
+    const SUPER_SMASH = 24;
     const GINGERBREAD = 25;
     const SKYWARS = 51;
     const TRUECOMBAT = 52;
@@ -1698,6 +1699,8 @@ class GameTypes {
                 return new GameType('MCGO', 'Cops and Crims', 'CaC', 21);
             case 23:
                 return new GameType('Battleground', 'Warlords', 'Warlords', 23);
+            case 24:
+                return new GameType('SuperSmash', 'Smash Heroes', 'Smash Heroes', 24);
             case 25:
                 return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', 25);
             case 51:
