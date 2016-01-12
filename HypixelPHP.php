@@ -19,7 +19,7 @@ class HypixelPHP {
     /**
      * @param array $input
      */
-    public function  __construct($input = []) {
+    public function __construct($input = []) {
         $this->options = array_merge(
             [
                 'api_key' => '',
@@ -309,6 +309,7 @@ class HypixelPHP {
                             'extra' => $content['extra']
                         ], $this);
                         $PLAYER->setExtra(['filename' => $filename]);
+                        $PLAYER->handleNew();
                         $this->setCache($filename, $PLAYER);
                         return $PLAYER;
                     }
@@ -385,7 +386,7 @@ class HypixelPHP {
                     }
 
                     $response = $this->fetch('findGuild', $key, $val, 5);
-                    if ($response['success'] == true && $response['guild'] != null) {
+                    if ($response['success'] == true) {
                         $content = ['timestamp' => time(), 'guild' => $response['guild']];
                         $this->setFileContent($filename, json_encode($content));
                         return $this->getGuild(['id' => $response['guild']]);
@@ -408,6 +409,7 @@ class HypixelPHP {
                             'extra' => $content['extra']
                         ], $this);
                         $GUILD->setExtra(['filename' => $filename]);
+                        $GUILD->handleNew();
                         $this->setCache($filename, $GUILD);
                         return $GUILD;
                     }
@@ -525,6 +527,7 @@ class HypixelPHP {
                             'extra' => $content['extra']
                         ], $this);
                         $FRIENDS->setExtra(['filename' => $filename]);
+                        $FRIENDS->handleNew();
                         $this->setCache($filename, $FRIENDS);
                         return $FRIENDS;
                     }
@@ -560,6 +563,7 @@ class HypixelPHP {
                 'extra' => $content['extra']
             ], $this);
             $BOOSTERS->setExtra(['filename' => $filename]);
+            $BOOSTERS->handleNew();
             $this->setCache($filename, $BOOSTERS);
             return $BOOSTERS;
         }
@@ -592,6 +596,7 @@ class HypixelPHP {
                 'extra' => $content['extra']
             ], $this);
             $LEADERBOARDS->setExtra(['filename' => $filename]);
+            $LEADERBOARDS->handleNew();
             $this->setCache($filename, $LEADERBOARDS);
             return $LEADERBOARDS;
         }
@@ -838,6 +843,10 @@ class HypixelObject {
         }
     }
 
+    public function handleNew() {
+
+    }
+
     /**
      * @return array
      */
@@ -904,8 +913,8 @@ class HypixelObject {
      * @param int $extra
      * @return bool
      */
-    public function isCacheExpired($extra = 0) {
-        return time() - $this->api->getOriginalCacheTime() - $extra > $this->getCachedTime();
+    public function isCacheExpired($extra = -1) {
+        return time() - ($extra == -1 ? $this->api->getOriginalCacheTime() : $extra) > $this->getCachedTime();
     }
 
     public function getCachedTime() {
@@ -927,7 +936,7 @@ class HypixelObject {
                     continue;
                 }
             }
-            $this->api->debug('Extra \'' . $key . '\' set to ' . $val);
+            $this->api->debug('Extra \'' . $key . '\' set to ' . json_encode($val));
             $this->JSONArray['extra'][$key] = $val;
             $anyChange = true;
         }
@@ -1092,9 +1101,9 @@ class Player extends HypixelObject {
         if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) {
             return RankTypes::fromID(RankTypes::YOUTUBER)->getMultiplier();
         }
-        $pre = $this->getRank(true, true, ['packageRank']);
+        $pre = $this->getRank(true, ['packageRank']);
         $eulaMultiplier = $pre != null ? $pre->getMultiplier() : 1;
-        $levelMultiplier = min(floor($this->getLevel() / 25) + 1, 5);
+        $levelMultiplier = min(floor($this->getLevel() / 25) + 1, 6);
         return ($eulaMultiplier > $levelMultiplier) ? $eulaMultiplier : $levelMultiplier;
     }
 
@@ -1130,7 +1139,7 @@ class Player extends HypixelObject {
     }
 
     /**
-     * @return array
+     * @return int
      */
     public function getAchievementPoints() {
         return 0;
@@ -1149,7 +1158,6 @@ class Player extends HypixelObject {
 }
 
 class RankTypes {
-    const NORMAL = 0;
     const NON_DONOR = 1;
     const VIP = 2;
     const VIP_PLUS = 3;
@@ -1169,11 +1177,6 @@ class RankTypes {
      */
     public static function fromID($id) {
         switch ($id) {
-            case RankTypes::NORMAL:
-                return new Rank(RankTypes::NORMAL, 'NONE', [
-                    'prefix' => '§7',
-                    'color' => '§7',
-                ]);
             case RankTypes::NON_DONOR:
                 return new Rank(RankTypes::NON_DONOR, 'NON_DONOR', [
                     'prefix' => '§7',
@@ -1429,7 +1432,18 @@ class Session extends HypixelObject {
  * @package HypixelPHP
  */
 class Friends extends HypixelObject {
+    public function getUUID() {
+        return $this->get("uuid");
+    }
 
+    public function getPlayer() {
+        if (isset($this->uuid)) {
+            return $this->api->getPlayer(['uuid' => $this->uuid]);
+        } else if (isset($this->name)) {
+            return $this->api->getPlayer(['name' => $this->name]);
+        }
+        return null;
+    }
 }
 
 /**
@@ -1636,13 +1650,6 @@ class GuildMember {
     public function getJoinTimeStamp() {
         return $this->joined;
     }
-
-    /**
-     * @return string
-     */
-    public function getUuid() {
-        return $this->uuid;
-    }
 }
 
 /**
@@ -1666,7 +1673,7 @@ class GameTypes {
     const SUPER_SMASH = 24;
     const GINGERBREAD = 25;
     const SKYWARS = 51;
-    const TRUECOMBAT = 52;
+    const TRUE_COMBAT = 52;
 
     /**
      * @param $id
@@ -1688,7 +1695,7 @@ class GameTypes {
             case 7:
                 return new GameType('VampireZ', 'VampireZ', 'VampZ', 7);
             case 13:
-                return new GameType('Walls3', 'MegaWalls', 'MW', 13);
+                return new GameType('Walls3', 'Mega Walls', 'MW', 13);
             case 14:
                 return new GameType('Arcade', 'Arcade', 'Arcade', 14);
             case 17:
@@ -1706,7 +1713,7 @@ class GameTypes {
             case 51:
                 return new GameType('SkyWars', 'SkyWars', 'SkyWars', 51);
             case 52:
-                return new GameType('TrueCombat', 'Crazy Walls', 'CrazyWalls', 52);
+                return new GameType('TrueCombat', 'Crazy Walls', 'Crazy Walls', 52);
             default:
                 return null;
         }
@@ -1739,19 +1746,21 @@ class GameTypes {
  * @package HypixelPHP
  */
 class GameType {
-    private $db, $name, $short, $id;
+    private $db, $name, $short, $id, $boosters;
 
     /**
      * @param $db
      * @param $name
      * @param $short
      * @param $id
+     * @param bool $boosters
      */
-    public function __construct($db, $name, $short, $id) {
+    public function __construct($db, $name, $short, $id, $boosters = true) {
         $this->db = $db;
         $this->name = $name;
         $this->short = $short;
         $this->id = $id;
+        $this->boosters = $boosters;
     }
 
     public function getDb() {
@@ -1768,6 +1777,10 @@ class GameType {
 
     public function getId() {
         return $this->id;
+    }
+
+    public function hasBoosters() {
+        return $this->boosters;
     }
 
     public function toArray() {
@@ -1792,7 +1805,7 @@ class Boosters extends HypixelObject {
      *
      * @return array
      */
-    public function getQueue($gameType = GameTypes::ARCADE, $max = 999) {
+    public function getQueue($gameType, $max = 999) {
         $return = [
             'boosters' => [],
             'total' => 0
@@ -1889,7 +1902,10 @@ class Booster {
      */
     public function getLength($original = false) {
         if ($original) {
-            return $this->info['originalLength'];
+            if (isset($this->info['originalLength'])) {
+                return $this->info['originalLength'];
+            }
+            return 3600;
         }
         return $this->info['length'];
     }
