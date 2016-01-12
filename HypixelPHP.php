@@ -1089,30 +1089,24 @@ class Player extends HypixelObject {
      * @return int
      */
     public function getMultiplier() {
-        if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) return 7;
-        $pre = $this->getRank(true, true, ['packageRank']);
-        if ($pre != null) {
-            $eulaMultiplier = 1;
-            if (array_key_exists('eulaMultiplier', $pre->getOptions())) {
-                $eulaMultiplier = $pre->getOptions()['eulaMultiplier'];
-            }
-            $levelMultiplier = min(floor($this->getLevel() / 25) + 1, 5);
-            return ($eulaMultiplier > $levelMultiplier) ? $eulaMultiplier : $levelMultiplier;
+        if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) {
+            return RankTypes::fromID(RankTypes::YOUTUBER)->getMultiplier();
         }
-        return 1;
+        $pre = $this->getRank(true, true, ['packageRank']);
+        $eulaMultiplier = $pre != null ? $pre->getMultiplier() : 1;
+        $levelMultiplier = min(floor($this->getLevel() / 25) + 1, 5);
+        return ($eulaMultiplier > $levelMultiplier) ? $eulaMultiplier : $levelMultiplier;
     }
 
     /**
      * get Rank
      * @param bool $package
-     * @param bool $preEULA
      * @param array $rankKeys
      * @return Rank
      */
-    public function getRank($package = true, $preEULA = false, $rankKeys = ['newPackageRank', 'packageRank']) {
+    public function getRank($package = true, $rankKeys = ['newPackageRank', 'packageRank']) {
         $returnRank = null;
         if ($package) {
-            if ($preEULA) $rankKeys = array_reverse($rankKeys);
             $returnRank = null;
             foreach ($rankKeys as $key) {
                 $rank = RankTypes::fromName($this->get($key));
@@ -1126,20 +1120,13 @@ class Player extends HypixelObject {
                 }
             }
         } else {
-            if (!$this->isStaff()) return $this->getRank(true, $preEULA);
+            if (!$this->isStaff()) return $this->getRank(true);
             $returnRank = RankTypes::fromName($this->get('rank'));
         }
         if ($returnRank == null) {
             $returnRank = RankTypes::fromID(RankTypes::NON_DONOR);
         }
         return $returnRank;
-    }
-
-    function getUnderlyingRank($preEula = false) {
-        if ($this->isStaff()) {
-            return $this->getRank(true, $preEula);
-        }
-        return null;
     }
 
     /**
@@ -1311,6 +1298,10 @@ class Rank {
 
     public function getColor() {
         return isset($this->options['color']) ? $this->options['color'] : null;
+    }
+
+    public function getMultiplier() {
+        return isset($this->options['eulaMultiplier']) ? $this->options['eulaMultiplier'] : 1;
     }
 
     public function __toString() {
@@ -1672,6 +1663,7 @@ class GameTypes {
     const UHC = 20;
     const MCGO = 21;
     const BATTLEGROUND = 23;
+    const SUPER_SMASH = 24;
     const GINGERBREAD = 25;
     const SKYWARS = 51;
     const TRUECOMBAT = 52;
@@ -1707,6 +1699,8 @@ class GameTypes {
                 return new GameType('MCGO', 'Cops and Crims', 'CaC', 21);
             case 23:
                 return new GameType('Battleground', 'Warlords', 'Warlords', 23);
+            case 24:
+                return new GameType('SuperSmash', 'Smash Heroes', 'Smash Heroes', 24);
             case 25:
                 return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', 25);
             case 51:
