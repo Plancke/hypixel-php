@@ -71,7 +71,7 @@ class HypixelPHP {
     public function set($input) {
         foreach ($input as $key => $val) {
             if ($key != 'api_key' && $key != 'debug') {
-                if (array_key_exists($key, $this->options) && $this->options[$key] != $val) {
+                if (array_key_exists($key, $this->options) || $this->options[$key] != $val) {
                     if (is_array($val)) {
                         $this->debug('Setting ' . $key . ' to ' . json_encode($val));
                     } else {
