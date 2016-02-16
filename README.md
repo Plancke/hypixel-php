@@ -45,9 +45,9 @@ Once you have the API Object you can call the getter functions
 ```PHP
 $player = $HypixelAPI->getPlayer(
     [
-        'name'    => null,
-        'uuid'    => null,
-        'unknown' => null
+        KEYS::PLAYER_BY_NAME    => $NAME,
+        KEYS::PLAYER_BY_UUID    => $UUID,
+        KEYS::PLAYER_BY_UNKNOWN => $UUID_OR_NAME
     ]
 );
 ```
