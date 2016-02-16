@@ -37,7 +37,6 @@ class HypixelPHP {
                 'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
                 'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
                 'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
-                'achievements_file' => $_SERVER['DOCUMENT_ROOT'] . '/hypixel/assets/achievements.json',
                 'logging' => false,
                 'debug' => false,
                 'use_curl' => true
