@@ -15,10 +15,14 @@ $HypixelAPI = new HypixelAPI(
     [
          'api_key' => '',
          'cache_times' => [
-             'overall' => 900, // 15 min
-             'uuid' => 864000, // 1 day
+             CACHE_TIMES::OVERALL => 600,
+             CACHE_TIMES::PLAYER => 600,
+             CACHE_TIMES::UUID => 864000,
+             CACHE_TIMES::UUID_NOT_FOUND => 600,
+             CACHE_TIMES::GUILD => 600,
+             CACHE_TIMES::GUILD_NOT_FOUND => 600,
          ],
-         'timeout' => 2,
+         'timeout' => 2000,
          'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
          'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
          'cache_folder_friends' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends',
