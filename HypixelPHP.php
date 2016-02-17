@@ -726,6 +726,7 @@ class HypixelPHP {
             /** @var Player $value */
             $uuid = $value->getUUID();
         }
+        if ($uuid === false) return null;
         return $uuid;
     }
 
