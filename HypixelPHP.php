@@ -1083,6 +1083,10 @@ class HypixelObject {
             $this->api->setCache($this->JSONArray['extra']['filename'], $this);
         }
     }
+
+    public function isValid() {
+        return true;
+    }
 }
 
 /**
@@ -1338,6 +1342,10 @@ class Player extends HypixelObject {
      */
     public function get($key, $implicit = false, $default = null, $delimiter = '.') {
         return parent::get($key, $implicit, $default, $delimiter);
+    }
+
+    public function isValid() {
+        return is_array($this->JSONArray['record']) && sizeof($this->JSONArray['record']) > 1;
     }
 }
 
