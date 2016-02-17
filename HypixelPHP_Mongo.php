@@ -737,11 +737,10 @@ class HypixelPHP {
             $this->debug('UUID for username fetched!');
             $content = [
                 'timestamp' => time(),
-                'name' => $response['name'],
-                'name_lowercase' => strtolower($response['name']),
+                'name_lowercase' => strtolower((string)$username),
                 'uuid' => Utilities::ensureNoDashesUUID($response['id'])
             ];
-            $this->setCacheMongo(COLLECTION_NAMES::PLAYER_UUID, ['uuid' => (string)$content['uuid']], $content);
+            $this->setCacheMongo(COLLECTION_NAMES::PLAYER_UUID, ['name_lowercase' => strtolower((string)$username)], $content);
             $this->debug($username . ' => ' . (string)$content['uuid']);
             return $content['uuid'];
         }
@@ -768,6 +767,7 @@ class HypixelPHP {
             /** @var Player $value */
             $uuid = $value->getUUID();
         }
+        if ($uuid === false) return null;
         return $uuid;
     }
 
