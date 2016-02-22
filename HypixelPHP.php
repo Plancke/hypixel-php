@@ -920,16 +920,18 @@ class InputType {
     const PLAYER_OBJECT = 2;
 
     /**
-     * Determine if the $input is a player name or UUID.
-     * UUID has a length of 32/28 chars, and a user name a max. length of 16 chars.
-     * @param string $input
+     * Determine input type
+     * @param $input
      *
-     * @return int
+     * @return int|null
      */
     public static function getType($input) {
         if ($input instanceof Player) return InputType::PLAYER_OBJECT;
-        if (Utilities::isUUID($input)) return InputType::UUID;
-        return InputType::USERNAME;
+        if (is_string($input)) {
+            if (Utilities::isUUID($input)) return InputType::UUID;
+            if (strlen($input) <= 16) return InputType::USERNAME;
+        }
+        return null;
     }
 }
 
