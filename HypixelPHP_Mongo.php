@@ -756,18 +756,20 @@ class HypixelPHP {
     public function getUUIDFromVar($value) {
         $uuid = null;
         $type = InputType::getType($value);
-        if ($type == InputType::USERNAME) {
-            $this->debug('Input is username, fetching UUID.', false);
-            $uuid = $this->getUUID((string)$value);
-        } else if ($type == InputType::UUID) {
-            $this->debug('Input is UUID.', false);
-            $uuid = $value;
-        } else if ($type == InputType::PLAYER_OBJECT) {
-            $this->debug('Input is Player Object.', false);
-            /** @var Player $value */
-            $uuid = $value->getUUID();
+        if ($type != null) {
+            if ($type == InputType::USERNAME) {
+                $this->debug('Input is username, fetching UUID.', false);
+                $uuid = $this->getUUID((string)$value);
+            } else if ($type == InputType::UUID) {
+                $this->debug('Input is UUID.', false);
+                $uuid = $value;
+            } else if ($type == InputType::PLAYER_OBJECT) {
+                $this->debug('Input is Player Object.', false);
+                /** @var Player $value */
+                $uuid = $value->getUUID();
+            }
+            if ($uuid === false) return null;
         }
-        if ($uuid === false) return null;
         return $uuid;
     }
 
@@ -981,10 +983,8 @@ class InputType {
      */
     public static function getType($input) {
         if ($input instanceof Player) return InputType::PLAYER_OBJECT;
-        if (is_string($input)) {
-            if (Utilities::isUUID($input)) return InputType::UUID;
-            if (strlen($input) <= 16) return InputType::USERNAME;
-        }
+        if (Utilities::isUUID($input)) return InputType::UUID;
+        if (is_string($input) && strlen($input) <= 16) return InputType::USERNAME;
         return null;
     }
 }
