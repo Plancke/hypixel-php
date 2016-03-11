@@ -1004,10 +1004,11 @@ class HypixelObject {
 
     /**
      * @param $key
-     * @return Integer
+     * @param int $default
+     * @return int
      */
-    public function getInt($key) {
-        return $this->get($key, true, 0);
+    public function getInt($key, $default = 0) {
+        return $this->get($key, false, $default);
     }
 
     /**

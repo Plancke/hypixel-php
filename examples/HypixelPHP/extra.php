@@ -1,7 +1,7 @@
 <?php
 include_once('HypixelPHP.php');
 $HypixelPHP = new HypixelPHP\HypixelPHP(['api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx']);
-$player = $HypixelPHP->getPlayer(['name' => 'Plancke']);
+$player = $HypixelPHP->getPlayer([\HypixelPHP_Mongo\KEYS::PLAYER_BY_NAME => 'Plancke']);
 if ($player != null) {
     echo $player->getName();
 
