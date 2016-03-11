@@ -27,5 +27,8 @@ if ($player != null) {
             exit;
         }
     }
+} else {
+    echo 'Player == null';
+    print_r($HypixelPHP->getUrlErrors());
 }
 
