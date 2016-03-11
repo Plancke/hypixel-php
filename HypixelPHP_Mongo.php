@@ -119,8 +119,11 @@ class HypixelPHP {
      * @param int $timeout
      * @return array|mixed json decoded array of response or error json
      */
-    public function getUrlContents($url, $timeout = 1000) {
-        $errorOut = ["success" => false, 'cause' => 'Timeout'];
+    public function getUrlContents($url, $timeout = -1) {
+        if ($timeout == -1) {
+            $timeout = $this->getOptions()['timeout'];
+        }
+        $errorOut = ['success' => false];
         if ($this->options['use_curl']) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -129,26 +132,23 @@ class HypixelPHP {
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, $timeout);
             curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
             $curlOut = curl_exec($ch);
-            if ($curlOut === false) {
-                $errorOut['cause'] = curl_error($ch);
-                array_push($this->getUrlErrors, ['errorCause' => $errorOut['cause']]);
-                curl_close($ch);
-                return $errorOut;
-            }
+            $errorOut['cause'] = curl_error($ch);
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $errorOut['status'] = $status;
             curl_close($ch);
-            array_push($this->getUrlErrors, ['errorCause' => null, 'status' => $status]);
-            if ($status != '200') {
+            if ($curlOut === false || $status != '200') {
+                array_push($this->getUrlErrors, $errorOut);
                 return $errorOut;
             }
             $json_out = json_decode($curlOut, true);
-            array_push($this->getUrlErrors, ['status' => $status, 'throttle' => isset($json_out['throttle']) ? $json_out['throttle'] : false]);
+            if (isset($json_out['throttle'])) {
+                $errorOut['throttle'] = $json_out['throttle'];
+                array_push($this->getUrlErrors, $errorOut);
+            }
             return $json_out;
         } else {
             $ctx = stream_context_create([
-                'https' => [
-                    'timeout' => $timeout / 1000
-                ]
+                'https' => ['timeout' => $timeout / 1000]
             ]);
             $out = file_get_contents($url, 0, $ctx);
             if ($out === false) {
@@ -285,7 +285,8 @@ class HypixelPHP {
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                         if (time() - $this->getCacheTime(CACHE_TIMES::PLAYER) < $timestamp) {
-                            return new Player($content, $this);
+                            $PLAYER = new Player($content, $this);
+                            return $PLAYER;
                         }
                     }
 
@@ -297,7 +298,7 @@ class HypixelPHP {
                         ], $this);
                         if (!is_array($PLAYER->getRecord())) {
                             $PLAYER->JSONArray['record'] = [];
-                        }
+                        } // null players fix (valid uuid no hypixel stats)
                         $PLAYER->JSONArray['record']['uuid'] = (string)$val;
                         $PLAYER->handleNew();
                         $this->setCacheMongo(COLLECTION_NAMES::PLAYERS, $query, $PLAYER);
@@ -709,25 +710,31 @@ class HypixelPHP {
         $query = ['name_lowercase' => strtolower($username)];
         $content = $this->getCacheMongo(COLLECTION_NAMES::PLAYER_UUID, $query);
         if ($content != null) {
-            $this->debug('Found NAME match in PLAYER_UUID!');
             $CACHE_TIME = $this->getCacheTime(CACHE_TIMES::UUID);
             if (!isset($content['uuid']) || $content['uuid'] == null || $content['uuid'] == '') {
                 $CACHE_TIME = $this->getCacheTime(CACHE_TIMES::UUID_NOT_FOUND);
                 // allow for faster fail over when uuid is null/not found
             }
             $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-            if (time() - $CACHE_TIME < $timestamp) {
+            $diff = time() - $CACHE_TIME - $timestamp;
+            $this->debug('Found NAME match in PLAYER_UUID! \'' . abs($diff) . '\'');
+            if ($diff < 0) {
                 return $content['uuid'];
             }
         }
 
-        $query = ['record.playername' => strtolower($username)];
-        $content = $this->getCacheMongo(COLLECTION_NAMES::PLAYERS, $query);
-        if ($content != null) {
-            $this->debug('Found NAME match in PLAYERS!');
-            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-            if (time() - $this->getCacheTime(CACHE_TIMES::UUID) < $timestamp) {
-                return $content['record']['uuid'];
+        if ($this->getCacheTime(CACHE_TIMES::UUID) == self::MAX_CACHE_TIME) {
+            $query = ['record.playername' => strtolower($username)];
+            $content = $this->getCacheMongo(COLLECTION_NAMES::PLAYERS, $query);
+            if ($content != null) {
+                $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+                $diff = time() - $this->getCacheTime(CACHE_TIMES::UUID) - $timestamp;
+                if ($diff < 0) {
+                    $this->debug('Found NAME match in PLAYERS! \'' . strtolower($username) . '\' Cache valid! ' . abs($diff));
+                    return $content['record']['uuid'];
+                } else {
+                    $this->debug('Found NAME match in PLAYERS! \'' . strtolower($username) . '\' Cache expired! ' . abs($diff));
+                }
             }
         }
 
@@ -740,8 +747,12 @@ class HypixelPHP {
                 'name_lowercase' => strtolower((string)$username),
                 'uuid' => Utilities::ensureNoDashesUUID($response['id'])
             ];
-            $this->setCacheMongo(COLLECTION_NAMES::PLAYER_UUID, ['name_lowercase' => strtolower((string)$username)], $content);
-            $this->debug($username . ' => ' . (string)$content['uuid']);
+            if ($content['uuid'] == '' || $content['uuid'] == null) {
+                $this->setCacheMongo(COLLECTION_NAMES::PLAYER_UUID, ['name_lowercase' => strtolower($username)], ['$set' => [['timestamp' => time()]]]);
+            } else {
+                $this->setCacheMongo(COLLECTION_NAMES::PLAYER_UUID, ['name_lowercase' => strtolower($username)], $content);
+            }
+            $this->debug($username . ' => ' . $content['uuid']);
             return $content['uuid'];
         }
 
@@ -807,7 +818,7 @@ class Utilities {
     }
 
     public static function isUUID($input) {
-        return strlen($input) === 32 || strlen($input) === 28;
+        return is_string($input) && (strlen($input) == 32 || strlen($input) == 28);
     }
 
     const COLOR_CHAR = '§';
@@ -2211,6 +2222,10 @@ class Booster {
             return $player;
         }
         return null;
+    }
+
+    public function getOwnerUUID() {
+        return isset($this->info['purchaserUuid']) ? $this->info['purchaserUuid'] : null;
     }
 
     /**

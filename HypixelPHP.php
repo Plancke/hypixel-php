@@ -133,8 +133,11 @@ class HypixelPHP {
      * @param int $timeout
      * @return array|mixed json decoded array of response or error json
      */
-    public function getUrlContents($url, $timeout = 1000) {
-        $errorOut = ["success" => false, 'cause' => 'Timeout'];
+    public function getUrlContents($url, $timeout = -1) {
+        if ($timeout == -1) {
+            $timeout = $this->getOptions()['timeout'];
+        }
+        $errorOut = ['success' => false];
         if ($this->options['use_curl']) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -143,26 +146,23 @@ class HypixelPHP {
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, $timeout);
             curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
             $curlOut = curl_exec($ch);
-            if ($curlOut === false) {
-                $errorOut['cause'] = curl_error($ch);
-                array_push($this->getUrlErrors, ['errorCause' => $errorOut['cause']]);
-                curl_close($ch);
-                return $errorOut;
-            }
+            $errorOut['cause'] = curl_error($ch);
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $errorOut['status'] = $status;
             curl_close($ch);
-            array_push($this->getUrlErrors, ['errorCause' => null, 'status' => $status]);
-            if ($status != '200') {
+            if ($curlOut === false || $status != '200') {
+                array_push($this->getUrlErrors, $errorOut);
                 return $errorOut;
             }
             $json_out = json_decode($curlOut, true);
-            array_push($this->getUrlErrors, ['status' => $status, 'throttle' => isset($json_out['throttle']) ? $json_out['throttle'] : false]);
+            if (isset($json_out['throttle'])) {
+                $errorOut['throttle'] = $json_out['throttle'];
+                array_push($this->getUrlErrors, $errorOut);
+            }
             return $json_out;
         } else {
             $ctx = stream_context_create([
-                'https' => [
-                    'timeout' => $timeout / 1000
-                ]
+                'https' => ['timeout' => $timeout / 1000]
             ]);
             $out = file_get_contents($url, 0, $ctx);
             if ($out === false) {
@@ -766,7 +766,7 @@ class Utilities {
     }
 
     public static function isUUID($input) {
-        return strlen($input) === 32 || strlen($input) === 28;
+        return is_string($input) && (strlen($input) == 32 || strlen($input) == 28);
     }
 
     const COLOR_CHAR = '§';
@@ -2135,6 +2135,10 @@ class Booster {
             return $player;
         }
         return null;
+    }
+
+    public function getOwnerUUID() {
+        return isset($this->info['purchaserUuid']) ? $this->info['purchaserUuid'] : null;
     }
 
     /**
