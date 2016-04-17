@@ -291,7 +291,7 @@ class HypixelPHP {
                 $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
                 if ($key == KEYS::PLAYER_BY_UUID) {
                     $val = Utilities::ensureNoDashesUUID($val);
-                    if (InputType::getType($val) == InputType::UUID) continue;
+                    if (InputType::getType($val) != InputType::UUID) continue;
 
                     $content = $this->getCache($filename);
                     if ($content != null) {
