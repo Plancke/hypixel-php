@@ -712,10 +712,15 @@ class HypixelPHP {
         return false;
     }
 
+    /**
+     * @param $value
+     *
+     * @return bool|null|string
+     */
     public function getUUIDFromVar($value) {
         $uuid = null;
         $type = InputType::getType($value);
-        if ($type != null) {
+        if ($type !== null) {
             if ($type == InputType::USERNAME) {
                 $this->debug('Input is username, fetching UUID.', false);
                 $uuid = $this->getUUID((string)$value);
