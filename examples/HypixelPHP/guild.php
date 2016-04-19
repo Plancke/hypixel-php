@@ -1,7 +1,7 @@
 <?php
 include_once('HypixelPHP.php');
 $HypixelPHP = new HypixelPHP\HypixelPHP(['api_key' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx']);
-$guild = $HypixelPHP->getGuild(['byName' => 'PainBall']);
+$guild = $HypixelPHP->getGuild([\HypixelPHP_Mongo\KEYS::GUILD_BY_PLAYER_NAME => 'Plancke']);
 if ($guild != null) {
     $memberList = $guild->getMemberList()->getList();
 
@@ -36,4 +36,7 @@ if ($guild != null) {
 
         echo '</ul>';
     }
+} else {
+    echo 'Guild == null';
+    print_r($HypixelPHP->getUrlErrors());
 }
