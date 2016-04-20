@@ -331,7 +331,6 @@ class HypixelPHP {
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
                 if ($key == KEYS::GUILD_BY_PLAYER_OBJECT ||
-                    $key == KEYS::GUILD_BY_PLAYER_UUID ||
                     $key == KEYS::GUILD_BY_PLAYER_NAME
                 ) {
                     return $this->getGuild([KEYS::GUILD_BY_PLAYER_UUID => $this->getUUIDFromVar($val)]);
@@ -339,7 +338,7 @@ class HypixelPHP {
 
                 $filename = $this->options['cache_folder_guild'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
 
-                if ($key == KEYS::GUILD_BY_NAME) {
+                if ($key == KEYS::GUILD_BY_NAME || $key == KEYS::GUILD_BY_PLAYER_UUID) {
                     $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
@@ -351,7 +350,7 @@ class HypixelPHP {
                         }
                     }
 
-                    $response = $this->fetch(API_REQUESTS::FIND_GUILD, $key, $val, 5);
+                    $response = $this->fetch(API_REQUESTS::FIND_GUILD, $key, $val, 5000);
                     if ($response['success'] == true) {
                         $content = ['timestamp' => time(), 'guild' => $response['guild']];
                         $this->setFileContent($filename, json_encode($content));
