@@ -1692,7 +1692,7 @@ class FriendsList extends HypixelObject {
     }
 
     public function getRawList() {
-        return $this->get('list', true, []);
+        return $this->getRecord();
     }
 
     public function getPlayer() {
