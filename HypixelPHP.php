@@ -792,6 +792,31 @@ class Utilities {
         'e' => '#FFFF55',
         'f' => '#FFFFFF'
     ];
+    
+    const MC_COLORNAME = [
+        "BLACK" => '§0',
+        "DARK_BLUE" => '§1',
+        "DARK_GREEN" => '§2',
+        "DARK_AQUA" => '§3',
+        "DARK_RED" => '§4',
+        "DARK_PURPLE" => '§5',
+        "GOLD" => '§6',
+        "GRAY" => '§7',
+        "DARK_GRAY" => '§8',
+        "BLUE" => '§9',
+        "GREEN" => '§a',
+        "AQUA" => '§b',
+        "RED" => '§c',
+        "LIGHT_PURPLE" => '§d',
+        "YELLOW" => '§e',
+        "WHITE" => '§f',
+        "MAGIC" => '§k',
+        "BOLD" => '§l',
+        "STRIKETHROUGH" => '§m',
+        "UNDERLINE" => '§n',
+        "ITALIC" => '§o',
+        "RESET" => '§r'
+    ];
 
     /**
      * Parses MC encoded colors to HTML
@@ -1210,7 +1235,7 @@ class Player extends HypixelObject {
         $rank = $this->getRank(false);
         $out = $rank->getColor() . $this->getName();
         if ($prefix) {
-            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix()) . ' ' . $this->getName();
+            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix($this)) . ' ' . $this->getName();
         }
         if ($guildTag) {
             $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
@@ -1495,7 +1520,10 @@ class Rank {
         return $this->staff;
     }
 
-    public function getPrefix() {
+    public function getPrefix(Player $player) {
+        if ($this->name == 'MVP_PLUS' && $player->get("rankPlusColor") != null) {
+            return '§b[MVP' . Utilities::MC_COLORNAME[$player->get("rankPlusColor")] . '+§b]';
+        }
         return isset($this->options['prefix']) ? $this->options['prefix'] : null;
     }
 
