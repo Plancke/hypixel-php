@@ -1218,7 +1218,7 @@ class Player extends HypixelObject {
         $rank = $this->getRank(false);
         $out = $rank->getColor() . $this->getName();
         if ($prefix) {
-            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix()) . ' ' . $this->getName();
+            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix($this)) . ' ' . $this->getName();
         }
         if ($guildTag) {
             $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
