@@ -1942,6 +1942,14 @@ class GuildMember {
     public function getJoinTimeStamp() {
         return $this->joined;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
 }
 
 /**
