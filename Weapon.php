@@ -62,14 +62,6 @@ class Weapon {
             "Vanquisher's", "Champion's", "Warlord's"
         ]
     ];
-    private $upgradePercentages = [
-        'damage' => 7.5,
-        'abilityBoost' => 7.5,
-        'health' => 25,
-        'energy' => 10,
-        'cooldown' => 7.5,
-        'movement' => 7.5,
-    ];
     private $materialMap = [
         'WOOD_AXE' => 'Steel Sword', 'STONE_AXE' => 'Training Sword', 'IRON_AXE' => 'Demonblade',
         'GOLD_AXE' => 'Venomstrike', 'DIAMOND_AXE' => 'Diamondspark', 'WOOD_HOE' => 'Zweireaper',
@@ -86,7 +78,7 @@ class Weapon {
         'BREAD' => 'Runic Axe', 'MUSHROOM_STEW' => 'Lunar Relic', 'RABBIT_STEW' => 'Bludgeon',
         'COOKED_RABBIT' => 'Cudgel', 'COOKED_CHICKEN' => 'Tenderizer', 'BAKED_POTATO' => 'Broccomace',
         'COOKED_SALMON' => 'Felflame Blade', 'COOKED_MUTTON' => 'Amaranth', 'COOKED_BEEF' => 'Armblade',
-        'GRILLED_PORK' => 'Gemini', 'GOLDEN_CARROT' => 'Void Edge'
+        'GRILLED_PORK' => 'Gemini', 'COOKED_PORKCHOP' => 'Gemini', 'GOLDEN_CARROT' => 'Void Edge'
     ];
     private $colors = [
         'COMMON' => '§a',
@@ -149,62 +141,36 @@ class Weapon {
         return $this->forced_upgrade_level >= 0;
     }
 
-    function getDamage() {
-        return $this->getStat('damage');
-    }
-
     function getMinMaxDamage() {
-        $fifteen = $this->getDamage() * 0.15;
-        return [$this->getDamage() - $fifteen, $this->getDamage() + $fifteen];
+        $dmg = $this->getStatById(WeaponStats::DAMAGE);
+        $fifteen = $dmg * 0.15;
+        return [$dmg - $fifteen, $dmg + $fifteen];
     }
 
-    function getCritChance() {
-        return $this->getStat('chance');
+    function getStatById($stat) {
+        $weaponStat = WeaponStats::fromId($stat);
+        return $weaponStat != null ? $this->getStat($weaponStat) : 0;
     }
 
-    function getCritMultiplier() {
-        return $this->getStat('multiplier');
+    /**
+     * @param WeaponStat $stat
+     * @return int
+     */
+    function getStat($stat) {
+        $val = $this->getField($stat->getField());
+        $val *= 1 + ($this->getUpgradeAmount() * $stat->getUpgrade() / 100);
+        return $val;
     }
 
-    function getAbilityBoost() {
-        return $this->getStat('abilityBoost');
-    }
-
-    function getHealth() {
-        return $this->getStat('health');
-    }
-
-    function getEnergy() {
-        return $this->getStat('energy');
-    }
-
-    function getCooldown() {
-        return $this->getStat('cooldown');
-    }
-
-    function getSpeed() {
-        return $this->getStat('movement');
-    }
-
-    function getStat($key) {
-        $stat = isset($this->WEAPON[$key]) ? $this->WEAPON[$key] : 0;
-        if (array_key_exists($key, $this->upgradePercentages)) {
-            $stat *= 1 + ($this->getUpgradeAmount() * $this->upgradePercentages[$key] / 100);
-        }
-        return $stat;
+    function getField($key, $def = 0) {
+        return isset($this->WEAPON[$key]) ? $this->WEAPON[$key] : $def;
     }
 
     function getScore() {
         $score = 0;
-        $score += $this->getDamage();
-        $score += $this->getCritChance();
-        $score += $this->getCritMultiplier();
-        $score += $this->getAbilityBoost();
-        $score += $this->getHealth();
-        $score += $this->getEnergy();
-        $score += $this->getCooldown();
-        $score += $this->getSpeed();
-
+        foreach (WeaponStats::getAllTypes() as $stat) {
+            $score += $this->getStatById($stat);
+        }
         return $score;
     }
 
@@ -229,17 +195,14 @@ class Weapon {
     }
 
     function getMaxUpgrades() {
-        return $this->getStat('upgradeMax');
+        return $this->getField('upgradeMax');
     }
 
     function getUpgradeAmount() {
         if ($this->isForcedUpgrade()) {
-            if ($this->forced_upgrade_level > $this->getMaxUpgrades()) {
-                return $this->getMaxUpgrades();
-            }
-            return $this->forced_upgrade_level;
+            return min($this->forced_upgrade_level, $this->getMaxUpgrades());
         }
-        return $this->getStat('upgradeTimes');
+        return $this->getField('upgradeTimes');
     }
 
     function getName() {
@@ -295,6 +258,79 @@ class Weapon {
         }
         return null;
     }
+
+    function isUnlocked() {
+        return isset($this->WEAPON['unlocked']) ? $this->WEAPON['unlocked'] : false;
+    }
+
+}
+
+class WeaponStats {
+    const DAMAGE = 0;
+    const CHANCE = 1;
+    const MULTIPLIER = 2;
+    const ABILITYBOOST = 3;
+    const HEALTH = 4;
+    const ENERGY = 5;
+    const COOLDOWN = 6;
+    const MOVEMENT = 7;
+
+    public static function fromID($ID) {
+        switch ($ID) {
+            case WeaponStats::DAMAGE:
+                return new WeaponStat('Damage', 'damage', 7.5, $ID);
+            case WeaponStats::CHANCE:
+                return new WeaponStat('Crit Chance', 'chance', 0, $ID);
+            case WeaponStats::MULTIPLIER:
+                return new WeaponStat('Crit Multiplier', 'multiplier', 0, $ID);
+            case WeaponStats::ABILITYBOOST:
+                return new WeaponStat('Ability Boost', 'abilityBoost', 7.5, $ID);
+            case WeaponStats::HEALTH:
+                return new WeaponStat('Health', 'health', 25, $ID);
+            case WeaponStats::ENERGY:
+                return new WeaponStat('Energy', 'energy', 10, $ID);
+            case WeaponStats::COOLDOWN:
+                return new WeaponStat('Cooldown', 'cooldown', 7.5, $ID);
+            case WeaponStats::MOVEMENT:
+                return new WeaponStat('Movement', 'movement', 7.5, $ID);
+        }
+        return null;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getAllTypes() {
+        $obj = new \ReflectionClass ('\WeaponStats');
+        return $obj->getConstants();
+    }
+}
+
+class WeaponStat {
+    private $name, $field, $upgrade, $id;
+
+    function __construct($name, $field, $upgrade, $id) {
+        $this->name = $name;
+        $this->field = $field;
+        $this->upgrade = $upgrade;
+        $this->id = $id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getField() {
+        return $this->field;
+    }
+
+    public function getUpgrade() {
+        return $this->upgrade;
+    }
+
+    public function getID() {
+        return $this->id;
+    }
 }
 
 class PlayerClasses {
@@ -305,23 +341,21 @@ class PlayerClasses {
 
     public static function fromID($ID, $SPEC) {
         switch ($ID) {
-            case 0:
-                return new PlayerClass("mage", $SPEC, 0);
-            case 1:
-                return new PlayerClass("warrior", $SPEC, 1);
-            case 2:
-                return new PlayerClass("paladin", $SPEC, 2);
-            case 3:
-                return new PlayerClass("shaman", $SPEC, 3);
+            case PlayerClasses::MAGE:
+                return new PlayerClass("mage", $SPEC, $ID);
+            case PlayerClasses::WARRIOR:
+                return new PlayerClass("warrior", $SPEC, $ID);
+            case PlayerClasses::PALADIN:
+                return new PlayerClass("paladin", $SPEC, $ID);
+            case PlayerClasses::SHAMAN:
+                return new PlayerClass("shaman", $SPEC, $ID);
         }
         return null;
     }
 }
 
 class PlayerClass {
-    private $name;
-    private $spec;
-    private $id;
+    private $name, $spec, $id;
 
     private $specs = [
         0 => [0 => "Pyromancer", 1 => "Cryomancer", 2 => "Aquamancer"],
@@ -354,8 +388,7 @@ class PlayerClass {
 }
 
 class Spec {
-    private $name;
-    private $id;
+    private $name, $id;
 
     function __construct($name, $id) {
         $this->name = $name;
@@ -372,9 +405,7 @@ class Spec {
 }
 
 class Ability {
-    private $name;
-    private $type;
-    private $spec;
+    private $name, $type, $spec;
 
     function __construct($name, $spec, $type) {
         $this->name = $name;
