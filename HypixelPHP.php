@@ -474,7 +474,7 @@ class HypixelPHP {
                     $response = $this->fetch(API_REQUESTS::FRIENDS, $key, $val);
                     if ($response['success'] == true) {
                         $FRIENDS = new FriendsList([
-                            'record' => $response['records'],
+                            'record' => ['list' => $response['records']],
                             'extra' => $content['extra']
                         ], $this);
                         $FRIENDS->setExtra(['filename' => $filename]);
@@ -792,7 +792,7 @@ class Utilities {
         'e' => '#FFFF55',
         'f' => '#FFFFFF'
     ];
-    
+
     const MC_COLORNAME = [
         "BLACK" => '§0',
         "DARK_BLUE" => '§1',
@@ -1946,8 +1946,7 @@ class GuildMember {
     /**
      * @return mixed
      */
-    public function getUuid()
-    {
+    public function getUuid() {
         return $this->uuid;
     }
 }
