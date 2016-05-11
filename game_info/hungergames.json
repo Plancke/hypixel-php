@@ -131,13 +131,18 @@
     },
     "paladin": {
       "cost": 45000,
-      "icon": "assets/minecraft/items/307.png",
+      "icon": "assets/minecraft/items/383-56.png",
       "display": "Paladin"
     },
     "hype train": {
       "cost": 45000,
       "icon": "assets/minecraft/items/328.png",
       "display": "Hype Train"
+    },
+    "jockey": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/328.png",
+      "display": "Jockey"
     }
   },
   "tauntability": 1000,
