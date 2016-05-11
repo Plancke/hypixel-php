@@ -131,9 +131,13 @@
     },
     "paladin": {
       "cost": 45000,
-      "reqLevel": 55,
       "icon": "assets/minecraft/items/307.png",
       "display": "Paladin"
+    },
+    "hype train": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/328.png",
+      "display": "Hype Train"
     }
   },
   "tauntability": 1000,
