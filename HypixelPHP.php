@@ -40,6 +40,7 @@ class HypixelPHP {
                 'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
                 'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
                 'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
+                'achievements_file' => $_SERVER['DOCUMENT_ROOT'] . '/assets/achievements.json',
                 'logging' => true,
                 'debug' => true,
                 'use_curl' => true
@@ -1144,6 +1145,7 @@ class Player extends HypixelObject {
     private $guild, $friends, $session;
 
     public function handleNew() {
+        $this->getAchievementPoints(true);
     }
 
     /**
@@ -1359,10 +1361,60 @@ class Player extends HypixelObject {
     }
 
     /**
+     * get Player achievement points
+     * @param bool $force_update
      * @return int
      */
-    public function getAchievementPoints() {
-        return 0;
+    public function getAchievementPoints($force_update = false) {
+        if (!$force_update) {
+            return isset($this->getExtra()['achievementPoints']) ? $this->getExtra()['achievementPoints'] : 0;
+        }
+
+        $isLogging = $this->api->getOptions()['logging'];
+        $this->api->set(['logging' => false]);
+        $achievements = $this->api->getFileContent($this->api->getOptions()['achievements_file']);
+        if ($achievements == null) {
+            return 0;
+        }
+        $achievements = json_decode($achievements, true)['achievements'];
+        $total = 0;
+        $oneTime = $this->get('achievementsOneTime', false, []);
+        $this->api->debug('Starting OneTime Achievements');
+        foreach ($oneTime as $dbName) {
+            $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
+            $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
+            if (!in_array($game, array_keys($achievements))) {
+                continue;
+            }
+            $this->api->debug('Achievement: ' . strtoupper(substr($dbName, strpos($dbName, "_"))));
+            if (in_array($dbName, array_keys($achievements[$game]['one_time']))) {
+                $this->api->debug('Achievement: ' . $dbName . ' - ' . $achievements[$game]['one_time'][$dbName]['points']);
+                $total += $achievements[$game]['one_time'][$dbName]['points'];
+            }
+        }
+        $tiered = $this->get('achievements', false, []);
+        $this->api->debug('Starting Tiered Achievements');
+        foreach ($tiered as $dbName => $value) {
+            $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
+            $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
+            if (!in_array($game, array_keys($achievements))) {
+                continue;
+            }
+            $this->api->debug('Achievement: ' . $dbName);
+            if (in_array($dbName, array_keys($achievements[$game]['tiered']))) {
+                $tierTotal = 0;
+                foreach ($achievements[$game]['tiered'][$dbName]['tiers'] as $tier) {
+                    if ($value >= $tier['amount']) {
+                        $this->api->debug('Tier: ' . $tier['amount'] . ' - ' . $tier['points']);
+                        $tierTotal += $tier['points'];
+                    }
+                }
+                $total += $tierTotal;
+            }
+        }
+        $this->api->set(['logging' => $isLogging]);
+        $this->setExtra(['achievementPoints' => $total, 'achievementTimestamp' => time()]);
+        return $total;
     }
 
     /**
