@@ -39,7 +39,7 @@ class Pet {
         $this->updateLevel();
     }
 
-    function get($PET_ATTRIBUTE_TYPE) {
+    function getAttribute($PET_ATTRIBUTE_TYPE) {
         switch ($PET_ATTRIBUTE_TYPE) {
             case PetAttributeType::THIRST:
                 return $this->PET_STATS['THIRST'];
