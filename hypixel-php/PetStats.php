@@ -39,13 +39,13 @@ class Pet {
         $this->updateLevel();
     }
 
-    function get($PET_STAT_TYPE) {
-        switch ($PET_STAT_TYPE) {
-            case PetStatType::THIRST:
+    function get($PET_ATTRIBUTE_TYPE) {
+        switch ($PET_ATTRIBUTE_TYPE) {
+            case PetAttributeType::THIRST:
                 return $this->PET_STATS['THIRST'];
-            case PetStatType::HUNGER:
+            case PetAttributeType::HUNGER:
                 return $this->PET_STATS['HUNGER'];
-            case PetStatType::EXERCISE:
+            case PetAttributeType::EXERCISE:
                 return $this->PET_STATS['EXERCISE'];
         }
         return null;
@@ -89,7 +89,7 @@ class Pet {
 
 }
 
-class PetStatType {
+class PetAttributeType {
 
     const THIRST = 1;
     const HUNGER = 2;
