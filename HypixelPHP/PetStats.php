@@ -35,9 +35,7 @@ class PetStats {
      */
     static function getExperienceUntilLevel($level) {
         $exp = 0;
-        for ($i = 0;
-             $i < min($level - 1, 100);
-             $i++) {
+        for ($i = 0; $i < min($level - 1, 100); $i++) {
             $exp += PetStats::LEVELS[$i];
         }
 
