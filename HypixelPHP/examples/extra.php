@@ -7,8 +7,8 @@ if ($player != null) {
 
     // automatically saves the file again
     // combine multiple changes into the input
-    // array rather than doing seperate
-    // statements, less file saving!
+    // array rather than doing separate
+    // statements, less saving!
 
     // use
     $player->setExtra([

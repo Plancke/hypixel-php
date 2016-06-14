@@ -1924,7 +1924,7 @@ class MemberList extends HypixelObject {
     }
 
     /**
-     * @return array
+     * @return array[string]GuildMember
      */
     public function getList() {
         return $this->list;
