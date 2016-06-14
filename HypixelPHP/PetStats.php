@@ -26,6 +26,23 @@ class PetStats {
     function getAllPets() {
         return $this->PET_MAP;
     }
+
+    /**
+     * Calculate total amount of experience to reach given pet level
+     *
+     * @param $level
+     * @return int
+     */
+    static function getExperienceUntilLevel($level) {
+        $exp = 0;
+        for ($i = 0;
+             $i < min($level - 1, 100);
+             $i++) {
+            $exp += PetStats::LEVELS[$i];
+        }
+
+        return $exp;
+    }
 }
 
 class Pet {
@@ -39,19 +56,35 @@ class Pet {
         $this->updateLevel();
     }
 
-    function getAttribute($PET_ATTRIBUTE_TYPE) {
+    /**
+     * Gets the value for $ATTRIBUTE_TYPE for this pet
+     * taking into account the last timestamp to modify
+     * the value
+     *
+     * @param $PET_ATTRIBUTE_TYPE
+     * @return int
+     */
+    function getAttributeValue($PET_ATTRIBUTE_TYPE) {
         switch ($PET_ATTRIBUTE_TYPE) {
             case PetAttributeType::THIRST:
-                return $this->getAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['THIRST']);
+                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['THIRST']);
             case PetAttributeType::HUNGER:
-                return $this->getAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['HUNGER']);
+                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['HUNGER']);
             case PetAttributeType::EXERCISE:
-                return $this->getAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['EXERCISE']);
+                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['EXERCISE']);
         }
         return null;
     }
 
-    function getAttributeValue($ATTRIBUTE_TYPE, $ATTRIBUTE) {
+    /**
+     * Get value for given attribute while taking the last update
+     * timestamp into account
+     *
+     * @param $ATTRIBUTE_TYPE
+     * @param $ATTRIBUTE
+     * @return int
+     */
+    function modifyAttributeValue($ATTRIBUTE_TYPE, $ATTRIBUTE) {
         $currentTime = round(microtime(true) * 1000);
         $timestamp = $ATTRIBUTE['timestamp'];
         $value = $ATTRIBUTE['value'];
@@ -63,10 +96,18 @@ class Pet {
         return max(0, round($value - $iterations * PetAttributeType::getDecay($ATTRIBUTE_TYPE)));
     }
 
+    /**
+     * Get current pet experience
+     *
+     * @return int
+     */
     function getExperience() {
         return $this->PET_STATS['experience'];
     }
 
+    /**
+     * Internally update level
+     */
     function updateLevel() {
         $this->LEVEL = 1;
         $curExp = $this->getExperience();
@@ -80,23 +121,18 @@ class Pet {
         }
     }
 
+    /**
+     *
+     * Get pet level
+     *
+     * @return int
+     */
     function getLevel() {
         return $this->LEVEL;
     }
 
-    function getExperienceUntilLevel($level) {
-        $exp = 0;
-        for ($i = 0;
-             $i < min($level - 1, 100);
-             $i++) {
-            $exp += PetStats::LEVELS[$i];
-        }
-
-        return $exp;
-    }
-
     function getLevelProgress() {
-        return $this->getExperience() - $this->getExperienceUntilLevel($this->LEVEL);
+        return $this->getExperience() - PetStats::getExperienceUntilLevel($this->LEVEL);
     }
 
 }
@@ -107,6 +143,14 @@ class PetAttributeType {
     const HUNGER = 2;
     const EXERCISE = 3;
 
+
+    /**
+     *
+     * Get decay rate for given type
+     *
+     * @param $ATTRIBUTE_TYPE
+     * @return int
+     */
     static function getDecay($ATTRIBUTE_TYPE) {
         return 1;
     }
