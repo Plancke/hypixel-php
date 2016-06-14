@@ -42,13 +42,25 @@ class Pet {
     function getAttribute($PET_ATTRIBUTE_TYPE) {
         switch ($PET_ATTRIBUTE_TYPE) {
             case PetAttributeType::THIRST:
-                return $this->PET_STATS['THIRST'];
+                return $this->getAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['THIRST']);
             case PetAttributeType::HUNGER:
-                return $this->PET_STATS['HUNGER'];
+                return $this->getAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['HUNGER']);
             case PetAttributeType::EXERCISE:
-                return $this->PET_STATS['EXERCISE'];
+                return $this->getAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['EXERCISE']);
         }
         return null;
+    }
+
+    function getAttributeValue($ATTRIBUTE_TYPE, $ATTRIBUTE) {
+        $currentTime = round(microtime(true) * 1000);
+        $timestamp = $ATTRIBUTE['timestamp'];
+        $value = $ATTRIBUTE['value'];
+
+        $timeElapsed = $currentTime - $timestamp;
+        $minutesPassed = $timeElapsed / (1000 * 60);
+        $iterations = floor($minutesPassed / 5);
+
+        return max(0, round($value - $iterations * PetAttributeType::getDecay($ATTRIBUTE_TYPE)));
     }
 
     function getExperience() {
@@ -95,4 +107,7 @@ class PetAttributeType {
     const HUNGER = 2;
     const EXERCISE = 3;
 
+    static function getDecay($ATTRIBUTE_TYPE) {
+        return 1;
+    }
 }
