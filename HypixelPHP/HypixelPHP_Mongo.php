@@ -2103,6 +2103,7 @@ class GameTypes {
     const HOUSING = 26;
     const SKYWARS = 51;
     const TRUE_COMBAT = 52;
+    const SPEED_UHC = 54;
 
     /**
      * @param $id
@@ -2145,6 +2146,8 @@ class GameTypes {
                 return new GameType('SkyWars', 'SkyWars', 'SkyWars', GameTypes::SKYWARS);
             case GameTypes::TRUE_COMBAT:
                 return new GameType('TrueCombat', 'Crazy Walls', 'Crazy Walls', GameTypes::TRUE_COMBAT);
+            case GameTypes::SPEED_UHC:
+                return new GameType('SpeedUHC', 'Speed UHC', 'Speed UHC', GameTypes::SPEED_UHC);
             default:
                 return null;
         }
