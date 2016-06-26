@@ -131,56 +131,89 @@
     },
     "paladin": {
       "cost": 45000,
-      "reqLevel": 55,
-      "icon": "assets/minecraft/items/307.png",
+      "icon": "assets/minecraft/items/383-56.png",
       "display": "Paladin"
+    },
+    "hype train": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/328.png",
+      "display": "Hype Train"
+    },
+    "jockey": {
+      "cost": 45000,
+      "icon": "assets/minecraft/items/328.png",
+      "display": "Jockey"
     }
   },
   "tauntability": 1000,
   "blitzpowerups": {
-    "apocalypse": {
-      "cost": 2200,
-      "display": "Apocalypse"
-    },
     "assassin": {
-      "cost": 2200,
+      "cost": 20000,
       "display": "Assassin"
     },
-    "dragonborn": {
-      "cost": 2200,
-      "display": "Dragonborn"
+    "vampire": {
+      "cost": 30000,
+      "display": "Vampire"
     },
-    "explosion": {
-      "cost": 2200,
-      "display": "Explosion"
+    "jediknight": {
+      "cost": 30000,
+      "display": "Jedi Knight"
     },
-    "imprison": {
-      "cost": 2200,
-      "display": "Imprison"
-    },
-    "firebreather": {
-      "cost": 2200,
-      "display": "Fire Breather"
-    },
-    "darknight": {
-      "cost": 2200,
-      "display": "Darknight"
+    "statis": {
+      "cost": 40000,
+      "display": "Statis"
     },
     "vaulthunter": {
-      "cost": 2200,
+      "cost": 30000,
       "display": "Vault Hunter"
     },
     "witherwarrior": {
-      "cost": 2200,
+      "cost": 20000,
       "display": "Wither Warrior"
     },
-    "holywarrior": {
-      "cost": 2200,
-      "display": "Holy Warrior"
+    "gremlin": {
+      "cost": 20000,
+      "display": "Gremlin"
+    },
+    "roulette": {
+      "cost": 40000,
+      "display": "Roulette"
+    },
+    "invoker": {
+      "cost": 20000,
+      "display": "Invoker"
+    },
+    "ironman": {
+      "cost": 20000,
+      "display": "Iron man"
+    },
+    "nuke": {
+      "cost": 30000,
+      "display": "Nuke"
+    },
+    "ninja": {
+      "cost": 20000,
+      "display": "Ninja"
     },
     "robinhood": {
-      "cost": 2200,
+      "cost": 20000,
       "display": "Robinhood"
+    },
+    "nocturne": {
+      "cost": 30000,
+      "display": "Nocturne"
+    },
+    "supplies": {
+      "cost": 20000,
+      "display": "Supplies"
+    },
+    "nocountryforoldmen": {
+      "cost": 30000,
+      "display": "No country for old men"
+    },
+    "Swegmove": {
+      "cost": 4000,
+      "display": "Sweg Move"
     }
   }
 }

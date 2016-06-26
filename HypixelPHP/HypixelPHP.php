@@ -1,8 +1,7 @@
 <?php
-namespace HypixelPHP_Mongo;
+namespace HypixelPHP;
 
 use DateTime;
-use MongoClient;
 
 /**
  * HypixelPHP
@@ -15,7 +14,6 @@ use MongoClient;
 class HypixelPHP {
     private $options;
     private $getUrlErrors = [];
-    public $MONGO_CLIENT;
     const MAX_CACHE_TIME = 999999999999;
 
     /**
@@ -33,23 +31,40 @@ class HypixelPHP {
                     CACHE_TIMES::GUILD => 600,
                     CACHE_TIMES::GUILD_NOT_FOUND => 600,
                 ],
-                'timeout' => 1000,
-                'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
+                'timeout' => 2000,
+                'cache_folder_player' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/player',
+                'cache_folder_guild' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/guild',
+                'cache_folder_friends' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/friends',
+                'cache_folder_sessions' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/sessions',
+                'cache_folder_keyInfo' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/keyInfo/',
                 'cache_boosters' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/boosters.json',
                 'cache_leaderboards' => $_SERVER['DOCUMENT_ROOT'] . '/cache/HypixelAPI/leaderboards.json',
-                'logging' => false,
-                'debug' => false,
+                'log_folder' => $_SERVER['DOCUMENT_ROOT'] . '/logs/HypixelAPI',
+                'achievements_file' => $_SERVER['DOCUMENT_ROOT'] . '/assets/achievements.json',
+                'logging' => true,
+                'debug' => true,
                 'use_curl' => true
             ],
             $input
         );
 
+        if (!file_exists($this->options['cache_folder_player'])) {
+            mkdir($this->options['cache_folder_player'], 0777, true);
+        }
+        if (!file_exists($this->options['cache_folder_guild'])) {
+            mkdir($this->options['cache_folder_guild'], 0777, true);
+        }
+        if (!file_exists($this->options['cache_folder_friends'])) {
+            mkdir($this->options['cache_folder_friends'], 0777, true);
+        }
+        if (!file_exists($this->options['cache_folder_sessions'])) {
+            mkdir($this->options['cache_folder_sessions'], 0777, true);
+        }
         if (!file_exists($this->options['log_folder'])) {
             mkdir($this->options['log_folder'], 0777, true);
         }
 
         $this->options['cache_times_original'] = $this->options['cache_times'];
-        $this->MONGO_CLIENT = new MongoClient();
     }
 
     /**
@@ -58,7 +73,7 @@ class HypixelPHP {
     public function set($input) {
         foreach ($input as $key => $val) {
             if ($key != 'api_key' && $key != 'debug') {
-                if ($this->options[$key] != $val) {
+                if (array_key_exists($key, $this->options) || $this->options[$key] != $val) {
                     if (is_array($val)) {
                         $this->debug('Setting ' . $key . ' to ' . json_encode($val));
                     } else {
@@ -257,7 +272,6 @@ class HypixelPHP {
             }
             $this->debug('Fetch Failed: ' . $response['cause']);
             $this->setAllCacheTimes(HypixelPHP::MAX_CACHE_TIME - 1);
-            // If one fails, stop trying for that session
         } else {
             $this->debug('Fetch successful!');
         }
@@ -271,22 +285,20 @@ class HypixelPHP {
     public function getPlayer($pairs = []) {
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == KEYS::PLAYER_BY_UNKNOWN ||
-                    $key == KEYS::PLAYER_BY_NAME
-                ) {
+                if ($key == KEYS::PLAYER_BY_UNKNOWN || $key == KEYS::PLAYER_BY_NAME) {
                     return $this->getPlayer([KEYS::PLAYER_BY_UUID => $this->getUUIDFromVar($val)]);
                 }
+
+                $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
                 if ($key == KEYS::PLAYER_BY_UUID) {
                     $val = Utilities::ensureNoDashesUUID($val);
-                    if (InputType::getType($val) !== InputType::UUID) continue;
+                    if (InputType::getType($val) != InputType::UUID) continue;
 
-                    $query = ['record.uuid' => (string)$val]; // TODO make sure there's an index here
-                    $content = $this->getCacheMongo(COLLECTION_NAMES::PLAYERS, $query);
+                    $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-                        if (time() - $this->getCacheTime(CACHE_TIMES::PLAYER) < $timestamp) {
-                            $PLAYER = new Player($content, $this);
-                            return $PLAYER;
+                        if (time() - $this->getCacheTime() < $timestamp) {
+                            return new Player($content, $this);
                         }
                     }
 
@@ -296,19 +308,16 @@ class HypixelPHP {
                             'record' => $response['player'],
                             'extra' => $content['extra']
                         ], $this);
-                        if (!is_array($PLAYER->getRecord())) {
-                            $PLAYER->JSONArray['record'] = [];
-                        } // null players fix (valid uuid no hypixel stats)
-                        $PLAYER->JSONArray['record']['uuid'] = (string)$val;
+                        $PLAYER->setExtra(['filename' => $filename]);
                         $PLAYER->handleNew();
-                        $this->setCacheMongo(COLLECTION_NAMES::PLAYERS, $query, $PLAYER);
+                        $this->setCache($filename, $PLAYER);
                         return $PLAYER;
                     }
                 }
             }
         }
         if ($this->getCacheTime(CACHE_TIMES::PLAYER) < self::MAX_CACHE_TIME) {
-            $this->setCacheTime(self::MAX_CACHE_TIME, [CACHE_TIMES::PLAYER]);
+            $this->setCacheTime(self::MAX_CACHE_TIME, CACHE_TIMES::PLAYER);
             return $this->getPlayer($pairs);
         }
         return null;
@@ -322,50 +331,36 @@ class HypixelPHP {
     public function getGuild($pairs = []) {
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == KEYS::GUILD_BY_PLAYER_UNKNOWN ||
-                    $key == KEYS::GUILD_BY_PLAYER_NAME ||
-                    $key == KEYS::GUILD_BY_PLAYER_OBJECT
+                if ($key == KEYS::GUILD_BY_PLAYER_OBJECT ||
+                    $key == KEYS::GUILD_BY_PLAYER_NAME
                 ) {
                     return $this->getGuild([KEYS::GUILD_BY_PLAYER_UUID => $this->getUUIDFromVar($val)]);
                 }
 
-                if ($key == KEYS::GUILD_BY_PLAYER_UUID) {
-                    // Check if we have a guild on file with that name
-                    $query = ['uuid' => strtolower((string)$val)]; // TODO make sure there's an index here
-                    $content = $this->getCacheMongo(COLLECTION_NAMES::GUILDS_UUID, $query);
+                $filename = $this->options['cache_folder_guild'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
+
+                if ($key == KEYS::GUILD_BY_NAME || $key == KEYS::GUILD_BY_PLAYER_UUID) {
+                    $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                         if (time() - $this->getCacheTime() < $timestamp) {
-                            return $this->getGuild([KEYS::GUILD_BY_ID => $content['guild']]);
+                            if (isset($content['guild'])) {
+                                return $this->getGuild([KEYS::GUILD_BY_ID => $content['guild']]);
+                            }
+                            continue;
                         }
                     }
 
-                    $val = Utilities::ensureNoDashesUUID($val);
-                    if (InputType::getType($val) != InputType::UUID) continue;
-
-                    $response = $this->fetch(API_REQUESTS::FIND_GUILD, $key, $val);
+                    $response = $this->fetch(API_REQUESTS::FIND_GUILD, $key, $val, 5000);
                     if ($response['success'] == true) {
-                        $content = ['timestamp' => time(), 'guild' => $response['guild'], 'uuid' => strtolower((string)$val)];
-                        $this->setCacheMongo(COLLECTION_NAMES::GUILDS_UUID, $query, $content);
+                        $content = ['timestamp' => time(), 'guild' => $response['guild']];
+                        $this->setFileContent($filename, json_encode($content));
                         return $this->getGuild([KEYS::GUILD_BY_ID => $response['guild']]);
                     }
                 }
 
-                if ($key == KEYS::GUILD_BY_NAME) {
-                    // Check if we have a guild on file with that name
-                    $query = ['extra.name_lower' => strtolower((string)$val)]; // TODO make sure there's an index here
-                    $content = $this->getCacheMongo(COLLECTION_NAMES::GUILDS, $query);
-                    if ($content != null) {
-                        $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-                        if (time() - $this->getCacheTime() < $timestamp) {
-                            return new Guild($content, $this);
-                        }
-                    }
-                }
-
                 if ($key == KEYS::GUILD_BY_ID) {
-                    $query = ['record._id' => (string)$val];
-                    $content = $this->getCacheMongo(COLLECTION_NAMES::GUILDS, $query);
+                    $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                         if (time() - $this->getCacheTime() < $timestamp) {
@@ -379,19 +374,16 @@ class HypixelPHP {
                             'record' => $response['guild'],
                             'extra' => $content['extra']
                         ], $this);
-                        if (!is_array($GUILD->getRecord())) {
-                            $GUILD->JSONArray['record'] = [];
-                        }
-                        $GUILD->JSONArray['record']['_id'] = (string)$val;
+                        $GUILD->setExtra(['filename' => $filename]);
                         $GUILD->handleNew();
-                        $this->setCacheMongo(COLLECTION_NAMES::GUILDS, $query, $GUILD);
+                        $this->setCache($filename, $GUILD);
                         return $GUILD;
                     }
                 }
             }
         }
         if ($this->getCacheTime(CACHE_TIMES::GUILD) < self::MAX_CACHE_TIME) {
-            $this->setCacheTime(self::MAX_CACHE_TIME, [CACHE_TIMES::GUILD]);
+            $this->setCacheTime(self::MAX_CACHE_TIME, CACHE_TIMES::GUILD);
             return $this->getGuild($pairs);
         }
         return null;
@@ -405,15 +397,20 @@ class HypixelPHP {
     public function getSession($pairs = []) {
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == KEYS::SESSION_BY_PLAYER_OBJECT ||
-                    $key == KEYS::SESSION_BY_NAME
-                ) {
-                    return $this->getSession([KEYS::SESSION_BY_UUID => $this->getUUIDFromVar($val)]);
+                if ($key == KEYS::SESSION_BY_PLAYER_OBJECT && $val instanceof Player) {
+                    /* @var $val Player */
+                    return $this->getSession([KEYS::SESSION_BY_UUID => $val->getUUID()]);
                 }
 
-                if ($key == KEYS::SESSION_BY_UUID) {
-                    $query = ['record.uuid' => (string)$val]; // TODO make sure there's an index here
-                    $content = $this->getCacheMongo(COLLECTION_NAMES::SESSIONS, $query);
+                $filename = $this->options['cache_folder_sessions'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
+
+                if ($key == KEYS::SESSION_BY_NAME) {
+                    if (file_exists($filename) || $this->hasPaid($val)) {
+                        $uuid = $this->getUUID($val);
+                        return $this->getSession([KEYS::SESSION_BY_UUID => $uuid]);
+                    }
+                } elseif ($key == KEYS::SESSION_BY_UUID) {
+                    $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                         if (time() - $this->getCacheTime() < $timestamp) {
@@ -422,7 +419,7 @@ class HypixelPHP {
                     }
 
                     $response = $this->fetch(API_REQUESTS::SESSION, $key, $val);
-                    if ($response['success'] === true) {
+                    if ($response['success'] == true) {
                         $SESSION = new Session([
                             'record' => $response['session'],
                             'extra' => $content['extra']
@@ -431,7 +428,8 @@ class HypixelPHP {
                             $SESSION->JSONArray['record'] = [];
                         }
                         $SESSION->JSONArray['record']['uuid'] = (string)$val;
-                        $this->setCacheMongo(COLLECTION_NAMES::SESSIONS, $query, $SESSION);
+                        $SESSION->setExtra(['filename' => $filename]);
+                        $this->setCache($filename, $SESSION);
                         return $SESSION;
                     }
                 }
@@ -453,16 +451,20 @@ class HypixelPHP {
     public function getFriends($pairs = []) {
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') {
-                if ($key == KEYS::FRIENDS_BY_PLAYER_OBJECT ||
-                    $key == KEYS::FRIENDS_BY_NAME
-                ) {
-                    return $this->getFriends([KEYS::FRIENDS_BY_UUID => $this->getUUIDFromVar($val)]);
+                if ($key == KEYS::FRIENDS_BY_PLAYER_OBJECT && $val instanceof Player) {
+                    /* @var $val Player */
+                    return $this->getFriends([KEYS::FRIENDS_BY_UUID => $val->getUUID()]);
                 }
 
+                $filename = $this->options['cache_folder_friends'] . DIRECTORY_SEPARATOR . $key . DIRECTORY_SEPARATOR . $this->getCacheFileName($val) . '.json';
 
-                if ($key == KEYS::FRIENDS_BY_UUID) {
-                    $query = ['record.uuid' => (string)$val]; // TODO make sure there's an index here
-                    $content = $this->getCacheMongo(COLLECTION_NAMES::FRIENDS, $query);
+                if ($key == KEYS::FRIENDS_BY_NAME) {
+                    if (file_exists($filename) || $this->hasPaid($val)) {
+                        $uuid = $this->getUUID($val);
+                        return $this->getFriends([KEYS::FRIENDS_BY_UUID => $uuid]);
+                    }
+                } elseif ($key == KEYS::FRIENDS_BY_UUID) {
+                    $content = $this->getCache($filename);
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                         if (time() - $this->getCacheTime() < $timestamp) {
@@ -476,9 +478,9 @@ class HypixelPHP {
                             'record' => ['list' => $response['records']],
                             'extra' => $content['extra']
                         ], $this);
-                        $FRIENDS->JSONArray['record']['uuid'] = (string)$val;
+                        $FRIENDS->setExtra(['filename' => $filename]);
                         $FRIENDS->handleNew();
-                        $this->setCacheMongo(COLLECTION_NAMES::FRIENDS, $query, $FRIENDS);
+                        $this->setCache($filename, $FRIENDS);
                         return $FRIENDS;
                     }
                 }
@@ -540,7 +542,7 @@ class HypixelPHP {
         }
 
         $response = $this->fetch(API_REQUESTS::LEADERBOARDS);
-        if ($response['success'] == true) {
+        if ($response['success'] == 'true') {
             $LEADERBOARDS = new Leaderboards([
                 'record' => $response['leaderboards'],
                 'extra' => $content['extra']
@@ -563,8 +565,8 @@ class HypixelPHP {
      * @return KeyInfo|null
      */
     public function getKeyInfo() {
-        $query = ['record.key' => (string)$this->getKey()]; // TODO make sure there's an index here
-        $content = $this->getCacheMongo(COLLECTION_NAMES::API_KEYS, $query);
+        $filename = $this->options['cache_folder_keyInfo'] . $this->getCacheFileName($this->getKey());
+        $content = $this->getCache($filename);
         if ($content != null) {
             $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
             if (time() - $this->getCacheTime() < $timestamp) {
@@ -576,11 +578,7 @@ class HypixelPHP {
         $response = $this->fetch(API_REQUESTS::KEY);
         if ($response['success'] == true) {
             $content = ['timestamp' => time(), 'record' => $response['record']];
-            if (!is_array($content['record'])) {
-                $content['record'] = [];
-            }
-            $content['record']['key'] = (string)$this->getKey();
-            $this->setCacheMongo(COLLECTION_NAMES::API_KEYS, $query, $content);
+            $this->setFileContent($filename, json_encode($content));
             return new KeyInfo($content, $this);
         }
 
@@ -659,44 +657,12 @@ class HypixelPHP {
     }
 
     /**
-     * @param $collection
-     * @param $query
-     * @return array|null
-     */
-    public function getCacheMongo($collection, $query) {
-        /** @noinspection PhpUndefinedFieldInspection */
-        $content = $this->MONGO_CLIENT->HypixelAPI->createCollection($collection)->findOne($query);
-        if ($content == null) {
-            return null;
-        }
-        if (!array_key_exists('extra', $content)) {
-            $content['extra'] = [];
-        }
-        return $content;
-    }
-
-    /**
      * @param               $filename
      * @param HypixelObject $obj
      */
     public function setCache($filename, HypixelObject $obj) {
         $content = json_encode($obj->getRaw());
         $this->setFileContent($filename, $content);
-    }
-
-    /**
-     * @param $collection
-     * @param $query
-     * @param $obj
-     */
-    public function setCacheMongo($collection, $query, $obj) {
-        if ($obj instanceof HypixelObject) {
-            /** @noinspection PhpUndefinedFieldInspection */
-            $this->MONGO_CLIENT->HypixelAPI->createCollection($collection)->update($query, $obj->getRaw(), ['upsert' => true]);
-        } else {
-            /** @noinspection PhpUndefinedFieldInspection */
-            $this->MONGO_CLIENT->HypixelAPI->createCollection($collection)->update($query, $obj, ['upsert' => true]);
-        }
     }
 
     /**
@@ -707,67 +673,54 @@ class HypixelPHP {
      * @return string|bool
      */
     public function getUUID($username, $url = 'https://api.mojang.com/users/profiles/minecraft/%s') {
-        $query = ['name_lowercase' => strtolower($username)];
-        $content = $this->getCacheMongo(COLLECTION_NAMES::PLAYER_UUID, $query);
-        if ($content != null) {
-            $CACHE_TIME = $this->getCacheTime(CACHE_TIMES::UUID);
-            if (!isset($content['uuid']) || $content['uuid'] == null || $content['uuid'] == '') {
-                $CACHE_TIME = $this->getCacheTime(CACHE_TIMES::UUID_NOT_FOUND);
-                // allow for faster fail over when uuid is null/not found
-            }
-            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-            $diff = time() - $CACHE_TIME - $timestamp;
-            $this->debug('Found NAME match in PLAYER_UUID! \'' . abs($diff) . '\'');
-            if ($diff < 0) {
-                return $content['uuid'];
-            }
-        }
+        $uuidURL = sprintf($url, $username);
+        $filename = $this->options['cache_folder_player'] . DIRECTORY_SEPARATOR . 'name' . DIRECTORY_SEPARATOR . $this->getCacheFileName($username) . '.json';
 
-        if ($this->getCacheTime(CACHE_TIMES::UUID) == self::MAX_CACHE_TIME) {
-            $query = ['record.playername' => strtolower($username)];
-            $content = $this->getCacheMongo(COLLECTION_NAMES::PLAYERS, $query);
-            if ($content != null) {
+        $content = $this->getCache($filename);
+        if ($content != null) {
+            $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
+            if (time() - $this->getCacheTime(CACHE_TIMES::UUID) < $timestamp) {
+                $CACHE_TIME = $this->getCacheTime(CACHE_TIMES::UUID);
+                if (!isset($content['uuid']) || $content['uuid'] == null || $content['uuid'] == '') {
+                    $CACHE_TIME = $this->getCacheTime(CACHE_TIMES::UUID_NOT_FOUND);
+                    // allow for faster fail over when uuid is null/not found
+                }
                 $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
-                $diff = time() - $this->getCacheTime(CACHE_TIMES::UUID) - $timestamp;
-                if ($diff < 0) {
-                    $this->debug('Found NAME match in PLAYERS! \'' . strtolower($username) . '\' Cache valid! ' . abs($diff));
-                    return $content['record']['uuid'];
-                } else {
-                    $this->debug('Found NAME match in PLAYERS! \'' . strtolower($username) . '\' Cache expired! ' . abs($diff));
+                if (time() - $CACHE_TIME < $timestamp) {
+                    return $content['uuid'];
                 }
             }
         }
 
-        $uuidURL = sprintf($url, $username);
         $response = $this->getUrlContents($uuidURL);
         if (isset($response['id'])) {
             $this->debug('UUID for username fetched!');
             $content = [
                 'timestamp' => time(),
-                'name_lowercase' => strtolower((string)$username),
-                'uuid' => Utilities::ensureNoDashesUUID($response['id'])
+                'name' => $response['name'],
+                'uuid' => $response['id']
             ];
-            if ($content['uuid'] == '' || $content['uuid'] == null) {
-                $this->setCacheMongo(COLLECTION_NAMES::PLAYER_UUID, ['name_lowercase' => strtolower($username)], ['$set' => [['timestamp' => time()]]]);
-            } else {
-                $this->setCacheMongo(COLLECTION_NAMES::PLAYER_UUID, ['name_lowercase' => strtolower($username)], $content);
-            }
-            $this->debug($username . ' => ' . $content['uuid']);
-            return $content['uuid'];
+            $this->setFileContent($filename, json_encode($content));
+            $this->debug($username . ' => ' . $response['id']);
+            return $response['id'];
         }
 
         if ($this->getCacheTime(CACHE_TIMES::UUID) < self::MAX_CACHE_TIME) {
-            $this->setCacheTime(self::MAX_CACHE_TIME, [CACHE_TIMES::UUID]);
+            $this->setCacheTime(self::MAX_CACHE_TIME, CACHE_TIMES::UUID);
             return $this->getUUID($username, $url);
         }
-        $this->debug('unable to fetch UUID!', false);
         return false;
     }
 
+    /**
+     * @param $value
+     *
+     * @return bool|null|string
+     */
     public function getUUIDFromVar($value) {
         $uuid = null;
         $type = InputType::getType($value);
-        if ($type != null) {
+        if ($type !== null) {
             if ($type == InputType::USERNAME) {
                 $this->debug('Input is username, fetching UUID.', false);
                 $uuid = $this->getUUID((string)$value);
@@ -803,7 +756,6 @@ class HypixelPHP {
 }
 
 class Utilities {
-
     public static function ensureNoDashesUUID($uuid) {
         return str_replace("-", "", $uuid);
     }
@@ -994,19 +946,6 @@ class KEYS {
     }
 }
 
-class COLLECTION_NAMES {
-    const PLAYERS = 'players';
-    const PLAYER_UUID = 'player_uuid';
-
-    const FRIENDS = 'friends';
-
-    const GUILDS = 'guilds';
-    const GUILDS_UUID = 'guilds_uuid';
-
-    const SESSIONS = 'sessions';
-    const API_KEYS = 'api_keys';
-}
-
 class InputType {
     const UUID = 0;
     const USERNAME = 1;
@@ -1107,7 +1046,7 @@ class HypixelObject {
      * @return array
      */
     public function getArray($key) {
-        return $this->get($key, false, []);
+        return $this->get($key, true, []);
     }
 
     /**
@@ -1173,22 +1112,6 @@ class HypixelObject {
     }
 
     public function saveCache() {
-        if ($this instanceof Player) {
-            $this->api->setCacheMongo(COLLECTION_NAMES::PLAYERS, ['record.uuid' => $this->getUUID()], $this);
-            return;
-        } elseif ($this instanceof Guild) {
-            $this->api->setCacheMongo(COLLECTION_NAMES::GUILDS, ['record._id' => $this->getID()], $this);
-            return;
-        } elseif ($this instanceof FriendsList) {
-            $this->api->setCacheMongo(COLLECTION_NAMES::FRIENDS, ['record.uuid' => $this->getUUID()], $this);
-            return;
-        } elseif ($this instanceof Session) {
-            $this->api->setCacheMongo(COLLECTION_NAMES::SESSIONS, ['record.uuid' => $this->getUUID()], $this);
-            return;
-        } elseif ($this instanceof KeyInfo) {
-            $this->api->setCacheMongo(COLLECTION_NAMES::API_KEYS, ['record.key' => $this->getKey()], $this);
-            return;
-        }
         if (array_key_exists('filename', $this->getExtra())) {
             $this->api->debug('Saving cache file', false);
             $this->api->setCache($this->JSONArray['extra']['filename'], $this);
@@ -1222,6 +1145,7 @@ class Player extends HypixelObject {
     private $guild, $friends, $session;
 
     public function handleNew() {
+        $this->getAchievementPoints(true);
     }
 
     /**
@@ -1313,7 +1237,7 @@ class Player extends HypixelObject {
         $rank = $this->getRank(false);
         $out = $rank->getColor() . $this->getName();
         if ($prefix) {
-            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix()) . ' ' . $this->getName();
+            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix($this)) . ' ' . $this->getName();
         }
         if ($guildTag) {
             $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
@@ -1437,10 +1361,60 @@ class Player extends HypixelObject {
     }
 
     /**
+     * get Player achievement points
+     * @param bool $force_update
      * @return int
      */
-    public function getAchievementPoints() {
-        return 0;
+    public function getAchievementPoints($force_update = false) {
+        if (!$force_update) {
+            return isset($this->getExtra()['achievementPoints']) ? $this->getExtra()['achievementPoints'] : 0;
+        }
+
+        $isLogging = $this->api->getOptions()['logging'];
+        $this->api->set(['logging' => false]);
+        $achievements = $this->api->getFileContent($this->api->getOptions()['achievements_file']);
+        if ($achievements == null) {
+            return 0;
+        }
+        $achievements = json_decode($achievements, true)['achievements'];
+        $total = 0;
+        $oneTime = $this->get('achievementsOneTime', false, []);
+        $this->api->debug('Starting OneTime Achievements');
+        foreach ($oneTime as $dbName) {
+            $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
+            $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
+            if (!in_array($game, array_keys($achievements))) {
+                continue;
+            }
+            $this->api->debug('Achievement: ' . strtoupper(substr($dbName, strpos($dbName, "_"))));
+            if (in_array($dbName, array_keys($achievements[$game]['one_time']))) {
+                $this->api->debug('Achievement: ' . $dbName . ' - ' . $achievements[$game]['one_time'][$dbName]['points']);
+                $total += $achievements[$game]['one_time'][$dbName]['points'];
+            }
+        }
+        $tiered = $this->get('achievements', false, []);
+        $this->api->debug('Starting Tiered Achievements');
+        foreach ($tiered as $dbName => $value) {
+            $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
+            $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
+            if (!in_array($game, array_keys($achievements))) {
+                continue;
+            }
+            $this->api->debug('Achievement: ' . $dbName);
+            if (in_array($dbName, array_keys($achievements[$game]['tiered']))) {
+                $tierTotal = 0;
+                foreach ($achievements[$game]['tiered'][$dbName]['tiers'] as $tier) {
+                    if ($value >= $tier['amount']) {
+                        $this->api->debug('Tier: ' . $tier['amount'] . ' - ' . $tier['points']);
+                        $tierTotal += $tier['points'];
+                    }
+                }
+                $total += $tierTotal;
+            }
+        }
+        $this->api->set(['logging' => $isLogging]);
+        $this->setExtra(['achievementPoints' => $total, 'achievementTimestamp' => time()]);
+        return $total;
     }
 
     /**
@@ -1822,11 +1796,6 @@ class Friend extends HypixelObject {
  * @package HypixelPHP
  */
 class Guild extends HypixelObject {
-
-    public function handleNew() {
-        $this->setExtra(['name_lower' => strtolower($this->getName())]); // add lowercase name for faster case insensitive lookup
-    }
-
     /**
      * @return string
      */
@@ -1867,7 +1836,7 @@ class Guild extends HypixelObject {
      */
     public function getMaxMembers() {
         $total = 25;
-        $level = $this->getInt('memberSizeLevel', -1);
+        $level = $this->get('memberSizeLevel', true, -1);
         if ($level >= 0) {
             $total += 5 * $level;
         }
@@ -1955,7 +1924,7 @@ class MemberList extends HypixelObject {
     }
 
     /**
-     * @return array
+     * @return array[string]GuildMember
      */
     public function getList() {
         return $this->list;
@@ -2025,6 +1994,13 @@ class GuildMember {
     public function getJoinTimeStamp() {
         return $this->joined;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUuid() {
+        return $this->uuid;
+    }
 }
 
 /**
@@ -2050,6 +2026,7 @@ class GameTypes {
     const HOUSING = 26;
     const SKYWARS = 51;
     const TRUE_COMBAT = 52;
+    const SPEED_UHC = 54;
 
     /**
      * @param $id
@@ -2092,6 +2069,8 @@ class GameTypes {
                 return new GameType('SkyWars', 'SkyWars', 'SkyWars', GameTypes::SKYWARS);
             case GameTypes::TRUE_COMBAT:
                 return new GameType('TrueCombat', 'Crazy Walls', 'Crazy Walls', GameTypes::TRUE_COMBAT);
+            case GameTypes::SPEED_UHC:
+                return new GameType('SpeedUHC', 'Speed UHC', 'Speed UHC', GameTypes::SPEED_UHC);
             default:
                 return null;
         }
