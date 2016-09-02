@@ -2109,6 +2109,11 @@ class GuildMember {
     }
 }
 
+/**
+ * Class GameTypes
+ *
+ * @package HypixelPHP
+ */
 class GameTypes {
     const QUAKE = 2;
     const WALLS = 3;
