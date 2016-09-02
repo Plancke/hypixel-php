@@ -2109,11 +2109,6 @@ class GuildMember {
     }
 }
 
-/**
- * Class GameTypes
- *
- * @package HypixelPHP
- */
 class GameTypes {
     const QUAKE = 2;
     const WALLS = 3;
@@ -2133,6 +2128,7 @@ class GameTypes {
     const SKYWARS = 51;
     const TRUE_COMBAT = 52;
     const SPEED_UHC = 54;
+    const SKY_CLASH = 55;
 
     /**
      * @param $id
@@ -2177,6 +2173,8 @@ class GameTypes {
                 return new GameType('TrueCombat', 'Crazy Walls', 'Crazy Walls', GameTypes::TRUE_COMBAT);
             case GameTypes::SPEED_UHC:
                 return new GameType('SpeedUHC', 'Speed UHC', 'Speed UHC', GameTypes::SPEED_UHC);
+            case GameTypes::SKY_CLASH:
+                return new GameType('SkyClash', 'SkyClash', 'SkyClash', GameTypes::SKY_CLASH);
             default:
                 return null;
         }
