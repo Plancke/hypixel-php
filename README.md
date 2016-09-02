@@ -1,6 +1,6 @@
 # Hypixel PHP
 
-A PHP class for fetching Player/Guild information from the Public HypixelAPI
+A PHP class for fetching Player/Guild information from the Public HypixelAPI.
 Documentation for the Public API can be found here: https://github.com/HypixelDev/PublicAPI
 
 ## Requirements
