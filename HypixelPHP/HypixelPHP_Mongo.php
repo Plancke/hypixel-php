@@ -361,6 +361,13 @@ class HypixelPHP {
                             return new Guild($content, $this);
                         }
                     }
+
+                    $response = $this->fetch(API_REQUESTS::FIND_GUILD, $key, $val);
+                    if ($response['success'] == true) {
+                        $content = ['timestamp' => time(), 'guild' => $response['guild'], 'uuid' => strtolower((string)$val)];
+                        $this->setCacheMongo(COLLECTION_NAMES::GUILDS, $query, $content);
+                        return $this->getGuild([KEYS::GUILD_BY_ID => $response['guild']]);
+                    }
                 }
 
                 if ($key == KEYS::GUILD_BY_ID) {
@@ -1309,6 +1316,10 @@ class Player extends HypixelObject {
         } else {
             $outStr = Utilities::stripColors($out);
         }
+        $extraKey = (($prefix ? "prefix_" : '') . ($guildTag ? 'guild_tag_' : '') . ($parseColors ? '' : 'no_color_') . 'name');
+        if ($this->getExtra($extraKey, false, '') != $outStr) {
+            $this->setExtra([$extraKey => $outStr]);
+        }
         return $outStr;
     }
 
@@ -1320,6 +1331,10 @@ class Player extends HypixelObject {
         }
         if ($guildTag) {
             $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
+        }
+        $extraKey = (($prefix ? "prefix_" : '') . ($guildTag ? 'guild_tag_' : '') . '_raw_name');
+        if ($this->getExtra($extraKey, false, '') != $out) {
+            $this->setExtra([$extraKey => $out]);
         }
         return $out;
     }
@@ -2092,6 +2107,10 @@ class GuildMember {
             return $this->api->getPlayer([KEYS::PLAYER_BY_NAME => $this->name]);
         }
         return null;
+    }
+
+    public function getUUID() {
+        return $this->uuid;
     }
 
     /**
