@@ -9,7 +9,7 @@ use MongoClient;
  *
  * @author Plancke
  * @version 2.0.1
- * @link  http://plancke.nl
+ * @link  https://plancke.io
  *
  */
 class HypixelPHP {
@@ -286,8 +286,7 @@ class HypixelPHP {
                     if ($content != null) {
                         $timestamp = array_key_exists('timestamp', $content) ? $content['timestamp'] : 0;
                         if (time() - $this->getCacheTime(CACHE_TIMES::PLAYER) < $timestamp) {
-                            $PLAYER = new Player($content, $this);
-                            return $PLAYER;
+                            return new Player($content, $this);
                         }
                     }
 
@@ -331,6 +330,9 @@ class HypixelPHP {
                 }
 
                 if ($key == KEYS::GUILD_BY_PLAYER_UUID) {
+                    $val = Utilities::ensureNoDashesUUID($val);
+                    if (InputType::getType($val) != InputType::UUID) continue;
+
                     // Check if we have a guild on file with that name
                     $query = ['uuid' => strtolower((string)$val)]; // TODO make sure there's an index here
                     $content = $this->getCacheMongo(COLLECTION_NAMES::GUILDS_UUID, $query);
@@ -340,9 +342,6 @@ class HypixelPHP {
                             return $this->getGuild([KEYS::GUILD_BY_ID => $content['guild']]);
                         }
                     }
-
-                    $val = Utilities::ensureNoDashesUUID($val);
-                    if (InputType::getType($val) != InputType::UUID) continue;
 
                     $response = $this->fetch(API_REQUESTS::FIND_GUILD, $key, $val);
                     if ($response['success'] == true) {
@@ -361,6 +360,13 @@ class HypixelPHP {
                         if (time() - $this->getCacheTime() < $timestamp) {
                             return new Guild($content, $this);
                         }
+                    }
+
+                    $response = $this->fetch(API_REQUESTS::FIND_GUILD, $key, $val);
+                    if ($response['success'] == true) {
+                        $content = ['timestamp' => time(), 'guild' => $response['guild'], 'uuid' => strtolower((string)$val)];
+                        $this->setCacheMongo(COLLECTION_NAMES::GUILDS, $query, $content);
+                        return $this->getGuild([KEYS::GUILD_BY_ID => $response['guild']]);
                     }
                 }
 
@@ -703,11 +709,10 @@ class HypixelPHP {
     /**
      * Function to get and cache UUID from username.
      * @param string $username
-     * @param string $url
      *
      * @return string|bool
      */
-    public function getUUID($username, $url = 'https://api.mojang.com/users/profiles/minecraft/%s') {
+    public function getUUID($username) {
         $query = ['name_lowercase' => strtolower($username)];
         $content = $this->getCacheMongo(COLLECTION_NAMES::PLAYER_UUID, $query);
         if ($content != null) {
@@ -732,21 +737,25 @@ class HypixelPHP {
                 $diff = time() - $this->getCacheTime(CACHE_TIMES::UUID) - $timestamp;
                 if ($diff < 0) {
                     $this->debug('Found NAME match in PLAYERS! \'' . strtolower($username) . '\' Cache valid! ' . abs($diff));
-                    return $content['record']['uuid'];
+                    if (isset($content['record']['uuid']) && $content['record']['uuid'] != '') {
+                        return $content['record']['uuid'];
+                    } else {
+                        $this->debug('UUID is null');
+                    }
                 } else {
                     $this->debug('Found NAME match in PLAYERS! \'' . strtolower($username) . '\' Cache expired! ' . abs($diff));
                 }
             }
         }
 
-        $uuidURL = sprintf($url, $username);
+        $uuidURL = sprintf('https://api.mojang.com/users/profiles/minecraft/%s', $username);
         $response = $this->getUrlContents($uuidURL);
         if (isset($response['id'])) {
             $this->debug('UUID for username fetched!');
             $content = [
                 'timestamp' => time(),
                 'name_lowercase' => strtolower((string)$username),
-                'uuid' => Utilities::ensureNoDashesUUID($response['id'])
+                'uuid' => Utilities::ensureNoDashesUUID((string)$response['id'])
             ];
             if ($content['uuid'] == '' || $content['uuid'] == null) {
                 $this->setCacheMongo(COLLECTION_NAMES::PLAYER_UUID, ['name_lowercase' => strtolower($username)], ['$set' => [['timestamp' => time()]]]);
@@ -759,7 +768,7 @@ class HypixelPHP {
 
         if ($this->getCacheTime(CACHE_TIMES::UUID) < self::MAX_CACHE_TIME) {
             $this->setCacheTime(self::MAX_CACHE_TIME, [CACHE_TIMES::UUID]);
-            return $this->getUUID($username, $url);
+            return $this->getUUID($username);
         }
         $this->debug('unable to fetch UUID!', false);
         return false;
@@ -804,7 +813,6 @@ class HypixelPHP {
 }
 
 class Utilities {
-
     public static function ensureNoDashesUUID($uuid) {
         return str_replace("-", "", $uuid);
     }
@@ -970,8 +978,8 @@ class KEYS {
         ];
     }
 
-    const FRIENDS_BY_NAME = 'name'; // via player uuid
-    const FRIENDS_BY_UUID = 'uuid'; // via player name
+    const FRIENDS_BY_NAME = 'player'; // via player name
+    const FRIENDS_BY_UUID = 'uuid'; // via player uuid
     const FRIENDS_BY_PLAYER_OBJECT = 'player'; // via Player Object, gets uuid
 
     public static function getFriendsKeys() {
@@ -982,8 +990,8 @@ class KEYS {
         ];
     }
 
-    const SESSION_BY_NAME = 'name'; // via player uuid
-    const SESSION_BY_UUID = 'uuid'; // via player name
+    const SESSION_BY_NAME = 'player'; // via player name
+    const SESSION_BY_UUID = 'uuid'; // via player uuid
     const SESSION_BY_PLAYER_OBJECT = 'player'; // via Player Object, gets uuid
 
     public static function getSessionKeys() {
@@ -1308,6 +1316,10 @@ class Player extends HypixelObject {
         } else {
             $outStr = Utilities::stripColors($out);
         }
+        $extraKey = (($prefix ? "prefix_" : '') . ($guildTag ? 'guild_tag_' : '') . ($parseColors ? '' : 'no_color_') . 'name');
+        if ($this->getExtra($extraKey, false, '') != $outStr) {
+            $this->setExtra([$extraKey => $outStr]);
+        }
         return $outStr;
     }
 
@@ -1315,10 +1327,14 @@ class Player extends HypixelObject {
         $rank = $this->getRank(false);
         $out = $rank->getColor() . $this->getName();
         if ($prefix) {
-            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix()) . ' ' . $this->getName();
+            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix($this)) . ' ' . $this->getName();
         }
         if ($guildTag) {
             $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
+        }
+        $extraKey = (($prefix ? "prefix_" : '') . ($guildTag ? 'guild_tag_' : '') . '_raw_name');
+        if ($this->getExtra($extraKey, false, '') != $out) {
+            $this->setExtra([$extraKey => $out]);
         }
         return $out;
     }
@@ -1398,13 +1414,32 @@ class Player extends HypixelObject {
      * @return int
      */
     public function getMultiplier() {
-        if ($this->getRank(false)->getId() == RankTypes::YOUTUBER) {
-            return RankTypes::fromID(RankTypes::YOUTUBER)->getMultiplier();
+        $rankMultiplier = 0;
+        if ($this->isStaff()) {
+            $rankMultiplier = $this->getRank(false)->getMultiplier();
         }
         $pre = $this->getRank(true, ['packageRank']); // only old rank matters
         $eulaMultiplier = $pre != null ? $pre->getMultiplier() : 1;
-        $levelMultiplier = min(floor($this->getLevel() / 25) + 1, 6);
-        return ($eulaMultiplier > $levelMultiplier) ? $eulaMultiplier : $levelMultiplier;
+        $levelMultiplier = $this->getLevelMultiplier($this->getLevel()) + 1;
+        $highest = max($rankMultiplier, $eulaMultiplier, $levelMultiplier);
+        return $highest;
+    }
+
+    public function getLevelMultiplier($level) {
+        if ($level >= 250) return 7;
+        if ($level >= 200) return 6;
+        if ($level >= 150) return 5.5;
+        if ($level >= 125) return 5;
+        if ($level >= 100) return 4.5;
+        if ($level >= 50) return 4;
+        if ($level >= 40) return 3.5;
+        if ($level >= 30) return 3;
+        if ($level >= 25) return 2.5;
+        if ($level >= 20) return 2;
+        if ($level >= 15) return 1.5;
+        if ($level >= 10) return 1;
+        if ($level >= 5) return 0.5;
+        return 0;
     }
 
     /**
@@ -1429,7 +1464,7 @@ class Player extends HypixelObject {
                 }
             }
         } else {
-            if (!$this->isStaff()) return $this->getRank(true);
+            if (!$this->isStaff()) return $this->getRank(true, $rankKeys);
             $returnRank = RankTypes::fromName($this->get('rank'));
         }
         if ($returnRank == null) {
@@ -1877,6 +1912,7 @@ class Friend extends HypixelObject {
 class Guild extends HypixelObject {
 
     public function handleNew() {
+        $this->handleCoinHistory();
         $this->setExtra(['name_lower' => strtolower($this->getName())]); // add lowercase name for faster case insensitive lookup
     }
 
@@ -1934,19 +1970,27 @@ class Guild extends HypixelObject {
         return $this->getMemberList()->getMemberCount();
     }
 
-    /**
-     * get coin history of Guild or Player in Guild
-     * @return array
-     */
-    public function getGuildCoinHistory() {
-        $coinHistory = [];
+    private function handleCoinHistory() {
         $record = $this->getRecord();
+        $coinHistory = $this->getExtra('coinHistory', false, []);
         foreach ($record as $key => $val) {
             if (strpos($key, 'dailyCoins') !== false) {
                 $EXPLOSION = explode('-', $key);
                 $coinHistory[$EXPLOSION[1] . '-' . ($EXPLOSION[2] + 1) . '-' . $EXPLOSION[3]] = $val;
             }
         }
+        $this->setExtra(['coinHistory' => $coinHistory]);
+    }
+
+    /**
+     * get coin history of Guild or Player in Guild
+     * @return array
+     */
+    public function getGuildCoinHistory() {
+        if (!array_key_exists('coinHistory', $this->getExtra())) {
+            $this->handleCoinHistory();
+        }
+        $coinHistory = $this->getExtra('coinHistory', true, []);
 
         $sortHistory = [];
         foreach ($coinHistory as $DATE => $AMOUNT) {
@@ -2065,6 +2109,10 @@ class GuildMember {
         return null;
     }
 
+    public function getUUID() {
+        return $this->uuid;
+    }
+
     /**
      * @return array
      */
@@ -2104,6 +2152,7 @@ class GameTypes {
     const SKYWARS = 51;
     const TRUE_COMBAT = 52;
     const SPEED_UHC = 54;
+    const SKYCLASH = 55;
 
     /**
      * @param $id
@@ -2148,6 +2197,8 @@ class GameTypes {
                 return new GameType('TrueCombat', 'Crazy Walls', 'Crazy Walls', GameTypes::TRUE_COMBAT);
             case GameTypes::SPEED_UHC:
                 return new GameType('SpeedUHC', 'Speed UHC', 'Speed UHC', GameTypes::SPEED_UHC);
+            case GameTypes::SKYCLASH:
+                return new GameType('SkyClash', 'SkyClash', 'SkyClash', GameTypes::SKYCLASH);
             default:
                 return null;
         }
