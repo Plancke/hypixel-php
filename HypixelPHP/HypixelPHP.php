@@ -105,6 +105,9 @@ class HypixelPHP {
         $this->set(['api_key' => $key]);
     }
 
+    /**
+     * @return string
+     */
     public function getKey() {
         return $this->options['api_key'];
     }
@@ -755,11 +758,26 @@ class HypixelPHP {
 
 }
 
+/**
+ * Class Utilities
+ *
+ * @package HypixelPHP
+ */
 class Utilities {
+    /**
+     * @param $uuid
+     *
+     * @return string
+     */
     public static function ensureNoDashesUUID($uuid) {
         return str_replace("-", "", $uuid);
     }
 
+    /**
+     * @param $uuid
+     *
+     * @return string
+     */
     public static function ensureDashedUUID($uuid) {
         if (strpos($uuid, "-")) {
             if (strlen($uuid) == 32) {
@@ -770,6 +788,11 @@ class Utilities {
         return substr($uuid, 0, 8) . "-" . substr($uuid, 8, 12) . substr($uuid, 12, 16) . "-" . substr($uuid, 16, 20) . "-" . substr($uuid, 20, 32);
     }
 
+    /**
+     * @param $input
+     *
+     * @return bool
+     */
     public static function isUUID($input) {
         return is_string($input) && (strlen($input) == 32 || strlen($input) == 28);
     }
@@ -859,6 +882,11 @@ class Utilities {
 
 }
 
+/**
+ * Class CACHE_TIMES
+ *
+ * @package HypixelPHP
+ */
 class CACHE_TIMES {
     const OVERALL = 'overall';
 
@@ -871,12 +899,20 @@ class CACHE_TIMES {
 
     // everything else just uses OVERALL
 
+    /**
+     * @return array
+     */
     public static function getAllTypes() {
         $obj = new \ReflectionClass ('\HypixelPHP\CACHE_TIMES');
         return $obj->getConstants();
     }
 }
 
+/**
+ * Class API_REQUESTS
+ *
+ * @package HypixelPHP
+ */
 class API_REQUESTS {
     const PLAYER = 'player';
 
@@ -890,11 +926,19 @@ class API_REQUESTS {
     const KEY = 'key';
 }
 
+/**
+ * Class KEYS
+ *
+ * @package HypixelPHP
+ */
 class KEYS {
     const PLAYER_BY_NAME = 'name';
     const PLAYER_BY_UUID = 'uuid';
     const PLAYER_BY_UNKNOWN = 'unknown';
 
+    /**
+     * @return array
+     */
     public static function getPlayerKeys() {
         return [
             KEYS::PLAYER_BY_NAME,
@@ -910,6 +954,9 @@ class KEYS {
     const GUILD_BY_PLAYER_OBJECT = 'player'; // via Player Object, gets uuid
     const GUILD_BY_ID = 'id'; // via guild id
 
+    /**
+     * @return array
+     */
     public static function getGuildKeys() {
         return [
             KEYS::GUILD_BY_NAME,
@@ -925,6 +972,9 @@ class KEYS {
     const FRIENDS_BY_UUID = 'uuid'; // via player name
     const FRIENDS_BY_PLAYER_OBJECT = 'player'; // via Player Object, gets uuid
 
+    /**
+     * @return array
+     */
     public static function getFriendsKeys() {
         return [
             KEYS::FRIENDS_BY_NAME,
@@ -937,6 +987,9 @@ class KEYS {
     const SESSION_BY_UUID = 'uuid'; // via player name
     const SESSION_BY_PLAYER_OBJECT = 'player'; // via Player Object, gets uuid
 
+    /**
+     * @return array
+     */
     public static function getSessionKeys() {
         return [
             KEYS::SESSION_BY_NAME,
@@ -946,6 +999,11 @@ class KEYS {
     }
 }
 
+/**
+ * Class InputType
+ *
+ * @package HypixelPHP
+ */
 class InputType {
     const UUID = 0;
     const USERNAME = 1;
@@ -1024,6 +1082,14 @@ class HypixelObject {
         return in_array($key, array_keys($this->JSONArray['record'])) ? $this->JSONArray['record'][$key] : $default;
     }
 
+    /**
+     * @param        $array
+     * @param        $key
+     * @param null   $default
+     * @param string $delimiter
+     *
+     * @return null
+     */
     public function getRecursiveValue($array, $key, $default = null, $delimiter = '.') {
         $return = $array;
         foreach (explode($delimiter, $key) as $split) {
@@ -1099,6 +1165,14 @@ class HypixelObject {
         }
     }
 
+    /**
+     * @param null       $key
+     * @param bool|false $implicit
+     * @param null       $default
+     * @param string     $delimiter
+     *
+     * @return null
+     */
     public function getExtra($key = null, $implicit = false, $default = null, $delimiter = '.') {
         if ($key != null) {
             if (!array_key_exists('extra', $this->JSONArray)) return $default;
@@ -1118,6 +1192,9 @@ class HypixelObject {
         }
     }
 
+    /**
+     * @return bool
+     */
     public function isValid() {
         return true;
     }
@@ -1130,6 +1207,9 @@ class HypixelObject {
  */
 class KeyInfo extends HypixelObject {
 
+    /**
+     * @return array|null
+     */
     public function getKey() {
         return $this->get('key');
     }
@@ -1233,6 +1313,12 @@ class Player extends HypixelObject {
         return $outStr;
     }
 
+    /**
+     * @param bool|true  $prefix
+     * @param bool|false $guildTag
+     *
+     * @return string
+     */
     public function getRawFormattedName($prefix = true, $guildTag = false) {
         $rank = $this->getRank(false);
         $out = $rank->getColor() . $this->getName();
@@ -1429,11 +1515,19 @@ class Player extends HypixelObject {
         return parent::get($key, $implicit, $default, $delimiter);
     }
 
+    /**
+     * @return bool
+     */
     public function isValid() {
         return is_array($this->JSONArray['record']) && sizeof($this->JSONArray['record']) > 1;
     }
 }
 
+/**
+ * Class RankTypes
+ *
+ * @package HypixelPHP
+ */
 class RankTypes {
     const NON_DONOR = 1;
     const VIP = 2;
@@ -1514,6 +1608,11 @@ class RankTypes {
         }
     }
 
+    /**
+     * @param $db
+     *
+     * @return Rank|null
+     */
     public static function fromName($db) {
         foreach (RankTypes::getAllTypes() as $id) {
             $rank = RankTypes::fromID($id);
@@ -1535,6 +1634,11 @@ class RankTypes {
     }
 }
 
+/**
+ * Class Rank
+ *
+ * @package HypixelPHP
+ */
 class Rank {
     private $name, $id, $options, $staff;
 
@@ -1559,6 +1663,9 @@ class Rank {
         return $this->name;
     }
 
+    /**
+     * @return mixed|string
+     */
     public function getCleanName() {
         if ($this->name == 'NON_DONOR' || $this->name == 'NONE') return 'DEFAULT';
         return str_replace("_", ' ', str_replace('_PLUS', '+', $this->name));
@@ -1568,10 +1675,18 @@ class Rank {
         return $this->options;
     }
 
+    /**
+     * @return bool
+     */
     public function isStaff() {
         return $this->staff;
     }
 
+    /**
+     * @param Player $player
+     *
+     * @return null|string
+     */
     public function getPrefix(Player $player) {
         if ($this->name == 'MVP_PLUS' && $player->get("rankPlusColor") != null) {
             return '§b[MVP' . Utilities::MC_COLORNAME[$player->get("rankPlusColor")] . '+§b]';
@@ -1579,14 +1694,23 @@ class Rank {
         return isset($this->options['prefix']) ? $this->options['prefix'] : null;
     }
 
+    /**
+     * @return null
+     */
     public function getColor() {
         return isset($this->options['color']) ? $this->options['color'] : null;
     }
 
+    /**
+     * @return int
+     */
     public function getMultiplier() {
         return isset($this->options['eulaMultiplier']) ? $this->options['eulaMultiplier'] : 1;
     }
 
+    /**
+     * @return string
+     */
     public function __toString() {
         return json_encode([$this->name => $this->options]);
     }
@@ -1616,6 +1740,11 @@ class Stats extends HypixelObject {
         return new GameStats($game, $this->api);
     }
 
+    /**
+     * @param $id
+     *
+     * @return GameStats|null
+     */
     public function getGameFromID($id) {
         $gameType = GameTypes::fromID($id);
         if ($gameType != null) {
@@ -1705,10 +1834,16 @@ class Session extends HypixelObject {
         return $this->get('server', true);
     }
 
+    /**
+     * @return array|null
+     */
     public function getUUID() {
         return $this->get('uuid', true);
     }
 
+    /**
+     * @return Player|null
+     */
     public function getPlayer() {
         $UUID = $this->getUUID();
         if ($UUID != null) {
@@ -1726,6 +1861,9 @@ class Session extends HypixelObject {
 class FriendsList extends HypixelObject {
     private $LIST;
 
+    /**
+     * @return array|null
+     */
     public function getUUID() {
         return $this->get("uuid");
     }
@@ -1743,10 +1881,16 @@ class FriendsList extends HypixelObject {
         return $this->LIST;
     }
 
+    /**
+     * @return array|null
+     */
     public function getRawList() {
         return $this->get('list', true, []);
     }
 
+    /**
+     * @return Player|null
+     */
     public function getPlayer() {
         if (isset($this->JSONArray['uuid'])) {
             return $this->api->getPlayer([KEYS::PLAYER_BY_UUID => $this->getUUID()]);
@@ -1755,9 +1899,19 @@ class FriendsList extends HypixelObject {
     }
 }
 
+/**
+ * Class Friend
+ *
+ * @package HypixelPHP
+ */
 class Friend extends HypixelObject {
     public $UUID_PLAYER;
 
+    /**
+     * @param            $FRIEND_OBJ
+     * @param HypixelPHP $API
+     * @param            $UUID_PLAYER
+     */
     public function __construct($FRIEND_OBJ, $API, $UUID_PLAYER) {
         parent::__construct($FRIEND_OBJ, $API);
         $this->UUID_PLAYER = $UUID_PLAYER;
@@ -1773,10 +1927,16 @@ class Friend extends HypixelObject {
         return $this->JSONArray['uuidReceiver'] == $this->UUID_PLAYER;
     }
 
+    /**
+     * @return bool
+     */
     public function wasSender() {
         return !$this->wasReceiver();
     }
 
+    /**
+     * @return Player|null
+     */
     public function getOtherPlayer() {
         if ($this->wasReceiver()) {
             return $this->api->getPlayer([KEYS::PLAYER_BY_UUID => $this->JSONArray['uuidSender']]);
@@ -2079,6 +2239,11 @@ class GameTypes {
         }
     }
 
+    /**
+     * @param $db
+     *
+     * @return GameType|null
+     */
     public static function fromDbName($db) {
         foreach (GameTypes::getAllTypes() as $id) {
             $gameType = GameTypes::fromID($id);
@@ -2139,10 +2304,16 @@ class GameType {
         return $this->id;
     }
 
+    /**
+     * @return bool
+     */
     public function hasBoosters() {
         return $this->boosters;
     }
 
+    /**
+     * @return array
+     */
     public function toArray() {
         return [
             'id' => $this->id,
@@ -2235,6 +2406,9 @@ class Booster {
         return null;
     }
 
+    /**
+     * @return null
+     */
     public function getOwnerUUID() {
         return isset($this->info['purchaserUuid']) ? $this->info['purchaserUuid'] : null;
     }
