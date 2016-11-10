@@ -372,7 +372,7 @@ class HypixelPHP {
                     }
 
                     $response = $this->fetch(API_REQUESTS::GUILD, $key, $val);
-                    if ($response['success'] == true) {
+                    if ($response['success'] == true && isset($response['guild'])) {
                         $GUILD = new Guild([
                             'record' => $response['guild'],
                             'extra' => $content['extra']
