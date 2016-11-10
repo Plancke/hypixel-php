@@ -355,7 +355,7 @@ class HypixelPHP {
                     }
 
                     $response = $this->fetch(API_REQUESTS::FIND_GUILD, $key, $val, 5000);
-                    if ($response['success'] == true) {
+                    if ($response['success'] == true && isset($response['guild'])) {
                         $content = ['timestamp' => time(), 'guild' => $response['guild']];
                         $this->setFileContent($filename, json_encode($content));
                         return $this->getGuild([KEYS::GUILD_BY_ID => $response['guild']]);
@@ -372,7 +372,7 @@ class HypixelPHP {
                     }
 
                     $response = $this->fetch(API_REQUESTS::GUILD, $key, $val);
-                    if ($response['success'] == true) {
+                    if ($response['success'] == true && isset($response['guild'])) {
                         $GUILD = new Guild([
                             'record' => $response['guild'],
                             'extra' => $content['extra']
