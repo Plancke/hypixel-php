@@ -1,8 +1,12 @@
 <?php
 
 /**
- * Class Kart
+ * Class used to parse TurboKart Racer's kart system and
+ * provide functions to get levels for attributes, it's name, etc...
+ *
  * @author Plancke
+ * @version 1.0.0
+ * @link https://plancke.io
  *
  */
 class Kart {
@@ -71,26 +75,8 @@ class Part {
         $this->PART = $PART;
     }
 
-    function getType() {
-        return $this->PART['PartType'];
-    }
-
-    function getRarity() {
-        return $this->PART['PartRarity'];
-    }
-
     function getAttributes() {
         return $this->PART['Attributes'];
-    }
-
-    function getLevel() {
-        $LEVEL = 0;
-        if ($this->PART == null) return 0;
-        if (!array_key_exists('Attributes', $this->PART)) return $LEVEL;
-        foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
-            $LEVEL += $ATTRIBUTE['Level'];
-        }
-        return $LEVEL;
     }
 
     function getColor() {
@@ -107,12 +93,30 @@ class Part {
         return '§7';
     }
 
-    function getPrefix() {
-        return $this->PREFIXES[$this->getLevel()];
+    function getLevel() {
+        $LEVEL = 0;
+        if ($this->PART == null) return 0;
+        if (!array_key_exists('Attributes', $this->PART)) return $LEVEL;
+        foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
+            $LEVEL += $ATTRIBUTE['Level'];
+        }
+        return $LEVEL;
     }
 
     function getName() {
         return $this->getPrefix() . ' ' . ucfirst(strtolower($this->getRarity())) . ' ' . ucfirst(strtolower($this->getType()));
+    }
+
+    function getPrefix() {
+        return $this->PREFIXES[$this->getLevel()];
+    }
+
+    function getRarity() {
+        return $this->PART['PartRarity'];
+    }
+
+    function getType() {
+        return $this->PART['PartType'];
     }
 
     function getAttributeLevel($TYPE) {

@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Class used to interpret Hypixel's Pet system and
+ * provide functions to easily get a pet's level and attributes
+ *
+ * @author Plancke
+ * @version 1.0.0
+ * @link https://plancke.io
+ *
+ */
 class PetStats {
 
     const LEVELS = [
@@ -19,14 +28,6 @@ class PetStats {
         }
     }
 
-    function getPet($PET) {
-        return $this->PET_MAP[$PET];
-    }
-
-    function getAllPets() {
-        return $this->PET_MAP;
-    }
-
     /**
      * Calculate total amount of experience to reach given pet level
      *
@@ -41,6 +42,14 @@ class PetStats {
 
         return $exp;
     }
+
+    function getPet($PET) {
+        return $this->PET_MAP[$PET];
+    }
+
+    function getAllPets() {
+        return $this->PET_MAP;
+    }
 }
 
 class Pet {
@@ -52,6 +61,31 @@ class Pet {
         $this->PET_STATS = $PET_STATS;
 
         $this->updateLevel();
+    }
+
+    /**
+     * Internally update level
+     */
+    function updateLevel() {
+        $this->LEVEL = 1;
+        $curExp = $this->getExperience();
+        foreach (PetStats::LEVELS as $EXP_LEVEL) {
+            if ($curExp < $EXP_LEVEL) {
+                break;
+            } else {
+                $curExp -= $EXP_LEVEL;
+                $this->LEVEL++;
+            }
+        }
+    }
+
+    /**
+     * Get current pet experience
+     *
+     * @return int
+     */
+    function getExperience() {
+        return $this->PET_STATS['experience'];
     }
 
     /**
@@ -92,31 +126,6 @@ class Pet {
         $iterations = floor($minutesPassed / 5);
 
         return max(0, round($value - $iterations * PetAttributeType::getDecay($ATTRIBUTE_TYPE)));
-    }
-
-    /**
-     * Get current pet experience
-     *
-     * @return int
-     */
-    function getExperience() {
-        return $this->PET_STATS['experience'];
-    }
-
-    /**
-     * Internally update level
-     */
-    function updateLevel() {
-        $this->LEVEL = 1;
-        $curExp = $this->getExperience();
-        foreach (PetStats::LEVELS as $EXP_LEVEL) {
-            if ($curExp < $EXP_LEVEL) {
-                break;
-            } else {
-                $curExp -= $EXP_LEVEL;
-                $this->LEVEL++;
-            }
-        }
     }
 
     /**

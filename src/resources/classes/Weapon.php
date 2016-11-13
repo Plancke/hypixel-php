@@ -3,7 +3,7 @@
 /**
  * Class Weapon
  * @author Plancke, LCastr0
- *
+ * @version 1.0.0
  *
  * HOW DOES IT WORK
  * ----------------
@@ -40,25 +40,25 @@
  *
  */
 class Weapon {
-    public $WEAPON;
+    private $WEAPON;
 
     private $scores = [
-        "COMMON" => ['min' => 276, 'max' => 428],
-        "RARE" => ['min' => 359, 'max' => 521],
-        "EPIC" => ['min' => 450, 'max' => 604],
-        "LEGENDARY" => ['min' => 595, 'max' => 805]
+        Rarity::COMMON => ['min' => 276, 'max' => 428],
+        Rarity::RARE => ['min' => 359, 'max' => 521],
+        Rarity::EPIC => ['min' => 450, 'max' => 604],
+        Rarity::LEGENDARY => ['min' => 595, 'max' => 805]
     ];
     private $prefixes = [
-        "COMMON" => [
+        Rarity::COMMON => [
             "Crumbly", "Flimsy", "Rough", "Honed", "Refined", "Balanced"
         ],
-        "RARE" => [
+        Rarity::RARE => [
             "Savage", "Vicious", "Deadly", "Perfect"
         ],
-        "EPIC" => [
+        Rarity::EPIC => [
             "Fierce", "Mighty", "Brutal", "Gladiator's"
         ],
-        "LEGENDARY" => [
+        Rarity::LEGENDARY => [
             "Vanquisher's", "Champion's", "Warlord's"
         ]
     ];
@@ -81,10 +81,10 @@ class Weapon {
         'GRILLED_PORK' => 'Gemini', 'COOKED_PORKCHOP' => 'Gemini', 'GOLDEN_CARROT' => 'Void Edge'
     ];
     private $colors = [
-        'COMMON' => '§a',
-        'RARE' => '§9',
-        'EPIC' => '§5',
-        'LEGENDARY' => '§6'
+        Rarity::COMMON => '§a',
+        Rarity::RARE => '§9',
+        Rarity::EPIC => '§5',
+        Rarity::LEGENDARY => '§6'
     ];
     private $abilities = [];
     private $forced_upgrade_level = -1;
@@ -94,33 +94,33 @@ class Weapon {
 
         /* Load abilities */
         // Mage
-        $this->addAbility(0, 0, new Ability("Fireball", "Pyromancer", "DAMAGE"));
-        $this->addAbility(0, 0, new Ability("Frostbolt", "Cryomancer", "DAMAGE"));
-        $this->addAbility(0, 0, new Ability("Water Bolt", "Aquamancer", "HEAL"));
-        $this->addAbility(0, 1, new Ability("Flame Burst", "Pyromancer", "DAMAGE"));
-        $this->addAbility(0, 1, new Ability("Freezing Breath", "Cryomancer", "DAMAGE"));
-        $this->addAbility(0, 1, new Ability("Water Breath", "Aquamancer", "HEAL"));
+        $this->addAbility(0, 0, new Ability("Fireball", "Pyromancer", AbilityType::DAMAGE));
+        $this->addAbility(0, 0, new Ability("Frostbolt", "Cryomancer", AbilityType::DAMAGE));
+        $this->addAbility(0, 0, new Ability("Water Bolt", "Aquamancer", AbilityType::HEAL));
+        $this->addAbility(0, 1, new Ability("Flame Burst", "Pyromancer", AbilityType::DAMAGE));
+        $this->addAbility(0, 1, new Ability("Freezing Breath", "Cryomancer", AbilityType::DAMAGE));
+        $this->addAbility(0, 1, new Ability("Water Breath", "Aquamancer", AbilityType::HEAL));
         // Warrior
-        $this->addAbility(1, 0, new Ability("Wounding Strike", "Berserker", "DAMAGE"));
-        $this->addAbility(1, 0, new Ability("Wounding Strike", "Defender", "DAMAGE"));
-        $this->addAbility(1, 1, new Ability("Seismic Wave", "Berserker", "DAMAGE"));
-        $this->addAbility(1, 1, new Ability("Seismic Wave", "Defender", "DAMAGE"));
-        $this->addAbility(1, 2, new Ability("Ground Slam", "Berserker", "DAMAGE"));
-        $this->addAbility(1, 2, new Ability("Ground Slam", "Defender", "DAMAGE"));
+        $this->addAbility(1, 0, new Ability("Wounding Strike", "Berserker", AbilityType::DAMAGE));
+        $this->addAbility(1, 0, new Ability("Wounding Strike", "Defender", AbilityType::DAMAGE));
+        $this->addAbility(1, 1, new Ability("Seismic Wave", "Berserker", AbilityType::DAMAGE));
+        $this->addAbility(1, 1, new Ability("Seismic Wave", "Defender", AbilityType::DAMAGE));
+        $this->addAbility(1, 2, new Ability("Ground Slam", "Berserker", AbilityType::DAMAGE));
+        $this->addAbility(1, 2, new Ability("Ground Slam", "Defender", AbilityType::DAMAGE));
         // Paladin
-        $this->addAbility(2, 0, new Ability("Avenger's Strike", "Avenger", "DAMAGE"));
-        $this->addAbility(2, 0, new Ability("Crusader's Strike", "Crusader", "DAMAGE"));
-        $this->addAbility(2, 3, new Ability("Holy Radiance", "Protector", "HEAL"));
-        $this->addAbility(2, 1, new Ability("Consecrate", "Avenger", "DAMAGE"));
-        $this->addAbility(2, 1, new Ability("Consecrate", "Crusader", "DAMAGE"));
-        $this->addAbility(2, 4, new Ability("Hammer of Light", "Protector", "HEAL"));
+        $this->addAbility(2, 0, new Ability("Avenger's Strike", "Avenger", AbilityType::DAMAGE));
+        $this->addAbility(2, 0, new Ability("Crusader's Strike", "Crusader", AbilityType::DAMAGE));
+        $this->addAbility(2, 3, new Ability("Holy Radiance", "Protector", AbilityType::HEAL));
+        $this->addAbility(2, 1, new Ability("Consecrate", "Avenger", AbilityType::DAMAGE));
+        $this->addAbility(2, 1, new Ability("Consecrate", "Crusader", AbilityType::DAMAGE));
+        $this->addAbility(2, 4, new Ability("Hammer of Light", "Protector", AbilityType::HEAL));
         // Shaman
-        $this->addAbility(3, 0, new Ability("Lightning Bolt", "Thunderlord", "DAMAGE"));
-        $this->addAbility(3, 0, new Ability("Earthen Spike", "Earthwarden", "DAMAGE"));
-        $this->addAbility(3, 1, new Ability("Chain Lightning", "Thunderlord", "DAMAGE"));
-        $this->addAbility(3, 1, new Ability("Boulder", "Earthwarden", "DAMAGE"));
-        $this->addAbility(3, 2, new Ability("Windfury", "Thunderlord", "DAMAGE"));
-        $this->addAbility(3, 3, new Ability("Chain Healing", "Earthwarden", "HEAL"));
+        $this->addAbility(3, 0, new Ability("Lightning Bolt", "Thunderlord", AbilityType::DAMAGE));
+        $this->addAbility(3, 0, new Ability("Earthen Spike", "Earthwarden", AbilityType::DAMAGE));
+        $this->addAbility(3, 1, new Ability("Chain Lightning", "Thunderlord", AbilityType::DAMAGE));
+        $this->addAbility(3, 1, new Ability("Boulder", "Earthwarden", AbilityType::DAMAGE));
+        $this->addAbility(3, 2, new Ability("Windfury", "Thunderlord", AbilityType::DAMAGE));
+        $this->addAbility(3, 3, new Ability("Chain Healing", "Earthwarden", AbilityType::HEAL));
     }
 
     private function addAbility($class, $slot, $ability) {
@@ -137,10 +137,6 @@ class Weapon {
         $this->forced_upgrade_level = $level;
     }
 
-    function isForcedUpgrade() {
-        return $this->forced_upgrade_level >= 0;
-    }
-
     function getMinMaxDamage() {
         $dmg = $this->getStatById(WeaponStats::DAMAGE);
         $fifteen = $dmg * 0.15;
@@ -148,7 +144,7 @@ class Weapon {
     }
 
     function getStatById($stat) {
-        $weaponStat = WeaponStats::fromId($stat);
+        $weaponStat = WeaponStats::fromID($stat);
         return $weaponStat != null ? $this->getStat($weaponStat) : 0;
     }
 
@@ -166,38 +162,6 @@ class Weapon {
         return isset($this->WEAPON[$key]) ? $this->WEAPON[$key] : $def;
     }
 
-    function getScore() {
-        $score = 0;
-        foreach (WeaponStats::getAllTypes() as $stat) {
-            $score += $this->getStatById($stat);
-        }
-        return $score;
-    }
-
-    function getMinScore() {
-        return $this->scores[$this->getCategory()]['min'];
-    }
-
-    function getMaxScore() {
-        return $this->scores[$this->getCategory()]['max'];
-    }
-
-    function getMaterial() {
-        return $this->WEAPON['material'];
-    }
-
-    function getCategory() {
-        return $this->WEAPON['category'];
-    }
-
-    function isCrafted() {
-        return isset($this->WEAPON['crafted']) ? $this->WEAPON['crafted'] : false;
-    }
-
-    function getMaxUpgrades() {
-        return $this->getField('upgradeMax');
-    }
-
     function getUpgradeAmount() {
         if ($this->isForcedUpgrade()) {
             return min($this->forced_upgrade_level, $this->getMaxUpgrades());
@@ -205,19 +169,23 @@ class Weapon {
         return $this->getField('upgradeTimes');
     }
 
+    function isForcedUpgrade() {
+        return $this->forced_upgrade_level >= 0;
+    }
+
+    function getMaxUpgrades() {
+        return $this->getField('upgradeMax');
+    }
+
+    function isCrafted() {
+        return isset($this->WEAPON['crafted']) ? $this->WEAPON['crafted'] : false;
+    }
+
     function getName() {
         $prefix = $this->getPrefix();
         $material = $this->getMaterialName();
         $specialization = $this->getPlayerClass()->getSpec()->getName();
         return $prefix . " " . $material . " of the " . $specialization;
-    }
-
-    function getPlayerClass() {
-        return PlayerClasses::fromId($this->WEAPON['spec']['playerClass'], $this->WEAPON['spec']['spec']);
-    }
-
-    function getMaterialName() {
-        return isset($this->materialMap[$this->getMaterial()]) ? $this->materialMap[$this->getMaterial()] : $this->getMaterial();
     }
 
     function getPrefix() {
@@ -235,6 +203,38 @@ class Weapon {
         }
 
         return end($names);
+    }
+
+    function getCategory() {
+        return $this->WEAPON['category'];
+    }
+
+    function getScore() {
+        $score = 0;
+        foreach (WeaponStats::getAllTypes() as $stat) {
+            $score += $this->getStatById($stat);
+        }
+        return $score;
+    }
+
+    function getMaxScore() {
+        return $this->scores[$this->getCategory()]['max'];
+    }
+
+    function getMinScore() {
+        return $this->scores[$this->getCategory()]['min'];
+    }
+
+    function getMaterialName() {
+        return isset($this->materialMap[$this->getMaterial()]) ? $this->materialMap[$this->getMaterial()] : $this->getMaterial();
+    }
+
+    function getMaterial() {
+        return $this->WEAPON['material'];
+    }
+
+    function getPlayerClass() {
+        return PlayerClasses::fromID($this->WEAPON['spec']['playerClass'], $this->WEAPON['spec']['spec']);
     }
 
     function getColor() {
@@ -265,11 +265,23 @@ class Weapon {
 
 }
 
+class Rarity {
+    const COMMON = "COMMON";
+    const RARE = "RARE";
+    const EPIC = "EPIC";
+    const LEGENDARY = "LEGENDARY";
+}
+
+class AbilityType {
+    const HEAL = "HEAL";
+    const DAMAGE = "DAMAGE";
+}
+
 class WeaponStats {
     const DAMAGE = 0;
     const CHANCE = 1;
     const MULTIPLIER = 2;
-    const ABILITYBOOST = 3;
+    const ABILITY_BOOST = 3;
     const HEALTH = 4;
     const ENERGY = 5;
     const COOLDOWN = 6;
@@ -283,7 +295,7 @@ class WeaponStats {
                 return new WeaponStat('Crit Chance', 'chance', 0, $ID);
             case WeaponStats::MULTIPLIER:
                 return new WeaponStat('Crit Multiplier', 'multiplier', 0, $ID);
-            case WeaponStats::ABILITYBOOST:
+            case WeaponStats::ABILITY_BOOST:
                 return new WeaponStat('Ability Boost', 'abilityBoost', 7.5, $ID);
             case WeaponStats::HEALTH:
                 return new WeaponStat('Health', 'health', 25, $ID);
@@ -358,10 +370,10 @@ class PlayerClass {
     private $name, $spec, $id;
 
     private $specs = [
-        0 => [0 => "Pyromancer", 1 => "Cryomancer", 2 => "Aquamancer"],
-        1 => [0 => "Berserker", 1 => "Defender"],
-        2 => [0 => "Avenger", 1 => "Crusader", 2 => "Protector"],
-        3 => [0 => "Thunderlord", 1 => "Earthwarden"],
+        PlayerClasses::MAGE => [0 => "Pyromancer", 1 => "Cryomancer", 2 => "Aquamancer"],
+        PlayerClasses::WARRIOR => [0 => "Berserker", 1 => "Defender"],
+        PlayerClasses::PALADIN => [0 => "Avenger", 1 => "Crusader", 2 => "Protector"],
+        PlayerClasses::SHAMAN => [0 => "Thunderlord", 1 => "Earthwarden"],
     ];
 
     function __construct($name, $spec, $id) {
