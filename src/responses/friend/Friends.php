@@ -5,6 +5,7 @@ namespace Plancke\HypixelPHP\responses\friend;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\fetch\FetchParams;
+use Plancke\HypixelPHP\responses\player\Player;
 
 class Friends extends HypixelObject {
     private $LIST;
@@ -31,7 +32,7 @@ class Friends extends HypixelObject {
     }
 
     /**
-     * @return \HypixelPHP\responses\player\Player|null
+     * @return Player|null
      */
     public function getPlayer() {
         if (isset($this->data['uuid'])) {

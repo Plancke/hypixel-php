@@ -10,6 +10,8 @@ use Plancke\HypixelPHP\util\Utilities;
 class Guild extends HypixelObject {
 
     public function handleNew() {
+        parent::handleNew();
+
         $extraSetter = [];
         $extraSetter['coinHistory'] = $this->handleCoinHistory();
 
