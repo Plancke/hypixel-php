@@ -36,8 +36,4 @@ class GameResources extends AResources {
         return AResources::requireResourceFile('game_info/Walls3.php');
     }
 
-    public static function getAchievements() {
-        return AResources::requireResourceFile('Achievements.php');
-    }
-
 }

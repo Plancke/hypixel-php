@@ -1,8 +1,6 @@
 <?php
 
-namespace Plancke\HypixelPHP\util;
-
-use Plancke\HypixelPHP\util\resources\AResources;
+namespace Plancke\HypixelPHP\util\resources;
 
 class GeneralResources extends AResources {
 
