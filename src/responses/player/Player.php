@@ -11,6 +11,7 @@ use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\Session;
+use Plancke\HypixelPHP\util\resources\GeneralResources;
 use Plancke\HypixelPHP\util\Utilities;
 
 class Player extends HypixelObject {
@@ -27,17 +28,16 @@ class Player extends HypixelObject {
 
     /**
      * get Player achievement points
-     * @param $achievements
      * @param bool $force_update
      * @return int
      */
-    public function getAchievementPoints($achievements, $force_update = false) {
-        if (!is_array($achievements)) {
-            return 0;
-        }
+    public function getAchievementPoints($force_update = false) {
         if (!$force_update) {
             return $this->getExtra('achievementPoints', 0);
         }
+
+        $achievements = GeneralResources::getAchievements()['achievements'];
+        $games = array_keys($achievements);
 
         $total = 0;
         $oneTime = $this->getArray('achievementsOneTime');
@@ -48,7 +48,7 @@ class Player extends HypixelObject {
             }
             $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
             $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
-            if (!in_array($game, array_keys($achievements))) {
+            if (!in_array($game, $games)) {
                 continue;
             }
             $this->getHypixelPHP()->getLogger()->log('Achievement: ' . strtoupper(substr($dbName, strpos($dbName, "_"))));
@@ -62,7 +62,7 @@ class Player extends HypixelObject {
         foreach ($tiered as $dbName => $value) {
             $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
             $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
-            if (!in_array($game, array_keys($achievements))) {
+            if (!in_array($game, $games)) {
                 continue;
             }
             $this->getHypixelPHP()->getLogger()->log('Achievement: ' . $dbName);
