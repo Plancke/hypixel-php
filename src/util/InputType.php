@@ -33,6 +33,7 @@ abstract class InputType {
     }
 
     public static function isUUID($input) {
-        return is_string($input) && (strlen($input) == 32 || strlen($input) == 28);
+        // TODO might want to add some validation here
+        return is_string($input) && (strlen($input) == 36 || strlen($input) == 32);
     }
 }
