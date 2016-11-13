@@ -40,22 +40,22 @@ class MongoCacheHandler extends CacheHandler {
     public function ensureIndexes() {
         $db = $this->selectDB();
 
-        $db->selectCollection(CollectionNames::API_KEYS)->createIndex(['record.key'], ['background' => true]);
+        $db->selectCollection(CollectionNames::API_KEYS)->createIndex(['record.key' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::PLAYERS)->createIndex(['record.uuid'], ['background' => true]);
-        $db->selectCollection(CollectionNames::PLAYERS)->createIndex(['record.playername'], ['background' => true]);
-        $db->selectCollection(CollectionNames::PLAYER_UUID)->createIndex(['name_lowercase'], ['background' => true]);
+        $db->selectCollection(CollectionNames::PLAYERS)->createIndex(['record.uuid' => 1], ['background' => true]);
+        $db->selectCollection(CollectionNames::PLAYERS)->createIndex(['record.playername' => 1], ['background' => true]);
+        $db->selectCollection(CollectionNames::PLAYER_UUID)->createIndex(['name_lowercase' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::GUILDS)->createIndex(['record._id'], ['background' => true]);
-        $db->selectCollection(CollectionNames::GUILDS)->createIndex(['extra.name_lower'], ['background' => true]);
-        $db->selectCollection(CollectionNames::GUILDS_UUID)->createIndex(['uuid'], ['background' => true]);
-        $db->selectCollection(CollectionNames::GUILDS_NAME)->createIndex(['name_lower'], ['background' => true]);
+        $db->selectCollection(CollectionNames::GUILDS)->createIndex(['record._id' => 1], ['background' => true]);
+        $db->selectCollection(CollectionNames::GUILDS)->createIndex(['extra.name_lower' => 1], ['background' => true]);
+        $db->selectCollection(CollectionNames::GUILDS_UUID)->createIndex(['uuid' => 1], ['background' => true]);
+        $db->selectCollection(CollectionNames::GUILDS_NAME)->createIndex(['name_lower' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::FRIENDS)->createIndex(['record.uuid'], ['background' => true]);
+        $db->selectCollection(CollectionNames::FRIENDS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::SESSIONS)->createIndex(['record.uuid'], ['background' => true]);
+        $db->selectCollection(CollectionNames::SESSIONS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::SINGLE_SAVE)->createIndex(['key'], ['background' => true]);
+        $db->selectCollection(CollectionNames::SINGLE_SAVE)->createIndex(['key' => 1], ['background' => true]);
 
         return $this;
     }
@@ -74,9 +74,9 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function updateCollection($collection, $query, $obj) {
         if ($obj instanceof HypixelObject) {
-            $this->selectDB()->createCollection($collection)->update($query, $obj->getRaw(), ['upsert' => true]);
+            $this->selectDB()->selectCollection($collection)->findOneAndUpdate($query, $obj->getRaw(), ['upsert' => true]);
         } else {
-            $this->selectDB()->createCollection($collection)->update($query, $obj, ['upsert' => true]);
+            $this->selectDB()->selectCollection($collection)->findOneAndUpdate($query, $obj, ['upsert' => true]);
         }
     }
 
@@ -87,7 +87,7 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function queryCollection($collection, $query) {
         /** @noinspection PhpUndefinedFieldInspection */
-        return $this->selectDB()->createCollection($collection)->findOne($query);
+        return $this->selectDB()->selectCollection($collection)->findOne($query);
     }
 
     /**
