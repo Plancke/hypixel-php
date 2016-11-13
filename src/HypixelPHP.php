@@ -62,21 +62,21 @@ class HypixelPHP {
             throw new HypixelPHPException("API Key is invalid!", ExceptionCodes::INVALID_KEY);
         }
 
-        $this->loggerGetter = function ($HypixelPHP) {
+        $this->setLoggerGetter(function ($HypixelPHP) {
             return new DefaultLogger($HypixelPHP);
-        };
-        $this->fetcherGetter = function ($HypixelPHP) {
+        });
+        $this->setFetcherGetter(function ($HypixelPHP) {
             return new DefaultFetcher($HypixelPHP);
-        };
-        $this->cacheHandlerGetter = function ($HypixelPHP) {
+        });
+        $this->setCacheHandlerGetter(function ($HypixelPHP) {
             return new FlatFileCacheHandler($HypixelPHP);
-        };
-        $this->providerGetter = function ($HypixelPHP) {
+        });
+        $this->setProviderGetter(function ($HypixelPHP) {
             return new Provider($HypixelPHP);
-        };
-        $this->resourceManagerGetter = function ($HypixelPHP) {
+        });
+        $this->setResourceManagerGetter(function ($HypixelPHP) {
             return new ResourceManager($HypixelPHP);
-        };
+        });
     }
 
     /**
