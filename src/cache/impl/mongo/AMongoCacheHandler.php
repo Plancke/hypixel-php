@@ -30,22 +30,22 @@ abstract class AMongoCacheHandler extends CacheHandler {
     public function ensureIndexes() {
         $db = $this->selectDB();
 
-        $db->createCollection(CollectionNames::API_KEYS)->createIndex('record.key', ['background' => true]);
+        $db->selectCollection(CollectionNames::API_KEYS)->createIndex('record.key', ['background' => true]);
 
-        $db->createCollection(CollectionNames::PLAYERS)->createIndex('record.uuid', ['background' => true]);
-        $db->createCollection(CollectionNames::PLAYERS)->createIndex('record.playername', ['background' => true]);
-        $db->createCollection(CollectionNames::PLAYER_UUID)->createIndex('name_lowercase', ['background' => true]);
+        $db->selectCollection(CollectionNames::PLAYERS)->createIndex('record.uuid', ['background' => true]);
+        $db->selectCollection(CollectionNames::PLAYERS)->createIndex('record.playername', ['background' => true]);
+        $db->selectCollection(CollectionNames::PLAYER_UUID)->createIndex('name_lowercase', ['background' => true]);
 
-        $db->createCollection(CollectionNames::GUILDS)->createIndex('record._id', ['background' => true]);
-        $db->createCollection(CollectionNames::GUILDS)->createIndex('extra.name_lower', ['background' => true]);
-        $db->createCollection(CollectionNames::GUILDS_UUID)->createIndex('uuid', ['background' => true]);
-        $db->createCollection(CollectionNames::GUILDS_NAME)->createIndex('name_lower', ['background' => true]);
+        $db->selectCollection(CollectionNames::GUILDS)->createIndex('record._id', ['background' => true]);
+        $db->selectCollection(CollectionNames::GUILDS)->createIndex('extra.name_lower', ['background' => true]);
+        $db->selectCollection(CollectionNames::GUILDS_UUID)->createIndex('uuid', ['background' => true]);
+        $db->selectCollection(CollectionNames::GUILDS_NAME)->createIndex('name_lower', ['background' => true]);
 
-        $db->createCollection(CollectionNames::FRIENDS)->createIndex('record.uuid', ['background' => true]);
+        $db->selectCollection(CollectionNames::FRIENDS)->createIndex('record.uuid', ['background' => true]);
 
-        $db->createCollection(CollectionNames::SESSIONS)->createIndex('record.uuid', ['background' => true]);
+        $db->selectCollection(CollectionNames::SESSIONS)->createIndex('record.uuid', ['background' => true]);
 
-        $db->createCollection(CollectionNames::SINGLE_SAVE)->createIndex('key', ['background' => true]);
+        $db->selectCollection(CollectionNames::SINGLE_SAVE)->createIndex('key', ['background' => true]);
 
         return $this;
     }
