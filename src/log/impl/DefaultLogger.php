@@ -36,6 +36,10 @@ class DefaultLogger extends Logger {
      * @param $line
      */
     public function log($line) {
+        if ($this->isEnabled()) {
+            return;
+        }
+
         $dirName = $this->log_folder . DIRECTORY_SEPARATOR . date("Y-m-d");
         if (!file_exists($dirName)) {
             mkdir($dirName, 0777, true);
