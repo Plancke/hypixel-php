@@ -22,7 +22,7 @@ use Plancke\HypixelPHP\responses\WatchdogStats;
  * Class MongoCacheHandler
  * @package HypixelPHP
  */
-class AMongoCacheHandler extends CacheHandler {
+class MongoCacheHandler extends CacheHandler {
 
     protected $mongoClient;
 
