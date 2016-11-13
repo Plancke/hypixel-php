@@ -135,8 +135,8 @@ class HypixelPHP {
      * @return Logger
      */
     public function getLogger() {
-        $getter = $this->loggerGetter;
         if ($this->logger == null) {
+            $getter = $this->loggerGetter;
             $this->logger = $getter($this);
         }
         return $this->logger;
@@ -146,10 +146,12 @@ class HypixelPHP {
      * @param Logger $logger
      * @return $this
      */
-    public function setLogger($logger) {
-        return $this->setLoggerGetter(function ($HypixelAPI) use ($logger) {
+    public function setLogger(Logger $logger) {
+        $this->logger = $logger;
+        $this->loggerGetter = function ($HypixelAPI) use ($logger) {
             return $logger;
-        });
+        };
+        return $this;
     }
 
     /**
@@ -166,8 +168,8 @@ class HypixelPHP {
      * @return Fetcher
      */
     public function getFetcher() {
-        $getter = $this->fetcherGetter;
         if ($this->fetcher == null) {
+            $getter = $this->fetcherGetter;
             $this->fetcher = $getter($this);
         }
         return $this->fetcher;
@@ -178,9 +180,11 @@ class HypixelPHP {
      * @return $this
      */
     public function setFetcher(Fetcher $fetcher) {
-        return $this->setFetcherGetter(function ($HypixelAPI) use ($fetcher) {
+        $this->fetcher = $fetcher;
+        $this->fetcherGetter = function ($HypixelAPI) use ($fetcher) {
             return $fetcher;
-        });
+        };
+        return $this;
     }
 
     /**
@@ -197,8 +201,8 @@ class HypixelPHP {
      * @return CacheHandler
      */
     public function getCacheHandler() {
-        $getter = $this->cacheHandlerGetter;
         if ($this->cacheHandler == null) {
+            $getter = $this->cacheHandlerGetter;
             $this->cacheHandler = $getter($this);
         }
         return $this->cacheHandler;
@@ -209,9 +213,11 @@ class HypixelPHP {
      * @return $this
      */
     public function setCacheHandler(CacheHandler $cacheHandler) {
-        return $this->setCacheHandlerGetter(function ($HypixelAPI) use ($cacheHandler) {
+        $this->cacheHandler = $cacheHandler;
+        $this->cacheHandlerGetter = function ($HypixelAPI) use ($cacheHandler) {
             return $cacheHandler;
-        });
+        };
+        return $this;
     }
 
     /**
@@ -228,8 +234,8 @@ class HypixelPHP {
      * @return Provider
      */
     public function getProvider() {
-        $getter = $this->providerGetter;
         if ($this->provider == null) {
+            $getter = $this->providerGetter;
             $this->provider = $getter($this);
         }
         return $this->provider;
@@ -240,9 +246,11 @@ class HypixelPHP {
      * @return $this
      */
     public function setProvider(Provider $provider) {
-        return $this->setProviderGetter(function ($HypixelAPI) use ($provider) {
+        $this->provider = $provider;
+        $this->providerGetter = function ($HypixelAPI) use ($provider) {
             return $provider;
-        });
+        };
+        return $this;
     }
 
     /**
@@ -259,8 +267,8 @@ class HypixelPHP {
      * @return ResourceManager
      */
     public function getResourceManager() {
-        $getter = $this->resourceManagerGetter;
         if ($this->resourceManager == null) {
+            $getter = $this->resourceManagerGetter;
             $this->resourceManager = $getter($this);
         }
         return $this->resourceManager;
@@ -271,9 +279,11 @@ class HypixelPHP {
      * @return $this
      */
     public function setResourceManager(ResourceManager $resourceManager) {
-        return $this->setResourceManagerGetter(function ($HypixelAPI) use ($resourceManager) {
+        $this->resourceManager = $resourceManager;
+        $this->resourceManagerGetter = function ($HypixelAPI) use ($resourceManager) {
             return $resourceManager;
-        });
+        };
+        return $this;
     }
 
     /**
