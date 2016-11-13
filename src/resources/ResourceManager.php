@@ -1,6 +1,6 @@
 <?php
 
-namespace Plancke\HypixelPHP\util\resources;
+namespace Plancke\HypixelPHP\resources;
 
 use Plancke\HypixelPHP\classes\Module;
 

@@ -16,6 +16,7 @@ use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\log\impl\DefaultLogger;
 use Plancke\HypixelPHP\log\Logger;
 use Plancke\HypixelPHP\provider\Provider;
+use Plancke\HypixelPHP\resources\ResourceManager;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
@@ -25,7 +26,6 @@ use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\InputType;
-use Plancke\HypixelPHP\util\resources\ResourceManager;
 use Plancke\HypixelPHP\util\Utilities;
 
 /**
