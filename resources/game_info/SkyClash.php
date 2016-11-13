@@ -1,5 +1,5 @@
 <?php
-$_INFO_SKYCLASH = array(
+return array(
     'kits' =>
         array(
             '__desc' => 'All available kits, if cost is not present the kit is unlocked by default. Else the player will have {package} in their packages. Total kit level is determined by upgrades stored as {{package}_{upgradeType}}',

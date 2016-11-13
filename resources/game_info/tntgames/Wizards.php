@@ -1,5 +1,5 @@
 <?php
-$_INFO_TNTGAMES_WIZARDS = array(
+return array(
     'classes' =>
         array(
             'firewizard' =>

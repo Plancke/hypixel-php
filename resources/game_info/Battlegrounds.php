@@ -1,5 +1,5 @@
 <?php
-$_INFO_BATTLEGROUNDS = array(
+return array(
     'classes' =>
         array(
             'mage' =>

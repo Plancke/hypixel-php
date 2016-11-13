@@ -1,5 +1,5 @@
 <?php
-$_INFO_ARENA = array(
+return array(
     'skills' =>
         array(
             'offensive' =>

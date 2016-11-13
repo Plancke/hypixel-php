@@ -1,5 +1,5 @@
 <?php
-$_INFO_HUNGERGAMES = array(
+return array(
     'kitprices' =>
         array(
             0 => 0,

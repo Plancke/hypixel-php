@@ -1,5 +1,5 @@
 <?php
-$_INFO_WALLS3 = array(
+return array(
     'classes' =>
         array(
             'skeleton' =>

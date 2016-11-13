@@ -1,5 +1,5 @@
 <?php
-$_INFO_SUPERSMASH = array(
+return array(
     'prestigePrices' =>
         array(
             0 => 50000,

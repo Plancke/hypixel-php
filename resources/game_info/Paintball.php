@@ -1,5 +1,5 @@
 <?php
-$_INFO_PAINTBALL = array (
+return array (
     'perks' =>
         array (
             'endurance' =>
