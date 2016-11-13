@@ -2,7 +2,7 @@
 
 namespace Plancke\HypixelPHP\util\resources;
 
-class AResources {
+abstract class AResources {
 
     const BASE_RESOURCES_DIR = __DIR__ . '/../../../resources/';
 
