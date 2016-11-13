@@ -4,7 +4,7 @@ namespace Plancke\HypixelPHP\util\resources;
 
 class GeneralResources extends AResources {
 
-    public static function getAchievements() {
+    public function getAchievements() {
         return AResources::requireResourceFile('Achievements.php');
     }
 

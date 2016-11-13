@@ -11,7 +11,6 @@ use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\Session;
-use Plancke\HypixelPHP\util\resources\GeneralResources;
 use Plancke\HypixelPHP\util\Utilities;
 
 class Player extends HypixelObject {
@@ -36,7 +35,7 @@ class Player extends HypixelObject {
             return $this->getExtra('achievementPoints', 0);
         }
 
-        $achievements = GeneralResources::getAchievements()['achievements'];
+        $achievements = $this->getHypixelPHP()->getResourceManager()->getGeneralResources()->getAchievements()['achievements'];
         $games = array_keys($achievements);
 
         $total = 0;

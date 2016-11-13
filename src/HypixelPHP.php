@@ -25,6 +25,7 @@ use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\InputType;
+use Plancke\HypixelPHP\util\resources\ResourceManager;
 use Plancke\HypixelPHP\util\Utilities;
 
 /**
@@ -38,13 +39,13 @@ use Plancke\HypixelPHP\util\Utilities;
 class HypixelPHP {
 
     private $apiKey;
-
     private $options;
 
     private $loggerGetter;
     private $fetcherGetter;
     private $cacheHandlerGetter;
     private $providerGetter;
+    private $resourceManagerGetter;
 
     /**
      * @param string $apiKey
@@ -72,6 +73,9 @@ class HypixelPHP {
         };
         $this->providerGetter = function ($HypixelPHP) {
             return new Provider($HypixelPHP);
+        };
+        $this->resourceManagerGetter = function ($HypixelPHP) {
+            return new ResourceManager($HypixelPHP);
         };
     }
 
@@ -146,6 +150,10 @@ class HypixelPHP {
         return $this;
     }
 
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
     public function setLoggerGetter(Closure $getter) {
         $this->loggerGetter = $getter;
         return $this;
@@ -170,6 +178,10 @@ class HypixelPHP {
         return $this;
     }
 
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
     public function setFetcherGetter(Closure $getter) {
         $this->fetcherGetter = $getter;
         return $this;
@@ -194,6 +206,10 @@ class HypixelPHP {
         return $this;
     }
 
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
     public function setCacheHandlerGetter(Closure $getter) {
         $this->cacheHandlerGetter = $getter;
         return $this;
@@ -218,8 +234,40 @@ class HypixelPHP {
         return $this;
     }
 
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
     public function setProviderGetter(Closure $getter) {
         $this->providerGetter = $getter;
+        return $this;
+    }
+
+    /**
+     * @return ResourceManager
+     */
+    public function getResourceManager() {
+        $getter = $this->resourceManagerGetter;
+        return $getter($this);
+    }
+
+    /**
+     * @param ResourceManager $resourceManager
+     * @return $this
+     */
+    public function setResourceManager(ResourceManager $resourceManager) {
+        $this->resourceManagerGetter = function ($HypixelAPI) use ($resourceManager) {
+            return $resourceManager;
+        };
+        return $this;
+    }
+
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
+    public function setResourceManagerGetter(Closure $getter) {
+        $this->resourceManagerGetter = $getter;
         return $this;
     }
 
