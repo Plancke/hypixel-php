@@ -61,7 +61,7 @@ class MongoCacheHandler extends CacheHandler {
     }
 
     /**
-     * @return \MongoDB
+     * @return \MongoDB\Database
      */
     public function selectDB() {
         return $this->mongoClient->selectDatabase("HypixelPHP");
