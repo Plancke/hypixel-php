@@ -6,6 +6,8 @@ use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\impl\flat\FlatFileCacheHandler;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\exceptions\ExceptionCodes;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\Fetcher;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\FetchTypes;
@@ -47,10 +49,17 @@ class HypixelPHP {
     /**
      * @param string $apiKey
      * @param array $options
+     * @throws \Exception
      */
     public function __construct($apiKey, $options = []) {
         $this->apiKey = $apiKey;
         $this->options = $options;
+
+        if ($this->apiKey == null) {
+            throw new HypixelPHPException("API Key can't be null!", ExceptionCodes::NO_KEY);
+        } elseif (InputType::getType($this->apiKey) !== InputType::UUID) {
+            throw new HypixelPHPException("API Key is invalid!", ExceptionCodes::INVALID_KEY);
+        }
 
         $this->loggerGetter = function ($HypixelPHP) {
             return new DefaultLogger($HypixelPHP);
