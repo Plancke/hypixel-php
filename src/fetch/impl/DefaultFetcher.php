@@ -82,6 +82,8 @@ class DefaultFetcher extends Fetcher {
                 if (isset($data['success'])) {
                     $response->setSuccessful($data['success']);
                     unset($data['success']);
+                } else {
+                    $response->setSuccessful(true);
                 }
                 $response->setData($data);
                 return $response;
@@ -102,6 +104,8 @@ class DefaultFetcher extends Fetcher {
             if (isset($data['success'])) {
                 $response->setSuccessful($data['success']);
                 unset($data['success']);
+            } else {
+                $response->setSuccessful(true);
             }
             $response->setData($data);
             return $response;

@@ -307,7 +307,7 @@ class HypixelPHP {
         $this->checkPairs($pairs);
 
         foreach ($pairs as $key => $val) {
-            if ($val == null || $val != '') continue;
+            if ($val == null || $val == '') continue;
 
             if ($key == FetchParams::PLAYER_BY_UNKNOWN || $key == FetchParams::PLAYER_BY_NAME) {
                 return $this->getPlayer([FetchParams::PLAYER_BY_UUID => $this->getUUIDFromVar($val)]);
@@ -374,15 +374,17 @@ class HypixelPHP {
             // try to use mojang
             $uuidURL = sprintf('https://api.mojang.com/users/profiles/minecraft/%s', $username);
             $response = $this->getFetcher()->getURLContents($uuidURL);
-            if (isset($response['id'])) {
-                $obj = [
-                    'timestamp' => time(),
-                    'name_lowercase' => $username,
-                    'uuid' => Utilities::ensureNoDashesUUID((string)$response['id'])
-                ];
-                $this->getLogger()->log("Received UUID from Mojang for '" . $username . "': " . $obj['uuid']);
-                $this->getCacheHandler()->setPlayerUUID($username, $obj);
-                return $obj['uuid'];
+            if ($response->wasSuccessful()) {
+                if (isset($response->getData()['id'])) {
+                    $obj = [
+                        'timestamp' => time(),
+                        'name_lowercase' => $username,
+                        'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['id'])
+                    ];
+                    $this->getLogger()->log("Received UUID from Mojang for '" . $username . "': " . $obj['uuid']);
+                    $this->getCacheHandler()->setPlayerUUID($username, $obj);
+                    return $obj['uuid'];
+                }
             }
 
             // if all else fails fall back to hypixel
@@ -415,7 +417,7 @@ class HypixelPHP {
         $this->checkPairs($pairs);
 
         foreach ($pairs as $key => $val) {
-            if ($val != null && $val != '') continue;
+            if ($val == null || $val == '') continue;
 
             if ($key == FetchParams::GUILD_BY_PLAYER_UNKNOWN || $key == FetchParams::GUILD_BY_PLAYER_NAME) {
                 return $this->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $this->getUUIDFromVar($val)]);
@@ -497,7 +499,7 @@ class HypixelPHP {
         $this->checkPairs($pairs);
 
         foreach ($pairs as $key => $val) {
-            if ($val != null && $val != '') continue;
+            if ($val == null || $val == '') continue;
 
             if ($key == FetchParams::SESSION_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
@@ -526,7 +528,7 @@ class HypixelPHP {
         $this->checkPairs($pairs);
 
         foreach ($pairs as $key => $val) {
-            if ($val != null && $val != '') continue;
+            if ($val == null || $val == '') continue;
 
             if ($key == FetchParams::FRIENDS_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
