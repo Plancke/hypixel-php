@@ -38,14 +38,13 @@ class DefaultFetcher extends Fetcher {
         $this->getHypixelPHP()->getLogger()->log('Starting Fetch: ' . $debug);
 
         $response = $this->getURLContents($requestURL);
-        if ($response->getData()['success'] == false) {
+        $response->setSuccessful($response->getData()['success']);
+        if (!$response->wasSuccessful()) {
             $this->getHypixelPHP()->getLogger()->log('Fetch Failed! ' . $response);
             // If one fails, stop trying for that session
             $this->getHypixelPHP()->getCacheHandler()->setGlobalTime(CacheHandler::MAX_CACHE_TIME);
-            $response->setSuccessful(false);
         } else {
             $this->getHypixelPHP()->getLogger()->log('Fetch successful!');
-            $response->setSuccessful(true);
         }
 
         return $response;
@@ -55,29 +54,29 @@ class DefaultFetcher extends Fetcher {
         $response = new Response();
         if ($this->useCurl) {
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_TIMEOUT_MS, $this->timeOut);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, $this->timeOut);
-            curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-            $curlOut = curl_exec($ch);
+            try {
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_TIMEOUT_MS, $this->timeOut);
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, $this->timeOut);
+                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+                $curlOut = curl_exec($ch);
 
-            $error = curl_error($ch);
-            if ($error != null) {
-                return $response->addError($error);
+                $error = curl_error($ch);
+                if ($error != null) {
+                    return $response->addError($error);
+                }
+                if ($curlOut === false) {
+                    return $response;
+                }
+                if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != '200') {
+                    return $response->addError('Status not 200');
+                }
+
+                return $response->setData(json_decode($curlOut, true));
+            } finally {
+                curl_close($ch);
             }
-
-            $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-
-            if ($curlOut === false) {
-                return $response;
-            }
-            if ($status != '200') {
-                return $response->addError('Status not 200');
-            }
-
-            return $response->setData(json_decode($curlOut, true));
         } else {
             $ctx = stream_context_create([
                 'https' => ['timeout' => $this->timeOut / 1000]

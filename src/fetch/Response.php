@@ -4,7 +4,7 @@ namespace Plancke\HypixelPHP\fetch;
 
 class Response {
 
-    protected $success;
+    protected $success = false;
     protected $errors = [];
     protected $data;
 
