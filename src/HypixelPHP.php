@@ -624,8 +624,9 @@ class HypixelPHP {
      * @return HypixelObject|Response|null
      */
     private function handle($cached, $responseSupplier, $constructor) {
+        $this->getLogger()->log("Handling; " . get_class($cached));
         if ($cached instanceof HypixelObject && !$cached->isCacheExpired()) {
-            $this->getLogger()->log("Cached is still valid; " . get_class($cached));
+            $this->getLogger()->log("Cached valid");
             return $cached;
         }
 
