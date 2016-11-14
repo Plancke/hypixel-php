@@ -4,6 +4,8 @@ namespace Plancke\HypixelPHP\cache;
 
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\classes\Module;
+use Plancke\HypixelPHP\exceptions\ExceptionCodes;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
@@ -70,7 +72,11 @@ abstract class CacheHandler extends Module {
         return $this;
     }
 
-    function _setCache(HypixelObject $hypixelObject) {
+    /**
+     * @param HypixelObject $hypixelObject
+     * @throws HypixelPHPException
+     */
+    function _setCache($hypixelObject) {
         if ($hypixelObject instanceof Player) {
             $this->setCachedPlayer($hypixelObject);
         } elseif ($hypixelObject instanceof Guild) {
@@ -85,6 +91,8 @@ abstract class CacheHandler extends Module {
             $this->setCachedLeaderboards($hypixelObject);
         } elseif ($hypixelObject instanceof Boosters) {
             $this->setCachedBoosters($hypixelObject);
+        } else {
+            throw new HypixelPHPException("Invalid HypixelObject", ExceptionCodes::INVALID_HYPIXEL_OBJECT);
         }
     }
 

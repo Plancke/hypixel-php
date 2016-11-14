@@ -6,5 +6,6 @@ class ExceptionCodes {
 
     const NO_KEY = 1;
     const INVALID_KEY = 2;
+    const INVALID_HYPIXEL_OBJECT = 3;
 
 }
