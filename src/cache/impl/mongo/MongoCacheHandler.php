@@ -96,7 +96,11 @@ class MongoCacheHandler extends CacheHandler {
      */
     function setSingleSave($key, HypixelObject $hypixelObject) {
         $query = ['key' => $key];
-        $this->updateCollection(CollectionNames::SINGLE_SAVE, $query, $hypixelObject);
+
+        $raw = $hypixelObject->getRaw();
+        $raw['key'] = $key;
+
+        $this->updateCollection(CollectionNames::SINGLE_SAVE, $query, $raw);
     }
 
     /**
@@ -108,7 +112,7 @@ class MongoCacheHandler extends CacheHandler {
         $query = ['key' => $key];
         $data = $this->queryCollection(CollectionNames::SINGLE_SAVE, $query);
         if ($data != null) {
-            return $constructor($data, $this->getHypixelPHP());
+            return $constructor($this->getHypixelPHP(), $data);
         }
         return null;
     }
