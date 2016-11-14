@@ -36,6 +36,8 @@ class MongoCacheHandler extends CacheHandler {
      * Use this to construct your mongo client,
      * ensures the returned values are of the php array type
      *
+     * Should be added as the 'typeMap' field in $driverOptions
+     *
      * @return array
      */
     public static function getTypeMap() {
