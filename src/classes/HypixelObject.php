@@ -4,6 +4,7 @@ namespace Plancke\HypixelPHP\classes;
 
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\HypixelPHP;
+use Plancke\HypixelPHP\util\Utilities;
 
 abstract class HypixelObject extends APIObject {
 
@@ -95,7 +96,7 @@ abstract class HypixelObject extends APIObject {
 
     public function getExtra($key = null, $default = null, $delimiter = '.') {
         if ($key != null) {
-            return $this->getRecursiveValue($this->data['extra'], $key, $default, $delimiter);
+            return Utilities::getRecursiveValue($this->data['extra'], $key, $default, $delimiter);
         }
         return $this->data['extra'];
     }

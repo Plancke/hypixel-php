@@ -209,4 +209,12 @@ abstract class Utilities {
 
         return implode(DIRECTORY_SEPARATOR, $parts);
     }
+
+    public static function getRecursiveValue($array, $key, $default = null, $delimiter = '.') {
+        $return = $array;
+        foreach (explode($delimiter, $key) as $split) {
+            $return = isset($return[$split]) ? $return[$split] : $default;
+        }
+        return $return ? $return : $default;
+    }
 }

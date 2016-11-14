@@ -3,6 +3,7 @@
 namespace Plancke\HypixelPHP\classes;
 
 use Plancke\HypixelPHP\HypixelPHP;
+use Plancke\HypixelPHP\util\Utilities;
 
 abstract class APIObject extends APIHolding {
 
@@ -36,7 +37,7 @@ abstract class APIObject extends APIHolding {
         }
 
         if (!$implicit) {
-            return $this->getRecursiveValue($this->getData(), $key, $default, $delimiter);
+            return Utilities::getRecursiveValue($this->getData(), $key, $default, $delimiter);
         }
 
         return in_array($key, array_keys($this->getData())) ? $this->getData()[$key] : $default;
@@ -51,14 +52,6 @@ abstract class APIObject extends APIHolding {
 
     public function getRaw() {
         return $this->data;
-    }
-
-    protected function getRecursiveValue($array, $key, $default = null, $delimiter = '.') {
-        $return = $array;
-        foreach (explode($delimiter, $key) as $split) {
-            $return = isset($return[$split]) ? $return[$split] : $default;
-        }
-        return $return ? $return : $default;
     }
 
     /**
