@@ -27,20 +27,14 @@ abstract class APIObject extends APIHolding {
     /**
      * @param      $key
      * @param null $default
-     * @param bool $implicit
      * @param string $delimiter
      * @return mixed
      */
-    public function get($key, $default = null, $implicit = false, $delimiter = '.') {
+    public function get($key, $default = null, $delimiter = '.') {
         if (!is_array($this->getData())) {
             return $default;
         }
-
-        if (!$implicit) {
-            return Utilities::getRecursiveValue($this->getData(), $key, $default, $delimiter);
-        }
-
-        return in_array($key, array_keys($this->getData())) ? $this->getData()[$key] : $default;
+        return Utilities::getRecursiveValue($this->getData(), $key, $default, $delimiter);
     }
 
     /**
