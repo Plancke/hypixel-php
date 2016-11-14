@@ -8,6 +8,7 @@ use Plancke\HypixelPHP\cache\impl\flat\FlatFileCacheHandler;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
+use Plancke\HypixelPHP\exceptions\InvalidUUIDException;
 use Plancke\HypixelPHP\fetch\Fetcher;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\FetchTypes;
@@ -298,7 +299,8 @@ class HypixelPHP {
 
     /**
      * @param array $pairs
-     * @return Player|Response|null
+     * @return null|Response|Player
+     * @throws InvalidUUIDException
      */
     public function getPlayer($pairs = []) {
         foreach ($pairs as $key => $val) {
@@ -310,7 +312,7 @@ class HypixelPHP {
 
             if ($key == FetchParams::PLAYER_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new HypixelPHPException("Input isn't a valid UUID", ExceptionCodes::INVALID_UUID);
+                    throw new InvalidUUIDException();
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
 
@@ -403,7 +405,8 @@ class HypixelPHP {
 
     /**
      * @param array $pairs
-     * @return Guild|Response|null
+     * @return null|Response|Guild
+     * @throws InvalidUUIDException
      */
     public function getGuild($pairs = []) {
         foreach ($pairs as $key => $val) {
@@ -415,7 +418,7 @@ class HypixelPHP {
 
             if ($key == FetchParams::GUILD_BY_PLAYER_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new HypixelPHPException("Input isn't a valid UUID", ExceptionCodes::INVALID_UUID);
+                    throw new InvalidUUIDException();
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
 
@@ -482,7 +485,8 @@ class HypixelPHP {
 
     /**
      * @param array $pairs
-     * @return Session|Response|null
+     * @return null|Response|Session
+     * @throws InvalidUUIDException
      */
     public function getSession($pairs = []) {
         foreach ($pairs as $key => $val) {
@@ -494,7 +498,7 @@ class HypixelPHP {
 
             if ($key == FetchParams::SESSION_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new HypixelPHPException("Input isn't a valid UUID", ExceptionCodes::INVALID_UUID);
+                    throw new InvalidUUIDException();
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
 
@@ -512,7 +516,8 @@ class HypixelPHP {
 
     /**
      * @param array $pairs
-     * @return Friends|Response|null
+     * @return null|Response|Friends
+     * @throws InvalidUUIDException
      */
     public function getFriends($pairs = []) {
         foreach ($pairs as $key => $val) {
@@ -524,7 +529,7 @@ class HypixelPHP {
 
             if ($key == FetchParams::FRIENDS_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new HypixelPHPException("Input isn't a valid UUID", ExceptionCodes::INVALID_UUID);
+                    throw new InvalidUUIDException();
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
 
