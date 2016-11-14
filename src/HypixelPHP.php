@@ -9,6 +9,7 @@ use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\exceptions\InvalidUUIDException;
+use Plancke\HypixelPHP\exceptions\NoPairsException;
 use Plancke\HypixelPHP\fetch\Fetcher;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\FetchTypes;
@@ -300,9 +301,11 @@ class HypixelPHP {
     /**
      * @param array $pairs
      * @return null|Response|Player
-     * @throws InvalidUUIDException
+     * @throws HypixelPHPException
      */
     public function getPlayer($pairs = []) {
+        $this->checkPairs($pairs);
+
         foreach ($pairs as $key => $val) {
             if ($val == null || $val != '') continue;
 
@@ -406,9 +409,11 @@ class HypixelPHP {
     /**
      * @param array $pairs
      * @return null|Response|Guild
-     * @throws InvalidUUIDException
+     * @throws HypixelPHPException
      */
     public function getGuild($pairs = []) {
+        $this->checkPairs($pairs);
+
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') continue;
 
@@ -486,9 +491,11 @@ class HypixelPHP {
     /**
      * @param array $pairs
      * @return null|Response|Session
-     * @throws InvalidUUIDException
+     * @throws HypixelPHPException
      */
     public function getSession($pairs = []) {
+        $this->checkPairs($pairs);
+
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') continue;
 
@@ -517,9 +524,11 @@ class HypixelPHP {
     /**
      * @param array $pairs
      * @return null|Response|Friends
-     * @throws InvalidUUIDException
+     * @throws HypixelPHPException
      */
     public function getFriends($pairs = []) {
+        $this->checkPairs($pairs);
+
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') continue;
 
@@ -543,6 +552,12 @@ class HypixelPHP {
             }
         }
         return null;
+    }
+
+    private function checkPairs($pairs) {
+        if ($pairs == null || sizeof($pairs) == 0) {
+            throw new NoPairsException();
+        }
     }
 
     /**
