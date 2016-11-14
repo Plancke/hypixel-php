@@ -36,7 +36,7 @@ class DefaultLogger extends Logger {
      * @param $line
      */
     public function log($line) {
-        if ($this->isEnabled()) {
+        if (!$this->isEnabled()) {
             return;
         }
 
