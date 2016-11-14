@@ -5,6 +5,8 @@ use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\HypixelPHP;
+use Plancke\HypixelPHP\responses\guild\Guild;
+use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\Tests\util\TestUtil;
 
 class APITest extends \PHPUnit_Framework_TestCase {
@@ -30,10 +32,10 @@ class APITest extends \PHPUnit_Framework_TestCase {
     }
 
     function testPlayerResponse() {
-        $this->assertNotNull(TestUtil::getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_NAME => "Plancke"]));
+        $this->assertTrue(TestUtil::getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_NAME => "Plancke"]) instanceof Player);
     }
 
     function testGuildResponse() {
-        $this->assertNotNull(TestUtil::getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_NAME => "Plancke"]));
+        $this->assertTrue(TestUtil::getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_NAME => "Plancke"]) instanceof Guild);
     }
 }
