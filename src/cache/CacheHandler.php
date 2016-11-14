@@ -22,8 +22,24 @@ abstract class CacheHandler extends Module {
     // cache time to only fetch if we don't have cached data
     const MAX_CACHE_TIME_GET_NON_EXIST = CacheHandler::MAX_CACHE_TIME - 1;
 
-    protected $cacheTimes = [];
-    protected $globalTime;
+    protected $cacheTimes = [
+        CacheTimes::PLAYER => 10 * 60,
+        CacheTimes::UUID => 6 * 60 * 60,
+        CacheTimes::UUID_NOT_FOUND => 2 * 60 * 60,
+
+        CacheTimes::GUILD => 15 * 60,
+        CacheTimes::GUILD_NOT_FOUND => 10 * 60,
+
+        CacheTimes::LEADERBOARDS => 10 * 60,
+        CacheTimes::PLAYER_COUNT => 10 * 60,
+        CacheTimes::BOOSTERS => 10 * 60,
+        CacheTimes::SESSION => 10 * 60,
+        CacheTimes::KEY_INFO => 10 * 60,
+        CacheTimes::FRIENDS => 10 * 60,
+        CacheTimes::WATCHDOG => 10 * 60
+    ];
+
+    protected $globalTime = 6000;
 
     public function canFetch() {
         return $this->globalTime != CacheHandler::MAX_CACHE_TIME;
