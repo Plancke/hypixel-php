@@ -43,7 +43,7 @@ class Guild extends HypixelObject {
      * @return MemberList
      */
     public function getMemberList() {
-        return new MemberList($this->get('members'), $this->getHypixelPHP());
+        return new MemberList($this->getHypixelPHP(), $this->get('members'));
     }
 
     /**
