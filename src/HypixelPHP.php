@@ -606,10 +606,13 @@ class HypixelPHP {
                 $fetched = $constructor($this, $response->getData());
                 if ($fetched instanceof HypixelObject) {
                     if ($cached instanceof HypixelObject) {
+                        // update with cached extra, only locally
+                        // since we are already saving the whole thing later
                         $fetched->_setExtra($cached->getExtra());
                     }
 
-                    return $this->getCacheHandler()->_setCache($fetched->handleNew());
+                    $fetched->handleNew();
+                    return $this->getCacheHandler()->_setCache($fetched);
                 }
             } else {
                 // fetch was not successful, attach response or

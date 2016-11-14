@@ -30,12 +30,9 @@ abstract class HypixelObject extends APIObject {
 
     /**
      * Called when an object is fetched freshly
-     *
-     * @return HypixelObject
      */
     public function handleNew() {
         $this->data['timestamp'] = time();
-        return $this;
     }
 
     /**
