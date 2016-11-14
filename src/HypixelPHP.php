@@ -309,7 +309,9 @@ class HypixelPHP {
             }
 
             if ($key == FetchParams::PLAYER_BY_UUID) {
-                if (InputType::getType($val) !== InputType::UUID) continue;
+                if (InputType::getType($val) !== InputType::UUID) {
+                    throw new HypixelPHPException("Input isn't a valid UUID", ExceptionCodes::INVALID_UUID);
+                }
                 $val = Utilities::ensureNoDashesUUID($val);
 
                 return $this->handle(
@@ -358,6 +360,7 @@ class HypixelPHP {
                 'name_lowercase' => $username,
                 'uuid' => null
             ];
+            $this->getLogger()->log("Failed getting UUID for '" . $username . "' saving null!");
             $this->getCacheHandler()->setPlayerUUID($username, $obj);
             return null;
         }
@@ -372,6 +375,7 @@ class HypixelPHP {
                     'name_lowercase' => $username,
                     'uuid' => Utilities::ensureNoDashesUUID((string)$response['id'])
                 ];
+                $this->getLogger()->log("Received UUID from Mojang for '" . $username . "': " . $obj['uuid']);
                 $this->getCacheHandler()->setPlayerUUID($username, $obj);
                 return $obj['uuid'];
             }
@@ -384,9 +388,8 @@ class HypixelPHP {
                     'name_lowercase' => $username,
                     'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['uuid'])
                 ];
-
+                $this->getLogger()->log("Received UUID from Hypixel for '" . $username . "': " . $obj['uuid']);
                 $this->getCacheHandler()->setPlayerUUID($username, $obj);
-
                 return $obj['uuid'];
             }
         }
@@ -411,7 +414,9 @@ class HypixelPHP {
             }
 
             if ($key == FetchParams::GUILD_BY_PLAYER_UUID) {
-                if (InputType::getType($val) != InputType::UUID) continue;
+                if (InputType::getType($val) !== InputType::UUID) {
+                    throw new HypixelPHPException("Input isn't a valid UUID", ExceptionCodes::INVALID_UUID);
+                }
                 $val = Utilities::ensureNoDashesUUID($val);
 
                 $id = $this->getCacheHandler()->getGuildIDForUUID($val);
@@ -488,7 +493,9 @@ class HypixelPHP {
             }
 
             if ($key == FetchParams::SESSION_BY_UUID) {
-                if (InputType::getType($val) != InputType::UUID) continue;
+                if (InputType::getType($val) !== InputType::UUID) {
+                    throw new HypixelPHPException("Input isn't a valid UUID", ExceptionCodes::INVALID_UUID);
+                }
                 $val = Utilities::ensureNoDashesUUID($val);
 
                 return $this->handle(
@@ -516,7 +523,9 @@ class HypixelPHP {
             }
 
             if ($key == FetchParams::FRIENDS_BY_UUID) {
-                if (InputType::getType($val) != InputType::UUID) continue;
+                if (InputType::getType($val) !== InputType::UUID) {
+                    throw new HypixelPHPException("Input isn't a valid UUID", ExceptionCodes::INVALID_UUID);
+                }
                 $val = Utilities::ensureNoDashesUUID($val);
 
                 return $this->handle(
