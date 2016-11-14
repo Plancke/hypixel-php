@@ -603,7 +603,7 @@ class HypixelPHP {
         $response = $responseSupplier();
         if ($response instanceof Response) {
             if ($response->wasSuccessful()) {
-                $fetched = $constructor($this, $response->getData());
+                $fetched = $constructor($this, ['record' => $response->getData()]);
                 if ($fetched instanceof HypixelObject) {
                     if ($cached instanceof HypixelObject) {
                         // update with cached extra, only locally
