@@ -14,11 +14,10 @@ abstract class HypixelObject extends APIObject {
      * @param HypixelPHP $HypixelPHP
      */
     public function __construct(HypixelPHP $HypixelPHP, $data) {
-        parent::__construct($HypixelPHP, $data);
+        parent::__construct($HypixelPHP, []);
 
-        if (!isset($this->data['record']) || !is_array($this->data['record'])) {
-            $this->data['record'] = [];
-        }
+        $this->data['record'] = $data;
+
         if (!isset($this->data['extra']) || !is_array($this->data['extra'])) {
             $this->data['extra'] = [];
         }
