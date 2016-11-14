@@ -33,6 +33,20 @@ class MongoCacheHandler extends CacheHandler {
     }
 
     /**
+     * Use this to construct your mongo client,
+     * ensures the returned values are of the php array type
+     *
+     * @return array
+     */
+    public static function getTypeMap() {
+        return [
+            'root' => 'array',
+            'document' => 'array',
+            'array' => 'array'
+        ];
+    }
+
+    /**
      * Run this code once to initialize the indexes on the collections
      *
      * I'm not entirely sure how performant making this call every time is so I'm not taking any chances
