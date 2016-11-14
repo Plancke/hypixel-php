@@ -21,7 +21,7 @@ class Stats extends APIObject {
      * @return GameStats
      */
     public function getGame($game) {
-        $game = $this->get($game, true, null);
+        $game = $this->getArray($game);
         return new GameStats($this->getHypixelPHP(), $game);
     }
 }

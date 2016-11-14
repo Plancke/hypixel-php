@@ -196,7 +196,7 @@ class Player extends HypixelObject {
      * @return bool
      */
     public function isStaff() {
-        $rank = $this->get('rank', true, 'NORMAL');
+        $rank = $this->get('rank', 'NORMAL');
         if ($rank == 'NORMAL') {
             return false;
         }
@@ -207,22 +207,22 @@ class Player extends HypixelObject {
      * @return string
      */
     public function getName() {
-        if ($this->get('displayname', true) != null) {
-            return $this->get('displayname', true);
+        if ($this->get('displayname') != null) {
+            return $this->get('displayname');
         } else {
-            $aliases = $this->get('knownAliases', true, []);
+            $aliases = $this->get('knownAliases', []);
             if (sizeof($aliases) == 0) {
-                return $this->get('playername', true);
+                return $this->get('playername');
             }
             return end($aliases);
         }
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getPrefix() {
-        return $this->get('prefix', false, null);
+        return $this->get('prefix');
     }
 
     /**
@@ -262,7 +262,7 @@ class Player extends HypixelObject {
      * @return bool
      */
     public function isPreEULA() {
-        return $this->get('packageRank', true, null) != null;
+        return $this->get('packageRank', null) != null;
     }
 
     /**
