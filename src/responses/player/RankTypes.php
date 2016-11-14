@@ -2,7 +2,10 @@
 
 namespace Plancke\HypixelPHP\responses\player;
 
-abstract class RankTypes {
+abstract class RankTypes extends \SplEnum {
+
+    const __default = self::NON_DONOR;
+
     const NON_DONOR = 1;
     const VIP = 2;
     const VIP_PLUS = 3;
@@ -16,7 +19,7 @@ abstract class RankTypes {
     const YOUTUBER = 60;
 
     public static function fromName($db) {
-        foreach (RankTypes::getAllTypes() as $id) {
+        foreach (RankTypes::getConstList() as $id) {
             $rank = RankTypes::fromID($id);
             if ($rank != null) {
                 if ($rank->getName() == $db) {
@@ -25,14 +28,6 @@ abstract class RankTypes {
             }
         }
         return null;
-    }
-
-    /**
-     * @return array
-     */
-    public static function getAllTypes() {
-        $obj = new \ReflectionClass ('Plancke\HypixelPHP\responses\player\RankTypes');
-        return $obj->getConstants();
     }
 
     /**
