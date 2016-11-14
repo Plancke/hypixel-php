@@ -22,7 +22,7 @@ class Player extends HypixelObject {
      * @return Stats
      */
     public function getStats() {
-        return new Stats($this->getArray('stats'), $this->getHypixelPHP());
+        return new Stats($this->getHypixelPHP(), $this->getArray('stats'));
     }
 
     /**

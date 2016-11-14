@@ -7,6 +7,7 @@ use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\player\Player;
+use Plancke\HypixelPHP\responses\player\Stats;
 use Plancke\Tests\util\TestUtil;
 
 class APITest extends \PHPUnit_Framework_TestCase {
@@ -32,7 +33,9 @@ class APITest extends \PHPUnit_Framework_TestCase {
     }
 
     function testPlayerResponse() {
-        $this->assertTrue(TestUtil::getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_NAME => "Plancke"]) instanceof Player);
+        $player = TestUtil::getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_NAME => "Plancke"]);
+        $this->assertTrue($player instanceof Player);
+        $this->assertTrue($player->getStats() instanceof Stats);
     }
 
     function testGuildResponse() {
