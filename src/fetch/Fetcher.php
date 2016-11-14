@@ -44,7 +44,7 @@ abstract class Fetcher extends Module {
     public function getResponseAdapter() {
         if ($this->responseAdapter == null) {
             $getter = $this->responseAdapterGetter;
-            $this->responseAdapter = $getter($this);
+            $this->responseAdapter = $getter($this->getHypixelPHP());
         }
         return $this->responseAdapter;
     }
