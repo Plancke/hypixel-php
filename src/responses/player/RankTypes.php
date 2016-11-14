@@ -31,7 +31,7 @@ abstract class RankTypes {
      * @return array
      */
     public static function getAllTypes() {
-        $obj = new \ReflectionClass ('\HypixelPHP\RankTypes');
+        $obj = new \ReflectionClass ('Plancke\HypixelPHP\responses\player\RankTypes');
         return $obj->getConstants();
     }
 
