@@ -596,6 +596,7 @@ class HypixelPHP {
      */
     private function handle($cached, $responseSupplier, $constructor) {
         if ($cached instanceof HypixelObject && !$cached->isCacheExpired()) {
+            $this->getLogger()->log("Cached is still valid; returning cached");
             return $cached;
         }
 
@@ -614,6 +615,7 @@ class HypixelPHP {
                 // fetch was not successful, attach response or
                 // return it so we can get the error
                 if ($cached != null) {
+                    $this->getLogger()->log("Attaching response");
                     $cached->attachResponse($response);
                 } else {
                     return $response;
