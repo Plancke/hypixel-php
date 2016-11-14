@@ -616,7 +616,10 @@ class HypixelPHP {
                     }
 
                     $fetched->handleNew();
-                    return $this->getCacheHandler()->_setCache($fetched);
+
+                    $this->getCacheHandler()->_setCache($fetched);
+
+                    return $fetched;
                 }
             } else {
                 // fetch was not successful, attach response or

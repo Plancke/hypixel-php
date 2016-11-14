@@ -18,7 +18,7 @@ class Guild extends HypixelObject {
         // for mongo
         $extraSetter['name_lower'] = strtolower($this->getName());
 
-        $this->setExtra($extraSetter);
+        $this->setExtra($extraSetter, false);
     }
 
     protected function handleCoinHistory() {
