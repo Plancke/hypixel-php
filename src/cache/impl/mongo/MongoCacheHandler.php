@@ -3,7 +3,6 @@
 namespace Plancke\HypixelPHP\cache\impl\mongo;
 
 use MongoDB\Client;
-use MongoDB\Model\BSONDocument;
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
@@ -112,7 +111,7 @@ class MongoCacheHandler extends CacheHandler {
     function getSingleSave($key, $constructor) {
         $query = ['key' => $key];
         $data = $this->queryCollection(CollectionNames::SINGLE_SAVE, $query);
-        if ($data instanceof BSONDocument) {
+        if ($data != null) {
             return $constructor($this->getHypixelPHP(), $data);
         }
         return null;
@@ -126,7 +125,7 @@ class MongoCacheHandler extends CacheHandler {
     function getCachedPlayer($uuid) {
         $query = ['record.uuid' => (string)$uuid];
         $data = $this->queryCollection(CollectionNames::PLAYERS, $query);
-        if ($data instanceof BSONDocument) {
+        if ($data != null) {
             $closure = $this->getHypixelPHP()->getProvider()->getPlayer();
             return $closure($this->getHypixelPHP(), $data);
         }
@@ -149,7 +148,7 @@ class MongoCacheHandler extends CacheHandler {
         // check if player_uuid collection has record
         $query = ['name_lowercase' => $username];
         $data = $this->queryCollection(CollectionNames::PLAYER_UUID, $query);
-        if ($data instanceof BSONDocument) {
+        if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::UUID);
             } else {
@@ -168,7 +167,7 @@ class MongoCacheHandler extends CacheHandler {
         // check if player database has a player for it
         $query = ['record.playername' => $username];
         $data = $this->queryCollection(CollectionNames::PLAYERS, $query);
-        if ($data instanceof BSONDocument) {
+        if ($data != null) {
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
             $diff = time() - $this->getCacheTime(CacheTimes::UUID) - $timestamp;
 
@@ -191,7 +190,7 @@ class MongoCacheHandler extends CacheHandler {
     function getCachedGuild($id) {
         $query = ['record._id' => (string)$id];
         $data = $this->queryCollection(CollectionNames::GUILDS, $query);
-        if ($data instanceof BSONDocument) {
+        if ($data != null) {
             $closure = $this->getHypixelPHP()->getProvider()->getGuild();
             return $closure($this->getHypixelPHP(), $data);
         }
@@ -206,7 +205,7 @@ class MongoCacheHandler extends CacheHandler {
     function getGuildIDForUUID($uuid) {
         $query = ['uuid' => (string)$uuid];
         $data = $this->queryCollection(CollectionNames::GUILDS_UUID, $query);
-        if ($data instanceof BSONDocument) {
+        if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
             } else {
@@ -230,7 +229,7 @@ class MongoCacheHandler extends CacheHandler {
     function getGuildIDForName($name) {
         $query = ['extra.name_lower' => strtolower((string)$name)];
         $data = $this->queryCollection(CollectionNames::GUILDS, $query);
-        if ($data instanceof BSONDocument) {
+        if ($data != null) {
             $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
             $diff = time() - $cacheTime - $timestamp;
@@ -243,7 +242,7 @@ class MongoCacheHandler extends CacheHandler {
 
         $query = ['name_lower' => strtolower((string)$name)];
         $data = $this->queryCollection(CollectionNames::GUILDS_NAME, $query);
-        if ($data instanceof BSONDocument) {
+        if ($data != null) {
             if (isset($data['name_lower']) && $data['name_lower'] != null && $data['name_lower'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
             } else {
