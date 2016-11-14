@@ -52,7 +52,7 @@ class DefaultFetcher extends Fetcher {
             $this->getHypixelPHP()->getLogger()->log('Fetch successful!');
         }
 
-        return $this->getResponseAdapter()->adaptResponse($fetch, $response);
+        return $this->getResponseAdapter()->adaptResponse($fetch, $keyValues, $response);
     }
 
     public function getURLContents($url) {

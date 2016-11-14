@@ -15,25 +15,26 @@ use Plancke\HypixelPHP\fetch\Response;
 class ResponseAdapter extends Module {
 
     /**
-     * @param $key
+     * @param $fetch
+     * @param $keyValues
      * @param Response $response
      * @return Response
      * @throws HypixelPHPException
      */
-    public function adaptResponse($key, Response $response) {
-        switch ($key) {
+    public function adaptResponse($fetch, $keyValues, Response $response) {
+        switch ($fetch) {
             case FetchTypes::PLAYER:
                 return $this->remapField('player', $response);
             case FetchTypes::GUILD:
                 return $this->remapField('guild', $response);
-            case FetchTypes::FRIENDS:
-                return $this->remapField('records', $response);
             case FetchTypes::BOOSTERS:
                 return $this->remapField('boosters', $response);
             case FetchTypes::LEADERBOARDS:
                 return $this->remapField('leaderboards', $response);
+            case FetchTypes::FRIENDS:
+                return $this->attachKeyValues($keyValues, $this->remapField('records', $response));
             case FetchTypes::SESSION:
-                return $this->remapField('session', $response);
+                return $this->attachKeyValues($keyValues, $this->remapField('session', $response));
 
             case FetchTypes::PLAYER_COUNT:
             case FetchTypes::WATCHDOG_STATS:
@@ -44,8 +45,19 @@ class ResponseAdapter extends Module {
                 return $response;
 
             default:
-                throw new HypixelPHPException("Invalid Adapter Key: " . $key, ExceptionCodes::INVALID_ADAPTER_KEY);
+                throw new HypixelPHPException("Invalid Adapter Key: " . $fetch, ExceptionCodes::INVALID_ADAPTER_KEY);
         }
+    }
+
+    /**
+     * @param $keyValues
+     * @param Response $response
+     * @return Response
+     */
+    private function attachKeyValues($keyValues, Response $response) {
+        $data = $response->getData();
+        $data['record'] = array_merge($data['record'], $keyValues);
+        return $response->setData($data);
     }
 
     /**
