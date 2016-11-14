@@ -6,6 +6,10 @@ use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\fetch\Fetcher;
 use Plancke\HypixelPHP\fetch\Response;
 
+/**
+ * Class DefaultFetcher
+ * @package Plancke\HypixelPHP\fetch\impl
+ */
 class DefaultFetcher extends Fetcher {
 
     protected $useCurl;
@@ -38,16 +42,17 @@ class DefaultFetcher extends Fetcher {
         $this->getHypixelPHP()->getLogger()->log('Starting Fetch: ' . $debug);
 
         $response = $this->getURLContents($requestURL);
-        $response->setSuccessful($response->getData()['success']);
         if (!$response->wasSuccessful()) {
             $this->getHypixelPHP()->getLogger()->log('Fetch Failed! ' . $response);
+
             // If one fails, stop trying for that session
+            // ideally also have a cached check before
             $this->getHypixelPHP()->getCacheHandler()->setGlobalTime(CacheHandler::MAX_CACHE_TIME);
         } else {
             $this->getHypixelPHP()->getLogger()->log('Fetch successful!');
         }
 
-        return $response;
+        return $this->getResponseAdapter()->adaptResponse($fetch, $response);
     }
 
     public function getURLContents($url) {
@@ -73,7 +78,13 @@ class DefaultFetcher extends Fetcher {
                     return $response->addError('Status not 200');
                 }
 
-                return $response->setData(json_decode($curlOut, true));
+                $data = json_decode($curlOut, true);
+                if (isset($data['success'])) {
+                    $response->setSuccessful($data['success']);
+                    unset($data['success']);
+                }
+                $response->setData($data);
+                return $response;
             } finally {
                 curl_close($ch);
             }
@@ -87,7 +98,13 @@ class DefaultFetcher extends Fetcher {
                 return $response->addError('Failed to pull data!');
             }
 
-            return $response->setData(json_decode($out, true));
+            $data = json_decode($out, true);
+            if (isset($data['success'])) {
+                $response->setSuccessful($data['success']);
+                unset($data['success']);
+            }
+            $response->setData($data);
+            return $response;
         }
     }
 

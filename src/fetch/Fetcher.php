@@ -2,13 +2,25 @@
 
 namespace Plancke\HypixelPHP\fetch;
 
+use Closure;
 use Plancke\HypixelPHP\classes\Module;
+use Plancke\HypixelPHP\fetch\adapter\ResponseAdapter;
+use Plancke\HypixelPHP\HypixelPHP;
 
 abstract class Fetcher extends Module {
 
     const BASE_URL = 'https://api.hypixel.net/';
 
     protected $timeOut;
+    private $responseAdapter, $responseAdapterGetter;
+
+    public function __construct(HypixelPHP $HypixelPHP) {
+        parent::__construct($HypixelPHP);
+
+        $this->setResponseAdapterGetter(function ($HypixelPHP) {
+            return new ResponseAdapter($HypixelPHP);
+        });
+    }
 
     /**
      * @return int
@@ -23,6 +35,39 @@ abstract class Fetcher extends Module {
      */
     public function setTimeOut($timeOut) {
         $this->timeOut = $timeOut;
+        return $this;
+    }
+
+    /**
+     * @return ResponseAdapter
+     */
+    public function getResponseAdapter() {
+        if ($this->responseAdapter == null) {
+            $getter = $this->responseAdapterGetter;
+            $this->responseAdapter = $getter($this);
+        }
+        return $this->responseAdapter;
+    }
+
+    /**
+     * @param ResponseAdapter $logger
+     * @return $this
+     */
+    public function setResponseAdapter(ResponseAdapter $logger) {
+        $this->responseAdapter = $logger;
+        $this->responseAdapterGetter = function ($HypixelAPI) use ($logger) {
+            return $logger;
+        };
+        return $this;
+    }
+
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
+    public function setResponseAdapterGetter(Closure $getter) {
+        $this->responseAdapterGetter = $getter;
+        $this->responseAdapter = null;
         return $this;
     }
 

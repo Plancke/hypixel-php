@@ -9,5 +9,6 @@ class ExceptionCodes {
     const INVALID_HYPIXEL_OBJECT = 3;
     const INVALID_UUID = 4;
     const NO_PAIRS = 5;
+    const INVALID_ADAPTER_KEY = 6;
 
 }

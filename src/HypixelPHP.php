@@ -417,7 +417,7 @@ class HypixelPHP {
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') continue;
 
-            if ($key == FetchParams::GUILD_BY_PLAYER_UNKNOWN || $key == FetchParams::GUILD_BY_PLAYER_NAME || $key == FetchParams::GUILD_BY_PLAYER_OBJECT) {
+            if ($key == FetchParams::GUILD_BY_PLAYER_UNKNOWN || $key == FetchParams::GUILD_BY_PLAYER_NAME) {
                 return $this->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $this->getUUIDFromVar($val)]);
             }
 
@@ -499,10 +499,6 @@ class HypixelPHP {
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') continue;
 
-            if ($key == FetchParams::SESSION_BY_PLAYER_OBJECT) {
-                return $this->getSession([FetchParams::SESSION_BY_UUID => $this->getUUIDFromVar($val)]);
-            }
-
             if ($key == FetchParams::SESSION_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
                     throw new InvalidUUIDException();
@@ -531,10 +527,6 @@ class HypixelPHP {
 
         foreach ($pairs as $key => $val) {
             if ($val != null && $val != '') continue;
-
-            if ($key == FetchParams::FRIENDS_BY_PLAYER_OBJECT) {
-                return $this->getFriends([FetchParams::FRIENDS_BY_UUID => $this->getUUIDFromVar($val)]);
-            }
 
             if ($key == FetchParams::FRIENDS_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {

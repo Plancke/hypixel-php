@@ -87,7 +87,7 @@ class Player extends HypixelObject {
      */
     public function getGuild() {
         if ($this->guild == null) {
-            $this->guild = $this->getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_OBJECT => $this]);
+            $this->guild = $this->getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $this->getUUID()]);
         }
         return $this->guild;
     }
@@ -97,7 +97,7 @@ class Player extends HypixelObject {
      */
     public function getSession() {
         if ($this->session == null) {
-            $this->session = $this->getHypixelPHP()->getSession([FetchParams::SESSION_BY_PLAYER_OBJECT => $this]);
+            $this->session = $this->getHypixelPHP()->getSession([FetchParams::SESSION_BY_UUID => $this->getUUID()]);
         }
         return $this->session;
     }
@@ -107,7 +107,7 @@ class Player extends HypixelObject {
      */
     public function getFriends() {
         if ($this->friends == null) {
-            $this->friends = $this->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_PLAYER_OBJECT => $this]);
+            $this->friends = $this->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $this->getUUID()]);
         }
         return $this->friends;
     }
