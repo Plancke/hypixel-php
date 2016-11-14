@@ -4,7 +4,7 @@ namespace Plancke\HypixelPHP\resources;
 
 abstract class AResources {
 
-    const BASE_RESOURCES_DIR = __DIR__ . '/../../../resources/';
+    const BASE_RESOURCES_DIR = __DIR__ . '/../../resources/';
 
     public static function includeResourceFile($path) {
         /** @noinspection PhpIncludeInspection */
