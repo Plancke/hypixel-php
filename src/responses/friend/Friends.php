@@ -17,7 +17,7 @@ class Friends extends HypixelObject {
         if ($this->LIST == null) {
             $this->LIST = [];
             foreach ($this->getRawList() as $f) {
-                array_push($this->LIST, new Friend($f, $this->getHypixelPHP(), $this->getUUID()));
+                array_push($this->LIST, new Friend($this->getHypixelPHP(), $f, $this->getUUID()));
             }
         }
         return $this->LIST;

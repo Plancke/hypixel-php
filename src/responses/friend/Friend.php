@@ -4,12 +4,13 @@ namespace Plancke\HypixelPHP\responses\friend;
 
 use Plancke\HypixelPHP\classes\APIHolding;
 use Plancke\HypixelPHP\fetch\FetchParams;
+use Plancke\HypixelPHP\HypixelPHP;
 
 class Friend extends APIHolding {
     private $friend;
     private $uuid;
 
-    public function __construct($HypixelPHP, $friend, $uuid) {
+    public function __construct(HypixelPHP $HypixelPHP, $friend, $uuid) {
         parent::__construct($HypixelPHP);
         $this->friend = $friend;
         $this->uuid = $uuid;
