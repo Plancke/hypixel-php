@@ -39,7 +39,7 @@ abstract class CacheHandler extends Module {
         CacheTimes::WATCHDOG => 10 * 60
     ];
 
-    protected $globalTime = 6000;
+    protected $globalTime = 0;
 
     public function canFetch() {
         return $this->globalTime != CacheHandler::MAX_CACHE_TIME;
