@@ -210,6 +210,15 @@ abstract class Utilities {
         return implode(DIRECTORY_SEPARATOR, $parts);
     }
 
+    /**
+     * Get a value recursively in an array
+     *
+     * @param $array
+     * @param $key
+     * @param null $default default value to return if not found in array
+     * @param string $delimiter where to split the key and go a level deeper in the array
+     * @return mixed
+     */
     public static function getRecursiveValue($array, $key, $default = null, $delimiter = '.') {
         $return = $array;
         foreach (explode($delimiter, $key) as $split) {
