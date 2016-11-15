@@ -20,5 +20,6 @@ $HypixelPHP->setLogger(...);
 $HypixelPHP->setFetcher(...);
 ```
 
-## Game Info
-The [Game Info](https://github.com/Plancke/hypixel-php/tree/master/game_info) directory contains JSON files that have specific game items from the games that can be used in various locations.
+## Old Version
+
+You can find the old 1 file version in the [old branch](https://github.com/Plancke/hypixel-php/tree/old). 
