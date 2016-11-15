@@ -39,6 +39,9 @@ class Response {
      * @return $this
      */
     public function addError($errors) {
+        if (!is_array($errors)) {
+            $errors = [$errors];
+        }
         foreach ($errors as $error) {
             array_push($this->errors, $error);
         }
