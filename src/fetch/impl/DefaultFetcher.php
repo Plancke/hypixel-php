@@ -43,7 +43,7 @@ class DefaultFetcher extends Fetcher {
 
         $response = $this->getURLContents($requestURL);
         if (!$response->wasSuccessful()) {
-            $this->getHypixelPHP()->getLogger()->log('Fetch Failed! ' . $response);
+            $this->getHypixelPHP()->getLogger()->log('Fetch Failed! ' . var_export($response, true));
 
             // If one fails, stop trying for that session
             // ideally also have a cached check before
