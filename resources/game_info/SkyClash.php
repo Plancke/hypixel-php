@@ -345,4 +345,27 @@ return array(
                     24 => 'quits',
                 ),
         ),
+    'modes' =>
+        array(
+            '__desc' => 'All modes this game supports',
+            'list' =>
+                array(
+                    'SOLO' =>
+                        array(
+                            'name' => 'Solo',
+                        ),
+                    'DOUBLES' =>
+                        array(
+                            'name' => 'Doubles',
+                        ),
+                    'TEAM_WAR' =>
+                        array(
+                            'name' => 'Team War',
+                        ),
+                    'MEGA' =>
+                        array(
+                            'name' => 'Mega',
+                        ),
+                ),
+        ),
 );

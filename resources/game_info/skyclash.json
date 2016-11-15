@@ -289,5 +289,22 @@
       "damage",
       "quits"
     ]
+  },
+  "modes": {
+    "__desc": "All modes this game supports",
+    "list": {
+      "SOLO": {
+        "name": "Solo"
+      },
+      "DOUBLES": {
+        "name": "Doubles"
+      },
+      "TEAM_WAR": {
+        "name": "Team War"
+      },
+      "MEGA": {
+        "name": "Mega"
+      }
+    }
   }
 }
