@@ -64,8 +64,4 @@ class Response {
         return $this;
     }
 
-    function __toString() {
-        return "Response{success=$this->success, data=$this->data, errors=$this->errors}";
-    }
-
 }
