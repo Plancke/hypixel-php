@@ -250,7 +250,7 @@ class Player extends HypixelObject {
             $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
         }
         $extraKey = (($prefix ? "prefix_" : '') . ($guildTag ? 'guild_tag_' : '') . '_raw_name');
-        if ($this->getExtra($extraKey, false, '') != $out) {
+        if ($this->getExtra($extraKey, '') != $out) {
             $this->setExtra([$extraKey => $out]);
         }
         return $out;
