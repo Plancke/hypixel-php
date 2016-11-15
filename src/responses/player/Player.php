@@ -78,7 +78,7 @@ class Player extends HypixelObject {
         }
 
         //store extra
-        $this->setExtra(['achievementPoints' => $total, 'achievementTimestamp' => time()]);
+        $this->setExtra(['achievements' => ['points' => $total, 'timestamp' => time()]]);
         return $total;
     }
 
