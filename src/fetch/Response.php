@@ -35,10 +35,10 @@ class Response {
     }
 
     /**
-     * @param \object[] ...$errors
+     * @param array $errors
      * @return $this
      */
-    public function addError(object... $errors) {
+    public function addError($errors) {
         foreach ($errors as $error) {
             array_push($this->errors, $error);
         }
