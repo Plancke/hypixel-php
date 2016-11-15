@@ -155,7 +155,7 @@ class Player extends HypixelObject {
             $outStr = Utilities::stripColors($out);
         }
         $extraKey = (($prefix ? "prefix_" : '') . ($guildTag ? 'guild_tag_' : '') . ($parseColors ? '' : 'no_color_') . 'name');
-        if ($this->getExtra($extraKey, false, '') != $outStr) {
+        if ($this->getExtra($extraKey, '') != $outStr) {
             $this->setExtra([$extraKey => $outStr]);
         }
         return $outStr;
