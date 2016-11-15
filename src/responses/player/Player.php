@@ -210,7 +210,7 @@ class Player extends HypixelObject {
         if ($this->get('displayname') != null) {
             return $this->get('displayname');
         } else {
-            $aliases = $this->get('knownAliases', []);
+            $aliases = $this->getArray('knownAliases');
             if (sizeof($aliases) == 0) {
                 return $this->get('playername');
             }

@@ -24,7 +24,7 @@ class Friends extends HypixelObject {
     }
 
     public function getRawList() {
-        return $this->get('list', []);
+        return $this->getArray('list');
     }
 
     public function getUUID() {
