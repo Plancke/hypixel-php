@@ -7,7 +7,7 @@ You can find Documentation and a Java implementation here: https://github.com/Hy
 - PHP 5.6+
 - Hypixel API key
 
-# Installation
+## Installation
 
 The preferred method of installing this library is with
 [Composer](https://getcomposer.org/) by running the following from your project
