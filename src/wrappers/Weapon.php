@@ -315,8 +315,16 @@ class WeaponStats {
      * @return array
      */
     public static function getAllTypes() {
-        $obj = new \ReflectionClass ('\WeaponStats');
-        return $obj->getConstants();
+        return [
+            self::DAMAGE,
+            self::CHANCE,
+            self::MULTIPLIER,
+            self::ABILITY_BOOST,
+            self::HEALTH,
+            self::ENERGY,
+            self::COOLDOWN,
+            self::MOVEMENT
+        ];
     }
 }
 

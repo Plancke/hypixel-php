@@ -39,8 +39,27 @@ class GameTypes {
      * @return array
      */
     public static function getAllTypes() {
-        $obj = new \ReflectionClass ('\Plancke\HypixelPHP\classes\gameType\GameTypes');
-        return $obj->getConstants();
+        return [
+            self::QUAKE,
+            self::WALLS,
+            self::PAINTBALL,
+            self::HUNGERGAMES,
+            self::TNTGAMES,
+            self::VAMPIREZ,
+            self::WALLS3,
+            self::ARCADE,
+            self::ARENA,
+            self::UHC,
+            self::MCGO,
+            self::BATTLEGROUND,
+            self::SUPER_SMASH,
+            self::GINGERBREAD,
+            self::HOUSING,
+            self::SKYWARS,
+            self::TRUE_COMBAT,
+            self::SPEED_UHC,
+            self::SKYCLASH
+        ];
     }
 
     /**
