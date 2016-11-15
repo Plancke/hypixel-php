@@ -392,7 +392,7 @@ class HypixelPHP {
                 $obj = [
                     'timestamp' => time(),
                     'name_lowercase' => $username,
-                    'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['uuid'])
+                    'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['record']['uuid'])
                 ];
                 $this->getLogger()->log("Received UUID from Hypixel for '" . $username . "': " . $obj['uuid']);
                 $this->getCacheHandler()->setPlayerUUID($username, $obj);
