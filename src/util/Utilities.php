@@ -152,13 +152,15 @@ abstract class Utilities {
         $currentX = $startX;
         $currentY = $startY + 16;
         foreach (explode("§", $string) as $part) {
-            $rgb = Utilities::hex2rgb(Utilities::MC_COLORS[substr($part, 0, 1)]);
-            $color = imagecolorallocate($img, $rgb[0], $rgb[1], $rgb[2]);
+            $key = substr($part, 0, 1);
+            if (array_key_exists($key, self::MC_COLORS)) {
+                $rgb = Utilities::hex2rgb(self::MC_COLORS[$key]);
+                $color = imagecolorallocate($img, $rgb[0], $rgb[1], $rgb[2]);
 
-            $part = substr($part, 1);
-
-            $bbox = imagettftext($img, $fontSize, 0, $currentX, $currentY, $color, $font, $part);
-            $currentX += ($bbox[4] - $bbox[0]);
+                $part = substr($part, 1);
+                $bbox = imagettftext($img, $fontSize, 0, $currentX, $currentY, $color, $font, $part);
+                $currentX += ($bbox[4] - $bbox[0]);
+            }
         }
     }
 
