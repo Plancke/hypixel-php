@@ -4,7 +4,7 @@ This is a PHP wrapper for the [Hypixel Public API](https://api.hypixel.net)
 You can find Documentation and a Java implementation here: https://github.com/HypixelDev/PublicAPI
 
 ## Requirements
-- PHP 5.6+
+- PHP 7+
 - Hypixel API key
 
 ## Installation
