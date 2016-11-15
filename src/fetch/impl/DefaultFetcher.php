@@ -92,7 +92,7 @@ class DefaultFetcher extends Fetcher {
             }
         } else {
             $ctx = stream_context_create([
-                'https' => ['timeout' => $this->timeOut / 1000]
+                'http' => ['timeout' => $this->timeOut / 1000]
             ]);
 
             $out = file_get_contents($url, 0, $ctx);
