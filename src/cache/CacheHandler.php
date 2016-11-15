@@ -107,6 +107,8 @@ abstract class CacheHandler extends Module {
             $this->setCachedLeaderboards($hypixelObject);
         } elseif ($hypixelObject instanceof Boosters) {
             $this->setCachedBoosters($hypixelObject);
+        } elseif ($hypixelObject instanceof WatchdogStats) {
+            $this->setCachedWatchdogStats($hypixelObject);
         } else {
             throw new HypixelPHPException("Invalid HypixelObject", ExceptionCodes::INVALID_HYPIXEL_OBJECT);
         }
