@@ -32,9 +32,7 @@ class ResponseAdapter extends Module {
             case FetchTypes::LEADERBOARDS:
                 return $this->remapField('leaderboards', $response);
             case FetchTypes::FRIENDS:
-                $response = $this->remapField('records', $response);
-                $response->setData(['list' => $response->getData()]);
-                return $this->attachKeyValues($keyValues, $response);
+                return $this->attachKeyValues($keyValues, $this->wrapRecord($response->setData(['list' => $response->getData()['records']])));
             case FetchTypes::SESSION:
                 return $this->attachKeyValues($keyValues, $this->remapField('session', $response));
 
