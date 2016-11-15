@@ -142,7 +142,8 @@ class MongoCacheHandler extends CacheHandler {
         $query = ['name_lowercase' => strtolower($username)];
         if ($obj['uuid'] == '' || $obj['uuid'] == null) {
             // still not found, just update time so we don't keep fetching
-            $this->updateCollection(CollectionNames::PLAYER_UUID, $query, ['$set' => [['timestamp' => time()]]]);
+            // $this->updateCollection(CollectionNames::PLAYER_UUID, $query, ['$set' => [['timestamp' => time()]]]);
+            $this->selectDB()->selectCollection(CollectionNames::PLAYER_UUID)->updateOne($query, ['$set' => ['timestamp' => time()]]);
         } else {
             $this->updateCollection(CollectionNames::PLAYER_UUID, $query, $obj);
         }
