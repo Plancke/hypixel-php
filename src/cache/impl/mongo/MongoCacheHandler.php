@@ -33,22 +33,6 @@ class MongoCacheHandler extends CacheHandler {
     }
 
     /**
-     * Use this to construct your mongo client,
-     * ensures the returned values are of the php array type
-     *
-     * Should be added as the 'typeMap' field in $driverOptions
-     *
-     * @return array
-     */
-    public static function getTypeMap() {
-        return [
-            'root' => 'array',
-            'document' => 'array',
-            'array' => 'array'
-        ];
-    }
-
-    /**
      * Run this code once to initialize the indexes on the collections
      *
      * I'm not entirely sure how performant making this call every time is so I'm not taking any chances
@@ -103,7 +87,13 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function queryCollection($collection, $query) {
         /** @noinspection PhpUndefinedFieldInspection */
-        return $this->selectDB()->selectCollection($collection)->findOne($query);
+        return $this->selectDB()->selectCollection($collection)->findOne($query, [
+            'typeMap' => [
+                'root' => 'array',
+                'document' => 'array',
+                'array' => 'array'
+            ]
+        ]);
     }
 
     /**
