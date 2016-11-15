@@ -11,7 +11,7 @@ abstract class Fetcher extends Module {
 
     const BASE_URL = 'https://api.hypixel.net/';
 
-    protected $timeOut;
+    protected $timeOut = 2000;
     private $responseAdapter, $responseAdapterGetter;
 
     public function __construct(HypixelPHP $HypixelPHP) {
