@@ -1,5 +1,7 @@
 <?php
 
+namespace Plancke\HypixelPHP\wrappers;
+
 /**
  * Class used to interpret Hypixel's Pet system and
  * provide functions to easily get a pet's level and attributes

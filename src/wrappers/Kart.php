@@ -1,5 +1,7 @@
 <?php
 
+namespace Plancke\HypixelPHP\wrappers;
+
 /**
  * Class used to parse TurboKart Racer's kart system and
  * provide functions to get levels for attributes, it's name, etc...

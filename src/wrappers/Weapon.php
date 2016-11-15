@@ -1,5 +1,7 @@
 <?php
 
+namespace Plancke\HypixelPHP\wrappers;
+
 /**
  * Class Weapon
  * @author Plancke, LCastr0
