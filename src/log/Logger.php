@@ -41,6 +41,12 @@ abstract class Logger extends Module {
         return $this;
     }
 
-    public abstract function log($line);
+    public function log($line) {
+        if (!$this->$this->isEnabled()) {
+            $this->actuallyLog($line);
+        }
+    }
+
+    public abstract function actuallyLog($line);
 
 }
