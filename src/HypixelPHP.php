@@ -34,7 +34,6 @@ use Plancke\HypixelPHP\util\Utilities;
  * HypixelPHP
  *
  * @author Plancke
- * @version 3.0.0
  * @link https://plancke.io
  *
  */
