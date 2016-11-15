@@ -213,9 +213,9 @@ abstract class Utilities {
     /**
      * Get a value recursively in an array
      *
-     * @param $array
-     * @param $key
-     * @param null $default default value to return if not found in array
+     * @param array $array
+     * @param string $key
+     * @param mixed $default default value to return if not found in array
      * @param string $delimiter where to split the key and go a level deeper in the array
      * @return mixed
      */
