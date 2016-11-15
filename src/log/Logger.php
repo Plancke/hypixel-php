@@ -42,7 +42,7 @@ abstract class Logger extends Module {
     }
 
     public function log($line) {
-        if (!$this->$this->isEnabled()) {
+        if (!$this->isEnabled()) {
             $this->actuallyLog($line);
         }
     }
