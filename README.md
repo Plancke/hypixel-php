@@ -13,7 +13,7 @@ The preferred method of installing this library is with
 [Composer](https://getcomposer.org/) by running the following from your project
 root:
 
-    $ composer require "plancke/hypixel-php=^1.0.0"
+    $ composer require "plancke/hypixel-php=^1.0.1"
 
 ## Usage
 
