@@ -6,8 +6,7 @@ use Plancke\HypixelPHP\log\Logger;
 
 class CustomLogger extends Logger {
 
-    public function log($line) {
+    public function actuallyLog($line) {
         error_log($line);
     }
-
 }
