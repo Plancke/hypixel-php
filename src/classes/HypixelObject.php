@@ -4,6 +4,7 @@ namespace Plancke\HypixelPHP\classes;
 
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\HypixelPHP;
+use Plancke\HypixelPHP\util\CacheUtil;
 use Plancke\HypixelPHP\util\Utilities;
 
 abstract class HypixelObject extends APIObject {
@@ -49,11 +50,11 @@ abstract class HypixelObject extends APIObject {
     }
 
     /**
-     * @param int $extra
+     * @param int $extra extra time to be added to the check
      * @return bool
      */
     public function isCacheExpired($extra = 0) {
-        return time() - $extra - $this->getHypixelPHP()->getCacheHandler()->getCacheTime($this->getCacheTimeKey()) > $this->getCachedTime();
+        return CacheUtil::isExpired($this->getCachedTime() * 1000, $this->getHypixelPHP()->getCacheHandler()->getCacheTime($this->getCacheTimeKey()) * 1000, $extra);
     }
 
     abstract function getCacheTimeKey();

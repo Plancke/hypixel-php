@@ -48,50 +48,6 @@ abstract class Utilities {
         "RESET" => '§r'
     ];
 
-    public static function ensureDashedUUID($uuid) {
-        if (strpos($uuid, "-")) {
-            if (strlen($uuid) == 32) {
-                return $uuid;
-            }
-            $uuid = Utilities::ensureNoDashesUUID($uuid);
-        }
-        return substr($uuid, 0, 8) . "-" . substr($uuid, 8, 12) . substr($uuid, 12, 16) . "-" . substr($uuid, 16, 20) . "-" . substr($uuid, 20, 32);
-    }
-
-    public static function ensureNoDashesUUID($uuid) {
-        return str_replace("-", "", $uuid);
-    }
-
-    /**
-     * @param $filename
-     *
-     * @return null|string
-     */
-    public static function getFileContent($filename) {
-        $content = null;
-        if (file_exists($filename)) {
-            $file = fopen($filename, 'r+');
-            if (filesize($filename) > 0) {
-                $content = fread($file, filesize($filename));
-            }
-            fclose($file);
-        }
-        return $content;
-    }
-
-    /**
-     * @param $filename
-     * @param $content
-     */
-    public static function setFileContent($filename, $content) {
-        if (!file_exists(dirname($filename))) {
-            @mkdir(dirname($filename), 0777, true);
-        }
-        $file = fopen($filename, 'w+');
-        fwrite($file, $content);
-        fclose($file);
-    }
-
     /**
      * Parses MC encoded colors to HTML
      * @param $string
@@ -185,34 +141,6 @@ abstract class Utilities {
     }
 
     /**
-     *
-     * Generate a filename for a given input, first few characters
-     * become directories so less files per directory.
-     * This improves speed for the OS
-     *
-     * @param $input
-     * @param int $dirs
-     * @return string
-     */
-    public static function getCacheFileName($input, $dirs = 2) {
-        $input = strtolower($input);
-        $input = trim($input);
-        $input = str_replace(' ', '%20', $input);
-
-        if (strlen($input) <= $dirs) {
-            $parts = str_split($input, 1);
-        } else {
-            $parts = [];
-            for ($i = 0; $i < $dirs; $i++) {
-                array_push($parts, substr($input, $i, 1));
-            }
-            array_push($parts, substr($input, $dirs));
-        }
-
-        return implode(DIRECTORY_SEPARATOR, $parts);
-    }
-
-    /**
      * Get a value recursively in an array
      *
      * @param array $array
@@ -227,5 +155,49 @@ abstract class Utilities {
             $return = isset($return[$split]) ? $return[$split] : $default;
         }
         return $return ? $return : $default;
+    }
+
+    public static function ensureDashedUUID($uuid) {
+        if (strpos($uuid, "-")) {
+            if (strlen($uuid) == 32) {
+                return $uuid;
+            }
+            $uuid = Utilities::ensureNoDashesUUID($uuid);
+        }
+        return substr($uuid, 0, 8) . "-" . substr($uuid, 8, 12) . substr($uuid, 12, 16) . "-" . substr($uuid, 16, 20) . "-" . substr($uuid, 20, 32);
+    }
+
+    public static function ensureNoDashesUUID($uuid) {
+        return str_replace("-", "", $uuid);
+    }
+
+    /**
+     * @param $filename
+     *
+     * @return null|string
+     */
+    public static function getFileContent($filename) {
+        $content = null;
+        if (file_exists($filename)) {
+            $file = fopen($filename, 'r+');
+            if (filesize($filename) > 0) {
+                $content = fread($file, filesize($filename));
+            }
+            fclose($file);
+        }
+        return $content;
+    }
+
+    /**
+     * @param $filename
+     * @param $content
+     */
+    public static function setFileContent($filename, $content) {
+        if (!file_exists(dirname($filename))) {
+            @mkdir(dirname($filename), 0777, true);
+        }
+        $file = fopen($filename, 'w+');
+        fwrite($file, $content);
+        fclose($file);
     }
 }
