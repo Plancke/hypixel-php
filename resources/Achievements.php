@@ -1865,7 +1865,7 @@ while being the only one alive',
                                 array(
                                     'points' => 5,
                                     'name' => 'Assassination',
-                                    'description' => 'Kill someone while you’re invisible',
+                                    'description' => 'Kill someone while you?re invisible',
                                 ),
                             'GREATMAN' =>
                                 array(
@@ -2329,6 +2329,12 @@ while being the only one alive',
                                     'name' => 'No Chest Challenge',
                                     'description' => 'Win a Mega game without opening any chest',
                                 ),
+                            'OPEN_CHEST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => '3; 2; 1; GO',
+                                    'description' => 'Be the first player to open a chest',
+                                ),
                             'GONE_FISHING' =>
                                 array(
                                     'points' => 10,
@@ -2340,6 +2346,12 @@ while being the only one alive',
                                     'points' => 10,
                                     'name' => 'Gotcha!',
                                     'description' => 'Kill someone while you have less than 1 heart left',
+                                ),
+                            'SPEED_RUN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Speed Run',
+                                    'description' => 'Win a Ranked game in less than a minute',
                                 ),
                             'SPEED_RUNNER' =>
                                 array(
@@ -2364,6 +2376,12 @@ while being the only one alive',
                                     'points' => 5,
                                     'name' => 'Trolololololol',
                                     'description' => 'Win a game with the Troll Kit',
+                                ),
+                            'PEACEMAKER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Peacemaker',
+                                    'description' => 'Win a game without killing anyone',
                                 ),
                             'HASTA_LA_VISTA' =>
                                 array(
@@ -2413,6 +2431,12 @@ while being the only one alive',
                                     'name' => 'Lucky Souls',
                                     'description' => 'Obtain 5 Mega Perks',
                                 ),
+                            'WELL_DESERVED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Well deserved',
+                                    'description' => 'Gain a reward from a Ranked Season',
+                                ),
                             'FISTS_OF_FURY' =>
                                 array(
                                     'points' => 10,
@@ -2437,6 +2461,12 @@ while being the only one alive',
                                     'name' => 'Kill Streak',
                                     'description' => 'Get 5 kills in 15 seconds',
                                 ),
+                            'SIEGE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'The siege',
+                                    'description' => 'Win a game without leaving your island',
+                                ),
                             'BALLER' =>
                                 array(
                                     'points' => 10,
@@ -2449,17 +2479,17 @@ while being the only one alive',
                                     'name' => 'Shiny Stuff',
                                     'description' => 'Wear a full Diamond set of armor',
                                 ),
-                            'FORTUNATE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Fortunate!',
-                                    'description' => 'Purchase a Double Fortune',
-                                ),
                             'WHO_NEEDS_TEAMMATES' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Who needs teammates?',
                                     'description' => 'Summon a skeleton and a blaze',
+                                ),
+                            'LUCKY_CHARM' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Money well spent!',
+                                    'description' => 'Get Lucky Charm to level 20',
                                 ),
                             'NOW_IM_ENCHANTED' =>
                                 array(
@@ -2503,7 +2533,7 @@ while being the only one alive',
                             'WINS_SOLO' =>
                                 array(
                                     'name' => 'Solo Winner',
-                                    'description' => 'Win %s games in solo mode',
+                                    'description' => 'Win %s games in Solo mode',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2541,7 +2571,7 @@ while being the only one alive',
                             'KILLS_MEGA' =>
                                 array(
                                     'name' => 'Mega Killer',
-                                    'description' => 'Kill %s players in mega mode',
+                                    'description' => 'Kill %s players in Mega mode',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2579,7 +2609,7 @@ while being the only one alive',
                             'WINS_TEAM' =>
                                 array(
                                     'name' => 'Team Winner',
-                                    'description' => 'Win %s games in team mode',
+                                    'description' => 'Win %s games in Team mode',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2617,7 +2647,7 @@ while being the only one alive',
                             'KILLS_TEAM' =>
                                 array(
                                     'name' => 'Team Killer',
-                                    'description' => 'Kill %s players in team mode',
+                                    'description' => 'Kill %s players in Team mode',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2655,7 +2685,7 @@ while being the only one alive',
                             'KITS_SOLO' =>
                                 array(
                                     'name' => 'Kit Hoarder (Solo)',
-                                    'description' => 'Unlock %s kits',
+                                    'description' => 'Unlock %s Solo kits',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2676,12 +2706,18 @@ while being the only one alive',
                                                     'points' => 15,
                                                     'amount' => 10,
                                                 ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 15,
+                                                ),
                                         ),
                                 ),
                             'KITS_MEGA' =>
                                 array(
                                     'name' => 'Kit Hoarder (Mega)',
-                                    'description' => 'Unlock %s kits',
+                                    'description' => 'Unlock %s Mega kits',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2745,7 +2781,7 @@ while being the only one alive',
                             'KILLS_SOLO' =>
                                 array(
                                     'name' => 'Solo Killer',
-                                    'description' => 'Kill %s players in solo mode',
+                                    'description' => 'Kill %s players in Solo mode',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2783,7 +2819,7 @@ while being the only one alive',
                             'WINS_MEGA' =>
                                 array(
                                     'name' => 'Mega Winner',
-                                    'description' => 'Win %s games in mega mode',
+                                    'description' => 'Win %s games in Mega mode',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2821,7 +2857,7 @@ while being the only one alive',
                             'KITS_TEAM' =>
                                 array(
                                     'name' => 'Kit Hoarder (Team)',
-                                    'description' => 'Unlock %s kits',
+                                    'description' => 'Unlock %s Team kits',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2842,10 +2878,16 @@ while being the only one alive',
                                                     'points' => 15,
                                                     'amount' => 10,
                                                 ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 15,
+                                                ),
                                         ),
                                 ),
                         ),
-                    'total_points' => 875,
+                    'total_points' => 960,
                 ),
             'walls3' =>
                 array(
@@ -2868,12 +2910,6 @@ while being the only one alive',
                                     'points' => 5,
                                     'name' => 'Save your stuff',
                                     'description' => 'Buy an Enderchest',
-                                ),
-                            'KILL_GROOPO' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Groopo Slayer',
-                                    'description' => 'Kill someone that is wearing a Groopo head',
                                 ),
                             'BLOOD_LUST' =>
                                 array(
@@ -2898,12 +2934,6 @@ while being the only one alive',
                                     'points' => 10,
                                     'name' => 'This is my final form!',
                                     'description' => 'Purchase a prestige upgrade for a class',
-                                ),
-                            'KILL_WITH_GROOPO' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Groopo Kupo',
-                                    'description' => 'Kill someone while wearing a Groopo head',
                                 ),
                             'MINE_DIAMOND' =>
                                 array(
@@ -3165,7 +3195,7 @@ while being the only one alive',
                                         ),
                                 ),
                         ),
-                    'total_points' => 545,
+                    'total_points' => 535,
                 ),
             'speeduhc' =>
                 array(
