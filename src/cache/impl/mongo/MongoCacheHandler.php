@@ -86,7 +86,6 @@ class MongoCacheHandler extends CacheHandler {
      * @return array|null
      */
     public function queryCollection($collection, $query) {
-        /** @noinspection PhpUndefinedFieldInspection */
         return $this->selectDB()->selectCollection($collection)->findOne($query, [
             'typeMap' => [
                 'root' => 'array',
