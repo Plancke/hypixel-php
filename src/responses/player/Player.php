@@ -32,7 +32,7 @@ class Player extends HypixelObject {
      */
     public function getAchievementPoints($force_update = false) {
         if (!$force_update) {
-            return $this->getExtra('achievementPoints', 0);
+            return $this->getExtra('achievements.points', 0);
         }
 
         $achievements = $this->getHypixelPHP()->getResourceManager()->getGeneralResources()->getAchievements()['achievements'];
