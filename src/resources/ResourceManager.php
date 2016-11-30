@@ -10,7 +10,7 @@ class ResourceManager extends Module {
     private $generalResources;
 
     /**
-     * @return mixed
+     * @return GameResources
      */
     public function getGameResources() {
         if ($this->gameResources == null) {
@@ -29,7 +29,7 @@ class ResourceManager extends Module {
     }
 
     /**
-     * @return mixed
+     * @return GeneralResources
      */
     public function getGeneralResources() {
         if ($this->generalResources == null) {
