@@ -17,6 +17,7 @@ use Plancke\HypixelPHP\fetch\impl\DefaultFetcher;
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\log\impl\DefaultLogger;
 use Plancke\HypixelPHP\log\Logger;
+use Plancke\HypixelPHP\options\Options;
 use Plancke\HypixelPHP\provider\Provider;
 use Plancke\HypixelPHP\resources\ResourceManager;
 use Plancke\HypixelPHP\responses\booster\Boosters;
@@ -50,12 +51,10 @@ class HypixelPHP {
 
     /**
      * @param string $apiKey
-     * @param array $options
-     * @throws \Exception
+     * @throws HypixelPHPException
      */
-    public function __construct($apiKey, $options = []) {
+    public function __construct($apiKey) {
         $this->apiKey = $apiKey;
-        $this->options = $options;
 
         if ($this->apiKey == null) {
             throw new HypixelPHPException("API Key can't be null!", ExceptionCodes::NO_KEY);
@@ -97,38 +96,18 @@ class HypixelPHP {
     }
 
     /**
-     * @return array
+     * @return Options
      */
     public function getOptions() {
         return $this->options;
     }
 
     /**
-     * Manually set option array
-     *
      * @param $options
      * @return $this
      */
-    public function _setOptions($options) {
+    public function setOptions(Options $options) {
         $this->options = $options;
-        return $this;
-    }
-
-    /**
-     * @param $input
-     * @return $this
-     */
-    public function setOptions($input) {
-        foreach ($input as $key => $val) {
-            if ($this->options[$key] != $val) {
-                if (is_array($val)) {
-                    $this->getLogger()->log('Setting ' . $key . ' to ' . json_encode($val));
-                } else {
-                    $this->getLogger()->log('Setting ' . $key . ' to ' . $val);
-                }
-            }
-            $this->options[$key] = $val;
-        }
         return $this;
     }
 

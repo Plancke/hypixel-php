@@ -3,11 +3,13 @@
 namespace Plancke\HypixelPHP\log;
 
 use Plancke\HypixelPHP\classes\Module;
+use Plancke\HypixelPHP\log\impl\DefaultFormatter;
 
 abstract class Logger extends Module {
 
     protected $enabled;
     protected $log_folder;
+    protected $formatter;
 
     /**
      * @return mixed
@@ -41,12 +43,33 @@ abstract class Logger extends Module {
         return $this;
     }
 
-    public function log($line) {
-        if ($this->isEnabled()) {
-            $this->actuallyLog($line);
+    /**
+     * @return Formatter
+     */
+    public function getFormatter() {
+        if ($this->formatter == null) {
+            $this->setFormatter(new DefaultFormatter());
         }
+        return $this->formatter;
     }
 
-    public abstract function actuallyLog($line);
+    /**
+     * @param Formatter $formatter
+     * @return $this
+     */
+    public function setFormatter($formatter) {
+        $this->formatter = $formatter;
+        return $this;
+    }
+
+    public function log($line) {
+        if (!$this->isEnabled()) {
+            return;
+        }
+
+        $this->actuallyLog($this->getFormatter()->formatLine($line));
+    }
+
+    protected abstract function actuallyLog($line);
 
 }
