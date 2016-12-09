@@ -1,39 +1,21 @@
 {
   "classes": {
-    "firewizard": {
-      "display": "Fire",
-      "color": [
-        "ea8f1a",
-        "d46a40"
-      ]
-    },
-    "kineticwizard": {
-      "display": "Kinetic",
-      "color": [
-        "79d976",
-        "44d741"
-      ]
-    },
-    "icewizard": {
-      "display": "Ice",
-      "color": [
-        "9edfe0",
-        "63a4a5"
-      ]
-    },
-    "witherwizard": {
-      "display": "Wither",
-      "color": [
-        "cb9ee0",
-        "bf31d9"
-      ]
-    },
-    "bloodwizard": {
-      "display": "Blood",
-      "color": [
-        "de4d4d",
-        "c52424"
-      ]
+    "list": {
+      "firewizard": {
+        "display": "Fire"
+      },
+      "kineticwizard": {
+        "display": "Kinetic"
+      },
+      "icewizard": {
+        "display": "Ice"
+      },
+      "witherwizard": {
+        "display": "Wither"
+      },
+      "bloodwizard": {
+        "display": "Blood"
+      }
     }
   }
 }
