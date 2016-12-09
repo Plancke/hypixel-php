@@ -21,15 +21,20 @@ abstract class InputType {
             return InputType::PLAYER_OBJECT;
         }
 
-        if (InputType::isUUID($input)) {
+        if (self::isUUID($input)) {
             return InputType::UUID;
         }
 
-        if (is_string($input) && strlen($input) <= 16) {
+        if (self::isUsername($input)) {
             return InputType::USERNAME;
         }
 
         return null;
+    }
+
+    public static function isUsername($input) {
+        // TODO might want to add a charmatcher here
+        return is_string($input) && strlen($input) <= 16;
     }
 
     public static function isUUID($input) {
