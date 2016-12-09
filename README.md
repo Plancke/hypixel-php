@@ -15,6 +15,12 @@ root:
 
     $ composer require "plancke/hypixel-php=^1.0.1"
 
+## TODO
+
+- Implement flat file storage
+- Better documentation
+- More UnitTesting
+
 ## Usage
 
 To interact with the API you need an API key, you can get a key by doing "/api" on the Hypixel Network.
