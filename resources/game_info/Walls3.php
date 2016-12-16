@@ -235,11 +235,11 @@ return array(
                 ),
             'fields' =>
                 array(
-                    0 => 'a',
-                    1 => 'b',
-                    2 => 'c',
-                    3 => 'd',
-                    4 => 'g',
+                    'Skill' => 'a',
+                    'Passive 1' => 'b',
+                    'Passive 2' => 'c',
+                    'Kit' => 'd',
+                    'Gathering' => 'g',
                 ),
         ),
 );

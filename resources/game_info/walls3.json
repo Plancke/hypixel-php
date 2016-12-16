@@ -199,12 +199,12 @@
         ]
       }
     },
-    "fields": [
-      "a",
-      "b",
-      "c",
-      "d",
-      "g"
-    ]
+    "fields": {
+      "Skill": "a",
+      "Passive 1": "b",
+      "Passive 2": "c",
+      "Kit": "d",
+      "Gathering": "g"
+    }
   }
 }
