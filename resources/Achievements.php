@@ -2893,11 +2893,11 @@ while being the only one alive',
                 array(
                     'one_time' =>
                         array(
-                            'MAX_ZOMBIE_SKILLS' =>
+                            'ASHES_TO_BASHES' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Zombie Leader',
-                                    'description' => 'Max out all Zombie skills',
+                                    'name' => 'Ashes to bashes',
+                                    'description' => 'Win a game as Phoenix with yourself and atleast four teammates, who you\'ve resurrected, still alive',
                                 ),
                             'MAX_HEROBRINE_SKILLS' =>
                                 array(
@@ -2905,23 +2905,11 @@ while being the only one alive',
                                     'name' => 'Herobrine Super Saiyan',
                                     'description' => 'Max out all Herobrine skills',
                                 ),
-                            'SAVE_YOUR_STUFF' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Save your stuff',
-                                    'description' => 'Buy an Enderchest',
-                                ),
-                            'BLOOD_LUST' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Blood Lust',
-                                    'description' => 'Deal 700 damage to withers in one game',
-                                ),
-                            'AT_LEAST_HE_TRIED' =>
+                            'STAYIN_ALIVE' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'At least he tried',
-                                    'description' => 'Get a defensive final kill',
+                                    'name' => 'Stayin\' Alive',
+                                    'description' => 'Win a game without dying and get THE final kill with a Jukebox as Shaman',
                                 ),
                             'WIN_WITH_LIVING_WITHER' =>
                                 array(
@@ -2929,53 +2917,71 @@ while being the only one alive',
                                     'name' => 'The Blood of My Enemies',
                                     'description' => 'Win with your Wither still alive',
                                 ),
-                            'THIS_IS_MY_FINAL_FORM' =>
+                            'NINJA_7S' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'This is my final form!',
-                                    'description' => 'Purchase a prestige upgrade for a class',
+                                    'name' => 'Ninja 7s',
+                                    'description' => 'Craft an iron sword and get 7 final kills with that sword without dying',
                                 ),
-                            'MINE_DIAMOND' =>
+                            'LUCKY_SUNNY' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Front Line',
-                                    'description' => 'Mine Diamond Ore',
+                                    'name' => 'Lucky Sunny',
+                                    'description' => 'Find 1000 chests while playing Herobrine',
                                 ),
-                            'ADVANCED_STRATEGIES' =>
+                            'TIMBER' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'Advanced Strategies',
-                                    'description' => 'Win a game of Faceoff without your wither dying',
+                                    'points' => 10,
+                                    'name' => 'Timber!',
+                                    'description' => 'Chop 20,000 pieces of wood as Golem',
                                 ),
-                            'ATTACK_WITHER' =>
+                            'YEEHAW' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'Strategic Mind',
-                                    'description' => 'Attack an enemy\'s Wither',
+                                    'points' => 10,
+                                    'name' => 'Yeehaw!',
+                                    'description' => 'Kill a wither while riding a pig as Hunter',
                                 ),
-                            'WIN_BEFORE_DEATHMATCH' =>
+                            'LEGENDARY_SPIDER' =>
                                 array(
                                     'points' => 15,
-                                    'name' => 'Easy Mode',
-                                    'description' => 'Win before the Deathmatch',
+                                    'name' => 'Legendary Spider',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Spider',
                                 ),
-                            'VETERAN' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Veteran',
-                                    'description' => 'Unlock 7 Hero Classes',
-                                ),
-                            'FIRST_SKILL_UPGRADE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Going to the Gym',
-                                    'description' => 'Unlock your first Skill upgrade',
-                                ),
-                            'MAX_SKELETON_SKILLS' =>
+                            'POTIONS_OF_DEATH' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Skeleton Supremacy',
-                                    'description' => 'Max out all Skeleton skills',
+                                    'name' => 'Potions of Death',
+                                    'description' => 'Get 10 Final Kills with Arcane Explosion as Arcanist',
+                                ),
+                            'BLAZE_PARTY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Blaze party',
+                                    'description' => 'Have 6 Blazes active at once during deathmatch as Blaze',
+                                ),
+                            'LEGENDARY_PIRATE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Pirate',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Pirate',
+                                ),
+                            'LEGENDARY_CREEPER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Creeper',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Creeper',
+                                ),
+                            'LEGENDARY_BLAZE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Blaze',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Blaze',
+                                ),
+                            'ON_POINT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'On Point',
+                                    'description' => 'Land twelve successful arrow hits in a row on twelve different enemies as Hunter',
                                 ),
                             'COMPETITIVE' =>
                                 array(
@@ -2983,17 +2989,557 @@ while being the only one alive',
                                     'name' => 'Competitive',
                                     'description' => 'Get top final kills at the end of the match',
                                 ),
-                            'FIRST_GATHERING_SKILL_UPGRADE' =>
+                            'THROWING_COCONUTS' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'The Gatherer',
-                                    'description' => 'Unlock your first Gathering Skill upgrade',
+                                    'points' => 10,
+                                    'name' => 'Throwing hot coconuts',
+                                    'description' => 'Get 9 Final Kills with Fireballs as Blaze in one game',
                                 ),
                             'FIND_CHEST' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Chest Finder',
                                     'description' => 'Find a chest while mining',
+                                ),
+                            'READY_SET_BOOM' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Ready.. Set.. Boom!',
+                                    'description' => 'Collect 3 stacks of TNT from your gathering talent before the walls fall',
+                                ),
+                            'TREASURE_HUNTER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Treasure hunter',
+                                    'description' => 'Find 300 Golden Apples total from your gathering skill as Hunter',
+                                ),
+                            'BLOOD_LUST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Blood Lust',
+                                    'description' => 'Deal 700 damage to withers in one game',
+                                ),
+                            'HIGH_ON_ORES' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'High on ores',
+                                    'description' => 'Heal 10000 HP from mining iron ore as Blaze',
+                                ),
+                            'LEGENDARY_ARCANIST' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Arcanist',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Arcanist',
+                                ),
+                            'THIS_IS_MY_FINAL_FORM' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'This is my final form!',
+                                    'description' => 'Purchase a prestige upgrade for a class',
+                                ),
+                            'LEGENDARY_HEROBRINE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Herobrine',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Herobrine',
+                                ),
+                            'I_FEEL_SICK' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I feel sick',
+                                    'description' => 'Gather from your mining ability and consume 8 absorption potions in one game as Squid',
+                                ),
+                            'TO_INFINITY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'To Infinity',
+                                    'description' => 'Activate Tempest 5 times in a row, without losing Speed III',
+                                ),
+                            'MINE_DIAMOND' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Front Line',
+                                    'description' => 'Mine Diamond Ore',
+                                ),
+                            'LEGENDARY_MOLEMAN' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Moleman',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Moleman',
+                                ),
+                            'MUCH_DOGS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Much dogs',
+                                    'description' => 'Spawn 5,000 wolves as Shaman',
+                                ),
+                            'NIGHTS_REST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Night\'s rest',
+                                    'description' => 'Heal teammates for 1500 total HP using inferno as Phoenix',
+                                ),
+                            'YOU_SHALL_NOT_PASS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'You shall not pass!',
+                                    'description' => 'Get 15 total defensive FK\'s or FA\'s as Squid',
+                                ),
+                            'RUSHLORD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Rushlord',
+                                    'description' => 'Deal 100,000 wither damage total as Dreadlord',
+                                ),
+                            'LEGENDARY_PIGMAN' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Pigman',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Pigman',
+                                ),
+                            'ATTACK_WITHER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Strategic Mind',
+                                    'description' => 'Attack an enemy\'s Wither',
+                                ),
+                            'ALOTV1' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'ALOTv1',
+                                    'description' => 'Kill a wither as Zombie while being the last player alive on your team.',
+                                ),
+                            'UNTOUCHABLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Untouchable',
+                                    'description' => 'Melee 7 different enemies consecutively without taking damage as Enderman',
+                                ),
+                            'WHIRLPOOL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Whirlpool',
+                                    'description' => 'Damage 5 different players with one Splash as Squid',
+                                ),
+                            'BREADLORD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Breadlord',
+                                    'description' => 'Craft 2,500 bread as Dreadlord',
+                                ),
+                            'TIME_TO_FEAST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Time to feast',
+                                    'description' => 'Harvest 50 Steaks from killing players in a single game.',
+                                ),
+                            'MASS_DESTRUCTION' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Mass destruction',
+                                    'description' => 'Break 15,000 blocks with detonate as Creeper',
+                                ),
+                            'ESC' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'ESC',
+                                    'description' => 'Have sea legs activate 10 times during deathmatch in a single game as Pirate',
+                                ),
+                            'REMOTE_DETONATION' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Remote detonation',
+                                    'description' => 'Get 5 total final kills with your Minion as Creeper',
+                                ),
+                            'SNEAK_ATTACK' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Sneak attack',
+                                    'description' => 'Get 200 total final kills from behind as Enderman',
+                                ),
+                            'BOW_DOWN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Bow down',
+                                    'description' => 'Get 7 melee FK\'s as Skeleton in a single game',
+                                ),
+                            'BIRDS_EYE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Bird\'s Eye',
+                                    'description' => 'Hit an enemy with Shadow Burst from over 50 blocks away.',
+                                ),
+                            'DEATH_FROM_ABOVE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Death from above',
+                                    'description' => 'Get 25 total FK\'s with Parrots as Pirate',
+                                ),
+                            'FIRST_GATHERING_SKILL_UPGRADE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Gatherer',
+                                    'description' => 'Unlock your first Gathering Skill upgrade',
+                                ),
+                            'MASTERPIECE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Masterpiece',
+                                    'description' => 'Kill an enemy wither with a painting as Pigman',
+                                ),
+                            'MAX_ZOMBIE_SKILLS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Zombie Leader',
+                                    'description' => 'Max out all Zombie skills',
+                                ),
+                            'LEGENDARY_DREADLORD' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Dreadlord',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Dreadlord',
+                                ),
+                            'ITS_ALL_OGRE_NOW' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'It\'s all Ogre now!',
+                                    'description' => 'As golem, kill the last Wither in the game and win within 12 minutes',
+                                ),
+                            'WOLF_SMASH' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Wolf smash',
+                                    'description' => 'Get 10 Final Kills with an indirect hit using Lycanthropy.',
+                                ),
+                            'TIME_TO_DIET' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Time to diet',
+                                    'description' => 'Eat 10,000 Steaks as Werewolf',
+                                ),
+                            'NOT_A_GOLEM' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Not a Golem',
+                                    'description' => 'Win a game as Herobrine wearing a Diamond Chestplate and Diamond Boots',
+                                ),
+                            'GOTCHA' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Gotcha!',
+                                    'description' => 'Final kill 2 enemies with one Gunpowder Barrel as Moleman',
+                                ),
+                            'SAVE_YOUR_STUFF' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Save your stuff',
+                                    'description' => 'Buy an Enderchest',
+                                ),
+                            'FIRE_IN_THE_HOLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Fire in the hole',
+                                    'description' => 'Hit an enemy with your cannonball from over 50 blocks away Pirate',
+                                ),
+                            'THUNDER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Thunder',
+                                    'description' => 'Get 2 Final kills with one wrath while playing Herobrine',
+                                ),
+                            'AT_LEAST_HE_TRIED' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'At least he tried',
+                                    'description' => 'Get a defensive final kill',
+                                ),
+                            'SPEED_RUN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Speedrun',
+                                    'description' => 'Attack all three enemy withers within 2 minutes after the walls have fallen as Enderman',
+                                ),
+                            'HARD_AS_STEEL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Hard as Steel',
+                                    'description' => 'Collect 5,000 iron ore with your Arcane beam as Arcanist',
+                                ),
+                            'WHIRLWIND' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Whirlwind',
+                                    'description' => 'Damage 6 players with one tornado as Shaman',
+                                ),
+                            'LASER_PRECISION' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Laser Precision',
+                                    'description' => 'Damage ten different players with ten consecutive arcane beams without dying as Arcanist',
+                                ),
+                            'SEASONS_GREETINGS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Seasons Greetings',
+                                    'description' => 'Give away 10000 pieces of iron armor to your team during the month of December',
+                                ),
+                            'SURPRISE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Surprise!',
+                                    'description' => 'Teleport to 5000 total players as Enderman',
+                                ),
+                            'MAX_RENDER_DISTANCE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Max render distance',
+                                    'description' => 'Land a fire arrow from 100 blocks away as Blaze',
+                                ),
+                            'CONSTRUCTOR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Constructor',
+                                    'description' => 'Place 25,000 total blocks in preparation time as Moleman',
+                                ),
+                            'WIN_BEFORE_DEATHMATCH' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Easy Mode',
+                                    'description' => 'Win before the Deathmatch, without dying',
+                                ),
+                            'LEGENDARY_ENDERMAN' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Enderman',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Enderman',
+                                ),
+                            'LEGENDARY_SQUID' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Squid',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Squid',
+                                ),
+                            'WHATS_THE_BIG_IDEA' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'What\'s the big idea!?',
+                                    'description' => 'Final kill an enemy after splashing them with a regen potion as Phoenix, before the potion expires',
+                                ),
+                            'LEGENDARY_SHAMAN' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Shaman',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Shaman',
+                                ),
+                            'MOODSETTER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Moodsetter',
+                                    'description' => 'Craft your own jukebox and play a tune.',
+                                ),
+                            'VETERAN' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Veteran',
+                                    'description' => 'Unlock 7 Hero Classes',
+                                ),
+                            'CIRCLE_OF_TRUST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Circle of trust',
+                                    'description' => 'Damage 10 people at once with one Pigman bubble',
+                                ),
+                            'SPEEDY_MINEMAN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Speedy mineman',
+                                    'description' => 'Have shortcut activated for 5 minutes non-stop during deathmatch',
+                                ),
+                            'MAX_SKELETON_SKILLS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Skeleton Supremacy',
+                                    'description' => 'Max out all Skeleton skills',
+                                ),
+                            'COMING_THROUGH' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Coming through!',
+                                    'description' => 'Hit 5 enemies while charging forward in deathmatch as Moleman',
+                                ),
+                            'LEGENDARY_WEREWOLF' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Werewolf',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Werewolf',
+                                ),
+                            'REVENGE_OF_THE_WOLVES' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Revenge of the Wolves',
+                                    'description' => 'Get 30 FK\'s with your wolves as Shaman.',
+                                ),
+                            'GONE_VEGAN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Gone vegan',
+                                    'description' => 'Survive a whole game as Zombie, while eating nothing but bread, and win.',
+                                ),
+                            'LEGENDARY_SKELETON' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Skeleton',
+                                    'description' => 'Get 20 FK\'s or FA\'s as Skeleton in a single game',
+                                ),
+                            'MARTYRDOM' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Martyrdom',
+                                    'description' => 'Get 10 total FK\'s with your nest spiders as Spider',
+                                ),
+                            'MAXIMUM_EFFORT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Maximum Effort',
+                                    'description' => 'Get 5 Final Kills in 7 seconds as Dreadlord',
+                                ),
+                            'SLEEPYTIME' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Sleepytime',
+                                    'description' => 'Craft and place a bed in 100 games as Zombie',
+                                ),
+                            'COLLECTOR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Collector',
+                                    'description' => 'Gather 1500 total armor pieces as Pigman',
+                                ),
+                            'HUNTING_SEASON' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Hunting season',
+                                    'description' => 'Travel 100,000 blocks with Speed as Werewolf',
+                                ),
+                            'MULTI_KILL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Multi-kill!',
+                                    'description' => 'Get 5 Final kills in a period of 7 seconds as Herobrine',
+                                ),
+                            'SKELETONS_BEST_FRIEND' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Skeleton\'s best friend',
+                                    'description' => 'Mine 100 diamond ore as Skeleton',
+                                ),
+                            'BLOWING_BUBBLES' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Blowing bubbles',
+                                    'description' => 'Activate 6 Pigman bubbles within 25 seconds',
+                                ),
+                            'ADVANCED_STRATEGIES' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Advanced Strategies',
+                                    'description' => 'Win a game of Faceoff without your wither dying',
+                                ),
+                            'PEACEKREEPER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Peacekreeper',
+                                    'description' => 'Win and survive a whole game as Creeper, without ever using your detonate ability',
+                                ),
+                            'HUG_ME' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Hug me',
+                                    'description' => 'Heal at least 240 hearts to your teammates as Zombie in a single game.',
+                                ),
+                            'MARKSMAN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Marksman',
+                                    'description' => 'Get 40 FK\'s from over 50 blocks as Skeleton',
+                                ),
+                            'GRAVE_ROBBER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Grave robber',
+                                    'description' => 'Have the treasure looter ability activate 1000 times as Pirate',
+                                ),
+                            'FEELS_BAD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Feels bad...?',
+                                    'description' => 'Final kill an enemy by dropshocking to your own death',
+                                ),
+                            'TRUST_ME_IM_A_DOCTOR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Trust me I\'m a doctor',
+                                    'description' => 'Heal 25,000 total HP as Squid',
+                                ),
+                            'FIRST_SKILL_UPGRADE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Going to the Gym',
+                                    'description' => 'Unlock your first Skill upgrade',
+                                ),
+                            'LEGENDARY_ZOMBIE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Zombie',
+                                    'description' => 'Get 20 FK\'s or FA\'s as Zombie in a single game',
+                                ),
+                            'TAKING_THE_HEAT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Taking the heat',
+                                    'description' => 'Kill an enemy wither while on fire as Golem',
+                                ),
+                            'BA_BOOM' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'BA-BOOM!',
+                                    'description' => 'Get 10 FK\'s with Animal Companion as Hunter',
+                                ),
+                            'CRUISING_FLAMES' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Cruising flames',
+                                    'description' => 'Have one Cleansing Flame arrow\'s Fireball hit 8 teammates as Phoenix',
+                                ),
+                            'LEGENDARY_PHOENIX' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Phoenix',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Phoenix',
+                                ),
+                            'HAMMER_DOWN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Hammer down',
+                                    'description' => 'Damage 6 different players with one Iron Punch as Golem',
+                                ),
+                            'GERONIMO' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Geronimo!',
+                                    'description' => 'Fall a total of 25000 blocks as Spider',
+                                ),
+                            'LEGENDARY_GOLEM' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Golem',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Golem',
+                                ),
+                            'LEGENDARY_HUNTER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Legendary Hunter',
+                                    'description' => 'Get 20 FK\'s or FA\'s in a single game as Hunter',
                                 ),
                             'MAX_SKILLS' =>
                                 array(
@@ -3195,7 +3741,7 @@ while being the only one alive',
                                         ),
                                 ),
                         ),
-                    'total_points' => 535,
+                    'total_points' => 1535,
                 ),
             'speeduhc' =>
                 array(
@@ -4266,12 +4812,6 @@ your forum account',
                                     'name' => 'Man\'s best friend',
                                     'description' => 'Purchase a pet and use it in-game',
                                 ),
-                            'BUY_GOLEM' =>
-                                array(
-                                    'points' => 100,
-                                    'name' => 'Hypixel\'s Pride',
-                                    'description' => 'Obtain a Golem of Appreciation',
-                                ),
                             'I_HAVE_FRIENDS' =>
                                 array(
                                     'points' => 5,
@@ -4301,13 +4841,6 @@ your forum account',
                                     'points' => 10,
                                     'name' => 'Very Important Person',
                                     'description' => 'Become a VIP',
-                                ),
-                            'EMAIL' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Faster than snail-mail!',
-                                    'description' => 'Confirm your email address
-for our mailing list',
                                 ),
                             'TOGETHER_WE_SHINE' =>
                                 array(
@@ -4471,7 +5004,7 @@ for our mailing list',
                                         ),
                                 ),
                         ),
-                    'total_points' => 535,
+                    'total_points' => 425,
                 ),
             'blitz' =>
                 array(
