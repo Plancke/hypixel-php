@@ -242,4 +242,38 @@ return array(
                     'Gathering' => 'g',
                 ),
         ),
+    'modes' =>
+        array(
+            'list' =>
+                array(
+                    'STANDARD' =>
+                        array(
+                            'display' => 'Normal',
+                            'partyMax' => 4,
+                            'playersMax' => 100,
+                            'teamMax' => 25,
+                        ),
+                    'FACE_OFF' =>
+                        array(
+                            'display' => 'Faceoff Mode',
+                            'partyMax' => 20,
+                            'playersMax' => 40,
+                            'teamMax' => 20,
+                        ),
+                    'PRACTICE' =>
+                        array(
+                            'display' => 'Practice Mode',
+                            'partyMax' => 2,
+                            'playersMax' => 100,
+                            'teamMax' => 25,
+                        ),
+                    'GVG' =>
+                        array(
+                            'display' => 'Casual Brawl',
+                            'partyMax' => 0,
+                            'playersMax' => 24,
+                            'teamMax' => 10,
+                        ),
+                ),
+        ),
 );

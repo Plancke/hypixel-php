@@ -206,5 +206,33 @@
       "Kit": "d",
       "Gathering": "g"
     }
+  },
+  "modes": {
+    "list": {
+      "STANDARD": {
+        "display": "Normal",
+        "partyMax": 4,
+        "playersMax": 100,
+        "teamMax": 25
+      },
+      "FACE_OFF": {
+        "display": "Faceoff Mode",
+        "partyMax": 20,
+        "playersMax": 40,
+        "teamMax": 20
+      },
+      "PRACTICE": {
+        "display": "Practice Mode",
+        "partyMax": 2,
+        "playersMax": 100,
+        "teamMax": 25
+      },
+      "GVG": {
+        "display": "Casual Brawl",
+        "partyMax": 0,
+        "playersMax": 24,
+        "teamMax": 10
+      }
+    }
   }
 }
