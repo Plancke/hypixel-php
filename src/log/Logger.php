@@ -7,7 +7,7 @@ use Plancke\HypixelPHP\log\impl\DefaultFormatter;
 
 abstract class Logger extends Module {
 
-    protected $enabled;
+    protected $enabled = true;
     protected $log_folder;
     protected $formatter;
 
