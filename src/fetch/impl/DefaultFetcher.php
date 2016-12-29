@@ -12,7 +12,7 @@ use Plancke\HypixelPHP\fetch\Response;
  */
 class DefaultFetcher extends Fetcher {
 
-    protected $useCurl;
+    protected $useCurl = true;
 
     /**
      * @return boolean
