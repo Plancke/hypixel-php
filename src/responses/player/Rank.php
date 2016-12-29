@@ -42,7 +42,7 @@ class Rank {
     }
 
     public function getPrefix(Player $player) {
-        if ($this->name == 'MVP_PLUS' && $player->get("rankPlusColor") != null) {
+        if ($this->id == RankTypes::MVP_PLUS && $player->get("rankPlusColor") != null) {
             return '§b[MVP' . Utilities::MC_COLORNAME[$player->get("rankPlusColor")] . '+§b]';
         }
         return isset($this->options['prefix']) ? $this->options['prefix'] : null;
