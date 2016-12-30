@@ -73,11 +73,14 @@ class MongoCacheHandler extends CacheHandler {
      * @param $obj
      */
     public function updateCollection($collection, $query, $obj) {
+        $this->selectDB()->selectCollection($collection)->replaceOne($query, $this->objToArray($obj), ['upsert' => true]);
+    }
+
+    protected function objToArray($obj) {
         if ($obj instanceof HypixelObject) {
-            $this->selectDB()->selectCollection($collection)->replaceOne($query, $obj->getRaw(), ['upsert' => true]);
-        } else {
-            $this->selectDB()->selectCollection($collection)->replaceOne($query, $obj, ['upsert' => true]);
+            return $obj->getRaw();
         }
+        return $obj;
     }
 
     /**
