@@ -1,8 +1,8 @@
 <?php
 
-namespace Plancke\HypixelPHP\cache\impl\mongo;
+namespace Plancke\HypixelPHP\cache;
 
-abstract class CollectionNames {
+abstract class CacheTypes {
     const PLAYERS = 'players';
     const PLAYER_UUID = 'player_uuid';
 
@@ -15,6 +15,8 @@ abstract class CollectionNames {
     const SESSIONS = 'sessions';
     const API_KEYS = 'api_keys';
 
-    // used for things that require just a single object to be saved
-    const SINGLE_SAVE = 'single_save';
+    // single saves
+    const LEADERBOARDS = 'leaderboards';
+    const BOOSTERS = 'boosters';
+    const WATCHDOG_STATS = 'watchdogStats';
 }

@@ -2,6 +2,7 @@
 
 namespace Plancke\HypixelPHP\cache;
 
+use Closure;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
@@ -92,7 +93,7 @@ abstract class CacheHandler extends Module {
      * @param HypixelObject $hypixelObject
      * @throws HypixelPHPException
      */
-    function _setCache($hypixelObject) {
+    public function _setCache($hypixelObject) {
         if ($hypixelObject instanceof Player) {
             $this->setCachedPlayer($hypixelObject);
         } elseif ($hypixelObject instanceof Guild) {
@@ -114,35 +115,90 @@ abstract class CacheHandler extends Module {
         }
     }
 
-    //@formatter:off
+    protected function objToArray($obj) {
+        if ($obj instanceof HypixelObject) {
+            return $obj->getRaw();
+        }
+        return $obj;
+    }
+
+    protected function wrapProvider(Closure $provider, $data) {
+        if ($data == null) {
+            return null;
+        }
+        return $provider($this->getHypixelPHP(), $data);
+    }
+
     abstract function setCachedPlayer(Player $player);
+
+    /**
+     * @param $uuid
+     * @return Player
+     */
     abstract function getCachedPlayer($uuid);
+
     abstract function setPlayerUUID($username, $obj);
+
     abstract function getUUID($username);
 
     abstract function setCachedGuild(Guild $guild);
+
+    /**
+     * @param $id
+     * @return Guild
+     */
     abstract function getCachedGuild($id);
+
     abstract function setGuildIDForUUID($uuid, $obj);
+
     abstract function getGuildIDForUUID($uuid);
+
     abstract function setGuildIDForName($name, $obj);
+
     abstract function getGuildIDForName($name);
 
     abstract function setCachedFriends(Friends $friends);
+
+    /**
+     * @param $uuid
+     * @return Friends
+     */
     abstract function getCachedFriends($uuid);
 
     abstract function setCachedSession(Session $session);
+
+    /**
+     * @param $uuid
+     * @return Session
+     */
     abstract function getCachedSession($uuid);
 
     abstract function setCachedKeyInfo(KeyInfo $keyInfo);
+
+    /**
+     * @param $key
+     * @return KeyInfo
+     */
     abstract function getCachedKeyInfo($key);
 
     abstract function setCachedLeaderboards(Leaderboards $leaderboards);
+
+    /**
+     * @return Leaderboards
+     */
     abstract function getCachedLeaderboards();
 
     abstract function setCachedBoosters(Boosters $boosters);
+
+    /**
+     * @return Boosters
+     */
     abstract function getCachedBoosters();
 
     abstract function setCachedWatchdogStats(WatchdogStats $watchdogStats);
+
+    /**
+     * @return WatchdogStats
+     */
     abstract function getCachedWatchdogStats();
-    //@formatter:on
 }

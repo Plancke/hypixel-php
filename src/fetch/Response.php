@@ -35,7 +35,7 @@ class Response {
     }
 
     /**
-     * @param array $errors
+     * @param array|string $errors
      * @return $this
      */
     public function addError($errors) {

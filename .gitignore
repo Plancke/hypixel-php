@@ -1,4 +1,5 @@
 .idea/*
+tests/cache
 
 ### Composer template
 composer.phar

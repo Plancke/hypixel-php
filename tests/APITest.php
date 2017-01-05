@@ -33,12 +33,12 @@ class APITest extends \PHPUnit_Framework_TestCase {
     }
 
     function testPlayerResponse() {
-        $player = TestUtil::getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_NAME => "Plancke"]);
+        $player = TestUtil::getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_UUID => TestUtil::PLANCKE]);
         $this->assertTrue($player instanceof Player);
         $this->assertTrue($player->getStats() instanceof Stats);
     }
 
     function testGuildResponse() {
-        $this->assertTrue(TestUtil::getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_NAME => "Plancke"]) instanceof Guild);
+        $this->assertTrue(TestUtil::getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => TestUtil::PLANCKE]) instanceof Guild);
     }
 }

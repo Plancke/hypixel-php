@@ -4,7 +4,7 @@ namespace Plancke\HypixelPHP;
 use Closure;
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
-use Plancke\HypixelPHP\cache\impl\flat\FlatFileCacheHandler;
+use Plancke\HypixelPHP\cache\impl\FlatFileCacheHandler;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
@@ -128,7 +128,7 @@ class HypixelPHP {
      */
     public function setLogger(Logger $logger) {
         $this->logger = $logger;
-        $this->loggerGetter = function ($HypixelAPI) use ($logger) {
+        $this->loggerGetter = function () use ($logger) {
             return $logger;
         };
         return $this;
@@ -161,7 +161,7 @@ class HypixelPHP {
      */
     public function setFetcher(Fetcher $fetcher) {
         $this->fetcher = $fetcher;
-        $this->fetcherGetter = function ($HypixelAPI) use ($fetcher) {
+        $this->fetcherGetter = function () use ($fetcher) {
             return $fetcher;
         };
         return $this;
@@ -194,7 +194,7 @@ class HypixelPHP {
      */
     public function setCacheHandler(CacheHandler $cacheHandler) {
         $this->cacheHandler = $cacheHandler;
-        $this->cacheHandlerGetter = function ($HypixelAPI) use ($cacheHandler) {
+        $this->cacheHandlerGetter = function ($HypixelPHP) use ($cacheHandler) {
             return $cacheHandler;
         };
         return $this;
@@ -227,7 +227,7 @@ class HypixelPHP {
      */
     public function setProvider(Provider $provider) {
         $this->provider = $provider;
-        $this->providerGetter = function ($HypixelAPI) use ($provider) {
+        $this->providerGetter = function () use ($provider) {
             return $provider;
         };
         return $this;
@@ -260,7 +260,7 @@ class HypixelPHP {
      */
     public function setResourceManager(ResourceManager $resourceManager) {
         $this->resourceManager = $resourceManager;
-        $this->resourceManagerGetter = function ($HypixelAPI) use ($resourceManager) {
+        $this->resourceManagerGetter = function () use ($resourceManager) {
             return $resourceManager;
         };
         return $this;

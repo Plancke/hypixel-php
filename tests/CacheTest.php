@@ -2,7 +2,11 @@
 
 namespace Plancke\Tests;
 
+use Plancke\HypixelPHP\cache\impl\FlatFileCacheHandler;
+use Plancke\HypixelPHP\fetch\FetchParams;
+use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\util\CacheUtil;
+use Plancke\Tests\util\TestUtil;
 
 class CacheTest extends \PHPUnit_Framework_TestCase {
 
@@ -19,4 +23,11 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue($remain >= 2000 && $remain <= 3000);
     }
 
+    function testFlatFile() {
+        $player = TestUtil::getHypixelPHP()
+            ->setCacheHandler(new FlatFileCacheHandler(TestUtil::getHypixelPHP()))
+            ->getPlayer([FetchParams::PLAYER_BY_NAME => "Plancke"]);
+        $this->assertTrue($player instanceof Player);
+        $this->assertTrue($player->getUUID() == TestUtil::PLANCKE);
+    }
 }

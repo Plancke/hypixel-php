@@ -1,10 +1,11 @@
 <?php
 
-namespace Plancke\HypixelPHP\cache\impl\mongo;
+namespace Plancke\HypixelPHP\cache\impl;
 
 use MongoDB\Client;
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
+use Plancke\HypixelPHP\cache\CacheTypes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\responses\booster\Boosters;
@@ -24,6 +25,8 @@ use Plancke\HypixelPHP\responses\WatchdogStats;
  */
 class MongoCacheHandler extends CacheHandler {
 
+    const SINGLE_SAVE = 'single_save';
+
     protected $mongoClient;
 
     public function __construct(HypixelPHP $HypixelPHP, Client $mongoClient) {
@@ -40,22 +43,22 @@ class MongoCacheHandler extends CacheHandler {
     public function ensureIndexes() {
         $db = $this->selectDB();
 
-        $db->selectCollection(CollectionNames::API_KEYS)->createIndex(['record.key' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::API_KEYS)->createIndex(['record.key' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::PLAYERS)->createIndex(['record.uuid' => 1], ['background' => true]);
-        $db->selectCollection(CollectionNames::PLAYERS)->createIndex(['record.playername' => 1], ['background' => true]);
-        $db->selectCollection(CollectionNames::PLAYER_UUID)->createIndex(['name_lowercase' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::PLAYERS)->createIndex(['record.uuid' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::PLAYERS)->createIndex(['record.playername' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::PLAYER_UUID)->createIndex(['name_lowercase' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::GUILDS)->createIndex(['record._id' => 1], ['background' => true]);
-        $db->selectCollection(CollectionNames::GUILDS)->createIndex(['extra.name_lower' => 1], ['background' => true]);
-        $db->selectCollection(CollectionNames::GUILDS_UUID)->createIndex(['uuid' => 1], ['background' => true]);
-        $db->selectCollection(CollectionNames::GUILDS_NAME)->createIndex(['name_lower' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record._id' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::GUILDS)->createIndex(['extra.name_lower' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::GUILDS_UUID)->createIndex(['uuid' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::GUILDS_NAME)->createIndex(['name_lower' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::FRIENDS)->createIndex(['record.uuid' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::FRIENDS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::SESSIONS)->createIndex(['record.uuid' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::SESSIONS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
-        $db->selectCollection(CollectionNames::SINGLE_SAVE)->createIndex(['key' => 1], ['background' => true]);
+        $db->selectCollection(MongoCacheHandler::SINGLE_SAVE)->createIndex(['key' => 1], ['background' => true]);
 
         return $this;
     }
@@ -74,13 +77,6 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function updateCollection($collection, $query, $obj) {
         $this->selectDB()->selectCollection($collection)->replaceOne($query, $this->objToArray($obj), ['upsert' => true]);
-    }
-
-    protected function objToArray($obj) {
-        if ($obj instanceof HypixelObject) {
-            return $obj->getRaw();
-        }
-        return $obj;
     }
 
     /**
@@ -108,7 +104,7 @@ class MongoCacheHandler extends CacheHandler {
         $raw = $hypixelObject->getRaw();
         $raw['key'] = $key;
 
-        $this->updateCollection(CollectionNames::SINGLE_SAVE, $query, $raw);
+        $this->updateCollection(MongoCacheHandler::SINGLE_SAVE, $query, $raw);
     }
 
     /**
@@ -118,26 +114,20 @@ class MongoCacheHandler extends CacheHandler {
      */
     function getSingleSave($key, $constructor) {
         $query = ['key' => $key];
-        $data = $this->queryCollection(CollectionNames::SINGLE_SAVE, $query);
-        if ($data != null) {
-            return $constructor($this->getHypixelPHP(), $data);
-        }
-        return null;
+        return $this->wrapProvider($constructor, $this->queryCollection(MongoCacheHandler::SINGLE_SAVE, $query));
     }
 
     public function setCachedPlayer(Player $player) {
         $query = ['record.uuid' => (string)$player->getUUID()];
-        $this->updateCollection(CollectionNames::PLAYERS, $query, $player);
+        $this->updateCollection(CacheTypes::PLAYERS, $query, $player);
     }
 
     function getCachedPlayer($uuid) {
         $query = ['record.uuid' => (string)$uuid];
-        $data = $this->queryCollection(CollectionNames::PLAYERS, $query);
-        if ($data != null) {
-            $closure = $this->getHypixelPHP()->getProvider()->getPlayer();
-            return $closure($this->getHypixelPHP(), $data);
-        }
-        return null;
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getPlayer(),
+            $this->queryCollection(CacheTypes::PLAYERS, $query)
+        );
     }
 
     function setPlayerUUID($username, $obj) {
@@ -145,9 +135,9 @@ class MongoCacheHandler extends CacheHandler {
         if ($obj['uuid'] == '' || $obj['uuid'] == null) {
             // still not found, just update time so we don't keep fetching
             // $this->updateCollection(CollectionNames::PLAYER_UUID, $query, ['$set' => [['timestamp' => time()]]]);
-            $this->selectDB()->selectCollection(CollectionNames::PLAYER_UUID)->updateOne($query, ['$set' => ['timestamp' => time()]]);
+            $this->selectDB()->selectCollection(CacheTypes::PLAYER_UUID)->updateOne($query, ['$set' => ['timestamp' => time()]]);
         } else {
-            $this->updateCollection(CollectionNames::PLAYER_UUID, $query, $obj);
+            $this->updateCollection(CacheTypes::PLAYER_UUID, $query, $obj);
         }
     }
 
@@ -156,7 +146,7 @@ class MongoCacheHandler extends CacheHandler {
 
         // check if player_uuid collection has record
         $query = ['name_lowercase' => $username];
-        $data = $this->queryCollection(CollectionNames::PLAYER_UUID, $query);
+        $data = $this->queryCollection(CacheTypes::PLAYER_UUID, $query);
         if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::UUID);
@@ -175,7 +165,7 @@ class MongoCacheHandler extends CacheHandler {
 
         // check if player database has a player for it
         $query = ['record.playername' => $username];
-        $data = $this->queryCollection(CollectionNames::PLAYERS, $query);
+        $data = $this->queryCollection(CacheTypes::PLAYERS, $query);
         if ($data != null) {
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
             $diff = time() - $this->getCacheTime(CacheTimes::UUID) - $timestamp;
@@ -193,27 +183,25 @@ class MongoCacheHandler extends CacheHandler {
 
     function setCachedGuild(Guild $guild) {
         $query = ['record._id' => (string)$guild->getID()];
-        $this->updateCollection(CollectionNames::GUILDS, $query, $guild);
+        $this->updateCollection(CacheTypes::GUILDS, $query, $guild);
     }
 
     function getCachedGuild($id) {
         $query = ['record._id' => (string)$id];
-        $data = $this->queryCollection(CollectionNames::GUILDS, $query);
-        if ($data != null) {
-            $closure = $this->getHypixelPHP()->getProvider()->getGuild();
-            return $closure($this->getHypixelPHP(), $data);
-        }
-        return null;
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getGuild(),
+            $this->queryCollection(CacheTypes::GUILDS, $query)
+        );
     }
 
     function setGuildIDForUUID($uuid, $obj) {
         $query = ['uuid' => (string)$uuid];
-        $this->updateCollection(CollectionNames::GUILDS_UUID, $query, $obj);
+        $this->updateCollection(CacheTypes::GUILDS_UUID, $query, $obj);
     }
 
     function getGuildIDForUUID($uuid) {
         $query = ['uuid' => (string)$uuid];
-        $data = $this->queryCollection(CollectionNames::GUILDS_UUID, $query);
+        $data = $this->queryCollection(CacheTypes::GUILDS_UUID, $query);
         if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
@@ -232,25 +220,24 @@ class MongoCacheHandler extends CacheHandler {
 
     function setGuildIDForName($name, $obj) {
         $query = ['name_lower' => strtolower((string)$name)];
-        $this->updateCollection(CollectionNames::GUILDS_NAME, $query, $obj);
+        $this->updateCollection(CacheTypes::GUILDS_NAME, $query, $obj);
     }
 
     function getGuildIDForName($name) {
         $query = ['extra.name_lower' => strtolower((string)$name)];
-        $data = $this->queryCollection(CollectionNames::GUILDS, $query);
+        $data = $this->queryCollection(CacheTypes::GUILDS, $query);
         if ($data != null) {
             $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
             $diff = time() - $cacheTime - $timestamp;
 
             if ($diff < 0) {
-                $closure = $this->getHypixelPHP()->getProvider()->getGuild();
-                return $closure($this->getHypixelPHP(), $data);
+                return $this->wrapProvider($this->getHypixelPHP()->getProvider()->getGuild(), $data);
             }
         }
 
         $query = ['name_lower' => strtolower((string)$name)];
-        $data = $this->queryCollection(CollectionNames::GUILDS_NAME, $query);
+        $data = $this->queryCollection(CacheTypes::GUILDS_NAME, $query);
         if ($data != null) {
             if (isset($data['name_lower']) && $data['name_lower'] != null && $data['name_lower'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
@@ -269,70 +256,64 @@ class MongoCacheHandler extends CacheHandler {
 
     function setCachedFriends(Friends $friends) {
         $query = ['record.uuid' => (string)$friends->getUUID()];
-        $this->updateCollection(CollectionNames::FRIENDS, $query, $friends);
+        $this->updateCollection(CacheTypes::FRIENDS, $query, $friends);
     }
 
     function getCachedFriends($uuid) {
         $query = ['record.uuid' => (string)$uuid];
-        $data = $this->queryCollection(CollectionNames::FRIENDS, $query);
-        if ($data != null) {
-            $closure = $this->getHypixelPHP()->getProvider()->getFriends();
-            return $closure($this->getHypixelPHP(), $data);
-        }
-        return null;
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getFriends(),
+            $this->queryCollection(CacheTypes::FRIENDS, $query)
+        );
     }
 
     function setCachedSession(Session $session) {
         $query = ['record.uuid' => (string)$session->getUUID()];
-        $this->updateCollection(CollectionNames::SESSIONS, $query, $session);
+        $this->updateCollection(CacheTypes::SESSIONS, $query, $session);
     }
 
     function getCachedSession($uuid) {
         $query = ['record.uuid' => (string)$uuid];
-        $data = $this->queryCollection(CollectionNames::SESSIONS, $query);
-        if ($data != null) {
-            $closure = $this->getHypixelPHP()->getProvider()->getSession();
-            return $closure($this->getHypixelPHP(), $data);
-        }
-        return null;
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getSession(),
+            $this->queryCollection(CacheTypes::SESSIONS, $query)
+        );
     }
 
     function setCachedKeyInfo(KeyInfo $keyInfo) {
         $query = ['record.key' => (string)$keyInfo->getKey()];
-        $this->updateCollection(CollectionNames::API_KEYS, $query, $keyInfo);
+        $this->updateCollection(CacheTypes::API_KEYS, $query, $keyInfo);
     }
 
     function getCachedKeyInfo($key) {
         $query = ['record.key' => (string)$key];
-        $data = $this->queryCollection(CollectionNames::API_KEYS, $query);
-        if ($data != null) {
-            $closure = $this->getHypixelPHP()->getProvider()->getKeyInfo();
-            return $closure($this->getHypixelPHP(), $data);
-        }
-        return null;
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getKeyInfo(),
+            $this->queryCollection(CacheTypes::API_KEYS, $query)
+        );
     }
 
     function setCachedLeaderboards(Leaderboards $leaderboards) {
-        $this->setSingleSave(SingleSaveKeys::LEADERBOARDS, $leaderboards);
+        $this->setSingleSave(CacheTypes::LEADERBOARDS, $leaderboards);
     }
 
     function getCachedLeaderboards() {
-        return $this->getSingleSave(SingleSaveKeys::LEADERBOARDS, $this->getHypixelPHP()->getProvider()->getLeaderboards());
+        return $this->getSingleSave(CacheTypes::LEADERBOARDS, $this->getHypixelPHP()->getProvider()->getLeaderboards());
     }
 
     function setCachedBoosters(Boosters $boosters) {
-        $this->setSingleSave(SingleSaveKeys::BOOSTERS, $boosters);
+        $this->setSingleSave(CacheTypes::BOOSTERS, $boosters);
     }
 
     function getCachedBoosters() {
-        return $this->getSingleSave(SingleSaveKeys::BOOSTERS, $this->getHypixelPHP()->getProvider()->getBoosters());
+        return $this->getSingleSave(CacheTypes::BOOSTERS, $this->getHypixelPHP()->getProvider()->getBoosters());
     }
 
     function setCachedWatchdogStats(WatchdogStats $watchdogStats) {
-        $this->setSingleSave(SingleSaveKeys::WATCHDOG_STATS, $watchdogStats);
+        $this->setSingleSave(CacheTypes::WATCHDOG_STATS, $watchdogStats);
     }
 
     function getCachedWatchdogStats() {
-        return $this->getSingleSave(SingleSaveKeys::WATCHDOG_STATS, $this->getHypixelPHP()->getProvider()->getWatchdogStats());
+        return $this->getSingleSave(CacheTypes::WATCHDOG_STATS, $this->getHypixelPHP()->getProvider()->getWatchdogStats());
     }
 }
