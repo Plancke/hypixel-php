@@ -154,10 +154,6 @@ class Player extends HypixelObject {
         } else {
             $outStr = Utilities::stripColors($out);
         }
-        $extraKey = (($prefix ? "prefix_" : '') . ($guildTag ? 'guild_tag_' : '') . ($parseColors ? '' : 'no_color_') . 'name');
-        if ($this->getExtra($extraKey, '') != $outStr) {
-            $this->setExtra([$extraKey => $outStr]);
-        }
         return $outStr;
     }
 
@@ -248,10 +244,6 @@ class Player extends HypixelObject {
         }
         if ($guildTag) {
             $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
-        }
-        $extraKey = (($prefix ? "prefix_" : '') . ($guildTag ? 'guild_tag_' : '') . '_raw_name');
-        if ($this->getExtra($extraKey, '') != $out) {
-            $this->setExtra([$extraKey => $out]);
         }
         return $out;
     }
