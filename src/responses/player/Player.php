@@ -2,6 +2,7 @@
 
 namespace Plancke\HypixelPHP\responses\player;
 
+use Closure;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\fetch\FetchParams;
@@ -137,10 +138,25 @@ class Player extends HypixelObject {
      *
      * @param bool $prefix
      * @param bool $guildTag
-     * @param bool $parseColors
+     * @param Closure $colorParser
      * @return string
      */
-    public function getFormattedName($prefix = true, $guildTag = false, $parseColors = true) {
+    public function getFormattedName($prefix = true, $guildTag = false, Closure $colorParser = null) {
+        $out = $this->getRawFormattedName($prefix, $guildTag);
+        if ($colorParser != null) {
+            return $colorParser($out);
+        } else {
+            $outStr = Utilities::stripColors($out);
+        }
+        return $outStr;
+    }
+
+    /**
+     * @param bool $prefix
+     * @param bool $guildTag
+     * @return string
+     */
+    public function getRawFormattedName($prefix = true, $guildTag = false) {
         $rank = $this->getRank(false);
         $out = $rank->getColor() . $this->getName();
         if ($prefix) {
@@ -149,12 +165,7 @@ class Player extends HypixelObject {
         if ($guildTag) {
             $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
         }
-        if ($parseColors) {
-            $outStr = Utilities::parseColors($out);
-        } else {
-            $outStr = Utilities::stripColors($out);
-        }
-        return $outStr;
+        return $out;
     }
 
     /**
@@ -234,18 +245,6 @@ class Player extends HypixelObject {
             }
         }
         return null;
-    }
-
-    public function getRawFormattedName($prefix = true, $guildTag = false) {
-        $rank = $this->getRank(false);
-        $out = $rank->getColor() . $this->getName();
-        if ($prefix) {
-            $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix($this)) . ' ' . $this->getName();
-        }
-        if ($guildTag) {
-            $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
-        }
-        return $out;
     }
 
     /**
