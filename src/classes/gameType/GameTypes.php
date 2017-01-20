@@ -2,6 +2,8 @@
 
 namespace Plancke\HypixelPHP\classes\gameType;
 
+use Closure;
+
 class GameTypes {
     const QUAKE = 2;
     const WALLS = 3;
@@ -22,18 +24,6 @@ class GameTypes {
     const TRUE_COMBAT = 52;
     const SPEED_UHC = 54;
     const SKYCLASH = 55;
-
-    public static function fromDbName($db) {
-        foreach (GameTypes::getAllTypes() as $id) {
-            $gameType = GameTypes::fromID($id);
-            if ($gameType != null) {
-                if ($gameType->getDb() == $db) {
-                    return $gameType;
-                }
-            }
-        }
-        return null;
-    }
 
     /**
      * @return array
@@ -110,5 +100,51 @@ class GameTypes {
             default:
                 return null;
         }
+    }
+
+    /**
+     * @param Closure $test
+     * @return GameType|null
+     */
+    public static function fromX(Closure $test) {
+        foreach (GameTypes::getAllTypes() as $id) {
+            $gameType = GameTypes::fromID($id);
+            if ($gameType != null) {
+                if ($test($gameType)) {
+                    return $gameType;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param $db
+     * @return GameType|null
+     */
+    public static function fromDbName($db) {
+        return self::fromX(function (GameType $gameType) use ($db) {
+            return $gameType->getDb() == $db;
+        });
+    }
+
+    /**
+     * @param $short
+     * @return GameType|null
+     */
+    public static function fromShort($short) {
+        return self::fromX(function (GameType $gameType) use ($short) {
+            return $gameType->getShort() == $short;
+        });
+    }
+
+    /**
+     * @param $name
+     * @return GameType|null
+     */
+    public static function fromName($name) {
+        return self::fromX(function (GameType $gameType) use ($name) {
+            return $gameType->getName() == $name;
+        });
     }
 }
