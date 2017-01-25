@@ -111,13 +111,23 @@ class Pet {
     function getAttributeValue($PET_ATTRIBUTE_TYPE) {
         switch ($PET_ATTRIBUTE_TYPE) {
             case PetAttributeType::THIRST:
-                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['THIRST']);
+                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->getAttr('THIRST'));
             case PetAttributeType::HUNGER:
-                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['HUNGER']);
+                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->getAttr('HUNGER'));
             case PetAttributeType::EXERCISE:
-                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->PET_STATS['EXERCISE']);
+                return $this->modifyAttributeValue($PET_ATTRIBUTE_TYPE, $this->getAttr('EXERCISE'));
         }
         return null;
+    }
+
+    private function getAttr($key) {
+        if (!array_key_exists($key, $this->PET_STATS)) {
+            return [
+                'timestamp' => 0,
+                'value' => 0
+            ];
+        }
+        return $this->PET_STATS[$key];
     }
 
     /**
