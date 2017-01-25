@@ -67,6 +67,8 @@ abstract class Utilities {
             if (strlen($part) == 0) continue;
             if (array_key_exists(substr($part, 0, 1), Utilities::MC_COLORS)) {
                 $out = $out . "<span style='text-shadow: 1px 1px #eee; color:" . Utilities::MC_COLORS[substr($part, 0, 1)] . "'>" . substr($part, 1) . "</span>";
+            } else {
+                $out .= substr($part, 1);
             }
         }
         return $out;
