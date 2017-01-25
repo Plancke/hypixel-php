@@ -22,6 +22,9 @@ class PetStats {
         23210, 23750, 24280, 24830, 25380, 25930, 26500, 27070, 27640, 28220, 28810, 29400, 30000
     ];
 
+    /**
+     * @var Pet[]
+     */
     private $PET_MAP = [];
 
     function __construct($PET_STATS) {
@@ -45,10 +48,17 @@ class PetStats {
         return $exp;
     }
 
+    /**
+     * @param $PET
+     * @return Pet
+     */
     function getPet($PET) {
         return $this->PET_MAP[$PET];
     }
 
+    /**
+     * @return Pet[]
+     */
     function getAllPets() {
         return $this->PET_MAP;
     }
