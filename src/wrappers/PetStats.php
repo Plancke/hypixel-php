@@ -97,7 +97,7 @@ class Pet {
      * @return int
      */
     function getExperience() {
-        return $this->PET_STATS['experience'];
+        return array_key_exists('experience', $this->PET_STATS) ? $this->PET_STATS['experience'] : 0;
     }
 
     /**
