@@ -154,6 +154,10 @@ class Pet {
         return $this->getExperience() - PetStats::getExperienceUntilLevel($this->LEVEL);
     }
 
+    function getRaw() {
+        return $this->PET_STATS;
+    }
+
 }
 
 class PetAttributeType {
