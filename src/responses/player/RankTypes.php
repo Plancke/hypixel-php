@@ -31,20 +31,34 @@ abstract class RankTypes {
     /**
      * @return array
      */
-    public static function getAllTypes() {
+    public static function getDonorRanks() {
         return [
             self::NON_DONOR,
             self::VIP,
             self::VIP_PLUS,
             self::MVP,
-            self::MVP_PLUS,
+            self::MVP_PLUS
+        ];
+    }
 
+    /**
+     * @return array
+     */
+    public static function getStaffRanks() {
+        return [
             self::ADMIN,
             self::MODERATOR,
             self::HELPER,
             self::JR_HELPER,
             self::YOUTUBER
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public static function getAllTypes() {
+        return array_merge(self::getDonorRanks(), self::getStaffRanks());
     }
 
     /**
