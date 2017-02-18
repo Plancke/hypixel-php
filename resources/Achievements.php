@@ -938,7 +938,8 @@ to level VII',
                                 array(
                                     'points' => 10,
                                     'name' => 'Combo',
-                                    'description' => 'Activate TripleShot and Strongarm perks at the same time',
+                                    'description' => 'Activate TripleShot and Strongarm
+perks at the same time',
                                 ),
                             'ACTIVATE_KILLSTREAKS' =>
                                 array(
@@ -1104,7 +1105,8 @@ to level VII',
                                 array(
                                     'points' => 10,
                                     'name' => 'Partier',
-                                    'description' => 'Finish with 20 or more stars in Party Games',
+                                    'description' => 'Finish with 20 or more stars
+in Party Games',
                                 ),
                             'WORLD_ECONOMICS' =>
                                 array(
@@ -1139,7 +1141,7 @@ to level VII',
                             'LONE_SURVIVOR' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Love Survivor',
+                                    'name' => 'Lone Survivor',
                                     'description' => 'Win a game of Blocking Dead as the last survivor',
                                 ),
                             'DRAGON_SLAYER' =>
@@ -1158,25 +1160,28 @@ to level VII',
                                 array(
                                     'points' => 10,
                                     'name' => 'LEGENDARY',
-                                    'description' => 'Gain a LEGENDARY vote on a build in Build Battle',
+                                    'description' => 'Get a high enough score for Diamond Rain in Build Battle',
                                 ),
                             'THROW_OUT_POWERUP_KILL' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Superman',
-                                    'description' => 'Knock a player out using the Megapunch powerup in Throw Out',
+                                    'description' => 'Knock a player out using the Megapunch
+powerup in Throw Out',
                                 ),
                             'DRAGON_KILLER' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Khaleesi',
-                                    'description' => 'Kill a player while riding a dragon in DragonWars',
+                                    'description' => 'Kill a player while riding a
+dragon in DragonWars',
                                 ),
                             'CREEPER_ATTACK_UPGRADES' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Getting an Upgrade',
-                                    'description' => 'Fully upgrade your sword, bow, and armor in Creeper Attack',
+                                    'description' => 'Fully upgrade your sword, bow,
+and armor in Creeper Attack',
                                 ),
                             'SAVAGE' =>
                                 array(
@@ -1187,7 +1192,7 @@ to level VII',
                             'OVER_99' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Its over 99!',
+                                    'name' => 'It\'s over 99!',
                                     'description' => 'Get a score of over 99 on Build Battle',
                                 ),
                             'HOEHOEHOE_SCORE' =>
@@ -1218,13 +1223,15 @@ to level VII',
                                 array(
                                     'points' => 10,
                                     'name' => 'Oink.',
-                                    'description' => 'Kill 3 or more players with one rocket pig',
+                                    'description' => 'Kill 3 or more players with
+one rocket pig',
                                 ),
                             'FARM_HUNT_DISGUISE' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Farm Animal',
-                                    'description' => 'Survive a game of Farm Hunt disguised as an animal',
+                                    'description' => 'Survive a game of Farm Hunt
+disguised as an animal',
                                 ),
                             'UNTOUCHABLE' =>
                                 array(
@@ -1236,7 +1243,8 @@ to level VII',
                                 array(
                                     'points' => 5,
                                     'name' => 'Fight Like a Man',
-                                    'description' => 'Kill your target in BountyHunter with your sword',
+                                    'description' => 'Kill your target in BountyHunter
+with your sword',
                                 ),
                             'CANT_HIDE_FROM_ME' =>
                                 array(
@@ -1272,13 +1280,14 @@ to level VII',
                                 array(
                                     'points' => 10,
                                     'name' => 'Explosive Archer',
-                                    'description' => 'Kill 5 or more targets with one Explosive Arrow',
+                                    'description' => 'Kill 5 or more targets with
+one Explosive Arrow',
                                 ),
                             'NO_MERCY' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'No Mercy',
-                                    'description' => 'Kill a zombie with a player head in Blocking Dead',
+                                    'description' => 'Kill a player zombie in Blocking Dead',
                                 ),
                             'TEAMWORK' =>
                                 array(
@@ -2263,27 +2272,199 @@ while being the only one alive',
                         ),
                     'total_points' => 420,
                 ),
+            'gingerbread' =>
+                array(
+                    'one_time' =>
+                        array(
+                            'TASTE_MY_BANANA' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'BA NA NA NA NA',
+                                    'description' => 'Hit a player with a banana',
+                                ),
+                            'GETTIN_PAID' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Gettin\' Paid',
+                                    'description' => 'Win a Pink Part as a gaming reward',
+                                ),
+                            'NEW_STYLE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'New Style',
+                                    'description' => 'Unlock a kart skin',
+                                ),
+                            'IM_LUCKY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'I\'m Lucky',
+                                    'description' => 'Use the part roller',
+                                ),
+                            'GETTING_GOOD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Getting good!',
+                                    'description' => 'Complete a race',
+                                ),
+                            'TRYHARDER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Tryharder!',
+                                    'description' => 'Win a trophy without using any items',
+                                ),
+                            'COINS_PLEASE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Coins Please',
+                                    'description' => 'Use the junkyard',
+                                ),
+                            'GET_HIT_BY_ME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Get hit!',
+                                    'description' => 'Hit a player with any projectile',
+                                ),
+                            'IS_THIS_SURVIVAL_GAMES' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Is this Survival Games?',
+                                    'description' => 'Hit 5 players with the "Notched Sword" in 1 race',
+                                ),
+                            'NEVER_LUCKY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Never Lucky',
+                                    'description' => 'Get hit by more than 1 Blue Torpedo in 1 race',
+                                ),
+                        ),
+                    'tiered' =>
+                        array(
+                            'WINNER' =>
+                                array(
+                                    'name' => 'Winner!',
+                                    'description' => 'Get %s trophies',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
+                                                ),
+                                        ),
+                                ),
+                            'RACER' =>
+                                array(
+                                    'name' => 'Racer',
+                                    'description' => 'Complete %s races',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
+                                                ),
+                                        ),
+                                ),
+                            'BANKER' =>
+                                array(
+                                    'name' => 'TKR Banker',
+                                    'description' => 'Earn %s coins',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5000,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25000,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500000,
+                                                ),
+                                        ),
+                                ),
+                        ),
+                    'total_points' => 275,
+                ),
             'skyclash' =>
                 array(
                     'one_time' =>
                         array(
-                            'NEW_PASSIVE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'New Passive!',
-                                    'description' => 'Master a Kit',
-                                ),
                             'POWERSPIKE' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Powerspike!',
                                     'description' => 'Open an Enderchest',
-                                ),
-                            'SKYMON_GO' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Is this Skymon Go?',
-                                    'description' => 'Win a game with 3 different Monster Cards in your Class',
                                 ),
                             'WHATS_NEXT' =>
                                 array(
@@ -2297,23 +2478,11 @@ while being the only one alive',
                                     'name' => 'This is my playstyle!',
                                     'description' => 'Use the Class Editor for the first time',
                                 ),
-                            'ADDICTED' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Addicted',
-                                    'description' => 'Purchase your first Card Pack',
-                                ),
                             'ASSASSINATION' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Assassination',
-                                    'description' => 'Kill someone while you?re invisible',
-                                ),
-                            'GREATMAN' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'I am Greatman!',
-                                    'description' => 'Wear a full set of Greatman\'s armor',
+                                    'description' => 'Kill someone while you’re invisible',
                                 ),
                             'KILL_SECURED' =>
                                 array(
@@ -2339,18 +2508,6 @@ while being the only one alive',
                                     'name' => 'I trained it well!',
                                     'description' => 'Kill someone with your own Ender Dragon',
                                 ),
-                            'STAY' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Stay where you are!',
-                                    'description' => 'Kill a player while they are on their starting island',
-                                ),
-                            'MAX_POWER' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Maximum Power',
-                                    'description' => 'Create a Class with fully maxed Cards and Kit',
-                                ),
                             'REST_IN_PEPPERONI' =>
                                 array(
                                     'points' => 5,
@@ -2362,6 +2519,42 @@ while being the only one alive',
                                     'points' => 10,
                                     'name' => 'I made some people mad',
                                     'description' => 'Throw 1000 players in the void',
+                                ),
+                            'NEW_PASSIVE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'New Passive!',
+                                    'description' => 'Master a Kit',
+                                ),
+                            'SKYMON_GO' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Is this Skymon Go?',
+                                    'description' => 'Win a game with 3 different Monster Cards in your Class',
+                                ),
+                            'ADDICTED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Addicted',
+                                    'description' => 'Purchase your first Card Pack',
+                                ),
+                            'GREATMAN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I am Greatman!',
+                                    'description' => 'Wear a full set of Greatman\'s armor',
+                                ),
+                            'STAY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Stay where you are!',
+                                    'description' => 'Kill a player while they are on their starting island',
+                                ),
+                            'MAX_POWER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Maximum Power',
+                                    'description' => 'Create a Class with fully maxed Cards and Kit',
                                 ),
                         ),
                     'tiered' =>
@@ -3339,7 +3532,7 @@ while being the only one alive',
                                 array(
                                     'points' => 10,
                                     'name' => 'Ashes to bashes',
-                                    'description' => 'Win a game as Phoenix with yourself and atleast four teammates, who you\'ve resurrected, still alive',
+                                    'description' => 'Win a game as Phoenix with yourself and at least four teammates, who you\'ve resurrected, still alive',
                                 ),
                             'MAX_HEROBRINE_SKILLS' =>
                                 array(
@@ -5968,6 +6161,12 @@ on your team',
                                     'name' => 'Simple Things',
                                     'description' => 'Win using the Basic Railgun',
                                 ),
+                            'NOT_WORKING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Not working',
+                                    'description' => 'Punch a player',
+                                ),
                             'MY_PRECIOUS' =>
                                 array(
                                     'points' => 5,
@@ -5979,6 +6178,12 @@ on your team',
                                     'points' => 5,
                                     'name' => 'Team Player',
                                     'description' => 'Win a team game',
+                                ),
+                            'FROG' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Are you a frog?',
+                                    'description' => 'Dash 75 times in one game',
                                 ),
                             'ONE_IN_THE_CHAMBER' =>
                                 array(
@@ -5998,6 +6203,18 @@ on your team',
                                     'name' => 'Doubling up',
                                     'description' => 'Be the first to 10 kills in Quake',
                                 ),
+                            'RIP' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'R. I. P.',
+                                    'description' => 'Win a game using The Reaper',
+                                ),
+                            'DARK_SIDE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Joined the dark side',
+                                    'description' => 'Win a game using the Gun of Darkness',
+                                ),
                             'HUMILIATION' =>
                                 array(
                                     'points' => 10,
@@ -6009,6 +6226,12 @@ on your team',
                                     'points' => 5,
                                     'name' => 'Fanatic!',
                                     'description' => 'Win using the Budder Slapper',
+                                ),
+                            'LOVE_IS_IN_THE_AIR' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Love is in the air',
+                                    'description' => 'Win a game using the Lovegun',
                                 ),
                             'APPLE_CORER' =>
                                 array(
@@ -6023,11 +6246,35 @@ on your team',
                                     'description' => 'Unlock the Polished Bling Case
 or the 1.0s trigger',
                                 ),
+                            'OH_BABY_A_TRIPLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Oh baby, a triple!',
+                                    'description' => 'Get 3 headshot kills with one shot',
+                                ),
+                            'PLATINUM_PLATED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Platinum plated',
+                                    'description' => 'Win a game using the Platinum Smelter',
+                                ),
+                            'GRAB_IT_ALL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Grab it all',
+                                    'description' => 'Win a game using The Harvester',
+                                ),
                             'LOOKING_FANCY' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Looking Fancy',
                                     'description' => 'Unlock your first hat',
+                                ),
+                            'INCREDIBLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Incredible',
+                                    'description' => 'Kill 10 players without missing a shot',
                                 ),
                             'GOOD_GUY_GAMER' =>
                                 array(
@@ -6041,6 +6288,12 @@ or the 1.0s trigger',
                                     'name' => 'Buffing Up',
                                     'description' => 'Unlock your first armor set',
                                 ),
+                            'UNTOUCHABLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Untouchable',
+                                    'description' => 'Kill 15 players without dying',
+                                ),
                             'ONE_SHOT' =>
                                 array(
                                     'points' => 5,
@@ -6052,6 +6305,12 @@ or the 1.0s trigger',
                                     'points' => 5,
                                     'name' => 'First kill',
                                     'description' => 'Be the first person to kill someone',
+                                ),
+                            'WAT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'wat',
+                                    'description' => 'Win a game using Le Bizarre',
                                 ),
                             'REDSTONER' =>
                                 array(
@@ -6077,6 +6336,30 @@ killing streak yourself',
                                     'points' => 5,
                                     'name' => 'Perfectionist',
                                     'description' => 'Do at least 4 killing sprees in 1 game',
+                                ),
+                            'HOW_DID_THAT_HAPPEN' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'How did that happen?',
+                                    'description' => 'Win a Solo game with 26 or more kills',
+                                ),
+                            'FLY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I believe I can fly',
+                                    'description' => 'Get a kill while falling down',
+                                ),
+                            'LOOKIN_GOOD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Lookin\' good!',
+                                    'description' => 'Win a game using the Fabled Railgun',
+                                ),
+                            'BUBBLY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Bubbly, isn\'t it?',
+                                    'description' => 'Win a game using the Blue Lagoon',
                                 ),
                             'BILLY_TALENT' =>
                                 array(
@@ -6231,8 +6514,160 @@ killing streak yourself',
                                                 ),
                                         ),
                                 ),
+                            'HEADSHOTS' =>
+                                array(
+                                    'name' => 'Accuracy',
+                                    'description' => 'Get %s headshots',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 50,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 250,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 1000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 5000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 15000,
+                                                ),
+                                        ),
+                                ),
+                            'WEAPON_ARSENAL' =>
+                                array(
+                                    'name' => 'Weapon Arsenal',
+                                    'description' => 'Win a game with %s different guns',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 3,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 5,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 10,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 15,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 20,
+                                                ),
+                                        ),
+                                ),
+                            'GODLIKES' =>
+                                array(
+                                    'name' => 'God walking among mere mortals',
+                                    'description' => 'Get %s godlikes',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 3,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 10,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 20,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 35,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 50,
+                                                ),
+                                        ),
+                                ),
+                            'COINS' =>
+                                array(
+                                    'name' => 'Quake Banker',
+                                    'description' => 'Earn %s coins',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5000,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25000,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 200000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500000,
+                                                ),
+                                        ),
+                                ),
                         ),
-                    'total_points' => 405,
+                    'total_points' => 820,
                 ),
             'truecombat' =>
                 array(
