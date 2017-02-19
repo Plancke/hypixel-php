@@ -2472,6 +2472,12 @@ while being the only one alive',
                                     'name' => 'What\'s next?',
                                     'description' => 'Max out a Card',
                                 ),
+                            'BOO' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Boo!',
+                                    'description' => 'Get a kill within 3 seconds of using an Ender Pearl',
+                                ),
                             'MY_PLAYSTYLE' =>
                                 array(
                                     'points' => 5,
@@ -2484,17 +2490,35 @@ while being the only one alive',
                                     'name' => 'Assassination',
                                     'description' => 'Kill someone while you’re invisible',
                                 ),
+                            'IM_A_BETTER_WIZARD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I\'m an even better Wizard!',
+                                    'description' => 'Kill 2 or more players with one Fireball',
+                                ),
                             'KILL_SECURED' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Kill Secured',
                                     'description' => 'Get a killing blow on a player over 50 blocks away',
                                 ),
+                            'GOLDEN_ONE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'The Golden One',
+                                    'description' => 'Find the entire El Dorado set while playing with the Treasure Hunter kit',
+                                ),
                             'HAPPY_LITTLE_ACHIEVEMENT' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Happy little achievement',
                                     'description' => 'Kill a player using a Painting or a Happy Little Tree',
+                                ),
+                            'UHC_CHALLENGE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'UHC Challenge',
+                                    'description' => 'Win a Solo game using the UHC Challenge Card',
                                 ),
                             'IM_A_WIZARD' =>
                                 array(
@@ -2508,17 +2532,59 @@ while being the only one alive',
                                     'name' => 'I trained it well!',
                                     'description' => 'Kill someone with your own Ender Dragon',
                                 ),
+                            'LIGHTWEIGHT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Lightweight feather',
+                                    'description' => 'Win a game with the Winged Boots equipped',
+                                ),
                             'REST_IN_PEPPERONI' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Rest in Pepperoni',
                                     'description' => 'Kill 3 players in the same game with The Spoon',
                                 ),
+                            'HEROIC_CHARGE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Heroic Charge',
+                                    'description' => 'Kill a whole team by yourself in Team War',
+                                ),
+                            'NO_CHEST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'No Chest Challenge',
+                                    'description' => 'Win a Solo game using the No Chest Challenge Card',
+                                ),
+                            'BAD_KARMA' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Bad Karma',
+                                    'description' => 'Get a kill after you died',
+                                ),
+                            'SKYCLASH_EXPERT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'SkyClash Expert',
+                                    'description' => 'Get 100 kills with 5 different kits',
+                                ),
+                            'ENDLESS_QUIVER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Endless Quiver',
+                                    'description' => 'Shoot a total of 10,000 arrows',
+                                ),
                             'VOID_KILLER' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'I made some people mad',
                                     'description' => 'Throw 1000 players in the void',
+                                ),
+                            'ANVIL_KILL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'An Kill',
+                                    'description' => 'Kill an enemy with a falling Anvil',
                                 ),
                             'NEW_PASSIVE' =>
                                 array(
@@ -2532,17 +2598,47 @@ while being the only one alive',
                                     'name' => 'Is this Skymon Go?',
                                     'description' => 'Win a game with 3 different Monster Cards in your Class',
                                 ),
+                            'SHARP_JUSTICE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sharpened Justice',
+                                    'description' => 'Find a Sharpness II Sword of Justice in a chest',
+                                ),
                             'ADDICTED' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Addicted',
                                     'description' => 'Purchase your first Card Pack',
                                 ),
+                            'ARCHER_CHALLENGE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Archer Challenge',
+                                    'description' => 'Win a Solo game using the Archer Challenge Card',
+                                ),
+                            'RUSHER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Rusher',
+                                    'description' => 'Be the first person to open an Ender Chest in a game',
+                                ),
+                            'KAWAII_PANTS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'K-k-k-kawaii!!',
+                                    'description' => 'Find the Cute Pants 10 times',
+                                ),
                             'GREATMAN' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'I am Greatman!',
                                     'description' => 'Wear a full set of Greatman\'s armor',
+                                ),
+                            'GOD_OF_MONSTERS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'God of monsters',
+                                    'description' => 'Spawn a total of 1,000 mobs',
                                 ),
                             'STAY' =>
                                 array(
@@ -2555,6 +2651,36 @@ while being the only one alive',
                                     'points' => 15,
                                     'name' => 'Maximum Power',
                                     'description' => 'Create a Class with fully maxed Cards and Kit',
+                                ),
+                            'ARE_YOU_CRAZY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Are you crazy?',
+                                    'description' => 'Knock off 5 or more players in a single game',
+                                ),
+                            'DREAM_TEAM' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Dream Team',
+                                    'description' => 'Win a Team War game with all teammates alive',
+                                ),
+                            'NO_ALCHEMY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Disallowed alchemy',
+                                    'description' => 'Win a game without using any kind of potion',
+                                ),
+                            'FLYING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Flying!',
+                                    'description' => 'Knock someone into the void using the One Punch Bow',
+                                ),
+                            'MISSING_APPLE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Where did you find that? ',
+                                    'description' => 'Eat an Enchanted Golden Apple',
                                 ),
                         ),
                     'tiered' =>
@@ -2699,13 +2825,131 @@ while being the only one alive',
                                                 ),
                                         ),
                                 ),
+                            'TREASURE_HUNTER' =>
+                                array(
+                                    'name' => 'Treasure Hunter',
+                                    'description' => 'Open a total of %s Ender Chests',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 50,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 750,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1500,
+                                                ),
+                                        ),
+                                ),
+                            'MOB_BEHEADING' =>
+                                array(
+                                    'name' => 'Mob Beheading',
+                                    'description' => 'Kill a total of %s mobs',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 50,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 750,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1500,
+                                                ),
+                                        ),
+                                ),
                         ),
-                    'total_points' => 370,
+                    'total_points' => 675,
                 ),
             'vampirez' =>
                 array(
                     'one_time' =>
                         array(
+                            'PURCHASE_GOLD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Coins4Gold',
+                                    'description' => 'Purchase Gold from the shop',
+                                ),
+                            'PURCHASE_FOOD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Not the Survival Games',
+                                    'description' => 'Purchase food from the Gold Shop',
+                                ),
+                            'GOLD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Gold Digger',
+                                    'description' => 'Have 1000 Gold at once',
+                                ),
+                            'VAMPIRE_FANG_KILL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Original',
+                                    'description' => 'Kill a Survivor with The Original Fang',
+                                ),
+                            'PURCHASE_BLOOD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Cash4Blood',
+                                    'description' => 'Purchase Blood from the shop',
+                                ),
+                            'SURVIVOR_KILLS_ONE_ROUND' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Bloody Bulldozer',
+                                    'description' => 'Kill 10 Survivors in one game',
+                                ),
+                            'PURCHASE_SWORD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Dangerous to Go Alone',
+                                    'description' => 'Purchase a sword from the Gold Shop',
+                                ),
                             'PURCHASE_ARMOR' =>
                                 array(
                                     'points' => 5,
@@ -2736,12 +2980,6 @@ while being the only one alive',
                                     'name' => 'Zombie Killer',
                                     'description' => 'Kill 35 Zombies in one game',
                                 ),
-                            'PURCHASE_GOLD' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Coins4Gold',
-                                    'description' => 'Purchase Gold from the shop',
-                                ),
                             'VAMPIRE_SHOP' =>
                                 array(
                                     'points' => 5,
@@ -2754,47 +2992,11 @@ while being the only one alive',
                                     'name' => 'Bloodthirsty',
                                     'description' => 'Have 150 Blood at once',
                                 ),
-                            'PURCHASE_FOOD' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Not the Survival Games',
-                                    'description' => 'Purchase food from the Gold Shop',
-                                ),
-                            'GOLD' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Gold Digger',
-                                    'description' => 'Have 1000 Gold at once',
-                                ),
                             'SOLE_SURVIVOR' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Last Man Standing',
                                     'description' => 'Be the last remaining Survivor',
-                                ),
-                            'VAMPIRE_FANG_KILL' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'The Original',
-                                    'description' => 'Kill a Survivor with The Original Fang',
-                                ),
-                            'PURCHASE_BLOOD' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Cash4Blood',
-                                    'description' => 'Purchase Blood from the shop',
-                                ),
-                            'SURVIVOR_KILLS_ONE_ROUND' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Bloody Bulldozer',
-                                    'description' => 'Kill 10 Survivors in one game',
-                                ),
-                            'PURCHASE_SWORD' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Dangerous to Go Alone',
-                                    'description' => 'Purchase a sword from the Gold Shop',
                                 ),
                         ),
                     'tiered' =>
