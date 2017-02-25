@@ -2,7 +2,7 @@
 return array(
     'kits' =>
         array(
-            '__desc' => 'All available kits, if cost is not present the kit is unlocked by default. Else the player will have {package} in their packages. Total kit level is determined by upgrades stored as {{package}_{upgradeType}}',
+            '__desc' => 'All available kits, if cost is not present the kit is unlocked by default. Else the player will have {package} in their packages.Total kit level is determined by upgrades stored as {{package}_{upgradeType}}',
             'list' =>
                 array(
                     'ARCHER' =>
@@ -63,6 +63,20 @@ return array(
                             'display' => 'Berserker',
                             'package' => 'kit_berserker',
                             'description' => 'Berserkers are offensive powerhouses, becoming even stronger when their health gets low.',
+                            'cost' => 1000,
+                        ),
+                    'JUMPMAN' =>
+                        array(
+                            'display' => 'Jumpman',
+                            'package' => 'kit_jumpman',
+                            'description' => 'Jumpman was raised by frogs, they taught him how to jump away from his problems.',
+                            'cost' => 1000,
+                        ),
+                    'TREASURE_HUNTER' =>
+                        array(
+                            'display' => 'Treasure Hunter',
+                            'package' => 'kit_treasure_hunter',
+                            'description' => 'Treasure Hunters really like looting chests, which invigorate them with random buffs and sometimes give them super powerful gear!',
                             'cost' => 1000,
                         ),
                 ),
@@ -303,6 +317,60 @@ return array(
                             'package' => 'perk_void_warranty',
                             'tier' => 'LEGENDARY',
                         ),
+                    'ELVEN_ARCHER' =>
+                        array(
+                            'display' => 'Elven Archer',
+                            'package' => 'perk_elven_archer',
+                            'tier' => 'COMMON',
+                        ),
+                    'BIGGER_BANGS' =>
+                        array(
+                            'display' => 'Bigger Bangs',
+                            'package' => 'perk_bigger_bangs',
+                            'tier' => 'COMMON',
+                        ),
+                    'MUSHROOM_AURA' =>
+                        array(
+                            'display' => 'Mushroom Aura',
+                            'package' => 'perk_mushroom_aura',
+                            'tier' => 'RARE',
+                        ),
+                    'BAT_SHIELD' =>
+                        array(
+                            'display' => 'Bat Shield',
+                            'package' => 'perk_bat_shield',
+                            'tier' => 'RARE',
+                        ),
+                    'FLOWER_POWER' =>
+                        array(
+                            'display' => 'Flower Power',
+                            'package' => 'perk_flower_power',
+                            'tier' => 'LEGENDARY',
+                        ),
+                    'NUCLEAR_SOLUTION' =>
+                        array(
+                            'display' => 'Nuclear Solution',
+                            'package' => 'perk_nuclear_solution',
+                            'tier' => 'LEGENDARY',
+                        ),
+                    'NO_CHEST_CHALLENGE' =>
+                        array(
+                            'display' => 'No Chest Challenge',
+                            'package' => 'perk_no_chest_challenge',
+                            'tier' => 'COMMON',
+                        ),
+                    'ARCHER_CHALLENGE' =>
+                        array(
+                            'display' => 'Archer Challenge',
+                            'package' => 'perk_archer_challenge',
+                            'tier' => 'RARE',
+                        ),
+                    'UHC_CHALLENGE' =>
+                        array(
+                            'display' => 'UHC Challenge',
+                            'package' => 'perk_uhc_challenge',
+                            'tier' => 'LEGENDARY',
+                        ),
                 ),
             'duplicatesNeeded' =>
                 array(
@@ -330,19 +398,21 @@ return array(
                     9 => 'mobs_killed',
                     10 => 'fastest_win_solo',
                     11 => 'fastest_win_doubles',
-                    12 => 'fastest_win_four_teams',
-                    13 => 'fastest_win_team_war',
+                    12 => 'fastest_win_team_war',
+                    13 => 'fastest_win_mega',
                     14 => 'most_kills_game',
                     15 => 'enderchests_opened',
                     16 => 'solo_wins',
                     17 => 'doubles_wins',
-                    18 => 'four_teams_wins',
-                    19 => 'team_war_wins',
+                    18 => 'team_war_wins',
+                    19 => 'mega_wins',
                     20 => 'games_played',
                     21 => 'assists',
                     22 => 'deaths',
                     23 => 'damage',
-                    24 => 'quits',
+                    24 => 'mobs_spawned',
+                    25 => 'cute_pants_found',
+                    26 => 'quits',
                 ),
         ),
     'modes' =>

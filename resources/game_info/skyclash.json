@@ -1,6 +1,6 @@
 {
   "kits": {
-    "__desc": "All available kits, if cost is not present the kit is unlocked by default. Else the player will have {package} in their packages. Total kit level is determined by upgrades stored as {{package}_{upgradeType}}",
+    "__desc": "All available kits, if cost is not present the kit is unlocked by default. Else the player will have {package} in their packages.Total kit level is determined by upgrades stored as {{package}_{upgradeType}}",
     "list": {
       "ARCHER": {
         "display": "Archer",
@@ -51,6 +51,18 @@
         "display": "Berserker",
         "package": "kit_berserker",
         "description": "Berserkers are offensive powerhouses, becoming even stronger when their health gets low.",
+        "cost": 1000
+      },
+      "JUMPMAN": {
+        "display": "Jumpman",
+        "package": "kit_jumpman",
+        "description": "Jumpman was raised by frogs, they taught him how to jump away from his problems.",
+        "cost": 1000
+      },
+      "TREASURE_HUNTER": {
+        "display": "Treasure Hunter",
+        "package": "kit_treasure_hunter",
+        "description": "Treasure Hunters really like looting chests, which invigorate them with random buffs and sometimes give them super powerful gear!",
         "cost": 1000
       }
     },
@@ -250,6 +262,51 @@
         "display": "Void Warranty",
         "package": "perk_void_warranty",
         "tier": "LEGENDARY"
+      },
+      "ELVEN_ARCHER": {
+        "display": "Elven Archer",
+        "package": "perk_elven_archer",
+        "tier": "COMMON"
+      },
+      "BIGGER_BANGS": {
+        "display": "Bigger Bangs",
+        "package": "perk_bigger_bangs",
+        "tier": "COMMON"
+      },
+      "MUSHROOM_AURA": {
+        "display": "Mushroom Aura",
+        "package": "perk_mushroom_aura",
+        "tier": "RARE"
+      },
+      "BAT_SHIELD": {
+        "display": "Bat Shield",
+        "package": "perk_bat_shield",
+        "tier": "RARE"
+      },
+      "FLOWER_POWER": {
+        "display": "Flower Power",
+        "package": "perk_flower_power",
+        "tier": "LEGENDARY"
+      },
+      "NUCLEAR_SOLUTION": {
+        "display": "Nuclear Solution",
+        "package": "perk_nuclear_solution",
+        "tier": "LEGENDARY"
+      },
+      "NO_CHEST_CHALLENGE": {
+        "display": "No Chest Challenge",
+        "package": "perk_no_chest_challenge",
+        "tier": "COMMON"
+      },
+      "ARCHER_CHALLENGE": {
+        "display": "Archer Challenge",
+        "package": "perk_archer_challenge",
+        "tier": "RARE"
+      },
+      "UHC_CHALLENGE": {
+        "display": "UHC Challenge",
+        "package": "perk_uhc_challenge",
+        "tier": "LEGENDARY"
       }
     },
     "duplicatesNeeded": [
@@ -275,18 +332,20 @@
       "mobs_killed",
       "fastest_win_solo",
       "fastest_win_doubles",
-      "fastest_win_four_teams",
       "fastest_win_team_war",
+      "fastest_win_mega",
       "most_kills_game",
       "enderchests_opened",
       "solo_wins",
       "doubles_wins",
-      "four_teams_wins",
       "team_war_wins",
+      "mega_wins",
       "games_played",
       "assists",
       "deaths",
       "damage",
+      "mobs_spawned",
+      "cute_pants_found",
       "quits"
     ]
   },
