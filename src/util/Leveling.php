@@ -33,10 +33,10 @@ class Leveling {
      * -    50000 XP = 4.0
      * - 79342431 XP = 249.0
      *
-     * @param double $exp Absolute level of player (Smallest value is 1.0)
-     * @return double Total exp experience gathered by the player.
+     * @param float $exp Absolute level of player (Smallest value is 1.0)
+     * @return float Total exp experience gathered by the player.
      */
-    static function getLevel(double $exp) {
+    static function getLevel(float $exp) {
         return $exp < 0 ? 1 : floor(1 + Leveling::REVERSE_PQ_PREFIX + sqrt(Leveling::REVERSE_CONST + Leveling::GROWTH_DIVIDES_2 * $exp));
     }
 
@@ -53,10 +53,10 @@ class Leveling {
      * -    50000 XP = 4.71...
      * - 79342431 XP = 249.46...
      *
-     * @param double $exp Total experience gathered by the player.
-     * @return double Exact level of player (Smallest value is 1.0)
+     * @param float $exp Total experience gathered by the player.
+     * @return float Exact level of player (Smallest value is 1.0)
      */
-    static function getExactLevel(double $exp) {
+    static function getExactLevel(float $exp) {
         return Leveling::getLevel($exp) + Leveling::getPercentageToNextLevel($exp);
     }
 
@@ -75,10 +75,10 @@ class Leveling {
      * - 130 (to 131) = 332500.0 XP
      * - 250 (to 251) = 632500.0 XP
      *
-     * @param double $level Level from which you want to get the next level with the same level progress
-     * @return double Experience to reach the next level with same progress
+     * @param float $level Level from which you want to get the next level with the same level progress
+     * @return float Experience to reach the next level with same progress
      */
-    static function getExpFromLevelToNext(double $level) {
+    static function getExpFromLevelToNext(float $level) {
         return $level < 1 ? Leveling::BASE : Leveling::GROWTH * ($level - 1) + Leveling::BASE;
     }
 
@@ -97,10 +97,10 @@ class Leveling {
      * -  130.0 = 21930000.0 XP
      * - 250.43 = 79951975.0 XP
      *
-     * @param double $level The level and progress of the level to reach
-     * @return double The experience required to reach that level and progress
+     * @param float $level The level and progress of the level to reach
+     * @return float The experience required to reach that level and progress
      */
-    static function getTotalExpToLevel(double $level) {
+    static function getTotalExpToLevel(float $level) {
         $lv = floor($level);
         $x0 = Leveling::getTotalExpToFullLevel($lv);
         if ($level == $lv) return $x0;
@@ -111,10 +111,10 @@ class Leveling {
      * Helper method that may only be called by full levels and has the same functionality as getTotalExpToLevel()
      * but doesn't support progress and returns wrong values for progress due to perfect curve shape.
      *
-     * @param double $level Level to receive the amount of experience to
-     * @return double Experience to reach the given level
+     * @param float $level Level to receive the amount of experience to
+     * @return float Experience to reach the given level
      */
-    static function getTotalExpToFullLevel(double $level) {
+    static function getTotalExpToFullLevel(float $level) {
         return (Leveling::HALF_GROWTH * ($level - 2) + Leveling::BASE) * ($level - 1);
     }
 
@@ -129,19 +129,23 @@ class Leveling {
      * -  5324224.0 XP  (Lv. 62) = 0.856763076923077   (85.6763076923077 %)
      * - 23422443.0 XP (Lv. 134) = 0.4304905109489051 (43.04905109489051 %)
      *
-     * @param double $exp Current experience gathered by the player
-     * @return double Current progress to the next level
+     * @param float $exp Current experience gathered by the player
+     * @return float Current progress to the next level
      */
-    static function getPercentageToNextLevel(double $exp) {
+    static function getPercentageToNextLevel(float $exp) {
         $lv = Leveling::getLevel($exp);
         $x0 = Leveling::getTotalExpToLevel($lv);
         return ($exp - $x0) / (Leveling::getTotalExpToLevel($lv + 1) - $x0);
     }
 
+    /**
+     * @param Player $player
+     * @return float
+     */
     static function getExperience(Player $player) {
         $exp = $player->getInt(Leveling::EXP_FIELD);
-        $exp += Leveling::getTotalExpToFullLevel($player->getInt(Leveling::LVL_FIELD));
-        return $exp;
+        $exp += Leveling::getTotalExpToFullLevel((float)$player->getInt(Leveling::LVL_FIELD));
+        return (float)$exp;
     }
 
 }
