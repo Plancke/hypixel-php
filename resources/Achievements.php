@@ -707,32 +707,135 @@ return array(
                 array(
                     'one_time' =>
                         array(
-                            'BOW_SPLEEF_FIRST_DOUBLE_JUMP' =>
+                            'TNT_TAG_CLOSE' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Youngling',
-                                    'description' => 'Get your first Bow Spleef
-Double Jump upgrade',
+                                    'name' => 'Close Call',
+                                    'description' => 'Survive a round in which you had the TNT 7 seconds before blowing up in TNT Tag',
                                 ),
                             'BOW_SPLEEF_DOUBLE_JUMP_UPGRADE' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Updating OS...',
                                     'description' => 'Upgrade Bow Spleef Double
-Jump to level VI',
+Jump to level V',
                                 ),
-                            'BOW_SPLEEF_FIRST_WIN' =>
+                            'WIZARDS_TRIPLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => '1 ... 2 ... 3!',
+                                    'description' => 'Get a triple kill in TNT Wizards',
+                                ),
+                            'SPLEEF_NOPERKS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I don\'t need any of that',
+                                    'description' => 'Win a game of Bow Spleef without using any perks',
+                                ),
+                            'TNT_TAG_TAGGER' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Parkour champion',
-                                    'description' => 'Win a game of Bow Spleef',
+                                    'name' => 'Just take it already!',
+                                    'description' => 'Pass the TNT to the same person 5 times in 30 seconds in TNT Tag',
+                                ),
+                            'TNT_RUN_SHORT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'We just started ...',
+                                    'description' => 'Win a game of TNT Run within 2 minutes',
+                                ),
+                            'PVP_RUN_FLYING' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'I can do that',
+                                    'description' => 'Kill someone in PVP Run with your sword while using a Double Jump',
+                                ),
+                            'WIZARDS_BLOOD_WIZARD_REGEN' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Magic\'s-a-Gathering',
+                                    'description' => 'Upgrade Blood Wizard Mana
+Regen to Level IX',
+                                ),
+                            'PVP_RUN_MANYKILLS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'There is not enough room for all of us!',
+                                    'description' => 'Kill 10 Players in a game of PVP Run',
+                                ),
+                            'TNT_RUN_NODJS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Triumph',
+                                    'description' => 'Win a game of TNT Run without using any double jumps',
+                                ),
+                            'WIZARDS_LEADERBOARD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Look at me!',
+                                    'description' => 'Get on the Top 3 leaderboards in a TNT Wizards game',
+                                ),
+                            'PVP_RUN_NOHIT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Can\'t touch this',
+                                    'description' => 'Win a game of PVP Run without getting hit',
+                                ),
+                            'WIZARDS_NOGOOD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'This is no good',
+                                    'description' => 'Jump into the void in TNT Wizards',
+                                ),
+                            'RUN_POTIONS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Sharing is caring',
+                                    'description' => 'Splash 100 potions in total on players in TNT Run and PVP Run',
+                                ),
+                            'SPLEEF_REPULSOR' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Have Fun',
+                                    'description' => 'Use a Repulsor on someone that is in the air',
+                                ),
+                            'BOW_SPLEEF_REPULSOR_UPGRADE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Jedi Master',
+                                    'description' => 'Upgrade Bow Spleef Repulsor
+to level VI',
+                                ),
+                            'PVP_RUN_FIRST_WIN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'A Dangerous Place',
+                                    'description' => 'Win a game of PVP Run',
+                                ),
+                            'WIZARDS_ASSISTANT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Assistant',
+                                    'description' => 'Get 30 assists in one TNT Wizards game',
+                                ),
+                            'WIZARDS_JUMPER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Weeeeeee',
+                                    'description' => 'Use 100 Double Jumps in a game of TNT Wizards',
                                 ),
                             'WIZARDS_FIRE_WIZARD_EXPLODE' =>
                                 array(
                                     'points' => 15,
                                     'name' => 'Inferno',
                                     'description' => 'Upgrade Fire Wizard Explode
-to Level X',
+to Level IX',
+                                ),
+                            'TNT_TAG_AWW' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Is it over already?',
+                                    'description' => 'Win a game of TNT Tag before the last round',
                                 ),
                             'WIZARDS_FIRST_WIN' =>
                                 array(
@@ -740,37 +843,109 @@ to Level X',
                                     'name' => 'DiamondZ',
                                     'description' => 'Win a game of TNT Wizards',
                                 ),
-                            'BOW_SPLEEF_TRIPLE_SHOT_UPGRADE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Legolas',
-                                    'description' => 'Upgrade Bow Spleef TripleShot
-to level VII',
-                                ),
-                            'TNT_RUN_PURCHASE_POTION' =>
+                            'SPLEEF_HITS' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Quick Feet',
-                                    'description' => 'Purchase a Speed Potion',
+                                    'name' => 'It\'s raining arrows',
+                                    'description' => 'Shoot 30 arrows at other players in a game of Bow Spleef',
                                 ),
-                            'TNT_RUN_NO_SPRINTING' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'TNT Walk',
-                                    'description' => 'Win TNT Run without sprinting',
-                                ),
-                            'WIZARDS_BLOOD_WIZARD_REGEN' =>
+                            'TNT_RUN_NOMOVE' =>
                                 array(
                                     'points' => 15,
-                                    'name' => 'Magic\'s-a-Gathering',
-                                    'description' => 'Upgrade Blood Wizard Mana
-Regen to Level X',
+                                    'name' => 'Paralyzed',
+                                    'description' => 'Win a game of TNT Run without moving your head',
                                 ),
                             'TNT_RUN_FIRST_WIN' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Unbroken sprinting',
                                     'description' => 'Win a game of TNT Run',
+                                ),
+                            'PVP_RUN_FISTS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Fists of Fury',
+                                    'description' => 'Kill an enemy with your fists in PVP Run',
+                                ),
+                            'SPLEEF_SHOTS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Machine Gun',
+                                    'description' => 'Fire 250 shots in one game of Bow Spleef',
+                                ),
+                            'TNT_TAG_SNOWBALL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Stay away from me',
+                                    'description' => 'Hit \'IT\' with a snowball in TNT Tag',
+                                ),
+                            'TNT_TAG_BLOWNUP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Take me with you!',
+                                    'description' => 'Get blown up by someone else\'s explosion in TNT Tag',
+                                ),
+                            'SPLEEF_EXHAUSTED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Exhausted',
+                                    'description' => 'Win a game of Bow Spleef with no perk uses left',
+                                ),
+                            'BOW_SPLEEF_FIRST_DOUBLE_JUMP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Youngling',
+                                    'description' => 'Get your first Bow Spleef
+Double Jump upgrade',
+                                ),
+                            'PVP_RUN_HALFHEARTED' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Not even close',
+                                    'description' => 'Win a game of PVP Run on one heart or lower',
+                                ),
+                            'TNT_NPCS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'I know how this works!',
+                                    'description' => 'Use every NPC in the lobby to join games',
+                                ),
+                            'BOW_SPLEEF_FIRST_WIN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Parkour champion',
+                                    'description' => 'Win a game of Bow Spleef',
+                                ),
+                            'BOW_SPLEEF_TRIPLE_SHOT_UPGRADE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Legolas',
+                                    'description' => 'Upgrade Bow Spleef TripleShot
+to level VI',
+                                ),
+                            'TNT_RUN_PURCHASE_POTION' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Quick Feet',
+                                    'description' => 'Purchase a Speed Potion for TNT Run',
+                                ),
+                            'WIZARDS_CAPHELP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Capturer',
+                                    'description' => 'Help capture 7 points in one game of TNT Wizards',
+                                ),
+                            'TNT_TAG_DM' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Finals',
+                                    'description' => 'Survive until Deathmatch in TNT Tag',
+                                ),
+                            'WIZARDS_HURTS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Gotcha',
+                                    'description' => 'Hit 3 enemies with 1 Wither Skull in TNT Wizards',
                                 ),
                             'WIZARDS_THIRTY_KILLS' =>
                                 array(
@@ -779,16 +954,249 @@ Regen to Level X',
                                     'description' => 'Kill 30 players in one game
 of TNT Wizards',
                                 ),
-                            'BOW_SPLEEF_REPULSOR_UPGRADE' =>
+                            'SPLEEF_NOSHOTS' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Jedi Master',
-                                    'description' => 'Upgrade Bow Spleef Repulsor
-to level VII',
+                                    'name' => 'My bow is not working!',
+                                    'description' => 'Win a game of Bow Spleef without firing any shots',
+                                ),
+                            'PVP_RUN_TRIPLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Make that three',
+                                    'description' => 'Kill 3 people within 12 seconds in PVP Run',
+                                ),
+                            'TNT_RUN_EFFECTS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Ineffective',
+                                    'description' => 'Win a game of TNT Run while having Speed and Slowness',
+                                ),
+                            'TNT_TAG_TRAVELLER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Traveller',
+                                    'description' => 'Travel 1,000 blocks in a game of TNT Tag',
+                                ),
+                            'TNT_TAG_FIRST_WIN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Boom boom',
+                                    'description' => 'Win a game of TNT Tag',
+                                ),
+                            'TNT_RUN_FLYING' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'My wings are working',
+                                    'description' => 'Be in the air for 10 seconds before dying in a TNT Run game',
+                                ),
+                            'TNT_PARKOUR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Skilled',
+                                    'description' => 'Complete the lobby parkour',
+                                ),
+                            'PVP_RUN_POTIONS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Revenge is sweet',
+                                    'description' => 'Kill a player while having Slowness from that player\'s Slowness Potion in PVP Run',
+                                ),
+                            'WIZARDS_AWIZARD' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'You\'re a Wizard',
+                                    'description' => 'Get 5 Kills with every Wizard Class in TNT Wizards',
+                                ),
+                            'PVP_RUN_SABOTAGE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sabotage',
+                                    'description' => 'Throw a slowness potion at someone in PVP Run',
+                                ),
+                            'PVP_RUN_NODJS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I did it',
+                                    'description' => 'Win a game of PVP Run without using any double jumps',
+                                ),
+                            'TNT_WINS_IN_A_ROW' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Conqueror',
+                                    'description' => 'Get 5 wins in a row',
+                                ),
+                            'WIZARDS_HEAL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Team Player',
+                                    'description' => 'Heal 3 different teammates in one game of TNT Wizards',
+                                ),
+                            'TNT_TAG_DIFFERENTTAGS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'One for you and for you and for you ...',
+                                    'description' => 'Tag 5 different people in a game of TNT Tag',
+                                ),
+                            'TNT_RUN_NO_SPRINTING' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'TNT Walk',
+                                    'description' => 'Win TNT Run without sprinting',
+                                ),
+                            'TNT_RUN_FIRSTLAYER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'This looks high',
+                                    'description' => 'Win a game of TNT Run being on the first layer',
+                                ),
+                            'TNT_TAG_DANGEROUS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'I like to live dangerously',
+                                    'description' => 'Win a game of TNT Tag after being \'IT\' in every round',
+                                ),
+                            'TNT_PRESTIGE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => '2fancy4me',
+                                    'description' => 'Buy a prestige upgrade',
+                                ),
+                            'PVP_RUN_PACIFIST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pacifist',
+                                    'description' => 'Win a game of PVP Run without hitting anyone',
+                                ),
+                            'WIZARDS_LEAD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'What a victory!',
+                                    'description' => 'Win by more than 1,000 points in TNT Wizards',
+                                ),
+                            'SPLEEF_TRIPLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'How did that happen?',
+                                    'description' => 'Push 3 players at the same time using your Repulsor in Bow Spleef',
                                 ),
                         ),
                     'tiered' =>
                         array(
+                            'TNT_BANKER' =>
+                                array(
+                                    'name' => 'Banker',
+                                    'description' => 'Earn %s coins from TNT Games',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5000,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 20000,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 50000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 125000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 250000,
+                                                ),
+                                        ),
+                                ),
+                            'TNT_WIZARDS_CAPS' =>
+                                array(
+                                    'name' => 'Conquistador',
+                                    'description' => 'Help capture %s points in TNT Wizards',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 75,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 150,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 300,
+                                                ),
+                                        ),
+                                ),
+                            'PVP_RUN_KILLER' =>
+                                array(
+                                    'name' => 'Killer',
+                                    'description' => 'Kill %s players in PVP Run',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 15,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 50,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 150,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 350,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 750,
+                                                ),
+                                        ),
+                                ),
                             'TNT_RUN_WINS' =>
                                 array(
                                     'name' => 'Marathon',
@@ -865,6 +1273,120 @@ to level VII',
                                                 ),
                                         ),
                                 ),
+                            'TNT_TRIATHLON' =>
+                                array(
+                                    'name' => 'Triathlon',
+                                    'description' => 'Play TNT Games for %s minutes',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 15,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 45,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 90,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 180,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 300,
+                                                ),
+                                        ),
+                                ),
+                            'TNT_TAG_WINS' =>
+                                array(
+                                    'name' => 'Tag! Tag! Tag!',
+                                    'description' => 'Win %s games of TNT Tag',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 50,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 100,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
+                                                ),
+                                        ),
+                                ),
+                            'TNT_WIZARDS_KILLS' =>
+                                array(
+                                    'name' => 'Kill Reaping',
+                                    'description' => 'Get %s kills in TNT Wizards',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 100,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 500,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 2000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 5000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 10000,
+                                                ),
+                                        ),
+                                ),
                             'BOW_SPLEEF_WINS' =>
                                 array(
                                     'name' => 'Archery',
@@ -903,8 +1425,46 @@ to level VII',
                                                 ),
                                         ),
                                 ),
+                            'PVP_RUN_WINS' =>
+                                array(
+                                    'name' => 'Running Killer',
+                                    'description' => 'Win %s games of PVP Run',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 50,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 100,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
+                                                ),
+                                        ),
+                                ),
                         ),
-                    'total_points' => 330,
+                    'total_points' => 1295,
                 ),
             'paintball' =>
                 array(
@@ -1287,7 +1847,7 @@ one Explosive Arrow',
                                 array(
                                     'points' => 5,
                                     'name' => 'No Mercy',
-                                    'description' => 'Kill a player zombie in Blocking Dead',
+                                    'description' => 'Kill a player zombie with a knife in Blocking Dead',
                                 ),
                             'TEAMWORK' =>
                                 array(
@@ -2488,7 +3048,7 @@ while being the only one alive',
                                 array(
                                     'points' => 5,
                                     'name' => 'Assassination',
-                                    'description' => 'Kill someone while you’re invisible',
+                                    'description' => 'Kill someone while you?re invisible',
                                 ),
                             'IM_A_BETTER_WIZARD' =>
                                 array(
@@ -2926,6 +3486,12 @@ while being the only one alive',
                                     'name' => 'Gold Digger',
                                     'description' => 'Have 1000 Gold at once',
                                 ),
+                            'CLOSE_CALL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Close Call',
+                                    'description' => 'Kill a Vampire while on half a heart',
+                                ),
                             'VAMPIRE_FANG_KILL' =>
                                 array(
                                     'points' => 5,
@@ -2944,6 +3510,18 @@ while being the only one alive',
                                     'name' => 'Bloody Bulldozer',
                                     'description' => 'Kill 10 Survivors in one game',
                                 ),
+                            'CHEST_HUNTER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Chest Hunter',
+                                    'description' => 'Find 3 loot chests',
+                                ),
+                            'ZOMBIE_SLAYER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Zombie Slayer',
+                                    'description' => 'Kill 100 Zombies in a single game',
+                                ),
                             'PURCHASE_SWORD' =>
                                 array(
                                     'points' => 5,
@@ -2956,11 +3534,11 @@ while being the only one alive',
                                     'name' => 'Fits Like a Glove',
                                     'description' => 'Purchase armor from the Gold Shop',
                                 ),
-                            'HEROBRINE_UPGRADE' =>
+                            'LAST_CHANCE' =>
                                 array(
-                                    'points' => 10,
-                                    'name' => 'Herobrine Rises!',
-                                    'description' => 'Upgrade the Herobrine perk in the Lobby Shop',
+                                    'points' => 15,
+                                    'name' => 'Last Chance',
+                                    'description' => 'Win the game as the last remaining Human',
                                 ),
                             'FIRST_WAVE_KILL' =>
                                 array(
@@ -2992,11 +3570,41 @@ while being the only one alive',
                                     'name' => 'Bloodthirsty',
                                     'description' => 'Have 150 Blood at once',
                                 ),
+                            'UNDEFEATABLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Undefeatable!',
+                                    'description' => 'Purchase a full set of God Armor and a God Sword as a Human',
+                                ),
+                            'ZOMBIE_WHISPERER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Zombie Whisperer',
+                                    'description' => 'Kill a survivor with a Baby Zombie',
+                                ),
                             'SOLE_SURVIVOR' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Last Man Standing',
                                     'description' => 'Be the last remaining Survivor',
+                                ),
+                            'DONT_NEED_IT' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Don\'t need it!',
+                                    'description' => 'Win a game as a Human without using the shop',
+                                ),
+                            'POTIONS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'POTIONS!',
+                                    'description' => 'Drink 20 Potions as a Human in a single game',
+                                ),
+                            'WIZARD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Wizard',
+                                    'description' => 'Use 5 holy books in a single game as a Human',
                                 ),
                         ),
                     'tiered' =>
@@ -3115,6 +3723,44 @@ while being the only one alive',
                                                 ),
                                         ),
                                 ),
+                            'ZOMBIE_KILLER' =>
+                                array(
+                                    'name' => 'Zombie Hunter',
+                                    'description' => 'Kill %s Zombies',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 250,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 500,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 2500,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 7500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 10000,
+                                                ),
+                                        ),
+                                ),
                             'KILL_SURVIVORS' =>
                                 array(
                                     'name' => 'Blood Sucker',
@@ -3154,7 +3800,7 @@ while being the only one alive',
                                         ),
                                 ),
                         ),
-                    'total_points' => 405,
+                    'total_points' => 555,
                 ),
             'skywars' =>
                 array(
@@ -3758,7 +4404,7 @@ while being the only one alive',
                                 array(
                                     'points' => 10,
                                     'name' => 'Ninja 7s',
-                                    'description' => 'Craft an iron sword and get 7 final kills with that sword without dying',
+                                    'description' => 'Craft an iron sword and get 7 final kills with that sword without dying as Spider',
                                 ),
                             'LUCKY_SUNNY' =>
                                 array(
@@ -4064,7 +4710,7 @@ while being the only one alive',
                                 array(
                                     'points' => 10,
                                     'name' => 'Gotcha!',
-                                    'description' => 'Final kill 2 enemies with one Gunpowder Barrel as Moleman',
+                                    'description' => 'Final kill 2 enemies with one ability use as Moleman',
                                 ),
                             'SAVE_YOUR_STUFF' =>
                                 array(
@@ -4900,7 +5546,7 @@ while being the only one alive',
                                 array(
                                     'points' => 10,
                                     'name' => 'Gun Master',
-                                    'description' => 'Get a kill with 5 different weapons in a game',
+                                    'description' => 'Get a kill with 5 different weapons in a game of Defusal',
                                 ),
                             'CLOSE_CALL' =>
                                 array(
@@ -5853,41 +6499,11 @@ your forum account',
                                     'name' => '#pigrider77',
                                     'description' => 'Ride a pig during deathmatch',
                                 ),
-                            'FIRST_GAME' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'It all begins here',
-                                    'description' => 'Play Blitz for the first time',
-                                ),
                             'LEVEL_SEVEN' =>
                                 array(
                                     'points' => 15,
                                     'name' => 'Lucky #7',
                                     'description' => 'Get a kit to level 7',
-                                ),
-                            'CRAFT_BREAD' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Peeta Mellark',
-                                    'description' => 'Craft bread',
-                                ),
-                            'FIRST_BLOOD' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'First Blood',
-                                    'description' => 'Get the first kill in a game',
-                                ),
-                            'KILL_WITHOUT_KIT' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Speed Kills',
-                                    'description' => 'Kill two people before you get your kit',
-                                ),
-                            'FULL_INVENTORY' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Hoarder',
-                                    'description' => 'Fill up your inventory',
                                 ),
                             'FISH_KILL' =>
                                 array(
@@ -5925,35 +6541,11 @@ your forum account',
                                     'name' => 'Play with the YouTuber',
                                     'description' => 'Play a game with a YouTuber',
                                 ),
-                            'ENCHANT_SWORD' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Ooh...Magic!',
-                                    'description' => 'Enchant a sword',
-                                ),
-                            'SEVEN_KITS' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Can\'t Decide!',
-                                    'description' => 'Purchase one level of at least 7 kits',
-                                ),
                             'GET_DIAMOND_SWORD' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'My Precious',
                                     'description' => 'Obtain a Diamond Sword',
-                                ),
-                            'SPAWN_HORSE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'HORSEEEYYY',
-                                    'description' => 'Spawn a horse',
-                                ),
-                            'APOCALYPSE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'BURN THEM ALL!',
-                                    'description' => 'Use Apocalypse Blitz',
                                 ),
                             'FIND_HEAD' =>
                                 array(
@@ -5966,6 +6558,60 @@ your forum account',
                                     'points' => 5,
                                     'name' => 'Raised by Wolves',
                                     'description' => 'Use the WolfTamer kit',
+                                ),
+                            'FIRST_GAME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'It all begins here',
+                                    'description' => 'Play Blitz for the first time',
+                                ),
+                            'CRAFT_BREAD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Peeta Mellark',
+                                    'description' => 'Craft bread',
+                                ),
+                            'FIRST_BLOOD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'First Blood',
+                                    'description' => 'Get the first kill in a game',
+                                ),
+                            'KILL_WITHOUT_KIT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Speed Kills',
+                                    'description' => 'Kill two people before you get your kit',
+                                ),
+                            'FULL_INVENTORY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Hoarder',
+                                    'description' => 'Fill up your inventory',
+                                ),
+                            'ENCHANT_SWORD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Ooh...Magic!',
+                                    'description' => 'Enchant a sword',
+                                ),
+                            'SEVEN_KITS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Can\'t Decide!',
+                                    'description' => 'Purchase one level of at least 7 kits',
+                                ),
+                            'SPAWN_HORSE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'HORSEEEYYY',
+                                    'description' => 'Spawn a horse',
+                                ),
+                            'APOCALYPSE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'BURN THEM ALL!',
+                                    'description' => 'Use Apocalypse Blitz',
                                 ),
                         ),
                     'tiered' =>
