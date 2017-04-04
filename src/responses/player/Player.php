@@ -12,6 +12,7 @@ use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\Session;
+use Plancke\HypixelPHP\util\Leveling;
 use Plancke\HypixelPHP\util\Utilities;
 
 class Player extends HypixelObject {
@@ -290,13 +291,19 @@ class Player extends HypixelObject {
     }
 
     /**
-     * Get Level of player
-     *
-     * @param bool $zeroBased
+     * Get full Level of player
      * @return int
      */
-    public function getLevel($zeroBased = false) {
-        return $this->getInt('networkLevel') + (!$zeroBased ? 1 : 0);
+    public function getLevel() {
+        return Leveling::getLevel(Leveling::getExperience($this));
+    }
+
+    /**
+     * Get exact Level of player
+     * @return double
+     */
+    public function getExactLevel() {
+        return Leveling::getExactLevel(Leveling::getExperience($this));
     }
 
     function getCacheTimeKey() {

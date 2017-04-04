@@ -2,6 +2,8 @@
 
 namespace Plancke\HypixelPHP\util;
 
+use Plancke\HypixelPHP\responses\player\Player;
+
 class Leveling {
 
     const EXP_FIELD = "networkExp";
@@ -134,6 +136,12 @@ class Leveling {
         $lv = Leveling::getLevel($exp);
         $x0 = Leveling::getTotalExpToLevel($lv);
         return ($exp - $x0) / (Leveling::getTotalExpToLevel($lv + 1) - $x0);
+    }
+
+    static function getExperience(Player $player) {
+        $exp = $player->getInt(Leveling::EXP_FIELD);
+        $exp += Leveling::getTotalExpToFullLevel($player->getInt(Leveling::LVL_FIELD));
+        return $exp;
     }
 
 }
