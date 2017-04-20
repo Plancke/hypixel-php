@@ -24,6 +24,7 @@ class GameTypes {
     const TRUE_COMBAT = 52;
     const SPEED_UHC = 54;
     const SKYCLASH = 55;
+    const LEGACY = 56;
 
     /**
      * @return array
@@ -48,7 +49,8 @@ class GameTypes {
             self::SKYWARS,
             self::TRUE_COMBAT,
             self::SPEED_UHC,
-            self::SKYCLASH
+            self::SKYCLASH,
+            self::LEGACY
         ];
     }
 
@@ -60,23 +62,23 @@ class GameTypes {
     public static function fromID($id) {
         switch ($id) {
             case GameTypes::QUAKE:
-                return new GameType('Quake', 'Quake', 'Quake', GameTypes::QUAKE);
+                return new GameType('Quake', 'Quake', 'Quake', GameTypes::QUAKE, false);
             case GameTypes::WALLS:
-                return new GameType('Walls', 'Walls', 'Walls', GameTypes::WALLS);
+                return new GameType('Walls', 'Walls', 'Walls', GameTypes::WALLS, false);
             case GameTypes::PAINTBALL:
-                return new GameType('Paintball', 'Paintball', 'Paintball', GameTypes::PAINTBALL);
+                return new GameType('Paintball', 'Paintball', 'Paintball', GameTypes::PAINTBALL, false);
             case GameTypes::HUNGERGAMES:
                 return new GameType('HungerGames', 'Blitz Survival Games', 'BSG', GameTypes::HUNGERGAMES);
             case GameTypes::TNTGAMES:
                 return new GameType('TNTGames', 'TNT Games', 'TNT Games', GameTypes::TNTGAMES);
             case GameTypes::VAMPIREZ:
-                return new GameType('VampireZ', 'VampireZ', 'VampireZ', GameTypes::VAMPIREZ);
+                return new GameType('VampireZ', 'VampireZ', 'VampireZ', GameTypes::VAMPIREZ, false);
             case GameTypes::WALLS3:
                 return new GameType('Walls3', 'Mega Walls', 'MW', GameTypes::WALLS3);
             case GameTypes::ARCADE:
                 return new GameType('Arcade', 'Arcade', 'Arcade', GameTypes::ARCADE);
             case GameTypes::ARENA:
-                return new GameType('Arena', 'Arena Brawl', 'Arena', GameTypes::ARENA);
+                return new GameType('Arena', 'Arena Brawl', 'Arena', GameTypes::ARENA, false);
             case GameTypes::UHC:
                 return new GameType('UHC', 'UHC Champions', 'UHC', GameTypes::UHC);
             case GameTypes::MCGO:
@@ -86,7 +88,7 @@ class GameTypes {
             case GameTypes::SUPER_SMASH:
                 return new GameType('SuperSmash', 'Smash Heroes', 'Smash Heroes', GameTypes::SUPER_SMASH);
             case GameTypes::GINGERBREAD:
-                return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', GameTypes::GINGERBREAD);
+                return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', GameTypes::GINGERBREAD, false);
             case GameTypes::HOUSING:
                 return new GameType('Housing', 'Housing', 'Housing', GameTypes::HOUSING, false);
             case GameTypes::SKYWARS:
@@ -97,6 +99,8 @@ class GameTypes {
                 return new GameType('SpeedUHC', 'Speed UHC', 'Speed UHC', GameTypes::SPEED_UHC);
             case GameTypes::SKYCLASH:
                 return new GameType('SkyClash', 'SkyClash', 'SkyClash', GameTypes::SKYCLASH);
+            case GameTypes::LEGACY:
+                return new GameType('Legacy', 'Classic Games', 'Classic', GameTypes::LEGACY);
             default:
                 return null;
         }
