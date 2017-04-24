@@ -128,7 +128,7 @@ class GameTypes {
      */
     public static function fromDbName($db) {
         return self::fromX(function (GameType $gameType) use ($db) {
-            return $gameType->getDb() == $db;
+            return strtolower($gameType->getDb()) == strtolower($db);
         });
     }
 
@@ -138,7 +138,7 @@ class GameTypes {
      */
     public static function fromShort($short) {
         return self::fromX(function (GameType $gameType) use ($short) {
-            return $gameType->getShort() == $short;
+            return strtolower($gameType->getShort()) == strtolower($short);
         });
     }
 
@@ -148,7 +148,7 @@ class GameTypes {
      */
     public static function fromName($name) {
         return self::fromX(function (GameType $gameType) use ($name) {
-            return $gameType->getName() == $name;
+            return strtolower($gameType->getName()) == strtolower($name);
         });
     }
 }
