@@ -25,6 +25,8 @@ class GameTypes {
     const SPEED_UHC = 54;
     const SKYCLASH = 55;
     const LEGACY = 56;
+    const PROTOTYPE = 57;
+    const BEDWARS = 58;
 
     /**
      * @return array
@@ -50,7 +52,9 @@ class GameTypes {
             self::TRUE_COMBAT,
             self::SPEED_UHC,
             self::SKYCLASH,
-            self::LEGACY
+            self::LEGACY,
+            self::PROTOTYPE,
+            self::BEDWARS
         ];
     }
 
@@ -101,6 +105,10 @@ class GameTypes {
                 return new GameType('SkyClash', 'SkyClash', 'SkyClash', GameTypes::SKYCLASH);
             case GameTypes::LEGACY:
                 return new GameType('Legacy', 'Classic Games', 'Classic', GameTypes::LEGACY);
+            case GameTypes::PROTOTYPE:
+                return new GameType('Prototype', 'Prototype', 'Prototype', GameTypes::PROTOTYPE, false);
+            case GameTypes::BEDWARS:
+                return new GameType('Bedwars', 'Bed Wars', 'Bed Wars', GameTypes::BEDWARS, false);
             default:
                 return null;
         }
