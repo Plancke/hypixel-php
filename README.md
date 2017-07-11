@@ -14,6 +14,8 @@ The preferred method of installing this library is with
 root:
 
     $ composer require "plancke/hypixel-php=^1.0.3"
+    
+If you plan on using the mongo cache implementation you'll also need to require mongo, (suggested package)
 
 ## TODO
 
