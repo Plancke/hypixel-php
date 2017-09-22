@@ -19,7 +19,9 @@
   "require": {
     "php": "^7.0",
     "ext-curl": "*",
-    "ext-json": "*",
+    "ext-json": "*"
+  },
+  "suggest": {
     "mongodb/mongodb": "^1.0.0"
   },
   "autoload": {

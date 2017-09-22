@@ -412,7 +412,7 @@ class HypixelPHP {
                     if ($id instanceof Guild) {
                         return $id;
                     } else {
-                        return $this->getGuild([FetchParams::GUILD_BY_ID => $id]);
+                        return $this->getGuild([FetchParams::GUILD_BY_ID => $id['guild']]);
                     }
                 }
 
