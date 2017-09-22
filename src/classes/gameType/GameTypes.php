@@ -27,6 +27,7 @@ class GameTypes {
     const LEGACY = 56;
     const PROTOTYPE = 57;
     const BEDWARS = 58;
+    const MURDER_MYSTERY = 59;
 
     /**
      * @return array
@@ -54,7 +55,8 @@ class GameTypes {
             self::SKYCLASH,
             self::LEGACY,
             self::PROTOTYPE,
-            self::BEDWARS
+            self::BEDWARS,
+            self::MURDER_MYSTERY
         ];
     }
 
@@ -109,6 +111,8 @@ class GameTypes {
                 return new GameType('Prototype', 'Prototype', 'Prototype', GameTypes::PROTOTYPE, false);
             case GameTypes::BEDWARS:
                 return new GameType('Bedwars', 'Bed Wars', 'Bed Wars', GameTypes::BEDWARS, false);
+            case GameTypes::MURDER_MYSTERY:
+                return new GameType('MurderMystery', 'Murder Mystery', 'Murder Mystery', GameTypes::MURDER_MYSTERY, false);
             default:
                 return null;
         }
