@@ -20,14 +20,7 @@ class Session extends HypixelObject {
      * @return GameType|null
      */
     public function getGameType() {
-        return GameTypes::fromID($this->getGameTypeID());
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getGameTypeID() {
-        return $this->get('gameType');
+        return GameTypes::fromEnum($this->get('gameType'));
     }
 
     /**

@@ -3,21 +3,26 @@
 namespace Plancke\HypixelPHP\classes\gameType;
 
 class GameType {
-    private $db, $name, $short, $id, $boosters;
+    private $enum, $db, $name, $short, $id, $boosters;
 
     /**
+     * @param $enum
      * @param $db
      * @param $name
      * @param $short
      * @param $id
      * @param bool $boosters
      */
-    public function __construct($db, $name, $short, $id, $boosters = true) {
+    public function __construct($enum, $db, $name, $short, $id, $boosters = true) {
         $this->db = $db;
         $this->name = $name;
         $this->short = $short;
         $this->id = $id;
         $this->boosters = $boosters;
+    }
+
+    public function getEnum() {
+        return $this->enum;
     }
 
     public function getDb() {
@@ -42,6 +47,7 @@ class GameType {
 
     public function toArray() {
         return [
+            'enum' => $this->enum,
             'id' => $this->id,
             'name' => $this->name,
             'short' => $this->short,

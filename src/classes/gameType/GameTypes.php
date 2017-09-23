@@ -68,51 +68,51 @@ class GameTypes {
     public static function fromID($id) {
         switch ($id) {
             case GameTypes::QUAKE:
-                return new GameType('Quake', 'Quake', 'Quake', GameTypes::QUAKE, false);
+                return new GameType('QUAKE', 'Quake', 'Quake', 'Quake', GameTypes::QUAKE, false);
             case GameTypes::WALLS:
-                return new GameType('Walls', 'Walls', 'Walls', GameTypes::WALLS, false);
+                return new GameType('WALLS', 'Walls', 'Walls', 'Walls', GameTypes::WALLS, false);
             case GameTypes::PAINTBALL:
-                return new GameType('Paintball', 'Paintball', 'Paintball', GameTypes::PAINTBALL, false);
+                return new GameType('PAINTBALL', 'Paintball', 'Paintball', 'Paintball', GameTypes::PAINTBALL, false);
             case GameTypes::HUNGERGAMES:
-                return new GameType('HungerGames', 'Blitz Survival Games', 'BSG', GameTypes::HUNGERGAMES);
+                return new GameType('HUNGERGAMES', 'HungerGames', 'Blitz Survival Games', 'BSG', GameTypes::HUNGERGAMES);
             case GameTypes::TNTGAMES:
-                return new GameType('TNTGames', 'TNT Games', 'TNT Games', GameTypes::TNTGAMES);
+                return new GameType('TNTGAMES', 'TNTGames', 'TNT Games', 'TNT Games', GameTypes::TNTGAMES);
             case GameTypes::VAMPIREZ:
-                return new GameType('VampireZ', 'VampireZ', 'VampireZ', GameTypes::VAMPIREZ, false);
+                return new GameType('VAMPIREZ', 'VampireZ', 'VampireZ', 'VampireZ', GameTypes::VAMPIREZ, false);
             case GameTypes::WALLS3:
-                return new GameType('Walls3', 'Mega Walls', 'MW', GameTypes::WALLS3);
+                return new GameType('WALLS3', 'Walls3', 'Mega Walls', 'MW', GameTypes::WALLS3);
             case GameTypes::ARCADE:
-                return new GameType('Arcade', 'Arcade', 'Arcade', GameTypes::ARCADE);
+                return new GameType('ARCADE', 'Arcade', 'Arcade', 'Arcade', GameTypes::ARCADE);
             case GameTypes::ARENA:
-                return new GameType('Arena', 'Arena Brawl', 'Arena', GameTypes::ARENA, false);
+                return new GameType('ARENA', 'Arena', 'Arena Brawl', 'Arena', GameTypes::ARENA, false);
             case GameTypes::UHC:
-                return new GameType('UHC', 'UHC Champions', 'UHC', GameTypes::UHC);
+                return new GameType('UHC', 'UHC', 'UHC Champions', 'UHC', GameTypes::UHC);
             case GameTypes::MCGO:
-                return new GameType('MCGO', 'Cops and Crims', 'CaC', GameTypes::MCGO);
+                return new GameType('MCGO', 'MCGO', 'Cops and Crims', 'CaC', GameTypes::MCGO);
             case GameTypes::BATTLEGROUND:
-                return new GameType('Battleground', 'Warlords', 'Warlords', GameTypes::BATTLEGROUND);
+                return new GameType('BATTLEGROUND', 'Battleground', 'Warlords', 'Warlords', GameTypes::BATTLEGROUND);
             case GameTypes::SUPER_SMASH:
-                return new GameType('SuperSmash', 'Smash Heroes', 'Smash Heroes', GameTypes::SUPER_SMASH);
+                return new GameType('SUPER_SMASH', 'SuperSmash', 'Smash Heroes', 'Smash Heroes', GameTypes::SUPER_SMASH);
             case GameTypes::GINGERBREAD:
-                return new GameType('GingerBread', 'Turbo Kart Racers', 'TKR', GameTypes::GINGERBREAD, false);
+                return new GameType('GINGERBREAD', 'GingerBread', 'Turbo Kart Racers', 'TKR', GameTypes::GINGERBREAD, false);
             case GameTypes::HOUSING:
-                return new GameType('Housing', 'Housing', 'Housing', GameTypes::HOUSING, false);
+                return new GameType('HOUSING', 'Housing', 'Housing', 'Housing', GameTypes::HOUSING, false);
             case GameTypes::SKYWARS:
-                return new GameType('SkyWars', 'SkyWars', 'SkyWars', GameTypes::SKYWARS);
+                return new GameType('SKYWARS', 'SkyWars', 'SkyWars', 'SkyWars', GameTypes::SKYWARS);
             case GameTypes::TRUE_COMBAT:
-                return new GameType('TrueCombat', 'Crazy Walls', 'Crazy Walls', GameTypes::TRUE_COMBAT);
+                return new GameType('TRUE_COMBAT', 'TrueCombat', 'Crazy Walls', 'Crazy Walls', GameTypes::TRUE_COMBAT);
             case GameTypes::SPEED_UHC:
-                return new GameType('SpeedUHC', 'Speed UHC', 'Speed UHC', GameTypes::SPEED_UHC);
+                return new GameType('SPEED_UHC', 'SpeedUHC', 'Speed UHC', 'Speed UHC', GameTypes::SPEED_UHC);
             case GameTypes::SKYCLASH:
-                return new GameType('SkyClash', 'SkyClash', 'SkyClash', GameTypes::SKYCLASH);
+                return new GameType('SKYCLASH', 'SkyClash', 'SkyClash', 'SkyClash', GameTypes::SKYCLASH);
             case GameTypes::LEGACY:
-                return new GameType('Legacy', 'Classic Games', 'Classic', GameTypes::LEGACY);
+                return new GameType('LEGACY', 'Legacy', 'Classic Games', 'Classic', GameTypes::LEGACY);
             case GameTypes::PROTOTYPE:
-                return new GameType('Prototype', 'Prototype', 'Prototype', GameTypes::PROTOTYPE, false);
+                return new GameType('PROTOTYPE', 'Prototype', 'Prototype', 'Prototype', GameTypes::PROTOTYPE, false);
             case GameTypes::BEDWARS:
-                return new GameType('Bedwars', 'Bed Wars', 'Bed Wars', GameTypes::BEDWARS, false);
+                return new GameType('BEDWARS', 'Bedwars', 'Bed Wars', 'Bed Wars', GameTypes::BEDWARS, false);
             case GameTypes::MURDER_MYSTERY:
-                return new GameType('MurderMystery', 'Murder Mystery', 'Murder Mystery', GameTypes::MURDER_MYSTERY, false);
+                return new GameType('MURDER_MYSTERY', 'MurderMystery', 'Murder Mystery', 'Murder Mystery', GameTypes::MURDER_MYSTERY, false);
             default:
                 return null;
         }
@@ -161,6 +161,16 @@ class GameTypes {
     public static function fromName($name) {
         return self::fromX(function (GameType $gameType) use ($name) {
             return strtolower($gameType->getName()) == strtolower($name);
+        });
+    }
+
+    /**
+     * @param $name
+     * @return GameType|null
+     */
+    public static function fromEnum($name) {
+        return self::fromX(function (GameType $gameType) use ($name) {
+            return strtolower($gameType->getEnum()) == strtolower($name);
         });
     }
 }
