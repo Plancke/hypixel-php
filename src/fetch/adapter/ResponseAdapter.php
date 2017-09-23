@@ -56,7 +56,9 @@ class ResponseAdapter extends Module {
      */
     private function attachKeyValues($keyValues, Response $response) {
         $data = $response->getData();
-        $data['record'] = array_merge($data['record'], $keyValues);
+        if (is_array($data['record'])) {
+            $data['record'] = array_merge($data['record'], $keyValues);
+        }
         return $response->setData($data);
     }
 
