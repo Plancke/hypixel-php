@@ -14,6 +14,7 @@ class GameType {
      * @param bool $boosters
      */
     public function __construct($enum, $db, $name, $short, $id, $boosters = true) {
+        $this->enum = $enum;
         $this->db = $db;
         $this->name = $name;
         $this->short = $short;
