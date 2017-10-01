@@ -9,8 +9,8 @@ use Plancke\HypixelPHP\util\Utilities;
 
 class Guild extends HypixelObject {
 
-    public function handleNew() {
-        parent::handleNew();
+    public function handleNew($cached) {
+        parent::handleNew($cached);
 
         $extraSetter = [];
         $extraSetter['coinHistory'] = $this->handleCoinHistory();

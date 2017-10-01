@@ -617,7 +617,7 @@ class HypixelPHP {
                         $fetched->_setExtra($cached->getExtra());
                     }
 
-                    $fetched->handleNew();
+                    $fetched->handleNew($cached);
 
                     $this->getCacheHandler()->_setCache($fetched);
 

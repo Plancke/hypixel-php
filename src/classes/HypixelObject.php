@@ -32,8 +32,9 @@ abstract class HypixelObject extends APIObject {
 
     /**
      * Called when an object is fetched freshly
+     * @param HypixelObject|null $cached The previous document, null or expired cached
      */
-    public function handleNew() {
+    public function handleNew($cached = null) {
         $this->data['timestamp'] = time();
     }
 
