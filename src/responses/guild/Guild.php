@@ -9,7 +9,7 @@ use Plancke\HypixelPHP\util\Utilities;
 
 class Guild extends HypixelObject {
 
-    public function handleNew($cached) {
+    public function handleNew($cached = null) {
         parent::handleNew($cached);
 
         $extraSetter = [];
