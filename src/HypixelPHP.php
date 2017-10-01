@@ -1,4 +1,5 @@
 <?php
+
 namespace Plancke\HypixelPHP;
 
 use Closure;
@@ -413,6 +414,8 @@ class HypixelPHP {
                         return $id;
                     } else if (isset($id['guild'])) {
                         return $this->getGuild([FetchParams::GUILD_BY_ID => $id['guild']]);
+                    } else if (is_string($id)) {
+                        return $this->getGuild([FetchParams::GUILD_BY_ID => $id]);
                     } else {
                         return null;
                     }
