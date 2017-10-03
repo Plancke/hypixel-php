@@ -195,7 +195,7 @@ class HypixelPHP {
      */
     public function setCacheHandler(CacheHandler $cacheHandler) {
         $this->cacheHandler = $cacheHandler;
-        $this->cacheHandlerGetter = function ($HypixelPHP) use ($cacheHandler) {
+        $this->cacheHandlerGetter = function () use ($cacheHandler) {
             return $cacheHandler;
         };
         return $this;
@@ -249,6 +249,7 @@ class HypixelPHP {
      */
     public function getResourceManager() {
         if ($this->resourceManager == null) {
+            /** @var Closure $getter */
             $getter = $this->resourceManagerGetter;
             $this->resourceManager = $getter($this);
         }
@@ -290,11 +291,9 @@ class HypixelPHP {
 
             if ($key == FetchParams::PLAYER_BY_UNKNOWN || $key == FetchParams::PLAYER_BY_NAME) {
                 return $this->getPlayer([FetchParams::PLAYER_BY_UUID => $this->getUUIDFromVar($val)]);
-            }
-
-            if ($key == FetchParams::PLAYER_BY_UUID) {
+            } else if ($key == FetchParams::PLAYER_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new InvalidUUIDException();
+                    throw new InvalidUUIDException($val);
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
 
@@ -404,7 +403,7 @@ class HypixelPHP {
 
             if ($key == FetchParams::GUILD_BY_PLAYER_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new InvalidUUIDException();
+                    throw new InvalidUUIDException($val);
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
 
@@ -486,7 +485,7 @@ class HypixelPHP {
 
             if ($key == FetchParams::SESSION_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new InvalidUUIDException();
+                    throw new InvalidUUIDException($val);
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
 
@@ -515,7 +514,7 @@ class HypixelPHP {
 
             if ($key == FetchParams::FRIENDS_BY_UUID) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new InvalidUUIDException();
+                    throw new InvalidUUIDException($val);
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
 
