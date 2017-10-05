@@ -16,7 +16,7 @@ use Plancke\HypixelPHP\util\Leveling;
 use Plancke\HypixelPHP\util\Utilities;
 
 class Player extends HypixelObject {
-    private $guild, $friends, $session;
+    protected $guild, $friends, $session;
 
     /**
      * Get the Stats object for the player

@@ -5,7 +5,7 @@ namespace Plancke\HypixelPHP\responses\player;
 use Plancke\HypixelPHP\util\Utilities;
 
 class Rank {
-    private $name, $id, $options, $staff;
+    protected $name, $id, $options, $staff;
 
     /**
      * @param $id
