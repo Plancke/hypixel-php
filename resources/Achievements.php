@@ -2259,7 +2259,7 @@ one Explosive Arrow',
                                 array(
                                     'points' => 5,
                                     'name' => 'Flawless Victory',
-                                    'description' => 'Win with at least 2000 health remaining',
+                                    'description' => 'Win with at least 2000 health remaining in 2v2',
                                 ),
                             'PAIRS' =>
                                 array(
@@ -2366,7 +2366,7 @@ the first time',
                                     'points' => 5,
                                     'name' => 'Not Even Close, Baby!',
                                     'description' => 'Win with 50 or less health remaining
-while being the only one alive',
+while being the only one alive in 2v2',
                                 ),
                             'SUPPORT' =>
                                 array(
@@ -3272,6 +3272,13 @@ while being the only one alive',
                                     'name' => 'This Isn\'t A Funfair ... Maybe',
                                     'description' => 'Ride the monorail',
                                 ),
+                            'SECRET_CHAMBER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'We\'re Set',
+                                    'description' => 'Find and enter the combination to open the secret chamber on Gold Rush',
+                                    'secret' => true,
+                                ),
                         ),
                     'tiered' =>
                         array(
@@ -3390,7 +3397,7 @@ while being the only one alive',
                                         ),
                                 ),
                         ),
-                    'total_points' => 625,
+                    'total_points' => 640,
                 ),
             'skyclash' =>
                 array(
@@ -6299,18 +6306,6 @@ your forum account',
                                     'name' => 'Popular',
                                     'description' => 'Get 25+ friends',
                                 ),
-                            'USE_PET' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Man\'s best friend',
-                                    'description' => 'Purchase a pet and use it in-game',
-                                ),
-                            'I_HAVE_FRIENDS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'I have friends!',
-                                    'description' => 'Own a party of at least 5 players',
-                                ),
                             'A_LONG_JOURNEY_BEGINS' =>
                                 array(
                                     'points' => 5,
@@ -6334,12 +6329,6 @@ your forum account',
                                     'points' => 10,
                                     'name' => 'Very Important Person',
                                     'description' => 'Become a VIP',
-                                ),
-                            'TOGETHER_WE_SHINE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Together we shine',
-                                    'description' => 'Join a guild',
                                 ),
                         ),
                     'tiered' =>
@@ -6497,7 +6486,7 @@ your forum account',
                                         ),
                                 ),
                         ),
-                    'total_points' => 425,
+                    'total_points' => 405,
                 ),
             'uhc' =>
                 array(
@@ -7451,7 +7440,7 @@ Lava Bucket, and a Piston',
                             'CATCH_FISH' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Kevin Kool\'d',
+                                    'name' => 'Rod God',
                                     'description' => 'Catch a fish',
                                 ),
                             'FIRST_KIT' =>
@@ -8158,312 +8147,6 @@ killing streak yourself',
                                 ),
                         ),
                     'total_points' => 820,
-                ),
-            'bedwars' =>
-                array(
-                    'one_time' =>
-                        array(
-                            'DONT_NEED_BED' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'I don\'t need a bed!',
-                                    'description' => 'Survive for 10 minutes without a bed.',
-                                ),
-                            'PICKAXE_CHALLENGE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Pointless Challenge',
-                                    'description' => 'Win a game without killing an enemy with a sword',
-                                ),
-                            'EMERALD_HOARDER' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Emerald Hoarder',
-                                    'description' => 'Collect at least 25 Emeralds in a game',
-                                ),
-                            'FIREBALLS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Great lord of fire!',
-                                    'description' => 'Have 10 Fireballs in your inventory at the same time',
-                                ),
-                            'FIRST_BLOOD' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'First Blood',
-                                    'description' => 'Be the first player to kill an enemy',
-                                ),
-                            'IRON_PUNCH' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Iron Punch',
-                                    'description' => 'Get a kill with an Iron Golem',
-                                ),
-                            'SNIPER' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'The Sniper',
-                                    'description' => 'Kill a player from at least 40 blocks away',
-                                ),
-                            'TEAM_PLAYER' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Team Player',
-                                    'description' => 'Place an Emerald in your team chest',
-                                ),
-                            'BUILDER' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Builder',
-                                    'description' => 'Place over 200 blocks in a game',
-                                ),
-                            'DIAMOND_HOARDER' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Diamond Hoarder',
-                                    'description' => 'Collect at least 50 Diamonds in a game',
-                                ),
-                            'SHEAR_LUCK' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Shear Luck',
-                                    'description' => 'Kill a player with shears!',
-                                ),
-                            'SUPER_LOOTER' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Super looter',
-                                    'description' => 'Obtain at least 20 Gold Ingots from enemies in a game',
-                                ),
-                            'ALCHEMIST' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Alchemist',
-                                    'description' => 'Buy 10 Potions in a game',
-                                ),
-                            'SLAYER' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Dragon Slayer',
-                                    'description' => 'Kill an Ender Dragon',
-                                ),
-                            'DESTROY_BEDS' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Getting the job done',
-                                    'description' => 'Destroy half of the beds in one game',
-                                ),
-                            'GEARED_UP' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Geared up!',
-                                    'description' => 'Purchase the Diamond armor & sword',
-                                ),
-                            'SURVIVOR' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Survivor',
-                                    'description' => 'Win a game without dying',
-                                ),
-                            'STRATEGIST' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Strategist',
-                                    'description' => 'Purchase the Reinforced Armor IV team upgrade',
-                                ),
-                            'ALREADY_OVER' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Already over?',
-                                    'description' => 'Win a game within 10 minutes',
-                                ),
-                            'MERCILESS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Merciless',
-                                    'description' => 'Final Kill 5 enemies in one game',
-                                ),
-                            'GOLEM' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Golem\'s Rose',
-                                    'description' => 'Kill 5 enemy Golems in a single game',
-                                ),
-                            'BED_TRAP' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'You can\'t trap me!',
-                                    'description' => 'Destroy a bed within 10 seconds of activating the enemy trap',
-                                ),
-                            'ULTIMATE_DEFENSE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'The Ultimate Defense',
-                                    'description' => 'Place 8 Obsidian blocks around your bed',
-                                ),
-                            'FIRST' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Speedy Bridger!',
-                                    'description' => 'Be the first player to obtain an Emerald from the middle island',
-                                ),
-                        ),
-                    'tiered' =>
-                        array(
-                            'WINS' =>
-                                array(
-                                    'name' => 'Victory Dancer',
-                                    'description' => 'Win %s games',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 25,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 75,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 200,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 500,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 1000,
-                                                ),
-                                        ),
-                                ),
-                            'LEVEL' =>
-                                array(
-                                    'name' => 'Road to Prestige',
-                                    'description' => 'Reach %s Bed Wars Level',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 5,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 25,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 50,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 75,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 100,
-                                                ),
-                                        ),
-                                ),
-                            'BEDS' =>
-                                array(
-                                    'name' => 'Bed Removal',
-                                    'description' => 'Destroy %s Beds',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 10,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 25,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 100,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 250,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 500,
-                                                ),
-                                        ),
-                                ),
-                            'LOOT_BOX' =>
-                                array(
-                                    'name' => 'Crate Looter',
-                                    'description' => 'Open %s Loot Chests',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 10,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 25,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 100,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 250,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 500,
-                                                ),
-                                        ),
-                                ),
-                        ),
-                    'total_points' => 480,
                 ),
             'bedwars' =>
                 array(
