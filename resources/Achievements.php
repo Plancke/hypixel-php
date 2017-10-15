@@ -8954,5 +8954,169 @@ killing streak yourself',
                         ),
                     'total_points' => 775,
                 ),
+            'halloween2017' =>
+                array(
+                    'one_time' =>
+                        array(
+                            'TBR_KRAKEN_ASSAULT_1_25' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Kraken Assault Great Time',
+                                    'description' => 'Complete Kraken Assault in under 01:25',
+                                ),
+                            'SPOOKY_CHEST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Spooky Spooky',
+                                    'description' => 'Open 3 Bed Wars Spooky Chests',
+                                ),
+                            'SECOND_GHOST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Second Ghost',
+                                    'description' => 'Find two Ghosts in the Main Lobby',
+                                ),
+                            'PUMPKIN_DEATH' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pumpkinator Rampage',
+                                    'description' => 'Bring 15 pumpkins at once to a Shopkeeper in Bedwars',
+                                ),
+                            'PUMPKIN_DANCER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pumpkin Devil',
+                                    'description' => 'Obtain 222 points in a single Pumpkin Smash game',
+                                ),
+                            'TBR_OBSERVATORY_SPIN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Observatory Spin Completion',
+                                    'description' => 'Complete Observatory Spin in Turbo Bat Racers',
+                                ),
+                            'TBR_MIDTOWN_TRIP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Midtown Trip Completion',
+                                    'description' => 'Complete Midtown Trip in Turbo Bat Racers',
+                                ),
+                            'ALL_GHOSTS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'All Ghosts',
+                                    'description' => 'Find all Ghosts in the Main Lobby',
+                                ),
+                            'TBR_KRAKEN_ASSAULT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Kraken Assault Completion',
+                                    'description' => 'Complete Kraken Assault in Turbo Bat Racers',
+                                ),
+                            'TBR_MIDTOWN_TRIP_1_20' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Midtown Trip Great Time',
+                                    'description' => 'Complete Midtown Trip in under 01:30',
+                                ),
+                            'TBR_OBSERVATORY_SPIN_1_10' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Observatory Spin Great Time',
+                                    'description' => 'Complete Observatory Spin in under 01:25',
+                                ),
+                            'GOOD_TRY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Good Try',
+                                    'description' => 'Die against the first bomb in Pumpkin Smash',
+                                ),
+                            'HI_THERE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Boo!',
+                                    'description' => 'Speak to the Halloween Guide in the Main Lobby',
+                                ),
+                        ),
+                    'tiered' =>
+                        array(
+                            'PUMPKIN_SMASHER' =>
+                                array(
+                                    'name' => 'Pumpkin Smasher',
+                                    'description' => 'Smash %s pumpkins in Pumpkin Smash',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 250,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 500,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 750,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 1000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 3333,
+                                                ),
+                                        ),
+                                ),
+                            'PUMPKINATOR' =>
+                                array(
+                                    'name' => 'Pumpkinator Collector',
+                                    'description' => 'Collect %s pumpkins in Bedwars',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
+                        ),
+                    'total_points' => 250,
+                ),
         ),
 );
