@@ -7,7 +7,7 @@ use Plancke\HypixelPHP\log\Formatter;
 class DefaultFormatter extends Formatter {
 
     public function formatLine($line) {
-        return '[' . date("H:i:s") . '] ' . $line;
+        return '[' . date("d-m-Y H:i:s") . '] ' . $line;
     }
 
 }

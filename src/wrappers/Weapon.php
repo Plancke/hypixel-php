@@ -213,7 +213,7 @@ class Weapon {
 
     function getScore() {
         $score = 0;
-        foreach (WeaponStats::getAllTypes() as $stat) {
+        foreach (WeaponStats::values() as $stat) {
             $score += $this->getStatById($stat);
         }
         return $score;
@@ -312,9 +312,16 @@ class WeaponStats {
     }
 
     /**
-     * @return array
+     * @deprecated
      */
     public static function getAllTypes() {
+        return self::values();
+    }
+
+    /**
+     * @return array
+     */
+    public static function values() {
         return [
             self::DAMAGE,
             self::CHANCE,

@@ -14,9 +14,9 @@ class DefaultLogger extends Logger {
     }
 
     /**
-     * Size of the individual files, in bytes
+     * Size of the individual files, in bytes (100MB by default)
      */
-    protected $size = 512000000;
+    protected $size = 100 * 1024 * 1024;
 
     /**
      * @return int

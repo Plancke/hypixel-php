@@ -15,8 +15,8 @@ abstract class CacheTypes {
     const SESSIONS = 'sessions';
     const API_KEYS = 'api_keys';
 
-    // single saves
     const LEADERBOARDS = 'leaderboards';
     const BOOSTERS = 'boosters';
     const WATCHDOG_STATS = 'watchdogStats';
+    const PLAYER_COUNT = 'playerCount';
 }

@@ -6,12 +6,9 @@ abstract class CacheTimes {
 
     const UUID = 'uuid';
     const UUID_NOT_FOUND = 'uuidNotFound';
-
     const PLAYER = 'player';
-
     const GUILD = 'guild';
     const GUILD_NOT_FOUND = 'guildNotFound';
-
     const LEADERBOARDS = 'leaderboards';
     const PLAYER_COUNT = 'playerCount';
     const BOOSTERS = 'boosters';

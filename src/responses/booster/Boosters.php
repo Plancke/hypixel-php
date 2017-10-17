@@ -12,7 +12,7 @@ class Boosters extends HypixelObject {
      *
      * @return array
      */
-    public function getQueue($gameType, $max = 999) {
+    public function getQueue($gameType, $max = 9999) {
         $return = [
             'boosters' => [],
             'total' => 0

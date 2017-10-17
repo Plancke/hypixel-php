@@ -31,6 +31,7 @@ use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\InputType;
 use Plancke\HypixelPHP\util\Utilities;
+use Plancke\HypixelPHP\util\Validator;
 
 /**
  * HypixelPHP
@@ -55,13 +56,9 @@ class HypixelPHP {
      * @throws HypixelPHPException
      */
     public function __construct($apiKey) {
-        $this->apiKey = $apiKey;
+        $this->validateAPIKey($apiKey);
 
-        if ($this->apiKey == null) {
-            throw new HypixelPHPException("API Key can't be null!", ExceptionCodes::NO_KEY);
-        } elseif (InputType::getType($this->apiKey) !== InputType::UUID) {
-            throw new HypixelPHPException("API Key is invalid!", ExceptionCodes::INVALID_KEY);
-        }
+        $this->apiKey = $apiKey;
 
         $this->setLoggerGetter(function ($HypixelPHP) {
             return new DefaultLogger($HypixelPHP);
@@ -90,10 +87,26 @@ class HypixelPHP {
     /**
      * @param string $apiKey
      * @return $this
+     * @throws HypixelPHPException
      */
     public function setAPIKey($apiKey) {
+        $this->validateAPIKey($apiKey);
         $this->apiKey = $apiKey;
         return $this;
+    }
+
+    /**
+     * Check whether or not given key is valid
+     *
+     * @param $key
+     * @throws HypixelPHPException
+     */
+    protected function validateAPIKey($key) {
+        if ($key == null) {
+            throw new HypixelPHPException("API Key can't be null!", ExceptionCodes::NO_KEY);
+        } elseif (!Validator::isValidAPIKey($key)) {
+            throw new HypixelPHPException("API Key is invalid!", ExceptionCodes::INVALID_KEY);
+        }
     }
 
     /**
@@ -585,6 +598,19 @@ class HypixelPHP {
                 return $this->getFetcher()->fetch(FetchTypes::WATCHDOG_STATS);
             },
             $this->getProvider()->getWatchdogStats()
+        );
+    }
+
+    /**
+     * @return WatchdogStats|Response|null
+     */
+    public function getPlayerCount() {
+        return $this->handle(
+            $this->getCacheHandler()->getCachedPlayerCount(),
+            function () {
+                return $this->getFetcher()->fetch(FetchTypes::PLAYER_COUNT);
+            },
+            $this->getProvider()->getPlayerCount()
         );
     }
 

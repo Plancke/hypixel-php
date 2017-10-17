@@ -21,24 +21,14 @@ abstract class InputType {
             return InputType::PLAYER_OBJECT;
         }
 
-        if (self::isUUID($input)) {
+        if (Validator::isAnyUUID($input)) {
             return InputType::UUID;
         }
 
-        if (self::isUsername($input)) {
+        if (Validator::isUsername($input)) {
             return InputType::USERNAME;
         }
 
         return null;
-    }
-
-    public static function isUsername($input) {
-        // TODO might want to add a charmatcher here
-        return is_string($input) && strlen($input) <= 16;
-    }
-
-    public static function isUUID($input) {
-        // TODO might want to add some validation here
-        return is_string($input) && (strlen($input) == 36 || strlen($input) == 32);
     }
 }

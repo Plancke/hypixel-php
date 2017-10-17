@@ -30,9 +30,16 @@ class GameTypes {
     const MURDER_MYSTERY = 59;
 
     /**
-     * @return array
+     * @deprecated
      */
     public static function getAllTypes() {
+        return self::values();
+    }
+
+    /**
+     * @return array
+     */
+    public static function values() {
         return [
             self::QUAKE,
             self::WALLS,
@@ -123,7 +130,7 @@ class GameTypes {
      * @return GameType|null
      */
     public static function fromX(Closure $test) {
-        foreach (GameTypes::getAllTypes() as $id) {
+        foreach (GameTypes::values() as $id) {
             $gameType = GameTypes::fromID($id);
             if ($gameType != null) {
                 if ($test($gameType)) {

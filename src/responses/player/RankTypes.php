@@ -17,7 +17,7 @@ abstract class RankTypes {
     const YOUTUBER = 60;
 
     public static function fromName($db) {
-        foreach (RankTypes::getAllTypes() as $id) {
+        foreach (RankTypes::values() as $id) {
             $rank = RankTypes::fromID($id);
             if ($rank != null) {
                 if ($rank->getName() == $db) {
@@ -55,9 +55,16 @@ abstract class RankTypes {
     }
 
     /**
-     * @return array
+     * @deprecated
      */
     public static function getAllTypes() {
+        return self::values();
+    }
+
+    /**
+     * @return array
+     */
+    public static function values() {
         return array_merge(self::getDonorRanks(), self::getStaffRanks());
     }
 

@@ -14,7 +14,21 @@ abstract class FetchTypes {
     const LEADERBOARDS = 'leaderboards';
     const SESSION = 'session';
     const KEY = 'key';
-    const PLAYER_COUNT = 'playerCount';
     const WATCHDOG_STATS = 'watchdogStats';
+    const PLAYER_COUNT = 'playerCount';
+
+    public static function values() {
+        return [
+            self::PLAYER,
+            self::GUILD,
+            self::FIND_GUILD,
+            self::BOOSTERS,
+            self::LEADERBOARDS,
+            self::SESSION,
+            self::KEY,
+            self::WATCHDOG_STATS,
+            self::PLAYER_COUNT,
+        ];
+    }
 
 }

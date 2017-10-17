@@ -12,13 +12,14 @@ use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
+use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\CacheUtil;
 use Plancke\HypixelPHP\util\Utilities;
 
 /**
- * Implementation for CacheHandler, stores data flat filed
+ * Implementation for CacheHandler, stores data flat file
  *
  * Class FlatFileCacheHandler
  * @package HypixelPHP
@@ -28,6 +29,8 @@ class FlatFileCacheHandler extends CacheHandler {
     protected $baseDirectory = "cache" . DIRECTORY_SEPARATOR . "HypixelPHP" . DIRECTORY_SEPARATOR;
 
     /**
+     * Get base file location for all cache files
+     *
      * @return string
      */
     public function getBaseDirectory() {
@@ -35,6 +38,8 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
+     * Modify the base directory for all cache files
+     *
      * @param string $baseDirectory
      * @return $this
      */
@@ -44,6 +49,8 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
+     * Save {@link HypixelObject} to file.
+     *
      * @param $filename
      * @param HypixelObject $obj
      */
@@ -52,11 +59,13 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
+     * Save given array to file
+     *
      * @param $filename
-     * @param $obj
+     * @param array $obj
      */
     protected function setCache($filename, $obj) {
-        Utilities::setFileContent($this->baseDirectory . DIRECTORY_SEPARATOR . $filename . '.json', json_encode($obj));
+        Utilities::setFileContent($this->baseDirectory . DIRECTORY_SEPARATOR . $filename . '.json', json_encode($this->objToArray($obj)));
     }
 
     /**
@@ -197,6 +206,17 @@ class FlatFileCacheHandler extends CacheHandler {
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getWatchdogStats(),
             $this->getCache(CacheTypes::WATCHDOG_STATS)
+        );
+    }
+
+    function setCachedPlayerCount(PlayerCount $playerCount) {
+        $this->setObjCache(CacheTypes::PLAYER_COUNT, $playerCount);
+    }
+
+    function getCachedPlayerCount() {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getPlayerCount(),
+            $this->getCache(CacheTypes::PLAYER_COUNT)
         );
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Plancke\Tests;
 
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;

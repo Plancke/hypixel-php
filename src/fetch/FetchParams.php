@@ -14,6 +14,22 @@ abstract class FetchParams {
     const GUILD_BY_ID = 'id';
 
     const FRIENDS_BY_UUID = 'uuid';
-
     const SESSION_BY_UUID = 'uuid';
+
+    public static function values() {
+        return [
+            self::PLAYER_BY_NAME,
+            self::PLAYER_BY_UUID,
+            self::PLAYER_BY_UNKNOWN,
+
+            self::GUILD_BY_NAME,
+            self::GUILD_BY_PLAYER_UUID,
+            self::GUILD_BY_PLAYER_NAME,
+            self::GUILD_BY_PLAYER_UNKNOWN,
+            self::GUILD_BY_ID,
+
+            self::FRIENDS_BY_UUID,
+            self::SESSION_BY_UUID,
+        ];
+    }
 }

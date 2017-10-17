@@ -19,8 +19,7 @@ If you plan on using the mongo cache implementation you'll also need to require 
 
 ## TODO
 
-- Better documentation
-- More UnitTesting
+- Add examples
 
 ## Usage
 

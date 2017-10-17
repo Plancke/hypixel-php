@@ -1,4 +1,5 @@
 <?php
+
 namespace Plancke\HypixelPHP\util;
 
 abstract class GameUtils {

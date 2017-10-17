@@ -14,6 +14,7 @@ use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
+use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
@@ -64,13 +65,19 @@ class MongoCacheHandler extends CacheHandler {
     }
 
     /**
+     * Select the mongo database to use
+     *
+     * @param string $db
      * @return \MongoDB\Database
      */
-    public function selectDB() {
-        return $this->mongoClient->selectDatabase("HypixelPHP");
+    public function selectDB($db = "HypixelPHP") {
+        return $this->mongoClient->selectDatabase($db);
     }
 
     /**
+     * Replace a single document for given query,
+     * creates the document if it doesn't exist yet.
+     *
      * @param $collection
      * @param $query
      * @param $obj
@@ -315,5 +322,13 @@ class MongoCacheHandler extends CacheHandler {
 
     function getCachedWatchdogStats() {
         return $this->getSingleSave(CacheTypes::WATCHDOG_STATS, $this->getHypixelPHP()->getProvider()->getWatchdogStats());
+    }
+
+    function setCachedPlayerCount(PlayerCount $playerCount) {
+        $this->setSingleSave(CacheTypes::PLAYER_COUNT, $playerCount);
+    }
+
+    function getCachedPlayerCount() {
+        return $this->getSingleSave(CacheTypes::PLAYER_COUNT, $this->getHypixelPHP()->getProvider()->getPlayerCount());
     }
 }
