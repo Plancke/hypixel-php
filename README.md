@@ -17,6 +17,8 @@ root:
     
 If you plan on using the mongo cache implementation you'll also need to require mongo, (suggested package)
 
+I don't push a new version for every minor resource update. You can use `$ composer require "plancke/hypixel-php=dev-master"` to always download latest.
+
 ## TODO
 
 - Add examples
