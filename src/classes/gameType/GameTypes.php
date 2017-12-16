@@ -28,6 +28,8 @@ class GameTypes {
     const PROTOTYPE = 57;
     const BEDWARS = 58;
     const MURDER_MYSTERY = 59;
+    const BUILD_BATTLE = 60;
+    const DUELS = 61;
 
     /**
      * @deprecated
@@ -63,7 +65,9 @@ class GameTypes {
             self::LEGACY,
             self::PROTOTYPE,
             self::BEDWARS,
-            self::MURDER_MYSTERY
+            self::MURDER_MYSTERY,
+            self::BUILD_BATTLE,
+            self::DUELS,
         ];
     }
 
@@ -120,6 +124,10 @@ class GameTypes {
                 return new GameType('BEDWARS', 'Bedwars', 'Bed Wars', 'Bed Wars', GameTypes::BEDWARS, false);
             case GameTypes::MURDER_MYSTERY:
                 return new GameType('MURDER_MYSTERY', 'MurderMystery', 'Murder Mystery', 'Murder Mystery', GameTypes::MURDER_MYSTERY, false);
+            case GameTypes::BUILD_BATTLE:
+                return new GameType('BUILD_BATTLE', 'BuildBattle', 'Build Battle', 'Build Battle', GameTypes::BUILD_BATTLE, false);
+            case GameTypes::DUELS:
+                return new GameType('DUELS', 'Duels', 'Duels', 'Duels', GameTypes::MURDER_MYSTERY, false);
             default:
                 return null;
         }
