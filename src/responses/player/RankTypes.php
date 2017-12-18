@@ -9,6 +9,7 @@ abstract class RankTypes {
     const VIP_PLUS = 3;
     const MVP = 4;
     const MVP_PLUS = 5;
+    const SUPERSTAR = 6;
 
     const ADMIN = 100;
     const MODERATOR = 90;
@@ -37,7 +38,8 @@ abstract class RankTypes {
             self::VIP,
             self::VIP_PLUS,
             self::MVP,
-            self::MVP_PLUS
+            self::MVP_PLUS,
+            self::SUPERSTAR
         ];
     }
 
@@ -103,6 +105,11 @@ abstract class RankTypes {
                     'prefix' => '§b[MVP§c+§b]',
                     'color' => '§b',
                     'eulaMultiplier' => 5
+                ]);
+            case RankTypes::SUPERSTAR:
+                return new Rank(RankTypes::MVP_PLUS, 'SUPERSTAR', [
+                    'prefix' => '§6[MVP§c++§6]',
+                    'color' => '§6'
                 ]);
             case RankTypes::YOUTUBER:
                 return new Rank(RankTypes::YOUTUBER, 'YOUTUBER', [

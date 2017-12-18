@@ -86,6 +86,7 @@ class Player extends HypixelObject {
 
     /**
      * @return Guild|Response|null
+     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
      */
     public function getGuild() {
         if ($this->guild == null) {
@@ -96,6 +97,7 @@ class Player extends HypixelObject {
 
     /**
      * @return Session|Response|null
+     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
      */
     public function getSession() {
         if ($this->session == null) {
@@ -106,6 +108,7 @@ class Player extends HypixelObject {
 
     /**
      * @return Friends|Response|null
+     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
      */
     public function getFriends() {
         if ($this->friends == null) {
@@ -141,6 +144,7 @@ class Player extends HypixelObject {
      * @param bool $guildTag
      * @param Closure $colorParser
      * @return string
+     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
      */
     public function getFormattedName($prefix = true, $guildTag = false, Closure $colorParser = null) {
         $out = $this->getRawFormattedName($prefix, $guildTag);
@@ -156,6 +160,7 @@ class Player extends HypixelObject {
      * @param bool $prefix
      * @param bool $guildTag
      * @return string
+     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
      */
     public function getRawFormattedName($prefix = true, $guildTag = false) {
         $rank = $this->getRank(false);
@@ -175,10 +180,9 @@ class Player extends HypixelObject {
      * @param array $rankKeys
      * @return Rank
      */
-    public function getRank($package = true, $rankKeys = ['newPackageRank', 'packageRank']) {
+    public function getRank($package = true, $rankKeys = ['monthlyPackageRank', 'newPackageRank', 'packageRank']) {
         $returnRank = null;
         if ($package) {
-            $returnRank = null;
             foreach ($rankKeys as $key) {
                 $rank = RankTypes::fromName($this->get($key));
                 if ($rank != null) {
@@ -237,6 +241,7 @@ class Player extends HypixelObject {
      * Get player Guild Tag, null if no guild/tag
      *
      * @return string|null
+     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
      */
     public function getGuildTag() {
         $guild = $this->getGuild();

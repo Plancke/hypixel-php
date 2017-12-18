@@ -42,8 +42,15 @@ class Rank {
     }
 
     public function getPrefix(Player $player) {
-        if ($this->id == RankTypes::MVP_PLUS && $player->get("rankPlusColor") != null) {
-            return '§b[MVP' . Utilities::MC_COLORNAME[$player->get("rankPlusColor")] . '+§b]';
+        if ($player->get("rankPlusColor") != null) {
+            $plusColor = Utilities::MC_COLORNAME[$player->get("rankPlusColor")];
+            if ($plusColor != null) {
+                if ($this->id == RankTypes::MVP_PLUS) {
+                    return '§b[MVP' . $plusColor . '+§b]';
+                } else if ($this->id == RankTypes::SUPERSTAR) {
+                    return '§6[MVP' . $plusColor . '++§6]';
+                }
+            }
         }
         return isset($this->options['prefix']) ? $this->options['prefix'] : null;
     }
