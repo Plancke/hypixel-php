@@ -145,6 +145,7 @@ class Player extends HypixelObject {
      * @param Closure $colorParser
      * @return string
      * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
+     * @deprecated
      */
     public function getFormattedName($prefix = true, $guildTag = false, Closure $colorParser = null) {
         $out = $this->getRawFormattedName($prefix, $guildTag);
