@@ -10,7 +10,7 @@ You can find Documentation and a Java implementation here: https://github.com/Hy
 ## Installation
 
 The preferred method of installing this library is with
-[Composer](https://getcomposer.org/) by running the following from your project
+[Composer](https://getcomposer.org) by running the following from your project
 root:
 
     $ composer require "plancke/hypixel-php=^1.0.4"
