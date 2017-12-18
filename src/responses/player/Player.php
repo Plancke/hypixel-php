@@ -2,7 +2,6 @@
 
 namespace Plancke\HypixelPHP\responses\player;
 
-use Closure;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\fetch\FetchParams;
@@ -13,7 +12,6 @@ use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\util\Leveling;
-use Plancke\HypixelPHP\util\Utilities;
 
 class Player extends HypixelObject {
     protected $guild, $friends, $session;
@@ -138,26 +136,6 @@ class Player extends HypixelObject {
     }
 
     /**
-     * get Formatted name of Player
-     *
-     * @param bool $prefix
-     * @param bool $guildTag
-     * @param Closure $colorParser
-     * @return string
-     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
-     * @deprecated
-     */
-    public function getFormattedName($prefix = true, $guildTag = false, Closure $colorParser = null) {
-        $out = $this->getRawFormattedName($prefix, $guildTag);
-        if ($colorParser != null) {
-            return $colorParser($out);
-        } else {
-            $outStr = Utilities::stripColors($out);
-        }
-        return $outStr;
-    }
-
-    /**
      * @param bool $prefix
      * @param bool $guildTag
      * @return string
@@ -182,15 +160,14 @@ class Player extends HypixelObject {
      * @return Rank
      */
     public function getRank($package = true, $rankKeys = ['monthlyPackageRank', 'newPackageRank', 'packageRank']) {
+        /** @var $returnRank Rank */
         $returnRank = null;
         if ($package) {
             foreach ($rankKeys as $key) {
+                /** @var $rank Rank */
                 $rank = RankTypes::fromName($this->get($key));
                 if ($rank != null) {
-                    if ($returnRank == null) $returnRank = $rank;
-                    /** @var $rank Rank */
-                    /** @var $returnRank Rank */
-                    if ($rank->getId() > $returnRank->getId()) {
+                    if ($returnRank == null || $rank->getId() > $returnRank->getId()) {
                         $returnRank = $rank;
                     }
                 }
