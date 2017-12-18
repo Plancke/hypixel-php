@@ -116,7 +116,7 @@ abstract class RankTypes {
                     ]);
                     break;
                 case RankTypes::SUPERSTAR:
-                    $rank = new Rank(RankTypes::MVP_PLUS, 'SUPERSTAR', [
+                    $rank = new Rank(RankTypes::SUPERSTAR, 'SUPERSTAR', [
                         'prefix' => '§6[MVP§c++§6]',
                         'color' => '§6'
                     ]);

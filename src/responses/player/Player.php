@@ -148,7 +148,14 @@ class Player extends HypixelObject {
             $out = ($this->getPrefix() != null ? $this->getPrefix() : $rank->getPrefix($this)) . ' ' . $this->getName();
         }
         if ($guildTag) {
-            $out .= $this->getGuildTag() != null ? ' §7[' . $this->getGuildTag() . ']' : '';
+            if ($this->getGuildTag() != null) {
+                $color = '§7';
+                if ($this->getGuild()->getTagColor() != null) {
+                    $color = $this->getGuild()->getTagColor();
+                }
+
+                $out .= $color . ' [' . $this->getGuildTag() . ']';
+            }
         }
         return $out;
     }
@@ -215,12 +222,6 @@ class Player extends HypixelObject {
         return $this->get('prefix');
     }
 
-    /**
-     * Get player Guild Tag, null if no guild/tag
-     *
-     * @return string|null
-     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
-     */
     public function getGuildTag() {
         $guild = $this->getGuild();
         if ($guild instanceof Guild) {
