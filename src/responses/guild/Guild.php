@@ -61,6 +61,28 @@ class Guild extends HypixelObject {
     }
 
     /**
+     * Return minecraft colors of the tag
+     *
+     * @return string
+     */
+    public function getTagColor() {
+        $color = $this->getTagColorRaw();
+        if (isset(Utilities::MC_COLORNAME[$color])) {
+            return Utilities::MC_COLORNAME[$color];
+        }
+        return null;
+    }
+
+    /**
+     * Return raw entry of tagColor in the guild
+     *
+     * @return string
+     */
+    public function getTagColorRaw() {
+        return $this->get('tagColor');
+    }
+
+    /**
      * @return int
      */
     public function getCoins() {
