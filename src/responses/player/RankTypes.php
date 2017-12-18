@@ -17,6 +17,8 @@ abstract class RankTypes {
     const JR_HELPER = 70;
     const YOUTUBER = 60;
 
+    private static $cache = [];
+
     public static function fromName($db) {
         foreach (RankTypes::values() as $id) {
             $rank = RankTypes::fromID($id);
@@ -76,69 +78,85 @@ abstract class RankTypes {
      * @return Rank|null
      */
     public static function fromID($id) {
-        switch ($id) {
-            case RankTypes::NON_DONOR:
-                return new Rank(RankTypes::NON_DONOR, 'NON_DONOR', [
-                    'prefix' => '§7',
-                    'color' => '§7'
-                ]);
-            case RankTypes::VIP:
-                return new Rank(RankTypes::VIP, 'VIP', [
-                    'prefix' => '§a[VIP]',
-                    'color' => '§a',
-                    'eulaMultiplier' => 2
-                ]);
-            case RankTypes::VIP_PLUS:
-                return new Rank(RankTypes::VIP_PLUS, 'VIP_PLUS', [
-                    'prefix' => '§a[VIP§6+§a]',
-                    'color' => '§a',
-                    'eulaMultiplier' => 3
-                ]);
-            case RankTypes::MVP:
-                return new Rank(RankTypes::MVP, 'MVP', [
-                    'prefix' => '§b[MVP]',
-                    'color' => '§b',
-                    'eulaMultiplier' => 4
-                ]);
-            case RankTypes::MVP_PLUS:
-                return new Rank(RankTypes::MVP_PLUS, 'MVP_PLUS', [
-                    'prefix' => '§b[MVP§c+§b]',
-                    'color' => '§b',
-                    'eulaMultiplier' => 5
-                ]);
-            case RankTypes::SUPERSTAR:
-                return new Rank(RankTypes::MVP_PLUS, 'SUPERSTAR', [
-                    'prefix' => '§6[MVP§c++§6]',
-                    'color' => '§6'
-                ]);
-            case RankTypes::YOUTUBER:
-                return new Rank(RankTypes::YOUTUBER, 'YOUTUBER', [
-                    'prefix' => '§6[YT]',
-                    'color' => '§6',
-                    'eulaMultiplier' => 7
-                ]);
-            case RankTypes::JR_HELPER:
-                return new Rank(RankTypes::JR_HELPER, 'JR_HELPER', [
-                    'prefix' => '§9[JR HELPER]',
-                    'color' => '§9'
-                ], true);
-            case RankTypes::HELPER:
-                return new Rank(RankTypes::HELPER, 'HELPER', [
-                    'prefix' => '§9[HELPER]',
-                    'color' => '§9'
-                ], true);
-            case RankTypes::MODERATOR:
-                return new Rank(RankTypes::MODERATOR, 'MODERATOR', [
-                    'prefix' => '§2[MOD]',
-                    'color' => '§2'
-                ], true);
-            case RankTypes::ADMIN:
-                return new Rank(RankTypes::ADMIN, 'ADMIN', [
-                    'prefix' => '§c[ADMIN]',
-                    'color' => '§c'
-                ], true);
-            default:
-                return null;
+        if (!isset(RankTypes::$cache[$id])) {
+            $rank = null;
+            switch ($id) {
+                case RankTypes::NON_DONOR:
+                    $rank = new Rank(RankTypes::NON_DONOR, 'NON_DONOR', [
+                        'prefix' => '§7',
+                        'color' => '§7'
+                    ]);
+                    break;
+                case RankTypes::VIP:
+                    $rank = new Rank(RankTypes::VIP, 'VIP', [
+                        'prefix' => '§a[VIP]',
+                        'color' => '§a',
+                        'eulaMultiplier' => 2
+                    ]);
+                    break;
+                case RankTypes::VIP_PLUS:
+                    $rank = new Rank(RankTypes::VIP_PLUS, 'VIP_PLUS', [
+                        'prefix' => '§a[VIP§6+§a]',
+                        'color' => '§a',
+                        'eulaMultiplier' => 3
+                    ]);
+                    break;
+                case RankTypes::MVP:
+                    $rank = new Rank(RankTypes::MVP, 'MVP', [
+                        'prefix' => '§b[MVP]',
+                        'color' => '§b',
+                        'eulaMultiplier' => 4
+                    ]);
+                    break;
+                case RankTypes::MVP_PLUS:
+                    $rank = new Rank(RankTypes::MVP_PLUS, 'MVP_PLUS', [
+                        'prefix' => '§b[MVP§c+§b]',
+                        'color' => '§b',
+                        'eulaMultiplier' => 5
+                    ]);
+                    break;
+                case RankTypes::SUPERSTAR:
+                    $rank = new Rank(RankTypes::MVP_PLUS, 'SUPERSTAR', [
+                        'prefix' => '§6[MVP§c++§6]',
+                        'color' => '§6'
+                    ]);
+                    break;
+                case RankTypes::YOUTUBER:
+                    $rank = new Rank(RankTypes::YOUTUBER, 'YOUTUBER', [
+                        'prefix' => '§6[YT]',
+                        'color' => '§6',
+                        'eulaMultiplier' => 7
+                    ]);
+                    break;
+                case RankTypes::JR_HELPER:
+                    $rank = new Rank(RankTypes::JR_HELPER, 'JR_HELPER', [
+                        'prefix' => '§9[JR HELPER]',
+                        'color' => '§9'
+                    ], true);
+                    break;
+                case RankTypes::HELPER:
+                    $rank = new Rank(RankTypes::HELPER, 'HELPER', [
+                        'prefix' => '§9[HELPER]',
+                        'color' => '§9'
+                    ], true);
+                    break;
+                case RankTypes::MODERATOR:
+                    $rank = new Rank(RankTypes::MODERATOR, 'MODERATOR', [
+                        'prefix' => '§2[MOD]',
+                        'color' => '§2'
+                    ], true);
+                    break;
+                case RankTypes::ADMIN:
+                    $rank = new Rank(RankTypes::ADMIN, 'ADMIN', [
+                        'prefix' => '§c[ADMIN]',
+                        'color' => '§c'
+                    ], true);
+                    break;
+            }
+
+            RankTypes::$cache[$id] = $rank;
         }
+
+        return RankTypes::$cache[$id];
     }
 }
