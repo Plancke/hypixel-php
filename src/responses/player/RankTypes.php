@@ -123,7 +123,7 @@ abstract class RankTypes {
                     break;
                 case RankTypes::YOUTUBER:
                     $rank = new Rank(RankTypes::YOUTUBER, 'YOUTUBER', [
-                        'prefix' => '§c[§fYOUTUBE§c]',
+                        'prefix' => '§c[§fYOUTUBER§c]',
                         'color' => '§c',
                         'eulaMultiplier' => 7
                     ]);
