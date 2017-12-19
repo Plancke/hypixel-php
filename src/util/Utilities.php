@@ -51,9 +51,10 @@ abstract class Utilities {
     /**
      * Parses MC encoded colors to HTML
      * @param $string
+     * @param array $colorMap
      * @return string
      */
-    public static function parseColors($string) {
+    public static function parseColors($string, $colorMap = Utilities::MC_COLORS) {
         if ($string == null) {
             return null;
         }
@@ -65,8 +66,8 @@ abstract class Utilities {
         $out = '';
         foreach ($d as $part) {
             if (strlen($part) == 0) continue;
-            if (array_key_exists(substr($part, 0, 1), Utilities::MC_COLORS)) {
-                $out = $out . "<span style='text-shadow: 1px 1px #eee; color:" . Utilities::MC_COLORS[substr($part, 0, 1)] . "'>" . substr($part, 1) . "</span>";
+            if (array_key_exists(substr($part, 0, 1), $colorMap)) {
+                $out = $out . "<span style='text-shadow: 1px 1px #eee; color:" . $colorMap[substr($part, 0, 1)] . "'>" . substr($part, 1) . "</span>";
             } else {
                 $out .= substr($part, 1);
             }
