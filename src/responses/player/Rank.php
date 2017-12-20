@@ -30,6 +30,7 @@ class Rank {
 
     public function getCleanName() {
         if ($this->name == 'NON_DONOR' || $this->name == 'NONE') return 'DEFAULT';
+        if ($this->name == 'SUPERSTAR') return 'MVP++';
         return str_replace("_", ' ', str_replace('_PLUS', '+', $this->name));
     }
 
