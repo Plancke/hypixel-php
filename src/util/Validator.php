@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aaron
- * Date: 15/10/2017
- * Time: 11:17
- */
 
 namespace Plancke\HypixelPHP\util;
 
@@ -14,7 +8,7 @@ class Validator {
     /**
      * Matches UUIDs version 1 through 5
      */
-    const UUID_ALL_VERSION_MATCHER = '~^[0-9a-f]{8}(-|)+[0-9a-f]{4}(-|)+[0-5]{1}[0-9a-f]{3}(-|)+[89ab][0-9a-f]{3}(-|)+[0-9a-f]{12}$~i';
+    const UUID_ALL_VERSION_MATCHER = '~^[0-9a-f]{8}(-|)[0-9a-f]{4}(-|)[0-5][0-9a-f]{3}(-|)[89ab][0-9a-f]{3}(-|)[0-9a-f]{12}$~i';
 
     public static function isAnyUUID($input) {
         return is_string($input) && (strlen($input) == 36 || strlen($input) == 32) // basic validation
