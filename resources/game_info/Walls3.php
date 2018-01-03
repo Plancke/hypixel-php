@@ -180,6 +180,17 @@ return array(
                         ),
                     'HERO' =>
                         array(
+                            'unlockCost' =>
+                                array(
+                                    'DREADLORD' => 10000,
+                                    'SHAMAN' => 10000,
+                                    'ARCANIST' => 10000,
+                                    'GOLEM' => 10000,
+                                    'BLAZE' => 10000,
+                                    'PIGMAN' => 15000,
+                                    'PIRATE' => 20000,
+                                    'HUNTER' => 20000,
+                                ),
                             'classes' =>
                                 array(
                                     0 => 100,
