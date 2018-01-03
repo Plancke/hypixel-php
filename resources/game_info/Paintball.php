@@ -1,24 +1,24 @@
 <?php
-return array (
+return array(
     'perks' =>
-        array (
+        array(
             'endurance' =>
-                array (
+                array(
                     'display' => 'Endurance',
                     'increment' => 7500,
                     'max' => 50,
                 ),
             'godfather' =>
-                array (
+                array(
                     'display' => 'Godfather',
                     'increment' => 5000,
                     'max' => 50,
                 ),
             'superluck' =>
-                array (
+                array(
                     'display' => 'Superluck',
                     'costs' =>
-                        array (
+                        array(
                             0 => 250,
                             1 => 500,
                             2 => 750,
@@ -42,10 +42,10 @@ return array (
                         ),
                 ),
             'fortune' =>
-                array (
+                array(
                     'display' => 'Fortune',
                     'costs' =>
-                        array (
+                        array(
                             0 => 1000,
                             1 => 2000,
                             2 => 3000,
@@ -69,10 +69,10 @@ return array (
                         ),
                 ),
             'headstart' =>
-                array (
+                array(
                     'display' => 'HeadStart',
                     'costs' =>
-                        array (
+                        array(
                             0 => 10000,
                             1 => 25000,
                             2 => 45000,
@@ -81,10 +81,10 @@ return array (
                         ),
                 ),
             'transfusion' =>
-                array (
+                array(
                     'display' => 'Transfusion',
                     'costs' =>
-                        array (
+                        array(
                             0 => 100,
                             1 => 500,
                             2 => 1000,
@@ -98,170 +98,170 @@ return array (
                         ),
                 ),
             'adrenaline' =>
-                array (
+                array(
                     'display' => 'Adrenaline',
                     'increment' => 10000,
                     'max' => 10,
                 ),
         ),
     'killstreaks' =>
-        array (
+        array(
             'flashbang' =>
-                array (
+                array(
                     'display' => 'Flashbang',
                     'desc' => 'A smoke grenade with an area of effect',
                     'cost' => 2500,
                     'killcoins' => 2,
                 ),
             'tripleshot' =>
-                array (
+                array(
                     'display' => 'Triple Shot',
                     'desc' => 'Throw three balls at once',
                     'cost' => 2500,
                     'killcoins' => 3,
                 ),
             'strongarm' =>
-                array (
+                array(
                     'display' => 'Strong Arm',
                     'desc' => 'Throw more snowballs faster',
                     'cost' => 0,
                     'killcoins' => 4,
                 ),
             'plusthree' =>
-                array (
+                array(
                     'display' => '+3',
                     'desc' => 'Regain 3 lives for your team',
                     'cost' => 0,
                     'killcoins' => 5,
                 ),
             'creeperhead' =>
-                array (
+                array(
                     'display' => 'Creeper Head',
                     'desc' => 'Spawn creepers to fight for you',
                     'cost' => 2500,
                     'killcoins' => 8,
                 ),
             'rambo' =>
-                array (
+                array(
                     'display' => 'RAMBO',
                     'desc' => 'Respawn instantly with no loss of lives',
                     'cost' => 0,
                     'killcoins' => 10,
                 ),
             'tntrain' =>
-                array (
+                array(
                     'display' => 'TNT Rain',
                     'desc' => 'Rain TNT down on your enemies.',
                     'cost' => 2500,
                     'killcoins' => 10,
                 ),
             'plusten' =>
-                array (
+                array(
                     'display' => '+10',
                     'desc' => 'Regain 10 lives for your team.',
                     'cost' => 2500,
                     'killcoins' => 15,
                 ),
             'nuke' =>
-                array (
+                array(
                     'display' => 'Nuke',
                     'desc' => 'Destroys the enemy team with 100% accuracy',
                     'cost' => 5500,
                     'killcoins' => 25,
                 ),
             'ammo' =>
-                array (
+                array(
                     'display' => 'Ammo',
                     'desc' => 'Get a stack of 32 snowballs',
                     'cost' => 0,
                     'killcoins' => 3,
                 ),
             'leeroyjenkins' =>
-                array (
+                array(
                     'display' => 'LEEROYJENKINS',
                     'desc' => 'Spawn 30 chickens on the enemy spawn',
                     'cost' => 0,
                     'killcoins' => 5,
                 ),
             'superstrongarm' =>
-                array (
+                array(
                     'display' => 'Super Strong Arm',
                     'desc' => 'A stronger variant of strongarm',
                     'cost' => 2500,
                     'killcoins' => 7,
                 ),
             'teamammo' =>
-                array (
+                array(
                     'display' => 'Team Ammo',
                     'desc' => '32 paintballs for everyone in your team',
                     'cost' => 0,
                     'killcoins' => 5,
                 ),
             'revenge' =>
-                array (
+                array(
                     'display' => 'Revenge',
                     'desc' => 'Kills the player who killed you last',
                     'cost' => 0,
                     'killcoins' => 10,
                 ),
             'lightning' =>
-                array (
+                array(
                     'display' => 'Lightning',
                     'desc' => 'Strike down enemies within 10 blocks',
                     'cost' => 2500,
                     'killcoins' => 12,
                 ),
             'enderpearl' =>
-                array (
+                array(
                     'display' => 'Enderpearl',
                     'desc' => 'Teleport to where you last died.',
                     'cost' => 2500,
                     'killcoins' => 15,
                 ),
             'endereye' =>
-                array (
+                array(
                     'display' => 'Endereye',
                     'desc' => 'Swap places with a random enemy.',
                     'cost' => 2500,
                     'killcoins' => 15,
                 ),
             'forcefield' =>
-                array (
+                array(
                     'display' => 'Force Field',
                     'desc' => 'Reflect paintballs for 15 seconds',
                     'cost' => 6500,
                     'killcoins' => 50,
                 ),
             'bomberman' =>
-                array (
+                array(
                     'display' => 'Bomber Man',
                     'desc' => 'Explode all enemies within 20 blocks, also kills yourself!',
                     'cost' => 2500,
                     'killcoins' => 20,
                 ),
             'backstab' =>
-                array (
+                array(
                     'display' => 'Backstab',
                     'desc' => 'Teleport to where your next kill dies',
                     'cost' => 2500,
                     'killcoins' => 7,
                 ),
             'sentry' =>
-                array (
+                array(
                     'display' => 'Sentry',
                     'desc' => 'Spawn a Sentry that kills for you!',
                     'cost' => 2500,
                     'killcoins' => 7,
                 ),
             'quintupleshot' =>
-                array (
+                array(
                     'display' => 'Quintuple Shot',
                     'desc' => 'Shoot 5 paintballs at once',
                     'cost' => 5000,
                     'killcoins' => 9,
                 ),
             'landmine' =>
-                array (
+                array(
                     'display' => 'Landmine',
                     'desc' => 'Spawn a Landmine where you\'re standing.',
                     'cost' => 2500,
@@ -269,124 +269,124 @@ return array (
                 ),
         ),
     'hats' =>
-        array (
+        array(
             'tnt_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'TNT',
                 ),
             'speed_hat' =>
-                array (
+                array(
                     'cost' => 3000,
                     'display' => 'Speed',
                 ),
             'snow_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Snow',
                 ),
             'hard_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Hard',
                 ),
             'ender_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Ender',
                 ),
             'hat_of_darkness' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Dark',
                 ),
             'trololol_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Troll',
                 ),
             'normal_hat' =>
-                array (
+                array(
                     'cost' => 2000,
                     'display' => 'Normal',
                 ),
             'drunk_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Drunk',
                 ),
             'squid_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Squid',
                 ),
             'spider_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Spider',
                 ),
             'shaky_hat' =>
-                array (
+                array(
                     'cost' => 4200,
                     'display' => 'Shaky',
                 ),
             'vip_agentk_hat' =>
-                array (
+                array(
                     'cost' => 75000,
                     'display' => 'AgentK',
                 ),
             'vip_kevinkool_hat' =>
-                array (
+                array(
                     'cost' => 75000,
                     'display' => 'KevinKool',
                 ),
             'vip_rezzus_hat' =>
-                array (
+                array(
                     'cost' => 100000,
                     'display' => 'Rezzus',
                 ),
             'vip_neonmaster_hat' =>
-                array (
+                array(
                     'cost' => 75000,
                     'display' => 'Mystery',
                 ),
             'vip_hypixel_hat' =>
-                array (
+                array(
                     'cost' => 75000,
                     'display' => 'hypixel',
                 ),
             'vip_codename_b_hat' =>
-                array (
+                array(
                     'cost' => 75000,
                     'display' => 'codename_b',
                 ),
             'vip_paintballkitty_hat' =>
-                array (
+                array(
                     'cost' => 75000,
                     'display' => 'PaintBallKitty',
                 ),
             'vip_noxyd_hat' =>
-                array (
+                array(
                     'cost' => 50000,
                     'display' => 'NoxyD',
                 ),
             'vip_ghost_hat' =>
-                array (
+                array(
                     'cost' => 50000,
                     'display' => 'Ghost',
                 ),
         ),
     'teams' =>
-        array (
+        array(
             1 =>
-                array (
+                array(
                     0 => 'red',
                     1 => 'yellow',
                     2 => 'orange',
                     3 => 'white',
                 ),
             2 =>
-                array (
+                array(
                     0 => 'blue',
                     1 => 'aqua',
                     2 => 'green',
@@ -394,63 +394,63 @@ return array (
                 ),
         ),
     'maps' =>
-        array (
+        array(
             'Herobrine' =>
-                array (
+                array(
                     'size' => 'large',
                     'players' => 32,
                     'team' => 2,
                 ),
             'Victorian' =>
-                array (
+                array(
                     'size' => 'large',
                     'players' => 28,
                     'team' => 1,
                 ),
             'OhCanada' =>
-                array (
+                array(
                     'size' => 'normal',
                     'players' => 24,
                     'team' => 1,
                 ),
             'Swamps' =>
-                array (
+                array(
                     'size' => 'normal',
                     'players' => 16,
                     'team' => 1,
                 ),
             'Mansion' =>
-                array (
+                array(
                     'size' => 'small',
                     'players' => 16,
                     'team' => 0,
                 ),
             'Lalaland' =>
-                array (
+                array(
                     'size' => 'normal',
                     'players' => 24,
                     'team' => 0,
                 ),
             'Babyland' =>
-                array (
+                array(
                     'size' => 'normal',
                     'players' => 24,
                     'team' => 1,
                 ),
             'Juice' =>
-                array (
+                array(
                     'size' => 'normal',
                     'players' => 24,
                     'team' => 2,
                 ),
             'LaMente' =>
-                array (
+                array(
                     'size' => 'medium',
                     'players' => 24,
                     'team' => 1,
                 ),
             'Egypt' =>
-                array (
+                array(
                     'size' => 'medium',
                     'players' => 24,
                     'team' => 2,
