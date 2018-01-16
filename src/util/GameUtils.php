@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\util;
 
+/**
+ * Class GameUtils
+ * @package Plancke\HypixelPHP\util
+ */
 abstract class GameUtils {
 
     const BEDWARS_EXP_PER_PRESTIGE = 489000;

@@ -23,10 +23,12 @@ use Plancke\HypixelPHP\provider\Provider;
 use Plancke\HypixelPHP\resources\ResourceManager;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
+use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
+use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\InputType;
@@ -42,23 +44,21 @@ use Plancke\HypixelPHP\util\Validator;
  */
 class HypixelPHP {
 
-    private $apiKey;
-    private $options;
+    protected $apiKey;
+    protected $options;
 
-    private $logger, $loggerGetter;
-    private $fetcher, $fetcherGetter;
-    private $cacheHandler, $cacheHandlerGetter;
-    private $provider, $providerGetter;
-    private $resourceManager, $resourceManagerGetter;
+    protected $logger, $loggerGetter;
+    protected $fetcher, $fetcherGetter;
+    protected $cacheHandler, $cacheHandlerGetter;
+    protected $provider, $providerGetter;
+    protected $resourceManager, $resourceManagerGetter;
 
     /**
      * @param string $apiKey
      * @throws HypixelPHPException
      */
     public function __construct($apiKey) {
-        $this->validateAPIKey($apiKey);
-
-        $this->apiKey = $apiKey;
+        $this->setAPIKey($apiKey);
 
         $this->setLoggerGetter(function ($HypixelPHP) {
             return new DefaultLogger($HypixelPHP);
@@ -78,35 +78,53 @@ class HypixelPHP {
     }
 
     /**
-     * @return string
-     */
-    public function getAPIKey() {
-        return $this->apiKey;
-    }
-
-    /**
-     * @param string $apiKey
+     * @param Closure $getter
      * @return $this
-     * @throws HypixelPHPException
      */
-    public function setAPIKey($apiKey) {
-        $this->validateAPIKey($apiKey);
-        $this->apiKey = $apiKey;
+    public function setLoggerGetter(Closure $getter) {
+        $this->loggerGetter = $getter;
+        $this->logger = null;
         return $this;
     }
 
     /**
-     * Check whether or not given key is valid
-     *
-     * @param $key
-     * @throws HypixelPHPException
+     * @param Closure $getter
+     * @return $this
      */
-    protected function validateAPIKey($key) {
-        if ($key == null) {
-            throw new HypixelPHPException("API Key can't be null!", ExceptionCodes::NO_KEY);
-        } elseif (!Validator::isValidAPIKey($key)) {
-            throw new HypixelPHPException("API Key is invalid!", ExceptionCodes::INVALID_KEY);
-        }
+    public function setFetcherGetter(Closure $getter) {
+        $this->fetcherGetter = $getter;
+        $this->fetcher = null;
+        return $this;
+    }
+
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
+    public function setCacheHandlerGetter(Closure $getter) {
+        $this->cacheHandlerGetter = $getter;
+        $this->cacheHandler = null;
+        return $this;
+    }
+
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
+    public function setProviderGetter(Closure $getter) {
+        $this->providerGetter = $getter;
+        $this->provider = null;
+        return $this;
+    }
+
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
+    public function setResourceManagerGetter(Closure $getter) {
+        $this->resourceManagerGetter = $getter;
+        $this->resourceManager = null;
+        return $this;
     }
 
     /**
@@ -122,138 +140,6 @@ class HypixelPHP {
      */
     public function setOptions(Options $options) {
         $this->options = $options;
-        return $this;
-    }
-
-    /**
-     * @return Logger
-     */
-    public function getLogger() {
-        if ($this->logger == null) {
-            $getter = $this->loggerGetter;
-            $this->logger = $getter($this);
-        }
-        return $this->logger;
-    }
-
-    /**
-     * @param Logger $logger
-     * @return $this
-     */
-    public function setLogger(Logger $logger) {
-        $this->logger = $logger;
-        $this->loggerGetter = function () use ($logger) {
-            return $logger;
-        };
-        return $this;
-    }
-
-    /**
-     * @param Closure $getter
-     * @return $this
-     */
-    public function setLoggerGetter(Closure $getter) {
-        $this->loggerGetter = $getter;
-        $this->logger = null;
-        return $this;
-    }
-
-    /**
-     * @return Fetcher
-     */
-    public function getFetcher() {
-        if ($this->fetcher == null) {
-            $getter = $this->fetcherGetter;
-            $this->fetcher = $getter($this);
-        }
-        return $this->fetcher;
-    }
-
-    /**
-     * @param Fetcher $fetcher
-     * @return $this
-     */
-    public function setFetcher(Fetcher $fetcher) {
-        $this->fetcher = $fetcher;
-        $this->fetcherGetter = function () use ($fetcher) {
-            return $fetcher;
-        };
-        return $this;
-    }
-
-    /**
-     * @param Closure $getter
-     * @return $this
-     */
-    public function setFetcherGetter(Closure $getter) {
-        $this->fetcherGetter = $getter;
-        $this->fetcher = null;
-        return $this;
-    }
-
-    /**
-     * @return CacheHandler
-     */
-    public function getCacheHandler() {
-        if ($this->cacheHandler == null) {
-            $getter = $this->cacheHandlerGetter;
-            $this->cacheHandler = $getter($this);
-        }
-        return $this->cacheHandler;
-    }
-
-    /**
-     * @param CacheHandler $cacheHandler
-     * @return $this
-     */
-    public function setCacheHandler(CacheHandler $cacheHandler) {
-        $this->cacheHandler = $cacheHandler;
-        $this->cacheHandlerGetter = function () use ($cacheHandler) {
-            return $cacheHandler;
-        };
-        return $this;
-    }
-
-    /**
-     * @param Closure $getter
-     * @return $this
-     */
-    public function setCacheHandlerGetter(Closure $getter) {
-        $this->cacheHandlerGetter = $getter;
-        $this->cacheHandler = null;
-        return $this;
-    }
-
-    /**
-     * @return Provider
-     */
-    public function getProvider() {
-        if ($this->provider == null) {
-            $getter = $this->providerGetter;
-            $this->provider = $getter($this);
-        }
-        return $this->provider;
-    }
-
-    /**
-     * @param Provider $provider
-     * @return $this
-     */
-    public function setProvider(Provider $provider) {
-        $this->provider = $provider;
-        $this->providerGetter = function () use ($provider) {
-            return $provider;
-        };
-        return $this;
-    }
-
-    /**
-     * @param Closure $getter
-     * @return $this
-     */
-    public function setProviderGetter(Closure $getter) {
-        $this->providerGetter = $getter;
-        $this->provider = null;
         return $this;
     }
 
@@ -278,16 +164,6 @@ class HypixelPHP {
         $this->resourceManagerGetter = function () use ($resourceManager) {
             return $resourceManager;
         };
-        return $this;
-    }
-
-    /**
-     * @param Closure $getter
-     * @return $this
-     */
-    public function setResourceManagerGetter(Closure $getter) {
-        $this->resourceManagerGetter = $getter;
-        $this->resourceManager = null;
         return $this;
     }
 
@@ -320,6 +196,16 @@ class HypixelPHP {
             }
         }
         return null;
+    }
+
+    /**
+     * @param $pairs
+     * @throws NoPairsException
+     */
+    protected function checkPairs($pairs) {
+        if ($pairs == null || sizeof($pairs) == 0) {
+            throw new NoPairsException();
+        }
     }
 
     public function getUUIDFromVar($value) {
@@ -397,6 +283,153 @@ class HypixelPHP {
             return $this->getUUID($username);
         }
         return null;
+    }
+
+    /**
+     * @return CacheHandler
+     */
+    public function getCacheHandler() {
+        if ($this->cacheHandler == null) {
+            $getter = $this->cacheHandlerGetter;
+            $this->cacheHandler = $getter($this);
+        }
+        return $this->cacheHandler;
+    }
+
+    /**
+     * @param CacheHandler $cacheHandler
+     * @return $this
+     */
+    public function setCacheHandler(CacheHandler $cacheHandler) {
+        $this->cacheHandler = $cacheHandler;
+        $this->cacheHandlerGetter = function () use ($cacheHandler) {
+            return $cacheHandler;
+        };
+        return $this;
+    }
+
+    /**
+     * @return Logger
+     */
+    public function getLogger() {
+        if ($this->logger == null) {
+            $getter = $this->loggerGetter;
+            $this->logger = $getter($this);
+        }
+        return $this->logger;
+    }
+
+    /**
+     * @param Logger $logger
+     * @return $this
+     */
+    public function setLogger(Logger $logger) {
+        $this->logger = $logger;
+        $this->loggerGetter = function () use ($logger) {
+            return $logger;
+        };
+        return $this;
+    }
+
+    /**
+     * @return Fetcher
+     */
+    public function getFetcher() {
+        if ($this->fetcher == null) {
+            $getter = $this->fetcherGetter;
+            $this->fetcher = $getter($this);
+        }
+        return $this->fetcher;
+    }
+
+    /**
+     * @param Fetcher $fetcher
+     * @return $this
+     */
+    public function setFetcher(Fetcher $fetcher) {
+        $this->fetcher = $fetcher;
+        $this->fetcherGetter = function () use ($fetcher) {
+            return $fetcher;
+        };
+        return $this;
+    }
+
+    /**
+     * Handles cache expiry checks,
+     * fetching new objects if needed and
+     * loads cached extra data if applicable
+     *
+     * @param $responseSupplier
+     * @param $constructor
+     * @param HypixelObject $cached
+     *
+     * @return HypixelObject|Response|null
+     * @throws HypixelPHPException
+     */
+    protected function handle($cached, $responseSupplier, $constructor) {
+        $this->getLogger()->log("Handling; " . get_class($cached));
+        if ($cached instanceof HypixelObject && !$cached->isCacheExpired()) {
+            $this->getLogger()->log("Cached valid");
+            return $cached;
+        }
+
+        $response = $responseSupplier();
+        if ($response instanceof Response) {
+            if ($response->wasSuccessful()) {
+                $data = $response->getData();
+                if (!array_key_exists('record', $data)) {
+                    $data = ['record' => $data];
+                }
+                $fetched = $constructor($this, $data);
+                if ($fetched instanceof HypixelObject) {
+                    if ($cached instanceof HypixelObject) {
+                        // update with cached extra, only locally
+                        // since we are already saving the whole thing later
+                        $fetched->_setExtra($cached->getExtra());
+                    }
+
+                    $fetched->handleNew($cached);
+
+                    $this->getCacheHandler()->_setCache($fetched);
+
+                    return $fetched;
+                }
+            } else {
+                // fetch was not successful, attach response or
+                // return it so we can get the error
+                if ($cached != null) {
+                    $this->getLogger()->log("Attaching response");
+                    $cached->attachResponse($response);
+                } else {
+                    return $response;
+                }
+            }
+        }
+
+        return $cached;
+    }
+
+    /**
+     * @return Provider
+     */
+    public function getProvider() {
+        if ($this->provider == null) {
+            $getter = $this->providerGetter;
+            $this->provider = $getter($this);
+        }
+        return $this->provider;
+    }
+
+    /**
+     * @param Provider $provider
+     * @return $this
+     */
+    public function setProvider(Provider $provider) {
+        $this->provider = $provider;
+        $this->providerGetter = function () use ($provider) {
+            return $provider;
+        };
+        return $this;
     }
 
     /**
@@ -543,14 +576,9 @@ class HypixelPHP {
         return null;
     }
 
-    private function checkPairs($pairs) {
-        if ($pairs == null || sizeof($pairs) == 0) {
-            throw new NoPairsException();
-        }
-    }
-
     /**
      * @return Boosters|Response|null
+     * @throws HypixelPHPException
      */
     public function getBoosters() {
         return $this->handle(
@@ -564,6 +592,7 @@ class HypixelPHP {
 
     /**
      * @return Leaderboards|Response|null
+     * @throws HypixelPHPException
      */
     public function getLeaderboards() {
         return $this->handle(
@@ -577,6 +606,7 @@ class HypixelPHP {
 
     /**
      * @return KeyInfo|Response|null
+     * @throws HypixelPHPException
      */
     public function getKeyInfo() {
         return $this->handle(
@@ -589,7 +619,26 @@ class HypixelPHP {
     }
 
     /**
+     * @return string
+     */
+    public function getAPIKey() {
+        return $this->apiKey;
+    }
+
+    /**
+     * @param string $apiKey
+     * @return $this
+     * @throws HypixelPHPException
+     */
+    public function setAPIKey($apiKey) {
+        $this->validateAPIKey($apiKey);
+        $this->apiKey = $apiKey;
+        return $this;
+    }
+
+    /**
      * @return WatchdogStats|Response|null
+     * @throws HypixelPHPException
      */
     public function getWatchdogStats() {
         return $this->handle(
@@ -602,7 +651,8 @@ class HypixelPHP {
     }
 
     /**
-     * @return WatchdogStats|Response|null
+     * @return PlayerCount|Response|null
+     * @throws HypixelPHPException
      */
     public function getPlayerCount() {
         return $this->handle(
@@ -615,57 +665,17 @@ class HypixelPHP {
     }
 
     /**
-     * Handles cache expiry checks,
-     * fetching new objects if needed and
-     * loads cached extra data if applicable
-     *
-     * @param $responseSupplier
-     * @param $constructor
-     * @param HypixelObject $cached
-     *
-     * @return HypixelObject|Response|null
+     * @return GameCounts|Response|null
+     * @throws HypixelPHPException
      */
-    private function handle($cached, $responseSupplier, $constructor) {
-        $this->getLogger()->log("Handling; " . get_class($cached));
-        if ($cached instanceof HypixelObject && !$cached->isCacheExpired()) {
-            $this->getLogger()->log("Cached valid");
-            return $cached;
-        }
-
-        $response = $responseSupplier();
-        if ($response instanceof Response) {
-            if ($response->wasSuccessful()) {
-                $data = $response->getData();
-                if (!array_key_exists('record', $data)) {
-                    $data = ['record' => $data];
-                }
-                $fetched = $constructor($this, $data);
-                if ($fetched instanceof HypixelObject) {
-                    if ($cached instanceof HypixelObject) {
-                        // update with cached extra, only locally
-                        // since we are already saving the whole thing later
-                        $fetched->_setExtra($cached->getExtra());
-                    }
-
-                    $fetched->handleNew($cached);
-
-                    $this->getCacheHandler()->_setCache($fetched);
-
-                    return $fetched;
-                }
-            } else {
-                // fetch was not successful, attach response or
-                // return it so we can get the error
-                if ($cached != null) {
-                    $this->getLogger()->log("Attaching response");
-                    $cached->attachResponse($response);
-                } else {
-                    return $response;
-                }
-            }
-        }
-
-        return $cached;
+    public function getGameCounts() {
+        return $this->handle(
+            $this->getCacheHandler()->getCachedGameCounts(),
+            function () {
+                return $this->getFetcher()->fetch(FetchTypes::GAME_COUNTS);
+            },
+            $this->getProvider()->getGameCounts()
+        );
     }
 
     /**
@@ -690,5 +700,19 @@ class HypixelPHP {
             return $in;
         }
         return null;
+    }
+
+    /**
+     * Check whether or not given key is valid
+     *
+     * @param $key
+     * @throws HypixelPHPException
+     */
+    protected function validateAPIKey($key) {
+        if ($key == null) {
+            throw new HypixelPHPException("API Key can't be null!", ExceptionCodes::NO_KEY);
+        } elseif (!Validator::isValidAPIKey($key)) {
+            throw new HypixelPHPException("API Key is invalid!", ExceptionCodes::INVALID_KEY);
+        }
     }
 }

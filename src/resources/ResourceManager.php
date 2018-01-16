@@ -4,10 +4,14 @@ namespace Plancke\HypixelPHP\resources;
 
 use Plancke\HypixelPHP\classes\Module;
 
+/**
+ * Class ResourceManager
+ * @package Plancke\HypixelPHP\resources
+ */
 class ResourceManager extends Module {
 
-    private $gameResources;
-    private $generalResources;
+    protected $gameResources;
+    protected $generalResources;
 
     /**
      * @return GameResources

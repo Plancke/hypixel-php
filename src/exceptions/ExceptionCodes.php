@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\exceptions;
 
+/**
+ * Class ExceptionCodes
+ * @package Plancke\HypixelPHP\exceptions
+ */
 class ExceptionCodes {
 
     const NO_KEY = 1;

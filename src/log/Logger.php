@@ -5,27 +5,15 @@ namespace Plancke\HypixelPHP\log;
 use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\log\impl\DefaultFormatter;
 
+/**
+ * Class Logger
+ * @package Plancke\HypixelPHP\log
+ */
 abstract class Logger extends Module {
 
     protected $enabled = true;
     protected $log_folder;
     protected $formatter;
-
-    /**
-     * @return mixed
-     */
-    public function isEnabled() {
-        return $this->enabled;
-    }
-
-    /**
-     * @param mixed $enabled
-     * @return $this
-     */
-    public function setEnabled($enabled) {
-        $this->enabled = $enabled;
-        return $this;
-    }
 
     /**
      * @return string
@@ -42,6 +30,38 @@ abstract class Logger extends Module {
         $this->log_folder = $log_folder;
         return $this;
     }
+
+    /**
+     * @param string $line
+     */
+    public function log($line) {
+        if (!$this->isEnabled()) {
+            return;
+        }
+
+        $this->actuallyLog($this->getFormatter()->formatLine($line));
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEnabled() {
+        return $this->enabled;
+    }
+
+    /**
+     * @param mixed $enabled
+     * @return $this
+     */
+    public function setEnabled($enabled) {
+        $this->enabled = $enabled;
+        return $this;
+    }
+
+    /**
+     * @param string $line
+     */
+    protected abstract function actuallyLog($line);
 
     /**
      * @return Formatter
@@ -61,15 +81,5 @@ abstract class Logger extends Module {
         $this->formatter = $formatter;
         return $this;
     }
-
-    public function log($line) {
-        if (!$this->isEnabled()) {
-            return;
-        }
-
-        $this->actuallyLog($this->getFormatter()->formatLine($line));
-    }
-
-    protected abstract function actuallyLog($line);
 
 }

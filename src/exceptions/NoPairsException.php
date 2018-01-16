@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\exceptions;
 
+/**
+ * Class NoPairsException
+ * @package Plancke\HypixelPHP\exceptions
+ */
 class NoPairsException extends HypixelPHPException {
 
     public function __construct() {

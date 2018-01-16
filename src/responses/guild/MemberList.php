@@ -5,9 +5,13 @@ namespace Plancke\HypixelPHP\responses\guild;
 use Plancke\HypixelPHP\classes\APIHolding;
 use Plancke\HypixelPHP\HypixelPHP;
 
+/**
+ * Class MemberList
+ * @package Plancke\HypixelPHP\responses\guild
+ */
 class MemberList extends APIHolding {
-    private $list;
-    private $count;
+    protected $list;
+    protected $count;
 
     /**
      * @param HypixelPHP $HypixelPHP

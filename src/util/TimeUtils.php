@@ -4,8 +4,13 @@ namespace Plancke\HypixelPHP\util;
 
 use DateTime;
 
+/**
+ * Class TimeUtils
+ * @package Plancke\HypixelPHP\util
+ */
 abstract class TimeUtils {
     /**
+     * Returns {@code a} or {@code b} depending on the current week
      * @return string
      */
     public static function getWeeklyOscillation() {
@@ -20,6 +25,7 @@ abstract class TimeUtils {
     }
 
     /**
+     * Returns {@code a} or {@code b} depending on the current month
      * @return string
      */
     public static function getMonthlyOscillation() {

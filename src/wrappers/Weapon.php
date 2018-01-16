@@ -2,6 +2,8 @@
 
 namespace Plancke\HypixelPHP\wrappers;
 
+use Plancke\HypixelPHP\color\ColorUtils;
+
 /**
  * Class Weapon
  * @author Plancke, LCastr0
@@ -42,15 +44,15 @@ namespace Plancke\HypixelPHP\wrappers;
  *
  */
 class Weapon {
-    private $WEAPON;
+    protected $WEAPON;
 
-    private $scores = [
+    protected $scores = [
         Rarity::COMMON => ['min' => 276, 'max' => 428],
         Rarity::RARE => ['min' => 359, 'max' => 521],
         Rarity::EPIC => ['min' => 450, 'max' => 604],
         Rarity::LEGENDARY => ['min' => 595, 'max' => 805]
     ];
-    private $prefixes = [
+    protected $prefixes = [
         Rarity::COMMON => [
             "Crumbly", "Flimsy", "Rough", "Honed", "Refined", "Balanced"
         ],
@@ -64,7 +66,7 @@ class Weapon {
             "Vanquisher's", "Champion's", "Warlord's"
         ]
     ];
-    private $materialMap = [
+    protected $materialMap = [
         'WOOD_AXE' => 'Steel Sword', 'STONE_AXE' => 'Training Sword', 'IRON_AXE' => 'Demonblade',
         'GOLD_AXE' => 'Venomstrike', 'DIAMOND_AXE' => 'Diamondspark', 'WOOD_HOE' => 'Zweireaper',
         'STONE_HOE' => 'Runeblade', 'IRON_HOE' => 'Elven Greatsword', 'GOLD_HOE' => 'Hatchet',
@@ -82,15 +84,19 @@ class Weapon {
         'COOKED_SALMON' => 'Felflame Blade', 'COOKED_MUTTON' => 'Amaranth', 'COOKED_BEEF' => 'Armblade',
         'GRILLED_PORK' => 'Gemini', 'COOKED_PORKCHOP' => 'Gemini', 'GOLDEN_CARROT' => 'Void Edge'
     ];
-    private $colors = [
-        Rarity::COMMON => '§a',
-        Rarity::RARE => '§9',
-        Rarity::EPIC => '§5',
-        Rarity::LEGENDARY => '§6'
+    protected $colors = [
+        Rarity::COMMON => ColorUtils::GREEN,
+        Rarity::RARE => ColorUtils::BLUE,
+        Rarity::EPIC => ColorUtils::DARK_PURPLE,
+        Rarity::LEGENDARY => ColorUtils::GOLD
     ];
-    private $abilities = [];
-    private $forced_upgrade_level = -1;
+    protected $abilities = [];
+    protected $forced_upgrade_level = -1;
 
+    /**
+     * Weapon constructor.
+     * @param array $WEAPON
+     */
     function __construct($WEAPON) {
         $this->WEAPON = $WEAPON;
 
@@ -125,7 +131,12 @@ class Weapon {
         $this->addAbility(3, 3, new Ability("Chain Healing", "Earthwarden", AbilityType::HEAL));
     }
 
-    private function addAbility($class, $slot, $ability) {
+    /**
+     * @param $class
+     * @param $slot
+     * @param $ability
+     */
+    protected function addAbility($class, $slot, $ability) {
         if (!isset($this->abilities[$class])) {
             $this->abilities[$class] = [];
         }
@@ -135,17 +146,27 @@ class Weapon {
         array_push($this->abilities[$class][$slot], $ability);
     }
 
-    function setForcedUpgradeLevel($level) {
+    /**
+     * @param $level
+     */
+    public function setForcedUpgradeLevel($level) {
         $this->forced_upgrade_level = $level;
     }
 
-    function getMinMaxDamage() {
+    /**
+     * @return array
+     */
+    public function getMinMaxDamage() {
         $dmg = $this->getStatById(WeaponStats::DAMAGE);
         $fifteen = $dmg * 0.15;
         return [$dmg - $fifteen, $dmg + $fifteen];
     }
 
-    function getStatById($stat) {
+    /**
+     * @param $stat
+     * @return int
+     */
+    public function getStatById($stat) {
         $weaponStat = WeaponStats::fromID($stat);
         return $weaponStat != null ? $this->getStat($weaponStat) : 0;
     }
@@ -154,43 +175,66 @@ class Weapon {
      * @param WeaponStat $stat
      * @return int
      */
-    function getStat($stat) {
+    public function getStat($stat) {
         $val = $this->getField($stat->getField());
         $val *= 1 + ($this->getUpgradeAmount() * $stat->getUpgrade() / 100);
         return $val;
     }
 
-    function getField($key, $def = 0) {
+    /**
+     * @param $key
+     * @param int $def
+     * @return int
+     */
+    public function getField($key, $def = 0) {
         return isset($this->WEAPON[$key]) ? $this->WEAPON[$key] : $def;
     }
 
-    function getUpgradeAmount() {
+    /**
+     * @return int|mixed
+     */
+    public function getUpgradeAmount() {
         if ($this->isForcedUpgrade()) {
             return min($this->forced_upgrade_level, $this->getMaxUpgrades());
         }
         return $this->getField('upgradeTimes');
     }
 
-    function isForcedUpgrade() {
+    /**
+     * @return bool
+     */
+    public function isForcedUpgrade() {
         return $this->forced_upgrade_level >= 0;
     }
 
-    function getMaxUpgrades() {
+    /**
+     * @return int
+     */
+    public function getMaxUpgrades() {
         return $this->getField('upgradeMax');
     }
 
-    function isCrafted() {
+    /**
+     * @return bool
+     */
+    public function isCrafted() {
         return isset($this->WEAPON['crafted']) ? $this->WEAPON['crafted'] : false;
     }
 
-    function getName() {
+    /**
+     * @return string
+     */
+    public function getName() {
         $prefix = $this->getPrefix();
         $material = $this->getMaterialName();
         $specialization = $this->getPlayerClass()->getSpec()->getName();
         return $prefix . " " . $material . " of the " . $specialization;
     }
 
-    function getPrefix() {
+    /**
+     * @return mixed
+     */
+    public function getPrefix() {
         $names = $this->prefixes[$this->getCategory()];
         $namesInt = intval(count($names));
 
@@ -207,11 +251,17 @@ class Weapon {
         return end($names);
     }
 
-    function getCategory() {
+    /**
+     * @return string
+     */
+    public function getCategory() {
         return $this->WEAPON['category'];
     }
 
-    function getScore() {
+    /**
+     * @return int
+     */
+    public function getScore() {
         $score = 0;
         foreach (WeaponStats::values() as $stat) {
             $score += $this->getStatById($stat);
@@ -219,38 +269,59 @@ class Weapon {
         return $score;
     }
 
-    function getMaxScore() {
+    /**
+     * @return int
+     */
+    public function getMaxScore() {
         return $this->scores[$this->getCategory()]['max'];
     }
 
-    function getMinScore() {
+    /**
+     * @return int
+     */
+    public function getMinScore() {
         return $this->scores[$this->getCategory()]['min'];
     }
 
-    function getMaterialName() {
+    /**
+     * @return string
+     */
+    public function getMaterialName() {
         return isset($this->materialMap[$this->getMaterial()]) ? $this->materialMap[$this->getMaterial()] : $this->getMaterial();
     }
 
-    function getMaterial() {
+    /**
+     * @return string
+     */
+    public function getMaterial() {
         return $this->WEAPON['material'];
     }
 
-    function getPlayerClass() {
+    /**
+     * @return PlayerClass|null
+     */
+    public function getPlayerClass() {
         return PlayerClasses::fromID($this->WEAPON['spec']['playerClass'], $this->WEAPON['spec']['spec']);
     }
 
-    function getColor() {
+    /**
+     * @return string
+     */
+    public function getColor() {
         return $this->colors[$this->getCategory()];
     }
 
-    function getID() {
+    /**
+     * @return string
+     */
+    public function getID() {
         return $this->WEAPON['id'];
     }
 
     /**
      * @return Ability|null
      */
-    function getAbility() {
+    public function getAbility() {
         $ABILITIES = $this->abilities[$this->getPlayerClass()->getID()][$this->WEAPON['ability']];
         foreach ($ABILITIES as $ABILITY) {
             /* @var $ABILITY Ability */
@@ -261,12 +332,19 @@ class Weapon {
         return null;
     }
 
-    function isUnlocked() {
+    /**
+     * @return bool
+     */
+    public function isUnlocked() {
         return isset($this->WEAPON['unlocked']) ? $this->WEAPON['unlocked'] : false;
     }
 
 }
 
+/**
+ * Class Rarity
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class Rarity {
     const COMMON = "COMMON";
     const RARE = "RARE";
@@ -274,11 +352,19 @@ class Rarity {
     const LEGENDARY = "LEGENDARY";
 }
 
+/**
+ * Class AbilityType
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class AbilityType {
     const HEAL = "HEAL";
     const DAMAGE = "DAMAGE";
 }
 
+/**
+ * Class WeaponStats
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class WeaponStats {
     const DAMAGE = 0;
     const CHANCE = 1;
@@ -289,6 +375,10 @@ class WeaponStats {
     const COOLDOWN = 6;
     const MOVEMENT = 7;
 
+    /**
+     * @param $ID
+     * @return WeaponStat|null
+     */
     public static function fromID($ID) {
         switch ($ID) {
             case WeaponStats::DAMAGE:
@@ -312,13 +402,6 @@ class WeaponStats {
     }
 
     /**
-     * @deprecated
-     */
-    public static function getAllTypes() {
-        return self::values();
-    }
-
-    /**
      * @return array
      */
     public static function values() {
@@ -335,9 +418,20 @@ class WeaponStats {
     }
 }
 
+/**
+ * Class WeaponStat
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class WeaponStat {
-    private $name, $field, $upgrade, $id;
+    protected $name, $field, $upgrade, $id;
 
+    /**
+     * WeaponStat constructor.
+     * @param string $name
+     * @param string $field
+     * @param double $upgrade
+     * @param int $id
+     */
     function __construct($name, $field, $upgrade, $id) {
         $this->name = $name;
         $this->field = $field;
@@ -345,29 +439,50 @@ class WeaponStat {
         $this->id = $id;
     }
 
+    /**
+     * @return string
+     */
     public function getName() {
         return $this->name;
     }
 
+    /**
+     * @return string
+     */
     public function getField() {
         return $this->field;
     }
 
+    /**
+     * @return double
+     */
     public function getUpgrade() {
         return $this->upgrade;
     }
 
+    /**
+     * @return int
+     */
     public function getID() {
         return $this->id;
     }
 }
 
+/**
+ * Class PlayerClasses
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class PlayerClasses {
     const MAGE = 0;
     const WARRIOR = 1;
     const PALADIN = 2;
     const SHAMAN = 3;
 
+    /**
+     * @param int $ID
+     * @param int $SPEC
+     * @return PlayerClass|null
+     */
     public static function fromID($ID, $SPEC) {
         switch ($ID) {
             case PlayerClasses::MAGE:
@@ -383,73 +498,129 @@ class PlayerClasses {
     }
 }
 
+/**
+ * Class PlayerClass
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class PlayerClass {
-    private $name, $spec, $id;
+    protected $name, $spec, $id;
 
-    private $specs = [
+    protected $specs = [
         PlayerClasses::MAGE => [0 => "Pyromancer", 1 => "Cryomancer", 2 => "Aquamancer"],
         PlayerClasses::WARRIOR => [0 => "Berserker", 1 => "Defender"],
         PlayerClasses::PALADIN => [0 => "Avenger", 1 => "Crusader", 2 => "Protector"],
         PlayerClasses::SHAMAN => [0 => "Thunderlord", 1 => "Earthwarden"],
     ];
 
+    /**
+     * PlayerClass constructor.
+     * @param string $name
+     * @param int $spec
+     * @param int $id
+     */
     function __construct($name, $spec, $id) {
         $this->name = $name;
         $this->spec = $spec;
         $this->id = $id;
     }
 
+    /**
+     * @return int
+     */
     function getID() {
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
     function getName() {
         return $this->name;
     }
 
+    /**
+     * @return string
+     */
     function getDisplay() {
         return ucfirst($this->name);
     }
 
+    /**
+     * @return Spec
+     */
     function getSpec() {
         return new Spec($this->specs[$this->id][$this->spec], $this->spec);
     }
 }
 
+/**
+ * Class Spec
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class Spec {
-    private $name, $id;
+    protected $name, $id;
 
+    /**
+     * Spec constructor.
+     * @param string $name
+     * @param int $id
+     */
     function __construct($name, $id) {
         $this->name = $name;
         $this->id = $id;
     }
 
+    /**
+     * @return string
+     */
     function getName() {
         return $this->name;
     }
 
+    /**
+     * @return int
+     */
     function getID() {
         return $this->id;
     }
 }
 
+/**
+ * Class Ability
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class Ability {
-    private $name, $type, $spec;
+    protected $name, $type, $spec;
 
+    /**
+     * Ability constructor.
+     * @param string $name
+     * @param string $spec
+     * @param string $type
+     */
     function __construct($name, $spec, $type) {
         $this->name = $name;
         $this->spec = $spec;
         $this->type = $type;
     }
 
+    /**
+     * @return string
+     */
     function getName() {
         return $this->name;
     }
 
+    /**
+     * @return string
+     */
     function getSpec() {
         return $this->spec;
     }
 
+    /**
+     * @return string
+     */
     function getType() {
         return $this->type;
     }

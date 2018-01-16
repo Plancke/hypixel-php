@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\fetch;
 
+/**
+ * Class Response
+ * @package Plancke\HypixelPHP\fetch
+ */
 class Response {
 
     protected $success = false;

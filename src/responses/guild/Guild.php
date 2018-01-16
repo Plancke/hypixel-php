@@ -5,10 +5,19 @@ namespace Plancke\HypixelPHP\responses\guild;
 use DateTime;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
-use Plancke\HypixelPHP\util\Utilities;
+use Plancke\HypixelPHP\color\ColorUtils;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 
+/**
+ * Class Guild
+ * @package Plancke\HypixelPHP\responses\guild
+ */
 class Guild extends HypixelObject {
 
+    /**
+     * @param mixed $cached
+     * @throws HypixelPHPException
+     */
     public function handleNew($cached = null) {
         parent::handleNew($cached);
 
@@ -40,13 +49,6 @@ class Guild extends HypixelObject {
     }
 
     /**
-     * @return MemberList
-     */
-    public function getMemberList() {
-        return new MemberList($this->getHypixelPHP(), $this->getArray('members'));
-    }
-
-    /**
      * @return bool
      */
     public function canTag() {
@@ -57,7 +59,7 @@ class Guild extends HypixelObject {
      * @return string
      */
     public function getTag() {
-        return Utilities::parseColors($this->get('tag'));
+        return ColorUtils::getColorParser()->parse($this->get('tag'));
     }
 
     /**
@@ -67,8 +69,8 @@ class Guild extends HypixelObject {
      */
     public function getTagColor() {
         $color = $this->getTagColorRaw();
-        if (isset(Utilities::MC_COLORNAME[$color])) {
-            return Utilities::MC_COLORNAME[$color];
+        if (isset(ColorUtils::NAME_TO_CODE[$color])) {
+            return ColorUtils::NAME_TO_CODE[$color];
         }
         return null;
     }
@@ -109,6 +111,13 @@ class Guild extends HypixelObject {
     }
 
     /**
+     * @return MemberList
+     */
+    public function getMemberList() {
+        return new MemberList($this->getHypixelPHP(), $this->getArray('members'));
+    }
+
+    /**
      * get coin history of Guild
      * @return array
      */
@@ -137,6 +146,9 @@ class Guild extends HypixelObject {
         return $sortHistory;
     }
 
+    /**
+     * @return string
+     */
     function getCacheTimeKey() {
         return CacheTimes::GUILD;
     }

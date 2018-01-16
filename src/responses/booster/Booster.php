@@ -5,14 +5,20 @@ namespace Plancke\HypixelPHP\responses\booster;
 use Plancke\HypixelPHP\classes\APIObject;
 use Plancke\HypixelPHP\classes\gameType\GameType;
 use Plancke\HypixelPHP\classes\gameType\GameTypes;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\responses\player\Player;
 
+/**
+ * Class Booster
+ * @package Plancke\HypixelPHP\responses\booster
+ */
 class Booster extends APIObject {
 
     /**
      * @return Player|Response|null
+     * @throws HypixelPHPException
      */
     public function getOwner() {
         return $this->getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_UUID => $this->getOwnerUUID()]);

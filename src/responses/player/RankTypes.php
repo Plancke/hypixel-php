@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\responses\player;
 
+/**
+ * Class RankTypes
+ * @package Plancke\HypixelPHP\responses\player
+ */
 abstract class RankTypes {
 
     const NON_DONOR = 1;
@@ -17,7 +21,7 @@ abstract class RankTypes {
     const JR_HELPER = 70;
     const YOUTUBER = 60;
 
-    private static $cache = [];
+    protected static $cache = [];
 
     public static function fromName($db) {
         foreach (RankTypes::values() as $id) {
@@ -29,6 +33,13 @@ abstract class RankTypes {
             }
         }
         return null;
+    }
+
+    /**
+     * @return array
+     */
+    public static function values() {
+        return array_merge(self::getDonorRanks(), self::getStaffRanks());
     }
 
     /**
@@ -56,20 +67,6 @@ abstract class RankTypes {
             self::JR_HELPER,
             self::YOUTUBER
         ];
-    }
-
-    /**
-     * @deprecated
-     */
-    public static function getAllTypes() {
-        return self::values();
-    }
-
-    /**
-     * @return array
-     */
-    public static function values() {
-        return array_merge(self::getDonorRanks(), self::getStaffRanks());
     }
 
     /**
@@ -158,5 +155,12 @@ abstract class RankTypes {
         }
 
         return RankTypes::$cache[$id];
+    }
+
+    /**
+     * @deprecated
+     */
+    public static function getAllTypes() {
+        return self::values();
     }
 }

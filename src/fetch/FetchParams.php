@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\fetch;
 
+/**
+ * Class FetchParams
+ * @package Plancke\HypixelPHP\fetch
+ */
 abstract class FetchParams {
     const PLAYER_BY_NAME = 'name';
     const PLAYER_BY_UUID = 'uuid';
@@ -16,6 +20,9 @@ abstract class FetchParams {
     const FRIENDS_BY_UUID = 'uuid';
     const SESSION_BY_UUID = 'uuid';
 
+    /**
+     * @return array
+     */
     public static function values() {
         return [
             self::PLAYER_BY_NAME,

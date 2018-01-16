@@ -3,6 +3,7 @@
 namespace Plancke\HypixelPHP\fetch\impl;
 
 use Plancke\HypixelPHP\cache\CacheHandler;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\Fetcher;
 use Plancke\HypixelPHP\fetch\Response;
 
@@ -30,6 +31,12 @@ class DefaultFetcher extends Fetcher {
         return $this;
     }
 
+    /**
+     * @param string $fetch
+     * @param array $keyValues
+     * @return Response
+     * @throws HypixelPHPException
+     */
     public function fetch($fetch, $keyValues = []) {
         $requestURL = Fetcher::BASE_URL . $fetch . '?key=' . $this->getHypixelPHP()->getAPIKey();
         $debug = $fetch;
@@ -55,6 +62,10 @@ class DefaultFetcher extends Fetcher {
         return $this->getResponseAdapter()->adaptResponse($fetch, $keyValues, $response);
     }
 
+    /**
+     * @param string $url
+     * @return Response
+     */
     public function getURLContents($url) {
         $response = new Response();
         if ($this->useCurl) {
@@ -86,7 +97,6 @@ class DefaultFetcher extends Fetcher {
                     $response->setSuccessful(true);
                 }
                 $response->setData($data);
-                return $response;
             } finally {
                 curl_close($ch);
             }
@@ -108,8 +118,8 @@ class DefaultFetcher extends Fetcher {
                 $response->setSuccessful(true);
             }
             $response->setData($data);
-            return $response;
         }
+        return $response;
     }
 
 }

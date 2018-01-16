@@ -7,9 +7,12 @@ use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\CacheTypes;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
+use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
+use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
@@ -75,15 +78,37 @@ class MongoCacheHandler extends CacheHandler {
     }
 
     /**
+     * @param Player $player
+     * @throws InvalidArgumentException
+     */
+    public function setCachedPlayer(Player $player) {
+        $query = ['record.uuid' => (string)$player->getUUID()];
+        $this->updateCollection(CacheTypes::PLAYERS, $query, $player);
+    }
+
+    /**
      * Replace a single document for given query,
      * creates the document if it doesn't exist yet.
      *
      * @param $collection
      * @param $query
      * @param $obj
+     * @throws InvalidArgumentException
      */
     public function updateCollection($collection, $query, $obj) {
         $this->selectDB()->selectCollection($collection)->replaceOne($query, $this->objToArray($obj), ['upsert' => true]);
+    }
+
+    /**
+     * @param $uuid
+     * @return null|Response|Player
+     */
+    function getCachedPlayer($uuid) {
+        $query = ['record.uuid' => (string)$uuid];
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getPlayer(),
+            $this->queryCollection(CacheTypes::PLAYERS, $query)
+        );
     }
 
     /**
@@ -102,41 +127,10 @@ class MongoCacheHandler extends CacheHandler {
     }
 
     /**
-     * @param $key
-     * @param HypixelObject $hypixelObject
+     * @param $username
+     * @param $obj
+     * @throws InvalidArgumentException
      */
-    function setSingleSave($key, HypixelObject $hypixelObject) {
-        $query = ['key' => $key];
-
-        $raw = $hypixelObject->getRaw();
-        $raw['key'] = $key;
-
-        $this->updateCollection(MongoCacheHandler::SINGLE_SAVE, $query, $raw);
-    }
-
-    /**
-     * @param $key
-     * @param $constructor
-     * @return HypixelObject|null
-     */
-    function getSingleSave($key, $constructor) {
-        $query = ['key' => $key];
-        return $this->wrapProvider($constructor, $this->queryCollection(MongoCacheHandler::SINGLE_SAVE, $query));
-    }
-
-    public function setCachedPlayer(Player $player) {
-        $query = ['record.uuid' => (string)$player->getUUID()];
-        $this->updateCollection(CacheTypes::PLAYERS, $query, $player);
-    }
-
-    function getCachedPlayer($uuid) {
-        $query = ['record.uuid' => (string)$uuid];
-        return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getPlayer(),
-            $this->queryCollection(CacheTypes::PLAYERS, $query)
-        );
-    }
-
     function setPlayerUUID($username, $obj) {
         $query = ['name_lowercase' => strtolower($username)];
         if ($obj['uuid'] == '' || $obj['uuid'] == null) {
@@ -148,6 +142,10 @@ class MongoCacheHandler extends CacheHandler {
         }
     }
 
+    /**
+     * @param $username
+     * @return mixed|null|string
+     */
     function getUUID($username) {
         $username = strtolower($username);
 
@@ -188,11 +186,19 @@ class MongoCacheHandler extends CacheHandler {
         return null;
     }
 
+    /**
+     * @param Guild $guild
+     * @throws InvalidArgumentException
+     */
     function setCachedGuild(Guild $guild) {
         $query = ['record._id' => (string)$guild->getID()];
         $this->updateCollection(CacheTypes::GUILDS, $query, $guild);
     }
 
+    /**
+     * @param $id
+     * @return null|Response|Guild
+     */
     function getCachedGuild($id) {
         $query = ['record._id' => (string)$id];
         return $this->wrapProvider(
@@ -201,11 +207,20 @@ class MongoCacheHandler extends CacheHandler {
         );
     }
 
+    /**
+     * @param $uuid
+     * @param $obj
+     * @throws InvalidArgumentException
+     */
     function setGuildIDForUUID($uuid, $obj) {
         $query = ['uuid' => (string)$uuid];
         $this->updateCollection(CacheTypes::GUILDS_UUID, $query, $obj);
     }
 
+    /**
+     * @param $uuid
+     * @return mixed|null
+     */
     function getGuildIDForUUID($uuid) {
         $query = ['uuid' => (string)$uuid];
         $data = $this->queryCollection(CacheTypes::GUILDS_UUID, $query);
@@ -225,11 +240,20 @@ class MongoCacheHandler extends CacheHandler {
         return null;
     }
 
+    /**
+     * @param $name
+     * @param $obj
+     * @throws InvalidArgumentException
+     */
     function setGuildIDForName($name, $obj) {
         $query = ['name_lower' => strtolower((string)$name)];
         $this->updateCollection(CacheTypes::GUILDS_NAME, $query, $obj);
     }
 
+    /**
+     * @param $name
+     * @return mixed|null
+     */
     function getGuildIDForName($name) {
         $query = ['extra.name_lower' => strtolower((string)$name)];
         $data = $this->queryCollection(CacheTypes::GUILDS, $query);
@@ -261,11 +285,19 @@ class MongoCacheHandler extends CacheHandler {
         return null;
     }
 
+    /**
+     * @param Friends $friends
+     * @throws InvalidArgumentException
+     */
     function setCachedFriends(Friends $friends) {
         $query = ['record.uuid' => (string)$friends->getUUID()];
         $this->updateCollection(CacheTypes::FRIENDS, $query, $friends);
     }
 
+    /**
+     * @param $uuid
+     * @return null|Response|Friends
+     */
     function getCachedFriends($uuid) {
         $query = ['record.uuid' => (string)$uuid];
         return $this->wrapProvider(
@@ -274,6 +306,10 @@ class MongoCacheHandler extends CacheHandler {
         );
     }
 
+    /**
+     * @param Session $session
+     * @throws InvalidArgumentException
+     */
     function setCachedSession(Session $session) {
         $query = ['record.uuid' => (string)$session->getUUID()];
         $this->updateCollection(CacheTypes::SESSIONS, $query, $session);
@@ -287,11 +323,19 @@ class MongoCacheHandler extends CacheHandler {
         );
     }
 
+    /**
+     * @param KeyInfo $keyInfo
+     * @throws InvalidArgumentException
+     */
     function setCachedKeyInfo(KeyInfo $keyInfo) {
         $query = ['record.key' => (string)$keyInfo->getKey()];
         $this->updateCollection(CacheTypes::API_KEYS, $query, $keyInfo);
     }
 
+    /**
+     * @param $key
+     * @return null|Response|KeyInfo
+     */
     function getCachedKeyInfo($key) {
         $query = ['record.key' => (string)$key];
         return $this->wrapProvider(
@@ -300,35 +344,102 @@ class MongoCacheHandler extends CacheHandler {
         );
     }
 
+    /**
+     * @param Leaderboards $leaderboards
+     * @throws InvalidArgumentException
+     */
     function setCachedLeaderboards(Leaderboards $leaderboards) {
         $this->setSingleSave(CacheTypes::LEADERBOARDS, $leaderboards);
     }
 
+    /**
+     * @param $key
+     * @param HypixelObject $hypixelObject
+     * @throws InvalidArgumentException
+     */
+    function setSingleSave($key, HypixelObject $hypixelObject) {
+        $query = ['key' => $key];
+
+        $raw = $hypixelObject->getRaw();
+        $raw['key'] = $key;
+
+        $this->updateCollection(MongoCacheHandler::SINGLE_SAVE, $query, $raw);
+    }
+
+    /**
+     * @return null|HypixelObject|Response|Leaderboards
+     */
     function getCachedLeaderboards() {
         return $this->getSingleSave(CacheTypes::LEADERBOARDS, $this->getHypixelPHP()->getProvider()->getLeaderboards());
     }
 
+    /**
+     * @param $key
+     * @param $constructor
+     * @return HypixelObject|null
+     */
+    function getSingleSave($key, $constructor) {
+        $query = ['key' => $key];
+        return $this->wrapProvider($constructor, $this->queryCollection(MongoCacheHandler::SINGLE_SAVE, $query));
+    }
+
+    /**
+     * @param Boosters $boosters
+     * @throws InvalidArgumentException
+     */
     function setCachedBoosters(Boosters $boosters) {
         $this->setSingleSave(CacheTypes::BOOSTERS, $boosters);
     }
 
+    /**
+     * @return null|HypixelObject|Response|Boosters
+     */
     function getCachedBoosters() {
         return $this->getSingleSave(CacheTypes::BOOSTERS, $this->getHypixelPHP()->getProvider()->getBoosters());
     }
 
+    /**
+     * @param WatchdogStats $watchdogStats
+     * @throws InvalidArgumentException
+     */
     function setCachedWatchdogStats(WatchdogStats $watchdogStats) {
         $this->setSingleSave(CacheTypes::WATCHDOG_STATS, $watchdogStats);
     }
 
+    /**
+     * @return null|HypixelObject|Response|WatchdogStats
+     */
     function getCachedWatchdogStats() {
         return $this->getSingleSave(CacheTypes::WATCHDOG_STATS, $this->getHypixelPHP()->getProvider()->getWatchdogStats());
     }
 
+    /**
+     * @param PlayerCount $playerCount
+     * @throws InvalidArgumentException
+     */
     function setCachedPlayerCount(PlayerCount $playerCount) {
         $this->setSingleSave(CacheTypes::PLAYER_COUNT, $playerCount);
     }
 
+    /**
+     * @return null|HypixelObject|Response|PlayerCount
+     */
     function getCachedPlayerCount() {
         return $this->getSingleSave(CacheTypes::PLAYER_COUNT, $this->getHypixelPHP()->getProvider()->getPlayerCount());
+    }
+
+    /**
+     * @param GameCounts $gameCounts
+     * @throws InvalidArgumentException
+     */
+    function setCachedGameCounts(GameCounts $gameCounts) {
+        $this->setSingleSave(CacheTypes::GAME_COUNTS, $gameCounts);
+    }
+
+    /**
+     * @return null|HypixelObject|Response|GameCounts
+     */
+    function getCachedGameCounts() {
+        return $this->getSingleSave(CacheTypes::GAME_COUNTS, $this->getHypixelPHP()->getProvider()->getGameCounts());
     }
 }

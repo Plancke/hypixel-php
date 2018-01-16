@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\cache;
 
+/**
+ * Class CacheTimes
+ * @package Plancke\HypixelPHP\cache
+ */
 abstract class CacheTimes {
 
     const UUID = 'uuid';
@@ -16,5 +20,6 @@ abstract class CacheTimes {
     const KEY_INFO = 'keyInfo';
     const FRIENDS = 'friends';
     const WATCHDOG = 'watchdog';
+    const GAME_COUNTS = 'gameCounts';
 
 }

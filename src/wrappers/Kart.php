@@ -49,8 +49,8 @@ class Kart {
 }
 
 class Part {
-    private $PART;
-    private $PREFIXES = [
+    protected $PART;
+    protected $PREFIXES = [
         "Default",
         "Starter",
         "Mini",

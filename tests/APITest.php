@@ -33,13 +33,4 @@ class APITest extends \PHPUnit_Framework_TestCase {
         new HypixelPHP("b13e2f50-a16c-4aa5-92a6-75e9b699b9fc");
     }
 
-    function testPlayerResponse() {
-        $player = TestUtil::getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_UUID => TestUtil::PLANCKE]);
-        $this->assertTrue($player instanceof Player);
-        $this->assertTrue($player->getStats() instanceof Stats);
-    }
-
-    function testGuildResponse() {
-        $this->assertTrue(TestUtil::getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => TestUtil::PLANCKE]) instanceof Guild);
-    }
 }

@@ -6,8 +6,15 @@ use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\gameType\GameType;
 use Plancke\HypixelPHP\classes\gameType\GameTypes;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
+use Plancke\HypixelPHP\fetch\Response;
+use Plancke\HypixelPHP\responses\player\Player;
 
+/**
+ * Class Session
+ * @package Plancke\HypixelPHP\responses
+ */
 class Session extends HypixelObject {
     /**
      * @return array
@@ -17,7 +24,7 @@ class Session extends HypixelObject {
     }
 
     /**
-     * @return GameType|null
+     * @return GameType
      */
     public function getGameType() {
         $val = $this->get('gameType');
@@ -34,6 +41,10 @@ class Session extends HypixelObject {
         return $this->get('server');
     }
 
+    /**
+     * @return null|Response|Player
+     * @throws HypixelPHPException
+     */
     public function getPlayer() {
         $UUID = $this->getUUID();
         if ($UUID != null) {
@@ -42,10 +53,16 @@ class Session extends HypixelObject {
         return null;
     }
 
+    /**
+     * @return mixed
+     */
     public function getUUID() {
         return $this->get('uuid');
     }
 
+    /**
+     * @return string
+     */
     function getCacheTimeKey() {
         return CacheTimes::SESSION;
     }
