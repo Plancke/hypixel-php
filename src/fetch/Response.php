@@ -44,10 +44,11 @@ class Response {
      */
     public function addError($errors) {
         if (!is_array($errors)) {
-            $errors = [$errors];
-        }
-        foreach ($errors as $error) {
-            array_push($this->errors, $error);
+            array_push($this->errors, $errors);
+        } else {
+            foreach ($errors as $error) {
+                array_push($this->errors, $error);
+            }
         }
         return $this;
     }
