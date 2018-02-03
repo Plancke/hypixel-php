@@ -23,18 +23,6 @@ abstract class RankTypes {
 
     protected static $cache = [];
 
-    public static function fromName($db) {
-        foreach (RankTypes::values() as $id) {
-            $rank = RankTypes::fromID($id);
-            if ($rank != null) {
-                if ($rank->getName() == $db) {
-                    return $rank;
-                }
-            }
-        }
-        return null;
-    }
-
     /**
      * @return array
      */
@@ -79,6 +67,18 @@ abstract class RankTypes {
             self::JR_HELPER,
             self::YOUTUBER
         ];
+    }
+
+    public static function fromName($db) {
+        foreach (RankTypes::values() as $id) {
+            $rank = RankTypes::fromID($id);
+            if ($rank != null) {
+                if ($rank->getName() == $db) {
+                    return $rank;
+                }
+            }
+        }
+        return null;
     }
 
     /**
