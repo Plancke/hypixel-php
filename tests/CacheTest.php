@@ -2,11 +2,7 @@
 
 namespace Plancke\Tests;
 
-use Plancke\HypixelPHP\cache\impl\FlatFileCacheHandler;
-use Plancke\HypixelPHP\fetch\FetchParams;
-use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\util\CacheUtil;
-use Plancke\Tests\util\TestUtil;
 
 class CacheTest extends \PHPUnit_Framework_TestCase {
 

@@ -4,12 +4,7 @@ namespace Plancke\Tests;
 
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
-use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\HypixelPHP;
-use Plancke\HypixelPHP\responses\guild\Guild;
-use Plancke\HypixelPHP\responses\player\Player;
-use Plancke\HypixelPHP\responses\player\Stats;
-use Plancke\Tests\util\TestUtil;
 
 class APITest extends \PHPUnit_Framework_TestCase {
 
