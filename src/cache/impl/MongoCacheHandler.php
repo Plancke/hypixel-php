@@ -183,6 +183,22 @@ class MongoCacheHandler extends CacheHandler {
                 }
             }
         }
+
+        // check if player database has a old player match for it
+        $query = ['record.knownAliasesLower' => $username];
+        $data = $this->queryCollection(CacheTypes::PLAYERS, $query);
+        if ($data != null) {
+            $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
+            $diff = time() - $this->getCacheTime(CacheTimes::UUID) - $timestamp;
+
+            $this->getHypixelPHP()->getLogger()->log("Found name match in PLAYERS! '$diff'");
+
+            if ($diff < 0) {
+                if (isset($data['record']['uuid']) && $data['record']['uuid'] != '') {
+                    return $data['record']['uuid'];
+                }
+            }
+        }
         return null;
     }
 
