@@ -25,7 +25,13 @@ class APITest extends \PHPUnit_Framework_TestCase {
     }
 
     function testValidKey() {
-        new HypixelPHP("b13e2f50-a16c-4aa5-92a6-75e9b699b9fc");
+        try {
+            new HypixelPHP("b13e2f50-a16c-4aa5-92a6-75e9b699b9fc");
+        } catch (HypixelPHPException $e) {
+            $this->fail();
+        }
+
+        $this->assertTrue(TRUE);
     }
 
 }
