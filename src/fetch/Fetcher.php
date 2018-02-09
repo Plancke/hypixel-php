@@ -7,6 +7,10 @@ use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\fetch\adapter\ResponseAdapter;
 use Plancke\HypixelPHP\HypixelPHP;
 
+/**
+ * Class Fetcher
+ * @package Plancke\HypixelPHP\fetch
+ */
 abstract class Fetcher extends Module {
 
     const BASE_URL = 'https://api.hypixel.net/';
@@ -14,12 +18,26 @@ abstract class Fetcher extends Module {
     protected $timeOut = 2000;
     protected $responseAdapter, $responseAdapterGetter;
 
+    /**
+     * Fetcher constructor.
+     * @param HypixelPHP $HypixelPHP
+     */
     public function __construct(HypixelPHP $HypixelPHP) {
         parent::__construct($HypixelPHP);
 
         $this->setResponseAdapterGetter(function ($HypixelPHP) {
             return new ResponseAdapter($HypixelPHP);
         });
+    }
+
+    /**
+     * @param Closure $getter
+     * @return $this
+     */
+    public function setResponseAdapterGetter(Closure $getter) {
+        $this->responseAdapterGetter = $getter;
+        $this->responseAdapter = null;
+        return $this;
     }
 
     /**
@@ -62,24 +80,14 @@ abstract class Fetcher extends Module {
     }
 
     /**
-     * @param Closure $getter
-     * @return $this
-     */
-    public function setResponseAdapterGetter(Closure $getter) {
-        $this->responseAdapterGetter = $getter;
-        $this->responseAdapter = null;
-        return $this;
-    }
-
-    /**
-     * @param $fetch
+     * @param string $fetch
      * @param array $keyValues
      * @return Response
      */
     abstract function fetch($fetch, $keyValues = []);
 
     /**
-     * @param $url
+     * @param string $url
      * @return Response
      */
     abstract function getURLContents($url);

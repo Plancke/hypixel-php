@@ -3,6 +3,10 @@
 namespace Plancke\HypixelPHP\fetch\impl;
 
 use Plancke\HypixelPHP\cache\CacheHandler;
+use Plancke\HypixelPHP\exceptions\BadResponseCodeException;
+use Plancke\HypixelPHP\exceptions\CurlException;
+use Plancke\HypixelPHP\exceptions\FileGetContentsException;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\Fetcher;
 use Plancke\HypixelPHP\fetch\Response;
 
@@ -30,6 +34,12 @@ class DefaultFetcher extends Fetcher {
         return $this;
     }
 
+    /**
+     * @param string $fetch
+     * @param array $keyValues
+     * @return Response
+     * @throws HypixelPHPException
+     */
     public function fetch($fetch, $keyValues = []) {
         $requestURL = Fetcher::BASE_URL . $fetch . '?key=' . $this->getHypixelPHP()->getAPIKey();
         $debug = $fetch;
@@ -55,6 +65,11 @@ class DefaultFetcher extends Fetcher {
         return $this->getResponseAdapter()->adaptResponse($fetch, $keyValues, $response);
     }
 
+    /**
+     * @param string $url
+     * @return Response
+     * @throws HypixelPHPException
+     */
     public function getURLContents($url) {
         $response = new Response();
         if ($this->useCurl) {
@@ -68,14 +83,16 @@ class DefaultFetcher extends Fetcher {
                 $curlOut = curl_exec($ch);
 
                 $error = curl_error($ch);
-                if ($error != null) {
-                    return $response->addError($error);
+                if ($error != null && $error != '') {
+                    throw new CurlException($error);
                 }
                 if ($curlOut === false) {
                     return $response;
                 }
-                if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != '200') {
-                    return $response->addError('Status not 200');
+
+                $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                if ($responseCode != '200') {
+                    throw new BadResponseCodeException(200, $responseCode);
                 }
 
                 $data = json_decode($curlOut, true);
@@ -86,7 +103,6 @@ class DefaultFetcher extends Fetcher {
                     $response->setSuccessful(true);
                 }
                 $response->setData($data);
-                return $response;
             } finally {
                 curl_close($ch);
             }
@@ -97,7 +113,7 @@ class DefaultFetcher extends Fetcher {
 
             $out = file_get_contents($url, 0, $ctx);
             if ($out === false) {
-                return $response->addError('Failed to pull data!');
+                throw new FileGetContentsException($url);
             }
 
             $data = json_decode($out, true);
@@ -108,8 +124,8 @@ class DefaultFetcher extends Fetcher {
                 $response->setSuccessful(true);
             }
             $response->setData($data);
-            return $response;
         }
+        return $response;
     }
 
 }

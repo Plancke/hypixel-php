@@ -2,62 +2,66 @@
 
 namespace Plancke\HypixelPHP\resources;
 
-class GameResources extends AResources {
+/**
+ * Class GameResources
+ * @package Plancke\HypixelPHP\resources
+ */
+class GameResources extends Resources {
 
     /**
      * @return array
      */
     public function getTNTWizards() {
-        return AResources::requireResourceFile('game_info/tntgames/Wizards.php');
+        return Resources::requireResourceFile('game_info/tntgames/Wizards.php');
     }
 
     /**
      * @return array
      */
     public function getArena() {
-        return AResources::requireResourceFile('game_info/Arena.php');
+        return Resources::requireResourceFile('game_info/Arena.php');
     }
 
     /**
      * @return array
      */
     public function getBattlegrounds() {
-        return AResources::requireResourceFile('game_info/Battlegrounds.php');
+        return Resources::requireResourceFile('game_info/Battlegrounds.php');
     }
 
     /**
      * @return array
      */
     public function getHungerGames() {
-        return AResources::requireResourceFile('game_info/HungerGames.php');
+        return Resources::requireResourceFile('game_info/HungerGames.php');
     }
 
     /**
      * @return array
      */
     public function getPaintball() {
-        return AResources::requireResourceFile('game_info/Paintball.php');
+        return Resources::requireResourceFile('game_info/Paintball.php');
     }
 
     /**
      * @return array
      */
     public function getSkyClash() {
-        return AResources::requireResourceFile('game_info/SkyClash.php');
+        return Resources::requireResourceFile('game_info/SkyClash.php');
     }
 
     /**
      * @return array
      */
     public function getSuperSmash() {
-        return AResources::requireResourceFile('game_info/SuperSmash.php');
+        return Resources::requireResourceFile('game_info/SuperSmash.php');
     }
 
     /**
      * @return array
      */
     public function getWallsThree() {
-        return AResources::requireResourceFile('game_info/Walls3.php');
+        return Resources::requireResourceFile('game_info/Walls3.php');
     }
 
 }

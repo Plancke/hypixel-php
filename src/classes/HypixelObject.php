@@ -2,14 +2,19 @@
 
 namespace Plancke\HypixelPHP\classes;
 
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\util\CacheUtil;
 use Plancke\HypixelPHP\util\Utilities;
 
+/**
+ * Class HypixelObject
+ * @package Plancke\HypixelPHP\classes
+ */
 abstract class HypixelObject extends APIObject {
 
-    private $response;
+    protected $response;
 
     /**
      * @param            $data
@@ -26,6 +31,9 @@ abstract class HypixelObject extends APIObject {
         }
     }
 
+    /**
+     * @return array
+     */
     public function getData() {
         return $this->data['record'];
     }
@@ -46,6 +54,9 @@ abstract class HypixelObject extends APIObject {
         return abs(time() - $this->getCachedTime()) > $leeway;
     }
 
+    /**
+     * @return int
+     */
     public function getCachedTime() {
         return $this->data['timestamp'];
     }
@@ -58,8 +69,14 @@ abstract class HypixelObject extends APIObject {
         return CacheUtil::isExpired($this->getCachedTime() * 1000, $this->getHypixelPHP()->getCacheHandler()->getCacheTime($this->getCacheTimeKey()) * 1000, $extra);
     }
 
-    abstract function getCacheTimeKey();
+    /**
+     * @return string
+     */
+    public abstract function getCacheTimeKey();
 
+    /**
+     * @param array $extra
+     */
     public function _setExtra($extra) {
         $this->data['extra'] = $extra;
     }
@@ -67,6 +84,7 @@ abstract class HypixelObject extends APIObject {
     /**
      * @param $input
      * @param bool $save
+     * @throws HypixelPHPException
      */
     public function setExtra($input, $save = true) {
         $anyChange = false;
@@ -96,6 +114,12 @@ abstract class HypixelObject extends APIObject {
         return $this->get('_id');
     }
 
+    /**
+     * @param string $key
+     * @param mixed $default
+     * @param string $delimiter
+     * @return mixed
+     */
     public function getExtra($key = null, $default = null, $delimiter = '.') {
         if ($key != null) {
             return Utilities::getRecursiveValue($this->data['extra'], $key, $default, $delimiter);
@@ -103,6 +127,10 @@ abstract class HypixelObject extends APIObject {
         return $this->data['extra'];
     }
 
+    /**
+     * @param Response $response
+     * @return $this
+     */
     public function attachResponse(Response $response) {
         $this->response = $response;
         return $this;

@@ -5,14 +5,31 @@ namespace Plancke\HypixelPHP\classes;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\util\Utilities;
 
+/**
+ * Class APIObject
+ * @package Plancke\HypixelPHP\classes
+ */
 abstract class APIObject extends APIHolding {
 
     protected $data;
 
+    /**
+     * APIObject constructor.
+     * @param HypixelPHP $HypixelPHP
+     * @param array $data
+     */
     public function __construct(HypixelPHP $HypixelPHP, $data) {
         parent::__construct($HypixelPHP);
 
         $this->data = $data;
+    }
+
+    /**
+     * @param $key
+     * @return array
+     */
+    public function getArray($key) {
+        return $this->get($key, []);
     }
 
     /**
@@ -29,22 +46,17 @@ abstract class APIObject extends APIHolding {
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getData() {
         return $this->getRaw();
     }
 
-    public function getRaw() {
-        return $this->data;
-    }
-
     /**
-     * @param $key
      * @return array
      */
-    public function getArray($key) {
-        return $this->get($key, []);
+    public function getRaw() {
+        return $this->data;
     }
 
     /**

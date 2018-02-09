@@ -4,6 +4,10 @@ namespace Plancke\HypixelPHP\classes\gameType;
 
 use Closure;
 
+/**
+ * Class GameTypes
+ * @package Plancke\HypixelPHP\classes\gameType
+ */
 class GameTypes {
     const QUAKE = 2;
     const WALLS = 3;
@@ -32,10 +36,29 @@ class GameTypes {
     const DUELS = 61;
 
     /**
-     * @deprecated
+     * @param $db
+     * @return GameType|null
      */
-    public static function getAllTypes() {
-        return self::values();
+    public static function fromDbName($db) {
+        return self::fromX(function (GameType $gameType) use ($db) {
+            return strtolower($gameType->getDb()) == strtolower($db);
+        });
+    }
+
+    /**
+     * @param Closure $test
+     * @return GameType|null
+     */
+    public static function fromX(Closure $test) {
+        foreach (GameTypes::values() as $id) {
+            $gameType = GameTypes::fromID($id);
+            if ($gameType != null) {
+                if ($test($gameType)) {
+                    return $gameType;
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -131,32 +154,6 @@ class GameTypes {
             default:
                 return null;
         }
-    }
-
-    /**
-     * @param Closure $test
-     * @return GameType|null
-     */
-    public static function fromX(Closure $test) {
-        foreach (GameTypes::values() as $id) {
-            $gameType = GameTypes::fromID($id);
-            if ($gameType != null) {
-                if ($test($gameType)) {
-                    return $gameType;
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * @param $db
-     * @return GameType|null
-     */
-    public static function fromDbName($db) {
-        return self::fromX(function (GameType $gameType) use ($db) {
-            return strtolower($gameType->getDb()) == strtolower($db);
-        });
     }
 
     /**

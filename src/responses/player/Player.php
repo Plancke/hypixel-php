@@ -4,6 +4,7 @@ namespace Plancke\HypixelPHP\responses\player;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\responses\booster\Booster;
@@ -13,6 +14,10 @@ use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\util\Leveling;
 
+/**
+ * Class Player
+ * @package Plancke\HypixelPHP\responses\player
+ */
 class Player extends HypixelObject {
     protected $guild, $friends, $session;
 
@@ -29,6 +34,7 @@ class Player extends HypixelObject {
      * get Player achievement points
      * @param bool $force_update
      * @return int
+     * @throws HypixelPHPException
      */
     public function getAchievementPoints($force_update = false) {
         if (!$force_update) {
@@ -83,47 +89,14 @@ class Player extends HypixelObject {
     }
 
     /**
-     * @return Guild|Response|null
-     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
-     */
-    public function getGuild() {
-        if ($this->guild == null) {
-            $this->guild = $this->getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $this->getUUID()]);
-        }
-        return $this->guild;
-    }
-
-    /**
      * @return Session|Response|null
-     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
+     * @throws HypixelPHPException
      */
     public function getSession() {
         if ($this->session == null) {
             $this->session = $this->getHypixelPHP()->getSession([FetchParams::SESSION_BY_UUID => $this->getUUID()]);
         }
         return $this->session;
-    }
-
-    /**
-     * @return Friends|Response|null
-     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
-     */
-    public function getFriends() {
-        if ($this->friends == null) {
-            $this->friends = $this->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $this->getUUID()]);
-        }
-        return $this->friends;
-    }
-
-    /**
-     * @return Booster[]
-     */
-    public function getBoosters() {
-        $BOOSTERS = $this->getHypixelPHP()->getBoosters();
-        if ($BOOSTERS instanceof Boosters) {
-            return $BOOSTERS->getBoosters($this->getUUID());
-        }
-        return [];
     }
 
     /**
@@ -136,10 +109,33 @@ class Player extends HypixelObject {
     }
 
     /**
+     * @return Friends|Response|null
+     * @throws HypixelPHPException
+     */
+    public function getFriends() {
+        if ($this->friends == null) {
+            $this->friends = $this->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $this->getUUID()]);
+        }
+        return $this->friends;
+    }
+
+    /**
+     * @return Booster[]
+     * @throws HypixelPHPException
+     */
+    public function getBoosters() {
+        $BOOSTERS = $this->getHypixelPHP()->getBoosters();
+        if ($BOOSTERS instanceof Boosters) {
+            return $BOOSTERS->getBoosters($this->getUUID());
+        }
+        return [];
+    }
+
+    /**
      * @param bool $prefix
      * @param bool $guildTag
      * @return string
-     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
+     * @throws HypixelPHPException
      */
     public function getRawFormattedName($prefix = true, $guildTag = false) {
         $rank = $this->getRank(false);
@@ -222,6 +218,10 @@ class Player extends HypixelObject {
         return $this->get('prefix');
     }
 
+    /**
+     * @return null|string
+     * @throws HypixelPHPException
+     */
     public function getGuildTag() {
         $guild = $this->getGuild();
         if ($guild instanceof Guild) {
@@ -230,6 +230,17 @@ class Player extends HypixelObject {
             }
         }
         return null;
+    }
+
+    /**
+     * @return Guild|Response|null
+     * @throws HypixelPHPException
+     */
+    public function getGuild() {
+        if ($this->guild == null) {
+            $this->guild = $this->getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $this->getUUID()]);
+        }
+        return $this->guild;
     }
 
     /**

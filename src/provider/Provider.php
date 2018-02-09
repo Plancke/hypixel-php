@@ -5,6 +5,7 @@ namespace Plancke\HypixelPHP\provider;
 use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
+use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
@@ -13,6 +14,10 @@ use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
+/**
+ * Class Provider
+ * @package Plancke\HypixelPHP\provider
+ */
 class Provider extends Module {
 
     /**
@@ -93,6 +98,15 @@ class Provider extends Module {
     public function getPlayerCount() {
         return function ($HypixelPHP, $data) {
             return new PlayerCount($HypixelPHP, $data);
+        };
+    }
+
+    /**
+     * @return \Closure
+     */
+    public function getGameCounts() {
+        return function ($HypixelPHP, $data) {
+            return new GameCounts($HypixelPHP, $data);
         };
     }
 

@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\util;
 
+/**
+ * Class CacheUtil
+ * @package Plancke\HypixelPHP\util
+ */
 abstract class CacheUtil {
 
     /**
@@ -34,7 +38,11 @@ abstract class CacheUtil {
         $offsetValue = 0;
         if (is_array($offset)) {
             if (sizeof($offset) == 2) {
-                $offsetValue = random_int($offset[0], $offset[1]);
+                try {
+                    $offsetValue = random_int($offset[0], $offset[1]);
+                } catch (\Exception $e) {
+                    $offsetValue = $offset[0]; // fallback
+                }
             }
         } elseif (is_numeric($offset)) {
             $offsetValue = $offset;

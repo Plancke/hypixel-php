@@ -2,9 +2,17 @@
 
 namespace Plancke\HypixelPHP\util;
 
+use Plancke\HypixelPHP\color\ColorUtils;
+
+/**
+ * Class Utilities
+ * @package Plancke\HypixelPHP\util
+ */
 abstract class Utilities {
 
-    const COLOR_CHAR = '§';
+    /** @deprecated */
+    const COLOR_CHAR = ColorUtils::COLOR_CHAR;
+    /** @deprecated */
     const MC_COLORS = [
         '0' => '#000000',
         '1' => '#0000AA',
@@ -23,6 +31,7 @@ abstract class Utilities {
         'e' => '#FFFF55',
         'f' => '#FFFFFF'
     ];
+    /** @deprecated */
     const MC_COLORNAME = [
         "BLACK" => '§0',
         "DARK_BLUE" => '§1',
@@ -53,6 +62,7 @@ abstract class Utilities {
      * @param $string
      * @param array $colorMap
      * @return string
+     * @deprecated Replaced with {@see ColorParser}
      */
     public static function parseColors($string, $colorMap = Utilities::MC_COLORS) {
         if ($string == null) {
@@ -67,7 +77,8 @@ abstract class Utilities {
         foreach ($d as $part) {
             if (strlen($part) == 0) continue;
             if (array_key_exists(substr($part, 0, 1), $colorMap)) {
-                $out = $out . "<span style='text-shadow: 1px 1px #eee; color:" . $colorMap[substr($part, 0, 1)] . "'>" . substr($part, 1) . "</span>";
+                $color = $colorMap[substr($part, 0, 1)];
+                $out = $out . "<span style='text-shadow: 1px 1px #eee; color: $color'>" . substr($part, 1) . "</span>";
             } else {
                 $out .= substr($part, 1);
             }
@@ -79,6 +90,7 @@ abstract class Utilities {
      * Parses MC encoded colors to HTML
      * @param $string
      * @return string
+     * @deprecated
      */
     public static function stripColors($string) {
         if ($string == null) {
@@ -104,6 +116,7 @@ abstract class Utilities {
      * @param $startX
      * @param $startY
      * @param $string
+     * @deprecated
      */
     public static function addMCColorString(&$img, $font, $fontSize, $startX, $startY, $string) {
         if (strpos($string, "§") === false) {
@@ -131,6 +144,7 @@ abstract class Utilities {
      * @return array
      */
     public static function hex2rgb($hex) {
+        // replace the pound symbol just in case
         $hex = str_replace("#", "", $hex);
 
         if (strlen($hex) == 3) {
@@ -162,6 +176,10 @@ abstract class Utilities {
         return $return ? $return : $default;
     }
 
+    /**
+     * @param $uuid
+     * @return string
+     */
     public static function ensureDashedUUID($uuid) {
         if (strpos($uuid, "-")) {
             if (strlen($uuid) == 32) {
@@ -172,6 +190,10 @@ abstract class Utilities {
         return substr($uuid, 0, 8) . "-" . substr($uuid, 8, 12) . substr($uuid, 12, 16) . "-" . substr($uuid, 16, 20) . "-" . substr($uuid, 20, 32);
     }
 
+    /**
+     * @param $uuid
+     * @return string
+     */
     public static function ensureNoDashesUUID($uuid) {
         return str_replace("-", "", $uuid);
     }

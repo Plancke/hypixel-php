@@ -5,6 +5,10 @@ namespace Plancke\HypixelPHP\responses\player;
 use Plancke\HypixelPHP\classes\APIObject;
 use Plancke\HypixelPHP\util\TimeUtils;
 
+/**
+ * Class GameStats
+ * @package Plancke\HypixelPHP\responses\player
+ */
 class GameStats extends APIObject {
 
     /**
@@ -31,7 +35,8 @@ class GameStats extends APIObject {
 
     /**
      * @param $stat
-     * @return array|null|string|int
+     * @return mixed
+     * @deprecated These aren't used anymore
      */
     public function getWeeklyStat($stat) {
         return $this->get($stat . '_' . TimeUtils::getWeeklyOscillation());
@@ -39,7 +44,8 @@ class GameStats extends APIObject {
 
     /**
      * @param $stat
-     * @return array|null|string|int
+     * @return mixed
+     * @deprecated These aren't used anymore
      */
     public function getMonthlyStat($stat) {
         return $this->get($stat . '_' . TimeUtils::getMonthlyOscillation());

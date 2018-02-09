@@ -4,11 +4,16 @@ namespace Plancke\HypixelPHP\responses\friend;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\responses\player\Player;
 
+/**
+ * Class Friends
+ * @package Plancke\HypixelPHP\responses\friend
+ */
 class Friends extends HypixelObject {
-    private $LIST;
+    protected $LIST;
 
     /**
      * @return Friend[]
@@ -23,16 +28,23 @@ class Friends extends HypixelObject {
         return $this->LIST;
     }
 
+    /**
+     * @return array
+     */
     public function getRawList() {
         return $this->getArray('list');
     }
 
+    /**
+     * @return string
+     */
     public function getUUID() {
         return $this->get("uuid");
     }
 
     /**
      * @return Player|null
+     * @throws HypixelPHPException
      */
     public function getPlayer() {
         if (isset($this->data['uuid'])) {
@@ -41,6 +53,9 @@ class Friends extends HypixelObject {
         return null;
     }
 
+    /**
+     * @return string
+     */
     function getCacheTimeKey() {
         return CacheTimes::FRIENDS;
     }

@@ -3,14 +3,19 @@
 namespace Plancke\HypixelPHP\responses\guild;
 
 use Plancke\HypixelPHP\classes\APIHolding;
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\responses\player\Player;
 
+/**
+ * Class GuildMember
+ * @package Plancke\HypixelPHP\responses\guild
+ */
 class GuildMember extends APIHolding {
-    private $coinHistory;
-    private $uuid, $name;
-    private $joined;
+    protected $coinHistory;
+    protected $uuid, $name;
+    protected $joined;
 
     /**
      * @param HypixelPHP $HypixelPHP
@@ -36,6 +41,7 @@ class GuildMember extends APIHolding {
 
     /**
      * @return Player
+     * @throws HypixelPHPException
      */
     public function getPlayer() {
         if (isset($this->uuid)) {

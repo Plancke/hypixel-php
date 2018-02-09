@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\fetch;
 
+/**
+ * Class FetchTypes
+ * @package Plancke\HypixelPHP\fetch
+ */
 abstract class FetchTypes {
 
     const PLAYER = 'player';
@@ -16,6 +20,7 @@ abstract class FetchTypes {
     const KEY = 'key';
     const WATCHDOG_STATS = 'watchdogStats';
     const PLAYER_COUNT = 'playerCount';
+    const GAME_COUNTS = 'gameCounts';
 
     public static function values() {
         return [
@@ -28,6 +33,7 @@ abstract class FetchTypes {
             self::KEY,
             self::WATCHDOG_STATS,
             self::PLAYER_COUNT,
+            self::GAME_COUNTS
         ];
     }
 

@@ -5,6 +5,10 @@ namespace Plancke\HypixelPHP\responses\booster;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 
+/**
+ * Class Boosters
+ * @package Plancke\HypixelPHP\responses\booster
+ */
 class Boosters extends HypixelObject {
     /**
      * @param int $gameType
@@ -30,7 +34,9 @@ class Boosters extends HypixelObject {
     }
 
     /**
-     * @param $player
+     * Get queued boosters by uuid
+     *
+     * @param string $player
      * @return Booster[]
      */
     public function getBoosters($player) {
@@ -43,6 +49,9 @@ class Boosters extends HypixelObject {
         return $boosters;
     }
 
+    /**
+     * @return string
+     */
     function getCacheTimeKey() {
         return CacheTimes::BOOSTERS;
     }

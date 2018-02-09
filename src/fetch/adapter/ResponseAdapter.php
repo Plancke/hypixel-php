@@ -36,8 +36,9 @@ class ResponseAdapter extends Module {
             case FetchTypes::SESSION:
                 return $this->attachKeyValues($keyValues, $this->remapField('session', $response));
 
-            case FetchTypes::PLAYER_COUNT:
             case FetchTypes::WATCHDOG_STATS:
+            case FetchTypes::PLAYER_COUNT:
+            case FetchTypes::GAME_COUNTS:
                 return $this->wrapRecord($response);
 
             case FetchTypes::KEY:
@@ -50,11 +51,20 @@ class ResponseAdapter extends Module {
     }
 
     /**
+     * @param $key
+     * @param Response $response
+     * @return Response
+     */
+    protected function remapField($key, Response $response) {
+        return $response->setData(['record' => $response->getData()[$key]]);
+    }
+
+    /**
      * @param $keyValues
      * @param Response $response
      * @return Response
      */
-    private function attachKeyValues($keyValues, Response $response) {
+    protected function attachKeyValues($keyValues, Response $response) {
         $data = $response->getData();
         if (is_array($data['record'])) {
             $data['record'] = array_merge($data['record'], $keyValues);
@@ -63,19 +73,10 @@ class ResponseAdapter extends Module {
     }
 
     /**
-     * @param $key
      * @param Response $response
      * @return Response
      */
-    private function remapField($key, Response $response) {
-        return $response->setData(['record' => $response->getData()[$key]]);
-    }
-
-    /**
-     * @param Response $response
-     * @return Response
-     */
-    private function wrapRecord(Response $response) {
+    protected function wrapRecord(Response $response) {
         return $response->setData(['record' => $response->getData()]);
     }
 }

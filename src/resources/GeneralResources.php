@@ -2,12 +2,16 @@
 
 namespace Plancke\HypixelPHP\resources;
 
-class GeneralResources extends AResources {
+/**
+ * Class GeneralResources
+ * @package Plancke\HypixelPHP\resources
+ */
+class GeneralResources extends Resources {
     /**
      * @return array
      */
     public function getAchievements() {
-        return AResources::requireResourceFile('Achievements.php');
+        return Resources::requireResourceFile('Achievements.php');
     }
 
 }

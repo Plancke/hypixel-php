@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\cache;
 
+/**
+ * Class CacheTypes
+ * @package Plancke\HypixelPHP\cache
+ */
 abstract class CacheTypes {
     const PLAYERS = 'players';
     const PLAYER_UUID = 'player_uuid';
@@ -19,4 +23,6 @@ abstract class CacheTypes {
     const BOOSTERS = 'boosters';
     const WATCHDOG_STATS = 'watchdogStats';
     const PLAYER_COUNT = 'playerCount';
+    const GAME_COUNTS = 'gameCounts';
+
 }

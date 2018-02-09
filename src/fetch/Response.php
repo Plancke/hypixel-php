@@ -2,9 +2,14 @@
 
 namespace Plancke\HypixelPHP\fetch;
 
+/**
+ * Class Response
+ * @package Plancke\HypixelPHP\fetch
+ */
 class Response {
 
     protected $success = false;
+    /** @deprecated */
     protected $errors = [];
     protected $data;
 
@@ -29,6 +34,7 @@ class Response {
 
     /**
      * @return array
+     * @deprecated Actually throwing exceptions now, not adding them to the response
      */
     public function getErrors() {
         return $this->errors;
@@ -37,13 +43,15 @@ class Response {
     /**
      * @param array|string $errors
      * @return $this
+     * @deprecated Actually throwing exceptions now, not adding them to the response
      */
     public function addError($errors) {
         if (!is_array($errors)) {
-            $errors = [$errors];
-        }
-        foreach ($errors as $error) {
-            array_push($this->errors, $error);
+            array_push($this->errors, $errors);
+        } else {
+            foreach ($errors as $error) {
+                array_push($this->errors, $error);
+            }
         }
         return $this;
     }

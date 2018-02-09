@@ -4,6 +4,10 @@ namespace Plancke\HypixelPHP\util;
 
 use Plancke\HypixelPHP\responses\player\Player;
 
+/**
+ * Class InputType
+ * @package Plancke\HypixelPHP\util
+ */
 abstract class InputType {
 
     const UUID = 0;

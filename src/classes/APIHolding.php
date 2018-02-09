@@ -4,9 +4,13 @@ namespace Plancke\HypixelPHP\classes;
 
 use Plancke\HypixelPHP\HypixelPHP;
 
+/**
+ * Class APIHolding
+ * @package Plancke\HypixelPHP\classes
+ */
 abstract class APIHolding {
 
-    private $HypixelPHP;
+    protected $HypixelPHP;
 
     /**
      * @param HypixelPHP $HypixelPHP

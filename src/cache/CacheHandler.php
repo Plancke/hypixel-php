@@ -8,8 +8,10 @@ use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
+use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
+use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
@@ -18,6 +20,10 @@ use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
+/**
+ * Class CacheHandler
+ * @package Plancke\HypixelPHP\cache
+ */
 abstract class CacheHandler extends Module {
 
     // cache time to only get cache or null if not present, arbitrary value
@@ -39,7 +45,8 @@ abstract class CacheHandler extends Module {
         CacheTimes::SESSION => 10 * 60,
         CacheTimes::KEY_INFO => 10 * 60,
         CacheTimes::FRIENDS => 10 * 60,
-        CacheTimes::WATCHDOG => 10 * 60
+        CacheTimes::WATCHDOG => 10 * 60,
+        CacheTimes::GAME_COUNTS => 10 * 60
     ];
 
     protected $globalTime = 0;
@@ -110,37 +117,11 @@ abstract class CacheHandler extends Module {
             $this->setCachedWatchdogStats($hypixelObject);
         } elseif ($hypixelObject instanceof PlayerCount) {
             $this->setCachedPlayerCount($hypixelObject);
+        } elseif ($hypixelObject instanceof GameCounts) {
+            $this->setCachedGameCounts($hypixelObject);
         } else {
             throw new HypixelPHPException("Invalid HypixelObject", ExceptionCodes::INVALID_HYPIXEL_OBJECT);
         }
-    }
-
-    /**
-     * Convert given input to an array in order to cache it
-     *
-     * @param $obj
-     * @return array
-     * @throws InvalidArgumentException
-     */
-    protected function objToArray($obj) {
-        if ($obj instanceof HypixelObject) {
-            return $obj->getRaw();
-        } else if (is_array($obj)) {
-            return $obj;
-        }
-        throw new InvalidArgumentException();
-    }
-
-    /**
-     * @param Closure $provider
-     * @param $data
-     * @return mixed|null
-     */
-    protected function wrapProvider(Closure $provider, $data) {
-        if ($data == null) {
-            return null;
-        }
-        return $provider($this->getHypixelPHP(), $data);
     }
 
     /**
@@ -150,8 +131,62 @@ abstract class CacheHandler extends Module {
     abstract function setCachedPlayer(Player $player);
 
     /**
+     * @param Guild $guild
+     * @return void
+     */
+    abstract function setCachedGuild(Guild $guild);
+
+    /**
+     * @param Friends $friends
+     * @return void
+     */
+    abstract function setCachedFriends(Friends $friends);
+
+    /**
+     * @param Session $session
+     * @return void
+     */
+    abstract function setCachedSession(Session $session);
+
+    /**
+     * @param KeyInfo $keyInfo
+     * @return void
+     */
+    abstract function setCachedKeyInfo(KeyInfo $keyInfo);
+
+    /**
+     * @param Leaderboards $leaderboards
+     * @return void
+     */
+    abstract function setCachedLeaderboards(Leaderboards $leaderboards);
+
+    /**
+     * @param Boosters $boosters
+     * @return void
+     */
+    abstract function setCachedBoosters(Boosters $boosters);
+
+    /**
+     * @param WatchdogStats $watchdogStats
+     * @return void
+     */
+    abstract function setCachedWatchdogStats(WatchdogStats $watchdogStats);
+
+    /**
+     * @param PlayerCount $playerCount
+     * @return void
+     */
+    abstract function setCachedPlayerCount(PlayerCount $playerCount);
+
+    /**
+     * @param GameCounts $gameCounts
+     * @return void
+     */
+    abstract function setCachedGameCounts(GameCounts $gameCounts);
+
+    /**
      * @param $uuid
-     * @return Player
+     * @return null|Response|Player
      */
     abstract function getCachedPlayer($uuid);
 
@@ -169,14 +204,8 @@ abstract class CacheHandler extends Module {
     abstract function getUUID($username);
 
     /**
-     * @param Guild $guild
-     * @return void
-     */
-    abstract function setCachedGuild(Guild $guild);
-
-    /**
      * @param $id
-     * @return Guild
+     * @return null|Response|Guild
      */
     abstract function getCachedGuild($id);
 
@@ -207,82 +236,73 @@ abstract class CacheHandler extends Module {
     abstract function getGuildIDForName($name);
 
     /**
-     * @param Friends $friends
-     * @return void
-     */
-    abstract function setCachedFriends(Friends $friends);
-
-    /**
      * @param $uuid
-     * @return Friends
+     * @return null|Response|Friends
      */
     abstract function getCachedFriends($uuid);
 
     /**
-     * @param Session $session
-     * @return void
-     */
-    abstract function setCachedSession(Session $session);
-
-    /**
      * @param $uuid
-     * @return Session
+     * @return null|Response|Session
      */
     abstract function getCachedSession($uuid);
 
     /**
-     * @param KeyInfo $keyInfo
-     * @return void
-     */
-    abstract function setCachedKeyInfo(KeyInfo $keyInfo);
-
-    /**
      * @param $key
-     * @return KeyInfo
+     * @return null|Response|KeyInfo
      */
     abstract function getCachedKeyInfo($key);
 
     /**
-     * @param Leaderboards $leaderboards
-     * @return void
-     */
-    abstract function setCachedLeaderboards(Leaderboards $leaderboards);
-
-    /**
-     * @return Leaderboards
+     * @return null|Response|Leaderboards
      */
     abstract function getCachedLeaderboards();
 
     /**
-     * @param Boosters $boosters
-     * @return void
-     */
-    abstract function setCachedBoosters(Boosters $boosters);
-
-    /**
-     * @return Boosters
+     * @return null|Response|Boosters
      */
     abstract function getCachedBoosters();
 
     /**
-     * @param WatchdogStats $watchdogStats
-     * @return void
-     */
-    abstract function setCachedWatchdogStats(WatchdogStats $watchdogStats);
-
-    /**
-     * @return WatchdogStats
+     * @return null|Response|WatchdogStats
      */
     abstract function getCachedWatchdogStats();
 
     /**
-     * @param PlayerCount $playerCount
-     * @return void
-     */
-    abstract function setCachedPlayerCount(PlayerCount $playerCount);
-
-    /**
-     * @return PlayerCount
+     * @return null|Response|PlayerCount
      */
     abstract function getCachedPlayerCount();
+
+    /**
+     * @return null|Response|GameCounts
+     */
+    abstract function getCachedGameCounts();
+
+    /**
+     * Convert given input to an array in order to cache it
+     *
+     * @param $obj
+     * @return array
+     * @throws InvalidArgumentException
+     */
+    protected function objToArray($obj) {
+        if ($obj instanceof HypixelObject) {
+            return $obj->getRaw();
+        } else if (is_array($obj)) {
+            return $obj;
+        }
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param Closure $provider
+     * @param $data
+     * @return mixed|null
+     */
+    protected function wrapProvider(Closure $provider, $data) {
+        if ($data == null) {
+            return null;
+        }
+        return $provider($this->getHypixelPHP(), $data);
+    }
 }

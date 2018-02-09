@@ -4,14 +4,18 @@ namespace Plancke\HypixelPHP\options;
 
 use Plancke\HypixelPHP\classes\Module;
 
+/**
+ * Class Options
+ * @package Plancke\HypixelPHP\options
+ */
 class Options extends Module {
 
-    private $options = [];
+    protected $options = [];
 
     /**
      * Manually set option array
      *
-     * @param $options
+     * @param array $options
      * @return $this
      */
     public function _setOptions($options) {
@@ -20,7 +24,7 @@ class Options extends Module {
     }
 
     /**
-     * @param $input
+     * @param array $input
      * @return $this
      */
     public function setOptions($input) {

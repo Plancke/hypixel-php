@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\exceptions;
 
+/**
+ * Class InvalidArgumentException
+ * @package Plancke\HypixelPHP\exceptions
+ */
 class InvalidArgumentException extends HypixelPHPException {
 
     public function __construct() {

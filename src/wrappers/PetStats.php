@@ -25,8 +25,12 @@ class PetStats {
     /**
      * @var Pet[]
      */
-    private $PET_MAP = [];
+    protected $PET_MAP = [];
 
+    /**
+     * PetStats constructor.
+     * @param array $PET_STATS
+     */
     function __construct($PET_STATS) {
         foreach ($PET_STATS as $PET => $PET_INFO) {
             $this->PET_MAP[$PET] = new Pet($PET_INFO);
@@ -64,11 +68,19 @@ class PetStats {
     }
 }
 
+/**
+ * Class Pet
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class Pet {
 
-    private $PET_STATS;
-    private $LEVEL;
+    protected $PET_STATS;
+    protected $LEVEL;
 
+    /**
+     * Pet constructor.
+     * @param array $PET_STATS
+     */
     function __construct($PET_STATS) {
         $this->PET_STATS = $PET_STATS;
 
@@ -120,16 +132,6 @@ class Pet {
         return null;
     }
 
-    private function getAttr($key) {
-        if (!array_key_exists($key, $this->PET_STATS)) {
-            return [
-                'timestamp' => 0,
-                'value' => 0
-            ];
-        }
-        return $this->PET_STATS[$key];
-    }
-
     /**
      * Get value for given attribute while taking the last update
      * timestamp into account
@@ -151,6 +153,20 @@ class Pet {
     }
 
     /**
+     * @param $key
+     * @return mixed
+     */
+    protected function getAttr($key) {
+        if (!array_key_exists($key, $this->PET_STATS)) {
+            return [
+                'timestamp' => 0,
+                'value' => 0
+            ];
+        }
+        return $this->PET_STATS[$key];
+    }
+
+    /**
      *
      * Get pet level
      *
@@ -160,22 +176,31 @@ class Pet {
         return $this->LEVEL;
     }
 
+    /**
+     * @return int
+     */
     function getLevelProgress() {
         return $this->getExperience() - PetStats::getExperienceUntilLevel($this->LEVEL);
     }
 
+    /**
+     * @return array
+     */
     function getRaw() {
         return $this->PET_STATS;
     }
 
 }
 
+/**
+ * Class PetAttributeType
+ * @package Plancke\HypixelPHP\wrappers
+ */
 class PetAttributeType {
 
     const THIRST = 1;
     const HUNGER = 2;
     const EXERCISE = 3;
-
 
     /**
      *

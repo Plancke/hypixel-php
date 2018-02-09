@@ -5,6 +5,10 @@ namespace Plancke\HypixelPHP\responses;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 
+/**
+ * Class WatchdogStats
+ * @package Plancke\HypixelPHP\responses
+ */
 class WatchdogStats extends HypixelObject {
     /**
      * @return int
@@ -27,6 +31,9 @@ class WatchdogStats extends HypixelObject {
         return $this->getInt('watchdog_rollingDaily');
     }
 
+    /**
+     * @return string
+     */
     function getCacheTimeKey() {
         return CacheTimes::WATCHDOG;
     }
