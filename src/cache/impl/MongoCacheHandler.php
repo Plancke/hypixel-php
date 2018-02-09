@@ -123,7 +123,8 @@ class MongoCacheHandler extends CacheHandler {
                 'root' => 'array',
                 'document' => 'array',
                 'array' => 'array'
-            ]
+            ],
+            "maxTimeMS" => 1000
         ]);
     }
 
