@@ -26,25 +26,6 @@ abstract class RankTypes {
     /**
      * @return array
      */
-    public static function values() {
-        return [
-            self::NON_DONOR,
-            self::VIP,
-            self::VIP_PLUS,
-            self::MVP,
-            self::MVP_PLUS,
-            self::SUPERSTAR,
-            self::ADMIN,
-            self::MODERATOR,
-            self::HELPER,
-            self::JR_HELPER,
-            self::YOUTUBER
-        ];
-    }
-
-    /**
-     * @return array
-     */
     public static function getDonorRanks() {
         return [
             self::NON_DONOR,
@@ -79,6 +60,25 @@ abstract class RankTypes {
             }
         }
         return null;
+    }
+
+    /**
+     * @return array
+     */
+    public static function values() {
+        return [
+            self::NON_DONOR,
+            self::VIP,
+            self::VIP_PLUS,
+            self::MVP,
+            self::MVP_PLUS,
+            self::SUPERSTAR,
+            self::ADMIN,
+            self::MODERATOR,
+            self::HELPER,
+            self::JR_HELPER,
+            self::YOUTUBER
+        ];
     }
 
     /**

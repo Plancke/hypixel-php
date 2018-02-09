@@ -130,16 +130,6 @@ class ColorParser {
     }
 
     /**
-     * @param string $color
-     * @param string $part
-     * @return string
-     */
-    protected function _handleColor($color, $part) {
-        $color = self::DEFAULT_COLOR_HEX_MAP[$color];
-        return "<span style='color: $color'>" . $part . "</span>";
-    }
-
-    /**
      * @param string $code
      * @param string $part
      * @return string
@@ -147,6 +137,16 @@ class ColorParser {
     protected function _handleFormatting($code, $part) {
         $css = self::DEFAULT_FORMATTING_CSS[$code];
         return "<span style='$css'>" . $part . "</span>";
+    }
+
+    /**
+     * @param string $color
+     * @param string $part
+     * @return string
+     */
+    protected function _handleColor($color, $part) {
+        $color = self::DEFAULT_COLOR_HEX_MAP[$color];
+        return "<span style='color: $color'>" . $part . "</span>";
     }
 
 }
