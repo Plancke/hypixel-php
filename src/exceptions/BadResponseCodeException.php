@@ -16,7 +16,7 @@ class BadResponseCodeException extends HypixelPHPException {
      * @param int $actual
      */
     public function __construct($expected, $actual) {
-        parent::__construct("Bad Response Code", ExceptionCodes::BAD_RESPONSE_CODE);
+        parent::__construct("Bad Response Code ($expected/$actual)", ExceptionCodes::BAD_RESPONSE_CODE);
 
         $this->expected = $expected;
         $this->actual = $actual;
