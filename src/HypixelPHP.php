@@ -7,6 +7,7 @@ use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\impl\FlatFileCacheHandler;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\exceptions\BadResponseCodeException;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\exceptions\InvalidUUIDException;
@@ -263,6 +264,13 @@ class HypixelPHP {
                         $this->getCacheHandler()->setPlayerUUID($username, $obj);
                         return $obj['uuid'];
                     }
+                }
+            } /** @noinspection PhpRedundantCatchClauseInspection */
+            catch (BadResponseCodeException $e) {
+                if ($e->getActual() == 429) {
+                    // TODO exponential backoff
+                } else {
+                    error_log($e);
                 }
             } catch (\Exception $e) {
                 error_log($e);
