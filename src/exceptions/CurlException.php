@@ -15,7 +15,7 @@ class CurlException extends HypixelPHPException {
      * @param string $error
      */
     public function __construct($error) {
-        parent::__construct("Failed to execute curl.", ExceptionCodes::CURL);
+        parent::__construct("Failed to execute curl. ($error)", ExceptionCodes::CURL);
 
         $this->error = $error;
     }
