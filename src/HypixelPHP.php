@@ -249,32 +249,40 @@ class HypixelPHP {
 
         {
             // try to use mojang
-            $uuidURL = sprintf('https://api.mojang.com/users/profiles/minecraft/%s', $username);
-            $response = $this->getFetcher()->getURLContents($uuidURL);
-            if ($response->wasSuccessful()) {
-                if (isset($response->getData()['id'])) {
-                    $obj = [
-                        'timestamp' => time(),
-                        'name_lowercase' => $username,
-                        'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['id'])
-                    ];
-                    $this->getLogger()->log("Received UUID from Mojang for '" . $username . "': " . $obj['uuid']);
-                    $this->getCacheHandler()->setPlayerUUID($username, $obj);
-                    return $obj['uuid'];
+            try {
+                $uuidURL = sprintf('https://api.mojang.com/users/profiles/minecraft/%s', $username);
+                $response = $this->getFetcher()->getURLContents($uuidURL);
+                if ($response->wasSuccessful()) {
+                    if (isset($response->getData()['id'])) {
+                        $obj = [
+                            'timestamp' => time(),
+                            'name_lowercase' => $username,
+                            'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['id'])
+                        ];
+                        $this->getLogger()->log("Received UUID from Mojang for '" . $username . "': " . $obj['uuid']);
+                        $this->getCacheHandler()->setPlayerUUID($username, $obj);
+                        return $obj['uuid'];
+                    }
                 }
+            } catch (\Exception $e) {
+                error_log($e);
             }
 
             // if all else fails fall back to hypixel
-            $response = $this->getFetcher()->fetch(FetchTypes::PLAYER, [FetchParams::PLAYER_BY_NAME => $username]);
-            if ($response->wasSuccessful()) {
-                $obj = [
-                    'timestamp' => time(),
-                    'name_lowercase' => $username,
-                    'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['record']['uuid'])
-                ];
-                $this->getLogger()->log("Received UUID from Hypixel for '" . $username . "': " . $obj['uuid']);
-                $this->getCacheHandler()->setPlayerUUID($username, $obj);
-                return $obj['uuid'];
+            try {
+                $response = $this->getFetcher()->fetch(FetchTypes::PLAYER, [FetchParams::PLAYER_BY_NAME => $username]);
+                if ($response->wasSuccessful()) {
+                    $obj = [
+                        'timestamp' => time(),
+                        'name_lowercase' => $username,
+                        'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['record']['uuid'])
+                    ];
+                    $this->getLogger()->log("Received UUID from Hypixel for '" . $username . "': " . $obj['uuid']);
+                    $this->getCacheHandler()->setPlayerUUID($username, $obj);
+                    return $obj['uuid'];
+                }
+            } catch (\Exception $e) {
+                error_log($e);
             }
         }
 
