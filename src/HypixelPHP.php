@@ -272,25 +272,19 @@ class HypixelPHP {
                 } else {
                     error_log($e);
                 }
-            } catch (\Exception $e) {
-                error_log($e);
             }
 
             // if all else fails fall back to hypixel
-            try {
-                $response = $this->getFetcher()->fetch(FetchTypes::PLAYER, [FetchParams::PLAYER_BY_NAME => $username]);
-                if ($response->wasSuccessful()) {
-                    $obj = [
-                        'timestamp' => time(),
-                        'name_lowercase' => $username,
-                        'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['record']['uuid'])
-                    ];
-                    $this->getLogger()->log("Received UUID from Hypixel for '" . $username . "': " . $obj['uuid']);
-                    $this->getCacheHandler()->setPlayerUUID($username, $obj);
-                    return $obj['uuid'];
-                }
-            } catch (\Exception $e) {
-                error_log($e);
+            $response = $this->getFetcher()->fetch(FetchTypes::PLAYER, [FetchParams::PLAYER_BY_NAME => $username]);
+            if ($response->wasSuccessful()) {
+                $obj = [
+                    'timestamp' => time(),
+                    'name_lowercase' => $username,
+                    'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['record']['uuid'])
+                ];
+                $this->getLogger()->log("Received UUID from Hypixel for '" . $username . "': " . $obj['uuid']);
+                $this->getCacheHandler()->setPlayerUUID($username, $obj);
+                return $obj['uuid'];
             }
         }
 
