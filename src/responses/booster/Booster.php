@@ -72,4 +72,11 @@ class Booster extends APIObject {
     public function getActivateTime() {
         return $this->getInt('dateActivated');
     }
+
+    /**
+     * @return array
+     */
+    public function getStacked() {
+        return $this->getArray('stacked');
+    }
 }
