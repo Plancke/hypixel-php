@@ -67,4 +67,13 @@ abstract class APIObject extends APIHolding {
     public function getInt($key, $default = 0) {
         return $this->get($key, $default);
     }
+
+    /**
+     * @param $key
+     * @param double $default
+     * @return double
+     */
+    public function getDouble($key, $default = 0.0) {
+        return $this->get($key, $default);
+    }
 }

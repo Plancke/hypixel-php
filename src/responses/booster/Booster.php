@@ -79,4 +79,11 @@ class Booster extends APIObject {
     public function getStacked() {
         return $this->getArray('stacked');
     }
+
+    /**
+     * @return double
+     */
+    public function getAmount() {
+        return $this->getDouble('amount');
+    }
 }
