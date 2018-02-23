@@ -4,6 +4,7 @@ namespace Plancke\HypixelPHP\responses\booster;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\util\Utilities;
 
 /**
  * Class Boosters
@@ -36,13 +37,19 @@ class Boosters extends HypixelObject {
     /**
      * Get queued boosters by uuid
      *
-     * @param string $player
+     * @param string $uuid
      * @return Booster[]
      */
-    public function getBoosters($player) {
+    public function getBoosters($uuid) {
+        $uuid = Utilities::ensureNoDashesUUID($uuid);
+        $dashedUuid = Utilities::ensureDashedUUID($uuid);
+
         $boosters = [];
         foreach ($this->getData() as $boosterInfo) {
-            if (isset($boosterInfo['purchaserUuid']) && $boosterInfo['purchaserUuid'] == $player) {
+            if (isset($boosterInfo['purchaserUuid']) && $boosterInfo['purchaserUuid'] == $uuid) {
+                array_push($boosters, new Booster($this->getHypixelPHP(), $boosterInfo));
+            }
+            if (isset($boosterInfo['stacked']) && in_array($dashedUuid, $boosterInfo['stacked'])) {
                 array_push($boosters, new Booster($this->getHypixelPHP(), $boosterInfo));
             }
         }
