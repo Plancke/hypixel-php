@@ -8,32 +8,32 @@ namespace Plancke\HypixelPHP\exceptions;
  */
 class BadResponseCodeException extends HypixelPHPException {
 
-    protected $expected, $actual;
+    protected $expectedCode, $actualCode;
 
     /**
      * BadResponseCodeException constructor.
-     * @param int $expected
-     * @param int $actual
+     * @param int $expectedCode
+     * @param int $actualCode
      */
-    public function __construct($expected, $actual) {
-        parent::__construct("Bad Response Code ($expected/$actual)", ExceptionCodes::BAD_RESPONSE_CODE);
+    public function __construct($expectedCode, $actualCode) {
+        parent::__construct("Bad Response Code ($expectedCode/$actualCode)", ExceptionCodes::BAD_RESPONSE_CODE);
 
-        $this->expected = $expected;
-        $this->actual = $actual;
+        $this->expectedCode = $expectedCode;
+        $this->actualCode = $actualCode;
     }
 
     /**
      * @return int
      */
     public function getExpected() {
-        return $this->expected;
+        return $this->expectedCode;
     }
 
     /**
      * @return int
      */
-    public function getActual() {
-        return $this->actual;
+    public function getActualCode() {
+        return $this->actualCode;
     }
 
 }

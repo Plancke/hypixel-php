@@ -267,8 +267,11 @@ class HypixelPHP {
                 }
             } /** @noinspection PhpRedundantCatchClauseInspection */
             catch (BadResponseCodeException $e) {
-                if ($e->getActual() == 429) {
+                if ($e->getActualCode() == 429) {
                     // TODO exponential backoff
+                } else if ($e->getActualCode() == 204) {
+                    // no content == doesn't exist
+                    return null;
                 } else {
                     error_log($e);
                 }
