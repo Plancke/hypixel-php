@@ -22,7 +22,7 @@ return array(
                         array(
                             'display' => 'Guardian',
                             'package' => 'kit_guardian',
-                            'description' => 'Guardians become resistant when their health gets low and have access to defensive Splash Potions.',
+                            'description' => 'Guardians become resistant when their health gets low and have access to defensive splash potions.',
                         ),
                     'SWORDSMAN' =>
                         array(
@@ -34,7 +34,7 @@ return array(
                         array(
                             'display' => 'Cleric',
                             'package' => 'kit_cleric',
-                            'description' => 'Clerics use a holy book as a weapon and are capable of healing themselves (and nearby team members).',
+                            'description' => 'Cleric use magical healing to keep them and their teammates topped up.',
                             'cost' => 1000,
                         ),
                     'FROST_KNIGHT' =>
@@ -369,6 +369,60 @@ return array(
                         array(
                             'display' => 'UHC Challenge',
                             'package' => 'perk_uhc_challenge',
+                            'tier' => 'LEGENDARY',
+                        ),
+                    'LIFESTEAL' =>
+                        array(
+                            'display' => 'Lifesteal',
+                            'package' => 'perk_lifesteal',
+                            'tier' => 'COMMON',
+                        ),
+                    'VOID_CHEST' =>
+                        array(
+                            'display' => 'Void Chest',
+                            'package' => 'perk_void_chest',
+                            'tier' => 'RARE',
+                        ),
+                    'DOUBLE_JUMP' =>
+                        array(
+                            'display' => 'Double Jump',
+                            'package' => 'perk_double_jump',
+                            'tier' => 'RARE',
+                        ),
+                    'MONSTER_HUNTER' =>
+                        array(
+                            'display' => 'Monster Hunter',
+                            'package' => 'perk_monster_hunter',
+                            'tier' => 'COMMON',
+                        ),
+                    'HEAD_HUNTER' =>
+                        array(
+                            'display' => 'Head Hunter',
+                            'package' => 'perk_head_hunter',
+                            'tier' => 'LEGENDARY',
+                        ),
+                    'BOUNTY_HUNTER' =>
+                        array(
+                            'display' => 'Bounty Hunter',
+                            'package' => 'perk_bounty_hunter',
+                            'tier' => 'LEGENDARY',
+                        ),
+                    'HALF_HEALTH_CHALLENGE' =>
+                        array(
+                            'display' => 'Half Health Challenge',
+                            'package' => 'perk_half_health_challenge',
+                            'tier' => 'COMMON',
+                        ),
+                    'ULTIMATE_WARRIOR_CHALLENGE' =>
+                        array(
+                            'display' => 'Ultimate Warrior Challenge',
+                            'package' => 'perk_ultimate_warrior_challenge',
+                            'tier' => 'RARE',
+                        ),
+                    'BOMBER_CHALLENGE' =>
+                        array(
+                            'display' => 'Bomber Challenge',
+                            'package' => 'perk_bomber_challenge',
                             'tier' => 'LEGENDARY',
                         ),
                 ),
