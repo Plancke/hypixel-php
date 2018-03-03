@@ -78,6 +78,8 @@ class ColorParser {
                 array_push($actualExplode, []);
             } else if ($code == ColorUtils::RESET) {
                 array_push($actualExplode, []);
+            } else if (sizeof($actualExplode) == 0) {
+                array_push($actualExplode, []);
             }
 
             // append to last grouping
