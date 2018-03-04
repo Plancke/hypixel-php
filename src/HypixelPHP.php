@@ -229,7 +229,7 @@ class HypixelPHP {
      * @return string|null
      */
     public function getUUID($username) {
-        $username = strtolower((string)$username);
+        $username = trim(strtolower((string)$username));
         $cached = $this->getCacheHandler()->getUUID($username);
         if ($cached != null) {
             return $cached;
