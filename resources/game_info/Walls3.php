@@ -9,7 +9,11 @@ return array(
                             'display' => 'Hunter',
                             'description' => 'Use superior archery skills to pelt enemies with arrows.',
                             'type' => 'HERO',
-                            'category' => 'RANGED',
+                            'categories' =>
+                                array(
+                                    0 => 'RANGED',
+                                    1 => 'FIGHTER',
+                                ),
                             'difficulty' => 3,
                         ),
                     'ZOMBIE' =>
@@ -17,7 +21,11 @@ return array(
                             'display' => 'Zombie',
                             'description' => 'The Zombie class focuses on defensive gameplay and healing.',
                             'type' => 'NORMAL',
-                            'category' => 'TANK',
+                            'categories' =>
+                                array(
+                                    0 => 'TANK',
+                                    1 => 'SUPPORT',
+                                ),
                             'difficulty' => 2,
                         ),
                     'CREEPER' =>
@@ -25,7 +33,11 @@ return array(
                             'display' => 'Creeper',
                             'description' => 'The Creeper class uses explosion based powers to win.',
                             'type' => 'NORMAL',
-                            'category' => 'DAMAGE',
+                            'categories' =>
+                                array(
+                                    0 => 'DAMAGE',
+                                    1 => 'CONTROL',
+                                ),
                             'difficulty' => 4,
                         ),
                     'ARCANIST' =>
@@ -33,7 +45,11 @@ return array(
                             'display' => 'Arcanist',
                             'description' => 'PLACEHOLDER',
                             'type' => 'HERO',
-                            'category' => 'FIGHTER',
+                            'categories' =>
+                                array(
+                                    0 => 'FIGHTER',
+                                    1 => 'DAMAGE',
+                                ),
                             'difficulty' => 1,
                         ),
                     'SHAMAN' =>
@@ -41,7 +57,11 @@ return array(
                             'display' => 'Shaman',
                             'description' => 'PLACEHOLDER',
                             'type' => 'HERO',
-                            'category' => 'FIGHTER',
+                            'categories' =>
+                                array(
+                                    0 => 'FIGHTER',
+                                    1 => 'CONTROL',
+                                ),
                             'difficulty' => 3,
                         ),
                     'DREADLORD' =>
@@ -49,7 +69,11 @@ return array(
                             'display' => 'Dreadlord',
                             'description' => 'PLACEHOLDER',
                             'type' => 'HERO',
-                            'category' => 'RUSHER',
+                            'categories' =>
+                                array(
+                                    0 => 'RUSHER',
+                                    1 => 'FIGHTER',
+                                ),
                             'difficulty' => 1,
                         ),
                     'GOLEM' =>
@@ -57,7 +81,11 @@ return array(
                             'display' => 'Golem',
                             'description' => 'PLACEHOLDER',
                             'type' => 'HERO',
-                            'category' => 'TANK',
+                            'categories' =>
+                                array(
+                                    0 => 'TANK',
+                                    1 => 'FIGHTER',
+                                ),
                             'difficulty' => 2,
                         ),
                     'SQUID' =>
@@ -65,7 +93,11 @@ return array(
                             'display' => 'Squid',
                             'description' => 'Splashing around, like a Squid, because thats what Squids do. Splash.',
                             'type' => 'NORMAL',
-                            'category' => 'TANK',
+                            'categories' =>
+                                array(
+                                    0 => 'TANK',
+                                    1 => 'CONTROL',
+                                ),
                             'difficulty' => 1,
                         ),
                     'MOLEMAN' =>
@@ -73,7 +105,11 @@ return array(
                             'display' => 'Moleman',
                             'description' => 'Wanna play wacka mole...?',
                             'type' => 'MYTHIC',
-                            'category' => 'MOBILITY',
+                            'categories' =>
+                                array(
+                                    0 => 'MOBILITY',
+                                    1 => 'CONTROL',
+                                ),
                             'difficulty' => 2,
                         ),
                     'ENDERMAN' =>
@@ -81,7 +117,11 @@ return array(
                             'display' => 'Enderman',
                             'description' => 'The Enderman class has special teleportation powers and endurance.',
                             'type' => 'NORMAL',
-                            'category' => 'MOBILITY',
+                            'categories' =>
+                                array(
+                                    0 => 'MOBILITY',
+                                    1 => 'RUSHER',
+                                ),
                             'difficulty' => 2,
                         ),
                     'HEROBRINE' =>
@@ -89,7 +129,11 @@ return array(
                             'display' => 'Herobrine',
                             'description' => 'The Herobrine class uses supernatural abilities to attack and destroy your enemies.',
                             'type' => 'NORMAL',
-                            'category' => 'FIGHTER',
+                            'categories' =>
+                                array(
+                                    0 => 'FIGHTER',
+                                    1 => 'DAMAGE',
+                                ),
                             'difficulty' => 1,
                         ),
                     'BLAZE' =>
@@ -97,7 +141,11 @@ return array(
                             'display' => 'Blaze',
                             'description' => 'The Blaze class uses the spirit of fire to enfore flames.',
                             'type' => 'HERO',
-                            'category' => 'RANGED',
+                            'categories' =>
+                                array(
+                                    0 => 'RANGED',
+                                    1 => 'CONTROL',
+                                ),
                             'difficulty' => 2,
                         ),
                     'PIGMAN' =>
@@ -105,7 +153,11 @@ return array(
                             'display' => 'Pigman',
                             'description' => 'Half man, half pig, half..oh wait! Feel the power of pork!',
                             'type' => 'HERO',
-                            'category' => 'FIGHTER',
+                            'categories' =>
+                                array(
+                                    0 => 'FIGHTER',
+                                    1 => 'SUPPORT',
+                                ),
                             'difficulty' => 2,
                         ),
                     'SPIDER' =>
@@ -113,7 +165,11 @@ return array(
                             'display' => 'Spider',
                             'description' => 'The Spider class uses agile paths for combat.',
                             'type' => 'NORMAL',
-                            'category' => 'MOBILITY',
+                            'categories' =>
+                                array(
+                                    0 => 'MOBILITY',
+                                    1 => 'RUSHER',
+                                ),
                             'difficulty' => 3,
                         ),
                     'WEREWOLF' =>
@@ -121,7 +177,11 @@ return array(
                             'display' => 'Werewolf',
                             'description' => 'It\'s always full moon for this brawler.. Slice and dice your way to victory!',
                             'type' => 'MYTHIC',
-                            'category' => 'FIGHTER',
+                            'categories' =>
+                                array(
+                                    0 => 'TANK',
+                                    1 => 'FIGHTER',
+                                ),
                             'difficulty' => 2,
                         ),
                     'PIRATE' =>
@@ -129,7 +189,11 @@ return array(
                             'display' => 'Pirate',
                             'description' => 'Use cunning and wit to survive, or blow enemies up with parrots.',
                             'type' => 'HERO',
-                            'category' => 'FIGHTER',
+                            'categories' =>
+                                array(
+                                    0 => 'FIGHTER',
+                                    1 => 'DAMAGE',
+                                ),
                             'difficulty' => 3,
                         ),
                     'PHOENIX' =>
@@ -137,7 +201,11 @@ return array(
                             'display' => 'Phoenix',
                             'description' => 'Born from the ashes of my predecessor I shall erase you from existence!',
                             'type' => 'MYTHIC',
-                            'category' => 'RANGED',
+                            'categories' =>
+                                array(
+                                    0 => 'RANGED',
+                                    1 => 'SUPPORT',
+                                ),
                             'difficulty' => 4,
                         ),
                     'SKELETON' =>
@@ -145,112 +213,95 @@ return array(
                             'display' => 'Skeleton',
                             'description' => 'The Skeleton class makes excellent use of ranged abilities and weapons.',
                             'type' => 'NORMAL',
-                            'category' => 'RANGED',
+                            'categories' =>
+                                array(
+                                    0 => 'RANGED',
+                                    1 => 'MOBILITY',
+                                ),
                             'difficulty' => 3,
                         ),
-                ),
-            'cost' =>
-                array(
-                    'NORMAL' =>
+                    'ASSASSIN' =>
                         array(
-                            'classes' =>
+                            'display' => 'Assasin',
+                            'description' => '',
+                            'type' => 'MYTHIC',
+                            'categories' =>
                                 array(
-                                    0 => 50,
-                                    1 => 125,
-                                    2 => 300,
-                                    3 => 600,
-                                    4 => 3500,
-                                    5 => 6500,
-                                    6 => 8500,
-                                    7 => 14000,
+                                    0 => 'DAMAGE',
+                                    1 => 'RUSHER',
                                 ),
-                            'enderchest' =>
-                                array(
-                                    0 => 3000,
-                                    1 => 7000,
-                                    2 => 14000,
-                                    3 => 70000,
-                                ),
-                            'prestige' =>
-                                array(
-                                    0 => 250000,
-                                    1 => 250000,
-                                    2 => 250000,
-                                ),
+                            'difficulty' => 2,
                         ),
-                    'HERO' =>
+                    'RENEGADE' =>
                         array(
-                            'unlockCost' =>
+                            'display' => 'Renegade',
+                            'description' => '',
+                            'type' => 'MYTHIC',
+                            'categories' =>
                                 array(
-                                    'DREADLORD' => 10000,
-                                    'SHAMAN' => 10000,
-                                    'ARCANIST' => 10000,
-                                    'GOLEM' => 10000,
-                                    'BLAZE' => 10000,
-                                    'PIGMAN' => 15000,
-                                    'PIRATE' => 20000,
-                                    'HUNTER' => 20000,
+                                    0 => 'MOBILITY',
+                                    1 => 'RANGED',
                                 ),
-                            'classes' =>
-                                array(
-                                    0 => 100,
-                                    1 => 250,
-                                    2 => 600,
-                                    3 => 1200,
-                                    4 => 7000,
-                                    5 => 13000,
-                                    6 => 17000,
-                                    7 => 28000,
-                                ),
-                            'enderchest' =>
-                                array(
-                                    0 => 6000,
-                                    1 => 14000,
-                                    2 => 28000,
-                                    3 => 140000,
-                                ),
-                            'prestige' =>
-                                array(
-                                    0 => 500000,
-                                    1 => 500000,
-                                    2 => 500000,
-                                ),
+                            'difficulty' => 3,
                         ),
-                    'MYTHIC' =>
+                    'SNOWMAN' =>
                         array(
-                            'classes' =>
+                            'display' => 'Snowman',
+                            'description' => '',
+                            'type' => 'MYTHIC',
+                            'categories' =>
                                 array(
-                                    0 => 50,
-                                    1 => 125,
-                                    2 => 300,
-                                    3 => 600,
-                                    4 => 3500,
-                                    5 => 6500,
-                                    6 => 8500,
-                                    7 => 14000,
+                                    0 => 'CONTROL',
+                                    1 => 'FIGHTER',
                                 ),
-                            'enderchest' =>
+                            'difficulty' => 3,
+                        ),
+                    'AUTOMATON' =>
+                        array(
+                            'display' => 'Automaton',
+                            'description' => '',
+                            'type' => 'MYTHIC',
+                            'categories' =>
                                 array(
-                                    0 => 3000,
-                                    1 => 7000,
-                                    2 => 14000,
-                                    3 => 70000,
+                                    0 => 'CONTROL',
+                                    1 => 'TANK',
                                 ),
-                            'prestige' =>
+                            'difficulty' => 4,
+                        ),
+                    'COW' =>
+                        array(
+                            'display' => 'Cow',
+                            'description' => '',
+                            'type' => 'NORMAL',
+                            'categories' =>
                                 array(
-                                    0 => 250000,
-                                    1 => 250000,
-                                    2 => 250000,
+                                    0 => 'TANK',
+                                    1 => 'SUPPORT',
                                 ),
+                            'difficulty' => 2,
+                        ),
+                    'SHARK' =>
+                        array(
+                            'display' => 'Shark',
+                            'description' => '',
+                            'type' => 'NORMAL',
+                            'categories' =>
+                                array(
+                                    0 => 'DAMAGE',
+                                    1 => 'CONTROL',
+                                ),
+                            'difficulty' => 1,
                         ),
                 ),
             'fields' =>
                 array(
-                    'Skill' => 'a',
-                    'Passive 1' => 'b',
-                    'Passive 2' => 'c',
-                    'Kit' => 'd',
-                    'Gathering' => 'g',
+                    'Skill' => '%class%.skill_level_a',
+                    'Passive 1' => '%class%.skill_level_b',
+                    'Passive 2' => '%class%.skill_level_c',
+                    'Kit' => '%class%.skill_level_d',
+                    'Gathering' => '%class%.skill_level_g',
+                    'Prestige' => '%class%.prestige',
+                    'Enderchest Rows' => '%class%.enderchest_rows',
                 ),
         ),
     'modes' =>

@@ -5,216 +5,251 @@
         "display": "Hunter",
         "description": "Use superior archery skills to pelt enemies with arrows.",
         "type": "HERO",
-        "category": "RANGED",
+        "categories": [
+          "RANGED",
+          "FIGHTER"
+        ],
         "difficulty": 3.0
       },
       "ZOMBIE": {
         "display": "Zombie",
         "description": "The Zombie class focuses on defensive gameplay and healing.",
         "type": "NORMAL",
-        "category": "TANK",
+        "categories": [
+          "TANK",
+          "SUPPORT"
+        ],
         "difficulty": 2.0
       },
       "CREEPER": {
         "display": "Creeper",
         "description": "The Creeper class uses explosion based powers to win.",
         "type": "NORMAL",
-        "category": "DAMAGE",
+        "categories": [
+          "DAMAGE",
+          "CONTROL"
+        ],
         "difficulty": 4.0
       },
       "ARCANIST": {
         "display": "Arcanist",
         "description": "PLACEHOLDER",
         "type": "HERO",
-        "category": "FIGHTER",
+        "categories": [
+          "FIGHTER",
+          "DAMAGE"
+        ],
         "difficulty": 1.0
       },
       "SHAMAN": {
         "display": "Shaman",
         "description": "PLACEHOLDER",
         "type": "HERO",
-        "category": "FIGHTER",
+        "categories": [
+          "FIGHTER",
+          "CONTROL"
+        ],
         "difficulty": 3.0
       },
       "DREADLORD": {
         "display": "Dreadlord",
         "description": "PLACEHOLDER",
         "type": "HERO",
-        "category": "RUSHER",
+        "categories": [
+          "RUSHER",
+          "FIGHTER"
+        ],
         "difficulty": 1.0
       },
       "GOLEM": {
         "display": "Golem",
         "description": "PLACEHOLDER",
         "type": "HERO",
-        "category": "TANK",
+        "categories": [
+          "TANK",
+          "FIGHTER"
+        ],
         "difficulty": 2.0
       },
       "SQUID": {
         "display": "Squid",
         "description": "Splashing around, like a Squid, because thats what Squids do. Splash.",
         "type": "NORMAL",
-        "category": "TANK",
+        "categories": [
+          "TANK",
+          "CONTROL"
+        ],
         "difficulty": 1.0
       },
       "MOLEMAN": {
         "display": "Moleman",
         "description": "Wanna play wacka mole...?",
         "type": "MYTHIC",
-        "category": "MOBILITY",
+        "categories": [
+          "MOBILITY",
+          "CONTROL"
+        ],
         "difficulty": 2.0
       },
       "ENDERMAN": {
         "display": "Enderman",
         "description": "The Enderman class has special teleportation powers and endurance.",
         "type": "NORMAL",
-        "category": "MOBILITY",
+        "categories": [
+          "MOBILITY",
+          "RUSHER"
+        ],
         "difficulty": 2.0
       },
       "HEROBRINE": {
         "display": "Herobrine",
         "description": "The Herobrine class uses supernatural abilities to attack and destroy your enemies.",
         "type": "NORMAL",
-        "category": "FIGHTER",
+        "categories": [
+          "FIGHTER",
+          "DAMAGE"
+        ],
         "difficulty": 1.0
       },
       "BLAZE": {
         "display": "Blaze",
         "description": "The Blaze class uses the spirit of fire to enfore flames.",
         "type": "HERO",
-        "category": "RANGED",
+        "categories": [
+          "RANGED",
+          "CONTROL"
+        ],
         "difficulty": 2.0
       },
       "PIGMAN": {
         "display": "Pigman",
         "description": "Half man, half pig, half..oh wait! Feel the power of pork!",
         "type": "HERO",
-        "category": "FIGHTER",
+        "categories": [
+          "FIGHTER",
+          "SUPPORT"
+        ],
         "difficulty": 2.0
       },
       "SPIDER": {
         "display": "Spider",
         "description": "The Spider class uses agile paths for combat.",
         "type": "NORMAL",
-        "category": "MOBILITY",
+        "categories": [
+          "MOBILITY",
+          "RUSHER"
+        ],
         "difficulty": 3.0
       },
       "WEREWOLF": {
         "display": "Werewolf",
         "description": "It's always full moon for this brawler.. Slice and dice your way to victory!",
         "type": "MYTHIC",
-        "category": "FIGHTER",
+        "categories": [
+          "TANK",
+          "FIGHTER"
+        ],
         "difficulty": 2.0
       },
       "PIRATE": {
         "display": "Pirate",
         "description": "Use cunning and wit to survive, or blow enemies up with parrots.",
         "type": "HERO",
-        "category": "FIGHTER",
+        "categories": [
+          "FIGHTER",
+          "DAMAGE"
+        ],
         "difficulty": 3.0
       },
       "PHOENIX": {
         "display": "Phoenix",
         "description": "Born from the ashes of my predecessor I shall erase you from existence!",
         "type": "MYTHIC",
-        "category": "RANGED",
+        "categories": [
+          "RANGED",
+          "SUPPORT"
+        ],
         "difficulty": 4.0
       },
       "SKELETON": {
         "display": "Skeleton",
         "description": "The Skeleton class makes excellent use of ranged abilities and weapons.",
         "type": "NORMAL",
-        "category": "RANGED",
+        "categories": [
+          "RANGED",
+          "MOBILITY"
+        ],
         "difficulty": 3.0
-      }
-    },
-    "cost": {
-      "NORMAL": {
-        "classes": [
-          50,
-          125,
-          300,
-          600,
-          3500,
-          6500,
-          8500,
-          14000
-        ],
-        "enderchest": [
-          3000,
-          7000,
-          14000,
-          70000
-        ],
-        "prestige": [
-          250000,
-          250000,
-          250000
-        ]
       },
-      "HERO": {
-        "unlockCost": {
-          "DREADLORD": 10000,
-          "SHAMAN": 10000,
-          "ARCANIST": 10000,
-          "GOLEM": 10000,
-          "BLAZE": 10000,
-          "PIGMAN": 15000,
-          "PIRATE": 20000,
-          "HUNTER": 20000
-        },
-        "classes": [
-          100,
-          250,
-          600,
-          1200,
-          7000,
-          13000,
-          17000,
-          28000
+      "ASSASSIN": {
+        "display": "Assasin",
+        "description": "",
+        "type": "MYTHIC",
+        "categories": [
+          "DAMAGE",
+          "RUSHER"
         ],
-        "enderchest": [
-          6000,
-          14000,
-          28000,
-          140000
-        ],
-        "prestige": [
-          500000,
-          500000,
-          500000
-        ]
+        "difficulty": 2.0
       },
-      "MYTHIC": {
-        "classes": [
-          50,
-          125,
-          300,
-          600,
-          3500,
-          6500,
-          8500,
-          14000
+      "RENEGADE": {
+        "display": "Renegade",
+        "description": "",
+        "type": "MYTHIC",
+        "categories": [
+          "MOBILITY",
+          "RANGED"
         ],
-        "enderchest": [
-          3000,
-          7000,
-          14000,
-          70000
+        "difficulty": 3.0
+      },
+      "SNOWMAN": {
+        "display": "Snowman",
+        "description": "",
+        "type": "MYTHIC",
+        "categories": [
+          "CONTROL",
+          "FIGHTER"
         ],
-        "prestige": [
-          250000,
-          250000,
-          250000
-        ]
+        "difficulty": 3.0
+      },
+      "AUTOMATON": {
+        "display": "Automaton",
+        "description": "",
+        "type": "MYTHIC",
+        "categories": [
+          "CONTROL",
+          "TANK"
+        ],
+        "difficulty": 4.0
+      },
+      "COW": {
+        "display": "Cow",
+        "description": "",
+        "type": "NORMAL",
+        "categories": [
+          "TANK",
+          "SUPPORT"
+        ],
+        "difficulty": 2.0
+      },
+      "SHARK": {
+        "display": "Shark",
+        "description": "",
+        "type": "NORMAL",
+        "categories": [
+          "DAMAGE",
+          "CONTROL"
+        ],
+        "difficulty": 1.0
       }
     },
     "fields": {
-      "Skill": "a",
-      "Passive 1": "b",
-      "Passive 2": "c",
-      "Kit": "d",
-      "Gathering": "g"
+      "Skill": "%class%.skill_level_a",
+      "Passive 1": "%class%.skill_level_b",
+      "Passive 2": "%class%.skill_level_c",
+      "Kit": "%class%.skill_level_d",
+      "Gathering": "%class%.skill_level_g",
+      "Prestige": "%class%.prestige",
+      "Enderchest Rows": "%class%.enderchest_rows"
     }
   },
   "modes": {
