@@ -295,13 +295,13 @@ return array(
                 ),
             'fields' =>
                 array(
-                    'Skill' => '%class%.skill_level_a',
-                    'Passive 1' => '%class%.skill_level_b',
-                    'Passive 2' => '%class%.skill_level_c',
-                    'Kit' => '%class%.skill_level_d',
-                    'Gathering' => '%class%.skill_level_g',
-                    'Prestige' => '%class%.prestige',
-                    'Enderchest Rows' => '%class%.enderchest_rows',
+                    'Skill' => 'classes.%class%.skill_level_a',
+                    'Passive 1' => 'classes.%class%.skill_level_b',
+                    'Passive 2' => 'classes.%class%.skill_level_c',
+                    'Kit' => 'classes.%class%.skill_level_d',
+                    'Gathering' => 'classes.%class%.skill_level_g',
+                    'Prestige' => 'classes.%class%.prestige',
+                    'Enderchest' => 'classes.%class%.enderchest_rows',
                 ),
         ),
     'modes' =>
