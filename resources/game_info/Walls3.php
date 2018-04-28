@@ -222,7 +222,7 @@ return array(
                         ),
                     'ASSASSIN' =>
                         array(
-                            'display' => 'Assasin',
+                            'display' => 'Assassin',
                             'description' => '',
                             'type' => 'MYTHIC',
                             'categories' =>
