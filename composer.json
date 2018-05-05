@@ -11,7 +11,7 @@
     }
   ],
   "keywords": [
-    "hypixel"
+    "hypixel", "plancke", "api", "wrapper"
   ],
   "support": {
     "issues": "https://github.com/Plancke/hypixel-php/issues"
