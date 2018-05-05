@@ -270,7 +270,13 @@ class HypixelPHP {
                 if ($e->getActualCode() == 429) {
                     // TODO exponential backoff
                 } else if ($e->getActualCode() == 204) {
-                    // no content == doesn't exist
+                    $obj = [
+                        'timestamp' => time(),
+                        'name_lowercase' => $username,
+                        'uuid' => null
+                    ];
+                    $this->getLogger()->log("Received empty content (doesn't exist) while getting UUID for '" . $username . "' saving null!");
+                    $this->getCacheHandler()->setPlayerUUID($username, $obj);
                     return null;
                 } else {
                     error_log($e);
