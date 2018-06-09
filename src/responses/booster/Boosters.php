@@ -49,7 +49,7 @@ class Boosters extends HypixelObject {
             if (isset($boosterInfo['purchaserUuid']) && $boosterInfo['purchaserUuid'] == $uuid) {
                 array_push($boosters, new Booster($this->getHypixelPHP(), $boosterInfo));
             }
-            if (isset($boosterInfo['stacked']) && in_array($dashedUuid, $boosterInfo['stacked'])) {
+            if (isset($boosterInfo['stacked']) && is_array($boosterInfo['stacked']) && in_array($dashedUuid, $boosterInfo['stacked'])) {
                 array_push($boosters, new Booster($this->getHypixelPHP(), $boosterInfo));
             }
         }
