@@ -2,41 +2,25 @@
 
 namespace Plancke\HypixelPHP\responses\guild;
 
-use Plancke\HypixelPHP\classes\APIHolding;
+use Plancke\HypixelPHP\classes\APIObject;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\responses\player\Player;
 
-/**
- * Class GuildMember
- * @package Plancke\HypixelPHP\responses\guild
- */
-class GuildMember extends APIHolding {
-    protected $coinHistory;
-    protected $uuid, $name;
-    protected $joined;
+class GuildMember extends APIObject {
+
+    protected $rank;
 
     /**
      * @param HypixelPHP $HypixelPHP
+     * @param Guild $guild
      * @param $member
      */
-    public function __construct(HypixelPHP $HypixelPHP, $member) {
-        parent::__construct($HypixelPHP);
+    public function __construct(HypixelPHP $HypixelPHP, Guild $guild, $member) {
+        parent::__construct($HypixelPHP, $member);
 
-
-        if (isset($member['coinHistory'])) {
-            $this->coinHistory = $member['coinHistory'];
-        }
-        if (isset($member['uuid'])) {
-            $this->uuid = $member['uuid'];
-        }
-        if (isset($member['name'])) {
-            $this->name = $member['name'];
-        }
-        if (isset($member['joined'])) {
-            $this->joined = $member['joined'];
-        }
+        $this->rank = $guild->getRanks()->getRank($this->get("rank"));
     }
 
     /**
@@ -44,32 +28,34 @@ class GuildMember extends APIHolding {
      * @throws HypixelPHPException
      */
     public function getPlayer() {
-        if (isset($this->uuid)) {
-            return $this->getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_UUID => $this->uuid]);
-        } else if (isset($this->name)) {
-            return $this->getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_NAME => $this->name]);
-        }
-        return null;
+        return $this->getHypixelPHP()->getPlayer([FetchParams::PLAYER_BY_UUID => $this->getUUID()]);
     }
 
     /**
      * @return string
      */
     public function getUUID() {
-        return $this->uuid;
+        return $this->get("uuid");
     }
 
     /**
-     * @return array
+     * @return GuildRank
      */
-    public function getCoinHistory() {
-        return $this->coinHistory;
+    public function getRank() {
+        return $this->rank;
     }
 
     /**
      * @return int
      */
     public function getJoinTimeStamp() {
-        return $this->joined;
+        return $this->getInt("joined");
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuestParticipation() {
+        return $this->getInt("questParticipation");
     }
 }

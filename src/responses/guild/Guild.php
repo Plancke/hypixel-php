@@ -2,43 +2,37 @@
 
 namespace Plancke\HypixelPHP\responses\guild;
 
-use DateTime;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
-use Plancke\HypixelPHP\color\ColorUtils;
-use Plancke\HypixelPHP\exceptions\HypixelPHPException;
+use Plancke\HypixelPHP\HypixelPHP;
 
-/**
- * Class Guild
- * @package Plancke\HypixelPHP\responses\guild
- */
 class Guild extends HypixelObject {
 
+    protected $ranks;
+    protected $members;
+
     /**
-     * @param mixed $cached
-     * @throws HypixelPHPException
+     * @param HypixelPHP $HypixelPHP
+     * @param $guild
+     */
+    public function __construct(HypixelPHP $HypixelPHP, $guild) {
+        parent::__construct($HypixelPHP, $guild);
+
+        $this->ranks = new GuildRanks($HypixelPHP, $this->getArray("ranks"));
+        $this->members = new GuildMemberList($this->getHypixelPHP(), $this);
+    }
+
+    /**
+     * @param null $cached
+     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
      */
     public function handleNew($cached = null) {
         parent::handleNew($cached);
 
         $extraSetter = [];
-        $extraSetter['coinHistory'] = $this->handleCoinHistory();
-
-        // for mongo
         $extraSetter['name_lower'] = strtolower($this->getName());
 
         $this->setExtra($extraSetter, false);
-    }
-
-    protected function handleCoinHistory() {
-        $coinHistory = $this->getExtra('coinHistory', []);
-        foreach ($this->getData() as $key => $val) {
-            if (strpos($key, 'dailyCoins') !== false) {
-                $EXPLOSION = explode('-', $key);
-                $coinHistory[$EXPLOSION[1] . '-' . ($EXPLOSION[2] + 1) . '-' . $EXPLOSION[3]] = $val;
-            }
-        }
-        return $coinHistory;
     }
 
     /**
@@ -49,58 +43,17 @@ class Guild extends HypixelObject {
     }
 
     /**
-     * @return bool
+     * @return GuildRanks
      */
-    public function canTag() {
-        return $this->get('canTag', false);
+    public function getRanks() {
+        return $this->ranks;
     }
 
     /**
      * @return string
      */
     public function getTag() {
-        return ColorUtils::getColorParser()->parse($this->get('tag'));
-    }
-
-    /**
-     * Return minecraft colors of the tag
-     *
-     * @return string
-     */
-    public function getTagColor() {
-        $color = $this->getTagColorRaw();
-        if (isset(ColorUtils::NAME_TO_CODE[$color])) {
-            return ColorUtils::NAME_TO_CODE[$color];
-        }
-        return null;
-    }
-
-    /**
-     * Return raw entry of tagColor in the guild
-     *
-     * @return string
-     */
-    public function getTagColorRaw() {
-        return $this->get('tagColor');
-    }
-
-    /**
-     * @return int
-     */
-    public function getCoins() {
-        return $this->getInt('coins');
-    }
-
-    /**
-     * @return int
-     */
-    public function getMaxMembers() {
-        $total = 25;
-        $level = $this->getInt('memberSizeLevel', -1);
-        if ($level >= 0) {
-            $total += 5 * $level;
-        }
-        return $total;
+        return $this->get('tag');
     }
 
     /**
@@ -111,39 +64,10 @@ class Guild extends HypixelObject {
     }
 
     /**
-     * @return MemberList
+     * @return GuildMemberList
      */
     public function getMemberList() {
-        return new MemberList($this->getHypixelPHP(), $this->getArray('members'));
-    }
-
-    /**
-     * get coin history of Guild
-     * @return array
-     */
-    public function getGuildCoinHistory() {
-        if (!array_key_exists('coinHistory', $this->getExtra())) {
-            $this->handleCoinHistory();
-        }
-        $coinHistory = $this->getExtra('coinHistory', []);
-
-        $sortHistory = [];
-        foreach ($coinHistory as $DATE => $AMOUNT) {
-            array_push($sortHistory, [$DATE, $AMOUNT]);
-        }
-
-        usort($sortHistory, function ($a, $b) {
-            $ad = new DateTime($a[0]);
-            $bd = new DateTime($b[0]);
-
-            if ($ad == $bd) {
-                return 0;
-            }
-
-            return $ad < $bd ? 0 : 1;
-        });
-
-        return $sortHistory;
+        return $this->members;
     }
 
     /**
@@ -153,4 +77,80 @@ class Guild extends HypixelObject {
         return CacheTimes::GUILD;
     }
 
+    /**
+     * @return int
+     */
+    public function getLevel() {
+        return GuildLevelUtil::getLevel($this->getExp());
+    }
+
+    /**
+     * @return int
+     */
+    public function getExp() {
+        return $this->getInt('exp');
+    }
+
+    /**
+     * @return array
+     */
+    public function getAchievements() {
+        return $this->getArray("achievements");
+    }
+
+    /**
+     * @return bool
+     */
+    public function isJoinable() {
+        return $this->get('joinable', false);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPubliclyListed() {
+        return $this->get('publiclyListed', false);
+    }
+
+    /**
+     * @return int
+     */
+    public function getLegacyRank() {
+        return $this->getInt('legacyRanking');
+    }
+
+    /**
+     * @return string
+     */
+    public function getDiscord() {
+        return $this->get("discord");
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription() {
+        return $this->get("description");
+    }
+
+    /**
+     * @return array
+     */
+    public function getPreferredGames() {
+        return $this->get("preferredGames");
+    }
+
+    /**
+     * @return int
+     */
+    public function getChatThrottle() {
+        return $this->getInt('chatThrottle');
+    }
+
+    /**
+     * @return array
+     */
+    public function getBanner() {
+        return $this->getArray("banner");
+    }
 }
