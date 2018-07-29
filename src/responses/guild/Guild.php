@@ -4,6 +4,7 @@ namespace Plancke\HypixelPHP\responses\guild;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\color\ColorUtils;
 use Plancke\HypixelPHP\HypixelPHP;
 
 class Guild extends HypixelObject {
@@ -54,6 +55,17 @@ class Guild extends HypixelObject {
      */
     public function getTag() {
         return $this->get('tag');
+    }
+
+    /**
+     * @return string
+     */
+    public function getTagColor() {
+        $color = $this->get('tagColor', 'GRAY');
+        if (isset(ColorUtils::NAME_TO_CODE[$color])) {
+            return ColorUtils::NAME_TO_CODE[$color];
+        }
+        return ColorUtils::GRAY;
     }
 
     /**

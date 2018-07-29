@@ -12,6 +12,7 @@ class ResourceManager extends Module {
 
     protected $gameResources;
     protected $generalResources;
+    protected $guildResources;
 
     /**
      * @return GameResources
@@ -48,6 +49,25 @@ class ResourceManager extends Module {
      */
     public function setGeneralResources(GeneralResources $generalResources) {
         $this->generalResources = $generalResources;
+        return $this;
+    }
+
+    /**
+     * @return GuildResources
+     */
+    public function getGuildResources() {
+        if ($this->guildResources == null) {
+            $this->guildResources = new GuildResources();
+        }
+        return $this->guildResources;
+    }
+
+    /**
+     * @param GuildResources $guildResources
+     * @return $this
+     */
+    public function setGuildResources(GuildResources $guildResources) {
+        $this->guildResources = $guildResources;
         return $this;
     }
 

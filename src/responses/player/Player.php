@@ -225,9 +225,7 @@ class Player extends HypixelObject {
     public function getGuildTag() {
         $guild = $this->getGuild();
         if ($guild instanceof Guild) {
-            if ($guild->canTag()) {
                 return $guild->getTag();
-            }
         }
         return null;
     }
