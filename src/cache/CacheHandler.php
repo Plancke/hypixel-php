@@ -27,7 +27,7 @@ use Plancke\HypixelPHP\responses\WatchdogStats;
 abstract class CacheHandler extends Module {
 
     // cache time to only get cache or null if not present, arbitrary value
-    const MAX_CACHE_TIME = 999999999999;
+    const MAX_CACHE_TIME = PHP_INT_MAX;
     // cache time to only fetch if we don't have cached data, arbitrary value
     const MAX_CACHE_TIME_GET_NON_EXIST = CacheHandler::MAX_CACHE_TIME - 1;
 

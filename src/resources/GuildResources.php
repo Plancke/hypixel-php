@@ -14,11 +14,4 @@ class GuildResources extends Resources {
         return Resources::requireResourceFile('guild/Achievements.php');
     }
 
-    /**
-     * @return array
-     */
-    public function getPermissions() {
-        return Resources::requireResourceFile('guild/Permissions.php');
-    }
-
 }

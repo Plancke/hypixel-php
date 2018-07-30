@@ -23,13 +23,6 @@ class GuildRank extends APIObject {
     }
 
     /**
-     * @return array
-     */
-    public function getPermissions() {
-        return $this->getArray("permissions");
-    }
-
-    /**
      * @return bool
      */
     public function isDefault() {

@@ -20,19 +20,16 @@ class GuildRanks extends APIObject {
         if (sizeof($ranks) == 0) {
             array_push($ranks, [
                 'name' => 'MEMBER',
-                'priority' => 1,
-                'permissions' => []
+                'priority' => 1
             ]);
             array_push($ranks, [
                 'name' => 'OFFICER',
-                'priority' => 2,
-                'permissions' => []
+                'priority' => 2
             ]);
         }
         array_push($ranks, [
             'name' => 'GUILDMASTER',
-            'priority' => 9999999,
-            'permissions' => [],
+            'priority' => PHP_INT_MAX,
             'tag' => 'GM'
         ]);
 
