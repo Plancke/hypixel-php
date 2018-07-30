@@ -134,13 +134,6 @@ class Guild extends HypixelObject {
     /**
      * @return string
      */
-    public function getDiscord() {
-        return $this->get("discord");
-    }
-
-    /**
-     * @return string
-     */
     public function getDescription() {
         return $this->get("description");
     }
@@ -150,13 +143,6 @@ class Guild extends HypixelObject {
      */
     public function getPreferredGames() {
         return $this->get("preferredGames");
-    }
-
-    /**
-     * @return int
-     */
-    public function getChatThrottle() {
-        return $this->getInt('chatThrottle');
     }
 
     /**
