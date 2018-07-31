@@ -73,11 +73,8 @@ class Rank {
                     return '§b[MVP' . $plusColor . '+§b]';
                 } else if ($this->id == RankTypes::SUPERSTAR) {
                     $superStarColor = $player->getSuperStarColor();
-                    if ($superStarColor != null) {
-                        return $player->getSuperStarColor() . '[MVP' . $plusColor . '++§6]';
-                    } else {
-                        return '§6[MVP' . $plusColor . '++§6]';
-                    }
+                    if ($superStarColor == null) $superStarColor = ColorUtils::GOLD;
+                    return $superStarColor . '[MVP' . $plusColor . '++' . $superStarColor . ']';
                 }
             }
         }
