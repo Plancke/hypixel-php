@@ -29,7 +29,7 @@ use Plancke\HypixelPHP\util\Utilities;
  */
 class FlatFileCacheHandler extends CacheHandler {
 
-    protected $baseDirectory = "cache" . DIRECTORY_SEPARATOR . "HypixelPHP" . DIRECTORY_SEPARATOR;
+    protected $baseDirectory = __DIR__ . DIRECTORY_SEPARATOR . "cache" . DIRECTORY_SEPARATOR . "HypixelPHP" . DIRECTORY_SEPARATOR;
 
     /**
      * Get base file location for all cache files

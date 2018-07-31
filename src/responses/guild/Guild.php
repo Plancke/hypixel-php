@@ -24,19 +24,6 @@ class Guild extends HypixelObject {
     }
 
     /**
-     * @param null $cached
-     * @throws \Plancke\HypixelPHP\exceptions\HypixelPHPException
-     */
-    public function handleNew($cached = null) {
-        parent::handleNew($cached);
-
-        $extraSetter = [];
-        $extraSetter['name_lower'] = strtolower($this->getName());
-
-        $this->setExtra($extraSetter, false);
-    }
-
-    /**
      * @return string
      */
     public function getName() {

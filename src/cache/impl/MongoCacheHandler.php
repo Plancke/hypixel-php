@@ -55,7 +55,7 @@ class MongoCacheHandler extends CacheHandler {
         $db->selectCollection(CacheTypes::PLAYER_UUID)->createIndex(['name_lowercase' => 1], ['background' => true]);
 
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record._id' => 1], ['background' => true]);
-        $db->selectCollection(CacheTypes::GUILDS)->createIndex(['extra.name_lower' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record.name_lower' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS_UUID)->createIndex(['uuid' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS_NAME)->createIndex(['name_lower' => 1], ['background' => true]);
 
@@ -275,7 +275,7 @@ class MongoCacheHandler extends CacheHandler {
      * @return mixed|null
      */
     function getGuildIDForName($name) {
-        $query = ['extra.name_lower' => strtolower((string)$name)];
+        $query = ['record.name_lower' => strtolower((string)$name)];
         $data = $this->queryCollection(CacheTypes::GUILDS, $query);
         if ($data != null) {
             $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
