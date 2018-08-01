@@ -54,7 +54,10 @@ class GuildRanks extends APIObject {
      * @return GuildRank
      */
     public function getRank($rank) {
-        return $this->ranks[strtolower($rank)];
+        if (array_key_exists(strtolower($rank), $this->ranks)) {
+            return $this->ranks[strtolower($rank)];
+        }
+        return null;
     }
 
     /**
