@@ -32,4 +32,14 @@ class MegaWallsUtils {
         return max($minLevel, $level);
     }
 
+    /**
+     * @param GameStats $stats
+     * @param array $class
+     * @param array $field
+     * @return int
+     */
+    public function getFieldLevel($stats, $class, $field) {
+        return $stats->getInt(str_replace("%class%", strtolower($class['id']), $field['field']), 0);
+    }
+
 }
