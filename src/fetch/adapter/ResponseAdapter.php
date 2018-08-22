@@ -56,6 +56,7 @@ class ResponseAdapter extends Module {
      * @return Response
      */
     protected function remapField($key, Response $response) {
+        if (!array_key_exists($key, $response->getData())) return $response;
         return $response->setData(['record' => $response->getData()[$key]]);
     }
 
@@ -66,7 +67,7 @@ class ResponseAdapter extends Module {
      */
     protected function attachKeyValues($keyValues, Response $response) {
         $data = $response->getData();
-        if (is_array($data['record'])) {
+        if (array_key_exists('record', $data) && is_array($data['record'])) {
             $data['record'] = array_merge($data['record'], $keyValues);
         }
         return $response->setData($data);
