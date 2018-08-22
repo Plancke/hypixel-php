@@ -4,6 +4,7 @@ namespace Plancke\HypixelPHP\responses\player;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\color\ColorUtils;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\Response;
@@ -157,6 +158,18 @@ class Player extends HypixelObject {
     }
 
     /**
+     * @return string
+     */
+    public function getSuperStarColor() {
+        $color = $this->get('SUPERSTAR_COLOR');
+        if ($color == null) return null;
+        if (isset(ColorUtils::NAME_TO_CODE[$color])) {
+            return ColorUtils::NAME_TO_CODE[$color];
+        }
+        return ColorUtils::GOLD;
+    }
+
+    /**
      * get Rank
      * @param bool $package
      * @param array $rankKeys
@@ -225,9 +238,7 @@ class Player extends HypixelObject {
     public function getGuildTag() {
         $guild = $this->getGuild();
         if ($guild instanceof Guild) {
-            if ($guild->canTag()) {
-                return $guild->getTag();
-            }
+            return $guild->getTag();
         }
         return null;
     }

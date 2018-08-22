@@ -2,6 +2,7 @@
   "classes": {
     "list": {
       "HUNTER": {
+        "id": "HUNTER",
         "display": "Hunter",
         "description": "Use superior archery skills to pelt enemies with arrows.",
         "type": "HERO",
@@ -12,6 +13,7 @@
         "difficulty": 3.0
       },
       "ZOMBIE": {
+        "id": "ZOMBIE",
         "display": "Zombie",
         "description": "The Zombie class focuses on defensive gameplay and healing.",
         "type": "NORMAL",
@@ -19,9 +21,11 @@
           "TANK",
           "SUPPORT"
         ],
-        "difficulty": 2.0
+        "difficulty": 2.0,
+        "starter": true
       },
       "CREEPER": {
+        "id": "CREEPER",
         "display": "Creeper",
         "description": "The Creeper class uses explosion based powers to win.",
         "type": "NORMAL",
@@ -32,6 +36,7 @@
         "difficulty": 4.0
       },
       "ARCANIST": {
+        "id": "ARCANIST",
         "display": "Arcanist",
         "description": "PLACEHOLDER",
         "type": "HERO",
@@ -42,6 +47,7 @@
         "difficulty": 1.0
       },
       "SHAMAN": {
+        "id": "SHAMAN",
         "display": "Shaman",
         "description": "PLACEHOLDER",
         "type": "HERO",
@@ -52,6 +58,7 @@
         "difficulty": 3.0
       },
       "DREADLORD": {
+        "id": "DREADLORD",
         "display": "Dreadlord",
         "description": "PLACEHOLDER",
         "type": "HERO",
@@ -62,6 +69,7 @@
         "difficulty": 1.0
       },
       "GOLEM": {
+        "id": "GOLEM",
         "display": "Golem",
         "description": "PLACEHOLDER",
         "type": "HERO",
@@ -72,6 +80,7 @@
         "difficulty": 2.0
       },
       "SQUID": {
+        "id": "SQUID",
         "display": "Squid",
         "description": "Splashing around, like a Squid, because thats what Squids do. Splash.",
         "type": "NORMAL",
@@ -82,6 +91,7 @@
         "difficulty": 1.0
       },
       "MOLEMAN": {
+        "id": "MOLEMAN",
         "display": "Moleman",
         "description": "Wanna play wacka mole...?",
         "type": "MYTHIC",
@@ -92,6 +102,7 @@
         "difficulty": 2.0
       },
       "ENDERMAN": {
+        "id": "ENDERMAN",
         "display": "Enderman",
         "description": "The Enderman class has special teleportation powers and endurance.",
         "type": "NORMAL",
@@ -99,9 +110,11 @@
           "MOBILITY",
           "RUSHER"
         ],
-        "difficulty": 2.0
+        "difficulty": 2.0,
+        "starter": true
       },
       "HEROBRINE": {
+        "id": "HEROBRINE",
         "display": "Herobrine",
         "description": "The Herobrine class uses supernatural abilities to attack and destroy your enemies.",
         "type": "NORMAL",
@@ -109,9 +122,11 @@
           "FIGHTER",
           "DAMAGE"
         ],
-        "difficulty": 1.0
+        "difficulty": 1.0,
+        "starter": true
       },
       "BLAZE": {
+        "id": "BLAZE",
         "display": "Blaze",
         "description": "The Blaze class uses the spirit of fire to enfore flames.",
         "type": "HERO",
@@ -122,6 +137,7 @@
         "difficulty": 2.0
       },
       "PIGMAN": {
+        "id": "PIGMAN",
         "display": "Pigman",
         "description": "Half man, half pig, half..oh wait! Feel the power of pork!",
         "type": "HERO",
@@ -132,6 +148,7 @@
         "difficulty": 2.0
       },
       "SPIDER": {
+        "id": "SPIDER",
         "display": "Spider",
         "description": "The Spider class uses agile paths for combat.",
         "type": "NORMAL",
@@ -142,6 +159,7 @@
         "difficulty": 3.0
       },
       "WEREWOLF": {
+        "id": "WEREWOLF",
         "display": "Werewolf",
         "description": "It's always full moon for this brawler.. Slice and dice your way to victory!",
         "type": "MYTHIC",
@@ -152,6 +170,7 @@
         "difficulty": 2.0
       },
       "PIRATE": {
+        "id": "PIRATE",
         "display": "Pirate",
         "description": "Use cunning and wit to survive, or blow enemies up with parrots.",
         "type": "HERO",
@@ -162,6 +181,7 @@
         "difficulty": 3.0
       },
       "PHOENIX": {
+        "id": "PHOENIX",
         "display": "Phoenix",
         "description": "Born from the ashes of my predecessor I shall erase you from existence!",
         "type": "MYTHIC",
@@ -172,6 +192,7 @@
         "difficulty": 4.0
       },
       "SKELETON": {
+        "id": "SKELETON",
         "display": "Skeleton",
         "description": "The Skeleton class makes excellent use of ranged abilities and weapons.",
         "type": "NORMAL",
@@ -179,9 +200,11 @@
           "RANGED",
           "MOBILITY"
         ],
-        "difficulty": 3.0
+        "difficulty": 3.0,
+        "starter": true
       },
       "ASSASSIN": {
+        "id": "ASSASSIN",
         "display": "Assassin",
         "description": "",
         "type": "MYTHIC",
@@ -192,6 +215,7 @@
         "difficulty": 2.0
       },
       "RENEGADE": {
+        "id": "RENEGADE",
         "display": "Renegade",
         "description": "",
         "type": "MYTHIC",
@@ -202,6 +226,7 @@
         "difficulty": 3.0
       },
       "SNOWMAN": {
+        "id": "SNOWMAN",
         "display": "Snowman",
         "description": "",
         "type": "MYTHIC",
@@ -212,6 +237,7 @@
         "difficulty": 3.0
       },
       "AUTOMATON": {
+        "id": "AUTOMATON",
         "display": "Automaton",
         "description": "",
         "type": "MYTHIC",
@@ -222,6 +248,7 @@
         "difficulty": 4.0
       },
       "COW": {
+        "id": "COW",
         "display": "Cow",
         "description": "",
         "type": "NORMAL",
@@ -232,6 +259,7 @@
         "difficulty": 2.0
       },
       "SHARK": {
+        "id": "SHARK",
         "display": "Shark",
         "description": "",
         "type": "NORMAL",
@@ -242,14 +270,49 @@
         "difficulty": 1.0
       }
     },
+    "skills": {
+      "SKILL": {
+        "id": "SKILL",
+        "field": "classes.%class%.skill_level_a",
+        "cleanName": "Skill",
+        "maxLevel": 5
+      },
+      "PASSIVE_1": {
+        "id": "PASSIVE_1",
+        "field": "classes.%class%.skill_level_b",
+        "cleanName": "Passive 1",
+        "maxLevel": 3
+      },
+      "PASSIVE_2": {
+        "id": "PASSIVE_2",
+        "field": "classes.%class%.skill_level_c",
+        "cleanName": "Passive 2",
+        "maxLevel": 3
+      },
+      "GATHERING": {
+        "id": "GATHERING",
+        "field": "classes.%class%.skill_level_g",
+        "cleanName": "Gathering",
+        "maxLevel": 3
+      },
+      "KIT": {
+        "id": "KIT",
+        "field": "classes.%class%.skill_level_d",
+        "cleanName": "Kit",
+        "maxLevel": 5
+      }
+    },
     "fields": {
-      "Skill": "classes.%class%.skill_level_a",
-      "Passive 1": "classes.%class%.skill_level_b",
-      "Passive 2": "classes.%class%.skill_level_c",
-      "Kit": "classes.%class%.skill_level_d",
-      "Gathering": "classes.%class%.skill_level_g",
-      "Prestige": "classes.%class%.prestige",
-      "Enderchest": "classes.%class%.enderchest_rows"
+      "PRESTIGE": {
+        "id": "PRESTIGE",
+        "field": "classes.%class%.prestige",
+        "cleanName": "Prestige"
+      },
+      "ENDERCHEST": {
+        "id": "PRESTIGE",
+        "field": "classes.%class%.prestige",
+        "cleanName": "Prestige"
+      }
     }
   },
   "modes": {
