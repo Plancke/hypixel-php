@@ -44,15 +44,15 @@ use Plancke\HypixelPHP\color\ColorUtils;
  *
  */
 class Weapon {
-    protected $WEAPON;
 
-    protected $scores = [
+    protected static $abilities = null;
+    protected static $scores = [
         Rarity::COMMON => ['min' => 276, 'max' => 428],
         Rarity::RARE => ['min' => 359, 'max' => 521],
         Rarity::EPIC => ['min' => 450, 'max' => 604],
         Rarity::LEGENDARY => ['min' => 595, 'max' => 805]
     ];
-    protected $prefixes = [
+    protected static $prefixes = [
         Rarity::COMMON => [
             "Crumbly", "Flimsy", "Rough", "Honed", "Refined", "Balanced"
         ],
@@ -66,7 +66,7 @@ class Weapon {
             "Vanquisher's", "Champion's", "Warlord's"
         ]
     ];
-    protected $materialMap = [
+    protected static $materialMap = [
         'WOOD_AXE' => 'Steel Sword', 'STONE_AXE' => 'Training Sword', 'IRON_AXE' => 'Demonblade',
         'GOLD_AXE' => 'Venomstrike', 'DIAMOND_AXE' => 'Diamondspark', 'WOOD_HOE' => 'Zweireaper',
         'STONE_HOE' => 'Runeblade', 'IRON_HOE' => 'Elven Greatsword', 'GOLD_HOE' => 'Hatchet',
@@ -84,51 +84,59 @@ class Weapon {
         'COOKED_SALMON' => 'Felflame Blade', 'COOKED_MUTTON' => 'Amaranth', 'COOKED_BEEF' => 'Armblade',
         'GRILLED_PORK' => 'Gemini', 'COOKED_PORKCHOP' => 'Gemini', 'GOLDEN_CARROT' => 'Void Edge'
     ];
-    protected $colors = [
+    protected static $colors = [
         Rarity::COMMON => ColorUtils::GREEN,
         Rarity::RARE => ColorUtils::BLUE,
         Rarity::EPIC => ColorUtils::DARK_PURPLE,
         Rarity::LEGENDARY => ColorUtils::GOLD
     ];
-    protected $abilities = [];
-    protected $forced_upgrade_level = -1;
+
+    protected $weapon;
+    protected $forcedUpgradeLevel = -1;
 
     /**
      * Weapon constructor.
      * @param array $WEAPON
      */
     function __construct($WEAPON) {
-        $this->WEAPON = $WEAPON;
+        $this->weapon = $WEAPON;
 
-        /* Load abilities */
+        Weapon::initAbilities();
+    }
+
+    protected static function initAbilities() {
+        if (Weapon::$abilities != null) return;
+
+        Weapon::$abilities = [];
+
         // Mage
-        $this->addAbility(0, 0, new Ability("Fireball", "Pyromancer", AbilityType::DAMAGE));
-        $this->addAbility(0, 0, new Ability("Frostbolt", "Cryomancer", AbilityType::DAMAGE));
-        $this->addAbility(0, 0, new Ability("Water Bolt", "Aquamancer", AbilityType::HEAL));
-        $this->addAbility(0, 1, new Ability("Flame Burst", "Pyromancer", AbilityType::DAMAGE));
-        $this->addAbility(0, 1, new Ability("Freezing Breath", "Cryomancer", AbilityType::DAMAGE));
-        $this->addAbility(0, 1, new Ability("Water Breath", "Aquamancer", AbilityType::HEAL));
+        Weapon::addAbility(0, 0, new Ability("Fireball", "Pyromancer", AbilityType::DAMAGE));
+        Weapon::addAbility(0, 0, new Ability("Frostbolt", "Cryomancer", AbilityType::DAMAGE));
+        Weapon::addAbility(0, 0, new Ability("Water Bolt", "Aquamancer", AbilityType::HEAL));
+        Weapon::addAbility(0, 1, new Ability("Flame Burst", "Pyromancer", AbilityType::DAMAGE));
+        Weapon::addAbility(0, 1, new Ability("Freezing Breath", "Cryomancer", AbilityType::DAMAGE));
+        Weapon::addAbility(0, 1, new Ability("Water Breath", "Aquamancer", AbilityType::HEAL));
         // Warrior
-        $this->addAbility(1, 0, new Ability("Wounding Strike", "Berserker", AbilityType::DAMAGE));
-        $this->addAbility(1, 0, new Ability("Wounding Strike", "Defender", AbilityType::DAMAGE));
-        $this->addAbility(1, 1, new Ability("Seismic Wave", "Berserker", AbilityType::DAMAGE));
-        $this->addAbility(1, 1, new Ability("Seismic Wave", "Defender", AbilityType::DAMAGE));
-        $this->addAbility(1, 2, new Ability("Ground Slam", "Berserker", AbilityType::DAMAGE));
-        $this->addAbility(1, 2, new Ability("Ground Slam", "Defender", AbilityType::DAMAGE));
+        Weapon::addAbility(1, 0, new Ability("Wounding Strike", "Berserker", AbilityType::DAMAGE));
+        Weapon::addAbility(1, 0, new Ability("Wounding Strike", "Defender", AbilityType::DAMAGE));
+        Weapon::addAbility(1, 1, new Ability("Seismic Wave", "Berserker", AbilityType::DAMAGE));
+        Weapon::addAbility(1, 1, new Ability("Seismic Wave", "Defender", AbilityType::DAMAGE));
+        Weapon::addAbility(1, 2, new Ability("Ground Slam", "Berserker", AbilityType::DAMAGE));
+        Weapon::addAbility(1, 2, new Ability("Ground Slam", "Defender", AbilityType::DAMAGE));
         // Paladin
-        $this->addAbility(2, 0, new Ability("Avenger's Strike", "Avenger", AbilityType::DAMAGE));
-        $this->addAbility(2, 0, new Ability("Crusader's Strike", "Crusader", AbilityType::DAMAGE));
-        $this->addAbility(2, 3, new Ability("Holy Radiance", "Protector", AbilityType::HEAL));
-        $this->addAbility(2, 1, new Ability("Consecrate", "Avenger", AbilityType::DAMAGE));
-        $this->addAbility(2, 1, new Ability("Consecrate", "Crusader", AbilityType::DAMAGE));
-        $this->addAbility(2, 4, new Ability("Hammer of Light", "Protector", AbilityType::HEAL));
+        Weapon::addAbility(2, 0, new Ability("Avenger's Strike", "Avenger", AbilityType::DAMAGE));
+        Weapon::addAbility(2, 0, new Ability("Crusader's Strike", "Crusader", AbilityType::DAMAGE));
+        Weapon::addAbility(2, 3, new Ability("Holy Radiance", "Protector", AbilityType::HEAL));
+        Weapon::addAbility(2, 1, new Ability("Consecrate", "Avenger", AbilityType::DAMAGE));
+        Weapon::addAbility(2, 1, new Ability("Consecrate", "Crusader", AbilityType::DAMAGE));
+        Weapon::addAbility(2, 4, new Ability("Hammer of Light", "Protector", AbilityType::HEAL));
         // Shaman
-        $this->addAbility(3, 0, new Ability("Lightning Bolt", "Thunderlord", AbilityType::DAMAGE));
-        $this->addAbility(3, 0, new Ability("Earthen Spike", "Earthwarden", AbilityType::DAMAGE));
-        $this->addAbility(3, 1, new Ability("Chain Lightning", "Thunderlord", AbilityType::DAMAGE));
-        $this->addAbility(3, 1, new Ability("Boulder", "Earthwarden", AbilityType::DAMAGE));
-        $this->addAbility(3, 2, new Ability("Windfury", "Thunderlord", AbilityType::DAMAGE));
-        $this->addAbility(3, 3, new Ability("Chain Healing", "Earthwarden", AbilityType::HEAL));
+        Weapon::addAbility(3, 0, new Ability("Lightning Bolt", "Thunderlord", AbilityType::DAMAGE));
+        Weapon::addAbility(3, 0, new Ability("Earthen Spike", "Earthwarden", AbilityType::DAMAGE));
+        Weapon::addAbility(3, 1, new Ability("Chain Lightning", "Thunderlord", AbilityType::DAMAGE));
+        Weapon::addAbility(3, 1, new Ability("Boulder", "Earthwarden", AbilityType::DAMAGE));
+        Weapon::addAbility(3, 2, new Ability("Windfury", "Thunderlord", AbilityType::DAMAGE));
+        Weapon::addAbility(3, 3, new Ability("Chain Healing", "Earthwarden", AbilityType::HEAL));
     }
 
     /**
@@ -136,21 +144,17 @@ class Weapon {
      * @param $slot
      * @param $ability
      */
-    protected function addAbility($class, $slot, $ability) {
-        if (!isset($this->abilities[$class])) {
-            $this->abilities[$class] = [];
-        }
-        if (!isset($this->abilities[$class][$slot])) {
-            $this->abilities[$class][$slot] = [];
-        }
-        array_push($this->abilities[$class][$slot], $ability);
+    protected static function addAbility($class, $slot, $ability) {
+        if (!array_key_exists($class, Weapon::$abilities)) Weapon::$abilities[$class] = [];
+        if (!array_key_exists($slot, Weapon::$abilities[$class])) Weapon::$abilities[$class][$slot] = [];
+        array_push(Weapon::$abilities[$class][$slot], $ability);
     }
 
     /**
      * @param $level
      */
     public function setForcedUpgradeLevel($level) {
-        $this->forced_upgrade_level = $level;
+        $this->forcedUpgradeLevel = $level;
     }
 
     /**
@@ -187,7 +191,7 @@ class Weapon {
      * @return int
      */
     public function getField($key, $def = 0) {
-        return isset($this->WEAPON[$key]) ? $this->WEAPON[$key] : $def;
+        return array_key_exists($key, $this->weapon) ? $this->weapon[$key] : $def;
     }
 
     /**
@@ -195,7 +199,7 @@ class Weapon {
      */
     public function getUpgradeAmount() {
         if ($this->isForcedUpgrade()) {
-            return min($this->forced_upgrade_level, $this->getMaxUpgrades());
+            return min($this->forcedUpgradeLevel, $this->getMaxUpgrades());
         }
         return $this->getField('upgradeTimes');
     }
@@ -204,7 +208,7 @@ class Weapon {
      * @return bool
      */
     public function isForcedUpgrade() {
-        return $this->forced_upgrade_level >= 0;
+        return $this->forcedUpgradeLevel >= 0;
     }
 
     /**
@@ -218,7 +222,7 @@ class Weapon {
      * @return bool
      */
     public function isCrafted() {
-        return isset($this->WEAPON['crafted']) ? $this->WEAPON['crafted'] : false;
+        return array_key_exists('crafted', $this->weapon) ? $this->weapon['crafted'] : false;
     }
 
     /**
@@ -235,11 +239,11 @@ class Weapon {
      * @return mixed
      */
     public function getPrefix() {
-        $names = $this->prefixes[$this->getCategory()];
+        $names = Weapon::$prefixes[$this->getCategory()];
         $namesInt = intval(count($names));
 
         $score = $this->getScore();
-        $diff = ($this->getMaxScore() - $this->getMinScore()) / sizeof($this->prefixes[$this->getCategory()]);
+        $diff = ($this->getMaxScore() - $this->getMinScore()) / sizeof(Weapon::$prefixes[$this->getCategory()]);
 
         for ($i = 0; $i < $namesInt; $i++) {
             $left = $this->getMinScore() + $diff * ($i + 1);
@@ -255,7 +259,7 @@ class Weapon {
      * @return string
      */
     public function getCategory() {
-        return $this->WEAPON['category'];
+        return $this->weapon['category'];
     }
 
     /**
@@ -273,56 +277,56 @@ class Weapon {
      * @return int
      */
     public function getMaxScore() {
-        return $this->scores[$this->getCategory()]['max'];
+        return Weapon::$scores[$this->getCategory()]['max'];
     }
 
     /**
      * @return int
      */
     public function getMinScore() {
-        return $this->scores[$this->getCategory()]['min'];
+        return Weapon::$scores[$this->getCategory()]['min'];
     }
 
     /**
      * @return string
      */
     public function getMaterialName() {
-        return isset($this->materialMap[$this->getMaterial()]) ? $this->materialMap[$this->getMaterial()] : $this->getMaterial();
+        return array_key_exists($this->getMaterial(), Weapon::$materialMap) ? Weapon::$materialMap[$this->getMaterial()] : $this->getMaterial();
     }
 
     /**
      * @return string
      */
     public function getMaterial() {
-        return $this->WEAPON['material'];
+        return $this->weapon['material'];
     }
 
     /**
      * @return PlayerClass|null
      */
     public function getPlayerClass() {
-        return PlayerClasses::fromID($this->WEAPON['spec']['playerClass'], $this->WEAPON['spec']['spec']);
+        return PlayerClasses::fromID($this->weapon['spec']['playerClass'], $this->weapon['spec']['spec']);
     }
 
     /**
      * @return string
      */
     public function getColor() {
-        return $this->colors[$this->getCategory()];
+        return Weapon::$colors[$this->getCategory()];
     }
 
     /**
      * @return string
      */
     public function getID() {
-        return $this->WEAPON['id'];
+        return $this->weapon['id'];
     }
 
     /**
      * @return Ability|null
      */
     public function getAbility() {
-        $ABILITIES = $this->abilities[$this->getPlayerClass()->getID()][$this->WEAPON['ability']];
+        $ABILITIES = Weapon::$abilities[$this->getPlayerClass()->getID()][$this->weapon['ability']];
         foreach ($ABILITIES as $ABILITY) {
             /* @var $ABILITY Ability */
             if ($ABILITY->getSpec() == $this->getPlayerClass()->getSpec()->getName()) {
@@ -336,7 +340,7 @@ class Weapon {
      * @return bool
      */
     public function isUnlocked() {
-        return isset($this->WEAPON['unlocked']) ? $this->WEAPON['unlocked'] : false;
+        return array_key_exists('unlocked', $this->weapon) ? $this->weapon['unlocked'] : false;
     }
 
 }
