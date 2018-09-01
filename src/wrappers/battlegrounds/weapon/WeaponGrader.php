@@ -10,6 +10,7 @@ class WeaponGrader {
      */
     public static function getGrade($weapon) {
         $rarityValues = RarityValues::get($weapon->getCategory());
+        if ($rarityValues == null) return 0;
 
         $percentages = [];
 
@@ -20,9 +21,10 @@ class WeaponGrader {
             if (!array_key_exists('min', $value)) continue;
             if (!array_key_exists('max', $value)) continue;
 
-            array_push($percentages, $weapon->getBaseStat($weaponStat) / ($value['max'] - $value['min']));
+            array_push($percentages, ($weapon->getBaseStat($weaponStat) - $value['min']) / ($value['max'] - $value['min']));
         }
 
+        if (sizeof($percentages) == 0) return 0; // just in case
         return array_sum($percentages) / sizeof($percentages);
     }
 

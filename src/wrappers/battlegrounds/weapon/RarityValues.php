@@ -91,7 +91,7 @@ class RarityValues {
      * @return $this
      */
     public function addValue($id, $min, $max) {
-        $values[$id] = [
+        $this->values[$id] = [
             'min' => $min,
             'max' => $max
         ];
