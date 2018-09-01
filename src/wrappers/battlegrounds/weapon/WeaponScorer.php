@@ -9,15 +9,11 @@ class WeaponScorer {
      * @return float
      */
     public static function getScore($weapon) {
-        // only judge base values
-        $weapon->setForcedUpgradeLevel(0);
-
         $percentages = [];
 
         foreach (WeaponStats::values() as $id) {
             $weaponStat = WeaponStats::fromID($id);
-
-            array_push($percentages, $weapon->getStat($weaponStat) / ($weaponStat->getMax() - $weaponStat->getMin()));
+            array_push($percentages, $weapon->getBaseStat($weaponStat) / ($weaponStat->getMax() - $weaponStat->getMin()));
         }
 
         return array_sum($percentages) / sizeof($percentages);

@@ -135,9 +135,17 @@ class Weapon {
      * @return int
      */
     public function getStat($stat) {
-        $val = $this->getField($stat->getField());
+        $val = $this->getBaseStat($stat);
         $val *= 1 + ($this->getUpgradeAmount() * $stat->getUpgrade() / 100);
         return $val;
+    }
+
+    /**
+     * @param WeaponStat $stat
+     * @return int
+     */
+    public function getBaseStat($stat) {
+        return $this->getField($stat->getField());
     }
 
     /**
@@ -164,6 +172,13 @@ class Weapon {
      */
     public function isForcedUpgrade() {
         return $this->forcedUpgradeLevel >= 0;
+    }
+
+    /**
+     * @return int
+     */
+    public function getForcedUpgradeLevel() {
+        return $this->forcedUpgradeLevel;
     }
 
     /**
