@@ -3,7 +3,7 @@
 namespace Plancke\HypixelPHP\wrappers\battlegrounds\weapon;
 
 class WeaponStat {
-    protected $name, $field, $upgrade, $id, $min, $max;
+    protected $name, $field, $upgrade, $id;
 
     /**
      * WeaponStat constructor.
@@ -12,13 +12,11 @@ class WeaponStat {
      * @param double $upgrade
      * @param int $id
      */
-    function __construct($name, $field, $upgrade, $id, $min, $max) {
+    function __construct($name, $field, $upgrade, $id) {
         $this->name = $name;
         $this->field = $field;
         $this->upgrade = $upgrade;
         $this->id = $id;
-        $this->min = $min;
-        $this->max = $max;
     }
 
     /**
@@ -47,20 +45,6 @@ class WeaponStat {
      */
     public function getID() {
         return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMin() {
-        return $this->min;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMax() {
-        return $this->max;
     }
 
 }

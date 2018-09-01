@@ -19,21 +19,21 @@ class WeaponStats {
     public static function fromID($ID) {
         switch ($ID) {
             case WeaponStats::DAMAGE:
-                return new WeaponStat('Damage', 'damage', 7.5, $ID, 90, 120);
+                return new WeaponStat('Damage', 'damage', 7.5, $ID);
             case WeaponStats::CHANCE:
-                return new WeaponStat('Crit Chance', 'chance', 0, $ID, 0, 25);
+                return new WeaponStat('Crit Chance', 'chance', 0, $ID);
             case WeaponStats::MULTIPLIER:
-                return new WeaponStat('Crit Multiplier', 'multiplier', 0, $ID, 0, 200);
+                return new WeaponStat('Crit Multiplier', 'multiplier', 0, $ID);
             case WeaponStats::ABILITY_BOOST:
-                return new WeaponStat('Ability Boost', 'abilityBoost', 7.5, $ID, 0, 15);
+                return new WeaponStat('Ability Boost', 'abilityBoost', 7.5, $ID);
             case WeaponStats::HEALTH:
-                return new WeaponStat('Health', 'health', 25, $ID, 160, 400);
+                return new WeaponStat('Health', 'health', 25, $ID);
             case WeaponStats::ENERGY:
-                return new WeaponStat('Energy', 'energy', 10, $ID, 0, 25);
+                return new WeaponStat('Energy', 'energy', 10, $ID);
             case WeaponStats::COOLDOWN:
-                return new WeaponStat('Cooldown', 'cooldown', 7.5, $ID, 0, 10);
+                return new WeaponStat('Cooldown', 'cooldown', 7.5, $ID);
             case WeaponStats::MOVEMENT:
-                return new WeaponStat('Movement', 'movement', 7.5, $ID, 0, 10);
+                return new WeaponStat('Movement', 'movement', 7.5, $ID);
         }
         return null;
     }

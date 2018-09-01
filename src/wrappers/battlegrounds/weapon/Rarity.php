@@ -7,4 +7,12 @@ class Rarity {
     const RARE = "RARE";
     const EPIC = "EPIC";
     const LEGENDARY = "LEGENDARY";
+
+    /**
+     * @param $ID
+     * @return RarityValues|null
+     */
+    public static function getValues($ID) {
+        return RarityValues::get($ID);
+    }
 }
