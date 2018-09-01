@@ -244,7 +244,7 @@ class Weapon {
     }
 
     public function isPerfect() {
-        return WeaponScorer::getScore($this) == 1;
+        return WeaponGrader::getScore($this) == 1;
     }
 
     /**

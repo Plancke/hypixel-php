@@ -2,13 +2,13 @@
 
 namespace Plancke\HypixelPHP\wrappers\battlegrounds\weapon;
 
-class WeaponScorer {
+class WeaponGrader {
 
     /**
      * @param Weapon $weapon
      * @return float
      */
-    public static function getScore($weapon) {
+    public static function getGrade($weapon) {
         $percentages = [];
 
         foreach (WeaponStats::values() as $id) {
