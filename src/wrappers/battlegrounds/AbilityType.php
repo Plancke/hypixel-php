@@ -1,6 +1,6 @@
 <?php
 
-namespace Plancke\HypixelPHP\wrappers\battlegrounds\weapon;
+namespace Plancke\HypixelPHP\wrappers\battlegrounds;
 
 class AbilityType {
     const HEAL = "HEAL";

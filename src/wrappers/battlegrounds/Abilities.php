@@ -2,8 +2,6 @@
 
 namespace Plancke\HypixelPHP\wrappers\battlegrounds;
 
-use Plancke\HypixelPHP\wrappers\battlegrounds\weapon\AbilityType;
-
 class Abilities {
 
     protected static $abilities = null;
