@@ -317,4 +317,8 @@ class Weapon {
         return array_key_exists('unlocked', $this->weapon) ? $this->weapon['unlocked'] : false;
     }
 
+    public function getRaw() {
+        return $this->weapon;
+    }
+
 }
