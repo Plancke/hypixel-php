@@ -161,7 +161,7 @@ class Player extends HypixelObject {
      * @return string
      */
     public function getSuperStarColor() {
-        $color = $this->get('SUPERSTAR_COLOR');
+        $color = $this->get('monthlyRankColor');
         if ($color == null) return null;
         if (isset(ColorUtils::NAME_TO_CODE[$color])) {
             return ColorUtils::NAME_TO_CODE[$color];
