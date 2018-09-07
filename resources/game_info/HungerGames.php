@@ -8,7 +8,7 @@ return array(
                         array(
                             'display' => 'Horsetamer',
                             'description' => 'It\'s a real horse I ride',
-                            'cost' => 200000,
+                            'cost' => 100000,
                             'networkLevel' => 45,
                         ),
                     'ARCHER' =>
@@ -20,7 +20,7 @@ return array(
                         array(
                             'display' => 'Astronaut',
                             'description' => 'One mini step for man.',
-                            'cost' => 65000,
+                            'cost' => 30000,
                             'networkLevel' => 20,
                         ),
                     'TROLL' =>
@@ -39,35 +39,42 @@ return array(
                         array(
                             'display' => 'Reaper',
                             'description' => 'Lurking in the darkness',
-                            'cost' => 35000,
+                            'cost' => 10000,
                             'networkLevel' => 45,
                         ),
                     'REDDRAGON' =>
                         array(
                             'display' => 'RedDragon',
                             'description' => 'You saw it here first',
-                            'cost' => 100000,
+                            'cost' => 50000,
                             'networkLevel' => 35,
                         ),
                     'TOXICOLOGIST' =>
                         array(
                             'display' => 'Toxicologist',
                             'description' => 'Make them taste their own medicine',
-                            'cost' => 65000,
+                            'cost' => 30000,
                             'networkLevel' => 25,
                         ),
                     'ROGUE' =>
                         array(
                             'display' => 'Rogue',
                             'description' => 'Sneak attack!',
-                            'cost' => 65000,
+                            'cost' => 30000,
                             'networkLevel' => 20,
+                        ),
+                    'WARLOCK' =>
+                        array(
+                            'display' => 'Warlock',
+                            'description' => 'Draining is existence.',
+                            'cost' => 20000,
+                            'networkLevel' => 40,
                         ),
                     'SLIMEYSLIME' =>
                         array(
                             'display' => 'SlimeySlime',
                             'description' => 'It\'s kinda Slimey',
-                            'cost' => 45000,
+                            'cost' => 20000,
                             'networkLevel' => 15,
                         ),
                     'JOCKEY' =>
@@ -80,8 +87,15 @@ return array(
                         array(
                             'display' => 'Golem',
                             'description' => 'May the ancient rise again',
-                            'cost' => 50000,
+                            'cost' => 25000,
                             'networkLevel' => 75,
+                        ),
+                    'VIKING' =>
+                        array(
+                            'display' => 'Viking',
+                            'description' => 'Fear my axe.',
+                            'cost' => 10000,
+                            'networkLevel' => 15,
                         ),
                     'RANDOM' =>
                         array(
@@ -97,7 +111,7 @@ return array(
                         array(
                             'display' => 'Shadow Knight',
                             'description' => 'I\'m not batman.',
-                            'cost' => 35000,
+                            'cost' => 15000,
                             'networkLevel' => 10,
                         ),
                     'BAKER' =>
@@ -114,21 +128,26 @@ return array(
                         array(
                             'display' => 'Pigman',
                             'description' => 'Bacon from Hell.',
-                            'cost' => 15000,
+                            'cost' => 10000,
                             'networkLevel' => 10,
+                        ),
+                    'GUARDIAN' =>
+                        array(
+                            'display' => 'Guardian',
+                            'description' => 'Guarding for eternity.',
                         ),
                     'PALADIN' =>
                         array(
                             'display' => 'Paladin',
                             'description' => 'Justice.',
-                            'cost' => 35000,
+                            'cost' => 20000,
                             'networkLevel' => 10,
                         ),
                     'NECROMANCER' =>
                         array(
                             'display' => 'Necromancer',
                             'description' => 'Living dead mobs',
-                            'cost' => 65000,
+                            'cost' => 30000,
                             'networkLevel' => 25,
                         ),
                     'SCOUT' =>
@@ -158,32 +177,39 @@ return array(
                             'cost' => 10000,
                             'networkLevel' => 10,
                         ),
+                    'DIVER' =>
+                        array(
+                            'display' => 'Diver',
+                            'description' => 'Dive deep into Blitz.',
+                            'cost' => 10000,
+                            'networkLevel' => 15,
+                        ),
                     'ARACHNOLOGIST' =>
                         array(
                             'display' => 'Arachnologist',
                             'description' => 'Some people might be scared',
-                            'cost' => 65000,
+                            'cost' => 30000,
                             'networkLevel' => 25,
                         ),
                     'BLAZE' =>
                         array(
                             'display' => 'Blaze',
                             'description' => 'Burn, baby burn.',
-                            'cost' => 45000,
+                            'cost' => 20000,
                             'networkLevel' => 20,
                         ),
                     'WOLFTAMER' =>
                         array(
                             'display' => 'Wolftamer',
                             'description' => 'Howl at the moon!',
-                            'cost' => 65000,
+                            'cost' => 40000,
                             'networkLevel' => 20,
                         ),
                     'TIM' =>
                         array(
                             'display' => 'Tim',
                             'description' => 'The Enchanter',
-                            'cost' => 65000,
+                            'cost' => 40000,
                             'networkLevel' => 25,
                         ),
                     'SNOWMAN' =>
@@ -202,7 +228,7 @@ return array(
                         array(
                             'display' => 'Farmer',
                             'description' => 'Me chicken be layin\' eggs',
-                            'cost' => 20000,
+                            'cost' => 10000,
                             'networkLevel' => 25,
                         ),
                     'ARMORER' =>
@@ -214,7 +240,7 @@ return array(
                         array(
                             'display' => 'Creepertamer',
                             'description' => 'Explosions are tasty.',
-                            'cost' => 45000,
+                            'cost' => 30000,
                             'networkLevel' => 15,
                         ),
                 ),
@@ -391,14 +417,14 @@ return array(
                         ),
                     'LIGHTNING_STRIKE' =>
                         array(
-                            'display' => 'Lightning strikes',
+                            'display' => 'Lightning Strikes',
                             'description' => 'Strike even more lightning on your victim.',
                             'package' => 'finisher_lightning',
                             'cost' => 20,
                         ),
                     'CREEPER_FIREWORK' =>
                         array(
-                            'display' => 'Creeper firework',
+                            'display' => 'Creeper Firework',
                             'description' => 'Launch a creeper firework where your victim stood.',
                             'package' => 'finisher_creeper_firework',
                             'cost' => 20,
@@ -419,14 +445,14 @@ return array(
                         ),
                     'SQUID_MISSILE' =>
                         array(
-                            'display' => 'Squid missile',
+                            'display' => 'Squid Missile',
                             'description' => 'Launches a squid missile straight to the moon.',
                             'package' => 'finisher_squid_missile',
                             'cost' => 40,
                         ),
                     'REKT_HOLOGRAM' =>
                         array(
-                            'display' => '#rekt hologram',
+                            'display' => '#rekt Hologram',
                             'description' => 'Spawn a hologram in the air with #rekt written on it. Much salt.',
                             'package' => 'finisher_rekt_hologram',
                             'cost' => 100,
@@ -449,7 +475,7 @@ return array(
                             'display' => 'Assassin',
                             'description' => 'Teleport to the nearest player and do 6 hearts damage.',
                             'package' => 'assassin',
-                            'cost' => 20000,
+                            'cost' => 10000,
                         ),
                     'VAMPIRE' =>
                         array(
@@ -470,70 +496,70 @@ return array(
                             'display' => 'Statis',
                             'description' => 'No players can move except you for 15s.',
                             'package' => 'imprison',
-                            'cost' => 40000,
+                            'cost' => 20000,
                         ),
                     'VAULTHUNTER' =>
                         array(
                             'display' => 'Vault Hunter',
                             'description' => 'Spawn an incredible chest only for 8 seconds.',
                             'package' => 'vaulthunter',
-                            'cost' => 30000,
+                            'cost' => 15000,
                         ),
                     'WITHERWARRIOR' =>
                         array(
                             'display' => 'Wither Warrior',
                             'description' => 'Gain the Angel of Death\'s sword which deals massive Wither damage.',
                             'package' => 'witherwarrior',
-                            'cost' => 20000,
+                            'cost' => 10000,
                         ),
                     'GREMLIN' =>
                         array(
                             'display' => 'Gremlin',
-                            'description' => 'Clears your inventory and copy the one of the player with the most kills.',
+                            'description' => 'Clears the inventory and armor of the person with the most kills.',
                             'package' => 'gremlin',
-                            'cost' => 20000,
+                            'cost' => 5000,
                         ),
                     'ROULETTE' =>
                         array(
                             'display' => 'Roulette',
                             'description' => 'Kill a random player, might be you!',
                             'package' => 'roulette',
-                            'cost' => 40000,
+                            'cost' => 10000,
                         ),
                     'INVOKER' =>
                         array(
                             'display' => 'Invoker',
                             'description' => 'Gives you three random powerful incantations.',
                             'package' => 'invoker',
-                            'cost' => 20000,
+                            'cost' => 10000,
                         ),
                     'WOBBUFFET' =>
                         array(
                             'display' => 'Ironman',
-                            'description' => 'Reflect all damage onto your attacker for 30s.',
+                            'description' => 'Reflects all damage onto your attacker  for 30 seconds, while Iron Man is active gain Fire Resistance, Resistance and Weakness I.',
                             'package' => 'wobbuffet',
-                            'cost' => 20000,
+                            'cost' => 10000,
                         ),
                     'NUKE' =>
                         array(
                             'display' => 'Nuke',
                             'description' => 'Gives you a laser visor to drop a tactical nuke.',
                             'package' => 'nuke',
-                            'cost' => 30000,
+                            'cost' => 15000,
                         ),
                     'NINJA' =>
                         array(
                             'display' => 'Ninja',
-                            'description' => 'Go invisible for 2 minutes or until you attack.',
+                            'description' => 'Silently go invisible for 2 minutes and gain incredible speed, your first hit while invisible makes you visible, reduces your speed and blinds the target for 3 seconds.',
                             'package' => 'ninja',
-                            'cost' => 20000,
+                            'cost' => 5000,
                         ),
                     'ROBINHOOD' =>
                         array(
                             'display' => 'Robinhood',
                             'description' => 'Instakill the first player your arrow hits within 30s.',
                             'package' => 'robinhood',
-                            'cost' => 20000,
+                            'cost' => 10000,
                         ),
                     'NOCTURNE' =>
                         array(
@@ -545,23 +571,65 @@ return array(
                     'SUPPLIES' =>
                         array(
                             'display' => 'Supplies',
-                            'description' => 'Gives you a flame 1 bow with infinity and an arrow.',
+                            'description' => 'Gives you one of three rare items randomly.',
                             'package' => 'supplies',
-                            'cost' => 20000,
+                            'cost' => 10000,
                         ),
                     'SHOTGUN' =>
                         array(
                             'display' => 'No country for old men',
                             'description' => 'Gives you a shotgun with 6 pellets.',
                             'package' => 'shotgun',
-                            'cost' => 30000,
+                            'cost' => 20000,
                         ),
                     'KOOLMOVE' =>
                         array(
                             'display' => 'Sweg Move',
-                            'description' => 'Teleports everyone to you.',
+                            'description' => 'Teleports everyone back to spawn.',
                             'package' => 'koolmove',
-                            'cost' => 40000,
+                            'cost' => 20000,
+                        ),
+                    'LOCKDOWN' =>
+                        array(
+                            'display' => 'Lockdown',
+                            'description' => 'All chests are being locked and cannot be opened anymore.',
+                            'package' => 'lockdown',
+                            'cost' => 5000,
+                        ),
+                    'TIME_WARP' =>
+                        array(
+                            'display' => 'Time Warp',
+                            'description' => 'Brings you back to where you were 10 seconds ago, heals 5 hearts.',
+                            'package' => 'time_warp',
+                            'cost' => 10000,
+                        ),
+                    'ACID_RAIN' =>
+                        array(
+                            'display' => 'Acid Rain',
+                            'description' => 'It starts to rain for 30s and damages your enemies if they don\'t find cover.',
+                            'package' => 'acid_rain',
+                            'cost' => 15000,
+                        ),
+                    'INFECTION' =>
+                        array(
+                            'display' => 'Infection',
+                            'description' => 'Your bare fists have the ability to apply poison and slowness to your enemies.',
+                            'package' => 'infection',
+                            'cost' => 15000,
+                        ),
+                    'PICKPOCKET' =>
+                        array(
+                            'display' => 'Pickpocket',
+                            'description' => 'When used on an enemy, it gives you the item they are holding.',
+                            'package' => 'pickpocket',
+                            'cost' => 5000,
+                        ),
+                    'LUCKY_CHARM' =>
+                        array(
+                            'display' => 'Lucky Charm',
+                            'description' => 'You start earning experience over time!',
+                            'package' => 'lucky_charm',
+                            'cost' => 0,
                         ),
                 ),
         ),
