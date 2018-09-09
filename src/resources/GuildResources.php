@@ -14,4 +14,11 @@ class GuildResources extends Resources {
         return Resources::requireResourceFile('guild/Achievements.php');
     }
 
+    /**
+     * @return array
+     */
+    public function getRankWhitelist() {
+        return Resources::requireResourceFile('guild/RankWhitelist.php');
+    }
+
 }
