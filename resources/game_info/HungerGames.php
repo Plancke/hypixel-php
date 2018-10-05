@@ -633,4 +633,16 @@ return array(
                         ),
                 ),
         ),
+    'happyHour' =>
+        array(
+            'utcHours' =>
+                array(
+                    0 => 2,
+                    1 => 6,
+                    2 => 10,
+                    3 => 14,
+                    4 => 18,
+                    5 => 22,
+                ),
+        ),
 );
