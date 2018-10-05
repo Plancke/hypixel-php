@@ -4186,24 +4186,6 @@ of your friends',
                 array(
                     'one_time' =>
                         array(
-                            'NEW_STYLE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'New Style',
-                                    'description' => 'Unlock a kart skin',
-                                ),
-                            'GET_HIT_BY_ME' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Get hit!',
-                                    'description' => 'Hit a player with any projectile',
-                                ),
-                            'GETTING_GOOD' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Getting good!',
-                                    'description' => 'Complete a race',
-                                ),
                             'IS_THIS_SURVIVAL_GAMES' =>
                                 array(
                                     'points' => 5,
@@ -4216,11 +4198,35 @@ of your friends',
                                     'name' => 'Tryharder!',
                                     'description' => 'Win a trophy without using any items',
                                 ),
+                            'TASTE_MY_BANANA' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'BA NA NA NA NA',
+                                    'description' => 'Hit a player with a banana',
+                                ),
+                            'NEW_STYLE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'New Style',
+                                    'description' => 'Unlock a kart skin',
+                                ),
+                            'GETTING_GOOD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Getting good!',
+                                    'description' => 'Complete a race',
+                                ),
                             'NEVER_LUCKY' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Never Lucky',
                                     'description' => 'Get hit by more than 1 Blue Torpedo in 1 race',
+                                ),
+                            'GET_HIT_BY_ME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Get hit!',
+                                    'description' => 'Hit a player with any projectile',
                                 ),
                             'GETTIN_PAID' =>
                                 array(
@@ -4239,12 +4245,6 @@ of your friends',
                                     'points' => 5,
                                     'name' => 'I\'m Lucky',
                                     'description' => 'Use the part roller',
-                                ),
-                            'TASTE_MY_BANANA' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'BA NA NA NA NA',
-                                    'description' => 'Hit a player with a banana',
                                 ),
                         ),
                     'tiered' =>
@@ -5294,29 +5294,29 @@ perks at the same time',
                                     'description' => 'Unlock the Polished Bling Case
 or the 1.0s trigger',
                                 ),
-                            'GOOD_GUY_GAMER' =>
+                            'WHAT_JUST_HAPPENED' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'What just happened?',
+                                    'description' => 'Win a game in under a minute',
+                                ),
+                            'THANKS_GRANDMA' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Good Guy Gamer',
-                                    'description' => 'Say GG at the end of a game',
+                                    'name' => 'Thanks, Grandma!',
+                                    'description' => 'Win a game with the Cookie Cannon',
                                 ),
                             'BAKING_A_DOZEN' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Baking a dozen',
                                     'description' => 'Win a game by 12 kills in Quake',
                                 ),
-                            'BILLY_TALENT' =>
+                            'DOUBLE_TROUBLE' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'Billy Talent',
-                                    'description' => 'Win a game using a custom Railgun',
-                                ),
-                            'WHAT_HAVE_I_DONE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'What have I done...',
-                                    'description' => 'Gib a staff member',
+                                    'points' => 10,
+                                    'name' => 'Double Trouble',
+                                    'description' => 'Get two double kills in a row',
                                 ),
                             'DOUBLING_UP' =>
                                 array(
@@ -5330,41 +5330,11 @@ or the 1.0s trigger',
                                     'name' => 'Perfectionist',
                                     'description' => 'Do at least 4 killing sprees in 1 game',
                                 ),
-                            'HUMILIATION' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Humiliation',
-                                    'description' => 'Kill the same person 4 times in a row',
-                                ),
-                            'OH_BABY_A_TRIPLE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Oh baby, a triple!',
-                                    'description' => 'Get 3 headshot kills with one shot',
-                                ),
-                            'APPLE_CORER' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'I only use Apple sorry',
-                                    'description' => 'Win a game using the Apple Corer',
-                                ),
                             'FROG' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Are you a frog?',
                                     'description' => 'Dash 75 times in one game',
-                                ),
-                            'PERFECTION' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Perfection',
-                                    'description' => 'Win a game without dying',
-                                ),
-                            'FANATIC' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Fanatic!',
-                                    'description' => 'Win a game using the Budder Slapper',
                                 ),
                             'ONE_IN_THE_CHAMBER' =>
                                 array(
@@ -5378,29 +5348,11 @@ or the 1.0s trigger',
                                     'name' => 'Platinum plated',
                                     'description' => 'Win a game using the Platinum Smelter',
                                 ),
-                            'SIMPLE_THINGS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Simple Things',
-                                    'description' => 'Win a game using the Basic Railgun',
-                                ),
-                            'UNTOUCHABLE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Untouchable',
-                                    'description' => 'Kill 15 players without dying',
-                                ),
                             'RIP' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'R. I. P.',
                                     'description' => 'Win a game using The Reaper',
-                                ),
-                            'GOING_UP_IN_LIFE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Going up in life',
-                                    'description' => 'Win a game using the Superior Railgun',
                                 ),
                             'LOOKING_FANCY' =>
                                 array(
@@ -5408,15 +5360,21 @@ or the 1.0s trigger',
                                     'name' => 'Looking Fancy',
                                     'description' => 'Unlock your first hat',
                                 ),
-                            'ITS_SO_SHINY' =>
+                            'TUBULAR' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'It\'s soo Shiny!',
-                                    'description' => 'Win a game using the Hyper Beam Railgun',
+                                    'points' => 10,
+                                    'name' => 'Tubular',
+                                    'description' => 'Equip the full Disco suit',
+                                ),
+                            'BEYOND_INCREDIBLE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Beyond incredible',
+                                    'description' => 'Win a game with 100% accuracy in Solo mode',
                                 ),
                             'FLY' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'I believe I can fly',
                                     'description' => 'Get a kill while falling down',
                                 ),
@@ -5426,11 +5384,11 @@ or the 1.0s trigger',
                                     'name' => 'First kill',
                                     'description' => 'Be the first person to kill someone',
                                 ),
-                            'GRAB_IT_ALL' =>
+                            'I_LIEK_TURTLES' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Grab it all',
-                                    'description' => 'Win a game using The Harvester',
+                                    'name' => 'I liek turtles',
+                                    'description' => 'Win a game with the Turtle',
                                 ),
                             'TEAM_PLAYER' =>
                                 array(
@@ -5442,19 +5400,13 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 5,
                                     'name' => 'Joined the dark side',
-                                    'description' => 'Win a game using the Gun of Darkness',
+                                    'description' => 'Win a game using the Railgun of Darkness',
                                 ),
                             'PRESIDENTIAL' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Presidential!',
                                     'description' => 'Win a game using the Bling Bling Thing',
-                                ),
-                            'NOT_WORKING' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Not working',
-                                    'description' => 'Punch a player',
                                 ),
                             'WAT' =>
                                 array(
@@ -5485,6 +5437,144 @@ or the 1.0s trigger',
                                     'points' => 10,
                                     'name' => 'Incredible',
                                     'description' => 'Kill 10 players without missing a shot',
+                                ),
+                            'THINK_FAST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Think fast!',
+                                    'description' => 'Kill a player within 5 seconds of the game starting',
+                                ),
+                            'BUFFING_UP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Buffing Up',
+                                    'description' => 'Unlock your first armor set',
+                                ),
+                            'WANT_A_WARDROBE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Want a wardrobe with that?',
+                                    'description' => 'Unlock at least 13 cosmetic items',
+                                ),
+                            'REDSTONER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Redstoner',
+                                    'description' => 'Win a game using the Redstoner',
+                                ),
+                            'MY_WAY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'I did it my way',
+                                    'description' => 'Customize your Railgun',
+                                ),
+                            'GOOD_GUY_GAMER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Good Guy Gamer',
+                                    'description' => 'Say GG at the end of a game',
+                                ),
+                            'MINIGUN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Minigun',
+                                    'description' => 'Get 3 or more kills with the same Quickfire powerup',
+                                ),
+                            'FABULOUS_WIN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Fabulous win',
+                                    'description' => 'Win a game wearing a full set of colored armor',
+                                ),
+                            'BILLY_TALENT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Billy Talent',
+                                    'description' => 'Win a game using a custom Railgun',
+                                ),
+                            'NOT_TODAY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Not today!',
+                                    'description' => 'Kill someone that has activated the rapid fire powerup before they get any kills',
+                                ),
+                            'WHAT_HAVE_I_DONE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'What have I done...',
+                                    'description' => 'Gib a staff member',
+                                ),
+                            'HUMILIATION' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Humiliation',
+                                    'description' => 'Kill the same person 4 times in a row',
+                                ),
+                            'OH_BABY_A_TRIPLE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Oh baby, a triple!',
+                                    'description' => 'Get 3 headshot kills with one shot',
+                                ),
+                            'APPLE_CORER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'I only use Apple sorry',
+                                    'description' => 'Win a game using the Apple Corer',
+                                ),
+                            'PERFECTION' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Perfection',
+                                    'description' => 'Win a game without dying',
+                                ),
+                            'FANATIC' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Fanatic!',
+                                    'description' => 'Win a game using the Budder Slapper',
+                                ),
+                            'SIMPLE_THINGS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Simple Things',
+                                    'description' => 'Win a game using the Basic Railgun',
+                                ),
+                            'UNTOUCHABLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Untouchable',
+                                    'description' => 'Kill 15 players without dying',
+                                ),
+                            'GOING_UP_IN_LIFE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Going up in life',
+                                    'description' => 'Win a game using the Superior Railgun',
+                                ),
+                            'ITS_SO_SHINY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'It\'s soo Shiny!',
+                                    'description' => 'Win a game using the Hyper Beam Railgun',
+                                ),
+                            'GRAB_IT_ALL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Grab it all',
+                                    'description' => 'Win a game using The Harvester',
+                                ),
+                            'NOT_WORKING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Not working',
+                                    'description' => 'Punch a player',
+                                ),
+                            'HEAVY_SHOULDERS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Heavy shoulders',
+                                    'description' => 'Win a game with 35 or more kills on your team',
                                 ),
                             'LOOKIN_GOOD' =>
                                 array(
@@ -5528,36 +5618,17 @@ or the 1.0s trigger',
                                     'name' => 'You\'ve only got one shot... So make it count',
                                     'description' => 'Get 3 double kills in one game',
                                 ),
-                            'BUFFING_UP' =>
+                            'SQUISH' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'Buffing Up',
-                                    'description' => 'Unlock your first armor set',
-                                ),
-                            'WANT_A_WARDROBE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Want a wardrobe with that?',
-                                    'description' => 'Unlock at least 13 cosmetic items',
-                                ),
-                            'REDSTONER' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Redstoner',
-                                    'description' => 'Win a game using the Redstoner',
-                                ),
-                            'MY_WAY' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'I did it my way',
-                                    'description' => 'Customise your Railgun',
+                                    'points' => 10,
+                                    'name' => 'Squish',
+                                    'description' => 'Win a game with the Worm',
                                 ),
                             'IN_MY_WAY' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'You\'re in my way!',
-                                    'description' => 'Shutdown someone while on a
-killing streak yourself',
+                                    'description' => 'Shut down someone while on a Killstreak yourself',
                                 ),
                         ),
                     'tiered' =>
@@ -5634,7 +5705,7 @@ killing streak yourself',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 15000,
+                                                    'amount' => 10000,
                                                 ),
                                         ),
                                 ),
@@ -5762,31 +5833,31 @@ killing streak yourself',
                                                 array(
                                                     'tier' => 1,
                                                     'points' => 5,
-                                                    'amount' => 3,
+                                                    'amount' => 2,
                                                 ),
                                             1 =>
                                                 array(
                                                     'tier' => 2,
                                                     'points' => 10,
-                                                    'amount' => 10,
+                                                    'amount' => 5,
                                                 ),
                                             2 =>
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 20,
+                                                    'amount' => 10,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 35,
+                                                    'amount' => 15,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 50,
+                                                    'amount' => 25,
                                                 ),
                                         ),
                                 ),
@@ -5829,7 +5900,7 @@ killing streak yourself',
                                         ),
                                 ),
                         ),
-                    'total_points' => 820,
+                    'total_points' => 940,
                 ),
             'skyclash' =>
                 array(
