@@ -633,6 +633,20 @@ return array(
                         ),
                 ),
         ),
+    'prestiges' =>
+        array(
+            'list' =>
+                array(
+                    0 =>
+                        array(
+                            'cost' => 0,
+                        ),
+                    1 =>
+                        array(
+                            'cost' => 2000000,
+                        ),
+                ),
+        ),
     'happyHour' =>
         array(
             'utcHours' =>
