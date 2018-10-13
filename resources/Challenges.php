@@ -1,212 +1,212 @@
 <?php
-return array (
+return array(
     'challenges' =>
-        array (
+        array(
             'arcade' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__farm_hunt_challenge',
                             'name' => 'Farm Hunt Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__blocking_dead_challenge',
                             'name' => 'Blocking Dead Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__bounty_hunter_challenge',
                             'name' => 'Bounty Hunter Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__creeper_attack_challenge',
                             'name' => 'Creeper Attack Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     4 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__dragon_wars_challenge',
                             'name' => 'Dragon Wars Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     5 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__ender_spleef_challenge',
                             'name' => 'Ender Spleef Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     6 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__galaxy_wars_challenge',
                             'name' => 'Galaxy Wars Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     7 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__throw_out_challenge',
                             'name' => 'Throw Out Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     8 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__hole_in_the_wall_challenge',
                             'name' => 'Hole in the Wall Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     9 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__hypixel_says_challenge',
                             'name' => 'Hypixel Says Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     10 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__pixel_painters_challenge',
                             'name' => 'Pixel Painters Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     11 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__party_games_challenge',
                             'name' => 'Party Games Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     12 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__football_challenge',
                             'name' => 'Football Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     13 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__mini_walls_challenge',
                             'name' => 'Mini Walls Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     14 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__zombies_challenge',
                             'name' => 'Zombies Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     15 =>
-                        array (
+                        array(
                             'id' => 'ARCADE__hide_and_seek_challenge',
                             'name' => 'Hide and Seek Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -214,54 +214,54 @@ return array (
                         ),
                 ),
             'arena' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'ARENA__where_is_it_challenge',
                             'name' => 'WHERE IS IT Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'ARENA__triple_kill_challenge',
                             'name' => 'Triple Kill Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'ARENA__no_ultimate_challenge',
                             'name' => 'No Ultimate Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'ARENA__cooperation_challenge',
                             'name' => 'Cooperation Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -269,41 +269,41 @@ return array (
                         ),
                 ),
             'bedwars' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'BEDWARS__defensive',
                             'name' => 'Defensive',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'BEDWARS__support',
                             'name' => 'Support',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'BEDWARS__offensive',
                             'name' => 'Offensive',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -311,54 +311,54 @@ return array (
                         ),
                 ),
             'hungergames' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'SURVIVAL_GAMES__star_challenge',
                             'name' => 'Star Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'SURVIVAL_GAMES__iron_man_challenge',
                             'name' => 'Iron Man Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'SURVIVAL_GAMES__blitz_challenge',
                             'name' => 'Blitz Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'SURVIVAL_GAMES__resistance_challenge',
                             'name' => 'Resistance Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -366,28 +366,28 @@ return array (
                         ),
                 ),
             'buildbattle' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'BUILD_BATTLE__top_3_challenge',
                             'name' => 'Top 3 Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'BUILD_BATTLE__guesser_challenge',
                             'name' => 'Guesser Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -395,54 +395,54 @@ return array (
                         ),
                 ),
             'truecombat' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'TRUE_COMBAT__rampage_challenge',
                             'name' => 'Rampage Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'TRUE_COMBAT__samples_challenge',
                             'name' => 'Samples Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'TRUE_COMBAT__archer_challenge',
                             'name' => 'Archer Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'TRUE_COMBAT__super_lucky_challenge',
                             'name' => 'Super Lucky Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -450,41 +450,41 @@ return array (
                         ),
                 ),
             'duels' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'DUELS__feed_the_void_challenge',
                             'name' => 'Feed The Void Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'DUELS__teams_challenge',
                             'name' => 'Teams Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'DUELS__target_practice_challenge',
                             'name' => 'Target Practice Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -492,54 +492,54 @@ return array (
                         ),
                 ),
             'mcgo' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'MCGO__pistol_challenge',
                             'name' => 'Pistol Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'MCGO__knife_challenge',
                             'name' => 'Knife Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'MCGO__grenade_challenge',
                             'name' => 'Grenade Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'MCGO__killing_spree_challenge',
                             'name' => 'Killing Spree Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -547,54 +547,54 @@ return array (
                         ),
                 ),
             'murdermystery' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'MURDER_MYSTERY__murder_spree',
                             'name' => 'Murder Spree',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'MURDER_MYSTERY__sherlock',
                             'name' => 'Sherlock',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'MURDER_MYSTERY__hero',
                             'name' => 'Hero',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'MURDER_MYSTERY__serial_killer',
                             'name' => 'Serial Killer',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -602,54 +602,54 @@ return array (
                         ),
                 ),
             'paintball' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'PAINTBALL__kill_streak_challenge',
                             'name' => 'Kill Streak Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'PAINTBALL__killing_spree_challenge',
                             'name' => 'Killing Spree Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'PAINTBALL__nuke_challenge',
                             'name' => 'Nuke Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'PAINTBALL__finish_challenge',
                             'name' => 'Finish Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -657,54 +657,54 @@ return array (
                         ),
                 ),
             'quake' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'QUAKECRAFT__powerup_challenge',
                             'name' => 'Powerup Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'QUAKECRAFT__killing_streak_challenge',
                             'name' => 'Killing Streak Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'QUAKECRAFT__don\'t_blink_challenge',
                             'name' => 'Don\'t Blink Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'QUAKECRAFT__combo_challenge',
                             'name' => 'Combo Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -712,54 +712,54 @@ return array (
                         ),
                 ),
             'skyclash' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'SKYCLASH__enderchest_challenge',
                             'name' => 'Enderchest Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'SKYCLASH__teamwork_challenge',
                             'name' => 'Teamwork Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'SKYCLASH__fighter_challenge',
                             'name' => 'Fighter Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'SKYCLASH__monster_killer_challenge',
                             'name' => 'Monster Killer Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -767,54 +767,54 @@ return array (
                         ),
                 ),
             'skywars' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'SKYWARS__feeding_the_void_challenge',
                             'name' => 'Feeding the Void Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'SKYWARS__rush_challenge',
                             'name' => 'Rush Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'SKYWARS__ranked_challenge',
                             'name' => 'Ranked Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'SKYWARS__enderman_challenge',
                             'name' => 'Enderman Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -822,54 +822,54 @@ return array (
                         ),
                 ),
             'supersmash' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'SUPER_SMASH__leaderboard_challenge',
                             'name' => 'Leaderboard Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'SUPER_SMASH__crystal_challenge',
                             'name' => 'Crystal Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'SUPER_SMASH__smash_challenge',
                             'name' => 'Smash Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'SUPER_SMASH__flawless_challenge',
                             'name' => 'Flawless Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -877,54 +877,54 @@ return array (
                         ),
                 ),
             'speeduhc' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'SPEED_UHC__alchemist_challenge',
                             'name' => 'Alchemist Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'SPEED_UHC__wizard_challenge',
                             'name' => 'Wizard Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'SPEED_UHC__marksman_challenge',
                             'name' => 'Marksman Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'SPEED_UHC__nether_challenge',
                             'name' => 'Nether Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -932,54 +932,54 @@ return array (
                         ),
                 ),
             'gingerbread' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'GINGERBREAD__coin_challenge',
                             'name' => 'Coin Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'GINGERBREAD__first_place_challenge',
                             'name' => 'First Place Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'GINGERBREAD__banana_challenge',
                             'name' => 'Banana Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'GINGERBREAD__leaderboard_challenge',
                             'name' => 'Leaderboard Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -987,132 +987,132 @@ return array (
                         ),
                 ),
             'tntgames' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__tnt_run_challenge',
                             'name' => 'TNT Run Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__pvp_run_challenge',
                             'name' => 'PVP Run Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__bow_spleef_challenge',
                             'name' => 'Bow Spleef Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__tnt_tag_challenge',
                             'name' => 'TNT Tag Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     4 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__tnt_wizards_challenge',
                             'name' => 'TNT Wizards Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     5 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__tnt_wizards_challenge',
                             'name' => 'TNT Wizards Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     6 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__tnt_run_challenge',
                             'name' => 'TNT Run Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     7 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__tnt_wizard_challenge',
                             'name' => 'TNT Wizard Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     8 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__bow_spleef_challenge',
                             'name' => 'Bow Spleef Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     9 =>
-                        array (
+                        array(
                             'id' => 'TNTGAMES__tnt_tag_challenge',
                             'name' => 'TNT Tag Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -1120,54 +1120,54 @@ return array (
                         ),
                 ),
             'uhc' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'UHC__longshot_challenge',
                             'name' => 'Longshot Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'UHC__perfect_start_challenge',
                             'name' => 'Perfect Start Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'UHC__hunter_challenge',
                             'name' => 'Hunter Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'UHC__threat_challenge',
                             'name' => 'Threat Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -1175,54 +1175,54 @@ return array (
                         ),
                 ),
             'vampirez' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'VAMPIREZ__fang_challenge',
                             'name' => 'Fang Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'VAMPIREZ__gold_challenge',
                             'name' => 'Gold Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'VAMPIREZ__purifying_challenge',
                             'name' => 'Purifying Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'VAMPIREZ__last_stand_challenge',
                             'name' => 'Last Stand Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -1230,54 +1230,54 @@ return array (
                         ),
                 ),
             'walls3' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'WALLS3__wither_challenge',
                             'name' => 'Wither Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'WALLS3__protector_challenge',
                             'name' => 'Protector Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'WALLS3__berserk_challenge',
                             'name' => 'Berserk Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'WALLS3__comeback_challenge',
                             'name' => 'Comeback Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -1285,54 +1285,54 @@ return array (
                         ),
                 ),
             'walls' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'WALLS__first_blood_challenge',
                             'name' => 'First Blood Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'WALLS__powerhouse_challenge',
                             'name' => 'Powerhouse Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'WALLS__looting_challenge',
                             'name' => 'Looting Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'WALLS__double_kill_challenge',
                             'name' => 'Double Kill Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
@@ -1340,54 +1340,54 @@ return array (
                         ),
                 ),
             'battleground' =>
-                array (
+                array(
                     0 =>
-                        array (
+                        array(
                             'id' => 'BATTLEGROUND__support_challenge',
                             'name' => 'Support Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     1 =>
-                        array (
+                        array(
                             'id' => 'BATTLEGROUND__brute_challenge',
                             'name' => 'Brute Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     2 =>
-                        array (
+                        array(
                             'id' => 'BATTLEGROUND__capture_challenge',
                             'name' => 'Capture Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),
                                 ),
                         ),
                     3 =>
-                        array (
+                        array(
                             'id' => 'BATTLEGROUND__carry_challenge',
                             'name' => 'Carry Challenge',
                             'rewards' =>
-                                array (
+                                array(
                                     0 =>
-                                        array (
+                                        array(
                                             'type' => 'MultipliedExperienceReward',
                                             'amount' => 3360,
                                         ),

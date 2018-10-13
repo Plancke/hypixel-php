@@ -4370,6 +4370,18 @@ of your friends',
                 array(
                     'one_time' =>
                         array(
+                            'ALL_GHOSTS_2018' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'All Ghosts (2018)',
+                                    'description' => 'Find all Ghosts in the Main Lobby',
+                                ),
+                            'FIRE_FROM_HELL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Fire from Hell',
+                                    'description' => 'Win a game of Smash Heroes using Skullfire',
+                                ),
                             'TBR_KRAKEN_ASSAULT_1_25' =>
                                 array(
                                     'points' => 10,
@@ -4379,8 +4391,86 @@ of your friends',
                             'SECOND_GHOST' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Second Ghost',
+                                    'name' => 'Second Ghost (2017)',
                                     'description' => 'Find two Ghosts in the Main Lobby',
+                                ),
+                            'PUMPKIN_DEATH' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pumpkinator Rampage',
+                                    'description' => 'Bring 10 pumpkins at once to a Shopkeeper in Bedwars',
+                                ),
+                            'PUMPKIN_VISION' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Pumpkin Vision',
+                                    'description' => 'Kill a player in UHC while wearing a Pumpkin on your head',
+                                ),
+                            'TBR_SHARKNADO_JAUNT_FAST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Sharknado Jaunt Great Time',
+                                    'description' => 'Complete Sharknado Jaunt in under 1:15',
+                                ),
+                            'TBR_MIDTOWN_TRIP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Midtown Trip Completion',
+                                    'description' => 'Complete Midtown Trip in Turbo Bat Racers',
+                                ),
+                            'CORPSE_STILL_RUNS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Corpse Still Runs',
+                                    'description' => 'Win a game of Warlords Domination while having the Corpse Mare mount equipped',
+                                ),
+                            'BLAME_YOUR_TEAM' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'That wasn\'t eaZy',
+                                    'description' => 'Reach Round 25 playing Zombies on Alien Arcadium',
+                                ),
+                            'VAMPIRES_BE_GONE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Vamps b gone',
+                                    'description' => 'Kill 2 vampires in a single game of VampireZ',
+                                ),
+                            'FULL_MOON' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Full Moon',
+                                    'description' => 'Get a Final Kill as Werewolf in Mega Walls',
+                                ),
+                            'SECOND_GHOST_2018' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Second Ghost (2018)',
+                                    'description' => 'Find two Ghosts in the Main Lobby',
+                                ),
+                            'PUMPKIN_DANCER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pumpkin Devil',
+                                    'description' => 'Obtain 222 points in a single Pumpkin Smash game without dying',
+                                ),
+                            'RISING_DEAD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Rising Dead',
+                                    'description' => 'Trigger the Necromancer Perk in Sky Wars',
+                                ),
+                            'GRAVEDIGGER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Gravedigger',
+                                    'description' => 'Win a game of solo Blitz SG with the Gravedigger Kill Effect',
+                                ),
+                            'UNDEAD_TARGET_PRACTICE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Undead Target Practice',
+                                    'description' => 'Reach a score of 333 before the 1 minute mark in the Main Lobby Shooting Range',
                                 ),
                             'TBR_OBSERVATORY_SPIN' =>
                                 array(
@@ -4388,17 +4478,47 @@ of your friends',
                                     'name' => 'Observatory Spin Completion',
                                     'description' => 'Complete Observatory Spin in Turbo Bat Racers',
                                 ),
-                            'PUMPKIN_DEATH' =>
+                            'THE_CRAWLING_DEAD' =>
                                 array(
-                                    'points' => 10,
-                                    'name' => 'Pumpkinator Rampage',
-                                    'description' => 'Bring 15 pumpkins at once to a Shopkeeper in Bedwars',
+                                    'points' => 5,
+                                    'name' => 'The Crawling Dead',
+                                    'description' => 'Get 66 kills in a single game of The Blocking Dead',
+                                ),
+                            'SURVIVORS_BE_GONE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Vamps r cool',
+                                    'description' => 'Kill 5 survivors in a single game of VampireZ',
+                                ),
+                            'TBR_SHARKNADO_JAUNT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sharknado Jaunt Completion',
+                                    'description' => 'Complete Sharknado Jaunt in Turbo Bat Racers',
+                                ),
+                            'THAT_WAS_EASY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'That was eaZy',
+                                    'description' => 'Reach Round 10 playing Zombies on Dead End or Bad Blood',
                                 ),
                             'SPOOKY_CHEST' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Spooky Spooky',
                                     'description' => 'Open 3 Bed Wars Spooky Chests',
+                                ),
+                            'CLASSY_WITHER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Classy Wither',
+                                    'description' => 'Win a game of TNT Wizards with the Wither Wizard kit and the Wither Death Effect',
+                                ),
+                            'MY_HALLOWEEN_COSTUME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'My Halloween Costume',
+                                    'description' => 'Use a Morph in a lobby',
                                 ),
                             'GOOD_TRY' =>
                                 array(
@@ -4415,20 +4535,20 @@ of your friends',
                             'ALL_GHOSTS' =>
                                 array(
                                     'points' => 15,
-                                    'name' => 'All Ghosts',
+                                    'name' => 'All Ghosts (2017)',
                                     'description' => 'Find all Ghosts in the Main Lobby',
-                                ),
-                            'TBR_MIDTOWN_TRIP' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Midtown Trip Completion',
-                                    'description' => 'Complete Midtown Trip in Turbo Bat Racers',
                                 ),
                             'TBR_OBSERVATORY_SPIN_1_10' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Observatory Spin Great Time',
-                                    'description' => 'Complete Observatory Spin in under 01:25',
+                                    'description' => 'Complete Observatory Spin in under 01:15',
+                                ),
+                            'OCTOBER_BETRAYAL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'October Betrayal',
+                                    'description' => 'Win a Murder Mystery classic game as Murderer',
                                 ),
                             'HI_THERE' =>
                                 array(
@@ -4442,11 +4562,23 @@ of your friends',
                                     'name' => 'Midtown Trip Great Time',
                                     'description' => 'Complete Midtown Trip in under 01:30',
                                 ),
-                            'PUMPKIN_DANCER' =>
+                            'EL_SPOODER' =>
                                 array(
-                                    'points' => 10,
-                                    'name' => 'Pumpkin Devil',
-                                    'description' => 'Obtain 222 points in a single Pumpkin Smash game without dying',
+                                    'points' => 5,
+                                    'name' => 'El Spooder',
+                                    'description' => 'Earn a Golden Skull using the Spiderling kit in Crazy Walls',
+                                ),
+                            'NOT_SO_SCARY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Not so Scary',
+                                    'description' => 'Win a game of Build Battle Halloween Hyper Mode',
+                                ),
+                            'NECROTHERAPY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Necrotherapy',
+                                    'description' => 'Get a kill in SkyClash using the Necromancer kit',
                                 ),
                         ),
                     'tiered' =>
@@ -4528,7 +4660,7 @@ of your friends',
                                         ),
                                 ),
                         ),
-                    'total_points' => 250,
+                    'total_points' => 400,
                 ),
             'housing' =>
                 array(
