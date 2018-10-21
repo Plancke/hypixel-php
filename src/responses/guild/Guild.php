@@ -138,4 +138,11 @@ class Guild extends HypixelObject {
     public function getBanner() {
         return $this->getArray("banner");
     }
+
+    /**
+     * @return array
+     */
+    public function getExpByGameType() {
+        return $this->getArray("guildExpByGameType");
+    }
 }
