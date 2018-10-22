@@ -4198,6 +4198,30 @@ of your friends',
                                     'name' => 'Tryharder!',
                                     'description' => 'Win a trophy without using any items',
                                 ),
+                            'MISSILE_MAYHEM' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Missile Mayhem',
+                                    'description' => 'Use all 3 types of missiles in 1 game',
+                                ),
+                            'SLIPPERY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Slippery',
+                                    'description' => 'Have players hit your bananas 15 times in 1 game',
+                                ),
+                            'CANT_SEE_ANYTHING' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I Can\'t See Anything!',
+                                    'description' => 'Get blinded by a squid',
+                                ),
+                            'SHUT_DOWN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Shut Down',
+                                    'description' => 'Shoot someone with a missile while they are on a booster pad',
+                                ),
                             'TASTE_MY_BANANA' =>
                                 array(
                                     'points' => 5,
@@ -4216,11 +4240,59 @@ of your friends',
                                     'name' => 'Getting good!',
                                     'description' => 'Complete a race',
                                 ),
+                            'COIN_MAGNET' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Coin Magnet',
+                                    'description' => 'Pickup 15 coins in a row',
+                                ),
+                            'ETERNALLY_AWESOME' =>
+                                array(
+                                    'points' => 20,
+                                    'name' => 'Eternally Awesome',
+                                    'description' => 'Max all three parts for your kart',
+                                ),
+                            'CHILL_OUT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Chill Out',
+                                    'description' => 'Hit a target with all 8 snowballs from one item box',
+                                ),
                             'NEVER_LUCKY' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Never Lucky',
                                     'description' => 'Get hit by more than 1 Blue Torpedo in 1 race',
+                                ),
+                            'MODULAR' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Modular',
+                                    'description' => 'Equip an engine, frame, and turbo charger',
+                                ),
+                            'HONKING_AMAZING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Honking Amazing',
+                                    'description' => 'Purchase a new horn',
+                                ),
+                            'JAVELINS_ROCKET' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Javelin\'s Rocket',
+                                    'description' => 'Successfully throw and hit 3 different players with green missiles in 1 game',
+                                ),
+                            'MECHANIC' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Mechanic',
+                                    'description' => 'Craft a kart part',
+                                ),
+                            'SURFACE_TO_AIR_MISSILE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Surface-to-air-missile',
+                                    'description' => 'Shoot someone while they are already in the air from an explosion',
                                 ),
                             'GET_HIT_BY_ME' =>
                                 array(
@@ -4228,11 +4300,29 @@ of your friends',
                                     'name' => 'Get hit!',
                                     'description' => 'Hit a player with any projectile',
                                 ),
+                            'UNGRATEFUL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Ungrateful',
+                                    'description' => 'Scrap a pink part',
+                                ),
+                            'CONTENDER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Contender',
+                                    'description' => 'Claim a Grand Prix reward',
+                                ),
                             'GETTIN_PAID' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Gettin\' Paid',
                                     'description' => 'Win a Pink Part as a gaming reward',
+                                ),
+                            'HONKING_MAD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Honking Mad',
+                                    'description' => 'Use your horn 100 times in 1 race',
                                 ),
                             'COINS_PLEASE' =>
                                 array(
@@ -4240,11 +4330,83 @@ of your friends',
                                     'name' => 'Coins Please',
                                     'description' => 'Use the junkyard',
                                 ),
+                            'LAPPED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Lapped',
+                                    'description' => 'While in 1st place, pass the player who is in last place',
+                                ),
+                            'SEEN_IT_ALL' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'I\'ve Seen It All',
+                                    'description' => 'Win a gold trophy on each of the five maps',
+                                ),
+                            'BOOST_OF_CONFIDENCE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'A Boost of Confidence',
+                                    'description' => 'Pass a player while using a mushroom',
+                                ),
+                            'WELL_VERSED' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Well-versed',
+                                    'description' => 'Use 9 different items in a single game',
+                                ),
+                            'SLEEPER_AGENT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sleeper Agent',
+                                    'description' => 'Win a gold trophy after being in last place',
+                                ),
+                            'SHOW_OFF' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Show Off',
+                                    'description' => 'Win a gold trophy while wearing D. Goggles',
+                                ),
+                            'FLOWER_POWER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Flower Power',
+                                    'description' => 'Hit 3 different players with all 3 of your fire flowers',
+                                ),
+                            'SEASONAL_RACER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Seasonal Racer',
+                                    'description' => 'Earn a seasonal cosmetic from the Grand Prix',
+                                ),
+                            'NOPE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Nope',
+                                    'description' => 'Deflect a missile with a notched sword',
+                                ),
+                            'VICTORS_PRIZE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Victor\'s Prize',
+                                    'description' => 'Drink your champagne after winning a race',
+                                ),
+                            'EAT_MY_DUST' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Eat My Dust',
+                                    'description' => 'Finish a race within 2:30',
+                                ),
                             'IM_LUCKY' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'I\'m Lucky',
                                     'description' => 'Use the part roller',
+                                ),
+                            'FRONT_MAN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Front Man',
+                                    'description' => 'Finish all 3 laps in first place',
                                 ),
                         ),
                     'tiered' =>
@@ -4363,8 +4525,46 @@ of your friends',
                                                 ),
                                         ),
                                 ),
+                            'MYSTERY' =>
+                                array(
+                                    'name' => 'Mystery',
+                                    'description' => 'Pickup %s item boxes',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 100,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 500,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 1000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 5000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 10000,
+                                                ),
+                                        ),
+                                ),
                         ),
-                    'total_points' => 275,
+                    'total_points' => 585,
                 ),
             'halloween2017' =>
                 array(

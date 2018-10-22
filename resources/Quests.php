@@ -2525,7 +2525,7 @@ return array(
                                         array(
                                             'id' => 'gingerbread_races_completed',
                                             'type' => 'IntegerObjective',
-                                            'integer' => 50,
+                                            'integer' => 35,
                                         ),
                                 ),
                             'requirements' =>
