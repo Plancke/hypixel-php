@@ -2107,404 +2107,6 @@ twice in a single game',
                         ),
                     'total_points' => 1150,
                 ),
-            'bridge' =>
-                array(
-                    'one_time' =>
-                        array(
-                            'EXPRESS_YOURSELF' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Express Yourself',
-                                    'description' => 'Use a glyph in-game',
-                                ),
-                            'ON_FIRE' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'On Fire',
-                                    'description' => 'Score 3 goals in a row for your team',
-                                ),
-                            'ONE_V_ONE_ME' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => '1v1 Me!',
-                                    'description' => 'Challenge someone to a 1v1 using /bc',
-                                ),
-                            'COMMUNITY_ORIENTED' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Community Oriented',
-                                    'description' => 'Play a game on a community-submitted map',
-                                ),
-                            'NINJA' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Ninja\'d',
-                                    'description' => 'Score a goal while an enemy is close to your portal',
-                                ),
-                            'VOID_ARCHER' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Void Archer',
-                                    'description' => 'Knock a player into the void from 20 or more blocks away',
-                                ),
-                            'CARRIED' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Carried',
-                                    'description' => 'Score 5 goals in a 4 Teams game',
-                                ),
-                            'JUMPING_TO_CONCLUSIONS' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Jumping to Conclusions',
-                                    'description' => 'Kill a player after you use a jump pad',
-                                ),
-                            'GG' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'GG',
-                                    'description' => 'Win a game with a score of 5-4',
-                                ),
-                            'HAT_TRICK' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Hat Trick',
-                                    'description' => 'Score 3 goals in a game',
-                                ),
-                            'CLEAN_SWEEP' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Clean Sweep',
-                                    'description' => 'Score 5 goals in a 4v4 game',
-                                ),
-                            'LAST_STAND' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Last Stand',
-                                    'description' => 'Score a goal with less than 1 HP remaining',
-                                ),
-                            'GOT_YA' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Got Ya!',
-                                    'description' => 'Kill an enemy while they are close to your portal',
-                                ),
-                            'HEART_HOARDER' =>
-                                array(
-                                    'points' => 0,
-                                    'name' => 'Heart Hoarder',
-                                    'description' => 'Win a 4 Teams game with 7 lives remaining',
-                                ),
-                        ),
-                    'tiered' =>
-                        array(
-                            'UNIQUE_MAP_WINS' =>
-                                array(
-                                    'name' => 'Conqueror',
-                                    'description' => 'Win a game on %s unique maps',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 0,
-                                                    'amount' => 3,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 0,
-                                                    'amount' => 6,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 0,
-                                                    'amount' => 9,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 0,
-                                                    'amount' => 12,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 0,
-                                                    'amount' => 15,
-                                                ),
-                                        ),
-                                ),
-                            'WIN_STREAK' =>
-                                array(
-                                    'name' => 'The Bridge Streak',
-                                    'description' => 'Get a win streak of %s in any mode',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 0,
-                                                    'amount' => 3,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 0,
-                                                    'amount' => 6,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 0,
-                                                    'amount' => 10,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 0,
-                                                    'amount' => 15,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 0,
-                                                    'amount' => 25,
-                                                ),
-                                        ),
-                                ),
-                            'GOALS' =>
-                                array(
-                                    'name' => 'The Bridge Scorer',
-                                    'description' => 'Score %s goals',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 0,
-                                                    'amount' => 25,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 0,
-                                                    'amount' => 100,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 0,
-                                                    'amount' => 250,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 0,
-                                                    'amount' => 500,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 0,
-                                                    'amount' => 1000,
-                                                ),
-                                        ),
-                                ),
-                            'WINS' =>
-                                array(
-                                    'name' => 'The Bridge Winner',
-                                    'description' => 'Win %s games of The Bridge',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 0,
-                                                    'amount' => 20,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 0,
-                                                    'amount' => 100,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 0,
-                                                    'amount' => 200,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 0,
-                                                    'amount' => 500,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 0,
-                                                    'amount' => 1000,
-                                                ),
-                                        ),
-                                ),
-                            'TWO_V_TWO_WINS' =>
-                                array(
-                                    'name' => '2v2 Winner',
-                                    'description' => 'Win %s games of 2v2',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 0,
-                                                    'amount' => 10,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 0,
-                                                    'amount' => 50,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 0,
-                                                    'amount' => 100,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 0,
-                                                    'amount' => 250,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 0,
-                                                    'amount' => 500,
-                                                ),
-                                        ),
-                                ),
-                            'FOUR_V_FOUR_WINS' =>
-                                array(
-                                    'name' => '4v4 Winner',
-                                    'description' => 'Win %s games of 4v4',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 0,
-                                                    'amount' => 10,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 0,
-                                                    'amount' => 50,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 0,
-                                                    'amount' => 100,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 0,
-                                                    'amount' => 250,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 0,
-                                                    'amount' => 500,
-                                                ),
-                                        ),
-                                ),
-                            'FOUR_TEAMS_WINS' =>
-                                array(
-                                    'name' => 'Four Teams Winner',
-                                    'description' => 'Win %s games in Four Teams modes',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 0,
-                                                    'amount' => 10,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 0,
-                                                    'amount' => 50,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 0,
-                                                    'amount' => 100,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 0,
-                                                    'amount' => 250,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 0,
-                                                    'amount' => 500,
-                                                ),
-                                        ),
-                                ),
-                            'ONE_V_ONE_WINS' =>
-                                array(
-                                    'name' => '1v1 Winner',
-                                    'description' => 'Win %s games of 1v1',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 0,
-                                                    'amount' => 10,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 0,
-                                                    'amount' => 50,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 0,
-                                                    'amount' => 100,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 0,
-                                                    'amount' => 250,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 0,
-                                                    'amount' => 500,
-                                                ),
-                                        ),
-                                ),
-                        ),
-                    'total_points' => 0,
-                ),
             'buildbattle' =>
                 array(
                     'one_time' =>
@@ -3563,6 +3165,12 @@ twice in a single game',
                                     'name' => 'More Damage',
                                     'description' => 'Win a round of a Duels Tournament after the timer runs out by dealing the most damage',
                                 ),
+                            'ON_FIRE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'On Fire',
+                                    'description' => 'Score 3 goals in a row for your team in The Bridge',
+                                ),
                             'CLOSE_CALL' =>
                                 array(
                                     'points' => 10,
@@ -3586,6 +3194,24 @@ twice in a single game',
                                     'points' => 15,
                                     'name' => 'Well Rounded',
                                     'description' => 'Win a game in 5 different Duels modes',
+                                ),
+                            'COMMUNITY_ORIENTED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Community Oriented',
+                                    'description' => 'Play a game on a community-submitted map',
+                                ),
+                            'GG' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'GG',
+                                    'description' => 'Win a game of The Bridge with a score of 5-4',
+                                ),
+                            'CARRIED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Carried',
+                                    'description' => 'Score 5 goals in a 4 Teams game of The Bridge',
                                 ),
                             'REPLAY' =>
                                 array(
@@ -3665,6 +3291,12 @@ twice in a single game',
                                     'name' => 'Untouchable',
                                     'description' => 'Win a game of Duels without taking any damage',
                                 ),
+                            'EXPRESS_YOURSELF' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Express Yourself',
+                                    'description' => 'Use a glyph in The Bridge',
+                                ),
                             'SMASH_YOUR_KEYBOARD' =>
                                 array(
                                     'points' => 10,
@@ -3689,17 +3321,47 @@ twice in a single game',
                                     'name' => 'Speed Duel',
                                     'description' => 'Win a duel within 30 seconds',
                                 ),
+                            'NINJA' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Ninja\'d',
+                                    'description' => 'Score a goal while an enemy is close to your goal in The Bridge',
+                                ),
                             'NOT_CLOSE_AT_ALL' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Not Close at all',
                                     'description' => 'Win a duel with only 1 heart remaining',
                                 ),
+                            'VOID_ARCHER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Void Archer',
+                                    'description' => 'Knock a player into the void from 20 or more blocks away in The Bridge',
+                                ),
                             'SPEEDY_SUMO' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Speedy Sumo',
                                     'description' => 'Win a Sumo Duels game in 5 seconds or less',
+                                ),
+                            'GOT_YA' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Got Ya!',
+                                    'description' => 'Kill an enemy while they are close to your goal in The Bridge',
+                                ),
+                            'LAST_STAND' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Last Stand',
+                                    'description' => 'Score a goal with less than 1 HP remaining in The Bridge',
+                                ),
+                            'HAT_TRICK' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Hat Trick',
+                                    'description' => 'Score 3 goals in a game of The Bridge',
                                 ),
                             'GETTING_LOOT' =>
                                 array(
@@ -3712,6 +3374,18 @@ twice in a single game',
                                     'points' => 10,
                                     'name' => 'Can I Axe you a Question?',
                                     'description' => 'Win a game of UHC Duels without using your sword',
+                                ),
+                            'CLEAN_SWEEP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Clean Sweep',
+                                    'description' => 'Score 5 goals in a game of The Bridge Teams',
+                                ),
+                            'HEART_HOARDER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Heart Hoarder',
+                                    'description' => 'Win a 4 Teams game of The Bridge with 7 lives remaining',
                                 ),
                             'ACE' =>
                                 array(
@@ -3736,6 +3410,12 @@ twice in a single game',
                                     'points' => 15,
                                     'name' => 'CHAMPION!',
                                     'description' => 'Win a Duels Tournament',
+                                ),
+                            'ONE_V_ONE_ME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => '1v1 Me!',
+                                    'description' => 'Challenge someone to a Bridge Duel using /duel',
                                 ),
                         ),
                     'tiered' =>
@@ -3775,6 +3455,44 @@ twice in a single game',
                                                     'tier' => 5,
                                                     'points' => 25,
                                                     'amount' => 5,
+                                                ),
+                                        ),
+                                ),
+                            'BRIDGE_FOUR_TEAMS_WINS' =>
+                                array(
+                                    'name' => 'Four Teams Winner',
+                                    'description' => 'Win %s games in Four Teams modes',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 50,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
                                                 ),
                                         ),
                                 ),
@@ -3854,6 +3572,158 @@ twice in a single game',
                                                 ),
                                         ),
                                 ),
+                            'BRIDGE_WINS' =>
+                                array(
+                                    'name' => 'The Bridge Winner',
+                                    'description' => 'Win %s games of The Bridge',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 20,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 200,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
+                            'BRIDGE_DOUBLES_WINS' =>
+                                array(
+                                    'name' => 'The Bridge Doubles Winner',
+                                    'description' => 'Win %s games of The Bridge Doubles',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 50,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
+                                                ),
+                                        ),
+                                ),
+                            'GOALS' =>
+                                array(
+                                    'name' => 'The Bridge Scorer',
+                                    'description' => 'Score %s goals in The Bridge',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 25,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
+                            'BRIDGE_TEAMS_WINS' =>
+                                array(
+                                    'name' => 'The Bridge Teams Winner',
+                                    'description' => 'Win %s games of The Bridge Teams',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 50,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
+                                                ),
+                                        ),
+                                ),
                             'DUELS_TRAVELLER' =>
                                 array(
                                     'name' => 'Traveller',
@@ -3930,8 +3800,122 @@ twice in a single game',
                                                 ),
                                         ),
                                 ),
+                            'BRIDGE_WIN_STREAK' =>
+                                array(
+                                    'name' => 'The Bridge Streak',
+                                    'description' => 'Get a win streak of %s in The Bridge',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 3,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 6,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 10,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 15,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                            'BRIDGE_DUELS_WINS' =>
+                                array(
+                                    'name' => 'The Bridge Duel Winner',
+                                    'description' => 'Win %s The Bridge Duels',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 50,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
+                                                ),
+                                        ),
+                                ),
+                            'UNIQUE_MAP_WINS' =>
+                                array(
+                                    'name' => 'Conqueror',
+                                    'description' => 'Win a game on %s unique maps',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 3,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 6,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 9,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 12,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 15,
+                                                ),
+                                        ),
+                                ),
                         ),
-                    'total_points' => 640,
+                    'total_points' => 1310,
                 ),
             'general' =>
                 array(
@@ -4208,7 +4192,7 @@ of your friends',
                                 array(
                                     'points' => 10,
                                     'name' => 'Slippery',
-                                    'description' => 'Have players hit your bananas 15 times in 1 game',
+                                    'description' => 'Have players hit your bananas 12 times in 1 game',
                                 ),
                             'CANT_SEE_ANYTHING' =>
                                 array(
@@ -5428,17 +5412,17 @@ of your friends',
                 array(
                     'one_time' =>
                         array(
-                            'UNLOCK_HAT' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Mad Hatter',
-                                    'description' => 'Unlock a hat from the store',
-                                ),
                             'ACTIVATE_KILLSTREAKS' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Unstoppable',
                                     'description' => 'Activate ten killstreaks',
+                                ),
+                            'CHEATING_DEATH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Cheating Death',
+                                    'description' => 'Have the Ghost Hat save you from dying 5 times in one game',
                                 ),
                             'ACTIVATE_PLUS_TEN' =>
                                 array(
@@ -5446,17 +5430,23 @@ of your friends',
                                     'name' => 'Team Player',
                                     'description' => 'Activate PlusTen three times in a game',
                                 ),
-                            'FIRST_KILL' =>
+                            'TRIGGER_HAPPY' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'The Starter',
-                                    'description' => 'Be the first person to kill someone',
+                                    'name' => 'Trigger Happy',
+                                    'description' => 'Throw the most paintballs in one game',
                                 ),
-                            'HACKER' =>
+                            'ENERGY_DRINK' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Hacker?',
-                                    'description' => 'Use the forcefield killstreak twice in a game',
+                                    'name' => 'Energy Drink',
+                                    'description' => 'Activate Super Strong Arm and Quintuple Shot at the same time',
+                                ),
+                            'THUNDER_STRUCK' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Thunder Struck',
+                                    'description' => 'Kill 7 or more players with one lightning strike',
                                 ),
                             'COMBO' =>
                                 array(
@@ -5465,11 +5455,23 @@ of your friends',
                                     'description' => 'Activate TripleShot and Strongarm
 perks at the same time',
                                 ),
-                            'UNLOCK_KILLSTREAKS' =>
+                            'GOD_KILLER' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Specialist',
-                                    'description' => 'Unlock ten killstreaks',
+                                    'name' => 'God Killer',
+                                    'description' => 'Use Revenge on someone with Forcefield activated',
+                                ),
+                            'LIGHTS_OUT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Lights Out',
+                                    'description' => 'Kill 5 players in one game while they are blinded',
+                                ),
+                            'NOW_YOU_SEE_ME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Now you see me',
+                                    'description' => 'Have your Ender Hat teleport you 3 times in one game',
                                 ),
                             'NO_KILLSTREAKS' =>
                                 array(
@@ -5489,11 +5491,137 @@ perks at the same time',
                                     'name' => 'LEEEEROOYYY',
                                     'description' => 'Activate Leeroy Jenkins',
                                 ),
+                            'AT_LEAST_I_TRIED' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'At least I tried',
+                                    'description' => 'Have the most kills in the game but still lose',
+                                ),
+                            'KILLING_SPREE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Killing Spree',
+                                    'description' => 'Kill 5 players in 5 seconds or less',
+                                ),
+                            'HACKER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Hacker?',
+                                    'description' => 'Use the forcefield killstreak twice in a game',
+                                ),
+                            'UNLOCK_KILLSTREAKS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Specialist',
+                                    'description' => 'Unlock ten killstreaks',
+                                ),
+                            'UNDERCOVER_SLOTH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Undercover Sloth',
+                                    'description' => 'Get a kill using the Hypixel Hat ability',
+                                ),
+                            'EXPLOSIVE_DEATH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Explosive Death',
+                                    'description' => 'Have the TNT Hat activate and kill a player',
+                                ),
+                            'SARCRIFICE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sacrifice',
+                                    'description' => 'Kill 3 or more players using Bomberman',
+                                ),
+                            'FIRST_KILL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Starter',
+                                    'description' => 'Be the first person to kill someone',
+                                ),
+                            'CLOSURE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Closure',
+                                    'description' => 'Get the first and last kill of the game',
+                                ),
+                            'ON_THE_BRINK_OF_DEFEAT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'On the brink of defeat',
+                                    'description' => 'Buy lives for your team when it has less than 3 remaining',
+                                ),
+                            'SHAKY_HANDS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Shaky Hands',
+                                    'description' => 'Make it into the top 3 for kills in a game while using the Shaky hat',
+                                ),
+                            'HOW_DOES_IT_FEEL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'How does it feel?',
+                                    'description' => 'Kill the same player twice in a row',
+                                ),
+                            'SAMPLING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sampling',
+                                    'description' => 'Use 10 different killstreaks in one game',
+                                ),
+                            'GO_HOME_YOURE_DRUNK' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Go home, you\'re drunk',
+                                    'description' => 'Get 30 kills in one game using the Drunk Hat',
+                                ),
                             'ADMIN_HAT' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'The Originals',
                                     'description' => 'Unlock the Hypixel and Rezzus hats',
+                                ),
+                            'UNLOCK_HAT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Mad Hatter',
+                                    'description' => 'Unlock a hat from the store',
+                                ),
+                            'GODFATHER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Godfather',
+                                    'description' => 'Unlock Godfather XXX',
+                                ),
+                            'WARFARE_TIME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Warfare Time',
+                                    'description' => 'Use a killstreak on Warfare Wednesday',
+                                ),
+                            'DO_I_GET_MY_NUKE_NOW' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Do I get my nuke now?',
+                                    'description' => 'Kill 25 players without dying or activating a killstreak',
+                                ),
+                            'JACKSON_POLLOCK' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Jackson Pollock',
+                                    'description' => 'Get 100 kills in one game',
+                                ),
+                            'ENDURANCE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Endurance',
+                                    'description' => 'Unlock Endurance XXX',
+                                ),
+                            'ESPIONAGE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Espionage',
+                                    'description' => 'Get a kill using the AgentK Hat ability',
                                 ),
                         ),
                     'tiered' =>
@@ -5533,6 +5661,108 @@ perks at the same time',
                                                     'tier' => 5,
                                                     'points' => 25,
                                                     'amount' => 2500,
+                                                ),
+                                        ),
+                                ),
+                            'HAT_COLLECTOR' =>
+                                array(
+                                    'name' => 'Hat Collector',
+                                    'description' => 'Collect %s hats',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 7,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 14,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 21,
+                                                ),
+                                        ),
+                                ),
+                            'INVINCIBLE' =>
+                                array(
+                                    'name' => 'Invincible',
+                                    'description' => 'Spend %s seconds in a Forcefield',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 300,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 900,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 1800,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 2700,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 3600,
+                                                ),
+                                        ),
+                                ),
+                            'KILL_STREAKS' =>
+                                array(
+                                    'name' => 'Kill Streaks',
+                                    'description' => 'Activate %s killstreaks',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 100,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 500,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 10000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 5000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 10000,
                                                 ),
                                         ),
                                 ),
@@ -5613,7 +5843,7 @@ perks at the same time',
                                         ),
                                 ),
                         ),
-                    'total_points' => 315,
+                    'total_points' => 680,
                 ),
             'quake' =>
                 array(
