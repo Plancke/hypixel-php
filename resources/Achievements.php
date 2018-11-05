@@ -44,7 +44,7 @@ return array(
                                 ),
                             'DRAGONTAMER' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'DragonTamer',
                                     'description' => 'Kill 7 people in one Dragon Wars game while riding a Dragon',
                                 ),
@@ -99,7 +99,7 @@ one Explosive Arrow',
                                 ),
                             'ZOMBIES_SPEED_RUNNER' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Zombies Speed Runner',
                                     'description' => 'Win a game of Zombies in under 45 minutes',
                                 ),
@@ -192,7 +192,7 @@ disguised as an animal',
                                 ),
                             'ZOMBIES_WIN' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 10,
                                     'name' => 'Zombies Winner',
                                     'description' => 'Win a game of Zombies',
                                 ),
@@ -656,7 +656,7 @@ and armor in Creeper Attack',
                                         ),
                                 ),
                         ),
-                    'total_points' => 1060,
+                    'total_points' => 1065,
                 ),
             'arena' =>
                 array(
@@ -669,19 +669,6 @@ and armor in Creeper Attack',
                                     'description' => 'Kill someone with over 1250
 rating in 2v2',
                                 ),
-                            'NOT_EVEN_CLOSE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Not Even Close, Baby!',
-                                    'description' => 'Win with 250 or less health remaining
-while being the only one alive in 2v2',
-                                ),
-                            'COOLDOWN' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Cooldown Specialization ',
-                                    'description' => 'Buy all Cooldown Combat Upgrades',
-                                ),
                             'MAGICAL' =>
                                 array(
                                     'points' => 5,
@@ -689,30 +676,12 @@ while being the only one alive in 2v2',
                                     'description' => 'Open the Magical Chest for
 the first time',
                                 ),
-                            'POOL' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Life Pool',
-                                    'description' => 'Get the healing buff twice in a single game',
-                                ),
                             'PIG' =>
                                 array(
                                     'points' => 15,
                                     'name' => 'Lucky Pig!',
                                     'description' => 'Find the Guided Pig 2000
 in the Magical Chest',
-                                ),
-                            'SMASH' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Smash!',
-                                    'description' => 'Hit 2 players with a single Boulder Toss',
-                                ),
-                            'FLAWLESS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Flawless Victory',
-                                    'description' => 'Win with at least 2000 health remaining in 2v2',
                                 ),
                             'UTILITY' =>
                                 array(
@@ -726,12 +695,6 @@ in the Magical Chest',
                                     'name' => 'Melee Specialization ',
                                     'description' => 'Buy all Melee Combat Upgrades',
                                 ),
-                            'RUNIC' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Runic Enhancements',
-                                    'description' => 'Unlock a Rune in the shop',
-                                ),
                             'PUNISHER' =>
                                 array(
                                     'points' => 5,
@@ -739,17 +702,60 @@ in the Magical Chest',
                                     'description' => 'Get the double damage buff
 twice in a single game',
                                 ),
-                            'OVERKILL' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Overkill',
-                                    'description' => 'Deal over 800 damage at once',
-                                ),
                             'ENERGY' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Energy Specialization ',
                                     'description' => 'Buy all Energy Combat Upgrades',
+                                ),
+                            'OFFENSIVE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Offensive Training',
+                                    'description' => 'Unlock an Offensive Skill',
+                                ),
+                            'NOT_EVEN_CLOSE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Not Even Close, Baby!',
+                                    'description' => 'Win with 250 or less health remaining
+while being the only one alive in 2v2',
+                                ),
+                            'COOLDOWN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Cooldown Specialization ',
+                                    'description' => 'Buy all Cooldown Combat Upgrades',
+                                ),
+                            'POOL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Life Pool',
+                                    'description' => 'Get the healing buff twice in a single game',
+                                ),
+                            'SMASH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Smash!',
+                                    'description' => 'Hit 2 players with a single Boulder Toss',
+                                ),
+                            'FLAWLESS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Flawless Victory',
+                                    'description' => 'Win with at least 2000 health remaining in 2v2',
+                                ),
+                            'RUNIC' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Runic Enhancements',
+                                    'description' => 'Unlock a Rune in the shop',
+                                ),
+                            'OVERKILL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Overkill',
+                                    'description' => 'Deal over 800 damage at once',
                                 ),
                             'ULTIMATE' =>
                                 array(
@@ -780,12 +786,6 @@ twice in a single game',
                                     'points' => 5,
                                     'name' => 'Totem Destroyer',
                                     'description' => 'Destroy a healing totem',
-                                ),
-                            'OFFENSIVE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Offensive Training',
-                                    'description' => 'Unlock an Offensive Skill',
                                 ),
                             'NOT_TODAY' =>
                                 array(
@@ -875,7 +875,7 @@ twice in a single game',
                             'GLADIATOR' =>
                                 array(
                                     'name' => 'Gladiator',
-                                    'description' => 'Win 2v2 %s times',
+                                    'description' => 'Win %s times',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -937,7 +937,7 @@ twice in a single game',
                                         ),
                                 ),
                         ),
-                    'total_points' => 395,
+                    'total_points' => 405,
                 ),
             'bedwars' =>
                 array(
@@ -1095,7 +1095,7 @@ twice in a single game',
                                 ),
                             'SLAYER' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Dragon Slayer',
                                     'description' => 'Kill an Ender Dragon',
                                 ),
@@ -1185,7 +1185,7 @@ twice in a single game',
                                 ),
                             'DESTROY_BEDS' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 10,
                                     'name' => 'Getting the job done',
                                     'description' => 'Destroy half of the beds in one game',
                                 ),
@@ -1197,7 +1197,7 @@ twice in a single game',
                                 ),
                             'GETTING_THE_JOB_DONE_BETTER' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Getting The Job Done Better',
                                     'description' => 'Destroy all of the beds in a single game',
                                 ),
@@ -1416,24 +1416,24 @@ twice in a single game',
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 100,
+                                                    'amount' => 50,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 250,
+                                                    'amount' => 100,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                         ),
                                 ),
                         ),
-                    'total_points' => 790,
+                    'total_points' => 795,
                 ),
             'blitz' =>
                 array(
@@ -1605,7 +1605,7 @@ twice in a single game',
                                 array(
                                     'points' => 10,
                                     'name' => 'Unstoppable',
-                                    'description' => 'Kill 5 players within 10 seconds',
+                                    'description' => 'Kill 5 players within 15 seconds',
                                 ),
                             'INVINCIBLE' =>
                                 array(
@@ -1699,13 +1699,13 @@ twice in a single game',
                                 ),
                             'LEVEL_SEVEN' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 10,
                                     'name' => 'Lucky #7',
                                     'description' => 'Get a kit to level 7',
                                 ),
                             'COLLECTOR' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 20,
                                     'name' => 'Collector',
                                     'description' => 'Unlock 3 level X kits',
                                 ),
@@ -1892,25 +1892,25 @@ twice in a single game',
                                                 array(
                                                     'tier' => 2,
                                                     'points' => 10,
-                                                    'amount' => 50,
+                                                    'amount' => 20,
                                                 ),
                                             2 =>
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 100,
+                                                    'amount' => 50,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 250,
+                                                    'amount' => 100,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                         ),
                                 ),
@@ -2481,7 +2481,7 @@ twice in a single game',
                                 ),
                             'REAL_SANTA' =>
                                 array(
-                                    'points' => 25,
+                                    'points' => 15,
                                     'name' => 'Real Santa',
                                     'description' => 'Find all 88 presents in every lobby',
                                 ),
@@ -2675,7 +2675,7 @@ twice in a single game',
                                         ),
                                 ),
                         ),
-                    'total_points' => 365,
+                    'total_points' => 355,
                 ),
             'copsandcrims' =>
                 array(
@@ -2691,17 +2691,17 @@ twice in a single game',
                                 array(
                                     'points' => 15,
                                     'name' => 'A Player\'s Nightmare',
-                                    'description' => 'Get a triple kill using a grenade',
+                                    'description' => 'Get a double kill using a grenade',
                                 ),
                             'CHARACTER_UPGRADES' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Better Version Of Yourself',
                                     'description' => 'Buy all character upgrades',
                                 ),
                             'ONE_SHOT_ONE_KIL' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'One shot, one kill',
                                     'description' => 'Get a kill with your first bullet',
                                 ),
@@ -2757,7 +2757,7 @@ twice in a single game',
                                 array(
                                     'points' => 10,
                                     'name' => 'Stunningly Good',
-                                    'description' => 'Flash 4 players with one flashbang',
+                                    'description' => 'Flash 3 players with one flashbang',
                                 ),
                             'DARUDE_SANDSTORM' =>
                                 array(
@@ -2920,7 +2920,7 @@ twice in a single game',
                         array(
                             'CAC_BANKER' =>
                                 array(
-                                    'name' => 'Bounty Hunter',
+                                    'name' => 'Bounty Collector',
                                     'description' => 'Earn %s Coins',
                                     'tiers' =>
                                         array(
@@ -2990,7 +2990,7 @@ twice in a single game',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1000,
+                                                    'amount' => 750,
                                                 ),
                                         ),
                                 ),
@@ -3028,7 +3028,7 @@ twice in a single game',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 25000,
+                                                    'amount' => 20000,
                                                 ),
                                         ),
                                 ),
@@ -3142,7 +3142,7 @@ twice in a single game',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1500,
+                                                    'amount' => 1200,
                                                 ),
                                         ),
                                 ),
@@ -3191,7 +3191,7 @@ twice in a single game',
                                 ),
                             'WELL_ROUNDED' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 10,
                                     'name' => 'Well Rounded',
                                     'description' => 'Win a game in 5 different Duels modes',
                                 ),
@@ -3329,7 +3329,7 @@ twice in a single game',
                                 ),
                             'NOT_CLOSE_AT_ALL' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Not Close at all',
                                     'description' => 'Win a duel with only 1 heart remaining',
                                 ),
@@ -4127,7 +4127,7 @@ of your friends',
                                 ),
                             'WINS' =>
                                 array(
-                                    'name' => 'Winning!',
+                                    'name' => 'Well Rounded!',
                                     'description' => 'Win %s minigames',
                                     'tiers' =>
                                         array(
@@ -4178,7 +4178,7 @@ of your friends',
                                 ),
                             'TRYHARDER' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Tryharder!',
                                     'description' => 'Win a trophy without using any items',
                                 ),
@@ -4298,7 +4298,7 @@ of your friends',
                                 ),
                             'GETTIN_PAID' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 15,
                                     'name' => 'Gettin\' Paid',
                                     'description' => 'Win a Pink Part as a gaming reward',
                                 ),
@@ -4397,7 +4397,7 @@ of your friends',
                         array(
                             'WINNER' =>
                                 array(
-                                    'name' => 'Winner!',
+                                    'name' => 'Medalist',
                                     'description' => 'Get %s trophies',
                                     'tiers' =>
                                         array(
@@ -4548,7 +4548,7 @@ of your friends',
                                         ),
                                 ),
                         ),
-                    'total_points' => 585,
+                    'total_points' => 600,
                 ),
             'halloween2017' =>
                 array(
@@ -4696,7 +4696,7 @@ of your friends',
                                 array(
                                     'points' => 10,
                                     'name' => 'Classy Wither',
-                                    'description' => 'Win a game of TNT Wizards with the Wither Wizard kit and the Wither Death Effect',
+                                    'description' => 'Win a game of TNT Wizards with the Wither Wizard kit',
                                 ),
                             'MY_HALLOWEEN_COSTUME' =>
                                 array(
@@ -5463,7 +5463,7 @@ perks at the same time',
                                 ),
                             'LIGHTS_OUT' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Lights Out',
                                     'description' => 'Kill 5 players in one game while they are blinded',
                                 ),
@@ -5505,7 +5505,7 @@ perks at the same time',
                                 ),
                             'HACKER' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 15,
                                     'name' => 'Hacker?',
                                     'description' => 'Use the forcefield killstreak twice in a game',
                                 ),
@@ -5603,7 +5603,7 @@ perks at the same time',
                                 array(
                                     'points' => 15,
                                     'name' => 'Do I get my nuke now?',
-                                    'description' => 'Kill 25 players without dying or activating a killstreak',
+                                    'description' => 'Kill 25 players in a row without dying or activating a killstreak',
                                 ),
                             'JACKSON_POLLOCK' =>
                                 array(
@@ -5660,7 +5660,7 @@ perks at the same time',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 2500,
+                                                    'amount' => 2000,
                                                 ),
                                         ),
                                 ),
@@ -5750,7 +5750,7 @@ perks at the same time',
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 10000,
+                                                    'amount' => 1000,
                                                 ),
                                             3 =>
                                                 array(
@@ -5832,18 +5832,18 @@ perks at the same time',
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 100000,
+                                                    'amount' => 50000,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 200000,
+                                                    'amount' => 100000,
                                                 ),
                                         ),
                                 ),
                         ),
-                    'total_points' => 680,
+                    'total_points' => 695,
                 ),
             'quake' =>
                 array(
@@ -6548,7 +6548,7 @@ or the 1.0s trigger',
                                 ),
                             'NEW_PASSIVE' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'New Passive!',
                                     'description' => 'Master a Kit',
                                 ),
@@ -6556,7 +6556,7 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 5,
                                     'name' => 'Sharpened Justice',
-                                    'description' => 'Find a Sharpness II Sword of Justice in a chest',
+                                    'description' => 'Find a Sword of Justice in a chest',
                                 ),
                             'SKYCLASH_EXPERT' =>
                                 array(
@@ -6584,7 +6584,7 @@ or the 1.0s trigger',
                                 ),
                             'BOO' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Boo!',
                                     'description' => 'Get a kill within 3 seconds of using an Ender Pearl',
                                 ),
@@ -6664,11 +6664,11 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 10,
                                     'name' => 'I\'m an even better Wizard!',
-                                    'description' => 'Kill 2 or more players with one Fireball',
+                                    'description' => 'Kill a player with a Fireball',
                                 ),
                             'GOD_OF_MONSTERS' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'God of monsters',
                                     'description' => 'Spawn a total of 1,000 mobs',
                                 ),
@@ -6692,7 +6692,7 @@ or the 1.0s trigger',
                                 ),
                             'ENDLESS_QUIVER' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Endless Quiver',
                                     'description' => 'Shoot a total of 10,000 arrows',
                                 ),
@@ -6765,13 +6765,13 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 1500,
+                                                    'amount' => 1000,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 3000,
+                                                    'amount' => 2000,
                                                 ),
                                         ),
                                 ),
@@ -6809,7 +6809,7 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1500,
+                                                    'amount' => 1000,
                                                 ),
                                         ),
                                 ),
@@ -6917,18 +6917,18 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 750,
+                                                    'amount' => 700,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1500,
+                                                    'amount' => 1200,
                                                 ),
                                         ),
                                 ),
                         ),
-                    'total_points' => 705,
+                    'total_points' => 715,
                 ),
             'skywars' =>
                 array(
@@ -6954,13 +6954,13 @@ or the 1.0s trigger',
                                 ),
                             'MOB_SPAWNER' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Mob Spawner',
                                     'description' => 'Spawn a mob',
                                 ),
                             'BALLER' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Baller!',
                                     'description' => 'Get 2 snowball kills in one game',
                                 ),
@@ -7044,13 +7044,13 @@ or the 1.0s trigger',
                                 ),
                             'NICK_CAGE' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Nick Cage',
                                     'description' => 'Unlock Nicolas Cage',
                                 ),
                             'WELL_WELL' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Well, well',
                                     'description' => 'Use the Soul Well',
                                 ),
@@ -7074,7 +7074,7 @@ or the 1.0s trigger',
                                 ),
                             'GONE_FISHING' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Gone Fishing',
                                     'description' => 'Get a Fishing Rod kill',
                                 ),
@@ -7086,7 +7086,7 @@ or the 1.0s trigger',
                                 ),
                             'FEAR_ME' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Fear me mortals',
                                     'description' => 'Max out a Mega Kit',
                                 ),
@@ -7140,7 +7140,7 @@ or the 1.0s trigger',
                                 ),
                             'CRIMINAL' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Criminal',
                                     'description' => 'Use the robbery perk to drop an item from another player',
                                 ),
@@ -7164,7 +7164,7 @@ or the 1.0s trigger',
                                 ),
                             'MYSTERY_MOB' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Uh oh...',
                                     'description' => 'Spawn the mystery mob using the zookeeper kit',
                                 ),
@@ -7217,13 +7217,13 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1000,
+                                                    'amount' => 500,
                                                 ),
                                         ),
                                 ),
@@ -7465,7 +7465,7 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 25000,
+                                                    'amount' => 10000,
                                                 ),
                                         ),
                                 ),
@@ -7616,7 +7616,7 @@ or the 1.0s trigger',
                                 ),
                             'NATURAL_TALENT' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Natural Talent',
                                     'description' => 'Obtain 100 kills with 7 different Masteries',
                                 ),
@@ -7640,7 +7640,7 @@ or the 1.0s trigger',
                                 ),
                             'SNIPE_PLAYER' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Executed!',
                                     'description' => 'Kill a player at least 75 blocks away with a bow',
                                 ),
@@ -7773,13 +7773,13 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 5000,
+                                                    'amount' => 3500,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 10000,
+                                                    'amount' => 7000,
                                                 ),
                                         ),
                                 ),
@@ -7855,12 +7855,12 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1500,
+                                                    'amount' => 1000,
                                                 ),
                                         ),
                                 ),
                         ),
-                    'total_points' => 425,
+                    'total_points' => 435,
                 ),
             'supersmash' =>
                 array(
@@ -7870,7 +7870,7 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 5,
                                     'name' => 'General Cluck Challenge',
-                                    'description' => 'Kill every enemy hero at least once with your Chicken Army',
+                                    'description' => 'Kill 2 enemy heroes with your Chicken Army',
                                 ),
                             'PUG_CHALLENGE' =>
                                 array(
@@ -7880,7 +7880,7 @@ or the 1.0s trigger',
                                 ),
                             'YOUNG_APPRENTICE' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 20,
                                     'name' => 'Young Apprentice, You are not',
                                     'description' => 'Unlock a Master Skin for a Hero',
                                 ),
@@ -8053,7 +8053,7 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 300,
+                                                    'amount' => 250,
                                                 ),
                                             3 =>
                                                 array(
@@ -8065,7 +8065,7 @@ or the 1.0s trigger',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1000,
+                                                    'amount' => 750,
                                                 ),
                                         ),
                                 ),
@@ -8172,7 +8172,7 @@ or the 1.0s trigger',
                                         ),
                                 ),
                         ),
-                    'total_points' => 420,
+                    'total_points' => 430,
                 ),
             'tntgames' =>
                 array(
@@ -8254,13 +8254,13 @@ to level VI',
                                 ),
                             'PVP_RUN_FLYING' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 10,
                                     'name' => 'I can do that',
                                     'description' => 'Kill someone in PVP Run with your sword while using a Double Jump',
                                 ),
                             'WIZARDS_TRIPLE' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => '1 ... 2 ... 3!',
                                     'description' => 'Get a triple kill in TNT Wizards',
                                 ),
@@ -8398,7 +8398,7 @@ Jump to level V',
                                 array(
                                     'points' => 10,
                                     'name' => 'Assistant',
-                                    'description' => 'Get 30 assists in one TNT Wizards game',
+                                    'description' => 'Get 20 assists in one TNT Wizards game',
                                 ),
                             'BYE_BYE' =>
                                 array(
@@ -8642,7 +8642,7 @@ Double Jump upgrade',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                         ),
                                 ),
@@ -8928,7 +8928,7 @@ Double Jump upgrade',
                                                 array(
                                                     'tier' => 2,
                                                     'points' => 10,
-                                                    'amount' => 20,
+                                                    'amount' => 25,
                                                 ),
                                             2 =>
                                                 array(
@@ -8946,7 +8946,7 @@ Double Jump upgrade',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 500,
+                                                    'amount' => 150,
                                                 ),
                                         ),
                                 ),
@@ -9047,7 +9047,7 @@ Double Jump upgrade',
                                 ),
                             'NOT_UHC' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'This is not UHC!',
                                     'description' => 'Kill a player using Lightning Axe',
                                 ),
@@ -9133,11 +9133,11 @@ Double Jump upgrade',
                                 array(
                                     'points' => 5,
                                     'name' => 'I FNA!',
-                                    'description' => 'Win while wearing a staff member\'s head',
+                                    'description' => 'Win while wearing a MVP++\'s head',
                                 ),
                             'DOMINATING' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Dominating!',
                                     'description' => 'Kill 2 players before the red walls fall',
                                 ),
@@ -9155,9 +9155,9 @@ Double Jump upgrade',
                                 ),
                             'MONSTERKILL' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Monsterkill',
-                                    'description' => 'Get at least 15 kills in a game of Team Mode',
+                                    'description' => 'Get at least 12 kills in a game of Team Mode',
                                 ),
                             'DESTINY_CALLS' =>
                                 array(
@@ -9167,7 +9167,7 @@ Double Jump upgrade',
                                 ),
                             'STICKY_SITUATION' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Sticky Situation',
                                     'description' => 'Get the legendary stick from the weapon lucky block',
                                 ),
@@ -9204,7 +9204,7 @@ Double Jump upgrade',
                             'DRAGON_SLAYER' =>
                                 array(
                                     'points' => 15,
-                                    'name' => 'Dragon Slayer',
+                                    'name' => 'Boss fight',
                                     'description' => 'Kill an Ender Dragon',
                                 ),
                             'MAXED_PERK' =>
@@ -9248,7 +9248,7 @@ Double Jump upgrade',
                         array(
                             'SOLO_KILLER' =>
                                 array(
-                                    'name' => 'Solo Killer',
+                                    'name' => 'Crazy Killer',
                                     'description' => 'Kill %s players in Solo Normal or Lucky modes',
                                     'tiers' =>
                                         array(
@@ -9312,7 +9312,7 @@ Double Jump upgrade',
                                 ),
                             'SOLO_WINNER' =>
                                 array(
-                                    'name' => 'Solo Winner',
+                                    'name' => 'Maniac',
                                     'description' => 'Win %s games of Solo Normal or Lucky modes',
                                     'tiers' =>
                                         array(
@@ -9320,7 +9320,7 @@ Double Jump upgrade',
                                                 array(
                                                     'tier' => 1,
                                                     'points' => 5,
-                                                    'amount' => 5,
+                                                    'amount' => 10,
                                                 ),
                                             1 =>
                                                 array(
@@ -9332,19 +9332,19 @@ Double Jump upgrade',
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 200,
+                                                    'amount' => 100,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1000,
+                                                    'amount' => 500,
                                                 ),
                                         ),
                                 ),
@@ -9420,7 +9420,7 @@ Double Jump upgrade',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1500,
+                                                    'amount' => 1000,
                                                 ),
                                         ),
                                 ),
@@ -9452,7 +9452,7 @@ Double Jump upgrade',
                                 ),
                             'TEAM_WINNER' =>
                                 array(
-                                    'name' => 'Team Winner',
+                                    'name' => 'Crazy Teamwork',
                                     'description' => 'Win %s games of Team Normal or Lucky modes',
                                     'tiers' =>
                                         array(
@@ -9460,7 +9460,7 @@ Double Jump upgrade',
                                                 array(
                                                     'tier' => 1,
                                                     'points' => 5,
-                                                    'amount' => 5,
+                                                    'amount' => 10,
                                                 ),
                                             1 =>
                                                 array(
@@ -9472,25 +9472,25 @@ Double Jump upgrade',
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 200,
+                                                    'amount' => 100,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1000,
+                                                    'amount' => 500,
                                                 ),
                                         ),
                                 ),
                             'TEAM_KILLER' =>
                                 array(
-                                    'name' => 'Team Killer',
+                                    'name' => 'Team Butcher',
                                     'description' => 'Kill %s players in Team Normal or Lucky modes',
                                     'tiers' =>
                                         array(
@@ -9527,7 +9527,7 @@ Double Jump upgrade',
                                         ),
                                 ),
                         ),
-                    'total_points' => 775,
+                    'total_points' => 785,
                 ),
             'uhc' =>
                 array(
@@ -9655,7 +9655,7 @@ Double Jump upgrade',
                                 ),
                             'CHAMPION_RANK' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 25,
                                     'name' => 'Champion!',
                                     'description' => 'Get the Champion Rank',
                                 ),
@@ -9893,7 +9893,7 @@ Double Jump upgrade',
                                         ),
                                 ),
                         ),
-                    'total_points' => 585,
+                    'total_points' => 595,
                 ),
             'vampirez' =>
                 array(
@@ -10066,12 +10066,6 @@ Double Jump upgrade',
                                     'points' => 10,
                                     'name' => 'Bloody Bulldozer',
                                     'description' => 'Kill 10 Survivors in one game',
-                                ),
-                            'CLOSE_CALL' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Close Call',
-                                    'description' => 'Kill a Vampire while on half a heart',
                                 ),
                             'ZOMBIE_WHISPERER' =>
                                 array(
@@ -10273,7 +10267,7 @@ Double Jump upgrade',
                                         ),
                                 ),
                         ),
-                    'total_points' => 620,
+                    'total_points' => 610,
                 ),
             'walls' =>
                 array(
@@ -10317,7 +10311,7 @@ Double Jump upgrade',
                                 ),
                             'TEN_KILLS' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Disaster',
                                     'description' => 'Get ten kills in one game',
                                 ),
@@ -10373,7 +10367,7 @@ your team',
                                 ),
                             'STARTER_KITS' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 10,
                                     'name' => 'MOAR!!',
                                     'description' => 'Unlock 15 Starter Kits',
                                 ),
@@ -10537,7 +10531,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Dirty dog',
-                                    'description' => 'Get 15 total FK\'s while under 5 HP as Werewolf',
+                                    'description' => 'Get 15 total FK\'s while under 10 HP as Werewolf',
                                 ),
                             'GONE_VEGAN' =>
                                 array(
@@ -10567,7 +10561,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Bird\'s Eye',
-                                    'description' => 'Hit an enemy with Shadow Burst from over 50 blocks away.',
+                                    'description' => 'Hit an enemy with Shadow Burst from over 35 blocks away.',
                                 ),
                             'TREASURE_HUNTER' =>
                                 array(
@@ -10591,7 +10585,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Hammerhead',
-                                    'description' => 'Kill 250 players while both you and them are in water',
+                                    'description' => 'Kill 100 players while both you and them are in water',
                                 ),
                             'LEGENDARY_SQUID' =>
                                 array(
@@ -10711,7 +10705,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Sneak attack',
-                                    'description' => 'Get 200 total FK\'s or FA\'s from behind as Enderman',
+                                    'description' => 'Get 100 total FK\'s or FA\'s from behind as Enderman',
                                 ),
                             'BLOOD_LUST' =>
                                 array(
@@ -10747,7 +10741,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Sleepytime',
-                                    'description' => 'Craft and place a bed in 100 games as Zombie',
+                                    'description' => 'Craft and place a bed in 50 games as Zombie',
                                 ),
                             'LEGENDARY_ENDERMAN' =>
                                 array(
@@ -10783,7 +10777,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Marksman',
-                                    'description' => 'Get 25 FK\'s or FA\'s from over 50 blocks as Skeleton',
+                                    'description' => 'Get 25 FK\'s from over 30 blocks as Skeleton',
                                 ),
                             'LEGENDARY_SHARK' =>
                                 array(
@@ -10825,7 +10819,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Potions of Death',
-                                    'description' => 'Get 10 Final Kills with Arcane Explosion as Arcanist',
+                                    'description' => 'Get 8 Final Kills with Arcane Explosion as Arcanist',
                                 ),
                             'LEGENDARY_ASSASSIN' =>
                                 array(
@@ -10879,7 +10873,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Multi-kill!',
-                                    'description' => 'Get 5 FK\'s or FA\'s in a period of 7 seconds as Herobrine',
+                                    'description' => 'Get 5 FK\'s or FA\'s in a period of 15 seconds as Herobrine',
                                 ),
                             'YEEHAW' =>
                                 array(
@@ -10933,7 +10927,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Speedrun',
-                                    'description' => 'Attack all three enemy withers within 2 minutes after the walls have fallen as Enderman',
+                                    'description' => 'Attack all three enemy withers within 3 minutes after the walls have fallen as Enderman',
                                 ),
                             'BORN_TALENTED' =>
                                 array(
@@ -11011,7 +11005,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Skeleton\'s best friend',
-                                    'description' => 'Mine 100 diamond ore as Skeleton',
+                                    'description' => 'Mine 50 diamond ore as Skeleton',
                                 ),
                             'DEATH_FROM_ABOVE' =>
                                 array(
@@ -11101,7 +11095,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Maximum Effort',
-                                    'description' => 'Get 3 Final Kills in 6 seconds as Dreadlord',
+                                    'description' => 'Get 3 Final Kills in 12 seconds as Dreadlord',
                                 ),
                             'REVENGE_OF_THE_WOLVES' =>
                                 array(
@@ -11113,7 +11107,7 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Rushlord',
-                                    'description' => 'Deal 50,000 wither damage total as Dreadlord',
+                                    'description' => 'Deal 20,000 wither damage total as Dreadlord',
                                 ),
                             'HIGH_ON_ORES' =>
                                 array(
@@ -11183,7 +11177,7 @@ one of your teammates',
                                 ),
                             'EXCHANGE' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 15,
                                     'name' => 'Exchange',
                                     'description' => 'Purchase 10 Mythic Favor at once',
                                 ),
@@ -11323,13 +11317,13 @@ one of your teammates',
                                 array(
                                     'points' => 10,
                                     'name' => 'Terminated Script',
-                                    'description' => 'Siphon 8000 energy from killing enemies',
+                                    'description' => 'Siphon 3000 energy from killing enemies',
                                 ),
                             'CONSTRUCTOR' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Constructor',
-                                    'description' => 'Place 25,000 total blocks in preparation time as Moleman',
+                                    'description' => 'Place 15,000 total blocks in preparation time as Moleman',
                                 ),
                             'MOO_BRAWL' =>
                                 array(
@@ -11626,25 +11620,25 @@ one of your teammates',
                                                 array(
                                                     'tier' => 2,
                                                     'points' => 10,
-                                                    'amount' => 5,
+                                                    'amount' => 4,
                                                 ),
                                             2 =>
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 10,
+                                                    'amount' => 8,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 20,
+                                                    'amount' => 12,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 35,
+                                                    'amount' => 16,
                                                 ),
                                         ),
                                 ),
@@ -11687,7 +11681,7 @@ one of your teammates',
                                         ),
                                 ),
                         ),
-                    'total_points' => 2140,
+                    'total_points' => 2150,
                 ),
             'warlords' =>
                 array(
@@ -11695,7 +11689,7 @@ one of your teammates',
                         array(
                             'MEDIUM_RARE' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Medium Rare',
                                     'description' => 'Receive a Rare weapon from The Weaponsmith.',
                                 ),
@@ -11767,7 +11761,7 @@ one of your teammates',
                                 ),
                             'CAPTURE_THE_WIN' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Capture The Win!',
                                     'description' => 'Capture 3 flags in one game of CTF.',
                                 ),
@@ -11809,7 +11803,7 @@ one of your teammates',
                                 ),
                             'MAKIN_SOME_ROOM' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Makin\' Some Room',
                                     'description' => 'Salvage a Weapon.',
                                 ),
@@ -11821,7 +11815,7 @@ one of your teammates',
                                 ),
                             'SLOW_DOWN_THERE' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Slow Down There',
                                     'description' => 'Kill someone with a Freezing Breath while holding a flag.',
                                 ),
@@ -11881,19 +11875,19 @@ one of your teammates',
                                 ),
                             'COLLATERAL_DAMAGE' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Collateral Damage',
                                     'description' => 'Kill 2 players with one Chain Lightning.',
                                 ),
                             'FEELING_SPECIAL' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Feeling Special!',
                                     'description' => 'Change your weapon\'s appearance using the Skin Selector.',
                                 ),
                             'FIRST_OF_MANY' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'The First Of Many',
                                     'description' => 'Get a Broken Weapon repaired by The Weaponsmith.',
                                 ),
@@ -11905,7 +11899,7 @@ one of your teammates',
                                 ),
                             'LEGENDARY' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Legen...Wait For It...Dary!',
                                     'description' => 'Receive a Legendary weapon from The Weaponsmith.',
                                 ),
@@ -11929,13 +11923,13 @@ one of your teammates',
                                 ),
                             'CHAIN_KILL' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 5,
                                     'name' => 'Chain Kill',
                                     'description' => 'Kill two players within 5 seconds of each other.',
                                 ),
                             'SUPER_SOAKER' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Super Soaker',
                                     'description' => 'Shoot a Water Bolt that simultaneously lands a killing blow on an enemy and heals a teammate that had less than 75% health remaining.',
                                 ),
@@ -12052,19 +12046,19 @@ one of your teammates',
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 250,
+                                                    'amount' => 100,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1000,
+                                                    'amount' => 500,
                                                 ),
                                         ),
                                 ),
@@ -12242,19 +12236,19 @@ one of your teammates',
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 250,
+                                                    'amount' => 100,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 1000,
+                                                    'amount' => 500,
                                                 ),
                                         ),
                                 ),
@@ -12330,7 +12324,7 @@ one of your teammates',
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 25000,
+                                                    'amount' => 20000,
                                                 ),
                                         ),
                                 ),
