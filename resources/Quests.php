@@ -1507,7 +1507,7 @@ return array(
                                         array(
                                             'id' => 'arena_daily_kills',
                                             'type' => 'IntegerObjective',
-                                            'integer' => 10,
+                                            'integer' => 5,
                                         ),
                                 ),
                             'requirements' =>
@@ -1585,7 +1585,7 @@ return array(
                                         array(
                                             'id' => 'arena_weekly_play',
                                             'type' => 'IntegerObjective',
-                                            'integer' => 50,
+                                            'integer' => 35,
                                         ),
                                 ),
                             'requirements' =>
@@ -2875,62 +2875,6 @@ return array(
                                         ),
                                 ),
                         ),
-                    9 =>
-                        array(
-                            'id' => 'skywars_halloween_harvest',
-                            'name' => 'Special Quest: Harvest Season',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'GameLootChestReward',
-                                            'amount' => 1,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'SkyWarsTokenReward',
-                                            'amount' => 80000,
-                                        ),
-                                    2 =>
-                                        array(
-                                            'type' => 'MultipliedCoinReward',
-                                            'amount' => 20000,
-                                        ),
-                                    3 =>
-                                        array(
-                                            'type' => 'PackageReward',
-                                            'package' => 'cage_ender',
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'skywars_halloween_kills',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 333,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'id' => 'skywars_halloween_corrupted_wins',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 3,
-                                        ),
-                                    2 =>
-                                        array(
-                                            'id' => 'skywars_halloween_mega_wins',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 3,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'OneTimeQuestRequirement',
-                                        ),
-                                ),
-                        ),
                 ),
             'truecombat' =>
                 array(
@@ -3709,90 +3653,6 @@ return array(
                                         ),
                                 ),
                         ),
-                    4 =>
-                        array(
-                            'id' => 'bedwars_daily_nightmares',
-                            'name' => 'Special Daily: Nightmares',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 2000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'BedwarsExpReward',
-                                            'amount' => 1000,
-                                        ),
-                                    2 =>
-                                        array(
-                                            'type' => 'MultipliedCoinReward',
-                                            'amount' => 500,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'bedwars_daily_nightmare_beds',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 4,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'id' => 'bedwars_daily_nightmare_wins',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 2,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    5 =>
-                        array(
-                            'id' => 'bedwars_weekly_pumpkinator',
-                            'name' => 'Special Weekly: Pumpkinator',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 666,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'BedwarsExpReward',
-                                            'amount' => 6666,
-                                        ),
-                                    2 =>
-                                        array(
-                                            'type' => 'PackageReward',
-                                            'package' => 'islandtopper_pumpkin',
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'bedwars_special_weekly_pumpkinator',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 99,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'WeeklyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
                 ),
             'murdermystery' =>
                 array(
@@ -4078,40 +3938,6 @@ return array(
                                     0 =>
                                         array(
                                             'type' => 'WeeklyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'build_battle_halloween',
-                            'name' => 'Special Daily: Hyper',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'MultipliedCoinReward',
-                                            'amount' => 5000,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'play',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 2,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),

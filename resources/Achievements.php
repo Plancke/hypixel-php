@@ -662,12 +662,30 @@ and armor in Creeper Attack',
                 array(
                     'one_time' =>
                         array(
+                            'MY_NEW_HAT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'My New Hat ',
+                                    'description' => 'Win wearing an Epic hat',
+                                ),
                             'SPARTACUS' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Spartacus',
                                     'description' => 'Kill someone with over 1250
 rating in 2v2',
+                                ),
+                            'NICE_SPARE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Nice Spare!',
+                                    'description' => 'Kill someone using boulder toss while wearing the bowling hat',
+                                ),
+                            'NEW_TOY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'New Toy! ',
+                                    'description' => 'Find a sword in the magical chest',
                                 ),
                             'MAGICAL' =>
                                 array(
@@ -676,18 +694,18 @@ rating in 2v2',
                                     'description' => 'Open the Magical Chest for
 the first time',
                                 ),
+                            'HEALTH_TOTEM' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Healthy Totem',
+                                    'description' => 'Place down a healing totem and don\'t let it break',
+                                ),
                             'PIG' =>
                                 array(
                                     'points' => 15,
                                     'name' => 'Lucky Pig!',
                                     'description' => 'Find the Guided Pig 2000
 in the Magical Chest',
-                                ),
-                            'UTILITY' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Utility Training',
-                                    'description' => 'Unlock a Utility Skill',
                                 ),
                             'MELEE' =>
                                 array(
@@ -708,11 +726,47 @@ twice in a single game',
                                     'name' => 'Energy Specialization ',
                                     'description' => 'Buy all Energy Combat Upgrades',
                                 ),
+                            'DOOM_SHROOM_GLOOM' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Doom Shroom Gloom ',
+                                    'description' => 'Kill a player with your Doom Shroom',
+                                ),
+                            'ENVIRONMENTALIST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Environmentalist',
+                                    'description' => 'Have a Tree of Life and Doom Shroom activate at the same time',
+                                ),
+                            'HARD_EARNED_REWARD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Hard Earned Reward',
+                                    'description' => 'Earn a ranked reward',
+                                ),
+                            'DEADLY_PUMPKIN' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Deadly Pumpkin',
+                                    'description' => 'Find the Pumpkin Launcher in the magical chest',
+                                ),
                             'OFFENSIVE' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Offensive Training',
                                     'description' => 'Unlock an Offensive Skill',
+                                ),
+                            'DONT_TOUCH_ME' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Don\'t touch me! ',
+                                    'description' => 'Kill someone with your cactus shield',
+                                ),
+                            'POWER_HUNGRY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Power Hungry',
+                                    'description' => 'Kill a player while using your Berserk ultimate',
                                 ),
                             'NOT_EVEN_CLOSE' =>
                                 array(
@@ -726,6 +780,12 @@ while being the only one alive in 2v2',
                                     'points' => 10,
                                     'name' => 'Cooldown Specialization ',
                                     'description' => 'Buy all Cooldown Combat Upgrades',
+                                ),
+                            'DRAGON_WITHIN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Dragon Within',
+                                    'description' => 'Hit 2 players with one Flame/Freezing Breath',
                                 ),
                             'POOL' =>
                                 array(
@@ -757,11 +817,17 @@ while being the only one alive in 2v2',
                                     'name' => 'Overkill',
                                     'description' => 'Deal over 800 damage at once',
                                 ),
-                            'ULTIMATE' =>
+                            'BIG_BRAWLER' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'Ultimate Training',
-                                    'description' => 'Unlock an Ultimate Skill',
+                                    'points' => 10,
+                                    'name' => 'Big Brawler',
+                                    'description' => 'Win 2v2 10 times in a row',
+                                ),
+                            'IRON_HEART' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Iron Heart',
+                                    'description' => 'Claim an iron division reward or higher',
                                 ),
                             'HEALTH' =>
                                 array(
@@ -781,11 +847,29 @@ while being the only one alive in 2v2',
                                     'name' => 'Support Training',
                                     'description' => 'Unlock a Support Skill',
                                 ),
+                            'DISCO_STAR' =>
+                                array(
+                                    'points' => 20,
+                                    'name' => 'Disco Star',
+                                    'description' => 'Unlock the disco hat',
+                                ),
+                            'YOU_SHALL_NOT_PASS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'You Shall Not Pass',
+                                    'description' => 'Freeze 2 players in your Wall of Vines',
+                                ),
                             'TOTEM_DESTROYER' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Totem Destroyer',
                                     'description' => 'Destroy a healing totem',
+                                ),
+                            'MAX_RUNIC_MAGIC' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Maximum Runic Magic ',
+                                    'description' => 'Max a rune',
                                 ),
                             'NOT_TODAY' =>
                                 array(
@@ -793,9 +877,53 @@ while being the only one alive in 2v2',
                                     'name' => 'Not today',
                                     'description' => 'Destroy an enemy barricade',
                                 ),
+                            'SPIRITED_AWAY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Spirited Away',
+                                    'description' => 'Use spirit link in a game',
+                                ),
                         ),
                     'tiered' =>
                         array(
+                            'POWERUP' =>
+                                array(
+                                    'name' => 'Powerup!',
+                                    'description' => 'Activate %s powerups',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
                             'BOSSED' =>
                                 array(
                                     'name' => 'Bossed',
@@ -872,6 +1000,44 @@ while being the only one alive in 2v2',
                                                 ),
                                         ),
                                 ),
+                            'MAGICAL_BOX' =>
+                                array(
+                                    'name' => 'Magical Box',
+                                    'description' => 'Use the Magical Box %s times',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 500,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 1500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 3000,
+                                                ),
+                                        ),
+                                ),
                             'GLADIATOR' =>
                                 array(
                                     'name' => 'Gladiator',
@@ -937,7 +1103,7 @@ while being the only one alive in 2v2',
                                         ),
                                 ),
                         ),
-                    'total_points' => 405,
+                    'total_points' => 710,
                 ),
             'bedwars' =>
                 array(
@@ -5497,12 +5663,6 @@ perks at the same time',
                                     'name' => 'At least I tried',
                                     'description' => 'Have the most kills in the game but still lose',
                                 ),
-                            'KILLING_SPREE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Killing Spree',
-                                    'description' => 'Kill 5 players in 5 seconds or less',
-                                ),
                             'HACKER' =>
                                 array(
                                     'points' => 15,
@@ -5843,7 +6003,7 @@ perks at the same time',
                                         ),
                                 ),
                         ),
-                    'total_points' => 695,
+                    'total_points' => 685,
                 ),
             'quake' =>
                 array(
