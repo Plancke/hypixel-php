@@ -2625,7 +2625,7 @@ while being the only one alive in 2v2',
                                 array(
                                     'points' => 10,
                                     'name' => 'LEGENDARY!',
-                                    'description' => 'Find a Legendary Gift in SkyWars, Blitz or Murder Mystery',
+                                    'description' => 'Find a Legendary Gift in Bed Wars, SkyWars, Blitz or Murder Mystery',
                                 ),
                             'SHARING_IS_CARING' =>
                                 array(
@@ -2648,7 +2648,7 @@ while being the only one alive in 2v2',
                             'REAL_SANTA' =>
                                 array(
                                     'points' => 15,
-                                    'name' => 'Real Santa',
+                                    'name' => 'Real Santa (2017)',
                                     'description' => 'Find all 88 presents in every lobby',
                                 ),
                             'CHRISTMAS_QUEST' =>
@@ -2687,6 +2687,24 @@ while being the only one alive in 2v2',
                                     'name' => 'Worth it',
                                     'description' => 'When tasked to kill a chicken in Santa Says, kill a cow instead',
                                 ),
+                            'BIG_BAG_O_GIFTS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Big Bag o\' Gifts',
+                                    'description' => 'Claim 6 gifts at the same time in Bed Wars',
+                                ),
+                            'HOLIDAY_MIRACLE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Holiday Miracle',
+                                    'description' => 'Claim 2 legendary gifts at the same time in Bed Wars',
+                                ),
+                            'REAL_SANTA_2018' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Real Santa (2018)',
+                                    'description' => 'Find all 88 presents in every lobby',
+                                ),
                             'MERRY_CHRISTMAS' =>
                                 array(
                                     'points' => 5,
@@ -2705,10 +2723,16 @@ while being the only one alive in 2v2',
                                     'name' => 'You\'re not my mom',
                                     'description' => 'When tasked to stand still in Santa Says, sneak',
                                 ),
+                            'HOLIDAYS_RUINED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Holidays Ruined',
+                                    'description' => 'Kill a player who was holding an Epic or Legendary gift in Bed Wars',
+                                ),
                             'HUNT_BEGINS' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'The Hunt Begins',
+                                    'name' => 'The Hunt Begins (2017)',
                                     'description' => 'Find 2 lobby presents',
                                 ),
                             'SANTA_HELPER' =>
@@ -2716,6 +2740,12 @@ while being the only one alive in 2v2',
                                     'points' => 5,
                                     'name' => 'Santa Helper',
                                     'description' => 'Bring the right items back to every special character in a single Bed Wars game',
+                                ),
+                            'HUNT_BEGINS_2018' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Hunt Begins (2018)',
+                                    'description' => 'Find 2 lobby presents',
                                 ),
                             'NOM_NOM' =>
                                 array(
@@ -2766,7 +2796,45 @@ while being the only one alive in 2v2',
                                 ),
                             'ADVENT' =>
                                 array(
-                                    'name' => 'Advent Calendar',
+                                    'name' => 'Advent Calendar (2017)',
+                                    'description' => 'Claim %s days in the Advent Calendar',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 1,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 3,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 7,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 14,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 21,
+                                                ),
+                                        ),
+                                ),
+                            'ADVENT_2018' =>
+                                array(
+                                    'name' => 'Advent Calendar (2018)',
                                     'description' => 'Claim %s days in the Advent Calendar',
                                     'tiers' =>
                                         array(
@@ -2841,7 +2909,7 @@ while being the only one alive in 2v2',
                                         ),
                                 ),
                         ),
-                    'total_points' => 355,
+                    'total_points' => 465,
                 ),
             'copsandcrims' =>
                 array(
@@ -3640,25 +3708,25 @@ while being the only one alive in 2v2',
                                                 array(
                                                     'tier' => 2,
                                                     'points' => 10,
-                                                    'amount' => 50,
+                                                    'amount' => 25,
                                                 ),
                                             2 =>
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 100,
+                                                    'amount' => 50,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 250,
+                                                    'amount' => 100,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 500,
+                                                    'amount' => 250,
                                                 ),
                                         ),
                                 ),
@@ -4116,6 +4184,13 @@ while being the only one alive in 2v2',
                                     'points' => 5,
                                     'name' => 'Thinking with Portals',
                                     'description' => 'Use a portal to teleport to a game',
+                                ),
+                            'HOT_POTATO' =>
+                                array(
+                                    'points' => 0,
+                                    'name' => 'Hot Potato',
+                                    'description' => 'Hot, hot, hot!',
+                                    'secret' => true,
                                 ),
                             'FIRST_GAME' =>
                                 array(
