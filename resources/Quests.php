@@ -1,1285 +1,148 @@
 <?php
 return array(
-    'challenges' =>
+    'quests' =>
         array(
-            'arcade' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'ARCADE__farm_hunt_challenge',
-                            'name' => 'Farm Hunt Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'ARCADE__blocking_dead_challenge',
-                            'name' => 'Blocking Dead Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'ARCADE__bounty_hunter_challenge',
-                            'name' => 'Bounty Hunter Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'ARCADE__creeper_attack_challenge',
-                            'name' => 'Creeper Attack Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    4 =>
-                        array(
-                            'id' => 'ARCADE__dragon_wars_challenge',
-                            'name' => 'Dragon Wars Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    5 =>
-                        array(
-                            'id' => 'ARCADE__ender_spleef_challenge',
-                            'name' => 'Ender Spleef Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    6 =>
-                        array(
-                            'id' => 'ARCADE__galaxy_wars_challenge',
-                            'name' => 'Galaxy Wars Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    7 =>
-                        array(
-                            'id' => 'ARCADE__throw_out_challenge',
-                            'name' => 'Throw Out Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    8 =>
-                        array(
-                            'id' => 'ARCADE__hole_in_the_wall_challenge',
-                            'name' => 'Hole in the Wall Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    9 =>
-                        array(
-                            'id' => 'ARCADE__hypixel_says_challenge',
-                            'name' => 'Hypixel Says Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    10 =>
-                        array(
-                            'id' => 'ARCADE__pixel_painters_challenge',
-                            'name' => 'Pixel Painters Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    11 =>
-                        array(
-                            'id' => 'ARCADE__party_games_challenge',
-                            'name' => 'Party Games Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    12 =>
-                        array(
-                            'id' => 'ARCADE__football_challenge',
-                            'name' => 'Football Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    13 =>
-                        array(
-                            'id' => 'ARCADE__mini_walls_challenge',
-                            'name' => 'Mini Walls Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    14 =>
-                        array(
-                            'id' => 'ARCADE__zombies_challenge',
-                            'name' => 'Zombies Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    15 =>
-                        array(
-                            'id' => 'ARCADE__hide_and_seek_challenge',
-                            'name' => 'Hide and Seek Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'arena' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'ARENA__where_is_it_challenge',
-                            'name' => 'WHERE IS IT Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'ARENA__triple_kill_challenge',
-                            'name' => 'Triple Kill Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'ARENA__no_ultimate_challenge',
-                            'name' => 'No Ultimate Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'ARENA__cooperation_challenge',
-                            'name' => 'Cooperation Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'bedwars' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'BEDWARS__defensive',
-                            'name' => 'Defensive',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'BEDWARS__support',
-                            'name' => 'Support',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'BEDWARS__offensive',
-                            'name' => 'Offensive',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'hungergames' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'SURVIVAL_GAMES__star_challenge',
-                            'name' => 'Star Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'SURVIVAL_GAMES__iron_man_challenge',
-                            'name' => 'Iron Man Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'SURVIVAL_GAMES__blitz_challenge',
-                            'name' => 'Blitz Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'SURVIVAL_GAMES__resistance_challenge',
-                            'name' => 'Resistance Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'buildbattle' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'BUILD_BATTLE__top_3_challenge',
-                            'name' => 'Top 3 Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'BUILD_BATTLE__guesser_challenge',
-                            'name' => 'Guesser Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'truecombat' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'TRUE_COMBAT__rampage_challenge',
-                            'name' => 'Rampage Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'TRUE_COMBAT__samples_challenge',
-                            'name' => 'Samples Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'TRUE_COMBAT__archer_challenge',
-                            'name' => 'Archer Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'TRUE_COMBAT__super_lucky_challenge',
-                            'name' => 'Super Lucky Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'duels' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'DUELS__feed_the_void_challenge',
-                            'name' => 'Feed The Void Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'DUELS__teams_challenge',
-                            'name' => 'Teams Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'DUELS__target_practice_challenge',
-                            'name' => 'Target Practice Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'mcgo' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'MCGO__pistol_challenge',
-                            'name' => 'Pistol Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'MCGO__knife_challenge',
-                            'name' => 'Knife Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'MCGO__grenade_challenge',
-                            'name' => 'Grenade Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'MCGO__killing_spree_challenge',
-                            'name' => 'Killing Spree Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'murdermystery' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'MURDER_MYSTERY__murder_spree',
-                            'name' => 'Murder Spree',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'MURDER_MYSTERY__sherlock',
-                            'name' => 'Sherlock',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'MURDER_MYSTERY__hero',
-                            'name' => 'Hero',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'MURDER_MYSTERY__serial_killer',
-                            'name' => 'Serial Killer',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'paintball' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'PAINTBALL__kill_streak_challenge',
-                            'name' => 'Kill Streak Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'PAINTBALL__killing_spree_challenge',
-                            'name' => 'Killing Spree Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'PAINTBALL__nuke_challenge',
-                            'name' => 'Nuke Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'PAINTBALL__finish_challenge',
-                            'name' => 'Finish Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
             'quake' =>
                 array(
                     0 =>
                         array(
-                            'id' => 'QUAKECRAFT__powerup_challenge',
-                            'name' => 'Powerup Challenge',
+                            'id' => 'quake_daily_play',
+                            'name' => 'Daily Quest: Quake Player',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1750,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'quake_daily_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     1 =>
                         array(
-                            'id' => 'QUAKECRAFT__killing_streak_challenge',
-                            'name' => 'Killing Streak Challenge',
+                            'id' => 'quake_daily_kill',
+                            'name' => 'Daily Quest: Sniper',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1750,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'quake_daily_kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 50,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     2 =>
                         array(
-                            'id' => 'QUAKECRAFT__don\'t_blink_challenge',
-                            'name' => 'Don\'t Blink Challenge',
+                            'id' => 'quake_daily_win',
+                            'name' => 'Daily Quest: Winner',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1750,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'quake_daily_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     3 =>
                         array(
-                            'id' => 'QUAKECRAFT__combo_challenge',
-                            'name' => 'Combo Challenge',
+                            'id' => 'quake_weekly_play',
+                            'name' => 'Weekly Quest: Bazinga!',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 18000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
                                         ),
                                 ),
-                        ),
-                ),
-            'skyclash' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'SKYCLASH__enderchest_challenge',
-                            'name' => 'Enderchest Challenge',
-                            'rewards' =>
+                            'objectives' =>
                                 array(
                                     0 =>
                                         array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'id' => 'quake_weekly_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 20,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'quake_weekly_streak',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
                                         ),
                                 ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'SKYCLASH__teamwork_challenge',
-                            'name' => 'Teamwork Challenge',
-                            'rewards' =>
+                            'requirements' =>
                                 array(
                                     0 =>
                                         array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'SKYCLASH__fighter_challenge',
-                            'name' => 'Fighter Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'SKYCLASH__monster_killer_challenge',
-                            'name' => 'Monster Killer Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'skywars' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'SKYWARS__feeding_the_void_challenge',
-                            'name' => 'Feeding the Void Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'SKYWARS__rush_challenge',
-                            'name' => 'Rush Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'SKYWARS__ranked_challenge',
-                            'name' => 'Ranked Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'SKYWARS__enderman_challenge',
-                            'name' => 'Enderman Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'supersmash' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'SUPER_SMASH__leaderboard_challenge',
-                            'name' => 'Leaderboard Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'SUPER_SMASH__crystal_challenge',
-                            'name' => 'Crystal Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'SUPER_SMASH__smash_challenge',
-                            'name' => 'Smash Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'SUPER_SMASH__flawless_challenge',
-                            'name' => 'Flawless Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'speeduhc' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'SPEED_UHC__alchemist_challenge',
-                            'name' => 'Alchemist Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'SPEED_UHC__wizard_challenge',
-                            'name' => 'Wizard Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'SPEED_UHC__marksman_challenge',
-                            'name' => 'Marksman Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'SPEED_UHC__nether_challenge',
-                            'name' => 'Nether Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'gingerbread' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'GINGERBREAD__coin_challenge',
-                            'name' => 'Coin Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'GINGERBREAD__first_place_challenge',
-                            'name' => 'First Place Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'GINGERBREAD__banana_challenge',
-                            'name' => 'Banana Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'GINGERBREAD__leaderboard_challenge',
-                            'name' => 'Leaderboard Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'tntgames' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'TNTGAMES__tnt_run_challenge',
-                            'name' => 'TNT Run Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'TNTGAMES__pvp_run_challenge',
-                            'name' => 'PVP Run Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'TNTGAMES__bow_spleef_challenge',
-                            'name' => 'Bow Spleef Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'TNTGAMES__tnt_tag_challenge',
-                            'name' => 'TNT Tag Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    4 =>
-                        array(
-                            'id' => 'TNTGAMES__tnt_wizards_challenge',
-                            'name' => 'TNT Wizards Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    5 =>
-                        array(
-                            'id' => 'TNTGAMES__tnt_wizards_challenge',
-                            'name' => 'TNT Wizards Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    6 =>
-                        array(
-                            'id' => 'TNTGAMES__tnt_run_challenge',
-                            'name' => 'TNT Run Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    7 =>
-                        array(
-                            'id' => 'TNTGAMES__tnt_wizard_challenge',
-                            'name' => 'TNT Wizard Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    8 =>
-                        array(
-                            'id' => 'TNTGAMES__bow_spleef_challenge',
-                            'name' => 'Bow Spleef Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    9 =>
-                        array(
-                            'id' => 'TNTGAMES__tnt_tag_challenge',
-                            'name' => 'TNT Tag Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'uhc' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'UHC__longshot_challenge',
-                            'name' => 'Longshot Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'UHC__perfect_start_challenge',
-                            'name' => 'Perfect Start Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'UHC__hunter_challenge',
-                            'name' => 'Hunter Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'UHC__threat_challenge',
-                            'name' => 'Threat Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'vampirez' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'VAMPIREZ__fang_challenge',
-                            'name' => 'Fang Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'VAMPIREZ__gold_challenge',
-                            'name' => 'Gold Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'VAMPIREZ__purifying_challenge',
-                            'name' => 'Purifying Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'VAMPIREZ__last_stand_challenge',
-                            'name' => 'Last Stand Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                ),
-            'walls3' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'WALLS3__wither_challenge',
-                            'name' => 'Wither Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'WALLS3__protector_challenge',
-                            'name' => 'Protector Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'WALLS3__berserk_challenge',
-                            'name' => 'Berserk Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'WALLS3__comeback_challenge',
-                            'name' => 'Comeback Challenge',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
                         ),
@@ -1288,53 +151,1846 @@ return array(
                 array(
                     0 =>
                         array(
-                            'id' => 'WALLS__first_blood_challenge',
-                            'name' => 'First Blood Challenge',
+                            'id' => 'walls_daily_play',
+                            'name' => 'Daily Quest: Waller',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'walls_daily_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     1 =>
                         array(
-                            'id' => 'WALLS__powerhouse_challenge',
-                            'name' => 'Powerhouse Challenge',
+                            'id' => 'walls_daily_kill',
+                            'name' => 'Daily Quest: Kills',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'walls_daily_kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     2 =>
                         array(
-                            'id' => 'WALLS__looting_challenge',
-                            'name' => 'Looting Challenge',
+                            'id' => 'walls_daily_win',
+                            'name' => 'Daily Quest: Win',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'walls_daily_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     3 =>
                         array(
-                            'id' => 'WALLS__double_kill_challenge',
-                            'name' => 'Double Kill Challenge',
+                            'id' => 'walls_weekly',
+                            'name' => 'Weekly Quest: Walls Weekly',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 21000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'walls_weekly_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 7,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'walls_weekly_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 25,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'paintball' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'paintballer',
+                            'name' => 'Daily Quest: Paintballer',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'paintball_killer',
+                            'name' => 'Daily Quest: Paintball Killer',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 2500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 100,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'paintball_expert',
+                            'name' => 'Weekly Quest: Paintball Expert',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 21000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 20000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 750,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 30,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'hungergames' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'blitz_game_of_the_day',
+                            'name' => 'Daily Quest: Game of the Day',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1750,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'blitz_games_played',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'blitz_win',
+                            'name' => 'Daily Quest: Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1750,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'winblitz',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'blitz_kills',
+                            'name' => 'Daily Quest: Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1750,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'killblitz10',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'blitz_weekly_master',
+                            'name' => 'Weekly Quest: Blitz Master',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 21000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 4500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'blitz_games_played',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 30,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'winblitz',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'id' => 'killblitz10',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 50,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'blitz_special_daily_north_pole',
+                            'name' => 'Special Daily: Blitz North Pole',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 2500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 2500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'blitz_special_gifts',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'tntgames' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'tnt_daily_win',
+                            'name' => 'Daily Quest: TNT Winner',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 2500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 2000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_daily_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'tnt_weekly_play',
+                            'name' => 'Weekly Quest: Explosive Fanatic',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 15000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 11000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_weekly_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 20,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'tnt_tntrun_daily',
+                            'name' => 'Daily Quest: TNT Run',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 1800,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_tntrun_daily',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 500,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'tnt_tntrun_weekly',
+                            'name' => 'Weekly Quest: TNT Run',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 6000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_tntrun_weekly',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2000,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'tnt_pvprun_daily',
+                            'name' => 'Daily Quest: PVP Run',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 1800,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_pvprun_daily',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    5 =>
+                        array(
+                            'id' => 'tnt_pvprun_weekly',
+                            'name' => 'Weekly Quest: PVP Run',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 6000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_pvprun_weekly',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 25,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    6 =>
+                        array(
+                            'id' => 'tnt_bowspleef_daily',
+                            'name' => 'Daily Quest: Bow Spleef',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 1800,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_bowspleef_daily',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 40,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    7 =>
+                        array(
+                            'id' => 'tnt_bowspleef_weekly',
+                            'name' => 'Weekly Quest: Bow Spleef',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 6000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_bowspleef_weekly',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 200,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    8 =>
+                        array(
+                            'id' => 'tnt_tnttag_daily',
+                            'name' => 'Daily Quest: TNT Tag',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 1800,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_tnttag_daily',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 7,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    9 =>
+                        array(
+                            'id' => 'tnt_tnttag_weekly',
+                            'name' => 'Weekly Quest: TNT Tag',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 6000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_tnttag_weekly',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 50,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    10 =>
+                        array(
+                            'id' => 'tnt_wizards_daily',
+                            'name' => 'Daily Quest: TNT Wizards',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 1800,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_wizards_daily_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    11 =>
+                        array(
+                            'id' => 'tnt_wizards_weekly',
+                            'name' => 'Weekly Quest: TNT Wizards',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 6000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'tnt_wizards_weekly_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 150,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'vampirez' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'vampirez_daily_play',
+                            'name' => 'Daily Quest: VampireZ',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'vampirez_daily_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'vampirez_daily_kill',
+                            'name' => 'Daily Quest: Blood Drinker',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'vampirez_daily_kill_vampire',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'vampirez_daily_kill_zombie',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 20,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'vampirez_daily_win',
+                            'name' => 'Daily Quest: VampireZ Daily Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 2000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'vampirez_daily_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'vampirez_weekly_win',
+                            'name' => 'Weekly Quest: Vampire Winner',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 10500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'vampirez_weekly_win_survivor',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 12,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'vampirez_weekly_kill',
+                            'name' => 'Weekly Quest: Vampire Slayer',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 9000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'vampirez_weekly_kill_zombie',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 130,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'vampirez_weekly_kill_vampire',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 25,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'walls3' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'mega_walls_play',
+                            'name' => 'Daily Quest: Game of the Day',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mega_walls_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'mega_walls_win',
+                            'name' => 'Daily Quest: Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mega_walls_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'mega_walls_kill',
+                            'name' => 'Daily Quest: Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mega_walls_kill_daily',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'mega_walls_weekly',
+                            'name' => 'Weekly Quest: Mega Waller',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 21000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 4500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mega_walls_play_weekly',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'mega_walls_kill_weekly',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 25,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'mega_walls_faithful',
+                            'name' => 'Mythic Quest: Faithful',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 5000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MegawallsMythicFavorReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mega_walls_faithful_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'mega_walls_faifthful_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'arcade' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'arcade_gamer',
+                            'name' => 'Daily Quest: Arcade Gamer',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'arcade_winner',
+                            'name' => 'Daily Quest: Arcade Winner',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'arcade_specialist',
+                            'name' => 'Weekly Quest: Arcade Specialist',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 19500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 50000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 20,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'arena' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'arena_daily_play',
+                            'name' => 'Daily Quest: Play Arena',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'ArenaMagicKeyReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'arena_daily_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'arena_daily_kills',
+                            'name' => 'Daily Quest: Arena Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'ArenaMagicKeyReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'arena_daily_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'arena_daily_wins',
+                            'name' => 'Daily Quest: Arena Wins',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'ArenaMagicKeyReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'arena_daily_wins',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'arena_weekly_play',
+                            'name' => 'Weekly Quest: Play Arena',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 21000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 6000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'ArenaMagicKeyReward',
+                                            'amount' => 15,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'arena_weekly_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 35,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'uhc' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'uhc_team',
+                            'name' => 'Daily Quest: Team UHC Champions',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'uhc_games',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'uhc_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'uhc_solo',
+                            'name' => 'Daily Quest: Solo UHC Champions',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'uhc_games',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'uhc_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'uhc_dm',
+                            'name' => 'Daily Quest: UHC Deathmatch',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'uhc_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'uhc_weekly',
+                            'name' => 'Weekly Quest: UHC Champions',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 21000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'uhc_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 20,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'uhc_weekly_special_cookie',
+                            'name' => 'Special Weekly: Hungry Stomp',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 15000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 20000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'uhc_kills_after_cookie',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 7,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'mcgo' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'cvc_win_daily_normal',
+                            'name' => 'Daily Quest: Win a game! (Defusal)',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'cvc_play_daily_normal',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'cvc_kill_daily_normal',
+                            'name' => 'Daily Quest: Kill 15 players! (Defusal)',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'cvc_kill_daily_normal',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'cvc_kill',
+                            'name' => 'Daily Quest: Get 300 points! (Deathmatch)',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'cvc_kill_daily_deathmatch',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 300,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'cvc_win_daily_deathmatch',
+                            'name' => 'Daily Quest: Win a game! (Deathmatch)',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'cvc_play_daily_deathmatch',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'cvc_kill_weekly',
+                            'name' => 'Weekly Quest: 100 kills and 1,500 points',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 19500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 4000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'cvc_play_weekly',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 100,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'cvc_play_weekly_2',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1500,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
                         ),
@@ -1343,53 +1999,2381 @@ return array(
                 array(
                     0 =>
                         array(
-                            'id' => 'BATTLEGROUND__support_challenge',
-                            'name' => 'Support Challenge',
+                            'id' => 'warlords_ctf',
+                            'name' => 'Daily Quest: Capture the Flag',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 4200,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'WarlordsBrokenWeaponReward',
+                                            'amount' => 3,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'warlords_daily_ctf',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     1 =>
                         array(
-                            'id' => 'BATTLEGROUND__brute_challenge',
-                            'name' => 'Brute Challenge',
+                            'id' => 'warlords_tdm',
+                            'name' => 'Daily Quest: Team Deathmatch',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 4200,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'WarlordsBrokenWeaponReward',
+                                            'amount' => 3,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'warlords_tdm',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     2 =>
                         array(
-                            'id' => 'BATTLEGROUND__capture_challenge',
-                            'name' => 'Capture Challenge',
+                            'id' => 'warlords_domination',
+                            'name' => 'Daily Quest: Domination',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 4200,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'WarlordsBrokenWeaponReward',
+                                            'amount' => 3,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'warlords_daily_dom',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),
                     3 =>
                         array(
-                            'id' => 'BATTLEGROUND__carry_challenge',
-                            'name' => 'Carry Challenge',
+                            'id' => 'warlords_victorious',
+                            'name' => 'Daily Quest: Victorious',
                             'rewards' =>
                                 array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3360,
+                                            'amount' => 4200,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'WarlordsBrokenWeaponReward',
+                                            'amount' => 3,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'warlords_daily_win',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'warlords_objectives',
+                            'name' => 'Daily Quest: Carry, Secured!',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 4200,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'WarlordsBrokenWeaponReward',
+                                            'amount' => 3,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'warlords_daily_objectives',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 100,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    5 =>
+                        array(
+                            'id' => 'warlords_dedication',
+                            'name' => 'Weekly Quest: Dedication',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 24000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 10000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'WarlordsMagicDustReward',
+                                            'amount' => 200,
+                                        ),
+                                    3 =>
+                                        array(
+                                            'type' => 'WarlordsVoidShardReward',
+                                            'amount' => 15,
+                                        ),
+                                    4 =>
+                                        array(
+                                            'type' => 'WarlordsBrokenWeaponReward',
+                                            'amount' => 15,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'warlords_weekly_dedi',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 30,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    6 =>
+                        array(
+                            'id' => 'warlords_all_star',
+                            'name' => 'Weekly Quest: All Star',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 15000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 10000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'WarlordsMagicDustReward',
+                                            'amount' => 100,
+                                        ),
+                                    3 =>
+                                        array(
+                                            'type' => 'WarlordsVoidShardReward',
+                                            'amount' => 5,
+                                        ),
+                                    4 =>
+                                        array(
+                                            'type' => 'WarlordsBrokenWeaponReward',
+                                            'amount' => 10,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'warlords_weekly_damage',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1500000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'warlords_weekly_heal',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1500000,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'supersmash' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'supersmash_solo_win',
+                            'name' => 'Daily Quest: Smash Heroes Solo Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'supersmash_solo_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'supersmash_solo_kills',
+                            'name' => 'Daily Quest: Smash Heroes Solo Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'supersmash_solo_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'supersmash_team_win',
+                            'name' => 'Daily Quest: Smash Heroes Team Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'supersmash_team_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'supersmash_team_kills',
+                            'name' => 'Daily Quest: Smash Heroes Team Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'supersmash_team_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'supersmash_weekly_kills',
+                            'name' => 'Weekly Quest: Smash Heroes Weekly Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 18000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'supersmash_weekly_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 150,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'gingerbread' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'gingerbread_bling_bling',
+                            'name' => 'Daily Quest: Bling Bling',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 4200,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1337,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'gingerbread_gold_pickedup',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 50,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'gingerbread_maps',
+                            'name' => 'Daily Quest: International Championship',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 4200,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'gingerbread_races_completed',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'gingerbread_racer',
+                            'name' => 'Daily Quest: Racer',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 4200,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 2500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'gingerbread_laps_completed',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'gingerbread_mastery',
+                            'name' => 'Weekly Quest: Turbo Kart Racers',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 24000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 9000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'gingerbread_races_completed',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 35,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'skywars' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'skywars_solo_win',
+                            'name' => 'Daily Quest: Skywars Solo Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_solo_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'skywars_solo_kills',
+                            'name' => 'Daily Quest: Skywars Solo Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_solo_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'skywars_team_win',
+                            'name' => 'Daily Quest: Skywars Doubles Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_team_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'skywars_team_kills',
+                            'name' => 'Daily Quest: Skywars Doubles Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_team_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'skywars_arcade_win',
+                            'name' => 'Daily Quest: Skywars Lab Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 750,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 3,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_arcade_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    5 =>
+                        array(
+                            'id' => 'skywars_corrupt_win',
+                            'name' => 'Daily Quest: Skywars Corrupted Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 750,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 3,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_corrupt_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    6 =>
+                        array(
+                            'id' => 'skywars_weekly_kills',
+                            'name' => 'Weekly Quest: Skywars Weekly Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 18000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 3,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_weekly_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 150,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    7 =>
+                        array(
+                            'id' => 'skywars_weekly_arcade_win_all',
+                            'name' => 'Weekly Quest: Skywars Scientist',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 10000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 3500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 5,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_arcade_weekly_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    8 =>
+                        array(
+                            'id' => 'skywars_special_north_pole',
+                            'name' => 'Special Daily: Skywars North Pole',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 2000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyWarsSoulReward',
+                                            'amount' => 5,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_special_gifts',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    9 =>
+                        array(
+                            'id' => 'skywars_daily_tokens',
+                            'name' => 'Daily Quest: Tokens!',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'SkyWarsTokenReward',
+                                            'amount' => 2000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_daily_tokens_wins',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    10 =>
+                        array(
+                            'id' => 'skywars_weekly_free_loot_chest',
+                            'name' => 'Weekly Quest: Free Loot Chest',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'SkyWarsTokenReward',
+                                            'amount' => 4000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_free_loot_chest_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'truecombat' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'crazy_walls_daily_play',
+                            'name' => 'Daily Quest: Crazy Games',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'CrazyWallsSkullReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'crazy_walls_daily_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'crazy_walls_daily_kill',
+                            'name' => 'Daily Quest: Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'CrazyWallsSkullReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'crazy_walls_daily_kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'crazy_walls_daily_win',
+                            'name' => 'Daily Quest: Win',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'CrazyWallsSkullReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'crazy_walls_daily_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'crazy_walls_weekly',
+                            'name' => 'Weekly Quest: Crazy Walls Weekly',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 21000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 6000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'CrazyWallsSkullReward',
+                                            'amount' => 5,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'crazy_walls_weekly_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 30,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'speeduhc' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'normal_brawler',
+                            'name' => 'Daily Quest: Normal Brawler',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'insane_brawler',
+                            'name' => 'Daily Quest: Insane Brawler',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'hunting_season',
+                            'name' => 'Daily Quest: Hunting Season',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'uhc_addict',
+                            'name' => 'Daily Quest: UHC Addict',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'uhc_madness',
+                            'name' => 'Weekly Quest: UHC Madness',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 19500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 4000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 100,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'skyclash' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'skyclash_play_games',
+                            'name' => 'Daily Quest: SkyClash Playtime',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyClashCardPackReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'skyclash_kills',
+                            'name' => 'Daily Quest: SkyClash Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'skyclash_play_points',
+                            'name' => 'Daily Quest: SkyClash Play Points',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyClashCardPackReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skyclash_play_points',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 24,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'skyclash_void',
+                            'name' => 'Daily Quest: SkyClash Void',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skyclash_void_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'skyclash_enderchests',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'skyclash_weekly_kills',
+                            'name' => 'Weekly Quest: SkyClash Weekly Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 19500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'SkyClashCardPackReward',
+                                            'amount' => 5,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 150,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'prototype' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'prototype_pit_daily_kills',
+                            'name' => 'Daily Quest: Hunter',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 2000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => '',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 25,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'prototype_pit_daily_contract',
+                            'name' => 'Daily Quest: Contracted',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => '',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'prototype_pit_daily_contract',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'prototype_pit_weekly_gold',
+                            'name' => 'Weekly Quest: Double Up',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 7000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => '',
+                                            'amount' => 10000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'prototype_pit_weekly_gold',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10000,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'bedwars' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'bedwars_daily_win',
+                            'name' => 'Daily: First Win of the Day',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'BedwarsExpReward',
+                                            'amount' => 250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'bedwars_daily_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'bedwars_daily_one_more',
+                            'name' => 'Daily: One More Game!',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'bedwars_daily_played',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'bedwars_weekly_bed_elims',
+                            'name' => 'Weekly: Bed Removal Co.',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 7000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'BedwarsExpReward',
+                                            'amount' => 5000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'bedwars_bed_elims',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 25,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'bedwars_weekly_dream_win',
+                            'name' => 'Weekly: Sleep Tight.',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 7000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'BedwarsExpReward',
+                                            'amount' => 5000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'bedwars_dream_wins',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'bedwars_daily_gifts',
+                            'name' => 'Special Daily: Gifting Spirit',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 5000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'BedwarsExpReward',
+                                            'amount' => 700,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'bedwars_daily_special_christmas_gifts',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'murdermystery' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'mm_daily_win',
+                            'name' => 'Daily Quest: Winner',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mm_daily_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'mm_daily_power_play',
+                            'name' => 'Daily Quest: Power Play',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mm_power_play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'mm_daily_target_kill',
+                            'name' => 'Daily Quest: Hitman',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 1800,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 1000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mm_target_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'mm_weekly_murderer_kills',
+                            'name' => 'Weekly Quest: Professional',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 12000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mm_weekly_kills_as_murderer',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 25,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'mm_weekly_wins',
+                            'name' => 'Weekly Quest: Big Winner',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 12000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 7500,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mm_weekly_win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    5 =>
+                        array(
+                            'id' => 'mm_special_weekly_santa',
+                            'name' => 'Special Weekly Quest: Big Time Santa',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 1500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 10000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mm_special_weekly_santa',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 30,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'buildbattle' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'build_battle_player',
+                            'name' => 'Daily Quest: Build Battle Player',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'build_battle_winner',
+                            'name' => 'Daily Quest: Build Battle Winner',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'build_battle_weekly',
+                            'name' => 'Weekly Quest: Master Architect',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 21000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 50000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 30,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'build_battle_christmas',
+                            'name' => 'Special Daily: Holiday',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                ),
+            'duels' =>
+                array(
+                    0 =>
+                        array(
+                            'id' => 'duels_player',
+                            'name' => 'Daily Quest: Duels Player',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    1 =>
+                        array(
+                            'id' => 'duels_killer',
+                            'name' => 'Daily Quest: Duels Killer',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    2 =>
+                        array(
+                            'id' => 'duels_winner',
+                            'name' => 'Daily Quest: Duels Winner',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 1,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'duels_weekly_kills',
+                            'name' => 'Weekly Quest: Duels Weekly Kills',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 18000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 100,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'duels_weekly_wins',
+                            'name' => 'Weekly Quest: Duels Weekly Wins',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 18000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 50,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
                         ),

@@ -1161,7 +1161,7 @@ while being the only one alive in 2v2',
                                 array(
                                     'points' => 5,
                                     'name' => 'You Can\'t Do That!',
-                                    'description' => 'Attempt to break your team?s bed',
+                                    'description' => 'Attempt to break your team’s bed',
                                 ),
                             'ALREADY_OVER' =>
                                 array(
@@ -1698,7 +1698,7 @@ while being the only one alive in 2v2',
                             'NOT_SKYWARS' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'This is not Skywars',
+                                    'name' => 'This is not SkyWars',
                                     'description' => 'Throw a player into the void',
                                 ),
                             'UNFORTUNATE' =>
@@ -1848,7 +1848,7 @@ while being the only one alive in 2v2',
                             'NO_LOOTING' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'IMPOSIBRU',
+                                    'name' => 'IMPOSSIBRU',
                                     'description' => 'Win without looting any chests',
                                 ),
                             'PIGRIDER' =>
@@ -2621,23 +2621,11 @@ while being the only one alive in 2v2',
                                     'name' => 'Greed Incarnate',
                                     'description' => 'Steal 42 presents in a single game of Grinch Simulator',
                                 ),
-                            'LEGENDARY' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'LEGENDARY!',
-                                    'description' => 'Find a Legendary Gift in Bed Wars, SkyWars, Blitz or Murder Mystery',
-                                ),
                             'SHARING_IS_CARING' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Sharing is Caring',
                                     'description' => 'Give one of your wrapped presents to another player in Bed Wars',
-                                ),
-                            'EAT_THIS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'EAT THIS',
-                                    'description' => 'Shoot a snowball at another Grinch in Grinch Simulator',
                                 ),
                             'RESPECT_YOUR_ELDER' =>
                                 array(
@@ -2645,11 +2633,95 @@ while being the only one alive in 2v2',
                                     'name' => 'Respect your Elder',
                                     'description' => 'Bring a flower to Grandma in Santa Says',
                                 ),
+                            'CHRISTMAS_IS_SAVED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Christmas is Saved',
+                                    'description' => 'Kill a Murderer in Murder Mystery during Christmas',
+                                ),
+                            'SNOW_WARS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Snow Wars',
+                                    'description' => 'Win a SkyWars game using the Snowman Kit',
+                                ),
+                            'BIG_BAG_O_GIFTS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Big Bag o\' Gifts',
+                                    'description' => 'Claim 6 gifts at the same time in Bed Wars',
+                                ),
+                            'HOLIDAY_MIRACLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Holiday Miracle',
+                                    'description' => 'Claim 2 legendary gifts at the same time in Bed Wars',
+                                ),
+                            'DO_YOU_WANNA_BUILD_A_SNOWMAN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Do you wanna build a Snowman?',
+                                    'description' => 'Build a Snowman in UHC',
+                                ),
+                            'BOUNCY_CASTLE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Bouncy Castle',
+                                    'description' => 'Jump on the Bouncy Castle in the Main Lobby',
+                                ),
+                            'NOT_MY_MOM' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'You\'re not my mom',
+                                    'description' => 'When tasked to stand still in Santa Says, sneak',
+                                ),
+                            'HOLIDAYS_RUINED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Holidays Ruined',
+                                    'description' => 'Kill a player who was holding an Epic or Legendary gift in Bed Wars',
+                                ),
+                            'CLOSE_ENOUGH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Close enough',
+                                    'description' => 'Win a Farm Hunt game as a Chicken... Turkey?',
+                                ),
+                            'HUNT_BEGINS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Hunt Begins (2017)',
+                                    'description' => 'Find 2 lobby presents',
+                                ),
+                            'WINTER_RUNNER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Winter Runner',
+                                    'description' => 'Win a game of TNT Run while wearing the Winter Hat',
+                                ),
+                            'LEGENDARY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'LEGENDARY!',
+                                    'description' => 'Find a Legendary Gift in Bed Wars, SkyWars, Blitz or Murder Mystery',
+                                ),
+                            'EAT_THIS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'EAT THIS',
+                                    'description' => 'Shoot a snowball at another Grinch in Grinch Simulator',
+                                ),
                             'REAL_SANTA' =>
                                 array(
                                     'points' => 15,
                                     'name' => 'Real Santa (2017)',
                                     'description' => 'Find all 88 presents in every lobby',
+                                ),
+                            'CHRISTMAS_TOPPER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Marvelous Hat',
+                                    'description' => 'Win a Bed Wars Game with a Holiday island topper active',
                                 ),
                             'CHRISTMAS_QUEST' =>
                                 array(
@@ -2687,23 +2759,17 @@ while being the only one alive in 2v2',
                                     'name' => 'Worth it',
                                     'description' => 'When tasked to kill a chicken in Santa Says, kill a cow instead',
                                 ),
-                            'BIG_BAG_O_GIFTS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Big Bag o\' Gifts',
-                                    'description' => 'Claim 6 gifts at the same time in Bed Wars',
-                                ),
-                            'HOLIDAY_MIRACLE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Holiday Miracle',
-                                    'description' => 'Claim 2 legendary gifts at the same time in Bed Wars',
-                                ),
                             'REAL_SANTA_2018' =>
                                 array(
                                     'points' => 15,
                                     'name' => 'Real Santa (2018)',
                                     'description' => 'Find all 88 presents in every lobby',
+                                ),
+                            'LET_IT_SNOW' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Let it snow ♫',
+                                    'description' => 'Use the Let It Snow gadget in a lobby',
                                 ),
                             'MERRY_CHRISTMAS' =>
                                 array(
@@ -2711,35 +2777,35 @@ while being the only one alive in 2v2',
                                     'name' => 'Happy Holidays',
                                     'description' => 'Speak to the Holidays Guide in the Main Lobby',
                                 ),
-                            'BOUNCY_CASTLE' =>
+                            'SWEGMAS' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Bouncy Castle',
-                                    'description' => 'Jump on the Bouncy Castle in the Main Lobby',
-                                ),
-                            'NOT_MY_MOM' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'You\'re not my mom',
-                                    'description' => 'When tasked to stand still in Santa Says, sneak',
-                                ),
-                            'HOLIDAYS_RUINED' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Holidays Ruined',
-                                    'description' => 'Kill a player who was holding an Epic or Legendary gift in Bed Wars',
-                                ),
-                            'HUNT_BEGINS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'The Hunt Begins (2017)',
-                                    'description' => 'Find 2 lobby presents',
+                                    'name' => 'Swegmas',
+                                    'description' => 'Teleport at least 7 players using the Sweg Move Blitz Star in Blitz Survival Games',
                                 ),
                             'SANTA_HELPER' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Santa Helper',
                                     'description' => 'Bring the right items back to every special character in a single Bed Wars game',
+                                ),
+                            'FESTIVITIES' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Snap',
+                                    'description' => 'Win any game with the Cold Snap cosmetic equipped',
+                                ),
+                            'MELTING_KILLER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Melting...',
+                                    'description' => 'Obtain a kill in Mega Walls playing the Snowman class, while in water',
+                                ),
+                            'EMPTY_HOUSE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'True Grinch',
+                                    'description' => 'Steal 70 presents in a game of Grinch Simulator',
                                 ),
                             'HUNT_BEGINS_2018' =>
                                 array(
@@ -2909,7 +2975,7 @@ while being the only one alive in 2v2',
                                         ),
                                 ),
                         ),
-                    'total_points' => 465,
+                    'total_points' => 535,
                 ),
             'copsandcrims' =>
                 array(
@@ -7181,17 +7247,47 @@ or the 1.0s trigger',
                                     'name' => 'The siege',
                                     'description' => 'Get the final kill of a game in your spawn island',
                                 ),
+                            'CHALLENGE_UHC' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'UHC Challenge',
+                                    'description' => 'Win a game doing the UHC Challenge',
+                                ),
+                            'DONATOR' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sold Your Soul',
+                                    'description' => 'Make a donation to the Angel of Death',
+                                ),
+                            'CHALLENGE_ROOKIE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Rookie Challenge',
+                                    'description' => 'Win a game doing the Rookie Challenge',
+                                ),
+                            'CHALLENGE_MASTER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Challenge Master',
+                                    'description' => 'Win a game while doing 7 or more SkyWars Challenges',
+                                ),
                             'SHINY_STUFF' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Shiny Stuff',
                                     'description' => 'Wear a full Diamond set of armor',
                                 ),
-                            'MOB_SPAWNER' =>
+                            'CHALLENGE_NO_BLOCK' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Mob Spawner',
-                                    'description' => 'Spawn a mob',
+                                    'name' => 'No Block Challenge',
+                                    'description' => 'Win a game doing the No Block Challenge',
+                                ),
+                            'MYTHICAL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Mythical',
+                                    'description' => 'Unlock a Mythic Kit',
                                 ),
                             'BALLER' =>
                                 array(
@@ -7217,53 +7313,17 @@ or the 1.0s trigger',
                                     'name' => 'Enderdragon',
                                     'description' => 'Play a Game with an Enderdragon',
                                 ),
-                            'MAX_PERK' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Max Perk!',
-                                    'description' => 'Max out a tiered perk',
-                                ),
-                            'KILL_STREAK' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Kill Streak',
-                                    'description' => 'Get 5 kills in 15 seconds',
-                                ),
-                            'LUCKY_CHARM' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Money well spent!',
-                                    'description' => 'Get Lucky Charm to level 20',
-                                ),
-                            'SOLO_WARRIOR' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Solo warrior',
-                                    'description' => 'Win a Mega game while joining without a party',
-                                ),
-                            'WHO_NEEDS_TEAMMATES' =>
+                            'CHALLENGE_ULTIMATE_WARRIOR' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Who needs teammates?',
-                                    'description' => 'Summon a skeleton and a blaze',
-                                ),
-                            'LUCKY_SOULS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Lucky Souls',
-                                    'description' => 'Obtain 5 Mega Perks',
+                                    'name' => 'Ultimate Warrior Challenge',
+                                    'description' => 'Win a game doing the Ultimate Warrior Challenge',
                                 ),
                             'TOUCH_OF_DEATH' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Touch of Death!',
                                     'description' => 'Knock someone into the void with a single punch',
-                                ),
-                            'MEGA_WARRIOR' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Mega Warrior',
-                                    'description' => 'Kill 20 players in a single Mega game or 12 players in a single Mega Doubles game',
                                 ),
                             'TROLOL' =>
                                 array(
@@ -7276,12 +7336,6 @@ or the 1.0s trigger',
                                     'points' => 10,
                                     'name' => 'Gapple!',
                                     'description' => 'Eat a Golden Apple',
-                                ),
-                            'NICK_CAGE' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Nick Cage',
-                                    'description' => 'Unlock Nicolas Cage',
                                 ),
                             'WELL_WELL' =>
                                 array(
@@ -7319,29 +7373,11 @@ or the 1.0s trigger',
                                     'name' => '2Fast3Furious',
                                     'description' => 'Get a kill in the first 10 seconds of the game',
                                 ),
-                            'FEAR_ME' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Fear me mortals',
-                                    'description' => 'Max out a Mega Kit',
-                                ),
                             'GOTCHA' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Gotcha!',
                                     'description' => 'Kill someone while you have less than 1 heart left',
-                                ),
-                            'SLOW_STEADY' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Slow and steady wins the race',
-                                    'description' => 'Win a game using the sloth kit',
-                                ),
-                            'PLAYING_IT_SAFE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Playing it safe',
-                                    'description' => 'Win a game of Lucky Block Mode while only opening Insane Lucky Blocks',
                                 ),
                             'FISTS_OF_FURY' =>
                                 array(
@@ -7361,17 +7397,131 @@ or the 1.0s trigger',
                                     'name' => 'Max Soul Well',
                                     'description' => 'Max out the capacity on your soul well',
                                 ),
-                            'OPEN_CHEST' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => '3; 2; 1; GO',
-                                    'description' => 'Be the first player to open a chest',
-                                ),
                             'SPEED_RUNNER' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Speed Runner',
                                     'description' => 'Win a Mega game before the last chest refill',
+                                ),
+                            'SPEED_RUN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Speed Run',
+                                    'description' => 'Win a Ranked game in less than a minute',
+                                ),
+                            'MYSTERY_MOB' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Uh oh...',
+                                    'description' => 'Spawn the mystery mob using the zookeeper kit',
+                                ),
+                            'CHALLENGE_NO_CHEST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'No Chest Challenge',
+                                    'description' => 'Win a game doing the No Chest Challenge',
+                                ),
+                            'TEAMWORK' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Teamwork',
+                                    'description' => 'Win a Mega game with all your teammates alive',
+                                ),
+                            'HAPPY_MEAL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Happy Meal',
+                                    'description' => 'Obtain a Divine Head or better',
+                                ),
+                            'MOB_SPAWNER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Mob Spawner',
+                                    'description' => 'Spawn a mob',
+                                ),
+                            'MAX_PERK' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Max Perk!',
+                                    'description' => 'Max out a tiered perk',
+                                ),
+                            'KILL_STREAK' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Kill Streak',
+                                    'description' => 'Get 5 kills in 15 seconds',
+                                ),
+                            'LUCKY_CHARM' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Money well spent!',
+                                    'description' => 'Get Lucky Charm to level 20',
+                                ),
+                            'SOLO_WARRIOR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Solo warrior',
+                                    'description' => 'Win a Mega game while joining without a party',
+                                ),
+                            'WHO_NEEDS_TEAMMATES' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Who needs teammates?',
+                                    'description' => 'Summon a skeleton and a blaze',
+                                ),
+                            'LUCKY_SOULS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Lucky Souls',
+                                    'description' => 'Obtain 5 Mega Perks',
+                                ),
+                            'MEGA_WARRIOR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Mega Warrior',
+                                    'description' => 'Kill 20 players in a single Mega game or 12 players in a single Mega Doubles game',
+                                ),
+                            'NICK_CAGE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Nick Cage',
+                                    'description' => 'Unlock Nicolas Cage',
+                                ),
+                            'CORRUPTION_LORD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Corruption Lord',
+                                    'description' => 'Win a Corrupted game',
+                                ),
+                            'FEAR_ME' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Fear me mortals',
+                                    'description' => 'Max out a Mega Kit',
+                                ),
+                            'SLOW_STEADY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Slow and steady wins the race',
+                                    'description' => 'Win a game using the sloth kit',
+                                ),
+                            'PLAYING_IT_SAFE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Playing it safe',
+                                    'description' => 'Win a game of Lucky Block Mode while only opening Insane Lucky Blocks',
+                                ),
+                            'CHALLENGE_PAPER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Paper Challenge',
+                                    'description' => 'Win a game doing the Paper Challenge',
+                                ),
+                            'OPEN_CHEST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => '3; 2; 1; GO',
+                                    'description' => 'Be the first player to open a chest',
                                 ),
                             'CRIMINAL' =>
                                 array(
@@ -7391,17 +7541,17 @@ or the 1.0s trigger',
                                     'name' => 'Sniper',
                                     'description' => 'Get 30 bow hits in one game',
                                 ),
-                            'SPEED_RUN' =>
+                            'CHALLENGE_ARCHER' =>
                                 array(
-                                    'points' => 10,
-                                    'name' => 'Speed Run',
-                                    'description' => 'Win a Ranked game in less than a minute',
+                                    'points' => 5,
+                                    'name' => 'Archer Challenge',
+                                    'description' => 'Win a game doing the Archer Challenge',
                                 ),
-                            'MYSTERY_MOB' =>
+                            'CHALLENGE_HALF_HEALTH' =>
                                 array(
-                                    'points' => 15,
-                                    'name' => 'Uh oh...',
-                                    'description' => 'Spawn the mystery mob using the zookeeper kit',
+                                    'points' => 5,
+                                    'name' => 'Half Health Challenge',
+                                    'description' => 'Win a game doing the Half Health Challenge',
                                 ),
                             'PORTAL_GAME' =>
                                 array(
@@ -7409,17 +7559,17 @@ or the 1.0s trigger',
                                     'name' => 'Is this a Portal game?',
                                     'description' => 'Obtain a stack of ender pearls',
                                 ),
+                            'CHALLENGE_PRO' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Challenge Pro',
+                                    'description' => 'Win a game while doing 3 or more SkyWars Challenges',
+                                ),
                             'WELL_DESERVED' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Well deserved',
                                     'description' => 'Gain a reward from a Ranked Season',
-                                ),
-                            'TEAMWORK' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Teamwork',
-                                    'description' => 'Win a Mega game with all your teammates alive',
                                 ),
                         ),
                     'tiered' =>
@@ -7578,8 +7728,8 @@ or the 1.0s trigger',
                                 ),
                             'KITS_TEAM' =>
                                 array(
-                                    'name' => 'Kit Hoarder (Team)',
-                                    'description' => 'Unlock %s Team kits',
+                                    'name' => 'Kit Hoarder (Insane)',
+                                    'description' => 'Unlock %s Insane kits',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -7610,8 +7760,8 @@ or the 1.0s trigger',
                                 ),
                             'KITS_SOLO' =>
                                 array(
-                                    'name' => 'Kit Hoarder (Solo)',
-                                    'description' => 'Unlock %s Solo kits',
+                                    'name' => 'Kit Hoarder (Normal)',
+                                    'description' => 'Unlock %s Normal kits',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -7818,8 +7968,46 @@ or the 1.0s trigger',
                                                 ),
                                         ),
                                 ),
+                            'HEADS' =>
+                                array(
+                                    'name' => 'Head Hoarder',
+                                    'description' => 'Gather %s Heads',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
                         ),
-                    'total_points' => 1100,
+                    'total_points' => 1265,
                 ),
             'speeduhc' =>
                 array(
@@ -9422,7 +9610,7 @@ Double Jump upgrade',
                                 array(
                                     'points' => 5,
                                     'name' => 'Chance',
-                                    'description' => 'Open every type for lucky block in one game',
+                                    'description' => 'Open every type of lucky block in one game',
                                 ),
                             'ENDER_DRAGON' =>
                                 array(
@@ -10520,6 +10708,81 @@ Double Jump upgrade',
                                     'name' => 'Gem + Sticks = Kills',
                                     'description' => 'Obtain a diamond sword',
                                 ),
+                            'CRAFT_FLINT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Pyromaniac',
+                                    'description' => 'Craft Flint and Steel',
+                                ),
+                            'TRUE_POWER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'True Power',
+                                    'description' => 'Obtain a Sharpness III Iron Sword before the walls fall',
+                                ),
+                            'FINDING_NEMO' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Finding Nemo',
+                                    'description' => 'Catch a Clownfish when fishing',
+                                ),
+                            'NO_TEAM_DEATHS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Stick Together',
+                                    'description' => 'Win a game with no deaths on
+your team',
+                                ),
+                            'CATCH_FISH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Rod God',
+                                    'description' => 'Catch a fish',
+                                ),
+                            'KILL_CLIFF' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'This is SPARTA',
+                                    'description' => 'Kill a player by hitting them off a cliff',
+                                ),
+                            'ENGINEER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Engineer',
+                                    'description' => 'Obtain TNT, Pressure Plate,
+Lava Bucket, and a Piston',
+                                ),
+                            'WIPED_OUT' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Wiped Out',
+                                    'description' => 'Kill 4 players who are on the same team in under 15 seconds',
+                                ),
+                            'BURNING' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Flamin\' Hot',
+                                    'description' => 'Kill a player while on fire',
+                                ),
+                            'REVENGE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Avenged!',
+                                    'description' => 'Kill a player that has killed
+one of your teammates',
+                                ),
+                            'NOT_A_FISH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'That\'s Not A Fish!',
+                                    'description' => 'Catch a Bow while fishing',
+                                ),
+                            'CUSTOMIZED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Customized',
+                                    'description' => 'Use the Layout Editor to customize your inventory layout',
+                                ),
                             'CREATE_PORTAL' =>
                                 array(
                                     'points' => 5,
@@ -10532,11 +10795,11 @@ Double Jump upgrade',
                                     'name' => 'Horse Tamer',
                                     'description' => 'Ride a Horse after the walls fall',
                                 ),
-                            'CRAFT_FLINT' =>
+                            'UNTOUCHABLE' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'Pyromaniac',
-                                    'description' => 'Craft Flint and Steel',
+                                    'points' => 15,
+                                    'name' => 'Untouched',
+                                    'description' => 'Win a game without taking any damage',
                                 ),
                             'CRAFT_BOAT' =>
                                 array(
@@ -10563,36 +10826,29 @@ on your team',
                                     'name' => 'This isn\'t VampireZ...',
                                     'description' => 'Get the Vampirism perk to level 3',
                                 ),
-                            'NO_TEAM_DEATHS' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Stick Together',
-                                    'description' => 'Win a game with no deaths on
-your team',
-                                ),
                             'FIRST_PERK' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Getting Stronger',
                                     'description' => 'Unlock your first perk',
                                 ),
-                            'CATCH_FISH' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Rod God',
-                                    'description' => 'Catch a fish',
-                                ),
-                            'KILL_CLIFF' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'This is SPARTA',
-                                    'description' => 'Kill a player by hitting them off a cliff',
-                                ),
                             'BERSERK' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Conan the Barbarian',
                                     'description' => 'Get the Berserk perk to level 3',
+                                ),
+                            'ROBIN_HOOD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Robin Hood',
+                                    'description' => 'Win a game only using the a Bow to deal damage',
+                                ),
+                            'NOT_TODAY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Not Today!',
+                                    'description' => 'Kill a player who currently has the Strength effect',
                                 ),
                             'CANADIAN_KIT' =>
                                 array(
@@ -10606,23 +10862,53 @@ your team',
                                     'name' => 'MOAR!!',
                                     'description' => 'Unlock 15 Starter Kits',
                                 ),
-                            'ENGINEER' =>
+                            'RECORD_LABEL' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Engineer',
-                                    'description' => 'Obtain TNT, Pressure Plate,
-Lava Bucket, and a Piston',
-                                ),
-                            'REVENGE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Avenged!',
-                                    'description' => 'Kill a player that has killed
-one of your teammates',
+                                    'name' => 'Record Label',
+                                    'description' => 'Play a music disc in a Jukebox',
                                 ),
                         ),
                     'tiered' =>
                         array(
+                            'DIAMOND_MINER' =>
+                                array(
+                                    'name' => 'Rare Ore Miner',
+                                    'description' => 'Mine %s Diamonds',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 50,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 100,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 150,
+                                                ),
+                                        ),
+                                ),
                             'KILLS' =>
                                 array(
                                     'name' => 'Walls Slayer',
@@ -10738,7 +11024,7 @@ one of your teammates',
                                         ),
                                 ),
                         ),
-                    'total_points' => 365,
+                    'total_points' => 525,
                 ),
             'walls3' =>
                 array(
