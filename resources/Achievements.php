@@ -1161,7 +1161,7 @@ while being the only one alive in 2v2',
                                 array(
                                     'points' => 5,
                                     'name' => 'You Can\'t Do That!',
-                                    'description' => 'Attempt to break your team’s bed',
+                                    'description' => 'Attempt to break your team?s bed',
                                 ),
                             'ALREADY_OVER' =>
                                 array(
@@ -2768,7 +2768,7 @@ while being the only one alive in 2v2',
                             'LET_IT_SNOW' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Let it snow ♫',
+                                    'name' => 'Let it snow ?',
                                     'description' => 'Use the Let It Snow gadget in a lobby',
                                 ),
                             'MERRY_CHRISTMAS' =>
