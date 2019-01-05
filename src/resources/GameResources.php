@@ -72,4 +72,11 @@ class GameResources extends Resources {
         return Resources::requireResourceFile('game_info/Walls3.php');
     }
 
+    /**
+     * @return array
+     */
+    public function getSkyWars() {
+        return Resources::requireResourceFile('game_info/SkyWars.php');
+    }
+
 }
