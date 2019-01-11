@@ -36,6 +36,11 @@ $HypixelPHP = new HypixelPHP('API_KEY');
 $HypixelPHP->setCacheHandler(...);
 $HypixelPHP->setLogger(...);
 $HypixelPHP->setFetcher(...);
+
+$player = $HypixelPHP->getPlayer([FetchParams::PLAYER_BY_NAME => 'Plancke']);
+if ($player instanceof Player) {
+    echo $player->getName();
+}
 ```
 
 ## Old Version
