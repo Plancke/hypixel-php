@@ -129,7 +129,7 @@ class Guild extends HypixelObject {
      * @return array
      */
     public function getPreferredGames() {
-        return $this->get("preferredGames");
+        return $this->getArray("preferredGames");
     }
 
     /**
