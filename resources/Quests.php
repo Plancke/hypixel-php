@@ -551,40 +551,6 @@ return array(
                                         ),
                                 ),
                         ),
-                    4 =>
-                        array(
-                            'id' => 'blitz_special_daily_north_pole',
-                            'name' => 'Special Daily: Blitz North Pole',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 2500,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'MultipliedCoinReward',
-                                            'amount' => 2500,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'blitz_special_gifts',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 5,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
                 ),
             'tntgames' =>
                 array(
@@ -1075,6 +1041,40 @@ return array(
                         ),
                     2 =>
                         array(
+                            'id' => 'vampirez_daily_human_kill',
+                            'name' => 'Daily Quest: Human Killer',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 2000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'vampirez_daily_kill_human',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 10,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
                             'id' => 'vampirez_daily_win',
                             'name' => 'Daily Quest: VampireZ Daily Win',
                             'rewards' =>
@@ -1107,7 +1107,7 @@ return array(
                                         ),
                                 ),
                         ),
-                    3 =>
+                    4 =>
                         array(
                             'id' => 'vampirez_weekly_win',
                             'name' => 'Weekly Quest: Vampire Winner',
@@ -1141,7 +1141,7 @@ return array(
                                         ),
                                 ),
                         ),
-                    4 =>
+                    5 =>
                         array(
                             'id' => 'vampirez_weekly_kill',
                             'name' => 'Weekly Quest: Vampire Slayer',
@@ -1150,7 +1150,7 @@ return array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 9000,
+                                            'amount' => 11000,
                                         ),
                                     1 =>
                                         array(
@@ -1171,6 +1171,40 @@ return array(
                                             'id' => 'vampirez_weekly_kill_vampire',
                                             'type' => 'IntegerObjective',
                                             'integer' => 25,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    6 =>
+                        array(
+                            'id' => 'vampirez_weekly_human_kill',
+                            'name' => 'Weekly Quest: Human Slayer',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 11000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'vampirez_weekly_kill_survivor',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 100,
                                         ),
                                 ),
                             'requirements' =>
@@ -1771,40 +1805,6 @@ return array(
                                             'id' => 'uhc_kills',
                                             'type' => 'IntegerObjective',
                                             'integer' => 20,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'WeeklyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    4 =>
-                        array(
-                            'id' => 'uhc_weekly_special_cookie',
-                            'name' => 'Special Weekly: Hungry Stomp',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 15000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'MultipliedCoinReward',
-                                            'amount' => 20000,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'uhc_kills_after_cookie',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 7,
                                         ),
                                 ),
                             'requirements' =>
@@ -2921,45 +2921,6 @@ return array(
                         ),
                     8 =>
                         array(
-                            'id' => 'skywars_special_north_pole',
-                            'name' => 'Special Daily: Skywars North Pole',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'MultipliedCoinReward',
-                                            'amount' => 2000,
-                                        ),
-                                    2 =>
-                                        array(
-                                            'type' => 'SkyWarsSoulReward',
-                                            'amount' => 5,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'skywars_special_gifts',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 5,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    9 =>
-                        array(
                             'id' => 'skywars_daily_tokens',
                             'name' => 'Daily Quest: Tokens!',
                             'rewards' =>
@@ -2987,7 +2948,7 @@ return array(
                                         ),
                                 ),
                         ),
-                    10 =>
+                    9 =>
                         array(
                             'id' => 'skywars_weekly_free_loot_chest',
                             'name' => 'Weekly Quest: Free Loot Chest',
@@ -3799,40 +3760,6 @@ return array(
                                         ),
                                 ),
                         ),
-                    4 =>
-                        array(
-                            'id' => 'bedwars_daily_gifts',
-                            'name' => 'Special Daily: Gifting Spirit',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 5000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'BedwarsExpReward',
-                                            'amount' => 700,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'bedwars_daily_special_christmas_gifts',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 5,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
                 ),
             'murdermystery' =>
                 array(
@@ -4016,45 +3943,6 @@ return array(
                                         ),
                                 ),
                         ),
-                    5 =>
-                        array(
-                            'id' => 'mm_special_weekly_santa',
-                            'name' => 'Special Weekly Quest: Big Time Santa',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 1500,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'MultipliedCoinReward',
-                                            'amount' => 10000,
-                                        ),
-                                    2 =>
-                                        array(
-                                            'type' => 'GameLootChestReward',
-                                            'amount' => 1,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'mm_special_weekly_santa',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 30,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'WeeklyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
                 ),
             'buildbattle' =>
                 array(
@@ -4157,40 +4045,6 @@ return array(
                                     0 =>
                                         array(
                                             'type' => 'WeeklyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'build_battle_christmas',
-                            'name' => 'Special Daily: Holiday',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'MultipliedCoinReward',
-                                            'amount' => 5000,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'play',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 2,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
                         ),

@@ -9962,6 +9962,12 @@ Double Jump upgrade',
                                     'name' => 'Crafting revolution',
                                     'description' => 'Use a custom recipe in game',
                                 ),
+                            'BLOODTHIRSTY' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Bloodthirsty',
+                                    'description' => 'Win a solo game with 15 or more kills',
+                                ),
                             'FEARED_HUNTERS' =>
                                 array(
                                     'points' => 10,
@@ -9973,6 +9979,12 @@ Double Jump upgrade',
                                     'points' => 5,
                                     'name' => 'Oh Daddy pleaaase, I want a puppy!!',
                                     'description' => 'Tame a wolf',
+                                ),
+                            'POWERHOUSE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Powerhouse!',
+                                    'description' => 'Wear Exodus, Dragon Armor, Hide of Leviathan and Seven League Boots at the same time',
                                 ),
                             'RIDE_A_HORSE' =>
                                 array(
@@ -9991,6 +10003,18 @@ Double Jump upgrade',
                                     'points' => 5,
                                     'name' => 'Bomberman',
                                     'description' => 'Kill an Enemy with TNT',
+                                ),
+                            'OBLITERATE' =>
+                                array(
+                                    'points' => 20,
+                                    'name' => 'OBLITERATE!',
+                                    'description' => 'Wear all 4 pieces of the Fusion Armor',
+                                ),
+                            'ELITE_PRESTIGE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Elite Prestige',
+                                    'description' => 'Unlock the Prestige 1 and Prestige 2 upgrade for a profession',
                                 ),
                             'ELDORADO' =>
                                 array(
@@ -10016,11 +10040,23 @@ Double Jump upgrade',
                                     'name' => 'Nothing can stop us!',
                                     'description' => 'Kill an enderdragon with your team',
                                 ),
+                            'PARKOUR_MASTER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Parkour Master',
+                                    'description' => 'Complete both parkours in the pregame lobby',
+                                ),
                             'ENDERKIND' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Encounter of the Enderkind',
                                     'description' => 'Kill an Enderman',
+                                ),
+                            'CALLING_UPON_THOR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Calling upon Thor',
+                                    'description' => 'Have Axe of Perun and Excalibur in your inventory at the same time',
                                 ),
                             'DEATHS_SCYTHE' =>
                                 array(
@@ -10033,6 +10069,12 @@ Double Jump upgrade',
                                     'points' => 10,
                                     'name' => 'Deux Ex Machina',
                                     'description' => 'Craft the Deus Ex Machina',
+                                ),
+                            'CRAZY_HARDCORE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Crazy Hardcore',
+                                    'description' => 'Win an Event Mode UHC',
                                 ),
                             'EXODUS' =>
                                 array(
@@ -10063,6 +10105,12 @@ Double Jump upgrade',
                                     'points' => 10,
                                     'name' => 'Ultimately Wealthy',
                                     'description' => 'Unlock 10 Extra Ultimates',
+                                ),
+                            'WRONG_MODE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Wrong Mode?',
+                                    'description' => 'Win a team game while having 100% of the team kills',
                                 ),
                             'AXE_OF_PERUN' =>
                                 array(
@@ -10136,6 +10184,12 @@ Double Jump upgrade',
                                     'name' => 'Total domination',
                                     'description' => 'Be the player with the most kills at the end of the game',
                                 ),
+                            'DONG' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Ding Ding Ding!',
+                                    'description' => 'Hit an enemy from 30+ blocks away three times in a row',
+                                ),
                             'RAMPAGE' =>
                                 array(
                                     'points' => 10,
@@ -10154,11 +10208,23 @@ Double Jump upgrade',
                                     'name' => 'Dice of God',
                                     'description' => 'Craft the Dice of God',
                                 ),
+                            'EXTRA_POWERFUL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Extra Powerful',
+                                    'description' => 'Craft 3 Extra Ultimates in a single game',
+                                ),
                             'ADRENALINE' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Adrenaline',
                                     'description' => 'Eat a player head',
+                                ),
+                            'WARMING_UP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Warming Up',
+                                    'description' => 'Get 5 kills in the pregame fighting arena',
                                 ),
                         ),
                     'tiered' =>
@@ -10277,6 +10343,44 @@ Double Jump upgrade',
                                                 ),
                                         ),
                                 ),
+                            'CONSUMER' =>
+                                array(
+                                    'name' => 'Head Hunter',
+                                    'description' => 'Eat %s heads in UHC',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 50,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
                             'BOUNTY' =>
                                 array(
                                     'name' => 'Bounty',
@@ -10316,7 +10420,7 @@ Double Jump upgrade',
                                         ),
                                 ),
                         ),
-                    'total_points' => 595,
+                    'total_points' => 780,
                 ),
             'vampirez' =>
                 array(
