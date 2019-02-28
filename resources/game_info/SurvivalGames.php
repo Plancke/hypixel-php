@@ -11,6 +11,11 @@ return array(
                             'cost' => 100000,
                             'networkLevel' => 45,
                         ),
+                    'RANGER' =>
+                        array(
+                            'display' => 'Ranger',
+                            'description' => 'Gone beyond the wall',
+                        ),
                     'ARCHER' =>
                         array(
                             'display' => 'Archer',
@@ -55,6 +60,11 @@ return array(
                             'description' => 'Make them taste their own medicine',
                             'cost' => 30000,
                             'networkLevel' => 25,
+                        ),
+                    'DONKEYTAMER' =>
+                        array(
+                            'display' => 'Donkeytamer',
+                            'description' => 'The finest loot',
                         ),
                     'ROGUE' =>
                         array(
@@ -136,6 +146,11 @@ return array(
                             'display' => 'Guardian',
                             'description' => 'Guarding for eternity.',
                         ),
+                    'PHOENIX' =>
+                        array(
+                            'display' => 'Phoenix',
+                            'description' => 'Reborn from the ashes',
+                        ),
                     'PALADIN' =>
                         array(
                             'display' => 'Paladin',
@@ -159,6 +174,11 @@ return array(
                         array(
                             'display' => 'Hunter',
                             'description' => 'Chase down your prey!',
+                        ),
+                    'WARRIOR' =>
+                        array(
+                            'display' => 'Warrior',
+                            'description' => 'Pure combat',
                         ),
                     'HYPE TRAIN' =>
                         array(
@@ -336,8 +356,15 @@ return array(
                     'COOKIE' =>
                         array(
                             'display' => 'Cookie Taunt',
-                            'description' => 'While taunting, your throw up some still-edible cookies.',
+                            'description' => 'While taunting, you throw up some still-edible cookies.',
                             'package' => 'cookie_taunt',
+                            'cost' => 1500,
+                        ),
+                    'PRESTIGE' =>
+                        array(
+                            'display' => 'Prestige Taunt',
+                            'description' => 'Show off your prestige status.',
+                            'package' => 'prestige_taunt',
                             'cost' => 1500,
                         ),
                 ),
@@ -473,14 +500,14 @@ return array(
                     'ASSASSIN' =>
                         array(
                             'display' => 'Assassin',
-                            'description' => 'Teleport to the nearest player and do 6 hearts damage.',
+                            'description' => 'Teleport to the nearest player and remove half their health.',
                             'package' => 'assassin',
                             'cost' => 10000,
                         ),
                     'VAMPIRE' =>
                         array(
                             'display' => 'Vampire',
-                            'description' => 'Drain the health of nearby players for 15s.',
+                            'description' => 'Heal for half of all damage you do to players.',
                             'package' => 'vampire',
                             'cost' => 0,
                         ),
@@ -493,7 +520,7 @@ return array(
                         ),
                     'IMPRISON' =>
                         array(
-                            'display' => 'Statis',
+                            'display' => 'Stasis',
                             'description' => 'No players can move except you for 15s.',
                             'package' => 'imprison',
                             'cost' => 20000,
@@ -508,7 +535,7 @@ return array(
                     'WITHERWARRIOR' =>
                         array(
                             'display' => 'Wither Warrior',
-                            'description' => 'Gain the Angel of Death\'s sword which deals massive Wither damage.',
+                            'description' => 'Every hit for 20 seconds after activation applies Wither III for 3 seconds.',
                             'package' => 'witherwarrior',
                             'cost' => 10000,
                         ),
@@ -536,7 +563,7 @@ return array(
                     'WOBBUFFET' =>
                         array(
                             'display' => 'Ironman',
-                            'description' => 'Reflects all damage onto your attacker  for 30 seconds, while Iron Man is active gain Fire Resistance, Resistance and Weakness I.',
+                            'description' => 'Reflects all damage onto your attacker for 30 seconds, while Iron Man is active gain Fire Resistance, Resistance and Weakness I.',
                             'package' => 'wobbuffet',
                             'cost' => 10000,
                         ),
@@ -592,14 +619,14 @@ return array(
                     'LOCKDOWN' =>
                         array(
                             'display' => 'Lockdown',
-                            'description' => 'All chests are being locked and cannot be opened anymore.',
+                            'description' => 'All chests, enchantment tables and crafting tables are being locked and cannot be opened anymore.',
                             'package' => 'lockdown',
                             'cost' => 5000,
                         ),
                     'TIME_WARP' =>
                         array(
                             'display' => 'Time Warp',
-                            'description' => 'Brings you back to where you were 10 seconds ago, heals 5 hearts.',
+                            'description' => 'Brings you back to where you were 10 seconds ago, heals 10 hearts.',
                             'package' => 'time_warp',
                             'cost' => 10000,
                         ),
@@ -620,7 +647,7 @@ return array(
                     'PICKPOCKET' =>
                         array(
                             'display' => 'Pickpocket',
-                            'description' => 'When used on an enemy, it gives you the item they are holding.',
+                            'description' => 'Gives a chance of disarming an enemy on hit.',
                             'package' => 'pickpocket',
                             'cost' => 5000,
                         ),
@@ -630,6 +657,13 @@ return array(
                             'description' => 'You start earning experience over time!',
                             'package' => 'lucky_charm',
                             'cost' => 0,
+                        ),
+                    'RAGNAROK' =>
+                        array(
+                            'display' => 'Ragnarok',
+                            'description' => 'For the rest of the game all players have only 5 hearts!',
+                            'package' => 'ragnarok',
+                            'cost' => 10000,
                         ),
                 ),
         ),
@@ -644,6 +678,10 @@ return array(
                     1 =>
                         array(
                             'cost' => 2000000,
+                        ),
+                    2 =>
+                        array(
+                            'cost' => 500000,
                         ),
                 ),
         ),
