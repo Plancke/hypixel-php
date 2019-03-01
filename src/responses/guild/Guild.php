@@ -115,7 +115,7 @@ class Guild extends HypixelObject {
      * @return int
      */
     public function getLegacyRank() {
-        return $this->getInt('legacyRanking');
+        return $this->getInt('legacyRanking', -1);
     }
 
     /**
