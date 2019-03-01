@@ -419,7 +419,7 @@ return array(
                                     1 =>
                                         array(
                                             'type' => 'MultipliedCoinReward',
-                                            'amount' => 1750,
+                                            'amount' => 2500,
                                         ),
                                 ),
                             'objectives' =>
@@ -441,7 +441,7 @@ return array(
                     1 =>
                         array(
                             'id' => 'blitz_win',
-                            'name' => 'Daily Quest: Win',
+                            'name' => 'Daily Quest: Win Normal',
                             'rewards' =>
                                 array(
                                     0 =>
@@ -452,7 +452,7 @@ return array(
                                     1 =>
                                         array(
                                             'type' => 'MultipliedCoinReward',
-                                            'amount' => 1750,
+                                            'amount' => 2500,
                                         ),
                                 ),
                             'objectives' =>
@@ -473,6 +473,39 @@ return array(
                         ),
                     2 =>
                         array(
+                            'id' => 'blitz_win_chaos',
+                            'name' => 'Daily Quest: Win Chaos',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3250,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 2500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'winblitzchaos',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    3 =>
+                        array(
                             'id' => 'blitz_kills',
                             'name' => 'Daily Quest: Kills',
                             'rewards' =>
@@ -485,7 +518,7 @@ return array(
                                     1 =>
                                         array(
                                             'type' => 'MultipliedCoinReward',
-                                            'amount' => 1750,
+                                            'amount' => 2500,
                                         ),
                                 ),
                             'objectives' =>
@@ -505,7 +538,7 @@ return array(
                                         ),
                                 ),
                         ),
-                    3 =>
+                    4 =>
                         array(
                             'id' => 'blitz_weekly_master',
                             'name' => 'Weekly Quest: Blitz Master',
@@ -514,12 +547,12 @@ return array(
                                     0 =>
                                         array(
                                             'type' => 'MultipliedExperienceReward',
-                                            'amount' => 21000,
+                                            'amount' => 20000,
                                         ),
                                     1 =>
                                         array(
                                             'type' => 'MultipliedCoinReward',
-                                            'amount' => 4500,
+                                            'amount' => 5000,
                                         ),
                                 ),
                             'objectives' =>
@@ -528,19 +561,65 @@ return array(
                                         array(
                                             'id' => 'blitz_games_played',
                                             'type' => 'IntegerObjective',
-                                            'integer' => 30,
+                                            'integer' => 15,
                                         ),
                                     1 =>
                                         array(
                                             'id' => 'winblitz',
                                             'type' => 'IntegerObjective',
-                                            'integer' => 10,
+                                            'integer' => 5,
                                         ),
                                     2 =>
                                         array(
                                             'id' => 'killblitz10',
                                             'type' => 'IntegerObjective',
-                                            'integer' => 50,
+                                            'integer' => 30,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    5 =>
+                        array(
+                            'id' => 'blitz_weekly_chaos_master',
+                            'name' => 'Weekly Quest: Chaos Master',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 20000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'blitz_chaos_games_played',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 15,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'winblitzchaos',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 5,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'id' => 'usestarblitzchaos',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 30,
                                         ),
                                 ),
                             'requirements' =>

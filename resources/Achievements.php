@@ -1605,29 +1605,17 @@ while being the only one alive in 2v2',
                 array(
                     'one_time' =>
                         array(
-                            'FIRST_BLOOD' =>
+                            'DONKEYTAMER_MASTER' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'First Blood',
-                                    'description' => 'Get the first kill in a game',
+                                    'name' => 'Donkeytamer Master',
+                                    'description' => 'Max out the Donkeytamer Kit',
                                 ),
                             'FIND_BLITZ' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'So powerful...',
                                     'description' => 'Find a Blitz Star',
-                                ),
-                            'USE_WOLF_TAMER' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Raised by Wolves',
-                                    'description' => 'Use the WolfTamer kit',
-                                ),
-                            'EXPERIMENTATION' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Experimentation',
-                                    'description' => 'Activate every single kill effect at least once',
                                 ),
                             'TITANIUM' =>
                                 array(
@@ -1637,7 +1625,7 @@ while being the only one alive in 2v2',
                                 ),
                             'RAMPAGE' =>
                                 array(
-                                    'points' => 10,
+                                    'points' => 15,
                                     'name' => 'Rampage',
                                     'description' => 'Get 10 kills in one game',
                                 ),
@@ -1653,23 +1641,11 @@ while being the only one alive in 2v2',
                                     'name' => 'Immortal',
                                     'description' => 'Win before the deathmatch',
                                 ),
-                            'FIRST_GAME' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'It all begins here',
-                                    'description' => 'Play Blitz for the first time',
-                                ),
                             'LUCKY_MINIONS' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Lucky minions',
                                     'description' => 'Spawn 13 mobs in a game',
-                                ),
-                            'RABBITS_FOOT' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Rabbit\'s Foot',
-                                    'description' => 'Survive a fall of at least 50 blocks',
                                 ),
                             'FULL_INVENTORY' =>
                                 array(
@@ -1677,17 +1653,197 @@ while being the only one alive in 2v2',
                                     'name' => 'Hoarder',
                                     'description' => 'Fill up your inventory',
                                 ),
-                            'KILL_WITHOUT_KIT' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Speed Kills',
-                                    'description' => 'Kill two people before you get your kit',
-                                ),
                             'FINALLY' =>
                                 array(
                                     'points' => 15,
                                     'name' => 'Finally',
                                     'description' => 'Get a kit to level X',
+                                ),
+                            'BLITZ_MANIAC' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Blitz Maniac',
+                                    'description' => 'Purchase 10 Blitz Stars',
+                                ),
+                            'ULTIMATE_PRESTIGER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Ultimate Prestiger',
+                                    'description' => 'Prestige an Ultimate kit',
+                                ),
+                            'SO_SHINY' =>
+                                array(
+                                    'points' => 20,
+                                    'name' => 'So Shiny',
+                                    'description' => 'Unlock a prestige kit',
+                                ),
+                            'ENCHANT_SWORD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Ooh...Magic!',
+                                    'description' => 'Enchant a sword',
+                                ),
+                            'ENCHANTED_ARMOR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Shieldwall',
+                                    'description' => 'Wear a fully enchanted armor set',
+                                ),
+                            'SPAWN_HORSE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'HORSEEEYYY',
+                                    'description' => 'Spawn a horse',
+                                ),
+                            'CHAMPION' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Champion',
+                                    'description' => 'Kill a player that is using a level X Kit',
+                                ),
+                            'INVINCIBLE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Invincible',
+                                    'description' => 'Win a game without taking any damage',
+                                ),
+                            'CHAOTIC_MADNESS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Chaotic Madness',
+                                    'description' => 'Use 5 Blitz Stars in a single Blitz Chaos game',
+                                ),
+                            'FIND_HEAD' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Is it Christmas already?',
+                                    'description' => 'Find the Delivery Man\'s head',
+                                ),
+                            'SEVEN_KITS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Can\'t Decide!',
+                                    'description' => 'Purchase one level of at least 7 kits',
+                                ),
+                            'PHOENIX_MASTER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Phoenix Master',
+                                    'description' => 'Max out the Phoenix Kit',
+                                ),
+                            'FISH_KILL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pounded',
+                                    'description' => 'Kill someone with the 1 Pound Fish',
+                                ),
+                            'FINAL_DESTINATION' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Final Destination',
+                                    'description' => 'Win a game where Ragnarok, Lockdown, Apocalypse, Acid Rain and Infection were activated.',
+                                ),
+                            'NO_REGRETS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'No regrets',
+                                    'description' => 'Craft a Diamond Hoe',
+                                ),
+                            'ULTIMATE_COMBATANT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Ultimate Combatant',
+                                    'description' => 'Kill someone while using an Ultimate kit',
+                                ),
+                            'ULTIMATE_COMPLETIST' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Ultimate Completist',
+                                    'description' => 'Max out an Ultimate kit',
+                                ),
+                            'COOKING_EXPERT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Cooking Expert',
+                                    'description' => 'Craft a Golden Apple',
+                                ),
+                            'FIRST_RANGER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'First Ranger',
+                                    'description' => 'Max out the Ranger Kit',
+                                ),
+                            'PIGRIDER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => '#pigrider77',
+                                    'description' => 'Ride a pig during deathmatch',
+                                ),
+                            'RAMBO' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Rambo',
+                                    'description' => 'Kill a player using the Rambo kit',
+                                ),
+                            'COLLECTOR' =>
+                                array(
+                                    'points' => 20,
+                                    'name' => 'Collector',
+                                    'description' => 'Unlock 3 level X kits',
+                                ),
+                            'CRAFT_BREAD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Peeta Mellark',
+                                    'description' => 'Craft bread',
+                                ),
+                            'FIRST_BLOOD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'First Blood',
+                                    'description' => 'Get the first kill in a game',
+                                ),
+                            'CLOSE_CALL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Close Call',
+                                    'description' => 'Kill a player whilst being on 0.5 hp',
+                                ),
+                            'USE_WOLF_TAMER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Raised by Wolves',
+                                    'description' => 'Use the WolfTamer kit',
+                                ),
+                            'EXPERIMENTATION' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Experimentation',
+                                    'description' => 'Activate every single kill effect at least once',
+                                ),
+                            'SAFETY_FIRST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Safety First',
+                                    'description' => 'Survive until deathmatch without taking any damage',
+                                ),
+                            'FIRST_GAME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'It all begins here',
+                                    'description' => 'Play Blitz for the first time',
+                                ),
+                            'RABBITS_FOOT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Rabbit\'s Foot',
+                                    'description' => 'Survive a fall of at least 50 blocks',
+                                ),
+                            'KILL_WITHOUT_KIT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Speed Kills',
+                                    'description' => 'Kill two people before you get your kit',
                                 ),
                             'APOCALYPSE' =>
                                 array(
@@ -1703,27 +1859,15 @@ while being the only one alive in 2v2',
                                 ),
                             'UNFORTUNATE' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Unfortunate',
                                     'description' => 'Get killed by your own roulette',
                                 ),
-                            'BLITZ_MANIAC' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Blitz Maniac',
-                                    'description' => 'Purchase 10 Blitz Stars',
-                                ),
-                            'YOUTUBER' =>
+                            'BRUTAL_WARRIOR' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Play with the YouTuber',
-                                    'description' => 'Play a game with a YouTuber',
-                                ),
-                            'SO_SHINY' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'So Shiny',
-                                    'description' => 'Unlock a prestige kit',
+                                    'name' => 'Brutal Warrior',
+                                    'description' => 'Max out the Warrior Kit',
                                 ),
                             'TOO_BASIC' =>
                                 array(
@@ -1731,23 +1875,11 @@ while being the only one alive in 2v2',
                                     'name' => 'Too Basic',
                                     'description' => 'Use every single basic kit at least once',
                                 ),
-                            'ENCHANT_SWORD' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Ooh...Magic!',
-                                    'description' => 'Enchant a sword',
-                                ),
                             'SAIL_AWAY' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Sail Away',
                                     'description' => 'Travel 500 blocks by boat in a single game while using the Viking kit',
-                                ),
-                            'ENCHANTED_ARMOR' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Shieldwall',
-                                    'description' => 'Wear a fully enchanted armor set',
                                 ),
                             'GET_DIAMOND_SWORD' =>
                                 array(
@@ -1755,33 +1887,15 @@ while being the only one alive in 2v2',
                                     'name' => 'My Precious',
                                     'description' => 'Obtain a Diamond Sword',
                                 ),
-                            'SPAWN_HORSE' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'HORSEEEYYY',
-                                    'description' => 'Spawn a horse',
-                                ),
-                            'CHAMPION' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Champion',
-                                    'description' => 'Kill a player that is using a level X Kit',
-                                ),
                             'UNSTOPPABLE' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Unstoppable',
-                                    'description' => 'Kill 5 players within 15 seconds',
-                                ),
-                            'INVINCIBLE' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Invincible',
-                                    'description' => 'Win a game without taking any damage',
+                                    'description' => 'Kill 4 players within 12 seconds',
                                 ),
                             'NO_PROBLEM' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'No Problem',
                                     'description' => 'Win a game without killing anyone',
                                 ),
@@ -1791,35 +1905,17 @@ while being the only one alive in 2v2',
                                     'name' => 'Afterburner',
                                     'description' => 'Kill a player with Fire',
                                 ),
-                            'FIND_HEAD' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Is it Christmas already?',
-                                    'description' => 'Find the Delivery Man\'s head',
-                                ),
-                            'SEVEN_KITS' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Can\'t Decide!',
-                                    'description' => 'Purchase one level of at least 7 kits',
-                                ),
                             'MAX_BLITZ' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Max Blitz',
                                     'description' => 'Wear an Iron Helmet, Iron Chestplate, Chain Leggings and Iron Boots',
                                 ),
-                            'FISH_KILL' =>
+                            'EVEN_SHINIER' =>
                                 array(
-                                    'points' => 10,
-                                    'name' => 'Pounded',
-                                    'description' => 'Kill someone with the 1 Pound Fish',
-                                ),
-                            'NO_REGRETS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'No regrets',
-                                    'description' => 'Craft a Diamond Hoe',
+                                    'points' => 15,
+                                    'name' => 'Even Shinier',
+                                    'description' => 'Unlock a Prestige II kit',
                                 ),
                             'COIN_FESTIVAL' =>
                                 array(
@@ -1827,15 +1923,9 @@ while being the only one alive in 2v2',
                                     'name' => 'Coin Festival',
                                     'description' => 'Find a Coin Chest',
                                 ),
-                            'COOKING_EXPERT' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Cooking Expert',
-                                    'description' => 'Craft a Golden Apple',
-                                ),
                             'BOMBERMAN' =>
                                 array(
-                                    'points' => 5,
+                                    'points' => 10,
                                     'name' => 'Bomberman',
                                     'description' => 'Kill a player with TNT',
                                 ),
@@ -1851,35 +1941,11 @@ while being the only one alive in 2v2',
                                     'name' => 'IMPOSSIBRU',
                                     'description' => 'Win without looting any chests',
                                 ),
-                            'PIGRIDER' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => '#pigrider77',
-                                    'description' => 'Ride a pig during deathmatch',
-                                ),
-                            'RAMBO' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Rambo',
-                                    'description' => 'Kill a player using the Rambo kit',
-                                ),
                             'LEVEL_SEVEN' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Lucky #7',
                                     'description' => 'Get a kit to level 7',
-                                ),
-                            'COLLECTOR' =>
-                                array(
-                                    'points' => 20,
-                                    'name' => 'Collector',
-                                    'description' => 'Unlock 3 level X kits',
-                                ),
-                            'CRAFT_BREAD' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Peeta Mellark',
-                                    'description' => 'Craft bread',
                                 ),
                             'UNDER_THE_SEA' =>
                                 array(
@@ -1890,117 +1956,41 @@ while being the only one alive in 2v2',
                         ),
                     'tiered' =>
                         array(
-                            'KILLS' =>
+                            'KIT_COLLECTOR' =>
                                 array(
-                                    'name' => 'Blitz Slayer',
-                                    'description' => 'Kill %s players',
+                                    'name' => 'Kit Collector',
+                                    'description' => 'Unlock %s Advanced or Ultimate kits',
                                     'tiers' =>
                                         array(
                                             0 =>
                                                 array(
                                                     'tier' => 1,
                                                     'points' => 5,
+                                                    'amount' => 1,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 5,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
                                                     'amount' => 10,
                                                 ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 100,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 1000,
-                                                ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 5000,
+                                                    'amount' => 15,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 12000,
-                                                ),
-                                        ),
-                                ),
-                            'COINS' =>
-                                array(
-                                    'name' => 'Blitz Banker',
-                                    'description' => 'Earn %s coins in Blitz',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 5000,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 10000,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 35000,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 55000,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 75000,
-                                                ),
-                                        ),
-                                ),
-                            'LOOTER' =>
-                                array(
-                                    'name' => 'Looter',
-                                    'description' => 'Open a total of %s Chests',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 25,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 250,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 1500,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 5000,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 15000,
+                                                    'amount' => 20,
                                                 ),
                                         ),
                                 ),
@@ -2118,48 +2108,10 @@ while being the only one alive in 2v2',
                                                 ),
                                         ),
                                 ),
-                            'TREASURE_SEEKER' =>
+                            'CHAOS_WINNER' =>
                                 array(
-                                    'name' => 'Treasure Seeker',
-                                    'description' => 'Find the Blitz Star %s times',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 1,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 5,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 10,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 25,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 100,
-                                                ),
-                                        ),
-                                ),
-                            'WINS' =>
-                                array(
-                                    'name' => 'One Man Army',
-                                    'description' => 'Win %s solo games',
+                                    'name' => 'Blitz Chaos Winner',
+                                    'description' => 'Win %s games of Blitz Chaos',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -2232,6 +2184,348 @@ while being the only one alive in 2v2',
                                                 ),
                                         ),
                                 ),
+                            'KILLS' =>
+                                array(
+                                    'name' => 'Blitz Slayer',
+                                    'description' => 'Kill %s players',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 1000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 5000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 12000,
+                                                ),
+                                        ),
+                                ),
+                            'RANGED_COMBAT' =>
+                                array(
+                                    'name' => 'Ranged Combat',
+                                    'description' => 'Kill %s players using a bow and arrow',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
+                            'COINS' =>
+                                array(
+                                    'name' => 'Blitz Banker',
+                                    'description' => 'Earn %s coins in Blitz',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5000,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 10000,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 35000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 55000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 75000,
+                                                ),
+                                        ),
+                                ),
+                            'LOOTER' =>
+                                array(
+                                    'name' => 'Looter',
+                                    'description' => 'Open a total of %s Chests',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 100,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 1000,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 2500,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 5000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 10000,
+                                                ),
+                                        ),
+                                ),
+                            'FIGHTING_EXPERT' =>
+                                array(
+                                    'name' => 'Fighting Expert',
+                                    'description' => 'Kill %s players using a sword or axe',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
+                            'TREASURE_SEEKER' =>
+                                array(
+                                    'name' => 'Treasure Seeker',
+                                    'description' => 'Find the Blitz Star %s times',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 1,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 5,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 10,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 25,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 100,
+                                                ),
+                                        ),
+                                ),
+                            'KIT_EXPERIENCE_COLLECTOR' =>
+                                array(
+                                    'name' => 'Kit Experience Collector',
+                                    'description' => 'Collect %s Ultimate Kit Experience',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5000,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 10000,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 15000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 20000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 25000,
+                                                ),
+                                        ),
+                                ),
+                            'MOB_MASTER' =>
+                                array(
+                                    'name' => 'Mob Master',
+                                    'description' => 'Spawn %s mobs',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
+                            'WINS' =>
+                                array(
+                                    'name' => 'One Man Army',
+                                    'description' => 'Win %s solo games',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 100,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1200,
+                                                ),
+                                        ),
+                                ),
                             'WINS_TEAMS' =>
                                 array(
                                     'name' => 'Two Man Army',
@@ -2271,7 +2565,7 @@ while being the only one alive in 2v2',
                                         ),
                                 ),
                         ),
-                    'total_points' => 1150,
+                    'total_points' => 1745,
                 ),
             'buildbattle' =>
                 array(
