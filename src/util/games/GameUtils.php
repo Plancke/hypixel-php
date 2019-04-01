@@ -3,6 +3,7 @@
 namespace Plancke\HypixelPHP\util\games;
 
 use Exception;
+use Plancke\HypixelPHP\util\games\bedwars\BedWarsUtils;
 use Plancke\HypixelPHP\util\games\skywars\SkyWarsUtils;
 
 /**
@@ -23,11 +24,11 @@ class GameUtils {
     }
 
     /**
-     * @return BedwarsUtils
+     * @return BedWarsUtils
      */
-    public static function getBedwars() {
+    public static function getBedWars() {
         if (GameUtils::$BEDWARS_UTILS == null) {
-            GameUtils::$BEDWARS_UTILS = new BedwarsUtils();
+            GameUtils::$BEDWARS_UTILS = new BedWarsUtils();
         }
         return GameUtils::$BEDWARS_UTILS;
     }

@@ -2,11 +2,12 @@
 
 namespace Plancke\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\HypixelPHP;
 
-class APITest extends \PHPUnit_Framework_TestCase {
+class APITest extends TestCase {
 
     function testNoKey() {
         try {

@@ -2,6 +2,7 @@
 
 namespace Plancke\Tests\util;
 
+use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\impl\DefaultFetcher;
 use Plancke\HypixelPHP\HypixelPHP;
 
@@ -12,10 +13,10 @@ class TestUtil {
     /** @noinspection PhpDocMissingThrowsInspection */
     /**
      * @return HypixelPHP
+     * @throws HypixelPHPException
      */
     public static function getHypixelPHP() {
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $HypixelPHP = new HypixelPHP('');
+        $HypixelPHP = new HypixelPHP(self::getAPIKey());
 
         $HypixelPHP->setLogger(new CustomLogger($HypixelPHP));
         $HypixelPHP->setCacheHandler(new NoCacheHandler($HypixelPHP));
@@ -25,6 +26,12 @@ class TestUtil {
         $HypixelPHP->setFetcher($fetcher);
 
         return $HypixelPHP;
+    }
+
+    public static function getAPIKey() {
+        if (isset($_ENV['API_KEY'])) return $_ENV['API_KEY'];
+        if (isset($_SERVER['API_KEY'])) return $_SERVER['API_KEY'];
+        return null;
     }
 
 }

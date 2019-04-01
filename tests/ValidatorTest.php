@@ -2,9 +2,10 @@
 
 namespace Plancke\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Plancke\HypixelPHP\util\Validator;
 
-class ValidatorTest extends \PHPUnit_Framework_TestCase {
+class ValidatorTest extends TestCase {
 
     function testUUIDMatcher() {
         $UUID = 'f025c1c7-f55a-4ea0-b8d9-3f47d17dfe0f'; // dashes

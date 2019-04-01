@@ -2,9 +2,10 @@
 
 namespace Plancke\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Plancke\HypixelPHP\util\CacheUtil;
 
-class CacheTest extends \PHPUnit_Framework_TestCase {
+class CacheTest extends TestCase {
 
     function testExpire() {
         $cachedTime = time() * 1000;

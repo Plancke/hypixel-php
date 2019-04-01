@@ -2,9 +2,10 @@
 
 namespace Plancke\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Plancke\HypixelPHP\color\ColorUtils;
 
-class ColorTest extends \PHPUnit_Framework_TestCase {
+class ColorTest extends TestCase {
 
     function testStripColor() {
         $colored = "§4Colored §OString§r";
