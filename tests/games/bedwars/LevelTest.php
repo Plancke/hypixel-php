@@ -9,9 +9,10 @@ class LevelTest extends TestCase {
 
     function testLevels() {
         $this->_testLevel(0, 0, 0);
-        $this->_testLevel(2000, 2, 0);
-        $this->_testLevel(800000, 165, 1);
-        $this->_testLevel(1000000, 207, 2);
+
+        $this->_testLevel(708325, 146, 1);
+        $this->_testLevel(199146, 42, 0);
+        $this->_testLevel(1174460, 242, 2);
     }
 
     /**
