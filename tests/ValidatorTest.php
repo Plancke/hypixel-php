@@ -21,4 +21,17 @@ class ValidatorTest extends TestCase {
         $UUID = 'f025c1c7-f55a-4ea0-b8d9-3f47d17dfe0ff'; // too long
         $this->assertFalse(Validator::isAnyUUID($UUID));
     }
+
+    function testUsernameMatcher() {
+        $name = 'Plancke';
+        $this->assertTrue(Validator::isUsername($name));
+        $name = 'Plancke-R'; // dash
+        $this->assertFalse(Validator::isUsername($name));
+        $name = 'Plancke_R'; // underscore
+        $this->assertTrue(Validator::isUsername($name));
+        $name = 'G'; // 1 letter og
+        $this->assertTrue(Validator::isUsername($name));
+        $name = 'hello world'; // spaces
+        $this->assertFalse(Validator::isUsername($name));
+    }
 }
