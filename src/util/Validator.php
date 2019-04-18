@@ -11,8 +11,8 @@ class Validator {
     /**
      * Matches UUIDs version 1 through 5
      */
-    const UUID_ALL_VERSION_MATCHER = '~^[0-9a-f]{8}(-|)[0-9a-f]{4}(-|)[0-5][0-9a-f]{3}(-|)[89ab][0-9a-f]{3}(-|)[0-9a-f]{12}$~i';
-    const USERNAME_MATCHER = '~^[a-zA-Z0-9_]{1,16}$~i';
+    const UUID_ALL_VERSION_MATCHER = '~^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$~i';
+    const USERNAME_MATCHER = '~^\w{1,16}$~i';
 
     /**
      * @param $input
