@@ -144,7 +144,7 @@ with your sword',
                                 array(
                                     'points' => 10,
                                     'name' => 'Gotta catch them all!',
-                                    'description' => 'Have 1 minute of powerups left at the end of an Ender Spleef game',
+                                    'description' => 'Have 10 seconds of powerups left at the end of an Ender Spleef game',
                                 ),
                             'ZOMBIES_TEAM_PLAYER' =>
                                 array(
@@ -219,7 +219,7 @@ powerup in Throw Out',
                                 array(
                                     'points' => 10,
                                     'name' => 'Avalanche!',
-                                    'description' => 'Survive 18 waves in Avalanche',
+                                    'description' => 'Survive 12 waves in Avalanche',
                                 ),
                             'PARTY_GAMES_STARS' =>
                                 array(
@@ -436,7 +436,7 @@ and armor in Creeper Attack',
                             'TEAM_WORK' =>
                                 array(
                                     'name' => 'Team Work',
-                                    'description' => 'Complete %s waves on Creeper Attack',
+                                    'description' => 'Reach wave %s in Creeper Attack',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -4510,6 +4510,156 @@ while being the only one alive in 2v2',
                                 ),
                         ),
                     'total_points' => 1310,
+                ),
+            'easter' =>
+                array(
+                    'one_time' =>
+                        array(
+                            'SW_EGG_VOID' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Fill the void',
+                                    'description' => 'Throw 3 players in the void using eggs in a game of SkyWars',
+                                ),
+                            'SMASH_CLUCK_KILLS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Cluckindoshin',
+                                    'description' => 'Kill 3 different players in a game of Smash Heroes using General Cluck',
+                                ),
+                            'FIRST_EGG_2019' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Chase Begins (2019)',
+                                    'description' => 'Find an easter egg in the Main Lobby',
+                                ),
+                            'PIT_DRAGON_EGG' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Does it count?',
+                                    'description' => 'Click the dragon egg in the namesake pit event',
+                                ),
+                            'BLITZ_SPAWN_RABBIT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Genius Summoner',
+                                    'description' => 'Spawn a rabbit in Blitz Survival Games',
+                                ),
+                            'TOWERWARS_CHICKENS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'A tower ain\'t one',
+                                    'description' => 'Spawn 99 chickens in a game of Tower Wars',
+                                ),
+                            'CVC_GRENADES' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'The crowd goes boom',
+                                    'description' => 'Kill 5 players using grenades in a Defusal game of CVC',
+                                ),
+                            'ALL_EGGS_2019' =>
+                                array(
+                                    'points' => 30,
+                                    'name' => 'Egghunter (2019)',
+                                    'description' => 'Find all easter eggs in the Main Lobby',
+                                ),
+                            'HAPPY_EASTER_2019' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Happy Easter (2019)',
+                                    'description' => 'Login on Easter Sunday',
+                                ),
+                            'ARCADE_CHICKEN_RACE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Turbo Chicken Racers',
+                                    'description' => 'Win the flying chicken race in Arcade Party Games',
+                                ),
+                            'BW_JUMP_BOOST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Jumpstart Investment',
+                                    'description' => 'Buy 3 jump boost potions in a game of Bedwars',
+                                ),
+                            'EASTER_EGG' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Secret Easter Egg',
+                                    'description' => 'Acquire the secret easter egg.',
+                                ),
+                            'PAINTBALL_LEEROY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'At least I got paintball',
+                                    'description' => 'Activate the Leeroy Jenkins killstreak in Paintball',
+                                ),
+                            'MEGAWALLS_JOCKEY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Patient Hunter',
+                                    'description' => 'Spawn a Chicken Jockey using the Hunter passive in Mega Walls',
+                                ),
+                            'VAMPIREZ_CARROT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Modern Problems',
+                                    'description' => 'Kill a vampire while holding a carrot in VampireZ',
+                                ),
+                            'MM_CARROT_KILLS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Check your produce',
+                                    'description' => 'Kill 3 survivors in one game while holding the carrot/carrot-on-a-stick knife skin in Classic Murder Mystery',
+                                ),
+                            'UHC_GOLDEN_CARROT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Golden Survival',
+                                    'description' => 'Craft a Cornucopia in UHC',
+                                ),
+                        ),
+                    'tiered' =>
+                        array(
+                            'THROW_EGGS' =>
+                                array(
+                                    'name' => 'Eggthrower',
+                                    'description' => 'Throw %s eggs',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 8,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 32,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 128,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 512,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 2048,
+                                                ),
+                                        ),
+                                ),
+                        ),
+                    'total_points' => 225,
                 ),
             'general' =>
                 array(
