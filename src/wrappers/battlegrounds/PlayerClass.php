@@ -7,9 +7,9 @@ class PlayerClass {
 
     protected $specs = [
         PlayerClasses::MAGE => [0 => "Pyromancer", 1 => "Cryomancer", 2 => "Aquamancer"],
-        PlayerClasses::WARRIOR => [0 => "Berserker", 1 => "Defender"],
+        PlayerClasses::WARRIOR => [0 => "Berserker", 1 => "Defender", 2 => "Spiritguard"],
         PlayerClasses::PALADIN => [0 => "Avenger", 1 => "Crusader", 2 => "Protector"],
-        PlayerClasses::SHAMAN => [0 => "Thunderlord", 1 => "Earthwarden"],
+        PlayerClasses::SHAMAN => [0 => "Thunderlord", 1 => "Earthwarden", 3 => "Revenant"],
     ];
 
     /**
