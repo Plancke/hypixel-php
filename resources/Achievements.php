@@ -4555,7 +4555,7 @@ while being the only one alive in 2v2',
                                 array(
                                     'points' => 10,
                                     'name' => 'The crowd goes boom',
-                                    'description' => 'Kill 5 players using grenades in a Defusal game of CVC',
+                                    'description' => 'Kill 2 players using grenades in a Defusal game of CVC',
                                 ),
                             'ALL_EGGS_2019' =>
                                 array(
@@ -12768,6 +12768,12 @@ on your team',
                                     'name' => 'Coming Through!',
                                     'description' => 'Get a kill while under the Berserk Ultimate.',
                                 ),
+                            'SUPERNATURAL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Supernatural',
+                                    'description' => 'Delay 10,000 damage with a single spirits\' respite, then survive the full duration of death\'s debt',
+                                ),
                             'SOLO_CARRY' =>
                                 array(
                                     'points' => 15,
@@ -12935,6 +12941,12 @@ on your team',
                                     'points' => 10,
                                     'name' => 'I...Must...Resist',
                                     'description' => 'Completely fill up your Broken Weapons inventory.',
+                                ),
+                            'UNDEAD_ARMY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Undead Army',
+                                    'description' => 'Revive 4 players with a single undying army',
                                 ),
                             'BEARING_GIFTS' =>
                                 array(
@@ -13512,7 +13524,7 @@ on your team',
                                         ),
                                 ),
                         ),
-                    'total_points' => 1360,
+                    'total_points' => 1380,
                 ),
         ),
 );
