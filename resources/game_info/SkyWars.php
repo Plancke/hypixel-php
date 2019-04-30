@@ -4,119 +4,28 @@ return array(
         array(
             'list' =>
                 array(
-                    'MEGA' =>
+                    'RANKED' =>
                         array(
                             'list' =>
                                 array(
                                     0 =>
                                         array(
-                                            'PackageName' => 'kit_mega_mega_armorer',
-                                            'Display' => 'Armorer',
-                                            'SubType' => 'MEGA',
+                                            'PackageName' => 'kit_ranked_ranked_scout',
+                                            'Display' => 'Scout',
+                                            'SubType' => 'RANKED',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
-                                                    'material' => 'IRON_CHESTPLATE',
-                                                    'typeId' => 307,
+                                                    'material' => 'DIAMOND_AXE',
+                                                    'typeId' => 279,
                                                     'data' => 0,
                                                 ),
                                         ),
                                     1 =>
                                         array(
-                                            'PackageName' => 'kit_mega_mega_armorsmith',
-                                            'Display' => 'Armorsmith',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'ANVIL',
-                                                    'typeId' => 145,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    2 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_baseball-player',
-                                            'Display' => 'Baseball Player',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'IRON_HELMET',
-                                                    'typeId' => 306,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    3 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_cannoneer',
-                                            'Display' => 'Cannoneer',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'TNT',
-                                                    'typeId' => 46,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    4 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_healer',
-                                            'Display' => 'Healer',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'CAKE',
-                                                    'typeId' => 354,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    5 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_hunter',
-                                            'Display' => 'Hunter',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'BOW',
-                                                    'typeId' => 261,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    6 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_knight',
-                                            'Display' => 'Knight',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'DIAMOND_SWORD',
-                                                    'typeId' => 276,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    7 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_paladin',
-                                            'Display' => 'Paladin',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'GOLDEN_APPLE',
-                                                    'typeId' => 322,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    8 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_scout',
-                                            'Display' => 'Scout',
-                                            'SubType' => 'MEGA',
+                                            'PackageName' => 'kit_ranked_ranked_magician',
+                                            'Display' => 'Magician',
+                                            'SubType' => 'RANKED',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
@@ -125,134 +34,24 @@ return array(
                                                     'data' => 0,
                                                 ),
                                         ),
-                                    9 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_skeletor',
-                                            'Display' => 'Skeletor',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'CHAINMAIL_BOOTS',
-                                                    'typeId' => 305,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    10 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_witch',
-                                            'Display' => 'Witch',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'BREWING_STAND_ITEM',
-                                                    'typeId' => 379,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    11 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_hellhound',
-                                            'Display' => 'Hellhound',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'DIAMOND_AXE',
-                                                    'typeId' => 279,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    12 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_fisherman',
-                                            'Display' => 'Fisherman',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'FISHING_ROD',
-                                                    'typeId' => 346,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    13 =>
-                                        array(
-                                            'PackageName' => 'kit_mega_mega_pyromaniac',
-                                            'Display' => 'Pyromaniac',
-                                            'SubType' => 'MEGA',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'FLINT_AND_STEEL',
-                                                    'typeId' => 259,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                ),
-                        ),
-                    'NEW_RANKED' =>
-                        array(
-                            'list' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'PackageName' => 'kit_normal_new_ranked_archer',
-                                            'Display' => 'Archer',
-                                            'SubType' => 'NORMAL',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'BOW',
-                                                    'typeId' => 261,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    1 =>
-                                        array(
-                                            'PackageName' => 'kit_normal_new_ranked_armorer',
-                                            'Display' => 'Armorer',
-                                            'SubType' => 'NORMAL',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'DIAMOND_CHESTPLATE',
-                                                    'typeId' => 311,
-                                                    'data' => 0,
-                                                ),
-                                        ),
                                     2 =>
                                         array(
-                                            'PackageName' => 'kit_normal_new_ranked_blacksmith',
-                                            'Display' => 'Blacksmith',
-                                            'SubType' => 'NORMAL',
+                                            'PackageName' => 'kit_ranked_ranked_armorer',
+                                            'Display' => 'Armorer',
+                                            'SubType' => 'RANKED',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
-                                                    'material' => 'EXP_BOTTLE',
-                                                    'typeId' => 384,
+                                                    'material' => 'IRON_CHESTPLATE',
+                                                    'typeId' => 307,
                                                     'data' => 0,
                                                 ),
                                         ),
                                     3 =>
                                         array(
-                                            'PackageName' => 'kit_normal_new_ranked_brute',
-                                            'Display' => 'Brute',
-                                            'SubType' => 'NORMAL',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'DIAMOND_AXE',
-                                                    'typeId' => 279,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    4 =>
-                                        array(
-                                            'PackageName' => 'kit_normal_new_ranked_champion',
+                                            'PackageName' => 'kit_ranked_ranked_champion',
                                             'Display' => 'Champion',
-                                            'SubType' => 'NORMAL',
+                                            'SubType' => 'RANKED',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
@@ -261,24 +60,63 @@ return array(
                                                     'data' => 0,
                                                 ),
                                         ),
-                                    5 =>
+                                    4 =>
                                         array(
-                                            'PackageName' => 'kit_normal_new_ranked_healer',
-                                            'Display' => 'Healer',
-                                            'SubType' => 'NORMAL',
+                                            'PackageName' => 'kit_ranked_ranked_bowman',
+                                            'Display' => 'Bowman',
+                                            'SubType' => 'RANKED',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
-                                                    'material' => 'GOLDEN_APPLE',
-                                                    'typeId' => 322,
+                                                    'material' => 'BOW',
+                                                    'typeId' => 261,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    5 =>
+                                        array(
+                                            'PackageName' => 'kit_ranked_ranked_athlete',
+                                            'Display' => 'Athlete',
+                                            'SubType' => 'RANKED',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'WATER_BUCKET',
+                                                    'typeId' => 326,
                                                     'data' => 0,
                                                 ),
                                         ),
                                     6 =>
                                         array(
-                                            'PackageName' => 'kit_normal_new_ranked_paladin',
-                                            'Display' => 'Paladin',
-                                            'SubType' => 'NORMAL',
+                                            'PackageName' => 'kit_blacksmith_ranked_blacksmith',
+                                            'Display' => 'Blacksmith',
+                                            'SubType' => 'BLACKSMITH',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'ANVIL',
+                                                    'typeId' => 145,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    7 =>
+                                        array(
+                                            'PackageName' => 'kit_ranked_ranked_healer',
+                                            'Display' => 'Healer',
+                                            'SubType' => 'RANKED',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'CAKE',
+                                                    'typeId' => 354,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    8 =>
+                                        array(
+                                            'PackageName' => 'kit_ranked_ranked_pyromancer',
+                                            'Display' => 'Pyromancer',
+                                            'SubType' => 'RANKED',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
@@ -287,16 +125,29 @@ return array(
                                                     'data' => 0,
                                                 ),
                                         ),
-                                    7 =>
+                                    9 =>
                                         array(
-                                            'PackageName' => 'kit_normal_new_ranked_pyromancer',
-                                            'Display' => 'Pyromancer',
-                                            'SubType' => 'NORMAL',
+                                            'PackageName' => 'kit_ranked_ranked_hound',
+                                            'Display' => 'Hound',
+                                            'SubType' => 'RANKED',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
-                                                    'material' => 'DIAMOND_BOOTS',
-                                                    'typeId' => 313,
+                                                    'material' => 'MONSTER_EGG',
+                                                    'typeId' => 383,
+                                                    'data' => 95,
+                                                ),
+                                        ),
+                                    10 =>
+                                        array(
+                                            'PackageName' => 'kit_ranked_ranked_paladin',
+                                            'Display' => 'Paladin',
+                                            'SubType' => 'RANKED',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'DIAMOND_LEGGINGS',
+                                                    'typeId' => 312,
                                                     'data' => 0,
                                                 ),
                                         ),
@@ -837,67 +688,15 @@ return array(
                                         ),
                                 ),
                         ),
-                    'RANKED' =>
+                    'NEW_RANKED' =>
                         array(
                             'list' =>
                                 array(
                                     0 =>
                                         array(
-                                            'PackageName' => 'kit_ranked_ranked_scout',
-                                            'Display' => 'Scout',
-                                            'SubType' => 'RANKED',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'DIAMOND_AXE',
-                                                    'typeId' => 279,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    1 =>
-                                        array(
-                                            'PackageName' => 'kit_ranked_ranked_magician',
-                                            'Display' => 'Magician',
-                                            'SubType' => 'RANKED',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'IRON_SWORD',
-                                                    'typeId' => 267,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    2 =>
-                                        array(
-                                            'PackageName' => 'kit_ranked_ranked_armorer',
-                                            'Display' => 'Armorer',
-                                            'SubType' => 'RANKED',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'IRON_CHESTPLATE',
-                                                    'typeId' => 307,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    3 =>
-                                        array(
-                                            'PackageName' => 'kit_ranked_ranked_champion',
-                                            'Display' => 'Champion',
-                                            'SubType' => 'RANKED',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'DIAMOND_SWORD',
-                                                    'typeId' => 276,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    4 =>
-                                        array(
-                                            'PackageName' => 'kit_ranked_ranked_bowman',
-                                            'Display' => 'Bowman',
-                                            'SubType' => 'RANKED',
+                                            'PackageName' => 'kit_normal_new_ranked_archer',
+                                            'Display' => 'Archer',
+                                            'SubType' => 'NORMAL',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
@@ -906,50 +705,76 @@ return array(
                                                     'data' => 0,
                                                 ),
                                         ),
-                                    5 =>
+                                    1 =>
                                         array(
-                                            'PackageName' => 'kit_ranked_ranked_athlete',
-                                            'Display' => 'Athlete',
-                                            'SubType' => 'RANKED',
+                                            'PackageName' => 'kit_normal_new_ranked_armorer',
+                                            'Display' => 'Armorer',
+                                            'SubType' => 'NORMAL',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
-                                                    'material' => 'WATER_BUCKET',
-                                                    'typeId' => 326,
+                                                    'material' => 'DIAMOND_CHESTPLATE',
+                                                    'typeId' => 311,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    2 =>
+                                        array(
+                                            'PackageName' => 'kit_normal_new_ranked_blacksmith',
+                                            'Display' => 'Blacksmith',
+                                            'SubType' => 'NORMAL',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'EXP_BOTTLE',
+                                                    'typeId' => 384,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    3 =>
+                                        array(
+                                            'PackageName' => 'kit_normal_new_ranked_brute',
+                                            'Display' => 'Brute',
+                                            'SubType' => 'NORMAL',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'DIAMOND_AXE',
+                                                    'typeId' => 279,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    4 =>
+                                        array(
+                                            'PackageName' => 'kit_normal_new_ranked_champion',
+                                            'Display' => 'Champion',
+                                            'SubType' => 'NORMAL',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'DIAMOND_SWORD',
+                                                    'typeId' => 276,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    5 =>
+                                        array(
+                                            'PackageName' => 'kit_normal_new_ranked_healer',
+                                            'Display' => 'Healer',
+                                            'SubType' => 'NORMAL',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'GOLDEN_APPLE',
+                                                    'typeId' => 322,
                                                     'data' => 0,
                                                 ),
                                         ),
                                     6 =>
                                         array(
-                                            'PackageName' => 'kit_blacksmith_ranked_blacksmith',
-                                            'Display' => 'Blacksmith',
-                                            'SubType' => 'BLACKSMITH',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'ANVIL',
-                                                    'typeId' => 145,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    7 =>
-                                        array(
-                                            'PackageName' => 'kit_ranked_ranked_healer',
-                                            'Display' => 'Healer',
-                                            'SubType' => 'RANKED',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'CAKE',
-                                                    'typeId' => 354,
-                                                    'data' => 0,
-                                                ),
-                                        ),
-                                    8 =>
-                                        array(
-                                            'PackageName' => 'kit_ranked_ranked_pyromancer',
-                                            'Display' => 'Pyromancer',
-                                            'SubType' => 'RANKED',
+                                            'PackageName' => 'kit_normal_new_ranked_paladin',
+                                            'Display' => 'Paladin',
+                                            'SubType' => 'NORMAL',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
@@ -958,38 +783,20 @@ return array(
                                                     'data' => 0,
                                                 ),
                                         ),
-                                    9 =>
+                                    7 =>
                                         array(
-                                            'PackageName' => 'kit_ranked_ranked_hound',
-                                            'Display' => 'Hound',
-                                            'SubType' => 'RANKED',
+                                            'PackageName' => 'kit_normal_new_ranked_pyromancer',
+                                            'Display' => 'Pyromancer',
+                                            'SubType' => 'NORMAL',
                                             'Icon' =>
                                                 array(
                                                     'version' => 1,
-                                                    'material' => 'MONSTER_EGG',
-                                                    'typeId' => 383,
-                                                    'data' => 95,
-                                                ),
-                                        ),
-                                    10 =>
-                                        array(
-                                            'PackageName' => 'kit_ranked_ranked_paladin',
-                                            'Display' => 'Paladin',
-                                            'SubType' => 'RANKED',
-                                            'Icon' =>
-                                                array(
-                                                    'version' => 1,
-                                                    'material' => 'DIAMOND_LEGGINGS',
-                                                    'typeId' => 312,
+                                                    'material' => 'DIAMOND_BOOTS',
+                                                    'typeId' => 313,
                                                     'data' => 0,
                                                 ),
                                         ),
                                 ),
-                        ),
-                    'SPECIAL' =>
-                        array(
-                            'list' =>
-                                array(),
                         ),
                     'NORMAL' =>
                         array(
@@ -1525,6 +1332,199 @@ return array(
                                                 ),
                                         ),
                                 ),
+                        ),
+                    'MEGA' =>
+                        array(
+                            'list' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_armorer',
+                                            'Display' => 'Armorer',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'IRON_CHESTPLATE',
+                                                    'typeId' => 307,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    1 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_armorsmith',
+                                            'Display' => 'Armorsmith',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'ANVIL',
+                                                    'typeId' => 145,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    2 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_baseball-player',
+                                            'Display' => 'Baseball Player',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'IRON_HELMET',
+                                                    'typeId' => 306,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    3 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_cannoneer',
+                                            'Display' => 'Cannoneer',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'TNT',
+                                                    'typeId' => 46,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    4 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_healer',
+                                            'Display' => 'Healer',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'CAKE',
+                                                    'typeId' => 354,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    5 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_hunter',
+                                            'Display' => 'Hunter',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'BOW',
+                                                    'typeId' => 261,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    6 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_knight',
+                                            'Display' => 'Knight',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'DIAMOND_SWORD',
+                                                    'typeId' => 276,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    7 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_paladin',
+                                            'Display' => 'Paladin',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'GOLDEN_APPLE',
+                                                    'typeId' => 322,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    8 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_scout',
+                                            'Display' => 'Scout',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'IRON_SWORD',
+                                                    'typeId' => 267,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    9 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_skeletor',
+                                            'Display' => 'Skeletor',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'CHAINMAIL_BOOTS',
+                                                    'typeId' => 305,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    10 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_witch',
+                                            'Display' => 'Witch',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'BREWING_STAND_ITEM',
+                                                    'typeId' => 379,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    11 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_hellhound',
+                                            'Display' => 'Hellhound',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'DIAMOND_AXE',
+                                                    'typeId' => 279,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    12 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_fisherman',
+                                            'Display' => 'Fisherman',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'FISHING_ROD',
+                                                    'typeId' => 346,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                    13 =>
+                                        array(
+                                            'PackageName' => 'kit_mega_mega_pyromaniac',
+                                            'Display' => 'Pyromaniac',
+                                            'SubType' => 'MEGA',
+                                            'Icon' =>
+                                                array(
+                                                    'version' => 1,
+                                                    'material' => 'FLINT_AND_STEEL',
+                                                    'typeId' => 259,
+                                                    'data' => 0,
+                                                ),
+                                        ),
+                                ),
+                        ),
+                    'SPECIAL' =>
+                        array(
+                            'list' =>
+                                array(),
                         ),
                 ),
         ),

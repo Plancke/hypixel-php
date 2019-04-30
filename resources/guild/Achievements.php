@@ -115,6 +115,49 @@ return array(
                                         ),
                                 ),
                         ),
+                    'ONLINE_PLAYERS' =>
+                        array(
+                            'name' => 'What are you doing here?',
+                            'description' => 'Have %s guild members online at the same time!',
+                            'tiers' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'tier' => 1,
+                                            'amount' => 5,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'tier' => 2,
+                                            'amount' => 15,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'tier' => 3,
+                                            'amount' => 30,
+                                        ),
+                                    3 =>
+                                        array(
+                                            'tier' => 4,
+                                            'amount' => 40,
+                                        ),
+                                    4 =>
+                                        array(
+                                            'tier' => 5,
+                                            'amount' => 50,
+                                        ),
+                                    5 =>
+                                        array(
+                                            'tier' => 6,
+                                            'amount' => 60,
+                                        ),
+                                    6 =>
+                                        array(
+                                            'tier' => 7,
+                                            'amount' => 70,
+                                        ),
+                                ),
+                        ),
                 ),
-        )
+        ),
 );

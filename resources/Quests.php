@@ -473,8 +473,8 @@ return array(
                         ),
                     2 =>
                         array(
-                            'id' => 'blitz_win_chaos',
-                            'name' => 'Daily Quest: Win Chaos',
+                            'id' => 'blitz_loot_chest_daily',
+                            'name' => 'Daily Quest: Chest Looter',
                             'rewards' =>
                                 array(
                                     0 =>
@@ -492,8 +492,9 @@ return array(
                                 array(
                                     0 =>
                                         array(
-                                            'id' => 'winblitzchaos',
-                                            'type' => 'BooleanObjective',
+                                            'id' => 'lootchestblitz',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 25,
                                         ),
                                 ),
                             'requirements' =>
@@ -586,8 +587,8 @@ return array(
                         ),
                     5 =>
                         array(
-                            'id' => 'blitz_weekly_chaos_master',
-                            'name' => 'Weekly Quest: Chaos Master',
+                            'id' => 'blitz_loot_chest_weekly',
+                            'name' => 'Weekly Quest: Blitz Expert',
                             'rewards' =>
                                 array(
                                     0 =>
@@ -605,21 +606,15 @@ return array(
                                 array(
                                     0 =>
                                         array(
-                                            'id' => 'blitz_chaos_games_played',
+                                            'id' => 'lootchestblitz',
                                             'type' => 'IntegerObjective',
-                                            'integer' => 15,
+                                            'integer' => 100,
                                         ),
                                     1 =>
                                         array(
-                                            'id' => 'winblitzchaos',
+                                            'id' => 'dealdamageblitz',
                                             'type' => 'IntegerObjective',
-                                            'integer' => 5,
-                                        ),
-                                    2 =>
-                                        array(
-                                            'id' => 'usestarblitzchaos',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 30,
+                                            'integer' => 250,
                                         ),
                                 ),
                             'requirements' =>
