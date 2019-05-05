@@ -32,7 +32,7 @@ To interact with the API you need an API key, you can get a key by doing "/api" 
 ```PHP
 $HypixelPHP = new HypixelPHP('API_KEY');
 
-// you can override modules, not required
+// you can override modules
 $HypixelPHP->setCacheHandler(...);
 $HypixelPHP->setLogger(...);
 $HypixelPHP->setFetcher(...);
@@ -45,4 +45,4 @@ if ($player instanceof Player) {
 
 ## Old Version
 
-You can find the old 1 file version in the [old branch](https://github.com/Plancke/hypixel-php/tree/old). 
+You can find the old 1 file version in the [old branch](https://github.com/Plancke/hypixel-php/tree/old), this won't be updated and as such is most likely broken. 
