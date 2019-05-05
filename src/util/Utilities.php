@@ -41,7 +41,8 @@ abstract class Utilities {
     public static function getRecursiveValue($array, $key, $default = null, $delimiter = '.') {
         $return = $array;
         foreach (explode($delimiter, $key) as $split) {
-            $return = isset($return[$split]) ? $return[$split] : $default;
+            if (!isset($return[$split])) return $default;
+            $return = $return[$split];
         }
         return $return ? $return : $default;
     }
