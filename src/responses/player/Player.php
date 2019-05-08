@@ -49,16 +49,13 @@ class Player extends HypixelObject {
         $oneTime = $this->getArray('achievementsOneTime');
         $this->getHypixelPHP()->getLogger()->log('Starting OneTime Achievements');
         foreach ($oneTime as $dbName) {
-            if (!is_string($dbName)) {
-                continue;
-            }
+            if (!is_string($dbName)) continue;
             $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
             $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
-            if (!in_array($game, $games)) {
-                continue;
-            }
+            if (!in_array($game, $games)) continue;
             $this->getHypixelPHP()->getLogger()->log('Achievement: ' . strtoupper(substr($dbName, strpos($dbName, "_"))));
             if (in_array($dbName, array_keys($achievements[$game]['one_time']))) {
+                if (array_key_exists("legacy", $achievements[$game]['one_time'][$dbName]) && $achievements[$game]['one_time'][$dbName]["legacy"]) continue;
                 $this->getHypixelPHP()->getLogger()->log('Achievement: ' . $dbName . ' - ' . $achievements[$game]['one_time'][$dbName]['points']);
                 $total += $achievements[$game]['one_time'][$dbName]['points'];
             }
@@ -68,11 +65,10 @@ class Player extends HypixelObject {
         foreach ($tiered as $dbName => $value) {
             $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
             $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
-            if (!in_array($game, $games)) {
-                continue;
-            }
+            if (!in_array($game, $games)) continue;
             $this->getHypixelPHP()->getLogger()->log('Achievement: ' . $dbName);
             if (in_array($dbName, array_keys($achievements[$game]['tiered']))) {
+                if (array_key_exists("legacy", $achievements[$game]['tiered'][$dbName]) && $achievements[$game]['tiered'][$dbName]["legacy"]) continue;
                 $tierTotal = 0;
                 foreach ($achievements[$game]['tiered'][$dbName]['tiers'] as $tier) {
                     if ($value >= $tier['amount']) {
