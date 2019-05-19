@@ -32,7 +32,7 @@ class Abilities {
         Abilities::addAbility(1, 1, new Ability("Seismic Wave", "Defender", AbilityType::DAMAGE));
         Abilities::addAbility(1, 2, new Ability("Ground Slam", "Defender", AbilityType::DAMAGE));
         Abilities::addAbility(1, 0, new Ability("Crippling Strike", "Revenant", AbilityType::DAMAGE));
-        Abilities::addAbility(1, 2, new Ability("Orbs of Life", "Revenant", AbilityType::HEAL));
+        Abilities::addAbility(1, 3, new Ability("Orbs of Life", "Revenant", AbilityType::HEAL));
         // Paladin
         Abilities::addAbility(2, 0, new Ability("Avenger's Strike", "Avenger", AbilityType::DAMAGE));
         Abilities::addAbility(2, 1, new Ability("Consecrate", "Avenger", AbilityType::DAMAGE));
