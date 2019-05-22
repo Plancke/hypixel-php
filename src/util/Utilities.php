@@ -68,34 +68,4 @@ abstract class Utilities {
         return str_replace("-", "", $uuid);
     }
 
-    /**
-     * @param $filename
-     *
-     * @return null|string
-     * @deprecated
-     */
-    public static function getFileContent($filename) {
-        $content = null;
-        if (file_exists($filename)) {
-            $file = fopen($filename, 'r+');
-            if (filesize($filename) > 0) {
-                $content = fread($file, filesize($filename));
-            }
-            fclose($file);
-        }
-        return $content;
-    }
-
-    /**
-     * @param $filename
-     * @param $content *
-     * @deprecated
-     */
-    public static function setFileContent($filename, $content) {
-        if (!file_exists(dirname($filename))) {
-            @mkdir(dirname($filename), 0744, true);
-        }
-
-        file_put_contents($filename, $content);
-    }
 }
