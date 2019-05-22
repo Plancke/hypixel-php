@@ -2,9 +2,11 @@
 
 namespace Plancke\Tests\util;
 
+use Plancke\HypixelPHP\cache\impl\NoCacheHandler;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\impl\DefaultFetcher;
 use Plancke\HypixelPHP\HypixelPHP;
+use Plancke\HypixelPHP\log\impl\SysLogger;
 
 class TestUtil {
 
@@ -18,7 +20,7 @@ class TestUtil {
     public static function getHypixelPHP() {
         $HypixelPHP = new HypixelPHP(self::getAPIKey());
 
-        $HypixelPHP->setLogger(new CustomLogger($HypixelPHP));
+        $HypixelPHP->setLogger(new SysLogger($HypixelPHP));
         $HypixelPHP->setCacheHandler(new NoCacheHandler($HypixelPHP));
 
         $fetcher = new DefaultFetcher($HypixelPHP);

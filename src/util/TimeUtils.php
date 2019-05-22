@@ -3,6 +3,8 @@
 namespace Plancke\HypixelPHP\util;
 
 use DateTime;
+use DateTimeZone;
+use Exception;
 
 /**
  * Class TimeUtils
@@ -14,7 +16,6 @@ abstract class TimeUtils {
      * @return string
      */
     public static function getWeeklyOscillation() {
-        date_default_timezone_set("America/New_York");
         $epoch = 1417237200000;
         $milli = round(microtime(true) * 1000);
 
@@ -27,13 +28,13 @@ abstract class TimeUtils {
     /**
      * Returns {@code a} or {@code b} depending on the current month
      * @return string
+     * @throws Exception
      */
     public static function getMonthlyOscillation() {
-        date_default_timezone_set("America/New_York");
         $epoch = 1417410000000;
 
-        $dateStart = new DateTime(date("Y-m-d"));
-        $dateEnd = new DateTime(date("Y-m-d", $epoch / 1000));
+        $dateStart = new DateTime(date("Y-m-d"), self::getHypixelTimeZone());
+        $dateEnd = new DateTime(date("Y-m-d", $epoch / 1000), self::getHypixelTimeZone());
 
         $diffYear = $dateEnd->format("Y") - $dateStart->format("Y");
         /* @var $diffYear int */
@@ -47,7 +48,10 @@ abstract class TimeUtils {
      * @return int
      */
     public static function getJavaMonth(DateTime $date) {
-        date_default_timezone_set("America/New_York");
         return $date->format("n") - 1;
+    }
+
+    public static function getHypixelTimeZone() {
+        return new DateTimeZone("America/New_York");
     }
 }

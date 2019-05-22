@@ -31,6 +31,27 @@ abstract class Fetcher extends Module {
     }
 
     /**
+     * @return ResponseAdapter
+     */
+    public function getResponseAdapter() {
+        if ($this->responseAdapter == null) {
+            $getter = $this->responseAdapterGetter;
+            $this->responseAdapter = $getter($this->getHypixelPHP());
+        }
+        return $this->responseAdapter;
+    }
+
+    /**
+     * @param ResponseAdapter $responseAdapter
+     * @return $this
+     */
+    public function setResponseAdapter(ResponseAdapter $responseAdapter) {
+        $this->responseAdapter = $responseAdapter;
+        $this->responseAdapterGetter = null;
+        return $this;
+    }
+
+    /**
      * @param Closure $getter
      * @return $this
      */
@@ -53,29 +74,6 @@ abstract class Fetcher extends Module {
      */
     public function setTimeOut($timeOut) {
         $this->timeOut = $timeOut;
-        return $this;
-    }
-
-    /**
-     * @return ResponseAdapter
-     */
-    public function getResponseAdapter() {
-        if ($this->responseAdapter == null) {
-            $getter = $this->responseAdapterGetter;
-            $this->responseAdapter = $getter($this->getHypixelPHP());
-        }
-        return $this->responseAdapter;
-    }
-
-    /**
-     * @param ResponseAdapter $logger
-     * @return $this
-     */
-    public function setResponseAdapter(ResponseAdapter $logger) {
-        $this->responseAdapter = $logger;
-        $this->responseAdapterGetter = function ($HypixelAPI) use ($logger) {
-            return $logger;
-        };
         return $this;
     }
 

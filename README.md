@@ -42,7 +42,3 @@ if ($player instanceof Player) {
     echo $player->getName();
 }
 ```
-
-## Old Version
-
-You can find the old 1 file version in the [old branch](https://github.com/Plancke/hypixel-php/tree/old), this won't be updated and as such is most likely broken. 

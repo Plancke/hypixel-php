@@ -8,7 +8,6 @@ use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
-use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
@@ -48,7 +47,6 @@ abstract class CacheHandler extends Module {
         CacheTimes::WATCHDOG => 10 * 60,
         CacheTimes::GAME_COUNTS => 10 * 60
     ];
-
     protected $globalTime = 0;
 
     /**
@@ -95,190 +93,6 @@ abstract class CacheHandler extends Module {
     }
 
     /**
-     * @param HypixelObject $hypixelObject
-     * @throws HypixelPHPException
-     */
-    public function _setCache($hypixelObject) {
-        if ($hypixelObject instanceof Player) {
-            $this->setCachedPlayer($hypixelObject);
-        } elseif ($hypixelObject instanceof Guild) {
-            $this->setCachedGuild($hypixelObject);
-        } elseif ($hypixelObject instanceof Friends) {
-            $this->setCachedFriends($hypixelObject);
-        } elseif ($hypixelObject instanceof Session) {
-            $this->setCachedSession($hypixelObject);
-        } elseif ($hypixelObject instanceof KeyInfo) {
-            $this->setCachedKeyInfo($hypixelObject);
-        } elseif ($hypixelObject instanceof Leaderboards) {
-            $this->setCachedLeaderboards($hypixelObject);
-        } elseif ($hypixelObject instanceof Boosters) {
-            $this->setCachedBoosters($hypixelObject);
-        } elseif ($hypixelObject instanceof WatchdogStats) {
-            $this->setCachedWatchdogStats($hypixelObject);
-        } elseif ($hypixelObject instanceof PlayerCount) {
-            $this->setCachedPlayerCount($hypixelObject);
-        } elseif ($hypixelObject instanceof GameCounts) {
-            $this->setCachedGameCounts($hypixelObject);
-        } else {
-            throw new HypixelPHPException("Invalid HypixelObject", ExceptionCodes::INVALID_HYPIXEL_OBJECT);
-        }
-    }
-
-    /**
-     * @param Player $player
-     * @return void
-     */
-    abstract function setCachedPlayer(Player $player);
-
-    /**
-     * @param Guild $guild
-     * @return void
-     */
-    abstract function setCachedGuild(Guild $guild);
-
-    /**
-     * @param Friends $friends
-     * @return void
-     */
-    abstract function setCachedFriends(Friends $friends);
-
-    /**
-     * @param Session $session
-     * @return void
-     */
-    abstract function setCachedSession(Session $session);
-
-    /**
-     * @param KeyInfo $keyInfo
-     * @return void
-     */
-    abstract function setCachedKeyInfo(KeyInfo $keyInfo);
-
-    /**
-     * @param Leaderboards $leaderboards
-     * @return void
-     */
-    abstract function setCachedLeaderboards(Leaderboards $leaderboards);
-
-    /**
-     * @param Boosters $boosters
-     * @return void
-     */
-    abstract function setCachedBoosters(Boosters $boosters);
-
-    /**
-     * @param WatchdogStats $watchdogStats
-     * @return void
-     */
-    abstract function setCachedWatchdogStats(WatchdogStats $watchdogStats);
-
-    /**
-     * @param PlayerCount $playerCount
-     * @return void
-     */
-    abstract function setCachedPlayerCount(PlayerCount $playerCount);
-
-    /**
-     * @param GameCounts $gameCounts
-     * @return void
-     */
-    abstract function setCachedGameCounts(GameCounts $gameCounts);
-
-    /**
-     * @param $uuid
-     * @return null|Response|Player
-     */
-    abstract function getCachedPlayer($uuid);
-
-    /**
-     * @param $username
-     * @param $uuid
-     * @return void
-     */
-    abstract function setPlayerUUID($username, $uuid);
-
-    /**
-     * @param $username
-     * @return string
-     */
-    abstract function getUUID($username);
-
-    /**
-     * @param $id
-     * @return null|Response|Guild
-     */
-    abstract function getCachedGuild($id);
-
-    /**
-     * @param $uuid
-     * @param $id
-     * @return void
-     */
-    abstract function setGuildIDForUUID($uuid, $id);
-
-    /**
-     * @param $uuid
-     * @return mixed
-     */
-    abstract function getGuildIDForUUID($uuid);
-
-    /**
-     * @param $name
-     * @param $id
-     * @return void
-     */
-    abstract function setGuildIDForName($name, $id);
-
-    /**
-     * @param $name
-     * @return mixed
-     */
-    abstract function getGuildIDForName($name);
-
-    /**
-     * @param $uuid
-     * @return null|Response|Friends
-     */
-    abstract function getCachedFriends($uuid);
-
-    /**
-     * @param $uuid
-     * @return null|Response|Session
-     */
-    abstract function getCachedSession($uuid);
-
-    /**
-     * @param $key
-     * @return null|Response|KeyInfo
-     */
-    abstract function getCachedKeyInfo($key);
-
-    /**
-     * @return null|Response|Leaderboards
-     */
-    abstract function getCachedLeaderboards();
-
-    /**
-     * @return null|Response|Boosters
-     */
-    abstract function getCachedBoosters();
-
-    /**
-     * @return null|Response|WatchdogStats
-     */
-    abstract function getCachedWatchdogStats();
-
-    /**
-     * @return null|Response|PlayerCount
-     */
-    abstract function getCachedPlayerCount();
-
-    /**
-     * @return null|Response|GameCounts
-     */
-    abstract function getCachedGameCounts();
-
-    /**
      * Convert given input to an array in order to cache it
      *
      * @param $obj
@@ -300,9 +114,191 @@ abstract class CacheHandler extends Module {
      * @return mixed|null
      */
     protected function wrapProvider(Closure $provider, $data) {
-        if ($data == null) {
-            return null;
-        }
+        if ($data == null) return null;
         return $provider($this->getHypixelPHP(), $data);
     }
+
+    /**
+     * @param HypixelObject $hypixelObject
+     * @throws HypixelPHPException
+     */
+    public function setCache($hypixelObject) {
+        if ($hypixelObject instanceof Player) {
+            $this->setPlayer($hypixelObject);
+        } elseif ($hypixelObject instanceof Guild) {
+            $this->setGuild($hypixelObject);
+        } elseif ($hypixelObject instanceof Friends) {
+            $this->setFriends($hypixelObject);
+        } elseif ($hypixelObject instanceof Session) {
+            $this->setSession($hypixelObject);
+        } elseif ($hypixelObject instanceof KeyInfo) {
+            $this->setKeyInfo($hypixelObject);
+        } elseif ($hypixelObject instanceof Leaderboards) {
+            $this->setLeaderboards($hypixelObject);
+        } elseif ($hypixelObject instanceof Boosters) {
+            $this->setBoosters($hypixelObject);
+        } elseif ($hypixelObject instanceof WatchdogStats) {
+            $this->setWatchdogStats($hypixelObject);
+        } elseif ($hypixelObject instanceof PlayerCount) {
+            $this->setPlayerCount($hypixelObject);
+        } elseif ($hypixelObject instanceof GameCounts) {
+            $this->setGameCounts($hypixelObject);
+        } else {
+            throw new HypixelPHPException("Invalid HypixelObject", ExceptionCodes::INVALID_HYPIXEL_OBJECT);
+        }
+    }
+
+    /**
+     * @param $uuid
+     * @return Player|null
+     */
+    public abstract function getPlayer($uuid);
+
+    /**
+     * @param Player $player
+     * @return void
+     */
+    public abstract function setPlayer(Player $player);
+
+    /**
+     * @param $username
+     * @return string|null
+     */
+    public abstract function getUUID($username);
+
+    /**
+     * @param $username
+     * @param $uuid
+     * @return void
+     */
+    public abstract function setPlayerUUID($username, $uuid);
+
+    /**
+     * @param $id
+     * @return Guild|null
+     */
+    public abstract function getGuild($id);
+
+    /**
+     * @param Guild $guild
+     * @return void
+     */
+    public abstract function setGuild(Guild $guild);
+
+    /**
+     * @param $uuid
+     * @return Guild|string|null
+     */
+    public abstract function getGuildIDForUUID($uuid);
+
+    /**
+     * @param $uuid
+     * @param $id
+     * @return void
+     */
+    public abstract function setGuildIDForUUID($uuid, $id);
+
+    /**
+     * @param $name
+     * @return Guild|string|null
+     */
+    public abstract function getGuildIDForName($name);
+
+    /**
+     * @param $name
+     * @param $id
+     * @return void
+     */
+    public abstract function setGuildIDForName($name, $id);
+
+    /**
+     * @param $uuid
+     * @return Friends|null
+     */
+    public abstract function getFriends($uuid);
+
+    /**
+     * @param Friends $friends
+     * @return void
+     */
+    public abstract function setFriends(Friends $friends);
+
+    /**
+     * @param $uuid
+     * @return Session|null
+     */
+    public abstract function getSession($uuid);
+
+    /**
+     * @param Session $session
+     * @return void
+     */
+    public abstract function setSession(Session $session);
+
+    /**
+     * @param $key
+     * @return KeyInfo|null
+     */
+    public abstract function getKeyInfo($key);
+
+    /**
+     * @param KeyInfo $keyInfo
+     * @return void
+     */
+    public abstract function setKeyInfo(KeyInfo $keyInfo);
+
+    /**
+     * @return Leaderboards|null
+     */
+    public abstract function getLeaderboards();
+
+    /**
+     * @param Leaderboards $leaderboards
+     * @return void
+     */
+    public abstract function setLeaderboards(Leaderboards $leaderboards);
+
+    /**
+     * @return Boosters|null
+     */
+    public abstract function getBoosters();
+
+    /**
+     * @param Boosters $boosters
+     * @return void
+     */
+    public abstract function setBoosters(Boosters $boosters);
+
+    /**
+     * @return WatchdogStats|null
+     */
+    public abstract function getWatchdogStats();
+
+    /**
+     * @param WatchdogStats $watchdogStats
+     * @return void
+     */
+    public abstract function setWatchdogStats(WatchdogStats $watchdogStats);
+
+    /**
+     * @return PlayerCount|null
+     */
+    public abstract function getPlayerCount();
+
+    /**
+     * @param PlayerCount $playerCount
+     * @return void
+     */
+    public abstract function setPlayerCount(PlayerCount $playerCount);
+
+    /**
+     * @return GameCounts|null
+     */
+    public abstract function getGameCounts();
+
+    /**
+     * @param GameCounts $gameCounts
+     * @return void
+     */
+    public abstract function setGameCounts(GameCounts $gameCounts);
 }

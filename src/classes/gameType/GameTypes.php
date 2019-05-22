@@ -12,8 +12,6 @@ class GameTypes {
     const QUAKE = 2;
     const WALLS = 3;
     const PAINTBALL = 4;
-    /** @deprecated */
-    const HUNGERGAMES = 5;
     const SURVIVAL_GAMES = 5;
     const TNTGAMES = 6;
     const VAMPIREZ = 7;
@@ -109,7 +107,6 @@ class GameTypes {
                 return new GameType('WALLS', 'Walls', 'Walls', 'Walls', GameTypes::WALLS, false);
             case GameTypes::PAINTBALL:
                 return new GameType('PAINTBALL', 'Paintball', 'Paintball', 'Paintball', GameTypes::PAINTBALL, false);
-            case GameTypes::HUNGERGAMES:
             case GameTypes::SURVIVAL_GAMES:
                 return new GameType('SURVIVAL_GAMES', 'HungerGames', 'Blitz Survival Games', 'BSG', GameTypes::SURVIVAL_GAMES);
             case GameTypes::TNTGAMES:

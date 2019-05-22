@@ -3,7 +3,6 @@
 namespace Plancke\HypixelPHP\log;
 
 use Plancke\HypixelPHP\classes\Module;
-use Plancke\HypixelPHP\log\impl\DefaultFormatter;
 
 /**
  * Class Logger
@@ -12,35 +11,27 @@ use Plancke\HypixelPHP\log\impl\DefaultFormatter;
 abstract class Logger extends Module {
 
     protected $enabled = true;
-    protected $log_folder;
     protected $formatter;
 
     /**
-     * @return string
-     */
-    public function getLogFolder() {
-        return $this->log_folder;
-    }
-
-    /**
-     * @param string $log_folder
-     * @return $this
-     */
-    public function setLogFolder($log_folder) {
-        $this->log_folder = $log_folder;
-        return $this;
-    }
-
-    /**
+     * @param int $level
      * @param string $line
      */
-    public function log($line) {
-        if (!$this->isEnabled()) {
-            return;
+    public function log($level, $line) {
+        if (!$this->isEnabled()) return;
+
+        if ($this->getFormatter() != null) {
+            $line = $this->getFormatter()->formatLine($level, $line);
         }
 
-        $this->actuallyLog($this->getFormatter()->formatLine($line));
+        $this->actuallyLog($level, $line);
     }
+
+    /**
+     * @param int $level
+     * @param string $line
+     */
+    protected abstract function actuallyLog($level, $line);
 
     /**
      * @return boolean
@@ -59,17 +50,9 @@ abstract class Logger extends Module {
     }
 
     /**
-     * @param string $line
-     */
-    protected abstract function actuallyLog($line);
-
-    /**
-     * @return Formatter
+     * @return Formatter|null
      */
     public function getFormatter() {
-        if ($this->formatter == null) {
-            $this->setFormatter(new DefaultFormatter());
-        }
         return $this->formatter;
     }
 

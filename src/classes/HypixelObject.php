@@ -98,12 +98,12 @@ abstract class HypixelObject extends APIObject {
                     continue;
                 }
             }
-            $this->getHypixelPHP()->getLogger()->log('Extra \'' . $key . '\' set to ' . json_encode($val));
+            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Extra \'' . $key . '\' set to ' . var_export($val, true));
             $this->data['extra'][$key] = $val;
             $anyChange = true;
         }
         if ($anyChange && $save) {
-            $this->getHypixelPHP()->getCacheHandler()->_setCache($this);
+            $this->getHypixelPHP()->getCacheHandler()->setCache($this);
         }
     }
 

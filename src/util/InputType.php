@@ -21,17 +21,11 @@ abstract class InputType {
      * @return int|null
      */
     public static function getType($input) {
-        if ($input instanceof Player) {
-            return InputType::PLAYER_OBJECT;
-        }
+        if ($input instanceof Player) return InputType::PLAYER_OBJECT;
 
-        if (Validator::isAnyUUID($input)) {
-            return InputType::UUID;
-        }
+        if (Validator::isAnyUUID($input)) return InputType::UUID;
 
-        if (Validator::isUsername($input)) {
-            return InputType::USERNAME;
-        }
+        if (Validator::isUsername($input)) return InputType::USERNAME;
 
         return null;
     }

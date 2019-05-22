@@ -12,6 +12,7 @@ abstract class Utilities {
      * Converts Hexadecimal color code into RGB
      * @param $hex
      * @return array
+     * @deprecated
      */
     public static function hex2rgb($hex) {
         // replace the pound symbol just in case
@@ -53,9 +54,7 @@ abstract class Utilities {
      */
     public static function ensureDashedUUID($uuid) {
         if (strpos($uuid, "-")) {
-            if (strlen($uuid) == 32) {
-                return $uuid;
-            }
+            if (strlen($uuid) == 32) return $uuid;
             $uuid = Utilities::ensureNoDashesUUID($uuid);
         }
         return substr($uuid, 0, 8) . "-" . substr($uuid, 8, 12) . substr($uuid, 12, 16) . "-" . substr($uuid, 16, 20) . "-" . substr($uuid, 20, 32);
@@ -73,6 +72,7 @@ abstract class Utilities {
      * @param $filename
      *
      * @return null|string
+     * @deprecated
      */
     public static function getFileContent($filename) {
         $content = null;
@@ -88,14 +88,14 @@ abstract class Utilities {
 
     /**
      * @param $filename
-     * @param $content
+     * @param $content *
+     * @deprecated
      */
     public static function setFileContent($filename, $content) {
         if (!file_exists(dirname($filename))) {
-            @mkdir(dirname($filename), 0777, true);
+            @mkdir(dirname($filename), 0744, true);
         }
-        $file = fopen($filename, 'w+');
-        fwrite($file, $content);
-        fclose($file);
+
+        file_put_contents($filename, $content);
     }
 }

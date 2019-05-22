@@ -2,6 +2,7 @@
 
 namespace Plancke\HypixelPHP\provider;
 
+use Closure;
 use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
@@ -21,7 +22,7 @@ use Plancke\HypixelPHP\responses\WatchdogStats;
 class Provider extends Module {
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getPlayer() {
         return function ($HypixelPHP, $data) {
@@ -30,7 +31,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getGuild() {
         return function ($HypixelPHP, $data) {
@@ -39,7 +40,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getSession() {
         return function ($HypixelPHP, $data) {
@@ -48,7 +49,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getFriends() {
         return function ($HypixelPHP, $data) {
@@ -57,7 +58,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getBoosters() {
         return function ($HypixelPHP, $data) {
@@ -66,7 +67,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getLeaderboards() {
         return function ($HypixelPHP, $data) {
@@ -75,7 +76,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getKeyInfo() {
         return function ($HypixelPHP, $data) {
@@ -84,7 +85,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getWatchdogStats() {
         return function ($HypixelPHP, $data) {
@@ -93,7 +94,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getPlayerCount() {
         return function ($HypixelPHP, $data) {
@@ -102,7 +103,7 @@ class Provider extends Module {
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function getGameCounts() {
         return function ($HypixelPHP, $data) {

@@ -5,9 +5,7 @@ namespace Plancke\HypixelPHP\cache\impl;
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\CacheTypes;
-use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
-use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
@@ -19,7 +17,6 @@ use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\CacheUtil;
-use Plancke\HypixelPHP\util\Utilities;
 
 /**
  * Implementation for CacheHandler, stores data flat file
@@ -52,73 +49,62 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
-     * @param Player $player
-     * @throws InvalidArgumentException
-     */
-    function setCachedPlayer(Player $player) {
-        $this->setObjCache(CacheTypes::PLAYERS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($player->getUUID()), $player);
-    }
-
-    /**
-     * Save {@link HypixelObject} to file.
-     *
-     * @param $filename
-     * @param HypixelObject $obj
-     * @throws InvalidArgumentException
-     */
-    protected function setObjCache($filename, HypixelObject $obj) {
-        $this->setCache($filename, $this->objToArray($obj));
-    }
-
-    /**
      * Save given array to file
      *
      * @param $filename
-     * @param array $obj
+     * @param $obj
      * @throws InvalidArgumentException
      */
-    protected function setCache($filename, $obj) {
-        Utilities::setFileContent($this->baseDirectory . DIRECTORY_SEPARATOR . $filename . '.json', json_encode($this->objToArray($obj)));
-    }
+    protected function _setCache($filename, $obj) {
+        $filename = $this->baseDirectory . DIRECTORY_SEPARATOR . $filename . '.json';
+        $content = json_encode($this->objToArray($obj));
 
-    /**
-     * @param $uuid
-     * @return null|Response|Player
-     */
-    function getCachedPlayer($uuid) {
-        return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getPlayer(),
-            $data = $this->getCache(CacheTypes::PLAYERS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
-        );
+        if (!file_exists(dirname($filename))) {
+            // create directory
+            @mkdir(dirname($filename), 0744, true);
+        }
+        file_put_contents($filename, $content);
     }
 
     /**
      * @param $filename
      * @return array|null
      */
-    protected function getCache($filename) {
-        $content = Utilities::getFileContent($this->baseDirectory . DIRECTORY_SEPARATOR . $filename . '.json');
-        if ($content == null) {
-            return null;
-        }
+    protected function _getCache($filename) {
+        $filename = $this->baseDirectory . DIRECTORY_SEPARATOR . $filename . '.json';
+        if (!file_exists($filename)) return null;
+
+        $content = file_get_contents($filename);
+        if ($content == null) return null;
+
         return json_decode($content, true);
     }
 
     /**
-     * @param $username
-     * @param $obj
+     * @param $uuid
+     * @return Player|null
+     */
+    public function getPlayer($uuid) {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getPlayer(),
+            $data = $this->_getCache(CacheTypes::PLAYERS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
+        );
+    }
+
+    /**
+     * @param Player $player
      * @throws InvalidArgumentException
      */
-    function setPlayerUUID($username, $obj) {
-        $this->setCache(CacheTypes::PLAYER_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($username), $obj);
+    public function setPlayer(Player $player) {
+        $this->_setCache(CacheTypes::PLAYERS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($player->getUUID()), $player);
     }
 
     /**
      * @param $username
-     * @return mixed|null|string
+     * @return string|null
      */
-    function getUUID($username) {
-        $data = $this->getCache(CacheTypes::PLAYER_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($username));
+    public function getUUID($username) {
+        $data = $this->_getCache(CacheTypes::PLAYER_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($username));
         if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::UUID);
@@ -128,7 +114,7 @@ class FlatFileCacheHandler extends CacheHandler {
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
             $diff = time() - $cacheTime - $timestamp;
 
-            $this->getHypixelPHP()->getLogger()->log("Found name match in PLAYER_UUID! '$diff'");
+            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, "Found name match in PLAYER_UUID! '$diff'");
 
             if ($diff < 0) {
                 return $data['uuid'];
@@ -139,39 +125,77 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
-     * @param Guild $guild
+     * @param $username
+     * @param $obj
      * @throws InvalidArgumentException
      */
-    function setCachedGuild(Guild $guild) {
-        $this->setObjCache(CacheTypes::GUILDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($guild->getID()), $guild);
+    public function setPlayerUUID($username, $obj) {
+        $this->_setCache(CacheTypes::PLAYER_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($username), $obj);
     }
 
     /**
      * @param $id
-     * @return null|Response|Guild
+     * @return Guild|null
      */
-    function getCachedGuild($id) {
+    public function getGuild($id) {
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getGuild(),
-            $data = $this->getCache(CacheTypes::GUILDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($id))
+            $data = $this->_getCache(CacheTypes::GUILDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($id))
         );
     }
 
     /**
-     * @param $uuid
-     * @param $obj
+     * @param Guild $guild
      * @throws InvalidArgumentException
      */
-    function setGuildIDForUUID($uuid, $obj) {
-        $this->setCache(CacheTypes::GUILDS_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid), $obj);
+    public function setGuild(Guild $guild) {
+        $this->_setCache(CacheTypes::GUILDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($guild->getID()), $guild);
     }
 
     /**
      * @param $uuid
-     * @return array|mixed|null
+     * @return string|null
      */
-    function getGuildIDForUUID($uuid) {
-        return $this->getCache(CacheTypes::GUILDS_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid));
+    public function getGuildIDForUUID($uuid) {
+        $cached = $this->_getCache(CacheTypes::GUILDS_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid));
+        if ($cached == null) return null;
+
+        if (isset($cached['uuid']) && $cached['uuid'] != null && $cached['uuid'] != '') {
+            $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
+        } else {
+            $cacheTime = $this->getCacheTime(CacheTimes::GUILD_NOT_FOUND);
+        }
+        $timestamp = array_key_exists('timestamp', $cached) ? $cached['timestamp'] : 0;
+        if (CacheUtil::isExpired($timestamp, $cacheTime)) return null;
+        return $cached['guild'];
+    }
+
+    /**
+     * @param $uuid
+     * @param $obj
+     * @throws InvalidArgumentException
+     */
+    public function setGuildIDForUUID($uuid, $obj) {
+        $this->_setCache(CacheTypes::GUILDS_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid), $obj);
+    }
+
+    /**
+     * @param $name
+     * @return string|null
+     */
+    public function getGuildIDForName($name) {
+        $cached = $this->_getCache(CacheTypes::GUILDS_NAME . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($name));
+        if ($cached == null) return null;
+
+        if (isset($cached['name_lower']) && $cached['name_lower'] != null && $cached['name_lower'] != '') {
+            $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
+        } else {
+            $cacheTime = $this->getCacheTime(CacheTimes::GUILD_NOT_FOUND);
+        }
+
+        $timestamp = array_key_exists('timestamp', $cached) ? $cached['timestamp'] : 0;
+        if (CacheUtil::isExpired($timestamp, $cacheTime)) return null;
+        return $cached['guild'];
     }
 
     /**
@@ -179,34 +203,37 @@ class FlatFileCacheHandler extends CacheHandler {
      * @param $obj
      * @throws InvalidArgumentException
      */
-    function setGuildIDForName($name, $obj) {
-        $this->setCache(CacheTypes::GUILDS_NAME . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($name), $obj);
+    public function setGuildIDForName($name, $obj) {
+        $this->_setCache(CacheTypes::GUILDS_NAME . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($name), $obj);
     }
 
     /**
-     * @param $name
-     * @return array|mixed|null
+     * @param $uuid
+     * @return Friends|null
      */
-    function getGuildIDForName($name) {
-        return $this->getCache(CacheTypes::GUILDS_NAME . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($name));
+    public function getFriends($uuid) {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getFriends(),
+            $this->_getCache(CacheTypes::FRIENDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
+        );
     }
 
     /**
      * @param Friends $friends
      * @throws InvalidArgumentException
      */
-    function setCachedFriends(Friends $friends) {
-        $this->setObjCache(CacheTypes::FRIENDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($friends->getUUID()), $friends);
+    public function setFriends(Friends $friends) {
+        $this->_setCache(CacheTypes::FRIENDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($friends->getUUID()), $friends);
     }
 
     /**
      * @param $uuid
-     * @return null|Response|Friends
+     * @return Session|null
      */
-    function getCachedFriends($uuid) {
+    public function getSession($uuid) {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getFriends(),
-            $this->getCache(CacheTypes::FRIENDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
+            $this->getHypixelPHP()->getProvider()->getSession(),
+            $this->_getCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
         );
     }
 
@@ -214,18 +241,18 @@ class FlatFileCacheHandler extends CacheHandler {
      * @param Session $session
      * @throws InvalidArgumentException
      */
-    function setCachedSession(Session $session) {
-        $this->setObjCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($session->getUUID()), $session);
+    public function setSession(Session $session) {
+        $this->_setCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($session->getUUID()), $session);
     }
 
     /**
-     * @param $uuid
-     * @return null|Response|Session
+     * @param $key
+     * @return KeyInfo|null
      */
-    function getCachedSession($uuid) {
+    public function getKeyInfo($key) {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getSession(),
-            $this->getCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
+            $this->getHypixelPHP()->getProvider()->getKeyInfo(),
+            $this->_getCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($key))
         );
     }
 
@@ -233,18 +260,17 @@ class FlatFileCacheHandler extends CacheHandler {
      * @param KeyInfo $keyInfo
      * @throws InvalidArgumentException
      */
-    function setCachedKeyInfo(KeyInfo $keyInfo) {
-        $this->setObjCache(CacheTypes::API_KEYS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($keyInfo->getKey()), $keyInfo);
+    public function setKeyInfo(KeyInfo $keyInfo) {
+        $this->_setCache(CacheTypes::API_KEYS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($keyInfo->getKey()), $keyInfo);
     }
 
     /**
-     * @param $key
-     * @return null|Response|KeyInfo
+     * @return Leaderboards|null
      */
-    function getCachedKeyInfo($key) {
+    public function getLeaderboards() {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getKeyInfo(),
-            $this->getCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($key))
+            $this->getHypixelPHP()->getProvider()->getLeaderboards(),
+            $this->_getCache(CacheTypes::LEADERBOARDS)
         );
     }
 
@@ -252,17 +278,17 @@ class FlatFileCacheHandler extends CacheHandler {
      * @param Leaderboards $leaderboards
      * @throws InvalidArgumentException
      */
-    function setCachedLeaderboards(Leaderboards $leaderboards) {
-        $this->setObjCache(CacheTypes::LEADERBOARDS, $leaderboards);
+    public function setLeaderboards(Leaderboards $leaderboards) {
+        $this->_setCache(CacheTypes::LEADERBOARDS, $leaderboards);
     }
 
     /**
-     * @return null|Response|Leaderboards
+     * @return Boosters|null
      */
-    function getCachedLeaderboards() {
+    public function getBoosters() {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getLeaderboards(),
-            $this->getCache(CacheTypes::LEADERBOARDS)
+            $this->getHypixelPHP()->getProvider()->getBoosters(),
+            $this->_getCache(CacheTypes::BOOSTERS)
         );
     }
 
@@ -270,17 +296,17 @@ class FlatFileCacheHandler extends CacheHandler {
      * @param Boosters $boosters
      * @throws InvalidArgumentException
      */
-    function setCachedBoosters(Boosters $boosters) {
-        $this->setObjCache(CacheTypes::BOOSTERS, $boosters);
+    public function setBoosters(Boosters $boosters) {
+        $this->_setCache(CacheTypes::BOOSTERS, $boosters);
     }
 
     /**
-     * @return null|Response|Boosters
+     * @return WatchdogStats|null
      */
-    function getCachedBoosters() {
+    public function getWatchdogStats() {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getBoosters(),
-            $this->getCache(CacheTypes::BOOSTERS)
+            $this->getHypixelPHP()->getProvider()->getWatchdogStats(),
+            $this->_getCache(CacheTypes::WATCHDOG_STATS)
         );
     }
 
@@ -288,17 +314,17 @@ class FlatFileCacheHandler extends CacheHandler {
      * @param WatchdogStats $watchdogStats
      * @throws InvalidArgumentException
      */
-    function setCachedWatchdogStats(WatchdogStats $watchdogStats) {
-        $this->setObjCache(CacheTypes::WATCHDOG_STATS, $watchdogStats);
+    public function setWatchdogStats(WatchdogStats $watchdogStats) {
+        $this->_setCache(CacheTypes::WATCHDOG_STATS, $watchdogStats);
     }
 
     /**
-     * @return null|Response|WatchdogStats
+     * @return PlayerCount|null
      */
-    function getCachedWatchdogStats() {
+    public function getPlayerCount() {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getWatchdogStats(),
-            $this->getCache(CacheTypes::WATCHDOG_STATS)
+            $this->getHypixelPHP()->getProvider()->getPlayerCount(),
+            $this->_getCache(CacheTypes::PLAYER_COUNT)
         );
     }
 
@@ -306,17 +332,17 @@ class FlatFileCacheHandler extends CacheHandler {
      * @param PlayerCount $playerCount
      * @throws InvalidArgumentException
      */
-    function setCachedPlayerCount(PlayerCount $playerCount) {
-        $this->setObjCache(CacheTypes::PLAYER_COUNT, $playerCount);
+    public function setPlayerCount(PlayerCount $playerCount) {
+        $this->_setCache(CacheTypes::PLAYER_COUNT, $playerCount);
     }
 
     /**
-     * @return null|Response|PlayerCount
+     * @return GameCounts|null
      */
-    function getCachedPlayerCount() {
+    public function getGameCounts() {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getPlayerCount(),
-            $this->getCache(CacheTypes::PLAYER_COUNT)
+            $this->getHypixelPHP()->getProvider()->getGameCounts(),
+            $this->_getCache(CacheTypes::GAME_COUNTS)
         );
     }
 
@@ -324,17 +350,8 @@ class FlatFileCacheHandler extends CacheHandler {
      * @param GameCounts $gameCounts
      * @throws InvalidArgumentException
      */
-    function setCachedGameCounts(GameCounts $gameCounts) {
-        $this->setObjCache(CacheTypes::GAME_COUNTS, $gameCounts);
+    public function setGameCounts(GameCounts $gameCounts) {
+        $this->_setCache(CacheTypes::GAME_COUNTS, $gameCounts);
     }
 
-    /**
-     * @return null|Response|GameCounts
-     */
-    function getCachedGameCounts() {
-        return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getGameCounts(),
-            $this->getCache(CacheTypes::GAME_COUNTS)
-        );
-    }
 }

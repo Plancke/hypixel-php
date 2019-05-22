@@ -6,12 +6,15 @@
   "authors": [
     {
       "name": "Plancke",
-      "email": "pl@ncke.io",
+      "email": "admin@plancke.io",
       "role": "Developer"
     }
   ],
   "keywords": [
-    "hypixel", "plancke", "api", "wrapper"
+    "hypixel",
+    "plancke",
+    "api",
+    "wrapper"
   ],
   "support": {
     "issues": "https://github.com/Plancke/hypixel-php/issues"
@@ -22,7 +25,8 @@
     "ext-json": "*"
   },
   "suggest": {
-    "mongodb/mongodb": "^1.0.0"
+    "ext-mongodb": "^1.4.2",
+    "mongodb/mongodb": "^1.4.2"
   },
   "autoload": {
     "psr-4": {
@@ -31,7 +35,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "8.0.6",
-    "ext-mbstring": "*"
+    "ext-mongodb": "^1.4.2",
+    "mongodb/mongodb": "^1.4.2"
   },
   "autoload-dev": {
     "psr-4": {

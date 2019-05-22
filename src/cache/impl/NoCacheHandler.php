@@ -1,6 +1,6 @@
 <?php
 
-namespace Plancke\Tests\util;
+namespace Plancke\HypixelPHP\cache\impl;
 
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\fetch\Response;
@@ -17,10 +17,11 @@ use Plancke\HypixelPHP\responses\WatchdogStats;
 
 /**
  * Class NoCacheHandler
- * @package Plancke\Tests\util
+ * @package Plancke\HypixelPHP\cache\impl
  *
  * CacheHandler implementation that always returns null and never stores.
  * Useful for testing since you'll always get fresh results.
+ * But NOT recommended to use in production.
  */
 class NoCacheHandler extends CacheHandler {
 
@@ -28,14 +29,14 @@ class NoCacheHandler extends CacheHandler {
      * @param Player $player
      * @return void
      */
-    function setCachedPlayer(Player $player) {
+    function setPlayer(Player $player) {
     }
 
     /**
      * @param $uuid
      * @return null|Response|Player
      */
-    function getCachedPlayer($uuid) {
+    function getPlayer($uuid) {
         return null;
     }
 
@@ -59,14 +60,14 @@ class NoCacheHandler extends CacheHandler {
      * @param Guild $guild
      * @return void
      */
-    function setCachedGuild(Guild $guild) {
+    function setGuild(Guild $guild) {
     }
 
     /**
      * @param $id
      * @return null|Response|Guild
      */
-    function getCachedGuild($id) {
+    function getGuild($id) {
         return null;
     }
 
@@ -106,14 +107,14 @@ class NoCacheHandler extends CacheHandler {
      * @param Friends $friends
      * @return void
      */
-    function setCachedFriends(Friends $friends) {
+    function setFriends(Friends $friends) {
     }
 
     /**
      * @param $uuid
      * @return null|Response|Friends
      */
-    function getCachedFriends($uuid) {
+    function getFriends($uuid) {
         return null;
     }
 
@@ -121,14 +122,14 @@ class NoCacheHandler extends CacheHandler {
      * @param Session $session
      * @return void
      */
-    function setCachedSession(Session $session) {
+    function setSession(Session $session) {
     }
 
     /**
      * @param $uuid
      * @return null|Response|Session
      */
-    function getCachedSession($uuid) {
+    function getSession($uuid) {
         return null;
     }
 
@@ -136,14 +137,14 @@ class NoCacheHandler extends CacheHandler {
      * @param KeyInfo $keyInfo
      * @return void
      */
-    function setCachedKeyInfo(KeyInfo $keyInfo) {
+    function setKeyInfo(KeyInfo $keyInfo) {
     }
 
     /**
      * @param $key
      * @return null|Response|KeyInfo
      */
-    function getCachedKeyInfo($key) {
+    function getKeyInfo($key) {
         return null;
     }
 
@@ -151,13 +152,13 @@ class NoCacheHandler extends CacheHandler {
      * @param Leaderboards $leaderboards
      * @return void
      */
-    function setCachedLeaderboards(Leaderboards $leaderboards) {
+    function setLeaderboards(Leaderboards $leaderboards) {
     }
 
     /**
      * @return null|Response|Leaderboards
      */
-    function getCachedLeaderboards() {
+    function getLeaderboards() {
         return null;
     }
 
@@ -165,13 +166,13 @@ class NoCacheHandler extends CacheHandler {
      * @param Boosters $boosters
      * @return void
      */
-    function setCachedBoosters(Boosters $boosters) {
+    function setBoosters(Boosters $boosters) {
     }
 
     /**
      * @return null|Response|Boosters
      */
-    function getCachedBoosters() {
+    function getBoosters() {
         return null;
     }
 
@@ -179,13 +180,13 @@ class NoCacheHandler extends CacheHandler {
      * @param WatchdogStats $watchdogStats
      * @return void
      */
-    function setCachedWatchdogStats(WatchdogStats $watchdogStats) {
+    function setWatchdogStats(WatchdogStats $watchdogStats) {
     }
 
     /**
      * @return null|Response|WatchdogStats
      */
-    function getCachedWatchdogStats() {
+    function getWatchdogStats() {
         return null;
     }
 
@@ -193,13 +194,13 @@ class NoCacheHandler extends CacheHandler {
      * @param PlayerCount $playerCount
      * @return void
      */
-    function setCachedPlayerCount(PlayerCount $playerCount) {
+    function setPlayerCount(PlayerCount $playerCount) {
     }
 
     /**
      * @return null|Response|PlayerCount
      */
-    function getCachedPlayerCount() {
+    function getPlayerCount() {
         return null;
     }
 
@@ -207,13 +208,13 @@ class NoCacheHandler extends CacheHandler {
      * @param GameCounts $gameCounts
      * @return void
      */
-    function setCachedGameCounts(GameCounts $gameCounts) {
+    function setGameCounts(GameCounts $gameCounts) {
     }
 
     /**
      * @return null|Response|GameCounts
      */
-    function getCachedGameCounts() {
+    function getGameCounts() {
         return null;
     }
 }

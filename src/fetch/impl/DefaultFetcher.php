@@ -49,17 +49,17 @@ class DefaultFetcher extends Fetcher {
             $requestURL .= '&' . $key . '=' . $value;
             $debug .= '?' . $key . '=' . $value;
         }
-        $this->getHypixelPHP()->getLogger()->log('Starting Fetch: ' . $debug);
+        $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Starting Fetch: ' . $debug);
 
         $response = $this->getURLContents($requestURL);
         if (!$response->wasSuccessful()) {
-            $this->getHypixelPHP()->getLogger()->log('Fetch Failed! ' . var_export($response, true));
+            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Fetch Failed! ' . var_export($response, true));
 
             // If one fails, stop trying for that session
             // ideally also have a cached check before
             $this->getHypixelPHP()->getCacheHandler()->setGlobalTime(CacheHandler::MAX_CACHE_TIME);
         } else {
-            $this->getHypixelPHP()->getLogger()->log('Fetch successful!');
+            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Fetch successful!');
         }
 
         return $this->getResponseAdapter()->adaptResponse($fetch, $keyValues, $response);

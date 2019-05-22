@@ -2,6 +2,8 @@
 
 namespace Plancke\HypixelPHP\util;
 
+use Exception;
+
 /**
  * Class CacheUtil
  * @package Plancke\HypixelPHP\util
@@ -40,7 +42,7 @@ abstract class CacheUtil {
             if (sizeof($offset) == 2) {
                 try {
                     $offsetValue = random_int($offset[0], $offset[1]);
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     $offsetValue = $offset[0]; // fallback
                 }
             }

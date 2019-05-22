@@ -47,32 +47,32 @@ class Player extends HypixelObject {
 
         $total = 0;
         $oneTime = $this->getArray('achievementsOneTime');
-        $this->getHypixelPHP()->getLogger()->log('Starting OneTime Achievements');
+        $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Starting OneTime Achievements');
         foreach ($oneTime as $dbName) {
             if (!is_string($dbName)) continue;
             $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
             $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
             if (!in_array($game, $games)) continue;
-            $this->getHypixelPHP()->getLogger()->log('Achievement: ' . strtoupper(substr($dbName, strpos($dbName, "_"))));
+            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Achievement: ' . strtoupper(substr($dbName, strpos($dbName, "_"))));
             if (in_array($dbName, array_keys($achievements[$game]['one_time']))) {
                 if (array_key_exists("legacy", $achievements[$game]['one_time'][$dbName]) && $achievements[$game]['one_time'][$dbName]["legacy"]) continue;
-                $this->getHypixelPHP()->getLogger()->log('Achievement: ' . $dbName . ' - ' . $achievements[$game]['one_time'][$dbName]['points']);
+                $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Achievement: ' . $dbName . ' - ' . $achievements[$game]['one_time'][$dbName]['points']);
                 $total += $achievements[$game]['one_time'][$dbName]['points'];
             }
         }
         $tiered = $this->getArray('achievements');
-        $this->getHypixelPHP()->getLogger()->log('Starting Tiered Achievements');
+        $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Starting Tiered Achievements');
         foreach ($tiered as $dbName => $value) {
             $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
             $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
             if (!in_array($game, $games)) continue;
-            $this->getHypixelPHP()->getLogger()->log('Achievement: ' . $dbName);
+            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Achievement: ' . $dbName);
             if (in_array($dbName, array_keys($achievements[$game]['tiered']))) {
                 if (array_key_exists("legacy", $achievements[$game]['tiered'][$dbName]) && $achievements[$game]['tiered'][$dbName]["legacy"]) continue;
                 $tierTotal = 0;
                 foreach ($achievements[$game]['tiered'][$dbName]['tiers'] as $tier) {
                     if ($value >= $tier['amount']) {
-                        $this->getHypixelPHP()->getLogger()->log('Tier: ' . $tier['amount'] . ' - ' . $tier['points']);
+                        $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Tier: ' . $tier['amount'] . ' - ' . $tier['points']);
                         $tierTotal += $tier['points'];
                     }
                 }

@@ -108,7 +108,6 @@ class ColorUtils {
 
 
     //<editor-fold desc="color handling">
-
     /**
      * Removes all MC encoded colors from a string
      * @param $string

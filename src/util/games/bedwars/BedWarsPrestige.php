@@ -123,4 +123,11 @@ class BedWarsPrestige {
                 return null;
         }
     }
+
+    /**
+     * @return array
+     */
+    public static function getRainbowColors(): array {
+        return self::$rainbowColors;
+    }
 }

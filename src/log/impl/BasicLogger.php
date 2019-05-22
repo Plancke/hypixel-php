@@ -3,14 +3,16 @@
 namespace Plancke\HypixelPHP\log\impl;
 
 use Plancke\HypixelPHP\HypixelPHP;
+use Plancke\HypixelPHP\log\Formatter;
 use Plancke\HypixelPHP\log\Logger;
 
 /**
- * Class DefaultLogger
+ * Class BasicLogger
  * @package Plancke\HypixelPHP\log\impl
  */
-class DefaultLogger extends Logger {
+class BasicLogger extends Logger {
 
+    protected $log_folder;
     /**
      * Size of the individual files, in bytes (100MB by default)
      */
@@ -23,7 +25,27 @@ class DefaultLogger extends Logger {
     function __construct(HypixelPHP $HypixelPHP) {
         parent::__construct($HypixelPHP);
 
-        $this->setFormatter(new DefaultFormatter());
+        $this->setFormatter(new class() extends Formatter {
+            public function formatLine($level, $line) {
+                return '[' . date("d-m-Y H:i:s") . '] [' . $level . '] ' . $line;
+            }
+        });
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogFolder() {
+        return $this->log_folder;
+    }
+
+    /**
+     * @param string $log_folder
+     * @return $this
+     */
+    public function setLogFolder($log_folder) {
+        $this->log_folder = $log_folder;
+        return $this;
     }
 
     /**
@@ -48,9 +70,10 @@ class DefaultLogger extends Logger {
      *  - LOG_FOLDER/DATE/0.log
      *  - LOG_FOLDER/DATE/1.log
      * separated every {@link $this->size}
+     * @param $level
      * @param string $line
      */
-    public function actuallyLog($line) {
+    public function actuallyLog($level, $line) {
         $dirName = $this->log_folder . DIRECTORY_SEPARATOR . date("Y-m-d");
         if (!file_exists($dirName)) {
             mkdir($dirName, 0777, true);

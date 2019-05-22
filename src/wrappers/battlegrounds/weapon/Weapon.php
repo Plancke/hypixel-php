@@ -69,7 +69,8 @@ class Weapon {
             "Vanquisher's", "Champion's", "Warlord's"
         ]
     ];
-    protected static $materialMap = [
+    protected static /** @noinspection SpellCheckingInspection */
+        $materialMap = [
         'WOOD_AXE' => 'Steel Sword', 'STONE_AXE' => 'Training Sword', 'IRON_AXE' => 'Demonblade',
         'GOLD_AXE' => 'Venomstrike', 'DIAMOND_AXE' => 'Diamondspark', 'WOOD_HOE' => 'Zweireaper',
         'STONE_HOE' => 'Runeblade', 'IRON_HOE' => 'Elven Greatsword', 'GOLD_HOE' => 'Hatchet',
