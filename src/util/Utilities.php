@@ -23,7 +23,7 @@ abstract class Utilities {
             if (!isset($return[$split])) return $default;
             $return = $return[$split];
         }
-        return $return != null ? $return : $default;
+        return $return !== null ? $return : $default;
     }
 
     /**
