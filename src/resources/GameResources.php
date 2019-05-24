@@ -31,14 +31,6 @@ class GameResources extends Resources {
 
     /**
      * @return array
-     * @deprecated
-     */
-    public function getHungerGames() {
-        return Resources::requireResourceFile('game_info/SurvivalGames.php');
-    }
-
-    /**
-     * @return array
      */
     public function getSurvivalGames() {
         return Resources::requireResourceFile('game_info/SurvivalGames.php');

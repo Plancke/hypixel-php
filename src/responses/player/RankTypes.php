@@ -168,11 +168,4 @@ abstract class RankTypes {
 
         return RankTypes::$cache[$id];
     }
-
-    /**
-     * @deprecated
-     */
-    public static function getAllTypes() {
-        return self::values();
-    }
 }
