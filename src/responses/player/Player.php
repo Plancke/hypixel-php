@@ -103,6 +103,9 @@ class Player extends HypixelObject {
             }
         }
 
+        // legacy compatibility
+        $data['points'] = $data['standard']['points']['current'];
+
         return $data;
     }
 
