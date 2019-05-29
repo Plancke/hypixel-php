@@ -14,6 +14,7 @@ use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\util\Leveling;
+use Plancke\HypixelPHP\util\Utilities;
 
 /**
  * Class Player
@@ -33,56 +34,86 @@ class Player extends HypixelObject {
 
     /**
      * get Player achievement points
-     * @param bool $force_update
-     * @return int
-     * @throws HypixelPHPException
+     * @return array
      */
-    public function getAchievementPoints($force_update = false) {
-        if (!$force_update) {
-            return $this->getExtra('achievements.points', 0);
-        }
+    public function getAchievementData() {
+        $data = [
+            'standard' => [
+                'points' => [
+                    'current' => 0,
+                    'max' => 0
+                ]
+            ],
+            'legacy' => [
+                'points' => [
+                    'current' => 0,
+                    'max' => 0
+                ]
+            ],
+        ];
+
+        $isLegacy = function ($arr) {
+            return is_array($arr) && array_key_exists("legacy", $arr) && $arr["legacy"];
+        };
+
+        $getDBName = function ($game, $key) {
+            if (strpos($game, 'legacy') === 0) {
+                $game = substr($game, strlen('legacy'));
+            }
+            return $game . '_' . strtolower($key);
+        };
 
         $achievements = $this->getHypixelPHP()->getResourceManager()->getGeneralResources()->getAchievements()['achievements'];
-        $games = array_keys($achievements);
 
-        $total = 0;
         $oneTime = $this->getArray('achievementsOneTime');
-        $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Starting OneTime Achievements');
-        foreach ($oneTime as $dbName) {
-            if (!is_string($dbName)) continue;
-            $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
-            $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
-            if (!in_array($game, $games)) continue;
-            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Achievement: ' . strtoupper(substr($dbName, strpos($dbName, "_"))));
-            if (in_array($dbName, array_keys($achievements[$game]['one_time']))) {
-                if (array_key_exists("legacy", $achievements[$game]['one_time'][$dbName]) && $achievements[$game]['one_time'][$dbName]["legacy"]) continue;
-                $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Achievement: ' . $dbName . ' - ' . $achievements[$game]['one_time'][$dbName]['points']);
-                $total += $achievements[$game]['one_time'][$dbName]['points'];
-            }
-        }
         $tiered = $this->getArray('achievements');
-        $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Starting Tiered Achievements');
-        foreach ($tiered as $dbName => $value) {
-            $game = strtolower(substr($dbName, 0, strpos($dbName, "_")));
-            $dbName = strtoupper(substr($dbName, strpos($dbName, "_") + 1));
-            if (!in_array($game, $games)) continue;
-            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Achievement: ' . $dbName);
-            if (in_array($dbName, array_keys($achievements[$game]['tiered']))) {
-                if (array_key_exists("legacy", $achievements[$game]['tiered'][$dbName]) && $achievements[$game]['tiered'][$dbName]["legacy"]) continue;
-                $tierTotal = 0;
-                foreach ($achievements[$game]['tiered'][$dbName]['tiers'] as $tier) {
-                    if ($value >= $tier['amount']) {
-                        $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Tier: ' . $tier['amount'] . ' - ' . $tier['points']);
-                        $tierTotal += $tier['points'];
+        foreach ($achievements as $game => $gameAchievements) {
+            $data['standard']['points']['max'] += $gameAchievements['total_points'];
+            $data['legacy']['points']['max'] += $gameAchievements['total_legacy_points'];
+
+            foreach ($gameAchievements['one_time'] as $achievementKey => $oneTimeAchievement) {
+                $dbName = $getDBName($game, strtolower($achievementKey));
+                $points = $oneTimeAchievement['points'];
+                $legacy = $isLegacy($oneTimeAchievement);
+
+                if (in_array($dbName, $oneTime)) {
+                    if ($legacy) {
+                        $data['legacy']['points']['current'] += $points;
+                    } else {
+                        $data['standard']['points']['current'] += $points;
                     }
                 }
-                $total += $tierTotal;
+            }
+
+            foreach ($gameAchievements['tiered'] as $achievementKey => $tieredAchievement) {
+                $dbName = $getDBName($game, strtolower($achievementKey));
+                $legacy = $isLegacy($tieredAchievement);
+                $value = Utilities::getRecursiveValue($tiered, $dbName, 0);
+                foreach ($tieredAchievement['tiers'] as $tier) {
+                    $points = $tier['points'];
+
+                    if ($value >= $tier['amount']) {
+                        if ($legacy) {
+                            $data['legacy']['points']['current'] += $points;
+                        } else {
+                            $data['standard']['points']['current'] += $points;
+                        }
+                    }
+                }
             }
         }
 
-        //store extra
-        $this->setExtra(['achievements' => ['points' => $total, 'timestamp' => time()]]);
-        return $total;
+        return $data;
+    }
+
+    /**
+     * get Player achievement points
+     * @param bool $force_update
+     * @return int
+     * @deprecated use the new achievement data function
+     */
+    public function getAchievementPoints($force_update = false) {
+        return Utilities::getRecursiveValue($this->getAchievementData(), 'standard.points.current', 0);
     }
 
     /**

@@ -3030,132 +3030,256 @@ while being the only one alive in 2v2',
                 array(
                     'one_time' =>
                         array(
-                            'SHARING_IS_CARING' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Sharing is Caring',
-                                    'description' => 'Give one of your wrapped presents to another player in Bed Wars',
-                                    'legacy' => true,
-                                ),
-                            'REAL_SANTA' =>
+                            'GREED_INCARNATE' =>
                                 array(
                                     'points' => 15,
-                                    'name' => 'Real Santa (2017)',
-                                    'description' => 'Find all 88 presents in every lobby',
-                                    'legacy' => true,
+                                    'name' => 'Greed Incarnate',
+                                    'description' => 'Steal 42 presents in a single game of Grinch Simulator',
                                 ),
-                            'HUNT_BEGINS' =>
+                            'RESPECT_YOUR_ELDER' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'The Hunt Begins (2017)',
-                                    'description' => 'Find 2 lobby presents',
-                                    'legacy' => true,
+                                    'name' => 'Respect your Elder',
+                                    'description' => 'Bring a flower to Grandma in Santa Says',
                                 ),
-                            'SANTA_HELPER' =>
+                            'CHRISTMAS_IS_SAVED' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Santa Helper',
-                                    'description' => 'Bring the right items back to every special character in a single Bed Wars game',
-                                    'legacy' => true,
+                                    'name' => 'Christmas is Saved',
+                                    'description' => 'Kill a Murderer in Murder Mystery during Christmas',
                                 ),
-                            'REAL_SANTA_2018' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Real Santa (2018)',
-                                    'description' => 'Find all 88 presents in every lobby',
-                                    'legacy' => true,
-                                ),
-                            'HUNT_BEGINS_2018' =>
+                            'SNOW_WARS' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'The Hunt Begins (2018)',
-                                    'description' => 'Find 2 lobby presents',
-                                    'legacy' => true,
+                                    'name' => 'Snow Wars',
+                                    'description' => 'Win a SkyWars game using the Snowman Kit',
+                                ),
+                            'BIG_BAG_O_GIFTS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Big Bag o\' Gifts',
+                                    'description' => 'Claim 6 gifts at the same time in Bed Wars',
+                                ),
+                            'HOLIDAY_MIRACLE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Holiday Miracle',
+                                    'description' => 'Claim 2 legendary gifts at the same time in Bed Wars',
+                                ),
+                            'DO_YOU_WANNA_BUILD_A_SNOWMAN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Do you wanna build a Snowman?',
+                                    'description' => 'Build a Snowman in UHC',
+                                ),
+                            'BOUNCY_CASTLE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Bouncy Castle',
+                                    'description' => 'Jump on the Bouncy Castle in the Main Lobby',
+                                ),
+                            'NOT_MY_MOM' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'You\'re not my mom',
+                                    'description' => 'When tasked to stand still in Santa Says, sneak',
+                                ),
+                            'HOLIDAYS_RUINED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Holidays Ruined',
+                                    'description' => 'Kill a player who was holding an Epic or Legendary gift in Bed Wars',
+                                ),
+                            'CLOSE_ENOUGH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Close enough',
+                                    'description' => 'Win a Farm Hunt game as a Chicken... Turkey?',
+                                ),
+                            'WINTER_RUNNER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Winter Runner',
+                                    'description' => 'Win a game of TNT Run while wearing the Winter Hat',
+                                ),
+                            'LEGENDARY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'LEGENDARY!',
+                                    'description' => 'Find a Legendary Gift in Bed Wars, SkyWars, Blitz or Murder Mystery',
+                                ),
+                            'EAT_THIS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'EAT THIS',
+                                    'description' => 'Shoot a snowball at another Grinch in Grinch Simulator',
+                                ),
+                            'CHRISTMAS_TOPPER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Marvelous Hat',
+                                    'description' => 'Win a Bed Wars Game with a Holiday island topper active',
+                                ),
+                            'CHRISTMAS_QUEST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Seasonal Quester',
+                                    'description' => 'Complete 5 Winter Seasonal Quests',
+                                ),
+                            'STEAL_FAIRLY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Feared but Fair',
+                                    'description' => 'Steal a gift from each house in a game of Grinch Simulator',
+                                ),
+                            'UH_UH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Uh uh',
+                                    'description' => 'When tasked to shoot yourself with an arrow in Santa Says, shoot someone else',
+                                ),
+                            'BLACKSMITH' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Ultimate Blacksmith',
+                                    'description' => 'When given ingots in Santa Says, craft a Clock',
+                                ),
+                            'SUGAR_RUSH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sugar Rush',
+                                    'description' => 'Give sugar to a horse in Santa Says',
+                                ),
+                            'DEM_COWS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Worth it',
+                                    'description' => 'When tasked to kill a chicken in Santa Says, kill a cow instead',
+                                ),
+                            'LET_IT_SNOW' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Let it snow ♫',
+                                    'description' => 'Use the Let It Snow gadget in a lobby',
+                                ),
+                            'MERRY_CHRISTMAS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Happy Holidays',
+                                    'description' => 'Speak to the Holidays Guide in the Main Lobby',
+                                ),
+                            'SWEGMAS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Swegmas',
+                                    'description' => 'Teleport at least 7 players using the Sweg Move Blitz Star in Blitz Survival Games',
+                                ),
+                            'FESTIVITIES' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Snap',
+                                    'description' => 'Win any game with the Cold Snap cosmetic equipped',
+                                ),
+                            'MELTING_KILLER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Melting...',
+                                    'description' => 'Obtain a kill in Mega Walls playing the Snowman class, while in water',
+                                ),
+                            'EMPTY_HOUSE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'True Grinch',
+                                    'description' => 'Steal 70 presents in a game of Grinch Simulator',
+                                ),
+                            'NOM_NOM' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Nom nom',
+                                    'description' => 'Craft a Santa Cookie in UHC',
                                 ),
                         ),
                     'tiered' =>
                         array(
-                            'ADVENT' =>
+                            'SANTA_SAYS_ROUNDS' =>
                                 array(
-                                    'name' => 'Advent Calendar (2017)',
-                                    'description' => 'Claim %s days in the Advent Calendar',
-                                    'legacy' => true,
+                                    'name' => 'Santa Says Winner',
+                                    'description' => 'Complete %s tasks in Santa Says',
                                     'tiers' =>
                                         array(
                                             0 =>
                                                 array(
                                                     'tier' => 1,
                                                     'points' => 5,
-                                                    'amount' => 1,
+                                                    'amount' => 3,
                                                 ),
                                             1 =>
                                                 array(
                                                     'tier' => 2,
                                                     'points' => 10,
-                                                    'amount' => 3,
+                                                    'amount' => 10,
                                                 ),
                                             2 =>
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 7,
+                                                    'amount' => 30,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 14,
+                                                    'amount' => 75,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 21,
+                                                    'amount' => 150,
                                                 ),
                                         ),
                                 ),
-                            'ADVENT_2018' =>
+                            'NO_CHRISTMAS' =>
                                 array(
-                                    'name' => 'Advent Calendar (2018)',
-                                    'description' => 'Claim %s days in the Advent Calendar',
-                                    'legacy' => true,
+                                    'name' => 'No Christmas For You',
+                                    'description' => 'Pickup %s presents in Grinch Simulator',
                                     'tiers' =>
                                         array(
                                             0 =>
                                                 array(
                                                     'tier' => 1,
                                                     'points' => 5,
-                                                    'amount' => 1,
+                                                    'amount' => 5,
                                                 ),
                                             1 =>
                                                 array(
                                                     'tier' => 2,
                                                     'points' => 10,
-                                                    'amount' => 3,
+                                                    'amount' => 25,
                                                 ),
                                             2 =>
                                                 array(
                                                     'tier' => 3,
                                                     'points' => 15,
-                                                    'amount' => 7,
+                                                    'amount' => 60,
                                                 ),
                                             3 =>
                                                 array(
                                                     'tier' => 4,
                                                     'points' => 20,
-                                                    'amount' => 14,
+                                                    'amount' => 150,
                                                 ),
                                             4 =>
                                                 array(
                                                     'tier' => 5,
                                                     'points' => 25,
-                                                    'amount' => 21,
+                                                    'amount' => 300,
                                                 ),
                                         ),
                                 ),
                         ),
-                    'total_points' => 0,
-                    'total_legacy_points' => 200,
+                    'total_points' => 335,
+                    'total_legacy_points' => 0,
                 ),
             'copsandcrims' =>
                 array(
@@ -4403,32 +4527,134 @@ while being the only one alive in 2v2',
                 array(
                     'one_time' =>
                         array(
-                            'ALL_EGGS_2019' =>
+                            'SW_EGG_VOID' =>
                                 array(
-                                    'points' => 30,
-                                    'name' => 'Egghunter (2019)',
-                                    'description' => 'Find all easter eggs in the Main Lobby',
-                                    'legacy' => true,
+                                    'points' => 10,
+                                    'name' => 'Fill the void',
+                                    'description' => 'Throw 3 players in the void using eggs in a game of SkyWars',
                                 ),
-                            'HAPPY_EASTER_2019' =>
+                            'SMASH_CLUCK_KILLS' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Happy Easter (2019)',
-                                    'description' => 'Login on Easter Sunday',
-                                    'legacy' => true,
+                                    'name' => 'Cluckindoshin',
+                                    'description' => 'Kill 3 different players in a game of Smash Heroes using General Cluck',
                                 ),
-                            'FIRST_EGG_2019' =>
+                            'PIT_DRAGON_EGG' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'The Chase Begins (2019)',
-                                    'description' => 'Find an easter egg in the Main Lobby',
-                                    'legacy' => true,
+                                    'name' => 'Does it count?',
+                                    'description' => 'Click the dragon egg in the namesake pit event',
+                                ),
+                            'BLITZ_SPAWN_RABBIT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Genius Summoner',
+                                    'description' => 'Spawn a rabbit in Blitz Survival Games',
+                                ),
+                            'TOWERWARS_CHICKENS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'A tower ain\'t one',
+                                    'description' => 'Spawn 99 chickens in a game of Tower Wars',
+                                ),
+                            'CVC_GRENADES' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'The crowd goes boom',
+                                    'description' => 'Kill 2 players using grenades in a Defusal game of CVC',
+                                ),
+                            'ARCADE_CHICKEN_RACE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Turbo Chicken Racers',
+                                    'description' => 'Win the flying chicken race in Arcade Party Games',
+                                ),
+                            'BW_JUMP_BOOST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Jumpstart Investment',
+                                    'description' => 'Buy 3 jump boost potions in a game of Bedwars',
+                                ),
+                            'EASTER_EGG' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Secret Easter Egg',
+                                    'description' => 'Acquire the secret easter egg.',
+                                ),
+                            'PAINTBALL_LEEROY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'At least I got paintball',
+                                    'description' => 'Activate the Leeroy Jenkins killstreak in Paintball',
+                                ),
+                            'MEGAWALLS_JOCKEY' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Patient Hunter',
+                                    'description' => 'Spawn a Chicken Jockey using the Hunter passive in Mega Walls',
+                                ),
+                            'VAMPIREZ_CARROT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Modern Problems',
+                                    'description' => 'Kill a vampire while holding a carrot in VampireZ',
+                                ),
+                            'MM_CARROT_KILLS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Check your produce',
+                                    'description' => 'Kill 3 survivors in one game while holding the carrot/carrot-on-a-stick knife skin in Classic Murder Mystery',
+                                ),
+                            'UHC_GOLDEN_CARROT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Golden Survival',
+                                    'description' => 'Craft a Cornucopia in UHC',
                                 ),
                         ),
                     'tiered' =>
-                        array(),
-                    'total_points' => 0,
-                    'total_legacy_points' => 40,
+                        array(
+                            'THROW_EGGS' =>
+                                array(
+                                    'name' => 'Eggthrower',
+                                    'description' => 'Throw %s eggs',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 8,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 32,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 128,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 512,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 2048,
+                                                ),
+                                        ),
+                                ),
+                        ),
+                    'total_points' => 185,
+                    'total_legacy_points' => 0,
                 ),
             'general' =>
                 array(
@@ -4487,8 +4713,7 @@ while being the only one alive in 2v2',
                                 array(
                                     'points' => 5,
                                     'name' => 'Not forever alone...',
-                                    'description' => 'Make a friend using the friend
-system',
+                                    'description' => 'Make a friend using the friend system',
                                 ),
                             'ACHIEVEMENT_NPC' =>
                                 array(
@@ -4506,8 +4731,7 @@ system',
                                 array(
                                     'points' => 5,
                                     'name' => 'Creeperbook',
-                                    'description' => 'Link your Minecraft account with
-your forum account',
+                                    'description' => 'Link your Minecraft account with your forum account',
                                 ),
                             'GIFTING' =>
                                 array(
@@ -5076,46 +5300,268 @@ of your friends',
                 array(
                     'one_time' =>
                         array(
-                            'ALL_GHOSTS_2018' =>
+                            'FIRE_FROM_HELL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Fire from Hell',
+                                    'description' => 'Win a game of Smash Heroes using Skullfire',
+                                ),
+                            'TBR_KRAKEN_ASSAULT_1_25' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Kraken Assault Great Time',
+                                    'description' => 'Complete Kraken Assault in under 01:25',
+                                ),
+                            'PUMPKIN_DEATH' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pumpkinator Rampage',
+                                    'description' => 'Bring 10 pumpkins at once to a Shopkeeper in Bedwars',
+                                ),
+                            'PUMPKIN_VISION' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Pumpkin Vision',
+                                    'description' => 'Kill a player in UHC while wearing a Pumpkin on your head',
+                                ),
+                            'TBR_SHARKNADO_JAUNT_FAST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Sharknado Jaunt Great Time',
+                                    'description' => 'Complete Sharknado Jaunt in under 1:15',
+                                ),
+                            'TBR_MIDTOWN_TRIP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Midtown Trip Completion',
+                                    'description' => 'Complete Midtown Trip in Turbo Bat Racers',
+                                ),
+                            'CORPSE_STILL_RUNS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Corpse Still Runs',
+                                    'description' => 'Win a game of Warlords Domination while having the Corpse Mare mount equipped',
+                                ),
+                            'BLAME_YOUR_TEAM' =>
                                 array(
                                     'points' => 15,
-                                    'name' => 'All Ghosts (2018)',
-                                    'description' => 'Find all Ghosts in the Main Lobby',
-                                    'legacy' => true,
+                                    'name' => 'That wasn\'t eaZy',
+                                    'description' => 'Reach Round 25 playing Zombies on Alien Arcadium',
                                 ),
-                            'SECOND_GHOST' =>
+                            'VAMPIRES_BE_GONE' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Second Ghost (2017)',
-                                    'description' => 'Find two Ghosts in the Main Lobby',
-                                    'legacy' => true,
+                                    'name' => 'Vamps b gone',
+                                    'description' => 'Kill 2 vampires in a single game of VampireZ',
                                 ),
-                            'SECOND_GHOST_2018' =>
+                            'FULL_MOON' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Second Ghost (2018)',
-                                    'description' => 'Find two Ghosts in the Main Lobby',
-                                    'legacy' => true,
+                                    'name' => 'Full Moon',
+                                    'description' => 'Get a Final Kill as Werewolf in Mega Walls',
                                 ),
-                            'NECROTHERAPY' =>
+                            'PUMPKIN_DANCER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pumpkin Devil',
+                                    'description' => 'Obtain 222 points in a single Pumpkin Smash game without dying',
+                                ),
+                            'RISING_DEAD' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Necrotherapy',
-                                    'description' => 'Get a kill in SkyClash using the Necromancer kit',
-                                    'legacy' => true,
+                                    'name' => 'Rising Dead',
+                                    'description' => 'Trigger the Necromancer Perk in Sky Wars',
                                 ),
-                            'ALL_GHOSTS' =>
+                            'GRAVEDIGGER' =>
                                 array(
-                                    'points' => 15,
-                                    'name' => 'All Ghosts (2017)',
-                                    'description' => 'Find all Ghosts in the Main Lobby',
-                                    'legacy' => true,
+                                    'points' => 5,
+                                    'name' => 'Gravedigger',
+                                    'description' => 'Win a game of solo Blitz SG with the Gravedigger Kill Effect',
+                                ),
+                            'UNDEAD_TARGET_PRACTICE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Undead Target Practice',
+                                    'description' => 'Reach a score of 333 before the 1 minute mark in the Main Lobby Shooting Range',
+                                ),
+                            'TBR_OBSERVATORY_SPIN' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Observatory Spin Completion',
+                                    'description' => 'Complete Observatory Spin in Turbo Bat Racers',
+                                ),
+                            'THE_CRAWLING_DEAD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Crawling Dead',
+                                    'description' => 'Get 66 kills in a single game of The Blocking Dead',
+                                ),
+                            'SURVIVORS_BE_GONE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Vamps r cool',
+                                    'description' => 'Kill 5 survivors in a single game of VampireZ',
+                                ),
+                            'TBR_SHARKNADO_JAUNT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sharknado Jaunt Completion',
+                                    'description' => 'Complete Sharknado Jaunt in Turbo Bat Racers',
+                                ),
+                            'THAT_WAS_EASY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'That was eaZy',
+                                    'description' => 'Reach Round 10 playing Zombies on Dead End or Bad Blood',
+                                ),
+                            'SPOOKY_CHEST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Spooky Spooky',
+                                    'description' => 'Open 3 Bed Wars Spooky Chests',
+                                ),
+                            'CLASSY_WITHER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Classy Wither',
+                                    'description' => 'Win a game of TNT Wizards with the Wither Wizard kit',
+                                ),
+                            'MY_HALLOWEEN_COSTUME' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'My Halloween Costume',
+                                    'description' => 'Use a Morph in a lobby',
+                                ),
+                            'GOOD_TRY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Good Try',
+                                    'description' => 'Die against the first bomb in Pumpkin Smash',
+                                ),
+                            'TBR_KRAKEN_ASSAULT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Kraken Assault Completion',
+                                    'description' => 'Complete Kraken Assault in Turbo Bat Racers',
+                                ),
+                            'TBR_OBSERVATORY_SPIN_1_10' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Observatory Spin Great Time',
+                                    'description' => 'Complete Observatory Spin in under 01:15',
+                                ),
+                            'OCTOBER_BETRAYAL' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'October Betrayal',
+                                    'description' => 'Win a Murder Mystery classic game as Murderer',
+                                ),
+                            'HI_THERE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Boo!',
+                                    'description' => 'Speak to the Halloween Guide in the Main Lobby',
+                                ),
+                            'TBR_MIDTOWN_TRIP_1_20' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Midtown Trip Great Time',
+                                    'description' => 'Complete Midtown Trip in under 01:30',
+                                ),
+                            'EL_SPOODER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'El Spooder',
+                                    'description' => 'Earn a Golden Skull using the Spiderling kit in Crazy Walls',
+                                ),
+                            'NOT_SO_SCARY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Not so Scary',
+                                    'description' => 'Win a game of Build Battle Halloween Hyper Mode',
                                 ),
                         ),
                     'tiered' =>
-                        array(),
-                    'total_points' => 0,
-                    'total_legacy_points' => 45,
+                        array(
+                            'PUMPKINATOR' =>
+                                array(
+                                    'name' => 'Pumpkinator Collector',
+                                    'description' => 'Collect %s pumpkins in Bedwars',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 1000,
+                                                ),
+                                        ),
+                                ),
+                            'PUMPKIN_SMASHER' =>
+                                array(
+                                    'name' => 'Pumpkin Smasher',
+                                    'description' => 'Smash %s pumpkins in Pumpkin Smash',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 250,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 500,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 750,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 1000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 3333,
+                                                ),
+                                        ),
+                                ),
+                        ),
+                    'total_points' => 355,
+                    'total_legacy_points' => 0,
                 ),
             'housing' =>
                 array(
@@ -5192,6 +5638,213 @@ of your friends',
                         array(),
                     'total_points' => 55,
                     'total_legacy_points' => 0,
+                ),
+            'legacychristmas2017' =>
+                array(
+                    'one_time' =>
+                        array(
+                            'SHARING_IS_CARING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sharing is Caring',
+                                    'description' => 'Give one of your wrapped presents to another player in Bed Wars',
+                                    'legacy' => true,
+                                ),
+                            'REAL_SANTA' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Real Santa (2017)',
+                                    'description' => 'Find all 88 presents in every lobby',
+                                    'legacy' => true,
+                                ),
+                            'HUNT_BEGINS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Hunt Begins (2017)',
+                                    'description' => 'Find 2 lobby presents',
+                                    'legacy' => true,
+                                ),
+                            'SANTA_HELPER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Santa Helper',
+                                    'description' => 'Bring the right items back to every special character in a single Bed Wars game',
+                                    'legacy' => true,
+                                ),
+                            'REAL_SANTA_2018' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Real Santa (2018)',
+                                    'description' => 'Find all 88 presents in every lobby',
+                                    'legacy' => true,
+                                ),
+                            'HUNT_BEGINS_2018' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Hunt Begins (2018)',
+                                    'description' => 'Find 2 lobby presents',
+                                    'legacy' => true,
+                                ),
+                        ),
+                    'tiered' =>
+                        array(
+                            'ADVENT' =>
+                                array(
+                                    'name' => 'Advent Calendar (2017)',
+                                    'description' => 'Claim %s days in the Advent Calendar',
+                                    'legacy' => true,
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 1,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 3,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 7,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 14,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 21,
+                                                ),
+                                        ),
+                                ),
+                            'ADVENT_2018' =>
+                                array(
+                                    'name' => 'Advent Calendar (2018)',
+                                    'description' => 'Claim %s days in the Advent Calendar',
+                                    'legacy' => true,
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 1,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 3,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 7,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 14,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 21,
+                                                ),
+                                        ),
+                                ),
+                        ),
+                    'total_points' => 0,
+                    'total_legacy_points' => 200,
+                ),
+            'legacyeaster' =>
+                array(
+                    'one_time' =>
+                        array(
+                            'ALL_EGGS_2019' =>
+                                array(
+                                    'points' => 30,
+                                    'name' => 'Egghunter (2019)',
+                                    'description' => 'Find all easter eggs in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'HAPPY_EASTER_2019' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Happy Easter (2019)',
+                                    'description' => 'Login on Easter Sunday',
+                                    'legacy' => true,
+                                ),
+                            'FIRST_EGG_2019' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Chase Begins (2019)',
+                                    'description' => 'Find an easter egg in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                        ),
+                    'tiered' =>
+                        array(),
+                    'total_points' => 0,
+                    'total_legacy_points' => 40,
+                ),
+            'legacyhalloween2017' =>
+                array(
+                    'one_time' =>
+                        array(
+                            'ALL_GHOSTS_2018' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'All Ghosts (2018)',
+                                    'description' => 'Find all Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'SECOND_GHOST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Second Ghost (2017)',
+                                    'description' => 'Find two Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'SECOND_GHOST_2018' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Second Ghost (2018)',
+                                    'description' => 'Find two Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'NECROTHERAPY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Necrotherapy',
+                                    'description' => 'Get a kill in SkyClash using the Necromancer kit',
+                                    'legacy' => true,
+                                ),
+                            'ALL_GHOSTS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'All Ghosts (2017)',
+                                    'description' => 'Find all Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                        ),
+                    'tiered' =>
+                        array(),
+                    'total_points' => 0,
+                    'total_legacy_points' => 45,
                 ),
             'murdermystery' =>
                 array(
