@@ -102,6 +102,7 @@ one Explosive Arrow',
                                     'points' => 5,
                                     'name' => 'Party Games: Batman',
                                     'description' => 'Ride a bat in Punch the Bat',
+                                    'legacy' => true,
                                 ),
                             'HOEHOEHOE_SCORE' =>
                                 array(
@@ -822,8 +823,8 @@ and armor in Creeper Attack',
                                         ),
                                 ),
                         ),
-                    'total_points' => 1345,
-                    'total_legacy_points' => 0,
+                    'total_points' => 1340,
+                    'total_legacy_points' => 5,
                 ),
             'arena' =>
                 array(
@@ -3198,6 +3199,48 @@ while being the only one alive in 2v2',
                                     'name' => 'Nom nom',
                                     'description' => 'Craft a Santa Cookie in UHC',
                                 ),
+                            'SHARING_IS_CARING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sharing is Caring',
+                                    'description' => 'Give one of your wrapped presents to another player in Bed Wars',
+                                    'legacy' => true,
+                                ),
+                            'REAL_SANTA' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Real Santa (2017)',
+                                    'description' => 'Find all 88 presents in every lobby',
+                                    'legacy' => true,
+                                ),
+                            'HUNT_BEGINS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Hunt Begins (2017)',
+                                    'description' => 'Find 2 lobby presents',
+                                    'legacy' => true,
+                                ),
+                            'SANTA_HELPER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Santa Helper',
+                                    'description' => 'Bring the right items back to every special character in a single Bed Wars game',
+                                    'legacy' => true,
+                                ),
+                            'REAL_SANTA_2018' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Real Santa (2018)',
+                                    'description' => 'Find all 88 presents in every lobby',
+                                    'legacy' => true,
+                                ),
+                            'HUNT_BEGINS_2018' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Hunt Begins (2018)',
+                                    'description' => 'Find 2 lobby presents',
+                                    'legacy' => true,
+                                ),
                         ),
                     'tiered' =>
                         array(
@@ -3277,9 +3320,87 @@ while being the only one alive in 2v2',
                                                 ),
                                         ),
                                 ),
+                            'ADVENT' =>
+                                array(
+                                    'name' => 'Advent Calendar (2017)',
+                                    'description' => 'Claim %s days in the Advent Calendar',
+                                    'legacy' => true,
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 1,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 3,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 7,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 14,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 21,
+                                                ),
+                                        ),
+                                ),
+                            'ADVENT_2018' =>
+                                array(
+                                    'name' => 'Advent Calendar (2018)',
+                                    'description' => 'Claim %s days in the Advent Calendar',
+                                    'legacy' => true,
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 1,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 3,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 7,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 14,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 21,
+                                                ),
+                                        ),
+                                ),
                         ),
                     'total_points' => 335,
-                    'total_legacy_points' => 0,
+                    'total_legacy_points' => 200,
                 ),
             'copsandcrims' =>
                 array(
@@ -4527,6 +4648,27 @@ while being the only one alive in 2v2',
                 array(
                     'one_time' =>
                         array(
+                            'ALL_EGGS_2019' =>
+                                array(
+                                    'points' => 30,
+                                    'name' => 'Egghunter (2019)',
+                                    'description' => 'Find all easter eggs in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'HAPPY_EASTER_2019' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Happy Easter (2019)',
+                                    'description' => 'Login on Easter Sunday',
+                                    'legacy' => true,
+                                ),
+                            'FIRST_EGG_2019' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Chase Begins (2019)',
+                                    'description' => 'Find an easter egg in the Main Lobby',
+                                    'legacy' => true,
+                                ),
                             'SW_EGG_VOID' =>
                                 array(
                                     'points' => 10,
@@ -4654,7 +4796,7 @@ while being the only one alive in 2v2',
                                 ),
                         ),
                     'total_points' => 185,
-                    'total_legacy_points' => 0,
+                    'total_legacy_points' => 40,
                 ),
             'general' =>
                 array(
@@ -5480,6 +5622,41 @@ of your friends',
                                     'name' => 'Not so Scary',
                                     'description' => 'Win a game of Build Battle Halloween Hyper Mode',
                                 ),
+                            'ALL_GHOSTS_2018' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'All Ghosts (2018)',
+                                    'description' => 'Find all Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'SECOND_GHOST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Second Ghost (2017)',
+                                    'description' => 'Find two Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'SECOND_GHOST_2018' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Second Ghost (2018)',
+                                    'description' => 'Find two Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'NECROTHERAPY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Necrotherapy',
+                                    'description' => 'Get a kill in SkyClash using the Necromancer kit',
+                                    'legacy' => true,
+                                ),
+                            'ALL_GHOSTS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'All Ghosts (2017)',
+                                    'description' => 'Find all Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
                         ),
                     'tiered' =>
                         array(
@@ -5561,7 +5738,7 @@ of your friends',
                                 ),
                         ),
                     'total_points' => 355,
-                    'total_legacy_points' => 0,
+                    'total_legacy_points' => 45,
                 ),
             'housing' =>
                 array(
@@ -5638,213 +5815,6 @@ of your friends',
                         array(),
                     'total_points' => 55,
                     'total_legacy_points' => 0,
-                ),
-            'legacychristmas2017' =>
-                array(
-                    'one_time' =>
-                        array(
-                            'SHARING_IS_CARING' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Sharing is Caring',
-                                    'description' => 'Give one of your wrapped presents to another player in Bed Wars',
-                                    'legacy' => true,
-                                ),
-                            'REAL_SANTA' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Real Santa (2017)',
-                                    'description' => 'Find all 88 presents in every lobby',
-                                    'legacy' => true,
-                                ),
-                            'HUNT_BEGINS' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'The Hunt Begins (2017)',
-                                    'description' => 'Find 2 lobby presents',
-                                    'legacy' => true,
-                                ),
-                            'SANTA_HELPER' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Santa Helper',
-                                    'description' => 'Bring the right items back to every special character in a single Bed Wars game',
-                                    'legacy' => true,
-                                ),
-                            'REAL_SANTA_2018' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'Real Santa (2018)',
-                                    'description' => 'Find all 88 presents in every lobby',
-                                    'legacy' => true,
-                                ),
-                            'HUNT_BEGINS_2018' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'The Hunt Begins (2018)',
-                                    'description' => 'Find 2 lobby presents',
-                                    'legacy' => true,
-                                ),
-                        ),
-                    'tiered' =>
-                        array(
-                            'ADVENT' =>
-                                array(
-                                    'name' => 'Advent Calendar (2017)',
-                                    'description' => 'Claim %s days in the Advent Calendar',
-                                    'legacy' => true,
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 1,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 3,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 7,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 14,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 21,
-                                                ),
-                                        ),
-                                ),
-                            'ADVENT_2018' =>
-                                array(
-                                    'name' => 'Advent Calendar (2018)',
-                                    'description' => 'Claim %s days in the Advent Calendar',
-                                    'legacy' => true,
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 1,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 3,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 7,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 14,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 21,
-                                                ),
-                                        ),
-                                ),
-                        ),
-                    'total_points' => 0,
-                    'total_legacy_points' => 200,
-                ),
-            'legacyeaster' =>
-                array(
-                    'one_time' =>
-                        array(
-                            'ALL_EGGS_2019' =>
-                                array(
-                                    'points' => 30,
-                                    'name' => 'Egghunter (2019)',
-                                    'description' => 'Find all easter eggs in the Main Lobby',
-                                    'legacy' => true,
-                                ),
-                            'HAPPY_EASTER_2019' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Happy Easter (2019)',
-                                    'description' => 'Login on Easter Sunday',
-                                    'legacy' => true,
-                                ),
-                            'FIRST_EGG_2019' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'The Chase Begins (2019)',
-                                    'description' => 'Find an easter egg in the Main Lobby',
-                                    'legacy' => true,
-                                ),
-                        ),
-                    'tiered' =>
-                        array(),
-                    'total_points' => 0,
-                    'total_legacy_points' => 40,
-                ),
-            'legacyhalloween2017' =>
-                array(
-                    'one_time' =>
-                        array(
-                            'ALL_GHOSTS_2018' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'All Ghosts (2018)',
-                                    'description' => 'Find all Ghosts in the Main Lobby',
-                                    'legacy' => true,
-                                ),
-                            'SECOND_GHOST' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Second Ghost (2017)',
-                                    'description' => 'Find two Ghosts in the Main Lobby',
-                                    'legacy' => true,
-                                ),
-                            'SECOND_GHOST_2018' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Second Ghost (2018)',
-                                    'description' => 'Find two Ghosts in the Main Lobby',
-                                    'legacy' => true,
-                                ),
-                            'NECROTHERAPY' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Necrotherapy',
-                                    'description' => 'Get a kill in SkyClash using the Necromancer kit',
-                                    'legacy' => true,
-                                ),
-                            'ALL_GHOSTS' =>
-                                array(
-                                    'points' => 15,
-                                    'name' => 'All Ghosts (2017)',
-                                    'description' => 'Find all Ghosts in the Main Lobby',
-                                    'legacy' => true,
-                                ),
-                        ),
-                    'tiered' =>
-                        array(),
-                    'total_points' => 0,
-                    'total_legacy_points' => 45,
                 ),
             'murdermystery' =>
                 array(
