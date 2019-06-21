@@ -1330,7 +1330,7 @@ while being the only one alive in 2v2',
                                 array(
                                     'points' => 5,
                                     'name' => 'You Can\'t Do That!',
-                                    'description' => 'Attempt to break your team’s bed',
+                                    'description' => 'Attempt to break your team\'s bed',
                                 ),
                             'ALREADY_OVER' =>
                                 array(
@@ -8652,6 +8652,20 @@ or the 1.0s trigger',
                 array(
                     'one_time' =>
                         array(
+                            'MASTERY_UNLOCK' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'New Strategies',
+                                    'description' => 'Find a Mastery in the Tear Exchange',
+                                    'legacy' => true,
+                                ),
+                            'ENCHANTED_BOOK' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Knowledge!',
+                                    'description' => 'Obtain an Enchanted Book from killing a player in Insane Mode',
+                                    'legacy' => true,
+                                ),
                             'POTION_BREWER' =>
                                 array(
                                     'points' => 5,
@@ -8663,6 +8677,12 @@ or the 1.0s trigger',
                                     'points' => 5,
                                     'name' => 'Oink',
                                     'description' => 'Ride a Pig',
+                                ),
+                            'MASTER_OF_MASTERS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Master of Masters',
+                                    'description' => 'Prestige your first Mastery',
                                 ),
                             'USE_ENDERPEARL' =>
                                 array(
@@ -8676,23 +8696,35 @@ or the 1.0s trigger',
                                     'name' => 'Newton\'s Laws',
                                     'description' => 'Find a Golden Apple from a tree',
                                 ),
+                            'HOT_HOG' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Hot Hog',
+                                    'description' => 'Ride a Pig in the Nether',
+                                ),
                             'NATURAL_TALENT' =>
                                 array(
                                     'points' => 15,
                                     'name' => 'Natural Talent',
                                     'description' => 'Obtain 100 kills with 7 different Masteries',
                                 ),
-                            'MASTERY_UNLOCK' =>
+                            'YEEHAW' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'New Strategies',
-                                    'description' => 'Find a Mastery in the Tear Exchange',
+                                    'name' => 'Yeehaw!',
+                                    'description' => 'Ride a Horse',
                                 ),
                             'ENCHANTED_ARMOR' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Ready for the Fashion Week',
                                     'description' => 'Wear a fully enchanted set of Armor',
+                                ),
+                            'BRAVE_NEW_WORLD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Brave New World',
+                                    'description' => 'Enter the Nether',
                                 ),
                             'SKELETON_BOW' =>
                                 array(
@@ -8716,13 +8748,19 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 5,
                                     'name' => 'Feels Good Man',
-                                    'description' => 'Unlock a Kit using Salt',
+                                    'description' => 'Unlock a Kit',
                                 ),
                             'KILL_TNT' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'I Do Things My Way',
                                     'description' => 'Kill a player using TNT',
+                                ),
+                            'DIAMONDS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Diamooonds',
+                                    'description' => 'Mine 30 Diamond ore in One game',
                                 ),
                             'MELON_SMASHER' =>
                                 array(
@@ -8736,29 +8774,35 @@ or the 1.0s trigger',
                                     'name' => 'Stay Golden',
                                     'description' => 'Eat a God Apple',
                                 ),
+                            'TEARS_OF_LONELINESS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Tears of Loneliness',
+                                    'description' => 'Win a game after your teammate dies',
+                                ),
                             'PAPER_CUT' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Paper Cut',
                                     'description' => 'Kill a player with a Map',
                                 ),
-                            'ENCHANTED_BOOK' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Knowledge!',
-                                    'description' => 'Obtain an Enchanted Book from killing a player in Insane Mode',
-                                ),
                             'RUSHER' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'One Happy Rusher',
-                                    'description' => 'Get a kill within 30 seconds of the game starting',
+                                    'description' => 'Get a kill within 15 seconds after Grace Period Finish',
                                 ),
                             'DOMINATION' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Domination Achieved',
                                     'description' => 'Win a Team game with your team having at least 10 kills',
+                                ),
+                            'MY_WAY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'My Way',
+                                    'description' => 'Choose a preference in the Drop manager',
                                 ),
                             'KILL_GHAST' =>
                                 array(
@@ -8773,6 +8817,7 @@ or the 1.0s trigger',
                                 array(
                                     'name' => 'Salty',
                                     'description' => 'Collect %s Salt',
+                                    'legacy' => true,
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -8848,7 +8893,7 @@ or the 1.0s trigger',
                             'COLLECTOR' =>
                                 array(
                                     'name' => 'Collector',
-                                    'description' => 'Unlock %s Perks from the Tear Exchange',
+                                    'description' => 'Unlock %s Perks',
                                     'tiers' =>
                                         array(
                                             0 =>
@@ -8880,6 +8925,44 @@ or the 1.0s trigger',
                                                     'tier' => 5,
                                                     'points' => 25,
                                                     'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                            'PROMOTION' =>
+                                array(
+                                    'name' => 'Promotion',
+                                    'description' => 'Reach %s Score',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 50,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 300,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 2550,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 5550,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 15550,
                                                 ),
                                         ),
                                 ),
@@ -8922,8 +9005,8 @@ or the 1.0s trigger',
                                         ),
                                 ),
                         ),
-                    'total_points' => 435,
-                    'total_legacy_points' => 0,
+                    'total_points' => 485,
+                    'total_legacy_points' => 90,
                 ),
             'supersmash' =>
                 array(
@@ -10625,7 +10708,7 @@ Double Jump upgrade',
                                 ),
                             'POWERHOUSE' =>
                                 array(
-                                    'points' => 15,
+                                    'points' => 20,
                                     'name' => 'Powerhouse!',
                                     'description' => 'Wear Exodus, Dragon Armor, Hide of Leviathan and Seven League Boots at the same time',
                                 ),
@@ -10649,9 +10732,9 @@ Double Jump upgrade',
                                 ),
                             'OBLITERATE' =>
                                 array(
-                                    'points' => 20,
+                                    'points' => 15,
                                     'name' => 'OBLITERATE!',
-                                    'description' => 'Wear all 4 pieces of the Fusion Armor',
+                                    'description' => 'Wear 2 pieces of Fusion Armor',
                                 ),
                             'ELITE_PRESTIGE' =>
                                 array(
@@ -11062,8 +11145,46 @@ Double Jump upgrade',
                                                 ),
                                         ),
                                 ),
+                            'ULTIMATUM' =>
+                                array(
+                                    'name' => 'Ultimatum',
+                                    'description' => 'Craft %s Ultimates after Grace Period',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 50,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 150,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 500,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 1000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 2500,
+                                                ),
+                                        ),
+                                ),
                         ),
-                    'total_points' => 780,
+                    'total_points' => 855,
                     'total_legacy_points' => 0,
                 ),
             'vampirez' =>
