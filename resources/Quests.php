@@ -1762,12 +1762,6 @@ return array(
                                 array(
                                     0 =>
                                         array(
-                                            'id' => 'uhc_games',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 1,
-                                        ),
-                                    1 =>
-                                        array(
                                             'id' => 'uhc_kills',
                                             'type' => 'IntegerObjective',
                                             'integer' => 1,
@@ -1801,12 +1795,6 @@ return array(
                             'objectives' =>
                                 array(
                                     0 =>
-                                        array(
-                                            'id' => 'uhc_games',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 1,
-                                        ),
-                                    1 =>
                                         array(
                                             'id' => 'uhc_kills',
                                             'type' => 'IntegerObjective',
@@ -1879,6 +1867,106 @@ return array(
                                             'id' => 'uhc_kills',
                                             'type' => 'IntegerObjective',
                                             'integer' => 20,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'solo_brawler',
+                            'name' => 'Daily Quest: Solo Speed Brawler',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    5 =>
+                        array(
+                            'id' => 'team_brawler',
+                            'name' => 'Daily Quest: Team Speed Brawler',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 1250,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'win',
+                                            'type' => 'BooleanObjective',
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                        ),
+                    6 =>
+                        array(
+                            'id' => 'uhc_madness',
+                            'name' => 'Weekly Quest: SpeedUHC Madness',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 19500,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'CoinReward',
+                                            'amount' => 4000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'kill',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 100,
                                         ),
                                 ),
                             'requirements' =>
@@ -3217,176 +3305,7 @@ return array(
                         ),
                 ),
             'speeduhc' =>
-                array(
-                    0 =>
-                        array(
-                            'id' => 'normal_brawler',
-                            'name' => 'Daily Quest: Normal Brawler',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'CoinReward',
-                                            'amount' => 1250,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'win',
-                                            'type' => 'BooleanObjective',
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    1 =>
-                        array(
-                            'id' => 'insane_brawler',
-                            'name' => 'Daily Quest: Insane Brawler',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'CoinReward',
-                                            'amount' => 1250,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'win',
-                                            'type' => 'BooleanObjective',
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    2 =>
-                        array(
-                            'id' => 'hunting_season',
-                            'name' => 'Daily Quest: Hunting Season',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'CoinReward',
-                                            'amount' => 1250,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'kill',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 10,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    3 =>
-                        array(
-                            'id' => 'uhc_addict',
-                            'name' => 'Daily Quest: UHC Addict',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 3000,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'CoinReward',
-                                            'amount' => 1250,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'play',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 2,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'DailyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                    4 =>
-                        array(
-                            'id' => 'uhc_madness',
-                            'name' => 'Weekly Quest: UHC Madness',
-                            'rewards' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'MultipliedExperienceReward',
-                                            'amount' => 19500,
-                                        ),
-                                    1 =>
-                                        array(
-                                            'type' => 'CoinReward',
-                                            'amount' => 4000,
-                                        ),
-                                ),
-                            'objectives' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'id' => 'kill',
-                                            'type' => 'IntegerObjective',
-                                            'integer' => 100,
-                                        ),
-                                ),
-                            'requirements' =>
-                                array(
-                                    0 =>
-                                        array(
-                                            'type' => 'WeeklyResetQuestRequirement',
-                                        ),
-                                ),
-                        ),
-                ),
+                array(),
             'skyclash' =>
                 array(
                     0 =>

@@ -7356,6 +7356,739 @@ or the 1.0s trigger',
                     'total_points' => 940,
                     'total_legacy_points' => 0,
                 ),
+            'skyblock' =>
+                array(
+                    'one_time' =>
+                        array(
+                            'THE_ONE_BOTTLE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The One Bottle',
+                                    'description' => 'Craft a Titanic experience bottle',
+                                ),
+                            'SADDLE_UP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Saddle Up!',
+                                    'description' => '[Coop or you] Craft a saddle',
+                                ),
+                            'PROMISED_FULFILLED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Promise Fulfilled',
+                                    'description' => 'Max out a promising tool',
+                                ),
+                            'LOST_SOUL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Lost Soul',
+                                    'description' => 'Find a fairy soul',
+                                ),
+                            'BAITED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Baited',
+                                    'description' => 'Obtain the Bait Ring',
+                                ),
+                            'A_GOOD_SPIDER_IS_A_DEAD_SPIDER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'A good spider is a dead spider',
+                                    'description' => 'Kill the Broodmother',
+                                ),
+                            'WATER_SWORD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Water Blade',
+                                    'description' => 'Kill a squid using the Prismarine Blade',
+                                ),
+                            'PRECIOUS_MINERALS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Precious Minerals',
+                                    'description' => 'Wear a full set of Emerald Armor',
+                                ),
+                            'INTO_THE_DEEP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Into the Deep',
+                                    'description' => 'Reach the obsidian sanctuary in the Deep Caverns',
+                                ),
+                            'WORTH_IT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Worth it',
+                                    'description' => 'Spend more than 200 levels on a single Sword enchantment',
+                                ),
+                            'I_AM_GROOT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'I Am Groot',
+                                    'description' => 'Wear a set of Growth Armor with a Bonus 100 hp',
+                                ),
+                            'PRODUCTION_EXPANDED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Production Expanded',
+                                    'description' => '[Coop or you] Unlock a new minion slot',
+                                ),
+                            'FORTUNATE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Fortunate',
+                                    'description' => 'Fish 2 treasures at once using the blessing enchant',
+                                ),
+                            'A_CHALLENGING_CLIMB' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'A Challenging Climb',
+                                    'description' => 'Scale the Spider\'s Den',
+                                ),
+                            'SPIKY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Spiky',
+                                    'description' => 'Craft a Thorns 3 book',
+                                ),
+                            'HIGHER_ENCHANTS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Higher Enchants',
+                                    'description' => 'Obtain a level 6 enchantment book',
+                                ),
+                            'THREE_BIRDS_ONE_ARROW' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Three Birds, One Arrow',
+                                    'description' => 'Kill 3 monsters with one shot from Runaans Bow',
+                                ),
+                            'SUPREME_FARMER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Supreme Farmer',
+                                    'description' => 'Wear a full set of Farm Armor',
+                                ),
+                            'MASTER_ENCHANTER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Master Enchanter',
+                                    'description' => 'Enchant something using 64 levels',
+                                ),
+                            'I_KNEW_IT' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I knew it!',
+                                    'description' => 'Unlock a Secret Armor Set',
+                                    'secret' => true,
+                                ),
+                            'BRAIN_POWER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Brain Power',
+                                    'description' => 'Drink an Adrenaline Potion',
+                                ),
+                            'BIGGER_STORAGE_IS_SEEDED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Bigger Storage Is Seeded',
+                                    'description' => '[Coop or you] Place a Large Storage Chest',
+                                ),
+                            'FLAMIN_HOT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Flamin Hot',
+                                    'description' => 'Consume 200 Magma Creams using the Magma Bow',
+                                ),
+                            'WELCOME_TO_MY_FACTORY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Welcome to my Factory',
+                                    'description' => '[Coop or you] Place a Farm Crystal',
+                                ),
+                            'SUPER_FUEL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Super Fuel',
+                                    'description' => '[Coop or you] Upgrade a minion with the Enchanted Lava Bucket',
+                                ),
+                            'CUTE_LITTLE_CUBE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Cute Little Cube',
+                                    'description' => 'Kill the Magma Boss',
+                                ),
+                            'QUEST_COMPLETE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Quest complete!',
+                                    'description' => 'Complete the Villager Quest',
+                                ),
+                            'ACCESSORIES_GALORE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Accessories Galore',
+                                    'description' => '[Coop or you] Unlock the final Talisman Bag upgrade',
+                                ),
+                            'ANIMAL_FISHING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Animal Fishing',
+                                    'description' => 'Fish using the Farmers Rod',
+                                ),
+                            'TREASURE_FISHING' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Treasure Fishing',
+                                    'description' => 'Fish up a Large Treasure',
+                                ),
+                            'EXPENSIVE_BREW' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Expensive Brew',
+                                    'description' => 'Brew a Tier VIII Potion',
+                                ),
+                            'OVERKILL' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Overkill',
+                                    'description' => 'Drink a Critical 3 Potion',
+                                ),
+                            'AGILE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Agile',
+                                    'description' => 'Drink an Agility potion',
+                                ),
+                            'BIG_GAME_FISHER' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Big Game Fisher',
+                                    'description' => 'Kill a sea creature that requires fishing level 20 or higher',
+                                ),
+                            'ADVANCED_TRANSPORTATION' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Advanced Transportation',
+                                    'description' => 'Sell an item using the Enchanted Hopper',
+                                ),
+                            'YOUR_ADVENTURE_BEGINS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Your adventure begins...',
+                                    'description' => 'Travel to hub from your island',
+                                ),
+                            'TIME_TO_GO_ON_VACATION' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Time to go on vacation',
+                                    'description' => '[Coop or you] Upgrade a minion with the Super Compactor 3000',
+                                ),
+                            'SIRIUS_BUSINESS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Sirius Business',
+                                    'description' => 'Participate in the Dark Auction',
+                                    'secret' => true,
+                                ),
+                            'ARCADIA' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Arcadia',
+                                    'description' => '[Coop or you] Place 5 unique Islands on your private world',
+                                ),
+                            'HSSSSS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Hsssss',
+                                    'description' => 'Wear the Creeper Pants',
+                                ),
+                            'EXPLORER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Explorer',
+                                    'description' => 'Discover all Areas on the main island',
+                                ),
+                            'SEA_MONSTER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sea Monsters',
+                                    'description' => 'Obtain the Sea Creature Artifact',
+                                ),
+                            'SECOND_CHANCE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Second Chance',
+                                    'description' => 'Consume the Saving Grace',
+                                ),
+                            'TIME_TO_START_FISHING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Time To Start Fishing',
+                                    'description' => '[Coop or you] Place the Pond Island',
+                                ),
+                            'DEATH_FROM_ABOVE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Death From Above',
+                                    'description' => 'Kill a mob using the damage from the leaping sword ability',
+                                ),
+                            'DEEP_STORAGE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Deep Storage',
+                                    'description' => '[Coop or you] Unlock the level 3 Enderchest Upgrade',
+                                ),
+                            'NO_ENCHANTS_NEEDED' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'No Enchants Needed',
+                                    'description' => 'Drink a Burning Potion',
+                                ),
+                            'KING_OF_THE_SEA' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'King Of The Sea',
+                                    'description' => 'Wear the Guardian Chestplate',
+                                ),
+                            'KING_OF_THE_CHICKS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'King of the chickens',
+                                    'description' => 'Obtain the Feather Artifact',
+                                ),
+                            'MASS_PRODUCTION' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Mass Production',
+                                    'description' => '[Coop or you] Craft a level XI minion',
+                                ),
+                            'TRUE_ALCHEMIST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'True Alchemist',
+                                    'description' => 'Obtain the Potion Affinity Artifact',
+                                ),
+                            'HAPPY_NEW_YEAR' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Happy New Year',
+                                    'description' => 'Obtain a New Year\'s Cake from the Baker',
+                                ),
+                            'THIS_IS_FAIR' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'This is fair',
+                                    'description' => 'Kill a pig using the Pigman Sword',
+                                ),
+                            'GOTTAGOFAST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Gottagofast',
+                                    'description' => 'Wear the full Speedster Armor',
+                                ),
+                            'THE_FLINT_BROS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'The Flint Bros!',
+                                    'description' => 'Find both Pat and Rick',
+                                ),
+                            'SOUL_HUNTER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Soul Hunter',
+                                    'description' => 'Find 20 fairy souls',
+                                ),
+                            'MORE_SPACE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'More Space',
+                                    'description' => '[Coop or you] Expand a minion using the Minion Expander',
+                                ),
+                            'COMBINED_EFFORTS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Combined efforts',
+                                    'description' => 'Start a coop',
+                                ),
+                            'IT_NEVER_ENDS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'It Never Ends',
+                                    'description' => 'Kill a zombie using the zombie sword',
+                                ),
+                            'LEGENDARY_ROD' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Legendary Rod',
+                                    'description' => 'Fish using the Rod of Legends',
+                                ),
+                            'HIGHER_THAN_A_RABBIT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Higher Than a Rabbit',
+                                    'description' => 'Wear the Spider Boots',
+                                ),
+                            'NIGHT_EYES' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Night Eyes',
+                                    'description' => 'Obtain the Night Vision charm',
+                                ),
+                            'YOUR_BIG_BREAK' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Your Big break',
+                                    'description' => 'Survive an entire SkyBlock year without dying',
+                                ),
+                        ),
+                    'tiered' =>
+                        array(
+                            'GATHERER' =>
+                                array(
+                                    'name' => 'Gatherer',
+                                    'description' => 'Achieve foraging level %s',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 10,
+                                                    'amount' => 15,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 15,
+                                                    'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                            'ANGLER' =>
+                                array(
+                                    'name' => 'Angler',
+                                    'description' => 'Achieve fishing level %s',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 10,
+                                                    'amount' => 15,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 15,
+                                                    'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                            'EXCAVATOR' =>
+                                array(
+                                    'name' => 'Excavator',
+                                    'description' => 'Achieve mining level %s',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 10,
+                                                    'amount' => 15,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 15,
+                                                    'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                            'HARVESTER' =>
+                                array(
+                                    'name' => 'Harvester',
+                                    'description' => 'Achieve farming level %s',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 10,
+                                                    'amount' => 15,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 15,
+                                                    'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                            'TREASURY' =>
+                                array(
+                                    'name' => 'Treasury',
+                                    'description' => 'Unlock %s Collections',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 30,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 40,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 50,
+                                                ),
+                                        ),
+                                ),
+                            'CONCOCTOR' =>
+                                array(
+                                    'name' => 'Concoctor',
+                                    'description' => 'Achieve alchemy level %s',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 10,
+                                                    'amount' => 15,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 15,
+                                                    'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                            'COMBAT' =>
+                                array(
+                                    'name' => 'Combat!',
+                                    'description' => 'Achieve combat level %s',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 10,
+                                                    'amount' => 15,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 15,
+                                                    'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                            'MINION_LOVER' =>
+                                array(
+                                    'name' => 'Minion Lover',
+                                    'description' => '[Coop or you] Craft %s unique minions',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 25,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 100,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 250,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 500,
+                                                ),
+                                        ),
+                                ),
+                            'AUGMENTATION' =>
+                                array(
+                                    'name' => 'Augmentation',
+                                    'description' => 'Achieve enchanting level %s',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 5,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 5,
+                                                    'amount' => 10,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 10,
+                                                    'amount' => 15,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 10,
+                                                    'amount' => 20,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 15,
+                                                    'amount' => 25,
+                                                ),
+                                        ),
+                                ),
+                        ),
+                    'total_points' => 845,
+                    'total_legacy_points' => 0,
+                ),
             'skyclash' =>
                 array(
                     'one_time' =>
