@@ -62,7 +62,7 @@ class GameTypes {
     }
 
     /**
-     * @return array
+     * @return int[]
      */
     public static function values() {
         return [
