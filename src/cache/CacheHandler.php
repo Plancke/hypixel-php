@@ -17,6 +17,10 @@ use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockCollections;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockNews;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockSkills;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
 /**
@@ -31,11 +35,13 @@ abstract class CacheHandler extends Module {
     const MAX_CACHE_TIME_GET_NON_EXIST = CacheHandler::MAX_CACHE_TIME - 1;
 
     protected $cacheTimes = [
+        CacheTimes::RESOURCE => 3 * 60 * 60,
+
         CacheTimes::PLAYER => 10 * 60,
         CacheTimes::UUID => 6 * 60 * 60,
         CacheTimes::UUID_NOT_FOUND => 2 * 60 * 60,
 
-        CacheTimes::GUILD => 15 * 60,
+        CacheTimes::GUILD => 10 * 60,
         CacheTimes::GUILD_NOT_FOUND => 10 * 60,
 
         CacheTimes::LEADERBOARDS => 10 * 60,
@@ -45,7 +51,9 @@ abstract class CacheHandler extends Module {
         CacheTimes::KEY_INFO => 10 * 60,
         CacheTimes::FRIENDS => 10 * 60,
         CacheTimes::WATCHDOG => 10 * 60,
-        CacheTimes::GAME_COUNTS => 10 * 60
+        CacheTimes::GAME_COUNTS => 10 * 60,
+
+        CacheTimes::SKYBLOCK_PROFILE => 10 * 60
     ];
     protected $globalTime = 0;
 
@@ -143,6 +151,14 @@ abstract class CacheHandler extends Module {
             $this->setPlayerCount($hypixelObject);
         } elseif ($hypixelObject instanceof GameCounts) {
             $this->setGameCounts($hypixelObject);
+        } elseif ($hypixelObject instanceof SkyBlockNews) {
+            $this->setSkyBlockNews($hypixelObject);
+        } elseif ($hypixelObject instanceof SkyBlockSkills) {
+            $this->setSkyBlockSkills($hypixelObject);
+        } elseif ($hypixelObject instanceof SkyBlockCollections) {
+            $this->setSkyBlockCollections($hypixelObject);
+        } elseif ($hypixelObject instanceof SkyBlockProfile) {
+            $this->setSkyBlockProfile($hypixelObject);
         } else {
             throw new HypixelPHPException("Invalid HypixelObject", ExceptionCodes::INVALID_HYPIXEL_OBJECT);
         }
@@ -301,4 +317,49 @@ abstract class CacheHandler extends Module {
      * @return void
      */
     public abstract function setGameCounts(GameCounts $gameCounts);
+
+    /**
+     * @return SkyBlockNews|null
+     */
+    public abstract function getSkyBlockNews();
+
+    /**
+     * @param SkyBlockNews $skyBlockNews
+     * @return void
+     */
+    public abstract function setSkyBlockNews(SkyBlockNews $skyBlockNews);
+
+    /**
+     * @return SkyBlockSkills|null
+     */
+    public abstract function getSkyBlockSkills();
+
+    /**
+     * @param SkyBlockSkills $skyBlockSkills
+     * @return void
+     */
+    public abstract function setSkyBlockSkills(SkyBlockSkills $skyBlockSkills);
+
+    /**
+     * @return SkyBlockCollections|null
+     */
+    public abstract function getSkyBlockCollections();
+
+    /**
+     * @param SkyBlockCollections $skyBlockCollections
+     * @return void
+     */
+    public abstract function setSkyBlockCollections(SkyBlockCollections $skyBlockCollections);
+
+    /**
+     * @param $profile_id
+     * @return SkyBlockProfile|null
+     */
+    public abstract function getSkyBlockProfile($profile_id);
+
+    /**
+     * @param SkyBlockProfile $profile
+     * @return void
+     */
+    public abstract function setSkyBlockProfile(SkyBlockProfile $profile);
 }

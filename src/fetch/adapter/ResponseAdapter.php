@@ -45,6 +45,15 @@ class ResponseAdapter extends Module {
             case FetchTypes::FIND_GUILD:
                 return $response;
 
+            case FetchTypes::SKYBLOCK_NEWS:
+                return $this->remapField('items', $response);
+            case FetchTypes::SKYBLOCK_SKILLS:
+                return $this->remapField('skills', $response);
+            case FetchTypes::SKYBLOCK_COLLECTIONS:
+                return $this->remapField('collections', $response);
+            case FetchTypes::SKYBLOCK_PROFILE:
+                return $this->remapField('profile', $response);
+
             default:
                 throw new HypixelPHPException("Invalid Adapter Key: " . $fetch, ExceptionCodes::INVALID_ADAPTER_KEY);
         }

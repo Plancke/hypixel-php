@@ -34,6 +34,8 @@ class GameTypes {
     const MURDER_MYSTERY = 59;
     const BUILD_BATTLE = 60;
     const DUELS = 61;
+    const SKYBLOCK = 63;
+    const PIT = 64;
 
     /**
      * @param $db
@@ -91,6 +93,8 @@ class GameTypes {
             self::MURDER_MYSTERY,
             self::BUILD_BATTLE,
             self::DUELS,
+            self::SKYBLOCK,
+            self::PIT,
         ];
     }
 
@@ -150,7 +154,11 @@ class GameTypes {
             case GameTypes::BUILD_BATTLE:
                 return new GameType('BUILD_BATTLE', 'BuildBattle', 'Build Battle', 'Build Battle', GameTypes::BUILD_BATTLE, false);
             case GameTypes::DUELS:
-                return new GameType('DUELS', 'Duels', 'Duels', 'Duels', GameTypes::MURDER_MYSTERY, false);
+                return new GameType('DUELS', 'Duels', 'Duels', 'Duels', GameTypes::DUELS, false);
+            case GameTypes::SKYBLOCK:
+                return new GameType('SKYBLOCK', 'SkyBlock', 'SkyBlock', 'SkyBlock', GameTypes::SKYBLOCK, false);
+            case GameTypes::PIT:
+                return new GameType('PIT', 'Pit', 'Pit', 'Pit', GameTypes::PIT, false);
             default:
                 return null;
         }

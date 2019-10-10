@@ -25,4 +25,9 @@ abstract class CacheTypes {
     const PLAYER_COUNT = 'playerCount';
     const GAME_COUNTS = 'gameCounts';
 
+    const SKYBLOCK_NEWS = 'skyblock_news';
+    const SKYBLOCK_SKILLS = 'skyblock_skills';
+    const SKYBLOCK_COLLECTIONS = 'skyblock_collections';
+    const SKYBLOCK_PROFILES = 'skyblock_profiles';
+
 }

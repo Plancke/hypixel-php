@@ -30,6 +30,8 @@ use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockCollections;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockNews;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\InputType;
 use Plancke\HypixelPHP\util\Utilities;
@@ -700,6 +702,63 @@ class HypixelPHP {
                 return $this->getFetcher()->fetch(FetchTypes::GAME_COUNTS);
             },
             $this->getProvider()->getGameCounts()
+        );
+    }
+
+    /**
+     * @return SkyBlockNews|Response|null
+     * @throws HypixelPHPException
+     */
+    public function getSkyBlockNews() {
+        return $this->handle(
+            $this->getCacheHandler()->getSkyBlockNews(),
+            function () {
+                return $this->getFetcher()->fetch(FetchTypes::SKYBLOCK_NEWS);
+            },
+            $this->getProvider()->getSkyBlockNews()
+        );
+    }
+
+    /**
+     * @return SkyBlockCollections|Response|null
+     * @throws HypixelPHPException
+     */
+    public function getSkyBlockSkills() {
+        return $this->handle(
+            $this->getCacheHandler()->getSkyBlockSkills(),
+            function () {
+                return $this->getFetcher()->fetch(FetchTypes::SKYBLOCK_SKILLS);
+            },
+            $this->getProvider()->getSkyBlockSkills()
+        );
+    }
+
+    /**
+     * @return SkyBlockCollections|Response|null
+     * @throws HypixelPHPException
+     */
+    public function getSkyBlockCollections() {
+        return $this->handle(
+            $this->getCacheHandler()->getSkyBlockCollections(),
+            function () {
+                return $this->getFetcher()->fetch(FetchTypes::SKYBLOCK_COLLECTIONS);
+            },
+            $this->getProvider()->getSkyBlockCollections()
+        );
+    }
+
+    /**
+     * @param $profile_id
+     * @return SkyBlockCollections|Response|null
+     * @throws HypixelPHPException
+     */
+    public function getSkyBlockProfile($profile_id) {
+        return $this->handle(
+            $this->getCacheHandler()->getSkyBlockProfile($profile_id),
+            function () use ($profile_id) {
+                return $this->getFetcher()->fetch(FetchTypes::SKYBLOCK_PROFILE, ['profile' => $profile_id]);
+            },
+            $this->getProvider()->getSkyBlockProfile()
         );
     }
 }

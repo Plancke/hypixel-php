@@ -15,6 +15,10 @@ use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockCollections;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockNews;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockSkills;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\CacheUtil;
 
@@ -354,4 +358,80 @@ class FlatFileCacheHandler extends CacheHandler {
         $this->_setCache(CacheTypes::GAME_COUNTS, $gameCounts);
     }
 
+    /**
+     * @return SkyBlockNews|null
+     */
+    public function getSkyBlockNews() {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getSkyBlockNews(),
+            $this->_getCache(CacheTypes::SKYBLOCK_NEWS)
+        );
+    }
+
+    /**
+     * @param SkyBlockNews $skyBlockNews
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setSkyBlockNews(SkyBlockNews $skyBlockNews) {
+        $this->_setCache(CacheTypes::SKYBLOCK_NEWS, $skyBlockNews);
+    }
+
+    /**
+     * @return SkyBlockSkills|null
+     */
+    public function getSkyBlockSkills() {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getSkyBlockSkills(),
+            $this->_getCache(CacheTypes::SKYBLOCK_SKILLS)
+        );
+    }
+
+    /**
+     * @param SkyBlockSkills $skyBlockSkills
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setSkyBlockSkills(SkyBlockSkills $skyBlockSkills) {
+        $this->_setCache(CacheTypes::SKYBLOCK_NEWS, $skyBlockSkills);
+    }
+
+    /**
+     * @return SkyBlockCollections|null
+     */
+    public function getSkyBlockCollections() {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getSkyBlockCollections(),
+            $this->_getCache(CacheTypes::SKYBLOCK_COLLECTIONS)
+        );
+    }
+
+    /**
+     * @param SkyBlockCollections $skyBlockCollections
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setSkyBlockCollections(SkyBlockCollections $skyBlockCollections) {
+        $this->_setCache(CacheTypes::SKYBLOCK_NEWS, $skyBlockCollections);
+    }
+
+    /**
+     * @param $profile_id
+     * @return SkyBlockProfile|null
+     */
+    public function getSkyBlockProfile($profile_id) {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getSkyBlockProfile(),
+            $this->_getCache(CacheTypes::SKYBLOCK_PROFILES . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($profile_id))
+        );
+    }
+
+    /**
+     * @param SkyBlockProfile $profile
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setSkyBlockProfile(SkyBlockProfile $profile) {
+        $this->_setCache(CacheTypes::SKYBLOCK_PROFILES . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($profile->getProfileId()), $profile);
+    }
 }

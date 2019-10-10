@@ -19,6 +19,10 @@ use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockCollections;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockNews;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
+use Plancke\HypixelPHP\responses\skyblock\SkyBlockSkills;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\CacheUtil;
 
@@ -41,6 +45,8 @@ class MongoCacheHandler extends CacheHandler {
     const UPDATE_OPTIONS = [
         'upsert' => true
     ];
+
+    // TODO Re-evaluate SingleSave
     const SINGLE_SAVE = 'single_save';
 
     protected $mongoClient;
@@ -75,6 +81,8 @@ class MongoCacheHandler extends CacheHandler {
 
         $db->selectCollection(CacheTypes::SESSIONS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
+        $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['key' => 1], ['background' => true]);
+
         $db->selectCollection(MongoCacheHandler::SINGLE_SAVE)->createIndex(['key' => 1], ['background' => true]);
 
         return $this;
@@ -96,8 +104,7 @@ class MongoCacheHandler extends CacheHandler {
      * @return HypixelObject|null
      */
     function getSingleSave($key, $constructor) {
-        $query = ['key' => $key];
-        return $this->wrapProvider($constructor, $this->selectDB()->selectCollection(MongoCacheHandler::SINGLE_SAVE)->findOne($query, self::FIND_OPTIONS));
+        return $this->wrapProvider($constructor, $this->selectDB()->selectCollection(self::SINGLE_SAVE)->findOne(['key' => $key], self::FIND_OPTIONS));
     }
 
     /**
@@ -106,12 +113,12 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     function setSingleSave($key, HypixelObject $hypixelObject) {
-        $query = ['key' => $key];
-
         $raw = $hypixelObject->getRaw();
         $raw['key'] = $key;
 
-        $this->selectDB()->selectCollection(MongoCacheHandler::SINGLE_SAVE)->replaceOne($query, $this->objToArray($raw), self::UPDATE_OPTIONS);
+        $this->selectDB()->selectCollection(self::SINGLE_SAVE)->replaceOne(
+            ['key' => $key], $this->objToArray($raw), self::UPDATE_OPTIONS
+        );
     }
 
     /**
@@ -121,7 +128,9 @@ class MongoCacheHandler extends CacheHandler {
     public function getPlayer($uuid) {
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getPlayer(),
-            $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne(['record.uuid' => (string)$uuid], MongoCacheHandler::FIND_OPTIONS)
+            $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne(
+                ['record.uuid' => (string)$uuid], self::FIND_OPTIONS
+            )
         );
     }
 
@@ -130,7 +139,9 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     public function setPlayer(Player $player) {
-        $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->replaceOne(['record.uuid' => (string)$player->getUUID()], $this->objToArray($player), self::UPDATE_OPTIONS);
+        $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->replaceOne(
+            ['record.uuid' => (string)$player->getUUID()], $this->objToArray($player), self::UPDATE_OPTIONS
+        );
     }
 
     /**
@@ -141,8 +152,9 @@ class MongoCacheHandler extends CacheHandler {
         $username = strtolower($username);
 
         // check if player_uuid collection has record
-        $query = ['name_lowercase' => $username];
-        $data = $this->selectDB()->selectCollection(CacheTypes::PLAYER_UUID)->findOne($query, self::FIND_OPTIONS);
+        $data = $this->selectDB()->selectCollection(CacheTypes::PLAYER_UUID)->findOne(
+            ['name_lowercase' => $username], self::FIND_OPTIONS
+        );
         if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::UUID);
@@ -160,8 +172,9 @@ class MongoCacheHandler extends CacheHandler {
         }
 
         // check if player database has a player for it
-        $query = ['record.playername' => $username];
-        $data = $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne($query, self::FIND_OPTIONS);
+        $data = $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne(
+            ['record.playername' => $username], self::FIND_OPTIONS
+        );
         if ($data != null) {
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
             $diff = time() - $this->getCacheTime(CacheTimes::UUID) - $timestamp;
@@ -176,8 +189,9 @@ class MongoCacheHandler extends CacheHandler {
         } else {
             // check if player database has a old player match for it,
             // only done if there is no direct match, regardless of timestamp on direct match
-            $query = ['record.knownAliasesLower' => $username];
-            $data = $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne($query, self::FIND_OPTIONS);
+            $data = $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne(
+                ['record.knownAliasesLower' => $username], self::FIND_OPTIONS
+            );
             if ($data != null) {
                 $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
                 $diff = time() - $this->getCacheTime(CacheTimes::UUID) - $timestamp;
@@ -204,7 +218,6 @@ class MongoCacheHandler extends CacheHandler {
         $query = ['name_lowercase' => strtolower($username)];
         if ($obj['uuid'] == '' || $obj['uuid'] == null) {
             // still not found, just update time so we don't keep fetching
-            //  $this->selectDB()->selectCollection(CollectionNames::PLAYER_UUID, $query, ['$set' => [['timestamp' => time()]]]);
             $this->selectDB()->selectCollection(CacheTypes::PLAYER_UUID)->updateOne($query, ['$set' => ['timestamp' => time()]]);
         } else {
             $this->selectDB()->selectCollection(CacheTypes::PLAYER_UUID)->replaceOne($query, $this->objToArray($obj), self::UPDATE_OPTIONS);
@@ -218,7 +231,9 @@ class MongoCacheHandler extends CacheHandler {
     public function getGuild($id) {
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getGuild(),
-            $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(['record._id' => (string)$id], self::FIND_OPTIONS)
+            $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
+                ['record._id' => (string)$id], self::FIND_OPTIONS
+            )
         );
     }
 
@@ -227,7 +242,9 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     public function setGuild(Guild $guild) {
-        $this->selectDB()->selectCollection(CacheTypes::GUILDS)->replaceOne(['record._id' => (string)$guild->getID()], $this->objToArray($guild), self::UPDATE_OPTIONS);
+        $this->selectDB()->selectCollection(CacheTypes::GUILDS)->replaceOne(
+            ['record._id' => (string)$guild->getID()], $this->objToArray($guild), self::UPDATE_OPTIONS
+        );
     }
 
     /**
@@ -237,7 +254,9 @@ class MongoCacheHandler extends CacheHandler {
     function getGuildIDForUUID($uuid) {
         // TODO Do we really need this collection?
         //  Could just check members object inside the documents?
-        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS_UUID)->findOne(['uuid' => (string)$uuid], self::FIND_OPTIONS);
+        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS_UUID)->findOne(
+            ['uuid' => (string)$uuid], self::FIND_OPTIONS
+        );
         if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
@@ -257,8 +276,9 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     function setGuildIDForUUID($uuid, $obj) {
-        $query = ['uuid' => (string)$uuid];
-        $this->selectDB()->selectCollection(CacheTypes::GUILDS_UUID)->replaceOne($query, $this->objToArray($obj), self::UPDATE_OPTIONS);
+        $this->selectDB()->selectCollection(CacheTypes::GUILDS_UUID)->replaceOne(
+            ['uuid' => (string)$uuid], $this->objToArray($obj), self::UPDATE_OPTIONS
+        );
     }
 
     /**
@@ -266,8 +286,9 @@ class MongoCacheHandler extends CacheHandler {
      * @return string|null
      */
     function getGuildIDForName($name) {
-        $query = ['record.name_lower' => strtolower((string)$name)];
-        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne($query, self::FIND_OPTIONS);
+        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
+            ['record.name_lower' => strtolower((string)$name)], self::FIND_OPTIONS
+        );
         if ($data != null) {
             $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
@@ -278,8 +299,9 @@ class MongoCacheHandler extends CacheHandler {
             }
         }
 
-        $query = ['name_lower' => strtolower((string)$name)];
-        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->findOne($query, self::FIND_OPTIONS);
+        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->findOne(
+            ['name_lower' => strtolower((string)$name)], self::FIND_OPTIONS
+        );
         if ($data != null) {
             if (isset($data['name_lower']) && $data['name_lower'] != null && $data['name_lower'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
@@ -299,8 +321,9 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     function setGuildIDForName($name, $obj) {
-        $query = ['name_lower' => strtolower((string)$name)];
-        $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->replaceOne($query, $this->objToArray($obj), self::UPDATE_OPTIONS);
+        $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->replaceOne(
+            ['name_lower' => strtolower((string)$name)], $this->objToArray($obj), self::UPDATE_OPTIONS
+        );
     }
 
     /**
@@ -308,10 +331,11 @@ class MongoCacheHandler extends CacheHandler {
      * @return Friends|null
      */
     public function getFriends($uuid) {
-        $query = ['record.uuid' => (string)$uuid];
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getFriends(),
-            $this->selectDB()->selectCollection(CacheTypes::FRIENDS)->findOne($query, self::FIND_OPTIONS)
+            $this->selectDB()->selectCollection(CacheTypes::FRIENDS)->findOne(
+                ['record.uuid' => (string)$uuid], self::FIND_OPTIONS
+            )
         );
     }
 
@@ -320,8 +344,9 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     public function setFriends(Friends $friends) {
-        $query = ['record.uuid' => (string)$friends->getUUID()];
-        $this->selectDB()->selectCollection(CacheTypes::FRIENDS)->replaceOne($query, $this->objToArray($friends), self::UPDATE_OPTIONS);
+        $this->selectDB()->selectCollection(CacheTypes::FRIENDS)->replaceOne(
+            ['record.uuid' => (string)$friends->getUUID()], $this->objToArray($friends), self::UPDATE_OPTIONS
+        );
     }
 
     /**
@@ -329,10 +354,11 @@ class MongoCacheHandler extends CacheHandler {
      * @return Session|null
      */
     public function getSession($uuid) {
-        $query = ['record.uuid' => (string)$uuid];
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getSession(),
-            $this->selectDB()->selectCollection(CacheTypes::SESSIONS)->findOne($query, self::FIND_OPTIONS)
+            $this->selectDB()->selectCollection(CacheTypes::SESSIONS)->findOne(
+                ['record.uuid' => (string)$uuid], self::FIND_OPTIONS
+            )
         );
     }
 
@@ -341,8 +367,9 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     public function setSession(Session $session) {
-        $query = ['record.uuid' => (string)$session->getUUID()];
-        $this->selectDB()->selectCollection(CacheTypes::SESSIONS)->replaceOne($query, $this->objToArray($session), self::UPDATE_OPTIONS);
+        $this->selectDB()->selectCollection(CacheTypes::SESSIONS)->replaceOne(
+            ['record.uuid' => (string)$session->getUUID()], $this->objToArray($session), self::UPDATE_OPTIONS
+        );
     }
 
     /**
@@ -350,10 +377,11 @@ class MongoCacheHandler extends CacheHandler {
      * @return KeyInfo|null
      */
     public function getKeyInfo($key) {
-        $query = ['record.key' => (string)$key];
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getKeyInfo(),
-            $this->selectDB()->selectCollection(CacheTypes::API_KEYS)->findOne($query, self::FIND_OPTIONS)
+            $this->selectDB()->selectCollection(CacheTypes::API_KEYS)->findOne(
+                ['record.key' => (string)$key], self::FIND_OPTIONS
+            )
         );
     }
 
@@ -362,8 +390,9 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     public function setKeyInfo(KeyInfo $keyInfo) {
-        $query = ['record.key' => (string)$keyInfo->getKey()];
-        $this->selectDB()->selectCollection(CacheTypes::API_KEYS)->replaceOne($query, $this->objToArray($keyInfo), self::UPDATE_OPTIONS);
+        $this->selectDB()->selectCollection(CacheTypes::API_KEYS)->replaceOne(
+            ['record.key' => (string)$keyInfo->getKey()], $this->objToArray($keyInfo), self::UPDATE_OPTIONS
+        );
     }
 
 
@@ -447,5 +476,80 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function setGameCounts(GameCounts $gameCounts) {
         $this->setSingleSave(CacheTypes::GAME_COUNTS, $gameCounts);
+    }
+
+    /**
+     * @return SkyBlockNews|null
+     */
+    public function getSkyBlockNews() {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return $this->getSingleSave(CacheTypes::SKYBLOCK_NEWS, $this->getHypixelPHP()->getProvider()->getSkyBlockNews());
+    }
+
+    /**
+     * @param SkyBlockNews $skyBlockNews
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setSkyBlockNews(SkyBlockNews $skyBlockNews) {
+        $this->setSingleSave(CacheTypes::SKYBLOCK_NEWS, $skyBlockNews);
+    }
+
+    /**
+     * @return SkyBlockSkills|null
+     */
+    public function getSkyBlockSkills() {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return $this->getSingleSave(CacheTypes::SKYBLOCK_SKILLS, $this->getHypixelPHP()->getProvider()->getSkyBlockSkills());
+    }
+
+    /**
+     * @param SkyBlockSkills $skyBlockSkills
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setSkyBlockSkills(SkyBlockSkills $skyBlockSkills) {
+        $this->setSingleSave(CacheTypes::SKYBLOCK_SKILLS, $skyBlockSkills);
+    }
+
+    /**
+     * @return SkyBlockCollections|null
+     */
+    public function getSkyBlockCollections() {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return $this->getSingleSave(CacheTypes::SKYBLOCK_COLLECTIONS, $this->getHypixelPHP()->getProvider()->getSkyBlockCollections());
+    }
+
+    /**
+     * @param SkyBlockCollections $skyBlockCollections
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setSkyBlockCollections(SkyBlockCollections $skyBlockCollections) {
+        $this->setSingleSave(CacheTypes::SKYBLOCK_COLLECTIONS, $skyBlockCollections);
+    }
+
+    /**
+     * @param $profile_id
+     * @return SkyBlockProfile|null
+     */
+    public function getSkyBlockProfile($profile_id) {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getSkyBlockProfile(),
+            $this->selectDB()->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->findOne(
+                ['record.profile_id' => (string)$profile_id], self::FIND_OPTIONS
+            )
+        );
+    }
+
+    /**
+     * @param SkyBlockProfile $profile
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function setSkyBlockProfile(SkyBlockProfile $profile) {
+        $this->selectDB()->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->replaceOne(
+            ['record.profile_id' => (string)$profile->getProfileId()], $this->objToArray($profile), self::UPDATE_OPTIONS
+        );
     }
 }
