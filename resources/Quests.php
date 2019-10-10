@@ -37,6 +37,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 3 games of Quakecraft',
                         ),
                     1 =>
                         array(
@@ -71,6 +72,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 50 players in Quakecraft',
                         ),
                     2 =>
                         array(
@@ -105,6 +107,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 1 game of Quakecraft',
                         ),
                     3 =>
                         array(
@@ -145,6 +148,8 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 20 games of Quakecraft
+Get 10 Killstreaks',
                         ),
                 ),
             'walls' =>
@@ -182,6 +187,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play a game of Walls',
                         ),
                     1 =>
                         array(
@@ -216,6 +222,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill a total of 5 players',
                         ),
                     2 =>
                         array(
@@ -250,6 +257,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Walls',
                         ),
                     3 =>
                         array(
@@ -290,6 +298,8 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 7 games of Walls
+Kill a total of 25 players',
                         ),
                 ),
             'paintball' =>
@@ -327,6 +337,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Paintball',
                         ),
                     1 =>
                         array(
@@ -361,6 +372,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 100 players in Paintball',
                         ),
                     2 =>
                         array(
@@ -401,6 +413,8 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 750 players in Paintball
+Play 30 games of Paintball',
                         ),
                 ),
             'hungergames' =>
@@ -437,6 +451,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play a game of Blitz',
                         ),
                     1 =>
                         array(
@@ -470,6 +485,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Blitz Normal',
                         ),
                     2 =>
                         array(
@@ -504,6 +520,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Loot 25 Chests',
                         ),
                     3 =>
                         array(
@@ -538,6 +555,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 5 players in Blitz',
                         ),
                     4 =>
                         array(
@@ -584,6 +602,9 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 15 games of Blitz
+Win 5 games of Blitz
+Kill 30 players in Blitz',
                         ),
                     5 =>
                         array(
@@ -624,6 +645,8 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Loot 100 Chests
+Deal 250 Damage to Players',
                         ),
                 ),
             'tntgames' =>
@@ -661,6 +684,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of TNT Games',
                         ),
                     1 =>
                         array(
@@ -695,6 +719,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 20 games of TNT Games',
                         ),
                     2 =>
                         array(
@@ -729,6 +754,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Walk over 500 blocks',
                         ),
                     3 =>
                         array(
@@ -763,6 +789,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Walk over 2,000 blocks',
                         ),
                     4 =>
                         array(
@@ -797,6 +824,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 3 players in PVP Run',
                         ),
                     5 =>
                         array(
@@ -831,6 +859,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Get 25 kills in PVP Run',
                         ),
                     6 =>
                         array(
@@ -865,6 +894,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Survive longer than a total of 40 players',
                         ),
                     7 =>
                         array(
@@ -899,6 +929,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Survive longer than a total of 200 players',
                         ),
                     8 =>
                         array(
@@ -933,6 +964,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Survive 7 rounds in total',
                         ),
                     9 =>
                         array(
@@ -967,6 +999,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Survive 50 rounds in total',
                         ),
                     10 =>
                         array(
@@ -1001,6 +1034,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Get 10 kills in TNT Wizards',
                         ),
                     11 =>
                         array(
@@ -1035,6 +1069,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 150 players in TNT Wizards',
                         ),
                 ),
             'vampirez' =>
@@ -1072,6 +1107,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play a game of VampireZ',
                         ),
                     1 =>
                         array(
@@ -1112,6 +1148,8 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 10 vampires in VampireZ
+Kill 20 zombies in VampireZ',
                         ),
                     2 =>
                         array(
@@ -1146,6 +1184,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 10 Survivors in VampireZ',
                         ),
                     3 =>
                         array(
@@ -1180,6 +1219,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'As a Survivor Win a game of VampireZ',
                         ),
                     4 =>
                         array(
@@ -1214,6 +1254,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 12 games as a Human',
                         ),
                     5 =>
                         array(
@@ -1254,6 +1295,8 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 130 Zombies
+Kill 25 Vampires',
                         ),
                     6 =>
                         array(
@@ -1288,6 +1331,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 100 Survivors',
                         ),
                 ),
             'walls3' =>
@@ -1325,6 +1369,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play a game of Mega Walls',
                         ),
                     1 =>
                         array(
@@ -1359,6 +1404,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Mega Walls with at least 1 kill',
                         ),
                     2 =>
                         array(
@@ -1393,6 +1439,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 15 players in Mega Walls',
                         ),
                     3 =>
                         array(
@@ -1433,6 +1480,8 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 15 games of Mega Walls
+Kill 25 players in Mega Walls',
                         ),
                     4 =>
                         array(
@@ -1473,6 +1522,8 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 3 games of standard Mega Walls
+Win a game of standard Mega Walls',
                         ),
                 ),
             'arcade' =>
@@ -1510,6 +1561,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 3 Arcade Games',
                         ),
                     1 =>
                         array(
@@ -1544,6 +1596,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Arcade',
                         ),
                     2 =>
                         array(
@@ -1578,6 +1631,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 20 Arcade games',
                         ),
                 ),
             'arena' =>
@@ -1620,6 +1674,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 5 games',
                         ),
                     1 =>
                         array(
@@ -1659,6 +1714,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 5 players',
                         ),
                     2 =>
                         array(
@@ -1698,6 +1754,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 2 games',
                         ),
                     3 =>
                         array(
@@ -1737,6 +1794,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 35 games',
                         ),
                 ),
             'uhc' =>
@@ -1774,6 +1832,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 1 player in Team UHC Champions',
                         ),
                     1 =>
                         array(
@@ -1808,6 +1867,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 1 player in Solo UHC Champions',
                         ),
                     2 =>
                         array(
@@ -1842,6 +1902,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 2 players during a UHC Champions Deathmatch',
                         ),
                     3 =>
                         array(
@@ -1876,6 +1937,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 20 players in UHC Champions',
                         ),
                     4 =>
                         array(
@@ -1909,6 +1971,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Solo Speed UHC',
                         ),
                     5 =>
                         array(
@@ -1942,6 +2005,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Team Speed UHC',
                         ),
                     6 =>
                         array(
@@ -1976,6 +2040,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 100 players in Speed UHC',
                         ),
                 ),
             'mcgo' =>
@@ -2013,6 +2078,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Defusal Cops and Crims',
                         ),
                     1 =>
                         array(
@@ -2047,6 +2113,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Get 15 kills in Defusal Mode',
                         ),
                     2 =>
                         array(
@@ -2081,6 +2148,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Get 300 points in Team Deathmatch',
                         ),
                     3 =>
                         array(
@@ -2115,6 +2183,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Deathmatch',
                         ),
                     4 =>
                         array(
@@ -2155,6 +2224,8 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 100 players in Defusal
+Get 1,500 points in Deathmatch',
                         ),
                 ),
             'battleground' =>
@@ -2196,6 +2267,8 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Complete 1 match with at least 10 kills
+or assists in Capture the Flag.',
                         ),
                     1 =>
                         array(
@@ -2234,6 +2307,8 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Complete 1 match with at least 10 kills
+or assists in Team Deathmatch.',
                         ),
                     2 =>
                         array(
@@ -2272,6 +2347,8 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Complete 1 match with at least 15 kills
+or assists in Domination.',
                         ),
                     3 =>
                         array(
@@ -2310,6 +2387,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 1 match of Warlords.',
                         ),
                     4 =>
                         array(
@@ -2349,6 +2427,11 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => '30 points for kills/assists on the enemy flag carrier
+15 points for kills/assists near allied flag carrier
+100 points for capturing a flag
+30 points for capturing a domination point
+5 points for TDM kills/assists',
                         ),
                     5 =>
                         array(
@@ -2398,6 +2481,9 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Complete 30 matches with at
+least 10 kills or assists
+in any game mode. ',
                         ),
                     6 =>
                         array(
@@ -2453,6 +2539,8 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Deal 1,500,000 total damage
+Heal 1,500,000 total health',
                         ),
                 ),
             'supersmash' =>
@@ -2490,6 +2578,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game in Solo Mode',
                         ),
                     1 =>
                         array(
@@ -2524,6 +2613,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 15 enemy heroes in Solo Mode',
                         ),
                     2 =>
                         array(
@@ -2558,6 +2648,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game in Team Mode',
                         ),
                     3 =>
                         array(
@@ -2592,6 +2683,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 15 enemy heroes in Team Mode',
                         ),
                     4 =>
                         array(
@@ -2626,6 +2718,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill a total of 150 enemy heroes in any mode',
                         ),
                 ),
             'gingerbread' =>
@@ -2663,6 +2756,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Grab 50 coin pickups',
                         ),
                     1 =>
                         array(
@@ -2697,6 +2791,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Complete 5 races',
                         ),
                     2 =>
                         array(
@@ -2731,6 +2826,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Complete 5 laps',
                         ),
                     3 =>
                         array(
@@ -2765,6 +2861,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Complete 35 races',
                         ),
                 ),
             'skywars' =>
@@ -2807,6 +2904,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game in Solo Mode',
                         ),
                     1 =>
                         array(
@@ -2846,6 +2944,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 15 players in Solo Mode',
                         ),
                     2 =>
                         array(
@@ -2885,6 +2984,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game in Doubles Mode',
                         ),
                     3 =>
                         array(
@@ -2924,6 +3024,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 15 players in Doubles Mode',
                         ),
                     4 =>
                         array(
@@ -2963,6 +3064,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game in the Skywars Laboratory',
                         ),
                     5 =>
                         array(
@@ -3002,6 +3104,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a corrupted game',
                         ),
                     6 =>
                         array(
@@ -3041,6 +3144,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill a total of 150 players in any mode',
                         ),
                     7 =>
                         array(
@@ -3080,6 +3184,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 10 games in any lab mode',
                         ),
                     8 =>
                         array(
@@ -3109,6 +3214,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 10 players in Solo or Team Mode',
                         ),
                     9 =>
                         array(
@@ -3143,6 +3249,66 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 3 games in Solo or Team Mode',
+                        ),
+                    10 =>
+                        array(
+                            'id' => 'skywars_halloween_harvest_2019',
+                            'name' => 'Special Quest: Harvest Season',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'SkyWarsTokenReward',
+                                            'amount' => 80000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 20000,
+                                        ),
+                                    3 =>
+                                        array(
+                                            'type' => 'PackageReward',
+                                            'package' => 'cage_house',
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'skywars_halloween_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 333,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'skywars_halloween_corrupted_wins',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'id' => 'skywars_halloween_mega_wins',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 3,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'OneTimeQuestRequirement',
+                                        ),
+                                ),
+                            'description' => 'Collect %%aqua%%333 souls %%gray%%from kills and wins in insane Skywars
+Win 3 %%dark_purple%%spooky %%gray%%games
+Win 3 Mega Doubles games',
                         ),
                 ),
             'truecombat' =>
@@ -3185,6 +3351,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 2 games of Crazy Walls with at least 1 kill',
                         ),
                     1 =>
                         array(
@@ -3224,6 +3391,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill a total of 10 players',
                         ),
                     2 =>
                         array(
@@ -3263,6 +3431,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Crazy Walls',
                         ),
                     3 =>
                         array(
@@ -3302,6 +3471,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 30 games of Crazy Walls',
                         ),
                 ),
             'speeduhc' =>
@@ -3346,6 +3516,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 5 games of SkyClash',
                         ),
                     1 =>
                         array(
@@ -3380,6 +3551,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 15 players in SkyClash',
                         ),
                     2 =>
                         array(
@@ -3419,6 +3591,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Obtain 24 Play Points in SkyClash',
                         ),
                     3 =>
                         array(
@@ -3459,6 +3632,8 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 5 players in the Void
+Open 3 Enderchests',
                         ),
                     4 =>
                         array(
@@ -3498,6 +3673,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 150 players in any SkyClash mode',
                         ),
                 ),
             'prototype' =>
@@ -3535,6 +3711,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 25 Players',
                         ),
                     1 =>
                         array(
@@ -3569,6 +3746,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Complete a Contract',
                         ),
                     2 =>
                         array(
@@ -3603,6 +3781,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Collect 10,000 Gold',
                         ),
                 ),
             'bedwars' =>
@@ -3640,6 +3819,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Bed Wars',
                         ),
                     1 =>
                         array(
@@ -3674,6 +3854,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 2 games of Bed Wars',
                         ),
                     2 =>
                         array(
@@ -3713,6 +3894,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Break 25 Beds in Bed Wars',
                         ),
                     3 =>
                         array(
@@ -3752,6 +3934,94 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 10 dream games in Bed Wars',
+                        ),
+                    4 =>
+                        array(
+                            'id' => 'bedwars_daily_nightmares',
+                            'name' => 'Special Daily: Nightmares',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 2000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'BedwarsExpReward',
+                                            'amount' => 1000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'bedwars_daily_nightmare_beds',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 4,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'id' => 'bedwars_daily_nightmare_wins',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                            'description' => 'Break 4 beds in Bed Wars
+Win 2 games of Bed Wars',
+                        ),
+                    5 =>
+                        array(
+                            'id' => 'bedwars_weekly_pumpkinator',
+                            'name' => 'Special Weekly: Pumpkinator',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 666,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'BedwarsExpReward',
+                                            'amount' => 6666,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'bedwars_special_weekly_pumpkinator',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 99,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'WeeklyResetQuestRequirement',
+                                        ),
+                                ),
+                            'description' => 'Bring 99 pumpkins back to any Shopkeeper. Pumpkins will drop from kills, final kills and bed breaks during Halloween',
                         ),
                 ),
             'murdermystery' =>
@@ -3789,6 +4059,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game in any mode',
                         ),
                     1 =>
                         array(
@@ -3823,6 +4094,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill the murderer or win as murderer in Classic mode',
                         ),
                     2 =>
                         array(
@@ -3857,6 +4129,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 2 targets in Assassins mode',
                         ),
                     3 =>
                         array(
@@ -3896,6 +4169,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 25 players as murderer in Classic mode',
                         ),
                     4 =>
                         array(
@@ -3935,6 +4209,47 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 15 games in any mode',
+                        ),
+                    5 =>
+                        array(
+                            'id' => 'mm_special_weekly_killer_instinct_2019',
+                            'name' => 'Special Quest: Killer Instinct',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'GameLootChestReward',
+                                            'amount' => 1,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 12000,
+                                        ),
+                                    2 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 7500,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'mm_target_kills',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 66,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'OneTimeQuestRequirement',
+                                        ),
+                                ),
+                            'description' => 'Kill 66 targets in Assassins mode',
                         ),
                 ),
             'buildbattle' =>
@@ -3972,6 +4287,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 3 games of Build Battle',
                         ),
                     1 =>
                         array(
@@ -4006,6 +4322,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Build Battle',
                         ),
                     2 =>
                         array(
@@ -4040,6 +4357,42 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 30 games of Build Battle',
+                        ),
+                    3 =>
+                        array(
+                            'id' => 'build_battle_halloween',
+                            'name' => 'Special Daily: Hyper',
+                            'rewards' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'MultipliedExperienceReward',
+                                            'amount' => 3000,
+                                        ),
+                                    1 =>
+                                        array(
+                                            'type' => 'MultipliedCoinReward',
+                                            'amount' => 5000,
+                                        ),
+                                ),
+                            'objectives' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'id' => 'play',
+                                            'type' => 'IntegerObjective',
+                                            'integer' => 2,
+                                        ),
+                                ),
+                            'requirements' =>
+                                array(
+                                    0 =>
+                                        array(
+                                            'type' => 'DailyResetQuestRequirement',
+                                        ),
+                                ),
+                            'description' => 'Play 2 Halloween Hyper Mode games',
                         ),
                 ),
             'duels' =>
@@ -4077,6 +4430,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Play 5 games of Duels',
                         ),
                     1 =>
                         array(
@@ -4111,6 +4465,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 5 players in Duels',
                         ),
                     2 =>
                         array(
@@ -4145,6 +4500,7 @@ return array(
                                             'type' => 'DailyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win a game of Duels',
                         ),
                     3 =>
                         array(
@@ -4184,6 +4540,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Kill 100 players in Duels',
                         ),
                     4 =>
                         array(
@@ -4223,6 +4580,7 @@ return array(
                                             'type' => 'WeeklyResetQuestRequirement',
                                         ),
                                 ),
+                            'description' => 'Win 50 games of Duels',
                         ),
                 ),
         ),

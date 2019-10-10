@@ -3885,12 +3885,6 @@ while being the only one alive in 2v2',
                                     'name' => 'Gone Fishing',
                                     'description' => 'Catch a fish',
                                 ),
-                            'MORE_DAMAGE' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'More Damage',
-                                    'description' => 'Win a round of a Duels Tournament after the timer runs out by dealing the most damage',
-                                ),
                             'ON_FIRE' =>
                                 array(
                                     'points' => 5,
@@ -4488,44 +4482,6 @@ while being the only one alive in 2v2',
                                                 ),
                                         ),
                                 ),
-                            'DUELS_TROPHIES' =>
-                                array(
-                                    'name' => 'Duels Trophies',
-                                    'description' => 'Obtain %s Trophies by winning Duels Tournaments',
-                                    'tiers' =>
-                                        array(
-                                            0 =>
-                                                array(
-                                                    'tier' => 1,
-                                                    'points' => 5,
-                                                    'amount' => 1,
-                                                ),
-                                            1 =>
-                                                array(
-                                                    'tier' => 2,
-                                                    'points' => 10,
-                                                    'amount' => 10,
-                                                ),
-                                            2 =>
-                                                array(
-                                                    'tier' => 3,
-                                                    'points' => 15,
-                                                    'amount' => 25,
-                                                ),
-                                            3 =>
-                                                array(
-                                                    'tier' => 4,
-                                                    'points' => 20,
-                                                    'amount' => 50,
-                                                ),
-                                            4 =>
-                                                array(
-                                                    'tier' => 5,
-                                                    'points' => 25,
-                                                    'amount' => 100,
-                                                ),
-                                        ),
-                                ),
                             'BRIDGE_WIN_STREAK' =>
                                 array(
                                     'name' => 'The Bridge Streak',
@@ -4641,7 +4597,7 @@ while being the only one alive in 2v2',
                                         ),
                                 ),
                         ),
-                    'total_points' => 1310,
+                    'total_points' => 1230,
                     'total_legacy_points' => 0,
                 ),
             'easter' =>
@@ -5448,12 +5404,6 @@ of your friends',
                                     'name' => 'Fire from Hell',
                                     'description' => 'Win a game of Smash Heroes using Skullfire',
                                 ),
-                            'TBR_KRAKEN_ASSAULT_1_25' =>
-                                array(
-                                    'points' => 10,
-                                    'name' => 'Kraken Assault Great Time',
-                                    'description' => 'Complete Kraken Assault in under 01:25',
-                                ),
                             'PUMPKIN_DEATH' =>
                                 array(
                                     'points' => 10,
@@ -5466,23 +5416,41 @@ of your friends',
                                     'name' => 'Pumpkin Vision',
                                     'description' => 'Kill a player in UHC while wearing a Pumpkin on your head',
                                 ),
-                            'TBR_SHARKNADO_JAUNT_FAST' =>
+                            'ALL_BASKETS' =>
                                 array(
-                                    'points' => 10,
-                                    'name' => 'Sharknado Jaunt Great Time',
-                                    'description' => 'Complete Sharknado Jaunt in under 1:15',
+                                    'points' => 15,
+                                    'name' => 'All Baskets (2019)',
+                                    'description' => 'Find all Candy Baskets in the Main Lobby',
                                 ),
-                            'TBR_MIDTOWN_TRIP' =>
+                            'TBR_SEASIDE_DRIVE' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Midtown Trip Completion',
-                                    'description' => 'Complete Midtown Trip in Turbo Bat Racers',
+                                    'name' => 'Seaside Drive Completion',
+                                    'description' => 'Complete Seaside Drive in Turbo Bat Racers',
+                                ),
+                            'SPOOKY_LOOKS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Spooky Looks',
+                                    'description' => 'Open a Halloween Mystery Box during the Halloween Event',
                                 ),
                             'CORPSE_STILL_RUNS' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Corpse Still Runs',
                                     'description' => 'Win a game of Warlords Domination while having the Corpse Mare mount equipped',
+                                ),
+                            'TBR_CLOCK_TOWER_TRIP_FAST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Clock Tower Trip Great Time',
+                                    'description' => 'Complete Clock Tower Trip in under 0:42',
+                                ),
+                            'FIVE_BASKETS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Five Baskets (2019)',
+                                    'description' => 'Find five Candy Baskets in the Main Lobby',
                                 ),
                             'BLAME_YOUR_TEAM' =>
                                 array(
@@ -5501,6 +5469,24 @@ of your friends',
                                     'points' => 5,
                                     'name' => 'Full Moon',
                                     'description' => 'Get a Final Kill as Werewolf in Mega Walls',
+                                ),
+                            'TBR_PUMPKIN_JUMP_FAST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Pumpkin Jump Great Time',
+                                    'description' => 'Complete Pumpkin Jump in under 1:05',
+                                ),
+                            'BE_FREE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Be Free!',
+                                    'description' => 'Punch a Bouncy Spider Pet in a lobby',
+                                ),
+                            'SEE_THROUGH' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'See Through',
+                                    'description' => 'Activate the ability of the Ghost Hat in Paintball',
                                 ),
                             'PUMPKIN_DANCER' =>
                                 array(
@@ -5526,12 +5512,6 @@ of your friends',
                                     'name' => 'Undead Target Practice',
                                     'description' => 'Reach a score of 333 before the 1 minute mark in the Main Lobby Shooting Range',
                                 ),
-                            'TBR_OBSERVATORY_SPIN' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Observatory Spin Completion',
-                                    'description' => 'Complete Observatory Spin in Turbo Bat Racers',
-                                ),
                             'THE_CRAWLING_DEAD' =>
                                 array(
                                     'points' => 5,
@@ -5543,12 +5523,6 @@ of your friends',
                                     'points' => 5,
                                     'name' => 'Vamps r cool',
                                     'description' => 'Kill 5 survivors in a single game of VampireZ',
-                                ),
-                            'TBR_SHARKNADO_JAUNT' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Sharknado Jaunt Completion',
-                                    'description' => 'Complete Sharknado Jaunt in Turbo Bat Racers',
                                 ),
                             'THAT_WAS_EASY' =>
                                 array(
@@ -5574,23 +5548,35 @@ of your friends',
                                     'name' => 'My Halloween Costume',
                                     'description' => 'Use a Morph in a lobby',
                                 ),
+                            'DEVILS_RIDE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Devil\'s Ride',
+                                    'description' => 'Place in the Top 3 in Turbo Kart Racers while using the Diablo Turbobrine Kart Skin',
+                                ),
                             'GOOD_TRY' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Good Try',
                                     'description' => 'Die against the first bomb in Pumpkin Smash',
                                 ),
-                            'TBR_KRAKEN_ASSAULT' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Kraken Assault Completion',
-                                    'description' => 'Complete Kraken Assault in Turbo Bat Racers',
-                                ),
-                            'TBR_OBSERVATORY_SPIN_1_10' =>
+                            'TBR_SEASIDE_DRIVE_FAST' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Observatory Spin Great Time',
-                                    'description' => 'Complete Observatory Spin in under 01:15',
+                                    'name' => 'Seaside Drive Great Time',
+                                    'description' => 'Complete Seaside Drive in under 1:15',
+                                ),
+                            'HAUNTED_MAPS' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Haunted Maps',
+                                    'description' => 'Finish games on 5 Halloween exclusive maps',
+                                ),
+                            'KILLER_LOOT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Killer Loot',
+                                    'description' => 'Open a Murder Mystery Spooky Chest',
                                 ),
                             'OCTOBER_BETRAYAL' =>
                                 array(
@@ -5598,17 +5584,29 @@ of your friends',
                                     'name' => 'October Betrayal',
                                     'description' => 'Win a Murder Mystery classic game as Murderer',
                                 ),
+                            'PUMPKINS_WILL_RISE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Pumpkins Will Rise',
+                                    'description' => 'Win a game of Murder Mystery while wearing the Pumpkin Animated Hat',
+                                ),
                             'HI_THERE' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Boo!',
                                     'description' => 'Speak to the Halloween Guide in the Main Lobby',
                                 ),
-                            'TBR_MIDTOWN_TRIP_1_20' =>
+                            'TBR_CLOCK_TOWER_TRIP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Clock Tower Trip Completion',
+                                    'description' => 'Complete Clock Tower Trip in Turbo Bat Racers',
+                                ),
+                            'TIS_THE_SEASON' =>
                                 array(
                                     'points' => 10,
-                                    'name' => 'Midtown Trip Great Time',
-                                    'description' => 'Complete Midtown Trip in under 01:30',
+                                    'name' => '\'Tis The Season',
+                                    'description' => 'Complete the Harvest Season Special One-Time Quest in Skywars',
                                 ),
                             'EL_SPOODER' =>
                                 array(
@@ -5621,6 +5619,25 @@ of your friends',
                                     'points' => 5,
                                     'name' => 'Not so Scary',
                                     'description' => 'Win a game of Build Battle Halloween Hyper Mode',
+                                ),
+                            'TBR_PUMPKIN_JUMP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Pumpkin Jump Completion',
+                                    'description' => 'Complete Pumpkin Jump in Turbo Bat Racers',
+                                ),
+                            'THAT_TIME_OF_YEAR' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'That Time of Year',
+                                    'description' => 'Find the dancing Spooky Scary Skeleton in the Main Lobby',
+                                    'secret' => true,
+                                ),
+                            'FEAR_THE_PUMPKINATOR' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Fear The Pumpkinator',
+                                    'description' => 'Complete the Pumpkinator Special Weekly Quest in Bed Wars',
                                 ),
                             'ALL_GHOSTS_2018' =>
                                 array(
@@ -5636,18 +5653,32 @@ of your friends',
                                     'description' => 'Find two Ghosts in the Main Lobby',
                                     'legacy' => true,
                                 ),
-                            'SECOND_GHOST_2018' =>
+                            'TBR_KRAKEN_ASSAULT_1_25' =>
                                 array(
-                                    'points' => 5,
-                                    'name' => 'Second Ghost (2018)',
-                                    'description' => 'Find two Ghosts in the Main Lobby',
+                                    'points' => 10,
+                                    'name' => 'Kraken Assault Great Time',
+                                    'description' => 'Complete Kraken Assault in under 01:25',
                                     'legacy' => true,
                                 ),
-                            'NECROTHERAPY' =>
+                            'TBR_OBSERVATORY_SPIN' =>
                                 array(
                                     'points' => 5,
-                                    'name' => 'Necrotherapy',
-                                    'description' => 'Get a kill in SkyClash using the Necromancer kit',
+                                    'name' => 'Observatory Spin Completion',
+                                    'description' => 'Complete Observatory Spin in Turbo Bat Racers',
+                                    'legacy' => true,
+                                ),
+                            'TBR_SHARKNADO_JAUNT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sharknado Jaunt Completion',
+                                    'description' => 'Complete Sharknado Jaunt in Turbo Bat Racers',
+                                    'legacy' => true,
+                                ),
+                            'TBR_SHARKNADO_JAUNT_FAST' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Sharknado Jaunt Great Time',
+                                    'description' => 'Complete Sharknado Jaunt in under 1:15',
                                     'legacy' => true,
                                 ),
                             'ALL_GHOSTS' =>
@@ -5655,6 +5686,48 @@ of your friends',
                                     'points' => 15,
                                     'name' => 'All Ghosts (2017)',
                                     'description' => 'Find all Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'TBR_KRAKEN_ASSAULT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Kraken Assault Completion',
+                                    'description' => 'Complete Kraken Assault in Turbo Bat Racers',
+                                    'legacy' => true,
+                                ),
+                            'TBR_MIDTOWN_TRIP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Midtown Trip Completion',
+                                    'description' => 'Complete Midtown Trip in Turbo Bat Racers',
+                                    'legacy' => true,
+                                ),
+                            'TBR_OBSERVATORY_SPIN_1_10' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Observatory Spin Great Time',
+                                    'description' => 'Complete Observatory Spin in under 01:15',
+                                    'legacy' => true,
+                                ),
+                            'SECOND_GHOST_2018' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Second Ghost (2018)',
+                                    'description' => 'Find two Ghosts in the Main Lobby',
+                                    'legacy' => true,
+                                ),
+                            'TBR_MIDTOWN_TRIP_1_20' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Midtown Trip Great Time',
+                                    'description' => 'Complete Midtown Trip in under 01:30',
+                                    'legacy' => true,
+                                ),
+                            'NECROTHERAPY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Necrotherapy',
+                                    'description' => 'Get a kill in SkyClash using the Necromancer kit',
                                     'legacy' => true,
                                 ),
                         ),
@@ -5737,8 +5810,8 @@ of your friends',
                                         ),
                                 ),
                         ),
-                    'total_points' => 355,
-                    'total_legacy_points' => 45,
+                    'total_points' => 425,
+                    'total_legacy_points' => 105,
                 ),
             'housing' =>
                 array(
@@ -6757,7 +6830,7 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 5,
                                     'name' => 'Thanks, Grandma!',
-                                    'description' => 'Win a game with the Cookie Cannon',
+                                    'description' => 'Win a game using the Cookie Cannon',
                                 ),
                             'BAKING_A_DOZEN' =>
                                 array(
@@ -6841,7 +6914,7 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 5,
                                     'name' => 'I liek turtles',
-                                    'description' => 'Win a game with the Turtle',
+                                    'description' => 'Win a game using the Turtle',
                                 ),
                             'TEAM_PLAYER' =>
                                 array(
@@ -7075,7 +7148,7 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 10,
                                     'name' => 'Squish',
-                                    'description' => 'Win a game with the Worm',
+                                    'description' => 'Win a game using the Worm',
                                 ),
                             'IN_MY_WAY' =>
                                 array(
@@ -7360,6 +7433,12 @@ or the 1.0s trigger',
                 array(
                     'one_time' =>
                         array(
+                            'EXPLOSIVE_ENDING' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Explosive Ending',
+                                    'description' => 'Survive the Blast from the Unstable Dragon',
+                                ),
                             'THE_ONE_BOTTLE' =>
                                 array(
                                     'points' => 5,
@@ -7377,6 +7456,13 @@ or the 1.0s trigger',
                                     'points' => 5,
                                     'name' => 'Promise Fulfilled',
                                     'description' => 'Max out a promising tool',
+                                ),
+                            'I_AM_SUPERIOR' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'I am Superior',
+                                    'description' => 'Get Top Damage against the Superior Dragon',
+                                    'secret' => true,
                                 ),
                             'LOST_SOUL' =>
                                 array(
@@ -7407,6 +7493,18 @@ or the 1.0s trigger',
                                     'points' => 5,
                                     'name' => 'Precious Minerals',
                                     'description' => 'Wear a full set of Emerald Armor',
+                                ),
+                            'SAFETY_FIRST' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Safety First',
+                                    'description' => 'Obtain Stonk',
+                                ),
+                            'END_RACE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'The End Race',
+                                    'description' => 'Complete the End Race in under 42 Seconds',
                                 ),
                             'INTO_THE_DEEP' =>
                                 array(
@@ -7449,6 +7547,12 @@ or the 1.0s trigger',
                                     'points' => 5,
                                     'name' => 'Spiky',
                                     'description' => 'Craft a Thorns 3 book',
+                                ),
+                            'SPEED_OF_LIGHT' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'At the speed of light',
+                                    'description' => '[Coop or you] Use Crystal Fuel',
                                 ),
                             'HIGHER_ENCHANTS' =>
                                 array(
@@ -7499,6 +7603,13 @@ or the 1.0s trigger',
                                     'name' => 'Flamin Hot',
                                     'description' => 'Consume 200 Magma Creams using the Magma Bow',
                                 ),
+                            'SHRIMP' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Shrimp!?!',
+                                    'description' => 'Obtain Shrimp the Traveler Fish',
+                                    'secret' => true,
+                                ),
                             'WELCOME_TO_MY_FACTORY' =>
                                 array(
                                     'points' => 5,
@@ -7527,7 +7638,7 @@ or the 1.0s trigger',
                                 array(
                                     'points' => 5,
                                     'name' => 'Accessories Galore',
-                                    'description' => '[Coop or you] Unlock the final Talisman Bag upgrade',
+                                    'description' => '[Coop or you] Unlock the Greater Talisman Bag upgrade',
                                 ),
                             'ANIMAL_FISHING' =>
                                 array(
@@ -7558,6 +7669,12 @@ or the 1.0s trigger',
                                     'points' => 5,
                                     'name' => 'Agile',
                                     'description' => 'Drink an Agility potion',
+                                ),
+                            'HEART_OF_THE_END' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Heart of the End',
+                                    'description' => 'Reach the Dragon\'s Nest in the End',
                                 ),
                             'BIG_GAME_FISHER' =>
                                 array(
@@ -7638,6 +7755,12 @@ or the 1.0s trigger',
                                     'name' => 'Deep Storage',
                                     'description' => '[Coop or you] Unlock the level 3 Enderchest Upgrade',
                                 ),
+                            'WATCH_ME_SHINE' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Watch Me Shine',
+                                    'description' => 'Wear the Crystal Armor Set',
+                                ),
                             'NO_ENCHANTS_NEEDED' =>
                                 array(
                                     'points' => 5,
@@ -7655,6 +7778,19 @@ or the 1.0s trigger',
                                     'points' => 5,
                                     'name' => 'King of the chickens',
                                     'description' => 'Obtain the Feather Artifact',
+                                ),
+                            'DRAGON_SLAYER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Dragon Slayer',
+                                    'description' => 'Take down a dragon',
+                                    'secret' => true,
+                                ),
+                            'OH_SHINY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Oh Shiny',
+                                    'description' => 'Mine a Glowing Block on the End Island',
                                 ),
                             'MASS_PRODUCTION' =>
                                 array(
@@ -8086,7 +8222,7 @@ or the 1.0s trigger',
                                         ),
                                 ),
                         ),
-                    'total_points' => 845,
+                    'total_points' => 910,
                     'total_legacy_points' => 0,
                 ),
             'skyclash' =>
@@ -10064,6 +10200,12 @@ or the 1.0s trigger',
                                     'name' => 'One for you and for you and for you ...',
                                     'description' => 'Tag 5 different people in a game of TNT Tag',
                                 ),
+                            'PRO_SURFER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Pro Surfer',
+                                    'description' => 'Use Hydro wizards? defense wand while standing in water',
+                                ),
                             'WIZARDS_NOGOOD' =>
                                 array(
                                     'points' => 5,
@@ -10101,6 +10243,12 @@ to Level VI',
                                     'name' => 'It\'s raining arrows',
                                     'description' => 'Shoot 30 arrows at other players in a game of Bow Spleef',
                                 ),
+                            'NO_YOU' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'No You',
+                                    'description' => 'Tag a player 15 times in one round of TNT Tag and have them die',
+                                ),
                             'SPLEEF_NOPERKS' =>
                                 array(
                                     'points' => 10,
@@ -10113,11 +10261,23 @@ to Level VI',
                                     'name' => 'Gotcha',
                                     'description' => 'Hit 3 enemies with 1 Wither Skull in TNT Wizards',
                                 ),
+                            'WIN_STREAK' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Win Streak',
+                                    'description' => 'Win 10 games in a row',
+                                ),
                             'SPOOKY' =>
                                 array(
                                     'points' => 10,
                                     'name' => 'Spooky...',
                                     'description' => 'Win a game wearing the Halloween hat',
+                                ),
+                            'FREEZE' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Freeze',
+                                    'description' => 'Freeze water with the Ice kit in TNT Wizards',
                                 ),
                             'JACK_OF_ALL' =>
                                 array(
@@ -10187,6 +10347,12 @@ of TNT Wizards',
                                     'name' => 'Triumph',
                                     'description' => 'Win a game of TNT Run without using any double jumps',
                                 ),
+                            'EXTRME_SPEED' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Extreme Speed',
+                                    'description' => 'Kill 5 players in the first minute of TNT Wizards',
+                                ),
                             'PVP_RUN_NODJS' =>
                                 array(
                                     'points' => 10,
@@ -10206,6 +10372,12 @@ Regen to Level VI',
                                     'name' => 'Stay away from me',
                                     'description' => 'Hit \'IT\' with a snowball in TNT Tag',
                                 ),
+                            'TIME_WIZARDS' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Time Wizards',
+                                    'description' => 'Play a TNT Wizards game for over 15 minutes',
+                                ),
                             'TNT_TAG_TRAVELLER' =>
                                 array(
                                     'points' => 5,
@@ -10224,6 +10396,12 @@ Regen to Level VI',
                                     'name' => 'Legolas',
                                     'description' => 'Upgrade Bow Spleef TripleShot
 to level VI',
+                                ),
+                            'PATIENCE' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Patience is Key',
+                                    'description' => 'Win a game of TNT Run that takes longer than 8 minutes',
                                 ),
                             'WIZARDS_JUMPER' =>
                                 array(
@@ -10274,6 +10452,12 @@ Jump to level V',
                                     'name' => 'That was close',
                                     'description' => 'Double jump back on to the map after falling below it in Bow Spleef',
                                 ),
+                            'LUCKY' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Lucky!',
+                                    'description' => 'Start without TNT in all the rounds before deathmatch in TNT Tag',
+                                ),
                             'WIZARDS_ASSISTANT' =>
                                 array(
                                     'points' => 10,
@@ -10285,6 +10469,12 @@ Jump to level V',
                                     'points' => 10,
                                     'name' => 'Bye Bye!',
                                     'description' => 'Tag someone and make him fall over 20 blocks in TNT Tag',
+                                ),
+                            'POTION_SHOWER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Potion Shower',
+                                    'description' => 'Get hit with 6 potions from other players in 1 game of TNT Run',
                                 ),
                             'SPLEEF_NOSHOTS' =>
                                 array(
@@ -10328,6 +10518,12 @@ Jump to level V',
                                     'name' => 'There is not enough room for all of us!',
                                     'description' => 'Kill 10 Players in a game of PVP Run',
                                 ),
+                            'HEALER' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'I\'m Actually A Healer',
+                                    'description' => 'Heal over a 100 hearts in 1 game of TNT Wizards with the Kinetic kit',
+                                ),
                             'TNT_PRESTIGE' =>
                                 array(
                                     'points' => 15,
@@ -10358,11 +10554,23 @@ Jump to level V',
                                     'name' => 'Look at me!',
                                     'description' => 'Get on the Top 3 leaderboards in a TNT Wizards game',
                                 ),
+                            'FLYING_MADMAN' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Flying Madman',
+                                    'description' => 'Don?t touch the ground for 5 minutes and kill 5 players in the same game of TNT Wizards',
+                                ),
                             'TNT_TAG_FIRST_WIN' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'Boom boom',
                                     'description' => 'Win a game of TNT Tag',
+                                ),
+                            'MAGNETIC_BOOTS' =>
+                                array(
+                                    'points' => 15,
+                                    'name' => 'Magnetic Boots',
+                                    'description' => 'Win a game of Bow Spleef without jumping',
                                 ),
                             'TNT_PARKOUR' =>
                                 array(
@@ -10381,6 +10589,12 @@ Jump to level V',
                                     'points' => 15,
                                     'name' => 'Overpowered archery',
                                     'description' => 'Get Bow Spleef Double Jump, Repulsor, and Triple Shot to level 6',
+                                ),
+                            'COMBO' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Learn To Combo',
+                                    'description' => 'Kill a player with a repulsor shortly after you double jump in Bow Spleef',
                                 ),
                             'PVP_RUN_NOHIT' =>
                                 array(
@@ -10410,7 +10624,7 @@ Jump to level V',
                                 array(
                                     'points' => 15,
                                     'name' => 'You\'re a Wizard',
-                                    'description' => 'Get 5 Kills with every Wizard Class in a game of TNT Wizards',
+                                    'description' => 'Get 3 Kills with every Wizard Class in a game of TNT Wizards',
                                 ),
                             'GRAND_MASTER' =>
                                 array(
@@ -10436,6 +10650,12 @@ Jump to level V',
                                     'name' => 'My wings are working',
                                     'description' => 'Be in the air for 10 seconds before dying in a TNT Run game',
                                 ),
+                            'MEGA_TANK' =>
+                                array(
+                                    'points' => 10,
+                                    'name' => 'Mega Tank',
+                                    'description' => 'Take over 150 hearts of damage with the Toxic kit in one game of TNT Wizards',
+                                ),
                             'WIZARDS_LEAD' =>
                                 array(
                                     'points' => 10,
@@ -10455,11 +10675,23 @@ Jump to level V',
                                     'description' => 'Get your first Bow Spleef
 Double Jump upgrade',
                                 ),
+                            'TIMER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Timer',
+                                    'description' => 'Tag a player in the last second of a round in TNT Tag and survive',
+                                ),
                             'WIZARDS_FIRST_WIN' =>
                                 array(
                                     'points' => 5,
                                     'name' => 'DiamondZ',
                                     'description' => 'Win a game of TNT Wizards',
+                                ),
+                            'SNIPER' =>
+                                array(
+                                    'points' => 5,
+                                    'name' => 'Sniper',
+                                    'description' => 'Get a kill from over 75 blocks away in TNT Wizards',
                                 ),
                             'TNT_TAG_DM' =>
                                 array(
@@ -10792,6 +11024,44 @@ Double Jump upgrade',
                                                 ),
                                         ),
                                 ),
+                            'BLOCK_RUNNER' =>
+                                array(
+                                    'name' => 'Block Runner',
+                                    'description' => 'Walk over %s blocks in TNT Run',
+                                    'tiers' =>
+                                        array(
+                                            0 =>
+                                                array(
+                                                    'tier' => 1,
+                                                    'points' => 5,
+                                                    'amount' => 25000,
+                                                ),
+                                            1 =>
+                                                array(
+                                                    'tier' => 2,
+                                                    'points' => 10,
+                                                    'amount' => 125000,
+                                                ),
+                                            2 =>
+                                                array(
+                                                    'tier' => 3,
+                                                    'points' => 15,
+                                                    'amount' => 250000,
+                                                ),
+                                            3 =>
+                                                array(
+                                                    'tier' => 4,
+                                                    'points' => 20,
+                                                    'amount' => 500000,
+                                                ),
+                                            4 =>
+                                                array(
+                                                    'tier' => 5,
+                                                    'points' => 25,
+                                                    'amount' => 750000,
+                                                ),
+                                        ),
+                                ),
                             'TNT_TAG_WINS' =>
                                 array(
                                     'name' => 'Tag! Tag! Tag!',
@@ -10907,7 +11177,7 @@ Double Jump upgrade',
                                         ),
                                 ),
                         ),
-                    'total_points' => 1470,
+                    'total_points' => 1680,
                     'total_legacy_points' => 0,
                 ),
             'truecombat' =>
@@ -12453,12 +12723,6 @@ on your team',
                                     'name' => 'Not Today!',
                                     'description' => 'Kill a player who currently has the Strength effect',
                                 ),
-                            'CANADIAN_KIT' =>
-                                array(
-                                    'points' => 5,
-                                    'name' => 'Oh Canada!',
-                                    'description' => 'Get the Canadian Starter Kit',
-                                ),
                             'STARTER_KITS' =>
                                 array(
                                     'points' => 10,
@@ -12627,7 +12891,7 @@ on your team',
                                         ),
                                 ),
                         ),
-                    'total_points' => 525,
+                    'total_points' => 520,
                     'total_legacy_points' => 0,
                 ),
             'walls3' =>
