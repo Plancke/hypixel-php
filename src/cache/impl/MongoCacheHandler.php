@@ -30,6 +30,17 @@ use Plancke\HypixelPHP\util\CacheUtil;
  */
 class MongoCacheHandler extends CacheHandler {
 
+    const FIND_OPTIONS = [
+        'typeMap' => [
+            'root' => 'array',
+            'document' => 'array',
+            'array' => 'array'
+        ],
+        "maxTimeMS" => 1000
+    ];
+    const UPDATE_OPTIONS = [
+        'upsert' => true
+    ];
     const SINGLE_SAVE = 'single_save';
 
     protected $mongoClient;
@@ -80,42 +91,13 @@ class MongoCacheHandler extends CacheHandler {
     }
 
     /**
-     * @param $collection
-     * @param $query
-     * @return array|null
-     */
-    public function queryCollection($collection, $query) {
-        return $this->selectDB()->selectCollection($collection)->findOne($query, [
-            'typeMap' => [
-                'root' => 'array',
-                'document' => 'array',
-                'array' => 'array'
-            ],
-            "maxTimeMS" => 1000
-        ]);
-    }
-
-    /**
-     * Replace a single document for given query,
-     * creates the document if it doesn't exist yet.
-     *
-     * @param $collection
-     * @param $query
-     * @param $obj
-     * @throws InvalidArgumentException
-     */
-    public function updateCollection($collection, $query, $obj) {
-        $this->selectDB()->selectCollection($collection)->replaceOne($query, $this->objToArray($obj), ['upsert' => true]);
-    }
-
-    /**
      * @param $key
      * @param $constructor
      * @return HypixelObject|null
      */
     function getSingleSave($key, $constructor) {
         $query = ['key' => $key];
-        return $this->wrapProvider($constructor, $this->queryCollection(MongoCacheHandler::SINGLE_SAVE, $query));
+        return $this->wrapProvider($constructor, $this->selectDB()->selectCollection(MongoCacheHandler::SINGLE_SAVE)->findOne($query, self::FIND_OPTIONS));
     }
 
     /**
@@ -129,7 +111,7 @@ class MongoCacheHandler extends CacheHandler {
         $raw = $hypixelObject->getRaw();
         $raw['key'] = $key;
 
-        $this->updateCollection(MongoCacheHandler::SINGLE_SAVE, $query, $raw);
+        $this->selectDB()->selectCollection(MongoCacheHandler::SINGLE_SAVE)->replaceOne($query, $this->objToArray($raw), self::UPDATE_OPTIONS);
     }
 
     /**
@@ -137,10 +119,9 @@ class MongoCacheHandler extends CacheHandler {
      * @return Player|null
      */
     public function getPlayer($uuid) {
-        $query = ['record.uuid' => (string)$uuid];
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getPlayer(),
-            $this->queryCollection(CacheTypes::PLAYERS, $query)
+            $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne(['record.uuid' => (string)$uuid], MongoCacheHandler::FIND_OPTIONS)
         );
     }
 
@@ -149,8 +130,7 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     public function setPlayer(Player $player) {
-        $query = ['record.uuid' => (string)$player->getUUID()];
-        $this->updateCollection(CacheTypes::PLAYERS, $query, $player);
+        $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->replaceOne(['record.uuid' => (string)$player->getUUID()], $this->objToArray($player), self::UPDATE_OPTIONS);
     }
 
     /**
@@ -162,7 +142,7 @@ class MongoCacheHandler extends CacheHandler {
 
         // check if player_uuid collection has record
         $query = ['name_lowercase' => $username];
-        $data = $this->queryCollection(CacheTypes::PLAYER_UUID, $query);
+        $data = $this->selectDB()->selectCollection(CacheTypes::PLAYER_UUID)->findOne($query, self::FIND_OPTIONS);
         if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::UUID);
@@ -181,7 +161,7 @@ class MongoCacheHandler extends CacheHandler {
 
         // check if player database has a player for it
         $query = ['record.playername' => $username];
-        $data = $this->queryCollection(CacheTypes::PLAYERS, $query);
+        $data = $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne($query, self::FIND_OPTIONS);
         if ($data != null) {
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
             $diff = time() - $this->getCacheTime(CacheTimes::UUID) - $timestamp;
@@ -197,7 +177,7 @@ class MongoCacheHandler extends CacheHandler {
             // check if player database has a old player match for it,
             // only done if there is no direct match, regardless of timestamp on direct match
             $query = ['record.knownAliasesLower' => $username];
-            $data = $this->queryCollection(CacheTypes::PLAYERS, $query);
+            $data = $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne($query, self::FIND_OPTIONS);
             if ($data != null) {
                 $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
                 $diff = time() - $this->getCacheTime(CacheTimes::UUID) - $timestamp;
@@ -224,10 +204,10 @@ class MongoCacheHandler extends CacheHandler {
         $query = ['name_lowercase' => strtolower($username)];
         if ($obj['uuid'] == '' || $obj['uuid'] == null) {
             // still not found, just update time so we don't keep fetching
-            // $this->updateCollection(CollectionNames::PLAYER_UUID, $query, ['$set' => [['timestamp' => time()]]]);
+            //  $this->selectDB()->selectCollection(CollectionNames::PLAYER_UUID, $query, ['$set' => [['timestamp' => time()]]]);
             $this->selectDB()->selectCollection(CacheTypes::PLAYER_UUID)->updateOne($query, ['$set' => ['timestamp' => time()]]);
         } else {
-            $this->updateCollection(CacheTypes::PLAYER_UUID, $query, $obj);
+            $this->selectDB()->selectCollection(CacheTypes::PLAYER_UUID)->replaceOne($query, $this->objToArray($obj), self::UPDATE_OPTIONS);
         }
     }
 
@@ -236,10 +216,9 @@ class MongoCacheHandler extends CacheHandler {
      * @return Guild|null
      */
     public function getGuild($id) {
-        $query = ['record._id' => (string)$id];
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getGuild(),
-            $this->queryCollection(CacheTypes::GUILDS, $query)
+            $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(['record._id' => (string)$id], self::FIND_OPTIONS)
         );
     }
 
@@ -248,8 +227,7 @@ class MongoCacheHandler extends CacheHandler {
      * @throws InvalidArgumentException
      */
     public function setGuild(Guild $guild) {
-        $query = ['record._id' => (string)$guild->getID()];
-        $this->updateCollection(CacheTypes::GUILDS, $query, $guild);
+        $this->selectDB()->selectCollection(CacheTypes::GUILDS)->replaceOne(['record._id' => (string)$guild->getID()], $this->objToArray($guild), self::UPDATE_OPTIONS);
     }
 
     /**
@@ -257,10 +235,9 @@ class MongoCacheHandler extends CacheHandler {
      * @return string|null
      */
     function getGuildIDForUUID($uuid) {
-        $query = ['uuid' => (string)$uuid];
         // TODO Do we really need this collection?
         //  Could just check members object inside the documents?
-        $data = $this->queryCollection(CacheTypes::GUILDS_UUID, $query);
+        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS_UUID)->findOne(['uuid' => (string)$uuid], self::FIND_OPTIONS);
         if ($data != null) {
             if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
@@ -281,7 +258,7 @@ class MongoCacheHandler extends CacheHandler {
      */
     function setGuildIDForUUID($uuid, $obj) {
         $query = ['uuid' => (string)$uuid];
-        $this->updateCollection(CacheTypes::GUILDS_UUID, $query, $obj);
+        $this->selectDB()->selectCollection(CacheTypes::GUILDS_UUID)->replaceOne($query, $this->objToArray($obj), self::UPDATE_OPTIONS);
     }
 
     /**
@@ -290,7 +267,7 @@ class MongoCacheHandler extends CacheHandler {
      */
     function getGuildIDForName($name) {
         $query = ['record.name_lower' => strtolower((string)$name)];
-        $data = $this->queryCollection(CacheTypes::GUILDS, $query);
+        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne($query, self::FIND_OPTIONS);
         if ($data != null) {
             $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
             $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
@@ -302,7 +279,7 @@ class MongoCacheHandler extends CacheHandler {
         }
 
         $query = ['name_lower' => strtolower((string)$name)];
-        $data = $this->queryCollection(CacheTypes::GUILDS_NAME, $query);
+        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->findOne($query, self::FIND_OPTIONS);
         if ($data != null) {
             if (isset($data['name_lower']) && $data['name_lower'] != null && $data['name_lower'] != '') {
                 $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
@@ -323,7 +300,7 @@ class MongoCacheHandler extends CacheHandler {
      */
     function setGuildIDForName($name, $obj) {
         $query = ['name_lower' => strtolower((string)$name)];
-        $this->updateCollection(CacheTypes::GUILDS_NAME, $query, $obj);
+        $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->replaceOne($query, $this->objToArray($obj), self::UPDATE_OPTIONS);
     }
 
     /**
@@ -334,7 +311,7 @@ class MongoCacheHandler extends CacheHandler {
         $query = ['record.uuid' => (string)$uuid];
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getFriends(),
-            $this->queryCollection(CacheTypes::FRIENDS, $query)
+            $this->selectDB()->selectCollection(CacheTypes::FRIENDS)->findOne($query, self::FIND_OPTIONS)
         );
     }
 
@@ -344,7 +321,7 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function setFriends(Friends $friends) {
         $query = ['record.uuid' => (string)$friends->getUUID()];
-        $this->updateCollection(CacheTypes::FRIENDS, $query, $friends);
+        $this->selectDB()->selectCollection(CacheTypes::FRIENDS)->replaceOne($query, $this->objToArray($friends), self::UPDATE_OPTIONS);
     }
 
     /**
@@ -355,7 +332,7 @@ class MongoCacheHandler extends CacheHandler {
         $query = ['record.uuid' => (string)$uuid];
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getSession(),
-            $this->queryCollection(CacheTypes::SESSIONS, $query)
+            $this->selectDB()->selectCollection(CacheTypes::SESSIONS)->findOne($query, self::FIND_OPTIONS)
         );
     }
 
@@ -365,7 +342,7 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function setSession(Session $session) {
         $query = ['record.uuid' => (string)$session->getUUID()];
-        $this->updateCollection(CacheTypes::SESSIONS, $query, $session);
+        $this->selectDB()->selectCollection(CacheTypes::SESSIONS)->replaceOne($query, $this->objToArray($session), self::UPDATE_OPTIONS);
     }
 
     /**
@@ -376,7 +353,7 @@ class MongoCacheHandler extends CacheHandler {
         $query = ['record.key' => (string)$key];
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getKeyInfo(),
-            $this->queryCollection(CacheTypes::API_KEYS, $query)
+            $this->selectDB()->selectCollection(CacheTypes::API_KEYS)->findOne($query, self::FIND_OPTIONS)
         );
     }
 
@@ -386,7 +363,7 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function setKeyInfo(KeyInfo $keyInfo) {
         $query = ['record.key' => (string)$keyInfo->getKey()];
-        $this->updateCollection(CacheTypes::API_KEYS, $query, $keyInfo);
+        $this->selectDB()->selectCollection(CacheTypes::API_KEYS)->replaceOne($query, $this->objToArray($keyInfo), self::UPDATE_OPTIONS);
     }
 
 
