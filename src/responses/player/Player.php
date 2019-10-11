@@ -73,7 +73,7 @@ class Player extends HypixelObject {
             return $game . '_' . strtolower($key);
         };
 
-        $achievements = $this->getHypixelPHP()->getResourceManager()->getGeneralResources()->getAchievements()['achievements'];
+        $achievements = $this->getHypixelPHP()->getResourceManager()->getGeneralResources()->getAchievements()->getData()['achievements'];
 
         $oneTime = $this->getArray('achievementsOneTime');
         $tiered = $this->getArray('achievements');
