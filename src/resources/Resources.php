@@ -28,7 +28,7 @@ abstract class Resources {
      */
     protected function requireResourceFile($path) {
         /** @noinspection PhpIncludeInspection */
-        return new Resource($this->resourceManager->getHypixelPHP(), require(self::BASE_RESOURCES_DIR . $path), $path);
+        return new Resource($this->resourceManager->getHypixelPHP(), ['record' => require(self::BASE_RESOURCES_DIR . $path)], $path);
     }
 
     /**
