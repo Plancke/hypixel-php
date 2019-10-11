@@ -15,10 +15,8 @@ The preferred method of installing this library is with
 [Composer](https://getcomposer.org) by running the following from your project
 root:
 
-    $ composer require "plancke/hypixel-php=^1.1.0"
+    $ composer require "plancke/hypixel-php=^1.2.0"
     
-If you plan on using the mongo cache implementation you'll also need to require mongo, (suggested package)
-
 I don't push a new version for every minor resource update. You can use `$ composer require "plancke/hypixel-php=dev-master"` to always download latest.
 
 ## TODO
