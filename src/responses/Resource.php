@@ -36,11 +36,4 @@ class Resource extends HypixelObject {
     public function getCacheTimeKey() {
         return CacheTimes::RESOURCES;
     }
-
-    /**
-     * @return int
-     */
-    public function getLastUpdated() {
-        return $this->getInt('lastUpdated');
-    }
 }
