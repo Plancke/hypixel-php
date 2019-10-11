@@ -145,4 +145,8 @@ class Guild extends HypixelObject {
     public function getExpByGameType() {
         return $this->getArray("guildExpByGameType");
     }
+
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setGuild($this);
+    }
 }

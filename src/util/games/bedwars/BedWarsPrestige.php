@@ -40,27 +40,6 @@ class BedWarsPrestige {
     }
 
     /**
-     * @return mixed
-     */
-    public function getOrdinal() {
-        return $this->ordinal;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName() {
-        return $this->name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getColor() {
-        return $this->color;
-    }
-
-    /**
      * @return array
      */
     public static function values() {
@@ -129,5 +108,26 @@ class BedWarsPrestige {
      */
     public static function getRainbowColors(): array {
         return self::$rainbowColors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrdinal() {
+        return $this->ordinal;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName() {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColor() {
+        return $this->color;
     }
 }

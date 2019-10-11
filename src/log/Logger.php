@@ -28,12 +28,6 @@ abstract class Logger extends Module {
     }
 
     /**
-     * @param int $level
-     * @param string $line
-     */
-    protected abstract function actuallyLog($level, $line);
-
-    /**
      * @return boolean
      */
     public function isEnabled() {
@@ -64,5 +58,11 @@ abstract class Logger extends Module {
         $this->formatter = $formatter;
         return $this;
     }
+
+    /**
+     * @param int $level
+     * @param string $line
+     */
+    protected abstract function actuallyLog($level, $line);
 
 }

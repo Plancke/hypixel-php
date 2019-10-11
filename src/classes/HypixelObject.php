@@ -2,7 +2,6 @@
 
 namespace Plancke\HypixelPHP\classes;
 
-use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\util\CacheUtil;
@@ -84,7 +83,6 @@ abstract class HypixelObject extends APIObject {
     /**
      * @param $input
      * @param bool $save
-     * @throws HypixelPHPException
      */
     public function setExtra($input, $save = true) {
         $anyChange = false;
@@ -103,9 +101,11 @@ abstract class HypixelObject extends APIObject {
             $anyChange = true;
         }
         if ($anyChange && $save) {
-            $this->getHypixelPHP()->getCacheHandler()->setCache($this);
+            $this->save();
         }
     }
+
+    public abstract function save();
 
     /**
      * @return string

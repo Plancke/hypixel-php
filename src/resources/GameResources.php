@@ -2,73 +2,94 @@
 
 namespace Plancke\HypixelPHP\resources;
 
+use Plancke\HypixelPHP\resources\games\SkyBlockResources;
+use Plancke\HypixelPHP\responses\Resource;
+
 /**
  * Class GameResources
  * @package Plancke\HypixelPHP\resources
  */
 class GameResources extends Resources {
 
+    protected $skyblock;
+
     /**
-     * @return array
+     * GameResources constructor.
+     * @param ResourceManager $resourceManager
+     */
+    public function __construct(ResourceManager $resourceManager) {
+        parent::__construct($resourceManager);
+
+        $this->skyblock = new SkyBlockResources($this->resourceManager);
+    }
+
+    /**
+     * @return Resource
      */
     public function getTNTWizards() {
-        return Resources::requireResourceFile('game_info/tntgames/Wizards.php');
+        return $this->requireResourceFile('game_info/tntgames/Wizards.php');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getArena() {
-        return Resources::requireResourceFile('game_info/Arena.php');
+        return $this->requireResourceFile('game_info/Arena.php');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getBattlegrounds() {
-        return Resources::requireResourceFile('game_info/Battlegrounds.php');
+        return $this->requireResourceFile('game_info/Battlegrounds.php');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getSurvivalGames() {
-        return Resources::requireResourceFile('game_info/SurvivalGames.php');
+        return $this->requireResourceFile('game_info/SurvivalGames.php');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getPaintball() {
-        return Resources::requireResourceFile('game_info/Paintball.php');
+        return $this->requireResourceFile('game_info/Paintball.php');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getSkyClash() {
-        return Resources::requireResourceFile('game_info/SkyClash.php');
+        return $this->requireResourceFile('game_info/SkyClash.php');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getSuperSmash() {
-        return Resources::requireResourceFile('game_info/SuperSmash.php');
+        return $this->requireResourceFile('game_info/SuperSmash.php');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getWallsThree() {
-        return Resources::requireResourceFile('game_info/Walls3.php');
+        return $this->requireResourceFile('game_info/Walls3.php');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getSkyWars() {
-        return Resources::requireResourceFile('game_info/SkyWars.php');
+        return $this->requireResourceFile('game_info/SkyWars.php');
     }
 
+    /**
+     * @return SkyBlockResources
+     */
+    public function getSkyBlock() {
+        return $this->skyblock;
+    }
 }

@@ -59,8 +59,11 @@ class Boosters extends HypixelObject {
     /**
      * @return string
      */
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::BOOSTERS;
     }
 
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setBoosters($this);
+    }
 }

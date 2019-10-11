@@ -2,6 +2,8 @@
 
 namespace Plancke\HypixelPHP\resources;
 
+use Plancke\HypixelPHP\responses\Resource;
+
 /**
  * Class Resources
  * @package Plancke\HypixelPHP\resources
@@ -10,21 +12,32 @@ abstract class Resources {
 
     const BASE_RESOURCES_DIR = __DIR__ . '/../../resources/';
 
+    protected $resourceManager;
+
     /**
-     * @param string $path
-     * @return mixed
+     * Resources constructor.
+     * @param ResourceManager $resourceManager
      */
-    public static function includeResourceFile($path) {
-        /** @noinspection PhpIncludeInspection */
-        return include(self::BASE_RESOURCES_DIR . $path);
+    public function __construct($resourceManager) {
+        $this->resourceManager = $resourceManager;
     }
 
     /**
      * @param string $path
-     * @return mixed
+     * @return Resource
      */
-    public static function requireResourceFile($path) {
+    protected function requireResourceFile($path) {
         /** @noinspection PhpIncludeInspection */
-        return require(self::BASE_RESOURCES_DIR . $path);
+        return new Resource($this->resourceManager->getHypixelPHP(), require(self::BASE_RESOURCES_DIR . $path), $path);
+    }
+
+    /**
+     * @param $path
+     * @return Resource
+     */
+    protected function requireRemoteResourceFile($path) {
+        $return = $this->resourceManager->getHypixelPHP()->getResource($path);
+        if ($return instanceof Resource) return $return;
+        return null;
     }
 }

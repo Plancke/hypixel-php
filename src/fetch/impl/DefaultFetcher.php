@@ -19,13 +19,6 @@ class DefaultFetcher extends Fetcher {
     protected $useCurl = true;
 
     /**
-     * @return boolean
-     */
-    public function useCurl() {
-        return $this->useCurl;
-    }
-
-    /**
      * @param boolean $useCurl
      * @return $this
      */
@@ -41,14 +34,18 @@ class DefaultFetcher extends Fetcher {
      * @throws HypixelPHPException
      */
     public function fetch($fetch, $keyValues = []) {
-        $requestURL = Fetcher::BASE_URL . $fetch . '?key=' . $this->getHypixelPHP()->getAPIKey();
+        $requestURL = Fetcher::BASE_URL . $fetch;
+
         $debug = $fetch;
-        foreach ($keyValues as $key => $value) {
-            $value = trim($value);
-            $value = str_replace(' ', '%20', $value);
-            $requestURL .= '&' . $key . '=' . $value;
-            $debug .= '?' . $key . '=' . $value;
+        if (is_array($keyValues) && sizeof($keyValues) > 0) {
+            $requestURL .= '?';
+            foreach ($keyValues as $key => $value) {
+                $value = urlencode(trim($value));
+                $requestURL .= '&' . $key . '=' . $value;
+                $debug .= '?' . $key . '=' . $value;
+            }
         }
+
         $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Starting Fetch: ' . $debug);
 
         $response = $this->getURLContents($requestURL);

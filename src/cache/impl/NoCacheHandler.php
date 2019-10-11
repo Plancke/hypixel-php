@@ -13,10 +13,7 @@ use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockCollections;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockNews;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockSkills;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
 /**
@@ -223,48 +220,6 @@ class NoCacheHandler extends CacheHandler {
     }
 
     /**
-     * @return SkyBlockNews|null
-     */
-    public function getSkyBlockNews() {
-        return null;
-    }
-
-    /**
-     * @param SkyBlockNews $skyBlockNews
-     * @return void
-     */
-    public function setSkyBlockNews(SkyBlockNews $skyBlockNews) {
-    }
-
-    /**
-     * @return SkyBlockSkills|null
-     */
-    public function getSkyBlockSkills() {
-        return null;
-    }
-
-    /**
-     * @param SkyBlockSkills $skyBlockSkills
-     * @return void
-     */
-    public function setSkyBlockSkills(SkyBlockSkills $skyBlockSkills) {
-    }
-
-    /**
-     * @return SkyBlockCollections|null
-     */
-    public function getSkyBlockCollections() {
-        return null;
-    }
-
-    /**
-     * @param SkyBlockCollections $skyBlockCollections
-     * @return void
-     */
-    public function setSkyBlockCollections(SkyBlockCollections $skyBlockCollections) {
-    }
-
-    /**
      * @param $profile_id
      * @return SkyBlockProfile|null
      */
@@ -277,5 +232,20 @@ class NoCacheHandler extends CacheHandler {
      * @return void
      */
     public function setSkyBlockProfile(SkyBlockProfile $profile) {
+    }
+
+    /**
+     * @param $resource
+     * @return Resource
+     */
+    public function getResource($resource) {
+        return null;
+    }
+
+    /**
+     * @param Resource $resource
+     * @return void
+     */
+    public function setResource($resource) {
     }
 }

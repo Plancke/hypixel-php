@@ -3,6 +3,7 @@
 namespace Plancke\HypixelPHP\resources;
 
 use Plancke\HypixelPHP\classes\Module;
+use Plancke\HypixelPHP\HypixelPHP;
 
 /**
  * Class ResourceManager
@@ -15,61 +16,36 @@ class ResourceManager extends Module {
     protected $guildResources;
 
     /**
-     * @return GameResources
+     * ResourceManager constructor.
+     * @param HypixelPHP $HypixelPHP
      */
-    public function getGameResources() {
-        if ($this->gameResources == null) {
-            $this->gameResources = new GameResources();
-        }
-        return $this->gameResources;
+    function __construct(HypixelPHP $HypixelPHP) {
+        parent::__construct($HypixelPHP);
+
+        $this->gameResources = new GameResources($this);
+        $this->generalResources = new GeneralResources($this);
+        $this->guildResources = new GuildResources($this);
     }
 
     /**
-     * @param GameResources $gameResources
-     * @return $this
+     * @return GameResources
      */
-    public function setGameResources(GameResources $gameResources) {
-        $this->gameResources = $gameResources;
-        return $this;
+    public function getGameResources() {
+        return $this->gameResources;
     }
 
     /**
      * @return GeneralResources
      */
     public function getGeneralResources() {
-        if ($this->generalResources == null) {
-            $this->generalResources = new GeneralResources();
-        }
         return $this->generalResources;
-    }
-
-    /**
-     * @param GeneralResources $generalResources
-     * @return $this
-     */
-    public function setGeneralResources(GeneralResources $generalResources) {
-        $this->generalResources = $generalResources;
-        return $this;
     }
 
     /**
      * @return GuildResources
      */
     public function getGuildResources() {
-        if ($this->guildResources == null) {
-            $this->guildResources = new GuildResources();
-        }
         return $this->guildResources;
     }
-
-    /**
-     * @param GuildResources $guildResources
-     * @return $this
-     */
-    public function setGuildResources(GuildResources $guildResources) {
-        $this->guildResources = $guildResources;
-        return $this;
-    }
-
 
 }

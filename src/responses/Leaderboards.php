@@ -14,8 +14,11 @@ class Leaderboards extends HypixelObject {
     /**
      * @return string
      */
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::LEADERBOARDS;
     }
 
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setLeaderboards($this);
+    }
 }

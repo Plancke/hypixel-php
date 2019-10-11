@@ -5,8 +5,6 @@ namespace Plancke\HypixelPHP\cache;
 use Closure;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\classes\Module;
-use Plancke\HypixelPHP\exceptions\ExceptionCodes;
-use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
@@ -16,11 +14,9 @@ use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\Session;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockCollections;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockNews;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockSkills;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
 /**
@@ -31,11 +27,9 @@ abstract class CacheHandler extends Module {
 
     // cache time to only get cache or null if not present
     const MAX_CACHE_TIME = PHP_INT_MAX;
-    // cache time to only fetch if we don't have cached data
-    const MAX_CACHE_TIME_GET_NON_EXIST = CacheHandler::MAX_CACHE_TIME - 1;
 
     protected $cacheTimes = [
-        CacheTimes::RESOURCE => 3 * 60 * 60,
+        CacheTimes::RESOURCES => 3 * 60 * 60,
 
         CacheTimes::PLAYER => 10 * 60,
         CacheTimes::UUID => 6 * 60 * 60,
@@ -101,68 +95,16 @@ abstract class CacheHandler extends Module {
     }
 
     /**
-     * Convert given input to an array in order to cache it
-     *
-     * @param $obj
-     * @return array
-     * @throws InvalidArgumentException
+     * @param $resource
+     * @return Resource
      */
-    protected function objToArray($obj) {
-        if ($obj instanceof HypixelObject) {
-            return $obj->getRaw();
-        } else if (is_array($obj)) {
-            return $obj;
-        }
-        throw new InvalidArgumentException();
-    }
+    public abstract function getResource($resource);
 
     /**
-     * @param Closure $provider
-     * @param $data
-     * @return mixed|null
+     * @param Resource $resource
+     * @return void
      */
-    protected function wrapProvider(Closure $provider, $data) {
-        if ($data == null) return null;
-        return $provider($this->getHypixelPHP(), $data);
-    }
-
-    /**
-     * @param HypixelObject $hypixelObject
-     * @throws HypixelPHPException
-     */
-    public function setCache($hypixelObject) {
-        if ($hypixelObject instanceof Player) {
-            $this->setPlayer($hypixelObject);
-        } elseif ($hypixelObject instanceof Guild) {
-            $this->setGuild($hypixelObject);
-        } elseif ($hypixelObject instanceof Friends) {
-            $this->setFriends($hypixelObject);
-        } elseif ($hypixelObject instanceof Session) {
-            $this->setSession($hypixelObject);
-        } elseif ($hypixelObject instanceof KeyInfo) {
-            $this->setKeyInfo($hypixelObject);
-        } elseif ($hypixelObject instanceof Leaderboards) {
-            $this->setLeaderboards($hypixelObject);
-        } elseif ($hypixelObject instanceof Boosters) {
-            $this->setBoosters($hypixelObject);
-        } elseif ($hypixelObject instanceof WatchdogStats) {
-            $this->setWatchdogStats($hypixelObject);
-        } elseif ($hypixelObject instanceof PlayerCount) {
-            $this->setPlayerCount($hypixelObject);
-        } elseif ($hypixelObject instanceof GameCounts) {
-            $this->setGameCounts($hypixelObject);
-        } elseif ($hypixelObject instanceof SkyBlockNews) {
-            $this->setSkyBlockNews($hypixelObject);
-        } elseif ($hypixelObject instanceof SkyBlockSkills) {
-            $this->setSkyBlockSkills($hypixelObject);
-        } elseif ($hypixelObject instanceof SkyBlockCollections) {
-            $this->setSkyBlockCollections($hypixelObject);
-        } elseif ($hypixelObject instanceof SkyBlockProfile) {
-            $this->setSkyBlockProfile($hypixelObject);
-        } else {
-            throw new HypixelPHPException("Invalid HypixelObject", ExceptionCodes::INVALID_HYPIXEL_OBJECT);
-        }
-    }
+    public abstract function setResource($resource);
 
     /**
      * @param $uuid
@@ -319,39 +261,6 @@ abstract class CacheHandler extends Module {
     public abstract function setGameCounts(GameCounts $gameCounts);
 
     /**
-     * @return SkyBlockNews|null
-     */
-    public abstract function getSkyBlockNews();
-
-    /**
-     * @param SkyBlockNews $skyBlockNews
-     * @return void
-     */
-    public abstract function setSkyBlockNews(SkyBlockNews $skyBlockNews);
-
-    /**
-     * @return SkyBlockSkills|null
-     */
-    public abstract function getSkyBlockSkills();
-
-    /**
-     * @param SkyBlockSkills $skyBlockSkills
-     * @return void
-     */
-    public abstract function setSkyBlockSkills(SkyBlockSkills $skyBlockSkills);
-
-    /**
-     * @return SkyBlockCollections|null
-     */
-    public abstract function getSkyBlockCollections();
-
-    /**
-     * @param SkyBlockCollections $skyBlockCollections
-     * @return void
-     */
-    public abstract function setSkyBlockCollections(SkyBlockCollections $skyBlockCollections);
-
-    /**
      * @param $profile_id
      * @return SkyBlockProfile|null
      */
@@ -362,4 +271,30 @@ abstract class CacheHandler extends Module {
      * @return void
      */
     public abstract function setSkyBlockProfile(SkyBlockProfile $profile);
+
+    /**
+     * Convert given input to an array in order to cache it
+     *
+     * @param $obj
+     * @return array
+     * @throws InvalidArgumentException
+     */
+    protected function objToArray($obj) {
+        if ($obj instanceof HypixelObject) {
+            return $obj->getRaw();
+        } else if (is_array($obj)) {
+            return $obj;
+        }
+        throw new InvalidArgumentException();
+    }
+
+    /**
+     * @param Closure $provider
+     * @param $data
+     * @return mixed|null
+     */
+    protected function wrapProvider(Closure $provider, $data) {
+        if ($data == null) return null;
+        return $provider($this->getHypixelPHP(), $data);
+    }
 }

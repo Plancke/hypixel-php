@@ -14,6 +14,18 @@ class RarityValues {
      */
     protected $values = [];
 
+    /**
+     * @param $ID
+     * @return RarityValues|null
+     */
+    public static function get($ID) {
+        RarityValues::init();
+        if (array_key_exists($ID, RarityValues::$cache)) {
+            return RarityValues::$cache[$ID];
+        }
+        return null;
+    }
+
     public static function init() {
         if (RarityValues::$cache != null) return;
         RarityValues::$cache = [];
@@ -54,15 +66,17 @@ class RarityValues {
     }
 
     /**
-     * @param $ID
-     * @return RarityValues|null
+     * @param $id
+     * @param $min
+     * @param $max
+     * @return $this
      */
-    public static function get($ID) {
-        RarityValues::init();
-        if (array_key_exists($ID, RarityValues::$cache)) {
-            return RarityValues::$cache[$ID];
-        }
-        return null;
+    public function addValue($id, $min, $max) {
+        $this->values[$id] = [
+            'min' => $min,
+            'max' => $max
+        ];
+        return $this;
     }
 
     /**
@@ -81,21 +95,6 @@ class RarityValues {
             return $this->values[$weaponStat->getID()];
         }
         return null;
-    }
-
-
-    /**
-     * @param $id
-     * @param $min
-     * @param $max
-     * @return $this
-     */
-    public function addValue($id, $min, $max) {
-        $this->values[$id] = [
-            'min' => $min,
-            'max' => $max
-        ];
-        return $this;
     }
 
 }

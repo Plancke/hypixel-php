@@ -107,13 +107,6 @@ class Weapon {
     }
 
     /**
-     * @param $level
-     */
-    public function setForcedUpgradeLevel($level) {
-        $this->forcedUpgradeLevel = $level;
-    }
-
-    /**
      * @return array
      */
     public function getMinMaxDamage() {
@@ -178,15 +171,22 @@ class Weapon {
     /**
      * @return int
      */
-    public function getForcedUpgradeLevel() {
-        return $this->forcedUpgradeLevel;
+    public function getMaxUpgrades() {
+        return $this->getField('upgradeMax');
     }
 
     /**
      * @return int
      */
-    public function getMaxUpgrades() {
-        return $this->getField('upgradeMax');
+    public function getForcedUpgradeLevel() {
+        return $this->forcedUpgradeLevel;
+    }
+
+    /**
+     * @param $level
+     */
+    public function setForcedUpgradeLevel($level) {
+        $this->forcedUpgradeLevel = $level;
     }
 
     /**
@@ -244,10 +244,6 @@ class Weapon {
         return $score;
     }
 
-    public function isPerfect() {
-        return WeaponGrader::getGrade($this) == 1;
-    }
-
     /**
      * @return int
      */
@@ -281,6 +277,10 @@ class Weapon {
      */
     public function getPlayerClass() {
         return PlayerClasses::fromID($this->weapon['spec']['playerClass'], $this->weapon['spec']['spec']);
+    }
+
+    public function isPerfect() {
+        return WeaponGrader::getGrade($this) == 1;
     }
 
     /**

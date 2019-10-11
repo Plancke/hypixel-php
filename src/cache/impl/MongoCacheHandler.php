@@ -4,26 +4,16 @@ namespace Plancke\HypixelPHP\cache\impl;
 
 use MongoDB\Client;
 use MongoDB\Database;
-use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\CacheTypes;
-use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
 use Plancke\HypixelPHP\HypixelPHP;
-use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
-use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
-use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
-use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockCollections;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockNews;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockSkills;
-use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\CacheUtil;
 
 /**
@@ -32,7 +22,7 @@ use Plancke\HypixelPHP\util\CacheUtil;
  * Class MongoCacheHandler
  * @package HypixelPHP
  */
-class MongoCacheHandler extends CacheHandler {
+class MongoCacheHandler extends FlatFileCacheHandler {
 
     const FIND_OPTIONS = [
         'typeMap' => [
@@ -45,9 +35,6 @@ class MongoCacheHandler extends CacheHandler {
     const UPDATE_OPTIONS = [
         'upsert' => true
     ];
-
-    // TODO Re-evaluate SingleSave
-    const SINGLE_SAVE = 'single_save';
 
     protected $mongoClient;
 
@@ -83,8 +70,6 @@ class MongoCacheHandler extends CacheHandler {
 
         $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['key' => 1], ['background' => true]);
 
-        $db->selectCollection(MongoCacheHandler::SINGLE_SAVE)->createIndex(['key' => 1], ['background' => true]);
-
         return $this;
     }
 
@@ -96,29 +81,6 @@ class MongoCacheHandler extends CacheHandler {
      */
     public function selectDB($db = "HypixelPHP") {
         return $this->mongoClient->selectDatabase($db);
-    }
-
-    /**
-     * @param $key
-     * @param $constructor
-     * @return HypixelObject|null
-     */
-    function getSingleSave($key, $constructor) {
-        return $this->wrapProvider($constructor, $this->selectDB()->selectCollection(self::SINGLE_SAVE)->findOne(['key' => $key], self::FIND_OPTIONS));
-    }
-
-    /**
-     * @param $key
-     * @param HypixelObject $hypixelObject
-     * @throws InvalidArgumentException
-     */
-    function setSingleSave($key, HypixelObject $hypixelObject) {
-        $raw = $hypixelObject->getRaw();
-        $raw['key'] = $key;
-
-        $this->selectDB()->selectCollection(self::SINGLE_SAVE)->replaceOne(
-            ['key' => $key], $this->objToArray($raw), self::UPDATE_OPTIONS
-        );
     }
 
     /**
@@ -393,140 +355,6 @@ class MongoCacheHandler extends CacheHandler {
         $this->selectDB()->selectCollection(CacheTypes::API_KEYS)->replaceOne(
             ['record.key' => (string)$keyInfo->getKey()], $this->objToArray($keyInfo), self::UPDATE_OPTIONS
         );
-    }
-
-
-    /**
-     * @return Leaderboards|null
-     */
-    public function getLeaderboards() {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->getSingleSave(CacheTypes::LEADERBOARDS, $this->getHypixelPHP()->getProvider()->getLeaderboards());
-    }
-
-    /**
-     * @param Leaderboards $leaderboards
-     * @throws InvalidArgumentException
-     */
-    public function setLeaderboards(Leaderboards $leaderboards) {
-        $this->setSingleSave(CacheTypes::LEADERBOARDS, $leaderboards);
-    }
-
-
-    /**
-     * @return Boosters|null
-     */
-    public function getBoosters() {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->getSingleSave(CacheTypes::BOOSTERS, $this->getHypixelPHP()->getProvider()->getBoosters());
-    }
-
-    /**
-     * @param Boosters $boosters
-     * @throws InvalidArgumentException
-     */
-    public function setBoosters(Boosters $boosters) {
-        $this->setSingleSave(CacheTypes::BOOSTERS, $boosters);
-    }
-
-
-    /**
-     * @return WatchdogStats|null
-     */
-    public function getWatchdogStats() {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->getSingleSave(CacheTypes::WATCHDOG_STATS, $this->getHypixelPHP()->getProvider()->getWatchdogStats());
-    }
-
-    /**
-     * @param WatchdogStats $watchdogStats
-     * @throws InvalidArgumentException
-     */
-    public function setWatchdogStats(WatchdogStats $watchdogStats) {
-        $this->setSingleSave(CacheTypes::WATCHDOG_STATS, $watchdogStats);
-    }
-
-    /**
-     * @return PlayerCount|null
-     */
-    public function getPlayerCount() {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->getSingleSave(CacheTypes::PLAYER_COUNT, $this->getHypixelPHP()->getProvider()->getPlayerCount());
-    }
-
-    /**
-     * @param PlayerCount $playerCount
-     * @throws InvalidArgumentException
-     */
-    public function setPlayerCount(PlayerCount $playerCount) {
-        $this->setSingleSave(CacheTypes::PLAYER_COUNT, $playerCount);
-    }
-
-    /**
-     * @return GameCounts|null
-     */
-    public function getGameCounts() {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->getSingleSave(CacheTypes::GAME_COUNTS, $this->getHypixelPHP()->getProvider()->getGameCounts());
-    }
-
-    /**
-     * @param GameCounts $gameCounts
-     * @throws InvalidArgumentException
-     */
-    public function setGameCounts(GameCounts $gameCounts) {
-        $this->setSingleSave(CacheTypes::GAME_COUNTS, $gameCounts);
-    }
-
-    /**
-     * @return SkyBlockNews|null
-     */
-    public function getSkyBlockNews() {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->getSingleSave(CacheTypes::SKYBLOCK_NEWS, $this->getHypixelPHP()->getProvider()->getSkyBlockNews());
-    }
-
-    /**
-     * @param SkyBlockNews $skyBlockNews
-     * @return void
-     * @throws InvalidArgumentException
-     */
-    public function setSkyBlockNews(SkyBlockNews $skyBlockNews) {
-        $this->setSingleSave(CacheTypes::SKYBLOCK_NEWS, $skyBlockNews);
-    }
-
-    /**
-     * @return SkyBlockSkills|null
-     */
-    public function getSkyBlockSkills() {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->getSingleSave(CacheTypes::SKYBLOCK_SKILLS, $this->getHypixelPHP()->getProvider()->getSkyBlockSkills());
-    }
-
-    /**
-     * @param SkyBlockSkills $skyBlockSkills
-     * @return void
-     * @throws InvalidArgumentException
-     */
-    public function setSkyBlockSkills(SkyBlockSkills $skyBlockSkills) {
-        $this->setSingleSave(CacheTypes::SKYBLOCK_SKILLS, $skyBlockSkills);
-    }
-
-    /**
-     * @return SkyBlockCollections|null
-     */
-    public function getSkyBlockCollections() {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->getSingleSave(CacheTypes::SKYBLOCK_COLLECTIONS, $this->getHypixelPHP()->getProvider()->getSkyBlockCollections());
-    }
-
-    /**
-     * @param SkyBlockCollections $skyBlockCollections
-     * @return void
-     * @throws InvalidArgumentException
-     */
-    public function setSkyBlockCollections(SkyBlockCollections $skyBlockCollections) {
-        $this->setSingleSave(CacheTypes::SKYBLOCK_COLLECTIONS, $skyBlockCollections);
     }
 
     /**

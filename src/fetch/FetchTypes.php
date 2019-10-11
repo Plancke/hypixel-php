@@ -8,6 +8,8 @@ namespace Plancke\HypixelPHP\fetch;
  */
 abstract class FetchTypes {
 
+    const RESOURCES = 'resources';
+
     const PLAYER = 'player';
 
     const GUILD = 'guild';
@@ -22,13 +24,11 @@ abstract class FetchTypes {
     const PLAYER_COUNT = 'playerCount';
     const GAME_COUNTS = 'gameCounts';
 
-    const SKYBLOCK_NEWS = 'skyblock/news';
-    const SKYBLOCK_COLLECTIONS = 'skyblock/collections';
-    const SKYBLOCK_SKILLS = 'skyblock/skills';
     const SKYBLOCK_PROFILE = 'skyblock/profile';
 
     public static function values() {
         return [
+            self::RESOURCES,
             self::PLAYER,
             self::GUILD,
             self::FIND_GUILD,
@@ -39,9 +39,6 @@ abstract class FetchTypes {
             self::WATCHDOG_STATS,
             self::PLAYER_COUNT,
             self::GAME_COUNTS,
-            self::SKYBLOCK_NEWS,
-            self::SKYBLOCK_COLLECTIONS,
-            self::SKYBLOCK_SKILLS,
             self::SKYBLOCK_PROFILE
         ];
     }

@@ -10,27 +10,6 @@ class ExpCalculator {
 
     const LEVELS_PER_PRESTIGE = 100;
 
-    public function getExpForLevel($level) {
-        if ($level == 0) return 0;
-
-        $respectedLevel = ExpCalculator::getLevelRespectingPrestige($level);
-        if ($respectedLevel > ExpCalculator::EASY_LEVELS) {
-            return 5000;
-        }
-
-        switch ($respectedLevel) {
-            case 1:
-                return 500;
-            case 2:
-                return 1000;
-            case 3:
-                return 2000;
-            case 4:
-                return 3500;
-        }
-        return 5000;
-    }
-
     public function getPrestigeForExp($exp) {
         return ExpCalculator::getPrestigeForLevel(ExpCalculator::getLevelForExp($exp));
     }
@@ -70,19 +49,6 @@ class ExpCalculator {
     }
 
     /**
-     * Returns "2" instead of "102" if prestiges happen every 100 levels e.g.
-     * @param $level
-     * @return float|int
-     */
-    public function getLevelRespectingPrestige($level) {
-        if ($level > BedWarsPrestige::HIGHEST_PRESTIGE * ExpCalculator::LEVELS_PER_PRESTIGE) {
-            return $level - BedWarsPrestige::HIGHEST_PRESTIGE * ExpCalculator::LEVELS_PER_PRESTIGE;
-        } else {
-            return $level % ExpCalculator::LEVELS_PER_PRESTIGE;
-        }
-    }
-
-    /**
      * Calculate level for given bedwars experience
      *
      * @param $exp
@@ -105,6 +71,40 @@ class ExpCalculator {
         $level += floor($expWithoutPrestiges / 5000);
 
         return $level;
+    }
+
+    public function getExpForLevel($level) {
+        if ($level == 0) return 0;
+
+        $respectedLevel = ExpCalculator::getLevelRespectingPrestige($level);
+        if ($respectedLevel > ExpCalculator::EASY_LEVELS) {
+            return 5000;
+        }
+
+        switch ($respectedLevel) {
+            case 1:
+                return 500;
+            case 2:
+                return 1000;
+            case 3:
+                return 2000;
+            case 4:
+                return 3500;
+        }
+        return 5000;
+    }
+
+    /**
+     * Returns "2" instead of "102" if prestiges happen every 100 levels e.g.
+     * @param $level
+     * @return float|int
+     */
+    public function getLevelRespectingPrestige($level) {
+        if ($level > BedWarsPrestige::HIGHEST_PRESTIGE * ExpCalculator::LEVELS_PER_PRESTIGE) {
+            return $level - BedWarsPrestige::HIGHEST_PRESTIGE * ExpCalculator::LEVELS_PER_PRESTIGE;
+        } else {
+            return $level % ExpCalculator::LEVELS_PER_PRESTIGE;
+        }
     }
 
 }

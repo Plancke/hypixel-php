@@ -8,7 +8,7 @@ namespace Plancke\HypixelPHP\cache;
  */
 abstract class CacheTimes {
 
-    const RESOURCE = 'skyblock_resource';
+    const RESOURCES = 'resources';
 
     const UUID = 'uuid';
     const UUID_NOT_FOUND = 'uuidNotFound';
@@ -23,7 +23,6 @@ abstract class CacheTimes {
     const FRIENDS = 'friends';
     const WATCHDOG = 'watchdog';
     const GAME_COUNTS = 'gameCounts';
-
     const SKYBLOCK_PROFILE = 'skyblock_profile';
 
 }

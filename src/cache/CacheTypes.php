@@ -7,6 +7,9 @@ namespace Plancke\HypixelPHP\cache;
  * @package Plancke\HypixelPHP\cache
  */
 abstract class CacheTypes {
+
+    const RESOURCES = 'resources';
+
     const PLAYERS = 'players';
     const PLAYER_UUID = 'player_uuid';
 
@@ -19,15 +22,12 @@ abstract class CacheTypes {
     const SESSIONS = 'sessions';
     const API_KEYS = 'api_keys';
 
+    const SKYBLOCK_PROFILES = 'skyblock_profiles';
+
     const LEADERBOARDS = 'leaderboards';
     const BOOSTERS = 'boosters';
     const WATCHDOG_STATS = 'watchdogStats';
     const PLAYER_COUNT = 'playerCount';
     const GAME_COUNTS = 'gameCounts';
-
-    const SKYBLOCK_NEWS = 'skyblock_news';
-    const SKYBLOCK_SKILLS = 'skyblock_skills';
-    const SKYBLOCK_COLLECTIONS = 'skyblock_collections';
-    const SKYBLOCK_PROFILES = 'skyblock_profiles';
 
 }

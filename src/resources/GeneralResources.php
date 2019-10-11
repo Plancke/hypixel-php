@@ -2,30 +2,32 @@
 
 namespace Plancke\HypixelPHP\resources;
 
+use Plancke\HypixelPHP\responses\Resource;
+
 /**
  * Class GeneralResources
  * @package Plancke\HypixelPHP\resources
  */
 class GeneralResources extends Resources {
     /**
-     * @return array
+     * @return Resource
      */
     public function getAchievements() {
-        return Resources::requireResourceFile('Achievements.php');
+        return self::requireRemoteResourceFile('achievements');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getQuests() {
-        return Resources::requireResourceFile('Quests.php');
+        return self::requireRemoteResourceFile('quests');
     }
 
     /**
-     * @return array
+     * @return Resource
      */
     public function getChallenges() {
-        return Resources::requireResourceFile('Challenges.php');
+        return self::requireRemoteResourceFile('challenges');
     }
 
 }

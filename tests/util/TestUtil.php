@@ -6,13 +6,10 @@ use Plancke\HypixelPHP\cache\impl\NoCacheHandler;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\impl\DefaultFetcher;
 use Plancke\HypixelPHP\HypixelPHP;
-use Plancke\HypixelPHP\log\impl\SysLogger;
+use Plancke\HypixelPHP\log\Logger;
 
 class TestUtil {
 
-    const PLANCKE = 'f025c1c7f55a4ea0b8d93f47d17dfe0f';
-
-    /** @noinspection PhpDocMissingThrowsInspection */
     /**
      * @return HypixelPHP
      * @throws HypixelPHPException
@@ -20,7 +17,11 @@ class TestUtil {
     public static function getHypixelPHP() {
         $HypixelPHP = new HypixelPHP(self::getAPIKey());
 
-        $HypixelPHP->setLogger(new SysLogger($HypixelPHP));
+        $HypixelPHP->setLogger(new class ($HypixelPHP) extends Logger {
+            public function actuallyLog($level, $line) {
+                echo $level . ': ' . $line . "\n";
+            }
+        });
         $HypixelPHP->setCacheHandler(new NoCacheHandler($HypixelPHP));
 
         $fetcher = new DefaultFetcher($HypixelPHP);

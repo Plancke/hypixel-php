@@ -56,8 +56,12 @@ class Friends extends HypixelObject {
     /**
      * @return string
      */
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::FRIENDS;
+    }
+
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setFriends($this);
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Plancke\HypixelPHP\wrappers\battlegrounds;
 
 class Ability {

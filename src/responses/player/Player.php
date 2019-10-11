@@ -34,6 +34,16 @@ class Player extends HypixelObject {
 
     /**
      * get Player achievement points
+     * @param bool $force_update
+     * @return int
+     * @deprecated use the new achievement data function
+     */
+    public function getAchievementPoints($force_update = false) {
+        return Utilities::getRecursiveValue($this->getAchievementData(), 'standard.points.current', 0);
+    }
+
+    /**
+     * get Player achievement points
      * @return array
      */
     public function getAchievementData() {
@@ -110,16 +120,6 @@ class Player extends HypixelObject {
     }
 
     /**
-     * get Player achievement points
-     * @param bool $force_update
-     * @return int
-     * @deprecated use the new achievement data function
-     */
-    public function getAchievementPoints($force_update = false) {
-        return Utilities::getRecursiveValue($this->getAchievementData(), 'standard.points.current', 0);
-    }
-
-    /**
      * @return Session|Response|null
      * @throws HypixelPHPException
      */
@@ -185,18 +185,6 @@ class Player extends HypixelObject {
             }
         }
         return $out;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSuperStarColor() {
-        $color = $this->get('monthlyRankColor');
-        if ($color == null) return null;
-        if (isset(ColorUtils::NAME_TO_CODE[$color])) {
-            return ColorUtils::NAME_TO_CODE[$color];
-        }
-        return ColorUtils::GOLD;
     }
 
     /**
@@ -285,6 +273,18 @@ class Player extends HypixelObject {
     }
 
     /**
+     * @return string
+     */
+    public function getSuperStarColor() {
+        $color = $this->get('monthlyRankColor');
+        if ($color == null) return null;
+        if (isset(ColorUtils::NAME_TO_CODE[$color])) {
+            return ColorUtils::NAME_TO_CODE[$color];
+        }
+        return ColorUtils::GOLD;
+    }
+
+    /**
      * Check if player has a PreEULA rank
      *
      * @return bool
@@ -342,8 +342,11 @@ class Player extends HypixelObject {
         return Leveling::getExactLevel(Leveling::getExperience($this));
     }
 
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::PLAYER;
     }
 
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setPlayer($this);
+    }
 }

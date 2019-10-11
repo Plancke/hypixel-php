@@ -13,10 +13,7 @@ use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Session;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockCollections;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockNews;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
-use Plancke\HypixelPHP\responses\skyblock\SkyBlockSkills;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
 /**
@@ -112,33 +109,6 @@ class Provider extends Module {
     public function getGameCounts() {
         return function ($HypixelPHP, $data) {
             return new GameCounts($HypixelPHP, $data);
-        };
-    }
-
-    /**
-     * @return Closure
-     */
-    public function getSkyBlockNews() {
-        return function ($HypixelPHP, $data) {
-            return new SkyBlockNews($HypixelPHP, $data);
-        };
-    }
-
-    /**
-     * @return Closure
-     */
-    public function getSkyBlockSkills() {
-        return function ($HypixelPHP, $data) {
-            return new SkyBlockSkills($HypixelPHP, $data);
-        };
-    }
-
-    /**
-     * @return Closure
-     */
-    public function getSkyBlockCollections() {
-        return function ($HypixelPHP, $data) {
-            return new SkyBlockCollections($HypixelPHP, $data);
         };
     }
 

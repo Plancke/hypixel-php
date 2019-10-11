@@ -34,7 +34,11 @@ class WatchdogStats extends HypixelObject {
     /**
      * @return string
      */
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::WATCHDOG;
+    }
+
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setWatchdogStats($this);
     }
 }

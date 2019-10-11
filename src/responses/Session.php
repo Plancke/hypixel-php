@@ -63,7 +63,11 @@ class Session extends HypixelObject {
     /**
      * @return string
      */
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::SESSION;
+    }
+
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setSession($this);
     }
 }

@@ -28,8 +28,11 @@ class SkyBlockProfile extends HypixelObject {
     /**
      * @return string
      */
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::SKYBLOCK_PROFILE;
     }
 
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setSkyBlockProfile($this);
+    }
 }

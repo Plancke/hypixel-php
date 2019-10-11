@@ -31,6 +31,16 @@ abstract class Fetcher extends Module {
     }
 
     /**
+     * @param Closure $getter
+     * @return $this
+     */
+    public function setResponseAdapterGetter(Closure $getter) {
+        $this->responseAdapterGetter = $getter;
+        $this->responseAdapter = null;
+        return $this;
+    }
+
+    /**
      * @return ResponseAdapter
      */
     public function getResponseAdapter() {
@@ -48,16 +58,6 @@ abstract class Fetcher extends Module {
     public function setResponseAdapter(ResponseAdapter $responseAdapter) {
         $this->responseAdapter = $responseAdapter;
         $this->responseAdapterGetter = null;
-        return $this;
-    }
-
-    /**
-     * @param Closure $getter
-     * @return $this
-     */
-    public function setResponseAdapterGetter(Closure $getter) {
-        $this->responseAdapterGetter = $getter;
-        $this->responseAdapter = null;
         return $this;
     }
 

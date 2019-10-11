@@ -20,6 +20,27 @@ class ExpCalculator {
     ];
     const EXP_PER_LEVEL = 10000;
 
+    public function getProgressCurrentLevel($exp) {
+        $level = $this->getLevelForExp($exp);
+        $levelExp = $this->getTotalExpForLevel($level);
+        return $exp - $levelExp;
+    }
+
+    public function getLevelForExp($exp) {
+        $easyLevelsCount = sizeof(self::EASY_LEVEL_EXP);
+
+        $easyLevelExp = 0;
+        for ($i = 1; $i <= $easyLevelsCount; $i++) {
+            $expPerLevel = $this->getExpForLevel($i);
+            $easyLevelExp += $expPerLevel;
+            if ($exp < $easyLevelExp) {
+                return $i - 1;//57965
+            }
+        }
+        $extraLevels = ($exp - $easyLevelExp) / self::EXP_PER_LEVEL;
+        return $easyLevelsCount + $extraLevels;
+    }
+
     public function getExpForLevel($level) {
         if ($level <= sizeof(self::EASY_LEVEL_EXP)) {
             return self::EASY_LEVEL_EXP[$level - 1];
@@ -42,27 +63,6 @@ class ExpCalculator {
             $totalExp += ($extraLevels * self::EXP_PER_LEVEL);
         }
         return $totalExp;
-    }
-
-    public function getProgressCurrentLevel($exp) {
-        $level = $this->getLevelForExp($exp);
-        $levelExp = $this->getTotalExpForLevel($level);
-        return $exp - $levelExp;
-    }
-
-    public function getLevelForExp($exp) {
-        $easyLevelsCount = sizeof(self::EASY_LEVEL_EXP);
-
-        $easyLevelExp = 0;
-        for ($i = 1; $i <= $easyLevelsCount; $i++) {
-            $expPerLevel = $this->getExpForLevel($i);
-            $easyLevelExp += $expPerLevel;
-            if ($exp < $easyLevelExp) {
-                return $i - 1;//57965
-            }
-        }
-        $extraLevels = ($exp - $easyLevelExp) / self::EXP_PER_LEVEL;
-        return $easyLevelsCount + $extraLevels;
     }
 
     /**

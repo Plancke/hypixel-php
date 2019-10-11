@@ -35,8 +35,12 @@ class KeyInfo extends HypixelObject {
     /**
      * @return string
      */
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::KEY_INFO;
+    }
+
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setKeyInfo($this);
     }
 
 }

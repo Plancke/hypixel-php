@@ -2,23 +2,32 @@
 
 namespace Plancke\HypixelPHP\resources;
 
+use Plancke\HypixelPHP\responses\Resource;
+
 /**
  * Class GuildResources
  * @package Plancke\HypixelPHP\resources
  */
 class GuildResources extends Resources {
     /**
-     * @return array
+     * @return Resource
      */
     public function getAchievements() {
-        return Resources::requireResourceFile('guild/Achievements.php');
+        return self::requireRemoteResourceFile('guild/achievements');
     }
 
     /**
-     * @return array
+     * @return Resource
+     */
+    public function getPermissions() {
+        return self::requireRemoteResourceFile('guild/permissions');
+    }
+
+    /**
+     * @return Resource
      */
     public function getRankWhitelist() {
-        return Resources::requireResourceFile('guild/RankWhitelist.php');
+        return self::requireResourceFile('guild/RankWhitelist.php');
     }
 
 }

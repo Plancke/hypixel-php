@@ -21,7 +21,11 @@ class PlayerCount extends HypixelObject {
     /**
      * @return string
      */
-    function getCacheTimeKey() {
+    public function getCacheTimeKey() {
         return CacheTimes::PLAYER_COUNT;
+    }
+
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setPlayerCount($this);
     }
 }

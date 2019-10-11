@@ -32,4 +32,7 @@ class GameCounts extends HypixelObject {
         return CacheTimes::GAME_COUNTS;
     }
 
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setGameCounts($this);
+    }
 }
