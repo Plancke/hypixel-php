@@ -29,7 +29,7 @@ class GameStats extends APIObject {
      * @return int
      */
     public function getCoins() {
-        return $this->getInt('coins');
+        return $this->getNumber('coins');
     }
 
 }

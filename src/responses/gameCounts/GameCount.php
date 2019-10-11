@@ -17,7 +17,7 @@ class GameCount extends APIObject {
      * @return int
      */
     public function getPlayers() {
-        return $this->getInt('players');
+        return $this->getNumber('players');
     }
 
     /**

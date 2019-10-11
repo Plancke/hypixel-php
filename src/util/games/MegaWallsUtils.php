@@ -28,7 +28,7 @@ class MegaWallsUtils {
             }
         }
 
-        $level = $stats->getInt(str_replace("%class%", strtolower($class['id']), $skill['field']), 1);
+        $level = $stats->getNumber(str_replace("%class%", strtolower($class['id']), $skill['field']), 1);
         return max($minLevel, $level);
     }
 
@@ -39,7 +39,7 @@ class MegaWallsUtils {
      * @return int
      */
     public function getFieldLevel($stats, $class, $field) {
-        return $stats->getInt(str_replace("%class%", strtolower($class['id']), $field['field']), 0);
+        return $stats->getNumber(str_replace("%class%", strtolower($class['id']), $field['field']), 0);
     }
 
 }

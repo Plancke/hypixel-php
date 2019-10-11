@@ -55,7 +55,7 @@ class Booster extends APIObject {
      * @internal param bool $original
      */
     public function getLength() {
-        return $this->getInt('length');
+        return $this->getNumber('length');
     }
 
     /**
@@ -63,14 +63,14 @@ class Booster extends APIObject {
      */
     public function getOriginalLength() {
         // default to 1 hour
-        return $this->getInt('originalLength', 3600);
+        return $this->getNumber('originalLength', 3600);
     }
 
     /**
      * @return int
      */
     public function getActivateTime() {
-        return $this->getInt('dateActivated');
+        return $this->getNumber('dateActivated');
     }
 
     /**

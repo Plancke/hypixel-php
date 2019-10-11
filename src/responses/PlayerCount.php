@@ -15,7 +15,7 @@ class PlayerCount extends HypixelObject {
      * @return int
      */
     public function getPlayerCount() {
-        return $this->getInt('playerCount');
+        return $this->getNumber('playerCount');
     }
 
     /**

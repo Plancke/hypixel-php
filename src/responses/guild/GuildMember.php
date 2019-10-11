@@ -49,13 +49,13 @@ class GuildMember extends APIObject {
      * @return int
      */
     public function getJoinTimeStamp() {
-        return $this->getInt("joined");
+        return $this->getNumber("joined");
     }
 
     /**
      * @return int
      */
     public function getQuestParticipation() {
-        return $this->getInt("questParticipation");
+        return $this->getNumber("questParticipation");
     }
 }

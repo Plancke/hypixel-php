@@ -40,13 +40,13 @@ class GuildRank extends APIObject {
      * @return int
      */
     public function getCreated() {
-        return $this->getInt("created");
+        return $this->getNumber("created");
     }
 
     /**
      * @return int
      */
     public function getPriority() {
-        return $this->getInt('priority');
+        return $this->getNumber('priority');
     }
 }

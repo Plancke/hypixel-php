@@ -288,7 +288,7 @@ class HypixelPHP {
             }
 
             // if all else fails fall back to hypixel
-            $response = $this->getFetcher()->fetch(FetchTypes::PLAYER, [FetchParams::PLAYER_BY_NAME => $username]);
+            $response = $this->getFetcher()->fetch(FetchTypes::PLAYER, ['key' => $this->getAPIKey(), FetchParams::PLAYER_BY_NAME => $username]);
             if ($response->wasSuccessful()) {
                 $obj = [
                     'timestamp' => time(),

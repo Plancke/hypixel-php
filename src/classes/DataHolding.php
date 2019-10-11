@@ -44,7 +44,7 @@ trait DataHolding {
      * @param int $default
      * @return int
      */
-    public function getInt($key, $default = 0) {
+    public function getNumber($key, $default = 0) {
         $ret = $this->get($key, $default);
         if (is_int($ret)) return $ret;
         return $default;
@@ -58,6 +58,17 @@ trait DataHolding {
     public function getDouble($key, $default = 0.0) {
         $ret = $this->get($key, $default);
         if (is_double($ret)) return $ret;
+        return $default;
+    }
+
+    /**
+     * @param $key
+     * @param $default
+     * @return number
+     */
+    public function getNumber($key, $default = 0) {
+        $ret = $this->get($key, $default);
+        if (is_numeric($ret)) return $ret + 0;
         return $default;
     }
 }

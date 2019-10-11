@@ -147,8 +147,8 @@ class Leveling {
      * @return float
      */
     static function getExperience(Player $player) {
-        $exp = $player->getInt(Leveling::EXP_FIELD);
-        $exp += Leveling::getTotalExpToFullLevel((float)$player->getInt(Leveling::LVL_FIELD) + 1);
+        $exp = $player->getNumber(Leveling::EXP_FIELD);
+        $exp += Leveling::getTotalExpToFullLevel((float)$player->getNumber(Leveling::LVL_FIELD) + 1);
         return (float)$exp;
     }
 

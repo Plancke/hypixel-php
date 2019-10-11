@@ -16,7 +16,7 @@ class DataHoldingTest extends TestCase {
         ]);
 
         $this->assertTrue($resource->getDouble('double') == 0.5);
-        $this->assertTrue($resource->getInt('int') == 1);
+        $this->assertTrue($resource->getNumber('int') == 1);
 
         // not an array, fall back to default
         $this->assertTrue($resource->getArray('int') == []);

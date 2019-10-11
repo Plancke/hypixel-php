@@ -39,10 +39,11 @@ class DefaultFetcher extends Fetcher {
         $debug = $fetch;
         if (is_array($keyValues) && sizeof($keyValues) > 0) {
             $requestURL .= '?';
+            $debug .= $fetch;
             foreach ($keyValues as $key => $value) {
                 $value = urlencode(trim($value));
                 $requestURL .= '&' . $key . '=' . $value;
-                $debug .= '?' . $key . '=' . $value;
+                $debug .= '&' . $key . '=' . $value;
             }
         }
 

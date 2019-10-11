@@ -14,21 +14,21 @@ class WatchdogStats extends HypixelObject {
      * @return int
      */
     public function getLastMinute() {
-        return $this->getInt('watchdog_lastMinute');
+        return $this->getNumber('watchdog_lastMinute');
     }
 
     /**
      * @return int
      */
     public function getTotal() {
-        return $this->getInt('watchdog_lastMinute');
+        return $this->getNumber('watchdog_lastMinute');
     }
 
     /**
      * @return int
      */
     public function getRollingDaily() {
-        return $this->getInt('watchdog_rollingDaily');
+        return $this->getNumber('watchdog_rollingDaily');
     }
 
     /**
