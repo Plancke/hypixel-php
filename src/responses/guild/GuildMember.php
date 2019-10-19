@@ -58,4 +58,11 @@ class GuildMember extends APIObject {
     public function getQuestParticipation() {
         return $this->getNumber("questParticipation");
     }
+
+    /**
+     * @return array[string]int
+     */
+    public function getExpHistory() {
+        return $this->getArray("expHistory");
+    }
 }
