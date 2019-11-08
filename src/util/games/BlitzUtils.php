@@ -17,6 +17,9 @@ class BlitzUtils {
      * @return int
      */
     public function getKitLevel($resources, GameStats $stats, $kit) {
+        $purchased_level = $stats->getNumber($kit);
+        if ($purchased_level > 0) return $purchased_level;
+
         $exp = $stats->getNumber('exp_' . $kit);
         if ($exp > 0) {
             $last = 0;
@@ -29,7 +32,7 @@ class BlitzUtils {
             return $last;
         }
 
-        return $stats->getNumber($kit);
+        return 0;
     }
 
 }
