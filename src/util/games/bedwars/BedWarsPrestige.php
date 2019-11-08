@@ -4,6 +4,10 @@ namespace Plancke\HypixelPHP\util\games\bedwars;
 
 use Plancke\HypixelPHP\color\ColorUtils;
 
+/**
+ * Class BedWarsPrestige
+ * @package Plancke\HypixelPHP\util\games\bedwars
+ */
 class BedWarsPrestige {
 
     const NONE = 0;

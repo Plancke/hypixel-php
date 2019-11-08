@@ -3,8 +3,8 @@
 namespace Plancke\HypixelPHP\util\games\bedwars;
 
 /**
- * Class BedwarsUtils
- * @package Plancke\HypixelPHP\util
+ * Class BedWarsUtils
+ * @package Plancke\HypixelPHP\util\games\bedwars
  */
 class BedWarsUtils {
 

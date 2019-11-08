@@ -3,8 +3,8 @@
 namespace Plancke\HypixelPHP\util\games\skywars;
 
 /**
- * Class BedwarsUtils
- * @package Plancke\HypixelPHP\util
+ * Class SkyWarsUtils
+ * @package Plancke\HypixelPHP\util\games\skywars
  */
 class SkyWarsUtils {
 

@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\util\games\skywars;
 
+/**
+ * Class ExpCalculator
+ * @package Plancke\HypixelPHP\util\games\skywars
+ */
 class ExpCalculator {
 
     const EASY_LEVEL_EXP = [

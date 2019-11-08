@@ -8,13 +8,14 @@ use Plancke\HypixelPHP\util\games\skywars\SkyWarsUtils;
 
 /**
  * Class GameUtils
- * @package Plancke\HypixelPHP\util
+ * @package Plancke\HypixelPHP\util\games
  */
 class GameUtils {
 
     protected static $BEDWARS_UTILS;
     protected static $MEGA_WALLS_UTILS;
     protected static $SKYWARS_UTILS;
+    protected static $BLITZ_UTILS;
 
     /**
      * @throws Exception
@@ -51,5 +52,15 @@ class GameUtils {
             GameUtils::$SKYWARS_UTILS = new SkyWarsUtils();
         }
         return GameUtils::$SKYWARS_UTILS;
+    }
+
+    /**
+     * @return BlitzUtils
+     */
+    public static function getBlitz() {
+        if (GameUtils::$BLITZ_UTILS == null) {
+            GameUtils::$BLITZ_UTILS = new BlitzUtils();
+        }
+        return GameUtils::$BLITZ_UTILS;
     }
 }

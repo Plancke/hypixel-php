@@ -2,6 +2,10 @@
 
 namespace Plancke\HypixelPHP\util\games\bedwars;
 
+/**
+ * Class ExpCalculator
+ * @package Plancke\HypixelPHP\util\games\bedwars
+ */
 class ExpCalculator {
 
     const EASY_LEVELS = 4;

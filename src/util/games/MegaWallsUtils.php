@@ -6,7 +6,7 @@ use Plancke\HypixelPHP\responses\player\GameStats;
 
 /**
  * Class BedWarsUtils
- * @package Plancke\HypixelPHP\util
+ * @package Plancke\HypixelPHP\util\games
  */
 class MegaWallsUtils {
 
