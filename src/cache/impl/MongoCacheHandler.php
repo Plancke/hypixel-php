@@ -68,7 +68,7 @@ class MongoCacheHandler extends FlatFileCacheHandler {
 
         $db->selectCollection(CacheTypes::SESSIONS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
-        $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['key' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['record.profile_id' => 1], ['background' => true]);
 
         return $this;
     }
