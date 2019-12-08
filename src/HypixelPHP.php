@@ -399,12 +399,6 @@ class HypixelPHP {
                 }
                 $fetched = $constructor($this, $data);
                 if ($fetched instanceof HypixelObject) {
-                    if ($cached instanceof HypixelObject) {
-                        // update with cached extra, only locally
-                        // since we are already saving the whole thing later
-                        $fetched->_setExtra($cached->getExtra());
-                    }
-
                     $fetched->handleNew($cached);
                     $fetched->save();
 

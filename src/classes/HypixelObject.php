@@ -5,7 +5,6 @@ namespace Plancke\HypixelPHP\classes;
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\util\CacheUtil;
-use Plancke\HypixelPHP\util\Utilities;
 
 /**
  * Class HypixelObject
@@ -24,9 +23,6 @@ abstract class HypixelObject extends APIObject {
 
         if (!isset($this->data['record']) || !is_array($this->data['record'])) {
             $this->data['record'] = [];
-        }
-        if (!isset($this->data['extra']) || !is_array($this->data['extra'])) {
-            $this->data['extra'] = [];
         }
     }
 
@@ -73,38 +69,6 @@ abstract class HypixelObject extends APIObject {
      */
     public abstract function getCacheTimeKey();
 
-    /**
-     * @param array $extra
-     */
-    public function _setExtra($extra) {
-        $this->data['extra'] = $extra;
-    }
-
-    /**
-     * @param $input
-     * @param bool $save
-     */
-    public function setExtra($input, $save = true) {
-        $anyChange = false;
-        foreach ($input as $key => $val) {
-            if (array_key_exists($key, $this->data['extra'])) {
-                if ($val == null) {
-                    unset($this->data['extra'][$key]);
-                    $anyChange = true;
-                    continue;
-                } else if ($this->data['extra'][$key] == $val) {
-                    continue;
-                }
-            }
-            $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Extra \'' . $key . '\' set to ' . var_export($val, true));
-            $this->data['extra'][$key] = $val;
-            $anyChange = true;
-        }
-        if ($anyChange && $save) {
-            $this->save();
-        }
-    }
-
     public abstract function save();
 
     /**
@@ -112,19 +76,6 @@ abstract class HypixelObject extends APIObject {
      */
     public function getID() {
         return $this->get('_id');
-    }
-
-    /**
-     * @param string $key
-     * @param mixed $default
-     * @param string $delimiter
-     * @return mixed
-     */
-    public function getExtra($key = null, $default = null, $delimiter = '.') {
-        if ($key != null) {
-            return Utilities::getRecursiveValue($this->data['extra'], $key, $default, $delimiter);
-        }
-        return $this->data['extra'];
     }
 
     /**
