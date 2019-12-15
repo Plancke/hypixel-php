@@ -392,11 +392,10 @@ class HypixelPHP {
 
         $response = $responseSupplier();
         if ($response instanceof Response) {
-            if ($response->wasSuccessful()) {
-                $data = $response->getData();
-                if (!array_key_exists('record', $data)) {
-                    $data = ['record' => $data];
-                }
+            $data = $response->getData();
+
+            // if there is no record, we assume it's null
+            if ($response->wasSuccessful() && array_key_exists('record', $data)) {
                 $fetched = $constructor($this, $data);
                 if ($fetched instanceof HypixelObject) {
                     $fetched->handleNew($cached);
