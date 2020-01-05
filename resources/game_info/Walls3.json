@@ -271,6 +271,12 @@
       }
     },
     "skills": {
+      "KIT": {
+        "id": "KIT",
+        "field": "classes.%class%.skill_level_d",
+        "cleanName": "Kit",
+        "maxLevel": 5
+      },
       "SKILL": {
         "id": "SKILL",
         "field": "classes.%class%.skill_level_a",
@@ -294,12 +300,6 @@
         "field": "classes.%class%.skill_level_g",
         "cleanName": "Gathering",
         "maxLevel": 3
-      },
-      "KIT": {
-        "id": "KIT",
-        "field": "classes.%class%.skill_level_d",
-        "cleanName": "Kit",
-        "maxLevel": 5
       }
     },
     "fields": {

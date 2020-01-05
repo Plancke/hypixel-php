@@ -323,6 +323,13 @@ return array(
                 ),
             'skills' =>
                 array(
+                    'KIT' =>
+                        array(
+                            'id' => 'KIT',
+                            'field' => 'classes.%class%.skill_level_d',
+                            'cleanName' => 'Kit',
+                            'maxLevel' => 5,
+                        ),
                     'SKILL' =>
                         array(
                             'id' => 'SKILL',
@@ -350,13 +357,6 @@ return array(
                             'field' => 'classes.%class%.skill_level_g',
                             'cleanName' => 'Gathering',
                             'maxLevel' => 3,
-                        ),
-                    'KIT' =>
-                        array(
-                            'id' => 'KIT',
-                            'field' => 'classes.%class%.skill_level_d',
-                            'cleanName' => 'Kit',
-                            'maxLevel' => 5,
                         ),
                 ),
             'fields' =>
