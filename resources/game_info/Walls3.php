@@ -369,9 +369,9 @@ return array(
                         ),
                     'ENDERCHEST' =>
                         array(
-                            'id' => 'PRESTIGE',
-                            'field' => 'classes.%class%.prestige',
-                            'cleanName' => 'Prestige',
+                            'id' => 'ENDERCHEST',
+                            'field' => 'classes.%class%.enderchest_rows',
+                            'cleanName' => 'Ender Chest',
                         ),
                 ),
         ),
