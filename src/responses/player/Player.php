@@ -21,7 +21,9 @@ use Plancke\HypixelPHP\util\Utilities;
  * @package Plancke\HypixelPHP\responses\player
  */
 class Player extends HypixelObject {
-    protected $guild, $friends, $session;
+    protected $guild, $guildFetched = false;
+    protected $friends, $friendsFetched = false;
+    protected $session, $sessionFetched = false;
 
     /**
      * Get the Stats object for the player
@@ -124,7 +126,8 @@ class Player extends HypixelObject {
      * @throws HypixelPHPException
      */
     public function getSession() {
-        if ($this->session == null) {
+        if ($this->sessionFetched == false) {
+            $this->sessionFetched = true;
             $this->session = $this->getHypixelPHP()->getSession([FetchParams::SESSION_BY_UUID => $this->getUUID()]);
         }
         return $this->session;
@@ -144,7 +147,8 @@ class Player extends HypixelObject {
      * @throws HypixelPHPException
      */
     public function getFriends() {
-        if ($this->friends == null) {
+        if ($this->friendsFetched == false) {
+            $this->friendsFetched = true;
             $this->friends = $this->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $this->getUUID()]);
         }
         return $this->friends;
@@ -266,7 +270,8 @@ class Player extends HypixelObject {
      * @throws HypixelPHPException
      */
     public function getGuild() {
-        if ($this->guild == null) {
+        if ($this->guildFetched == false) {
+            $this->guildFetched = true;
             $this->guild = $this->getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $this->getUUID()]);
         }
         return $this->guild;
