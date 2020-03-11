@@ -29,6 +29,7 @@ use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
@@ -375,6 +376,7 @@ class HypixelPHP {
                 }
             }
         } catch (Exception $exception) {
+            $this->getLogger()->log(LOG_ERR, $exception->getMessage());
             $this->getLogger()->log(LOG_ERR, $exception->getTraceAsString());
         }
 
@@ -490,6 +492,35 @@ class HypixelPHP {
                         return $this->getFetcher()->fetch(FetchTypes::STATUS, ['key' => $this->getAPIKey(), $key => $val]);
                     },
                     $this->getProvider()->getStatus()
+                );
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param array $pairs
+     * @return null|Response|RecentGames
+     * @throws HypixelPHPException
+     */
+    public function getRecentGames($pairs = []) {
+        $this->checkPairs($pairs);
+
+        foreach ($pairs as $key => $val) {
+            if ($val == null || $val == '') continue;
+
+            if ($key == FetchParams::RECENT_GAMES_BY_UUID) {
+                if (InputType::getType($val) !== InputType::UUID) {
+                    throw new InvalidUUIDException($val);
+                }
+                $val = Utilities::ensureNoDashesUUID($val);
+
+                return $this->handle(
+                    $this->getCacheHandler()->getRecentGames((string)$val),
+                    function () use ($key, $val) {
+                        return $this->getFetcher()->fetch(FetchTypes::RECENT_GAMES, ['key' => $this->getAPIKey(), $key => $val]);
+                    },
+                    $this->getProvider()->getRecentGames()
                 );
             }
         }

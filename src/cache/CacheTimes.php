@@ -19,6 +19,7 @@ abstract class CacheTimes {
     const PLAYER_COUNT = 'playerCount';
     const BOOSTERS = 'boosters';
     const STATUS = 'status';
+    const RECENT_GAMES = 'recentGames';
     const KEY_INFO = 'keyInfo';
     const FRIENDS = 'friends';
     const WATCHDOG = 'watchdog';

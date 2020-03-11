@@ -13,6 +13,7 @@ use Plancke\HypixelPHP\responses\booster\Booster;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
+use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Status;
 use Plancke\HypixelPHP\util\CachedGetter;
 use Plancke\HypixelPHP\util\Leveling;
@@ -29,8 +30,9 @@ class Player extends HypixelObject {
      * @var CachedGetter $friends
      * @var CachedGetter $status
      * @var CachedGetter $boosters
+     * @var CachedGetter $recentGames
      */
-    protected $guild, $friends, $status, $boosters;
+    protected $guild, $friends, $status, $boosters, $recentGames;
 
     /**
      * @param            $data
@@ -47,7 +49,6 @@ class Player extends HypixelObject {
             return $player->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $player->getUUID()]);
         });
         $this->status = new CachedGetter(function () use ($player) {
-            // api is toggled for this player
             if ($player->get("settings.apiSession", true) == false) return null;
 
             // the timestamps indicate player is offline, don't bother requesting status
@@ -56,6 +57,12 @@ class Player extends HypixelObject {
 
             // actually request the status
             return $player->getHypixelPHP()->getStatus([FetchParams::STATUS_BY_UUID => $player->getUUID()]);
+        });
+        $this->recentGames = new CachedGetter(function () use ($player) {
+            if ($player->get("settings.apiRecentGames", true) == false) return null;
+
+            // actually request the status
+            return $player->getHypixelPHP()->getRecentGames([FetchParams::RECENT_GAMES_BY_UUID => $player->getUUID()]);
         });
         $this->boosters = new CachedGetter(/** @throws HypixelPHPException */ function () use ($player) {
             $player = $this->getHypixelPHP()->getBoosters();
@@ -162,6 +169,7 @@ class Player extends HypixelObject {
     /**
      * @return Status|Response|null
      * @throws HypixelPHPException
+     * @noinspection PhpDocRedundantThrowsInspection
      */
     public function getStatus() {
         return $this->status->get();
@@ -179,6 +187,7 @@ class Player extends HypixelObject {
     /**
      * @return Friends|Response|null
      * @throws HypixelPHPException
+     * @noinspection PhpDocRedundantThrowsInspection
      */
     public function getFriends() {
         return $this->friends->get();
@@ -187,9 +196,19 @@ class Player extends HypixelObject {
     /**
      * @return Booster[]
      * @throws HypixelPHPException
+     * @noinspection PhpDocRedundantThrowsInspection
      */
     public function getBoosters() {
         return $this->boosters->get();
+    }
+
+    /**
+     * @return RecentGames
+     * @throws HypixelPHPException
+     * @noinspection PhpDocRedundantThrowsInspection
+     */
+    public function getRecentGames() {
+        return $this->recentGames->get();
     }
 
     /**
@@ -332,8 +351,7 @@ class Player extends HypixelObject {
         $pre = $this->getRank(true, ['packageRank']); // only old rank matters
         $eulaMultiplier = $pre != null ? $pre->getMultiplier() : 1;
         $levelMultiplier = $this->getLevelMultiplier($this->getLevel()) + 1;
-        $highest = max($rankMultiplier, $eulaMultiplier, $levelMultiplier);
-        return $highest;
+        return max($rankMultiplier, $eulaMultiplier, $levelMultiplier);
     }
 
     public function getLevelMultiplier($level) {

@@ -21,6 +21,7 @@ abstract class CacheTypes {
 
     const STATUS = 'status';
     const API_KEYS = 'api_keys';
+    const RECENT_GAMES = 'recent_games';
 
     const SKYBLOCK_PROFILES = 'skyblock_profiles';
 

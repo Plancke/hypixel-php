@@ -2,16 +2,17 @@
 
 namespace Plancke\HypixelPHP\cache\impl;
 
+use InvalidArgumentException;
 use MongoDB\Client;
 use MongoDB\Database;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\CacheTypes;
-use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\player\Player;
+use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
 use Plancke\HypixelPHP\util\CacheUtil;
@@ -67,6 +68,7 @@ class MongoCacheHandler extends FlatFileCacheHandler {
         $db->selectCollection(CacheTypes::FRIENDS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
         $db->selectCollection(CacheTypes::STATUS)->createIndex(['record.uuid' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::RECENT_GAMES)->createIndex(['record.uuid' => 1], ['background' => true]);
 
         $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['record.profile_id' => 1], ['background' => true]);
 
@@ -331,6 +333,29 @@ class MongoCacheHandler extends FlatFileCacheHandler {
     public function setStatus(Status $status) {
         $this->selectDB()->selectCollection(CacheTypes::STATUS)->replaceOne(
             ['record.uuid' => (string)$status->getUUID()], $this->objToArray($status), self::UPDATE_OPTIONS
+        );
+    }
+
+    /**
+     * @param $uuid
+     * @return RecentGames|null
+     */
+    public function getRecentGames($uuid) {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getRecentGames(),
+            $this->selectDB()->selectCollection(CacheTypes::RECENT_GAMES)->findOne(
+                ['record.uuid' => (string)$uuid], self::FIND_OPTIONS
+            )
+        );
+    }
+
+    /**
+     * @param RecentGames $recentGames
+     * @throws InvalidArgumentException
+     */
+    public function setRecentGames(RecentGames $recentGames) {
+        $this->selectDB()->selectCollection(CacheTypes::RECENT_GAMES)->replaceOne(
+            ['record.uuid' => (string)$recentGames->getUUID()], $this->objToArray($recentGames), self::UPDATE_OPTIONS
         );
     }
 

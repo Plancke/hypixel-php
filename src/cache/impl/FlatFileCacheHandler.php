@@ -14,6 +14,7 @@ use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
@@ -245,6 +246,25 @@ class FlatFileCacheHandler extends CacheHandler {
      */
     public function setStatus(Status $status) {
         $this->_setCache(CacheTypes::STATUS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($status->getUUID()), $status);
+    }
+
+    /**
+     * @param $uuid
+     * @return RecentGames|null
+     */
+    public function getRecentGames($uuid) {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getRecentGames(),
+            $this->_getCache(CacheTypes::RECENT_GAMES . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
+        );
+    }
+
+    /**
+     * @param RecentGames $recentGames
+     * @throws InvalidArgumentException
+     */
+    public function setRecentGames(RecentGames $recentGames) {
+        $this->_setCache(CacheTypes::STATUS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($recentGames->getUUID()), $recentGames);
     }
 
     /**

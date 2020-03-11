@@ -12,6 +12,11 @@ use Plancke\HypixelPHP\classes\HypixelObject;
  * @package Plancke\HypixelPHP\responses
  */
 class Status extends HypixelObject {
+
+    public function getUUID() {
+        return $this->get("uuid");
+    }
+
     /**
      * @return bool
      */

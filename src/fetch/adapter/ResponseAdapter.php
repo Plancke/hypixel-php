@@ -38,7 +38,9 @@ class ResponseAdapter extends Module {
             case FetchTypes::FRIENDS:
                 return $this->attachKeyValues($keyValues, $this->wrapRecord($response->setData(['list' => $response->getData()['records']])));
             case FetchTypes::STATUS:
-                return $this->attachKeyValues($keyValues, $this->remapField('status', $response));
+                return $this->attachKeyValues($keyValues, $this->remapField('session', $response));
+            case FetchTypes::RECENT_GAMES:
+                return $this->attachKeyValues($keyValues, $this->wrapRecord($response));
             case FetchTypes::SKYBLOCK_PROFILE:
                 return $this->remapField('profile', $response);
 
@@ -83,6 +85,7 @@ class ResponseAdapter extends Module {
         $data = $response->getData();
         if (array_key_exists('record', $data) && is_array($data['record'])) {
             $data['record'] = array_merge($data['record'], $keyValues);
+            unset($data['record']['key']);
         }
         return $response->setData($data);
     }

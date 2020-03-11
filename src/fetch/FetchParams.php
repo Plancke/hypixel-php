@@ -19,6 +19,7 @@ abstract class FetchParams {
 
     const FRIENDS_BY_UUID = 'uuid';
     const STATUS_BY_UUID = 'uuid';
+    const RECENT_GAMES_BY_UUID = 'uuid';
 
     /**
      * @return array
@@ -37,6 +38,7 @@ abstract class FetchParams {
 
             self::FRIENDS_BY_UUID,
             self::STATUS_BY_UUID,
+            self::RECENT_GAMES_BY_UUID,
         ];
     }
 }

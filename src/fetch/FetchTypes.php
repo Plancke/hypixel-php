@@ -19,6 +19,7 @@ abstract class FetchTypes {
     const BOOSTERS = 'boosters';
     const LEADERBOARDS = 'leaderboards';
     const STATUS = 'status';
+    const RECENT_GAMES = 'recentGames';
     const KEY = 'key';
     const WATCHDOG_STATS = 'watchdogStats';
     const PLAYER_COUNT = 'playerCount';
@@ -35,6 +36,7 @@ abstract class FetchTypes {
             self::BOOSTERS,
             self::LEADERBOARDS,
             self::STATUS,
+            self::RECENT_GAMES,
             self::KEY,
             self::WATCHDOG_STATS,
             self::PLAYER_COUNT,

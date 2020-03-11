@@ -12,6 +12,7 @@ use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
 use Plancke\HypixelPHP\responses\WatchdogStats;
@@ -46,6 +47,15 @@ class Provider extends Module {
     public function getStatus() {
         return function ($HypixelPHP, $data) {
             return new Status($HypixelPHP, $data);
+        };
+    }
+
+    /**
+     * @return Closure
+     */
+    public function getRecentGames() {
+        return function ($HypixelPHP, $data) {
+            return new RecentGames($HypixelPHP, $data);
         };
     }
 

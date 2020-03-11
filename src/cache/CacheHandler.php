@@ -14,6 +14,7 @@ use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
@@ -192,6 +193,18 @@ abstract class CacheHandler extends Module {
      * @return void
      */
     public abstract function setStatus(Status $status);
+
+    /**
+     * @param $uuid
+     * @return RecentGames|null
+     */
+    public abstract function getRecentGames($uuid);
+
+    /**
+     * @param RecentGames $recentGames
+     * @return void
+     */
+    public abstract function setRecentGames(RecentGames $recentGames);
 
     /**
      * @param $key
