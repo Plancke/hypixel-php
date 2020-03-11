@@ -1,0 +1,48 @@
+<?php
+
+namespace Plancke\HypixelPHP\responses;
+
+use Plancke\HypixelPHP\cache\CacheTimes;
+use Plancke\HypixelPHP\classes\gameType\GameType;
+use Plancke\HypixelPHP\classes\gameType\GameTypes;
+use Plancke\HypixelPHP\classes\HypixelObject;
+
+/**
+ * Class Status
+ * @package Plancke\HypixelPHP\responses
+ */
+class Status extends HypixelObject {
+    /**
+     * @return bool
+     */
+    public function isOnline() {
+        return $this->get('online', false);
+    }
+
+    /**
+     * @return GameType
+     */
+    public function getGameType() {
+        $val = $this->get('gameType');
+        if ($val == null) return null;
+        return GameTypes::fromEnum($val);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMode() {
+        return $this->get('mode');
+    }
+
+    /**
+     * @return string
+     */
+    public function getCacheTimeKey() {
+        return CacheTimes::STATUS;
+    }
+
+    public function save() {
+        $this->getHypixelPHP()->getCacheHandler()->setStatus($this);
+    }
+}

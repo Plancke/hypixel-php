@@ -18,7 +18,7 @@ abstract class FetchTypes {
     const FRIENDS = 'friends';
     const BOOSTERS = 'boosters';
     const LEADERBOARDS = 'leaderboards';
-    const SESSION = 'session';
+    const STATUS = 'status';
     const KEY = 'key';
     const WATCHDOG_STATS = 'watchdogStats';
     const PLAYER_COUNT = 'playerCount';
@@ -34,7 +34,7 @@ abstract class FetchTypes {
             self::FIND_GUILD,
             self::BOOSTERS,
             self::LEADERBOARDS,
-            self::SESSION,
+            self::STATUS,
             self::KEY,
             self::WATCHDOG_STATS,
             self::PLAYER_COUNT,

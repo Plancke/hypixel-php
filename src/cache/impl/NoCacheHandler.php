@@ -11,9 +11,9 @@ use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
-use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockAuctions;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
+use Plancke\HypixelPHP\responses\Status;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
 /**
@@ -68,10 +68,10 @@ class NoCacheHandler extends CacheHandler {
         return null;
     }
 
-    function setSession(Session $session) {
+    function setStatus(Status $status) {
     }
 
-    function getSession($uuid) {
+    function getStatus($uuid) {
         return null;
     }
 

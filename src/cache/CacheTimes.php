@@ -18,7 +18,7 @@ abstract class CacheTimes {
     const LEADERBOARDS = 'leaderboards';
     const PLAYER_COUNT = 'playerCount';
     const BOOSTERS = 'boosters';
-    const SESSION = 'session';
+    const STATUS = 'status';
     const KEY_INFO = 'keyInfo';
     const FRIENDS = 'friends';
     const WATCHDOG = 'watchdog';

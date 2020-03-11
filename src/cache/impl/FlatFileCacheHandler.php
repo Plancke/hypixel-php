@@ -2,10 +2,10 @@
 
 namespace Plancke\HypixelPHP\cache\impl;
 
+use InvalidArgumentException;
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\CacheTypes;
-use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
@@ -15,8 +15,8 @@ use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Resource;
-use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
+use Plancke\HypixelPHP\responses\Status;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\CacheUtil;
 
@@ -230,21 +230,21 @@ class FlatFileCacheHandler extends CacheHandler {
 
     /**
      * @param $uuid
-     * @return Session|null
+     * @return Status|null
      */
-    public function getSession($uuid) {
+    public function getStatus($uuid) {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getSession(),
-            $this->_getCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
+            $this->getHypixelPHP()->getProvider()->getStatus(),
+            $this->_getCache(CacheTypes::STATUS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
         );
     }
 
     /**
-     * @param Session $session
+     * @param Status $status
      * @throws InvalidArgumentException
      */
-    public function setSession(Session $session) {
-        $this->_setCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($session->getUUID()), $session);
+    public function setStatus(Status $status) {
+        $this->_setCache(CacheTypes::STATUS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($status->getUUID()), $status);
     }
 
     /**
@@ -254,7 +254,7 @@ class FlatFileCacheHandler extends CacheHandler {
     public function getKeyInfo($key) {
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getKeyInfo(),
-            $this->_getCache(CacheTypes::SESSIONS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($key))
+            $this->_getCache(CacheTypes::STATUS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($key))
         );
     }
 

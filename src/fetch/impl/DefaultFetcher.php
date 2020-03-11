@@ -39,7 +39,6 @@ class DefaultFetcher extends Fetcher {
         $debug = $fetch;
         if (is_array($keyValues) && sizeof($keyValues) > 0) {
             $requestURL .= '?';
-            $debug .= $fetch;
             foreach ($keyValues as $key => $value) {
                 $value = urlencode(trim($value));
                 $requestURL .= '&' . $key . '=' . $value;
@@ -53,7 +52,7 @@ class DefaultFetcher extends Fetcher {
         if (!$response->wasSuccessful()) {
             $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, 'Fetch Failed! ' . var_export($response, true));
 
-            // If one fails, stop trying for that session
+            // If one fails, stop trying for that status
             // ideally also have a cached check before
             $this->getHypixelPHP()->getCacheHandler()->setGlobalTime(CacheHandler::MAX_CACHE_TIME);
         } else {

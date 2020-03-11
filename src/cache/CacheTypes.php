@@ -19,7 +19,7 @@ abstract class CacheTypes {
     const GUILDS_UUID = 'guilds_uuid';
     const GUILDS_NAME = 'guilds_name';
 
-    const SESSIONS = 'sessions';
+    const STATUS = 'status';
     const API_KEYS = 'api_keys';
 
     const SKYBLOCK_PROFILES = 'skyblock_profiles';

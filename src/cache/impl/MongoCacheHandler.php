@@ -12,8 +12,8 @@ use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\player\Player;
-use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
+use Plancke\HypixelPHP\responses\Status;
 use Plancke\HypixelPHP\util\CacheUtil;
 
 /**
@@ -66,7 +66,7 @@ class MongoCacheHandler extends FlatFileCacheHandler {
 
         $db->selectCollection(CacheTypes::FRIENDS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
-        $db->selectCollection(CacheTypes::SESSIONS)->createIndex(['record.uuid' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::STATUS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
         $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['record.profile_id' => 1], ['background' => true]);
 
@@ -313,24 +313,24 @@ class MongoCacheHandler extends FlatFileCacheHandler {
 
     /**
      * @param $uuid
-     * @return Session|null
+     * @return Status|null
      */
-    public function getSession($uuid) {
+    public function getStatus($uuid) {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getSession(),
-            $this->selectDB()->selectCollection(CacheTypes::SESSIONS)->findOne(
+            $this->getHypixelPHP()->getProvider()->getStatus(),
+            $this->selectDB()->selectCollection(CacheTypes::STATUS)->findOne(
                 ['record.uuid' => (string)$uuid], self::FIND_OPTIONS
             )
         );
     }
 
     /**
-     * @param Session $session
+     * @param Status $status
      * @throws InvalidArgumentException
      */
-    public function setSession(Session $session) {
-        $this->selectDB()->selectCollection(CacheTypes::SESSIONS)->replaceOne(
-            ['record.uuid' => (string)$session->getUUID()], $this->objToArray($session), self::UPDATE_OPTIONS
+    public function setStatus(Status $status) {
+        $this->selectDB()->selectCollection(CacheTypes::STATUS)->replaceOne(
+            ['record.uuid' => (string)$status->getUUID()], $this->objToArray($status), self::UPDATE_OPTIONS
         );
     }
 

@@ -3,9 +3,9 @@
 namespace Plancke\HypixelPHP\cache;
 
 use Closure;
+use InvalidArgumentException;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\classes\Module;
-use Plancke\HypixelPHP\exceptions\InvalidArgumentException;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
@@ -15,8 +15,8 @@ use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\Resource;
-use Plancke\HypixelPHP\responses\Session;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
+use Plancke\HypixelPHP\responses\Status;
 use Plancke\HypixelPHP\responses\WatchdogStats;
 
 /**
@@ -41,7 +41,7 @@ abstract class CacheHandler extends Module {
         CacheTimes::LEADERBOARDS => 10 * 60,
         CacheTimes::PLAYER_COUNT => 10 * 60,
         CacheTimes::BOOSTERS => 10 * 60,
-        CacheTimes::SESSION => 10 * 60,
+        CacheTimes::STATUS => 10 * 60,
         CacheTimes::KEY_INFO => 10 * 60,
         CacheTimes::FRIENDS => 10 * 60,
         CacheTimes::WATCHDOG => 10 * 60,
@@ -183,15 +183,15 @@ abstract class CacheHandler extends Module {
 
     /**
      * @param $uuid
-     * @return Session|null
+     * @return Status|null
      */
-    public abstract function getSession($uuid);
+    public abstract function getStatus($uuid);
 
     /**
-     * @param Session $session
+     * @param Status $status
      * @return void
      */
-    public abstract function setSession(Session $session);
+    public abstract function setStatus(Status $status);
 
     /**
      * @param $key

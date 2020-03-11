@@ -8,11 +8,13 @@ use Plancke\HypixelPHP\color\ColorUtils;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\Response;
+use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\responses\booster\Booster;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
-use Plancke\HypixelPHP\responses\Session;
+use Plancke\HypixelPHP\responses\Status;
+use Plancke\HypixelPHP\util\CachedGetter;
 use Plancke\HypixelPHP\util\Leveling;
 use Plancke\HypixelPHP\util\Utilities;
 
@@ -21,9 +23,49 @@ use Plancke\HypixelPHP\util\Utilities;
  * @package Plancke\HypixelPHP\responses\player
  */
 class Player extends HypixelObject {
-    protected $guild, $guildFetched = false;
-    protected $friends, $friendsFetched = false;
-    protected $session, $sessionFetched = false;
+
+    /**
+     * @var CachedGetter $guild
+     * @var CachedGetter $friends
+     * @var CachedGetter $status
+     * @var CachedGetter $boosters
+     */
+    protected $guild, $friends, $status, $boosters;
+
+    /**
+     * @param            $data
+     * @param HypixelPHP $HypixelPHP
+     */
+    public function __construct(HypixelPHP $HypixelPHP, $data) {
+        parent::__construct($HypixelPHP, $data);
+
+        $player = $this;
+        $this->guild = new CachedGetter(function () use ($player) {
+            return $player->getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $player->getUUID()]);
+        });
+        $this->friends = new CachedGetter(function () use ($player) {
+            return $player->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $player->getUUID()]);
+        });
+        $this->status = new CachedGetter(function () use ($player) {
+            // api is toggled for this player
+            if ($player->get("settings.apiSession", true) == false) return null;
+
+            // the timestamps indicate player is offline, don't bother requesting status
+            // both will be 0 for staff, so we're stuck always pulling status
+            if ($player->getInt("lastLogin") < $player->getInt("lastLogout")) return null;
+
+            // actually request the status
+            return $player->getHypixelPHP()->getStatus([FetchParams::STATUS_BY_UUID => $player->getUUID()]);
+        });
+        $this->boosters = new CachedGetter(/** @throws HypixelPHPException */ function () use ($player) {
+            $player = $this->getHypixelPHP()->getBoosters();
+            if ($player instanceof Boosters) {
+                return $player->getBoosters($this->getUUID());
+            }
+            return [];
+        });
+    }
+
 
     /**
      * Get the Stats object for the player
@@ -36,11 +78,10 @@ class Player extends HypixelObject {
 
     /**
      * get Player achievement points
-     * @param bool $force_update
      * @return int
      * @deprecated use the new achievement data function
      */
-    public function getAchievementPoints($force_update = false) {
+    public function getAchievementPoints() {
         return Utilities::getRecursiveValue($this->getAchievementData(), 'standard.points.current', 0);
     }
 
@@ -115,22 +156,15 @@ class Player extends HypixelObject {
             }
         }
 
-        // legacy compatibility
-        $data['points'] = $data['standard']['points']['current'];
-
         return $data;
     }
 
     /**
-     * @return Session|Response|null
+     * @return Status|Response|null
      * @throws HypixelPHPException
      */
-    public function getSession() {
-        if ($this->sessionFetched == false) {
-            $this->sessionFetched = true;
-            $this->session = $this->getHypixelPHP()->getSession([FetchParams::SESSION_BY_UUID => $this->getUUID()]);
-        }
-        return $this->session;
+    public function getStatus() {
+        return $this->status->get();
     }
 
     /**
@@ -147,11 +181,7 @@ class Player extends HypixelObject {
      * @throws HypixelPHPException
      */
     public function getFriends() {
-        if ($this->friendsFetched == false) {
-            $this->friendsFetched = true;
-            $this->friends = $this->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $this->getUUID()]);
-        }
-        return $this->friends;
+        return $this->friends->get();
     }
 
     /**
@@ -159,11 +189,7 @@ class Player extends HypixelObject {
      * @throws HypixelPHPException
      */
     public function getBoosters() {
-        $BOOSTERS = $this->getHypixelPHP()->getBoosters();
-        if ($BOOSTERS instanceof Boosters) {
-            return $BOOSTERS->getBoosters($this->getUUID());
-        }
-        return [];
+        return $this->boosters->get();
     }
 
     /**
@@ -270,11 +296,7 @@ class Player extends HypixelObject {
      * @throws HypixelPHPException
      */
     public function getGuild() {
-        if ($this->guildFetched == false) {
-            $this->guildFetched = true;
-            $this->guild = $this->getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $this->getUUID()]);
-        }
-        return $this->guild;
+        return $this->guild->get();
     }
 
     /**

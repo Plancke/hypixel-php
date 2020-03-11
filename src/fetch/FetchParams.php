@@ -18,7 +18,7 @@ abstract class FetchParams {
     const GUILD_BY_ID = 'id';
 
     const FRIENDS_BY_UUID = 'uuid';
-    const SESSION_BY_UUID = 'uuid';
+    const STATUS_BY_UUID = 'uuid';
 
     /**
      * @return array
@@ -36,7 +36,7 @@ abstract class FetchParams {
             self::GUILD_BY_ID,
 
             self::FRIENDS_BY_UUID,
-            self::SESSION_BY_UUID,
+            self::STATUS_BY_UUID,
         ];
     }
 }
