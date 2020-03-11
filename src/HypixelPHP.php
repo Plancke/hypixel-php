@@ -3,6 +3,7 @@
 namespace Plancke\HypixelPHP;
 
 use Closure;
+use Exception;
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\impl\FlatFileCacheHandler;
@@ -390,28 +391,32 @@ class HypixelPHP {
             return $cached;
         }
 
-        $response = $responseSupplier();
-        if ($response instanceof Response) {
-            $data = $response->getData();
+        try {
+            $response = $responseSupplier();
+            if ($response instanceof Response) {
+                $data = $response->getData();
 
-            // if there is no record, we assume it's null
-            if ($response->wasSuccessful() && array_key_exists('record', $data)) {
-                $fetched = $constructor($this, $data);
-                if ($fetched instanceof HypixelObject) {
-                    $fetched->handleNew($cached);
-                    $fetched->save();
+                // if there is no record, we assume it's null
+                if ($response->wasSuccessful() && array_key_exists('record', $data)) {
+                    $fetched = $constructor($this, $data);
+                    if ($fetched instanceof HypixelObject) {
+                        $fetched->handleNew($cached);
+                        $fetched->save();
 
-                    return $fetched;
-                }
-            } else {
-                // fetch was not successful, attach response or
-                // return it so we can get the error
-                if ($cached != null) {
-                    $cached->attachResponse($response);
+                        return $fetched;
+                    }
                 } else {
-                    return $response;
+                    // fetch was not successful, attach response or
+                    // return it so we can get the error
+                    if ($cached != null) {
+                        $cached->attachResponse($response);
+                    } else {
+                        return $response;
+                    }
                 }
             }
+        } catch (Exception $exception) {
+            $this->getLogger()->log(LOG_ERR, $exception->getTraceAsString());
         }
 
         return $cached;
