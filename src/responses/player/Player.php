@@ -98,6 +98,12 @@ class Player extends HypixelObject {
      */
     public function getAchievementData() {
         $data = [
+            '_total' => [
+                'points' => [
+                    'current' => 0,
+                    'max' => 0
+                ]
+            ],
             'standard' => [
                 'points' => [
                     'current' => 0,
@@ -112,8 +118,11 @@ class Player extends HypixelObject {
             ],
         ];
 
-        $isLegacy = function ($arr) {
-            return is_array($arr) && array_key_exists("legacy", $arr) && $arr["legacy"];
+        $getKey = function ($arr) {
+            if (is_array($arr)) {
+                if (array_key_exists("legacy", $arr) && $arr["legacy"]) return "legacy";
+            }
+            return "standard";
         };
 
         $getDBName = function ($game, $key) {
@@ -134,33 +143,32 @@ class Player extends HypixelObject {
             foreach ($gameAchievements['one_time'] as $achievementKey => $oneTimeAchievement) {
                 $dbName = $getDBName($game, strtolower($achievementKey));
                 $points = $oneTimeAchievement['points'];
-                $legacy = $isLegacy($oneTimeAchievement);
+                $pointsKey = $getKey($oneTimeAchievement);
 
                 if (in_array($dbName, $oneTime)) {
-                    if ($legacy) {
-                        $data['legacy']['points']['current'] += $points;
-                    } else {
-                        $data['standard']['points']['current'] += $points;
-                    }
+                    $data[$pointsKey]['points']['current'] += $points;
                 }
             }
 
             foreach ($gameAchievements['tiered'] as $achievementKey => $tieredAchievement) {
                 $dbName = $getDBName($game, strtolower($achievementKey));
-                $legacy = $isLegacy($tieredAchievement);
+                $pointsKey = $getKey($tieredAchievement);
                 $value = Utilities::getRecursiveValue($tiered, $dbName, 0);
                 foreach ($tieredAchievement['tiers'] as $tier) {
                     $points = $tier['points'];
 
                     if ($value >= $tier['amount']) {
-                        if ($legacy) {
-                            $data['legacy']['points']['current'] += $points;
-                        } else {
-                            $data['standard']['points']['current'] += $points;
-                        }
+                        $data[$pointsKey]['points']['current'] += $points;
                     }
                 }
             }
+        }
+
+        foreach ($data as $key => $value) {
+            if ($key == '_total') continue;
+
+            $data['_total']['points']['current'] += $value['points']['current'];
+            $data['_total']['points']['max'] += $value['points']['max'];
         }
 
         return $data;
