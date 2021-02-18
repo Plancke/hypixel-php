@@ -81,15 +81,6 @@ class Player extends HypixelObject {
 
     /**
      * get Player achievement points
-     * @return int
-     * @deprecated use the new achievement data function
-     */
-    public function getAchievementPoints() {
-        return Utilities::getRecursiveValue($this->getAchievementData(), 'standard.points.current', 0);
-    }
-
-    /**
-     * get Player achievement points
      * @return array
      */
     public function getAchievementData() {

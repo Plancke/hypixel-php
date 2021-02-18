@@ -183,20 +183,6 @@ class HypixelPHP {
     }
 
     /**
-     * @param $in
-     * @return Response|null
-     * @deprecated
-     */
-    public function getResponse($in) {
-        if ($in instanceof HypixelObject) {
-            return $in->getResponse();
-        } else if ($in instanceof Response) {
-            return $in;
-        }
-        return null;
-    }
-
-    /**
      * @param $pairs
      * @throws NoPairsException
      */
