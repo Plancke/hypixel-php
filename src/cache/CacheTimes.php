@@ -22,7 +22,7 @@ abstract class CacheTimes {
     const RECENT_GAMES = 'recentGames';
     const KEY_INFO = 'keyInfo';
     const FRIENDS = 'friends';
-    const WATCHDOG = 'watchdog';
+    const PUNISHMENT_STATS = 'punishmentStats';
     const GAME_COUNTS = 'gameCounts';
     const SKYBLOCK_PROFILE = 'skyblock_profile';
 

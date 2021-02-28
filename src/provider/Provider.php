@@ -15,7 +15,7 @@ use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\WatchdogStats;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 
 /**
  * Class Provider
@@ -98,9 +98,9 @@ class Provider extends Module {
     /**
      * @return Closure
      */
-    public function getWatchdogStats() {
+    public function getPunishmentStats() {
         return function ($HypixelPHP, $data) {
-            return new WatchdogStats($HypixelPHP, $data);
+            return new PunishmentStats($HypixelPHP, $data);
         };
     }
 

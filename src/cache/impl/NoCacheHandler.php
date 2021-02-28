@@ -14,7 +14,7 @@ use Plancke\HypixelPHP\responses\PlayerCount;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\WatchdogStats;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 
 /**
  * Class NoCacheHandler
@@ -103,10 +103,10 @@ class NoCacheHandler extends CacheHandler {
         return null;
     }
 
-    function setWatchdogStats(WatchdogStats $watchdogStats) {
+    function setPunishmentStats(PunishmentStats $punishmentStats) {
     }
 
-    function getWatchdogStats() {
+    function getPunishmentStats() {
         return null;
     }
 

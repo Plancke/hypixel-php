@@ -44,7 +44,7 @@ class ResponseAdapter extends Module {
             case FetchTypes::SKYBLOCK_PROFILE:
                 return $this->remapField('profile', $response);
 
-            case FetchTypes::WATCHDOG_STATS:
+            case FetchTypes::PUNISHMENT_STATS:
             case FetchTypes::PLAYER_COUNT:
             case FetchTypes::GAME_COUNTS:
                 return $this->wrapRecord($response);

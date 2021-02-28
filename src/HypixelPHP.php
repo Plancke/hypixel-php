@@ -33,7 +33,7 @@ use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\WatchdogStats;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 use Plancke\HypixelPHP\util\InputType;
 use Plancke\HypixelPHP\util\Utilities;
 use Plancke\HypixelPHP\util\Validator;
@@ -582,15 +582,15 @@ class HypixelPHP {
     }
 
     /**
-     * @return WatchdogStats|Response|null
+     * @return PunishmentStats|Response|null
      */
-    public function getWatchdogStats() {
+    public function getPunishmentStats() {
         return $this->handle(
-            $this->getCacheHandler()->getWatchdogStats(),
+            $this->getCacheHandler()->getPunishmentStats(),
             function () {
-                return $this->getFetcher()->fetch(FetchTypes::WATCHDOG_STATS, ['key' => $this->getAPIKey()]);
+                return $this->getFetcher()->fetch(FetchTypes::PUNISHMENT_STATS, ['key' => $this->getAPIKey()]);
             },
-            $this->getProvider()->getWatchdogStats()
+            $this->getProvider()->getPunishmentStats()
         );
     }
 

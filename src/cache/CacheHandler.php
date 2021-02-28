@@ -18,7 +18,7 @@ use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\WatchdogStats;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 
 /**
  * Class CacheHandler
@@ -45,7 +45,7 @@ abstract class CacheHandler extends Module {
         CacheTimes::STATUS => 10 * 60,
         CacheTimes::KEY_INFO => 10 * 60,
         CacheTimes::FRIENDS => 10 * 60,
-        CacheTimes::WATCHDOG => 10 * 60,
+        CacheTimes::PUNISHMENT_STATS => 10 * 60,
         CacheTimes::GAME_COUNTS => 10 * 60,
 
         CacheTimes::SKYBLOCK_PROFILE => 10 * 60
@@ -241,15 +241,15 @@ abstract class CacheHandler extends Module {
     public abstract function setBoosters(Boosters $boosters);
 
     /**
-     * @return WatchdogStats|null
+     * @return PunishmentStats|null
      */
-    public abstract function getWatchdogStats();
+    public abstract function getPunishmentStats();
 
     /**
-     * @param WatchdogStats $watchdogStats
+     * @param PunishmentStats $punishmentStats
      * @return void
      */
-    public abstract function setWatchdogStats(WatchdogStats $watchdogStats);
+    public abstract function setPunishmentStats(PunishmentStats $punishmentStats);
 
     /**
      * @return PlayerCount|null

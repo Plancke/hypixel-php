@@ -18,7 +18,7 @@ use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\WatchdogStats;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 use Plancke\HypixelPHP\util\CacheUtil;
 
 /**
@@ -323,21 +323,21 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
-     * @return WatchdogStats|null
+     * @return PunishmentStats|null
      */
-    public function getWatchdogStats() {
+    public function getPunishmentStats() {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getWatchdogStats(),
-            $this->_getCache(CacheTypes::WATCHDOG_STATS)
+            $this->getHypixelPHP()->getProvider()->getPunishmentStats(),
+            $this->_getCache(CacheTypes::PUNISHMENT_STATS)
         );
     }
 
     /**
-     * @param WatchdogStats $watchdogStats
+     * @param PunishmentStats $punishmentStats
      * @throws InvalidArgumentException
      */
-    public function setWatchdogStats(WatchdogStats $watchdogStats) {
-        $this->_setCache(CacheTypes::WATCHDOG_STATS, $watchdogStats);
+    public function setPunishmentStats(PunishmentStats $punishmentStats) {
+        $this->_setCache(CacheTypes::PUNISHMENT_STATS, $punishmentStats);
     }
 
     /**

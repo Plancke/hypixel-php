@@ -21,7 +21,7 @@ abstract class FetchTypes {
     const STATUS = 'status';
     const RECENT_GAMES = 'recentGames';
     const KEY = 'key';
-    const WATCHDOG_STATS = 'watchdogStats';
+    const PUNISHMENT_STATS = 'punishmentStats';
     const PLAYER_COUNT = 'playerCount';
     const GAME_COUNTS = 'gameCounts';
 
@@ -38,7 +38,7 @@ abstract class FetchTypes {
             self::STATUS,
             self::RECENT_GAMES,
             self::KEY,
-            self::WATCHDOG_STATS,
+            self::PUNISHMENT_STATS,
             self::PLAYER_COUNT,
             self::GAME_COUNTS,
             self::SKYBLOCK_PROFILE
