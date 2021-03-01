@@ -7,18 +7,17 @@ use InvalidArgumentException;
 use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\responses\booster\Boosters;
+use Plancke\HypixelPHP\responses\counts\Counts;
 use Plancke\HypixelPHP\responses\friend\Friends;
-use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
-use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\PunishmentStats;
 
 /**
  * Class CacheHandler
@@ -40,13 +39,12 @@ abstract class CacheHandler extends Module {
         CacheTimes::GUILD_NOT_FOUND => 10 * 60,
 
         CacheTimes::LEADERBOARDS => 10 * 60,
-        CacheTimes::PLAYER_COUNT => 10 * 60,
         CacheTimes::BOOSTERS => 10 * 60,
         CacheTimes::STATUS => 10 * 60,
         CacheTimes::KEY_INFO => 10 * 60,
         CacheTimes::FRIENDS => 10 * 60,
         CacheTimes::PUNISHMENT_STATS => 10 * 60,
-        CacheTimes::GAME_COUNTS => 10 * 60,
+        CacheTimes::COUNTS => 10 * 60,
 
         CacheTimes::SKYBLOCK_PROFILE => 10 * 60
     ];
@@ -252,26 +250,15 @@ abstract class CacheHandler extends Module {
     public abstract function setPunishmentStats(PunishmentStats $punishmentStats);
 
     /**
-     * @return PlayerCount|null
+     * @return Counts|null
      */
-    public abstract function getPlayerCount();
+    public abstract function getCounts();
 
     /**
-     * @param PlayerCount $playerCount
+     * @param Counts $gameCounts
      * @return void
      */
-    public abstract function setPlayerCount(PlayerCount $playerCount);
-
-    /**
-     * @return GameCounts|null
-     */
-    public abstract function getGameCounts();
-
-    /**
-     * @param GameCounts $gameCounts
-     * @return void
-     */
-    public abstract function setGameCounts(GameCounts $gameCounts);
+    public abstract function setCounts(Counts $gameCounts);
 
     /**
      * @param $profile_id

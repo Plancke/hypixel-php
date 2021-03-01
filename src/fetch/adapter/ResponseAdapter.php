@@ -15,13 +15,12 @@ use Plancke\HypixelPHP\fetch\Response;
 class ResponseAdapter extends Module {
 
     /**
-     * @param $fetch
-     * @param $keyValues
+     * @param string $fetch
      * @param Response $response
      * @return Response
      * @throws HypixelPHPException
      */
-    public function adaptResponse($fetch, $keyValues, Response $response) {
+    public function adaptResponse(string $fetch, Response $response): Response {
         if (strpos($fetch, FetchTypes::RESOURCES) === 0) {
             return $this->wrapRecord($response);
         }
@@ -36,17 +35,15 @@ class ResponseAdapter extends Module {
             case FetchTypes::LEADERBOARDS:
                 return $this->remapField('leaderboards', $response);
             case FetchTypes::FRIENDS:
-                return $this->attachKeyValues($keyValues, $this->wrapRecord($response->setData(['list' => $response->getData()['records']])));
-            case FetchTypes::STATUS:
-                return $this->attachKeyValues($keyValues, $this->remapField('session', $response));
-            case FetchTypes::RECENT_GAMES:
-                return $this->attachKeyValues($keyValues, $this->wrapRecord($response));
+                return $this->wrapRecord($response->setData(['list' => $response->getData()['records'], 'uuid' => $response->getData()['uuid']]));
             case FetchTypes::SKYBLOCK_PROFILE:
                 return $this->remapField('profile', $response);
 
+            case FetchTypes::STATUS:
             case FetchTypes::PUNISHMENT_STATS:
-            case FetchTypes::PLAYER_COUNT:
+            case FetchTypes::COUNTS:
             case FetchTypes::GAME_COUNTS:
+            case FetchTypes::RECENT_GAMES:
                 return $this->wrapRecord($response);
 
             case FetchTypes::KEY:
@@ -62,7 +59,7 @@ class ResponseAdapter extends Module {
      * @param Response $response
      * @return Response
      */
-    protected function wrapRecord(Response $response) {
+    protected function wrapRecord(Response $response): Response {
         return $response->setData(['record' => $response->getData()]);
     }
 
@@ -71,22 +68,9 @@ class ResponseAdapter extends Module {
      * @param Response $response
      * @return Response
      */
-    protected function remapField($key, Response $response) {
+    protected function remapField($key, Response $response): Response {
         if (!array_key_exists($key, $response->getData())) return $response;
         return $response->setData(['record' => $response->getData()[$key]]);
     }
 
-    /**
-     * @param $keyValues
-     * @param Response $response
-     * @return Response
-     */
-    protected function attachKeyValues($keyValues, Response $response) {
-        $data = $response->getData();
-        if (array_key_exists('record', $data) && is_array($data['record'])) {
-            $data['record'] = array_merge($data['record'], $keyValues);
-            unset($data['record']['key']);
-        }
-        return $response->setData($data);
-    }
 }

@@ -18,14 +18,14 @@ class RecentGames extends HypixelObject {
     /**
      * @return array
      */
-    public function getGames() {
+    public function getGames(): array {
         return $this->getArray('games');
     }
 
     /**
      * @return string
      */
-    public function getCacheTimeKey() {
+    public function getCacheTimeKey(): string {
         return CacheTimes::RECENT_GAMES;
     }
 

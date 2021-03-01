@@ -22,12 +22,12 @@ abstract class FetchTypes {
     const RECENT_GAMES = 'recentGames';
     const KEY = 'key';
     const PUNISHMENT_STATS = 'punishmentStats';
-    const PLAYER_COUNT = 'playerCount';
+    const COUNTS = 'counts';
     const GAME_COUNTS = 'gameCounts';
 
     const SKYBLOCK_PROFILE = 'skyblock/profile';
 
-    public static function values() {
+    public static function values(): array {
         return [
             self::RESOURCES,
             self::PLAYER,
@@ -39,7 +39,7 @@ abstract class FetchTypes {
             self::RECENT_GAMES,
             self::KEY,
             self::PUNISHMENT_STATS,
-            self::PLAYER_COUNT,
+            self::COUNTS,
             self::GAME_COUNTS,
             self::SKYBLOCK_PROFILE
         ];

@@ -5,17 +5,16 @@ namespace Plancke\HypixelPHP\provider;
 use Closure;
 use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\responses\booster\Boosters;
+use Plancke\HypixelPHP\responses\counts\Counts;
 use Plancke\HypixelPHP\responses\friend\Friends;
-use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
-use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\PunishmentStats;
 
 /**
  * Class Provider
@@ -107,18 +106,9 @@ class Provider extends Module {
     /**
      * @return Closure
      */
-    public function getPlayerCount() {
+    public function getCounts() {
         return function ($HypixelPHP, $data) {
-            return new PlayerCount($HypixelPHP, $data);
-        };
-    }
-
-    /**
-     * @return Closure
-     */
-    public function getGameCounts() {
-        return function ($HypixelPHP, $data) {
-            return new GameCounts($HypixelPHP, $data);
+            return new Counts($HypixelPHP, $data);
         };
     }
 

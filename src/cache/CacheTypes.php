@@ -28,7 +28,6 @@ abstract class CacheTypes {
     const LEADERBOARDS = 'leaderboards';
     const BOOSTERS = 'boosters';
     const PUNISHMENT_STATS = 'punishmentStats';
-    const PLAYER_COUNT = 'playerCount';
-    const GAME_COUNTS = 'gameCounts';
+    const COUNTS = 'counts';
 
 }

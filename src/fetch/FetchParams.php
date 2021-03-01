@@ -24,7 +24,7 @@ abstract class FetchParams {
     /**
      * @return array
      */
-    public static function values() {
+    public static function values(): array {
         return [
             self::PLAYER_BY_NAME,
             self::PLAYER_BY_UUID,
