@@ -32,6 +32,18 @@ class DefaultCurlFetcher extends Fetcher {
             if (array_key_exists('headers', $options)) {
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $options['headers']);
             }
+            $responseHeaders = [];
+            curl_setopt($ch, CURLOPT_HEADERFUNCTION, function ($curl, $header) use (&$responseHeaders) {
+                $len = strlen($header);
+                $header = explode(':', $header, 2);
+                if (count($header) < 2) // ignore invalid headers
+                    return $len;
+
+                $responseHeaders[strtolower(trim($header[0]))][] = trim($header[1]);
+
+                return $len;
+            });
+
             $curlOut = curl_exec($ch);
 
             $error = curl_error($ch);
@@ -55,6 +67,7 @@ class DefaultCurlFetcher extends Fetcher {
                 $response->setSuccessful(true);
             }
             $response->setData($data);
+            $response->setHeaders($responseHeaders);
         } finally {
             curl_close($ch);
         }

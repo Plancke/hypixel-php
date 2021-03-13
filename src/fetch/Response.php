@@ -10,6 +10,7 @@ class Response {
 
     protected $success = false;
     protected $data;
+    protected $responseHeaders;
 
     function __construct() {
     }
@@ -43,6 +44,22 @@ class Response {
      */
     public function setData($data) {
         $this->data = $data;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeaders() {
+        return $this->responseHeaders;
+    }
+
+    /**
+     * @param mixed $responseHeaders
+     * @return $this
+     */
+    public function setHeaders($responseHeaders) {
+        $this->responseHeaders = $responseHeaders;
         return $this;
     }
 
