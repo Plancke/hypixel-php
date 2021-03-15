@@ -7,7 +7,6 @@ use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\impl\FlatFileCacheHandler;
 use Plancke\HypixelPHP\classes\HypixelObject;
-use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\exceptions\BadResponseCodeException;
 use Plancke\HypixelPHP\exceptions\ExceptionCodes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
@@ -246,22 +245,15 @@ class HypixelPHP {
                 $response = $this->getFetcher()->getURLContents($uuidURL);
                 if ($response->wasSuccessful()) {
                     if (isset($response->getData()['data']['player']['raw_id'])) {
-                        $age = 0;
-                        if (isset($response->getHeaders()['age'])) {
-                            $age = intval($response->getHeaders()['age'][0]);
-                        }
-
-                        if ($age <= $this->getCacheHandler()->getCacheTime(CacheTimes::UUID)) {
-                            $obj = [
-                                // subtract the age from the cache time for us
-                                'timestamp' => time() - $age,
-                                'name_lowercase' => $username,
-                                'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['data']['player']['raw_id'])
-                            ];
-                            $this->getLogger()->log(LOG_DEBUG, "Received UUID from PlayerDB for '" . $username . "': " . $obj['uuid']);
-                            $this->getCacheHandler()->setPlayerUUID($username, $obj);
-                            return $obj['uuid'];
-                        }
+                        $obj = [
+                            // subtract the age from the cache time for us
+                            'timestamp' => time(),
+                            'name_lowercase' => $username,
+                            'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['data']['player']['raw_id'])
+                        ];
+                        $this->getLogger()->log(LOG_DEBUG, "Received UUID from PlayerDB for '" . $username . "': " . $obj['uuid']);
+                        $this->getCacheHandler()->setPlayerUUID($username, $obj);
+                        return $obj['uuid'];
                     }
                 }
             } catch (BadResponseCodeException $e) {
