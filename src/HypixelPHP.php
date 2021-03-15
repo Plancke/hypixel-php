@@ -246,7 +246,6 @@ class HypixelPHP {
                 if ($response->wasSuccessful()) {
                     if (isset($response->getData()['data']['player']['raw_id'])) {
                         $obj = [
-                            // subtract the age from the cache time for us
                             'timestamp' => time(),
                             'name_lowercase' => $username,
                             'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['data']['player']['raw_id'])
