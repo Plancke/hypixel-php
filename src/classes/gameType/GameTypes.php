@@ -36,6 +36,8 @@ class GameTypes {
     const DUELS = 61;
     const SKYBLOCK = 63;
     const PIT = 64;
+    const REPLAY = 65;
+    const SMP = 67;
 
     /**
      * @param $db
@@ -95,6 +97,8 @@ class GameTypes {
             self::DUELS,
             self::SKYBLOCK,
             self::PIT,
+            self::REPLAY,
+            self::SMP,
         ];
     }
 
@@ -159,6 +163,10 @@ class GameTypes {
                 return new GameType('SKYBLOCK', 'SkyBlock', 'SkyBlock', 'SkyBlock', GameTypes::SKYBLOCK, false);
             case GameTypes::PIT:
                 return new GameType('PIT', 'Pit', 'Pit', 'Pit', GameTypes::PIT, false);
+            case GameTypes::REPLAY:
+                return new GameType('REPLAY', 'Replay', 'Replay', 'Replay', GameTypes::REPLAY, false);
+            case GameTypes::SMP:
+                return new GameType('SMP', 'SMP', 'SMP', 'SMP', GameTypes::SMP, false);
             default:
                 return null;
         }
