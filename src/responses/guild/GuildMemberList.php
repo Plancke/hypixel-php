@@ -23,16 +23,17 @@ class GuildMemberList extends APIObject {
 
         $this->count = sizeof($this->data);
 
-        $defaultRank = $guild->getRanks()->getDefaultRank();
+        $ranks = $guild->getRanks();
+        $defaultRank = $ranks->getDefaultRank();
         foreach ($this->data as $player) {
             $rank = $player['rank'];
+            if ($ranks->getRank($rank) == null) $rank = null;
             if ($rank == null && $defaultRank != null) $rank = $defaultRank->getName();
             $rank = strtolower($rank);
             if (!in_array($rank, array_keys($this->list))) $this->list[$rank] = [];
             array_push($this->list[$rank], new GuildMember($HypixelPHP, $guild, $player));
         }
 
-        $ranks = $guild->getRanks();
         uksort($this->list, function ($k1, $k2) use ($ranks) {
             /** @var GuildRank $rank1 */
             $rank1 = $ranks->getRank($k1);

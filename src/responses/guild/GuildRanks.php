@@ -38,7 +38,7 @@ class GuildRanks extends APIObject {
             $guildRank = new GuildRank($HypixelPHP, $rank);
             $this->ranks[strtolower($guildRank->getName())] = $guildRank;
 
-            if ($guildRank->isDefault()) $this->defaultRank = $rank;
+            if ($guildRank->isDefault()) $this->defaultRank = $guildRank;
         }
     }
 
@@ -54,8 +54,13 @@ class GuildRanks extends APIObject {
      * @return GuildRank
      */
     public function getRank($rank) {
-        if (array_key_exists(strtolower($rank), $this->ranks)) {
-            return $this->ranks[strtolower($rank)];
+        $lower = strtolower($rank);
+        if (array_key_exists($lower, $this->ranks)) {
+            return $this->ranks[$lower];
+        }
+        $lower = str_replace(" ", "", $lower);
+        if (array_key_exists($lower, $this->ranks)) {
+            return $this->ranks[$lower];
         }
         return null;
     }
