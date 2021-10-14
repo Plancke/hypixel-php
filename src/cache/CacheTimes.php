@@ -16,14 +16,13 @@ abstract class CacheTimes {
     const GUILD = 'guild';
     const GUILD_NOT_FOUND = 'guildNotFound';
     const LEADERBOARDS = 'leaderboards';
-    const PLAYER_COUNT = 'playerCount';
     const BOOSTERS = 'boosters';
     const STATUS = 'status';
     const RECENT_GAMES = 'recentGames';
     const KEY_INFO = 'keyInfo';
     const FRIENDS = 'friends';
-    const WATCHDOG = 'watchdog';
-    const GAME_COUNTS = 'gameCounts';
+    const PUNISHMENT_STATS = 'punishmentStats';
+    const COUNTS = 'counts';
     const SKYBLOCK_PROFILE = 'skyblock_profile';
 
 }

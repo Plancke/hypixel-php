@@ -207,7 +207,7 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      */
     public function setGuild(Guild $guild) {
         $this->selectDB()->selectCollection(CacheTypes::GUILDS)->replaceOne(
-            ['record._id' => (string)$guild->getID()], $this->objToArray($guild), self::UPDATE_OPTIONS
+            ['record._id' => $guild->getID()], $this->objToArray($guild), self::UPDATE_OPTIONS
         );
     }
 

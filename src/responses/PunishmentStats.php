@@ -6,10 +6,10 @@ use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 
 /**
- * Class WatchdogStats
+ * Class PunishmentStats
  * @package Plancke\HypixelPHP\responses
  */
-class WatchdogStats extends HypixelObject {
+class PunishmentStats extends HypixelObject {
     /**
      * @return int
      */
@@ -35,10 +35,10 @@ class WatchdogStats extends HypixelObject {
      * @return string
      */
     public function getCacheTimeKey() {
-        return CacheTimes::WATCHDOG;
+        return CacheTimes::PUNISHMENT_STATS;
     }
 
     public function save() {
-        $this->getHypixelPHP()->getCacheHandler()->setWatchdogStats($this);
+        $this->getHypixelPHP()->getCacheHandler()->setPunishmentStats($this);
     }
 }

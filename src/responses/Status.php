@@ -21,14 +21,14 @@ class Status extends HypixelObject {
      * @return bool
      */
     public function isOnline() {
-        return $this->get('online', false);
+        return $this->get('session.online', false);
     }
 
     /**
      * @return GameType
      */
     public function getGameType() {
-        $val = $this->get('gameType');
+        $val = $this->get('session.gameType');
         if ($val == null) return null;
         return GameTypes::fromEnum($val);
     }
@@ -37,7 +37,7 @@ class Status extends HypixelObject {
      * @return string
      */
     public function getMode() {
-        return $this->get('mode');
+        return $this->get('session.mode');
     }
 
     /**

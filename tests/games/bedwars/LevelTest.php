@@ -1,6 +1,6 @@
 <?php
 
-namespace Plancke\Tests;
+namespace Plancke\Tests\games\bedwars;
 
 use PHPUnit\Framework\TestCase;
 use Plancke\HypixelPHP\util\games\GameUtils;

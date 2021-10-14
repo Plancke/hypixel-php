@@ -15,25 +15,24 @@ use Plancke\HypixelPHP\exceptions\NoPairsException;
 use Plancke\HypixelPHP\fetch\Fetcher;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\FetchTypes;
-use Plancke\HypixelPHP\fetch\impl\DefaultFetcher;
+use Plancke\HypixelPHP\fetch\impl\DefaultCurlFetcher;
 use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\log\impl\NoLogger;
 use Plancke\HypixelPHP\log\Logger;
 use Plancke\HypixelPHP\provider\Provider;
 use Plancke\HypixelPHP\resources\ResourceManager;
 use Plancke\HypixelPHP\responses\booster\Boosters;
+use Plancke\HypixelPHP\responses\counts\Counts;
 use Plancke\HypixelPHP\responses\friend\Friends;
-use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
-use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\InputType;
 use Plancke\HypixelPHP\util\Utilities;
 use Plancke\HypixelPHP\util\Validator;
@@ -60,11 +59,11 @@ class HypixelPHP {
      * @param string $apiKey
      * @throws HypixelPHPException
      */
-    public function __construct($apiKey) {
+    public function __construct(string $apiKey) {
         $this->setAPIKey($apiKey);
 
         $this->setLogger(new NoLogger($this));
-        $this->setFetcher(new DefaultFetcher($this));
+        $this->setFetcher(new DefaultCurlFetcher($this));
         $this->setCacheHandler(new FlatFileCacheHandler($this));
         $this->setProvider(new Provider($this));
         $this->setResourceManager(new ResourceManager($this));
@@ -73,8 +72,12 @@ class HypixelPHP {
     /**
      * @return string
      */
-    public function getAPIKey() {
+    public function getAPIKey(): string {
         return $this->apiKey;
+    }
+
+    private function getAPIKeyHeader(): string {
+        return 'API-Key: ' . $this->getAPIKey();
     }
 
     /**
@@ -82,7 +85,7 @@ class HypixelPHP {
      * @return $this
      * @throws HypixelPHPException
      */
-    public function setAPIKey($apiKey) {
+    public function setAPIKey(string $apiKey): HypixelPHP {
         $this->validateAPIKey($apiKey);
         $this->apiKey = $apiKey;
         return $this;
@@ -106,7 +109,7 @@ class HypixelPHP {
      * @param Logger $logger
      * @return $this
      */
-    public function setLogger(Logger $logger) {
+    public function setLogger(Logger $logger): HypixelPHP {
         $this->logger = $logger;
         return $this;
     }
@@ -114,7 +117,7 @@ class HypixelPHP {
     /**
      * @return Logger
      */
-    public function getLogger() {
+    public function getLogger(): Logger {
         return $this->logger;
     }
 
@@ -122,7 +125,7 @@ class HypixelPHP {
      * @param Fetcher $fetcher
      * @return $this
      */
-    public function setFetcher(Fetcher $fetcher) {
+    public function setFetcher(Fetcher $fetcher): HypixelPHP {
         $this->fetcher = $fetcher;
         return $this;
     }
@@ -130,7 +133,7 @@ class HypixelPHP {
     /**
      * @return Fetcher
      */
-    public function getFetcher() {
+    public function getFetcher(): Fetcher {
         return $this->fetcher;
     }
 
@@ -138,7 +141,7 @@ class HypixelPHP {
      * @param CacheHandler $cacheHandler
      * @return $this
      */
-    public function setCacheHandler(CacheHandler $cacheHandler) {
+    public function setCacheHandler(CacheHandler $cacheHandler): HypixelPHP {
         $this->cacheHandler = $cacheHandler;
         return $this;
     }
@@ -146,7 +149,7 @@ class HypixelPHP {
     /**
      * @return CacheHandler
      */
-    public function getCacheHandler() {
+    public function getCacheHandler(): CacheHandler {
         return $this->cacheHandler;
     }
 
@@ -154,7 +157,7 @@ class HypixelPHP {
      * @param Provider $provider
      * @return $this
      */
-    public function setProvider(Provider $provider) {
+    public function setProvider(Provider $provider): HypixelPHP {
         $this->provider = $provider;
         return $this;
     }
@@ -162,7 +165,7 @@ class HypixelPHP {
     /**
      * @return Provider
      */
-    public function getProvider() {
+    public function getProvider(): Provider {
         return $this->provider;
     }
 
@@ -170,7 +173,7 @@ class HypixelPHP {
      * @param ResourceManager $resourceManager
      * @return $this
      */
-    public function setResourceManager(ResourceManager $resourceManager) {
+    public function setResourceManager(ResourceManager $resourceManager): HypixelPHP {
         $this->resourceManager = $resourceManager;
         return $this;
     }
@@ -178,22 +181,8 @@ class HypixelPHP {
     /**
      * @return ResourceManager
      */
-    public function getResourceManager() {
+    public function getResourceManager(): ResourceManager {
         return $this->resourceManager;
-    }
-
-    /**
-     * @param $in
-     * @return Response|null
-     * @deprecated
-     */
-    public function getResponse($in) {
-        if ($in instanceof HypixelObject) {
-            return $in->getResponse();
-        } else if ($in instanceof Response) {
-            return $in;
-        }
-        return null;
     }
 
     /**
@@ -229,7 +218,7 @@ class HypixelPHP {
      *
      * @return string|null
      */
-    public function getUUID($username) {
+    public function getUUID(string $username) {
         $username = trim(strtolower((string)$username));
         $cached = $this->getCacheHandler()->getUUID($username);
         if ($cached != null) {
@@ -250,7 +239,31 @@ class HypixelPHP {
         }
 
         {
-            // try to use mojang
+            // use playerdb
+            try {
+                $uuidURL = sprintf('https://playerdb.co/api/player/minecraft/%s', $username);
+                $response = $this->getFetcher()->getURLContents($uuidURL);
+                if ($response->wasSuccessful()) {
+                    if (isset($response->getData()['data']['player']['raw_id'])) {
+                        $obj = [
+                            'timestamp' => time(),
+                            'name_lowercase' => $username,
+                            'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['data']['player']['raw_id'])
+                        ];
+                        $this->getLogger()->log(LOG_DEBUG, "Received UUID from PlayerDB for '" . $username . "': " . $obj['uuid']);
+                        $this->getCacheHandler()->setPlayerUUID($username, $obj);
+                        return $obj['uuid'];
+                    }
+                }
+            } catch (BadResponseCodeException $e) {
+                if ($e->getActualCode() == 500) {
+                    // it failed/doesn't exist, who knows
+                } else {
+                    $this->getLogger()->log(LOG_ERR, $e);
+                }
+            }
+
+            // try to use Mojang
             try {
                 $uuidURL = sprintf('https://api.mojang.com/users/profiles/minecraft/%s', $username);
                 $response = $this->getFetcher()->getURLContents($uuidURL);
@@ -285,7 +298,11 @@ class HypixelPHP {
             }
 
             // if all else fails fall back to hypixel
-            $response = $this->getFetcher()->fetch(FetchTypes::PLAYER, ['key' => $this->getAPIKey(), FetchParams::PLAYER_BY_NAME => $username]);
+            $response = $this->getFetcher()->fetch(
+                FetchTypes::PLAYER,
+                $this->getFetcher()->createUrl(FetchTypes::PLAYER, [FetchParams::PLAYER_BY_NAME => $username]),
+                ['headers' => [$this->getAPIKeyHeader()]]
+            );
             if ($response->wasSuccessful()) {
                 $obj = [
                     'timestamp' => time(),
@@ -325,9 +342,13 @@ class HypixelPHP {
                 $val = Utilities::ensureNoDashesUUID($val);
 
                 return $this->handle(
-                    $this->getCacheHandler()->getPlayer((string)$val),
+                    $this->getCacheHandler()->getPlayer($val),
                     function () use ($key, $val) {
-                        return $this->getFetcher()->fetch(FetchTypes::PLAYER, ['key' => $this->getAPIKey(), $key => $val]);
+                        return $this->getFetcher()->fetch(
+                            FetchTypes::PLAYER,
+                            $this->getFetcher()->createUrl(FetchTypes::PLAYER, [$key => $val]),
+                            ['headers' => [$this->getAPIKeyHeader()]]
+                        );
                     },
                     $this->getProvider()->getPlayer()
                 );
@@ -417,7 +438,11 @@ class HypixelPHP {
                     }
                 }
 
-                $response = $this->getFetcher()->fetch(FetchTypes::FIND_GUILD, ['key' => $this->getAPIKey(), $key => $val]);
+                $response = $this->getFetcher()->fetch(
+                    FetchTypes::FIND_GUILD,
+                    $this->getFetcher()->createUrl(FetchTypes::FIND_GUILD, [$key => $val]),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
                 if ($response->wasSuccessful()) {
                     $content = [
                         'timestamp' => time(),
@@ -442,7 +467,11 @@ class HypixelPHP {
                     }
                 }
 
-                $response = $this->getFetcher()->fetch(FetchTypes::FIND_GUILD, ['key' => $this->getAPIKey(), $key => $val]);
+                $response = $this->getFetcher()->fetch(
+                    FetchTypes::FIND_GUILD,
+                    $this->getFetcher()->createUrl(FetchTypes::FIND_GUILD, [$key => $val]),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
                 if ($response->wasSuccessful()) {
                     $content = [
                         'timestamp' => time(),
@@ -460,7 +489,11 @@ class HypixelPHP {
                 return $this->handle(
                     $this->getCacheHandler()->getGuild((string)$val),
                     function () use ($key, $val) {
-                        return $this->getFetcher()->fetch(FetchTypes::GUILD, ['key' => $this->getAPIKey(), $key => $val]);
+                        return $this->getFetcher()->fetch(
+                            FetchTypes::GUILD,
+                            $this->getFetcher()->createUrl(FetchTypes::GUILD, [$key => $val]),
+                            ['headers' => [$this->getAPIKeyHeader()]]
+                        );
                     },
                     $this->getProvider()->getGuild()
                 );
@@ -487,9 +520,13 @@ class HypixelPHP {
                 $val = Utilities::ensureNoDashesUUID($val);
 
                 return $this->handle(
-                    $this->getCacheHandler()->getStatus((string)$val),
+                    $this->getCacheHandler()->getStatus($val),
                     function () use ($key, $val) {
-                        return $this->getFetcher()->fetch(FetchTypes::STATUS, ['key' => $this->getAPIKey(), $key => $val]);
+                        return $this->getFetcher()->fetch(
+                            FetchTypes::STATUS,
+                            $this->getFetcher()->createUrl(FetchTypes::STATUS, [$key => $val]),
+                            ['headers' => [$this->getAPIKeyHeader()]]
+                        );
                     },
                     $this->getProvider()->getStatus()
                 );
@@ -516,9 +553,13 @@ class HypixelPHP {
                 $val = Utilities::ensureNoDashesUUID($val);
 
                 return $this->handle(
-                    $this->getCacheHandler()->getRecentGames((string)$val),
+                    $this->getCacheHandler()->getRecentGames($val),
                     function () use ($key, $val) {
-                        return $this->getFetcher()->fetch(FetchTypes::RECENT_GAMES, ['key' => $this->getAPIKey(), $key => $val]);
+                        return $this->getFetcher()->fetch(
+                            FetchTypes::RECENT_GAMES,
+                            $this->getFetcher()->createUrl(FetchTypes::RECENT_GAMES, [$key => $val]),
+                            ['headers' => [$this->getAPIKeyHeader()]]
+                        );
                     },
                     $this->getProvider()->getRecentGames()
                 );
@@ -545,9 +586,13 @@ class HypixelPHP {
                 $val = Utilities::ensureNoDashesUUID($val);
 
                 return $this->handle(
-                    $this->getCacheHandler()->getFriends((string)$val),
+                    $this->getCacheHandler()->getFriends($val),
                     function () use ($key, $val) {
-                        return $this->getFetcher()->fetch(FetchTypes::FRIENDS, ['key' => $this->getAPIKey(), $key => $val]);
+                        return $this->getFetcher()->fetch(
+                            FetchTypes::FRIENDS,
+                            $this->getFetcher()->createUrl(FetchTypes::FRIENDS, [$key => $val]),
+                            ['headers' => [$this->getAPIKeyHeader()]]
+                        );
                     },
                     $this->getProvider()->getFriends()
                 );
@@ -563,7 +608,11 @@ class HypixelPHP {
         return $this->handle(
             $this->getCacheHandler()->getBoosters(),
             function () {
-                return $this->getFetcher()->fetch(FetchTypes::BOOSTERS, ['key' => $this->getAPIKey()]);
+                return $this->getFetcher()->fetch(
+                    FetchTypes::BOOSTERS,
+                    $this->getFetcher()->createUrl(FetchTypes::BOOSTERS),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
             },
             $this->getProvider()->getBoosters()
         );
@@ -576,7 +625,11 @@ class HypixelPHP {
         return $this->handle(
             $this->getCacheHandler()->getLeaderboards(),
             function () {
-                return $this->getFetcher()->fetch(FetchTypes::LEADERBOARDS, ['key' => $this->getAPIKey()]);
+                return $this->getFetcher()->fetch(
+                    FetchTypes::LEADERBOARDS,
+                    $this->getFetcher()->createUrl(FetchTypes::LEADERBOARDS),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
             },
             $this->getProvider()->getLeaderboards()
         );
@@ -589,46 +642,62 @@ class HypixelPHP {
         return $this->handle(
             $this->getCacheHandler()->getKeyInfo($this->getAPIKey()),
             function () {
-                return $this->getFetcher()->fetch(FetchTypes::KEY, ['key' => $this->getAPIKey()]);
+                return $this->getFetcher()->fetch(
+                    FetchTypes::KEY,
+                    $this->getFetcher()->createUrl(FetchTypes::KEY),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
             },
             $this->getProvider()->getKeyInfo()
         );
     }
 
     /**
-     * @return WatchdogStats|Response|null
+     * @return PunishmentStats|Response|null
      */
-    public function getWatchdogStats() {
+    public function getPunishmentStats() {
         return $this->handle(
-            $this->getCacheHandler()->getWatchdogStats(),
+            $this->getCacheHandler()->getPunishmentStats(),
             function () {
-                return $this->getFetcher()->fetch(FetchTypes::WATCHDOG_STATS, ['key' => $this->getAPIKey()]);
+                return $this->getFetcher()->fetch(
+                    FetchTypes::PUNISHMENT_STATS,
+                    $this->getFetcher()->createUrl(FetchTypes::PUNISHMENT_STATS),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
             },
-            $this->getProvider()->getWatchdogStats()
+            $this->getProvider()->getPunishmentStats()
         );
     }
 
     /**
-     * @return PlayerCount|Response|null
+     * @return Counts|Response|null
      */
-    public function getPlayerCount() {
+    public function getCounts() {
         return $this->handle(
-            $this->getCacheHandler()->getPlayerCount(),
+            $this->getCacheHandler()->getCounts(),
             function () {
-                return $this->getFetcher()->fetch(FetchTypes::PLAYER_COUNT, ['key' => $this->getAPIKey()]);
+                return $this->getFetcher()->fetch(
+                    FetchTypes::COUNTS,
+                    $this->getFetcher()->createUrl(FetchTypes::COUNTS),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
             },
-            $this->getProvider()->getPlayerCount()
+            $this->getProvider()->getCounts()
         );
     }
 
     /**
-     * @return GameCounts|Response|null
+     * @return Counts|Response|null
      */
     public function getGameCounts() {
         return $this->handle(
             $this->getCacheHandler()->getGameCounts(),
             function () {
-                return $this->getFetcher()->fetch(FetchTypes::GAME_COUNTS, ['key' => $this->getAPIKey()]);
+                return $this->getFetcher()->fetch(
+                    FetchTypes::GAME_COUNTS,
+                    $this->getFetcher()->createUrl(FetchTypes::GAME_COUNTS),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
             },
             $this->getProvider()->getGameCounts()
         );
@@ -642,7 +711,11 @@ class HypixelPHP {
         return $this->handle(
             $this->getCacheHandler()->getSkyBlockProfile($profile_id),
             function () use ($profile_id) {
-                return $this->getFetcher()->fetch(FetchTypes::SKYBLOCK_PROFILE, ['key' => $this->getAPIKey(), 'profile' => $profile_id]);
+                return $this->getFetcher()->fetch(
+                    FetchTypes::SKYBLOCK_PROFILE,
+                    $this->getFetcher()->createUrl(FetchTypes::SKYBLOCK_PROFILE, ['profile' => $profile_id]),
+                    ['headers' => [$this->getAPIKeyHeader()]]
+                );
             },
             $this->getProvider()->getSkyBlockProfile()
         );
@@ -656,7 +729,10 @@ class HypixelPHP {
         return $this->handle(
             $this->getCacheHandler()->getResource($resource),
             function () use ($resource) {
-                return $this->getFetcher()->fetch(FetchTypes::RESOURCES . '/' . $resource);
+                return $this->getFetcher()->fetch(
+                    FetchTypes::RESOURCES,
+                    $this->getFetcher()->createUrl(FetchTypes::RESOURCES) . '/' . $resource
+                );
             },
             function ($HypixelPHP, $data) use ($resource) {
                 return new Resource($HypixelPHP, $data, $resource);

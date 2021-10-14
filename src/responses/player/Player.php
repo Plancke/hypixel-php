@@ -49,8 +49,6 @@ class Player extends HypixelObject {
             return $player->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $player->getUUID()]);
         });
         $this->status = new CachedGetter(function () use ($player) {
-            if ($player->get("settings.apiSession", true) == false) return null;
-
             // the timestamps indicate player is offline, don't bother requesting status
             // both will be 0 for staff, so we're stuck always pulling status
             if ($player->getInt("lastLogin") < $player->getInt("lastLogout")) return null;
@@ -59,8 +57,6 @@ class Player extends HypixelObject {
             return $player->getHypixelPHP()->getStatus([FetchParams::STATUS_BY_UUID => $player->getUUID()]);
         });
         $this->recentGames = new CachedGetter(function () use ($player) {
-            if ($player->get("settings.apiRecentGames", true) == false) return null;
-
             // actually request the status
             return $player->getHypixelPHP()->getRecentGames([FetchParams::RECENT_GAMES_BY_UUID => $player->getUUID()]);
         });
@@ -81,15 +77,6 @@ class Player extends HypixelObject {
      */
     public function getStats() {
         return new Stats($this->getHypixelPHP(), $this->getArray('stats'));
-    }
-
-    /**
-     * get Player achievement points
-     * @return int
-     * @deprecated use the new achievement data function
-     */
-    public function getAchievementPoints() {
-        return Utilities::getRecursiveValue($this->getAchievementData(), 'standard.points.current', 0);
     }
 
     /**

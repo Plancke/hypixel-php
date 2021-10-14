@@ -4,17 +4,16 @@ namespace Plancke\HypixelPHP\cache\impl;
 
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\responses\booster\Boosters;
+use Plancke\HypixelPHP\responses\counts\Counts;
 use Plancke\HypixelPHP\responses\friend\Friends;
-use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
-use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\WatchdogStats;
 
 /**
  * Class NoCacheHandler
@@ -103,24 +102,17 @@ class NoCacheHandler extends CacheHandler {
         return null;
     }
 
-    function setWatchdogStats(WatchdogStats $watchdogStats) {
+    function setPunishmentStats(PunishmentStats $punishmentStats) {
     }
 
-    function getWatchdogStats() {
+    function getPunishmentStats() {
         return null;
     }
 
-    function setPlayerCount(PlayerCount $playerCount) {
+    function setCounts(Counts $counts) {
     }
 
-    function getPlayerCount() {
-        return null;
-    }
-
-    function setGameCounts(GameCounts $gameCounts) {
-    }
-
-    function getGameCounts() {
+    function getCounts() {
         return null;
     }
 

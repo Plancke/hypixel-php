@@ -1,6 +1,6 @@
 <?php
 
-namespace Plancke\HypixelPHP\responses\gameCounts;
+namespace Plancke\HypixelPHP\responses\counts;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\classes\APIObject;
@@ -31,7 +31,7 @@ class GameCount extends APIObject {
      * @return string
      */
     public function getCacheTimeKey() {
-        return CacheTimes::GAME_COUNTS;
+        return CacheTimes::COUNTS;
     }
 
 }

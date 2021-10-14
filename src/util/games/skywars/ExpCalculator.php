@@ -74,10 +74,9 @@ class ExpCalculator {
      * @param $level
      * @return mixed
      */
-    public function getPrestigeForLevel($prestiges, $level) {
-        foreach ($prestiges as $i => $prestige) {
-            $nextPrestige = $prestiges[$i + 1];
-            if ($level >= $prestige["RequiredLevel"] && $level < $nextPrestige["RequiredLevel"]) {
+    public function getPrestigeForLevel(array $prestiges, $level) {
+        foreach (array_reverse($prestiges) as $prestige) {
+            if ($level >= $prestige["RequiredLevel"]) {
                 return $prestige;
             }
         }

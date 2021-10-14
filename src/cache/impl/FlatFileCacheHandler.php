@@ -7,18 +7,17 @@ use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\CacheTypes;
 use Plancke\HypixelPHP\responses\booster\Boosters;
+use Plancke\HypixelPHP\responses\counts\Counts;
 use Plancke\HypixelPHP\responses\friend\Friends;
-use Plancke\HypixelPHP\responses\gameCounts\GameCounts;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
 use Plancke\HypixelPHP\responses\player\Player;
-use Plancke\HypixelPHP\responses\PlayerCount;
+use Plancke\HypixelPHP\responses\PunishmentStats;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Resource;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\responses\WatchdogStats;
 use Plancke\HypixelPHP\util\CacheUtil;
 
 /**
@@ -323,57 +322,39 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
-     * @return WatchdogStats|null
+     * @return PunishmentStats|null
      */
-    public function getWatchdogStats() {
+    public function getPunishmentStats() {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getWatchdogStats(),
-            $this->_getCache(CacheTypes::WATCHDOG_STATS)
+            $this->getHypixelPHP()->getProvider()->getPunishmentStats(),
+            $this->_getCache(CacheTypes::PUNISHMENT_STATS)
         );
     }
 
     /**
-     * @param WatchdogStats $watchdogStats
+     * @param PunishmentStats $punishmentStats
      * @throws InvalidArgumentException
      */
-    public function setWatchdogStats(WatchdogStats $watchdogStats) {
-        $this->_setCache(CacheTypes::WATCHDOG_STATS, $watchdogStats);
+    public function setPunishmentStats(PunishmentStats $punishmentStats) {
+        $this->_setCache(CacheTypes::PUNISHMENT_STATS, $punishmentStats);
     }
 
     /**
-     * @return PlayerCount|null
+     * @return Counts|null
      */
-    public function getPlayerCount() {
+    public function getCounts() {
         return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getPlayerCount(),
-            $this->_getCache(CacheTypes::PLAYER_COUNT)
+            $this->getHypixelPHP()->getProvider()->getCounts(),
+            $this->_getCache(CacheTypes::COUNTS)
         );
     }
 
     /**
-     * @param PlayerCount $playerCount
+     * @param Counts $gameCounts
      * @throws InvalidArgumentException
      */
-    public function setPlayerCount(PlayerCount $playerCount) {
-        $this->_setCache(CacheTypes::PLAYER_COUNT, $playerCount);
-    }
-
-    /**
-     * @return GameCounts|null
-     */
-    public function getGameCounts() {
-        return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getGameCounts(),
-            $this->_getCache(CacheTypes::GAME_COUNTS)
-        );
-    }
-
-    /**
-     * @param GameCounts $gameCounts
-     * @throws InvalidArgumentException
-     */
-    public function setGameCounts(GameCounts $gameCounts) {
-        $this->_setCache(CacheTypes::GAME_COUNTS, $gameCounts);
+    public function setCounts(Counts $gameCounts) {
+        $this->_setCache(CacheTypes::COUNTS, $gameCounts);
     }
 
     /**
