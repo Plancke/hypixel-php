@@ -57,6 +57,17 @@ class Friend extends APIHolding {
     }
 
     /**
+     * @return string
+     */
+    public function getOtherUUID() {
+        if ($this->wasReceiver()) {
+            return $this->friend['uuidSender'];
+        } else {
+            return $this->friend['uuidReceiver'];
+        }
+    }
+
+    /**
      * @return int
      */
     public function getSince() {
