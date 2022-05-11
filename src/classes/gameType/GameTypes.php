@@ -38,6 +38,7 @@ class GameTypes {
     const PIT = 64;
     const REPLAY = 65;
     const SMP = 67;
+    const WOOL_GAMES = 68;
 
     /**
      * @param $db
@@ -99,6 +100,7 @@ class GameTypes {
             self::PIT,
             self::REPLAY,
             self::SMP,
+            self::WOOL_GAMES,
         ];
     }
 
@@ -167,6 +169,8 @@ class GameTypes {
                 return new GameType('REPLAY', 'Replay', 'Replay', 'Replay', GameTypes::REPLAY, false);
             case GameTypes::SMP:
                 return new GameType('SMP', 'SMP', 'SMP', 'SMP', GameTypes::SMP, false);
+            case GameTypes::WOOL_GAMES:
+                return new GameType('WOOL_GAMES', 'WoolGames', 'Wool Games', 'Wool Games', GameTypes::WOOL_GAMES, false);
             default:
                 return null;
         }
