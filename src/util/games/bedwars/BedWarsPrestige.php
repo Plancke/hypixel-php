@@ -83,7 +83,7 @@ class BedWarsPrestige {
             case BedWarsPrestige::NONE:
                 return new BedWarsPrestige(BedWarsPrestige::NONE, "None", ColorUtils::GRAY);
             case BedWarsPrestige::IRON:
-                return new BedWarsPrestige(BedWarsPrestige::IRON, "IRon", ColorUtils::WHITE);
+                return new BedWarsPrestige(BedWarsPrestige::IRON, "Iron", ColorUtils::WHITE);
             case BedWarsPrestige::GOLD:
                 return new BedWarsPrestige(BedWarsPrestige::GOLD, "Gold", ColorUtils::GOLD);
             case BedWarsPrestige::DIAMOND:
