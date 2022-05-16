@@ -9,8 +9,11 @@ namespace Plancke\HypixelPHP\util\games\bedwars;
 class ExpCalculator {
 
     const EASY_LEVELS = 4;
-    const EASY_LEVELS_XP = 7000;
-    const XP_PER_PRESTIGE = 96 * 5000 + ExpCalculator::EASY_LEVELS_XP;
+    const EASY_LEVELS_XP = [500, 1000, 2000, 3500];
+    const EASY_LEVELS_XP_TOTAL = 7000;
+
+    const XP_PER_LEVEL = 5000;
+    const XP_PER_PRESTIGE = 96 * ExpCalculator::XP_PER_LEVEL + ExpCalculator::EASY_LEVELS_XP_TOTAL;
 
     const LEVELS_PER_PRESTIGE = 100;
 
@@ -47,7 +50,7 @@ class ExpCalculator {
             $level++;
             $expWithoutPrestiges -= $expForEasyLevel;
         }
-        $level += floor($expWithoutPrestiges / 5000);
+        $level += floor($expWithoutPrestiges / ExpCalculator::XP_PER_LEVEL);
 
         return $level;
     }
@@ -56,21 +59,11 @@ class ExpCalculator {
         if ($level == 0) return 0;
 
         $respectedLevel = ExpCalculator::getLevelRespectingPrestige($level);
-        if ($respectedLevel > ExpCalculator::EASY_LEVELS) {
-            return 5000;
+        if ($respectedLevel <= ExpCalculator::EASY_LEVELS) {
+            return self::EASY_LEVELS_XP[$respectedLevel - 1];
         }
 
-        switch ($respectedLevel) {
-            case 1:
-                return 500;
-            case 2:
-                return 1000;
-            case 3:
-                return 2000;
-            case 4:
-                return 3500;
-        }
-        return 5000;
+        return ExpCalculator::XP_PER_LEVEL;
     }
 
     /**
