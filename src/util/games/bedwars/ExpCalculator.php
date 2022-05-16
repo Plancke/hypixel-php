@@ -24,32 +24,7 @@ class ExpCalculator {
      */
     public function getPrestigeForLevel($level) {
         $prestige = floor($level / ExpCalculator::LEVELS_PER_PRESTIGE);
-
-        switch ($prestige) {
-            case 0:
-                return BedWarsPrestige::fromID(BedWarsPrestige::NONE);
-            case 1:
-                return BedWarsPrestige::fromID(BedWarsPrestige::IRON);
-            case 2:
-                return BedWarsPrestige::fromID(BedWarsPrestige::GOLD);
-            case 3:
-                return BedWarsPrestige::fromID(BedWarsPrestige::DIAMOND);
-            case 4:
-                return BedWarsPrestige::fromID(BedWarsPrestige::EMERALD);
-            case 5:
-                return BedWarsPrestige::fromID(BedWarsPrestige::SAPPHIRE);
-            case 6:
-                return BedWarsPrestige::fromID(BedWarsPrestige::RUBY);
-            case 7:
-                return BedWarsPrestige::fromID(BedWarsPrestige::CRYSTAL);
-            case 8:
-                return BedWarsPrestige::fromID(BedWarsPrestige::OPAL);
-            case 9:
-                return BedWarsPrestige::fromID(BedWarsPrestige::AMETHYST);
-            case 10:
-            default:
-                return BedWarsPrestige::fromID(BedWarsPrestige::RAINBOW);
-        }
+        return BedWarsPrestige::fromID(min($prestige, BedWarsPrestige::HIGHEST_PRESTIGE));
     }
 
     /**
