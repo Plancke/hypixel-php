@@ -13,12 +13,12 @@ class ExpCalculator {
     const EASY_LEVELS_XP_TOTAL = 7000;
 
     const XP_PER_LEVEL = 5000;
-    const XP_PER_PRESTIGE = 96 * ExpCalculator::XP_PER_LEVEL + ExpCalculator::EASY_LEVELS_XP_TOTAL;
+    const XP_PER_PRESTIGE = 96 * self::XP_PER_LEVEL + self::EASY_LEVELS_XP_TOTAL;
 
     const LEVELS_PER_PRESTIGE = 100;
 
     public function getPrestigeForExp($exp) {
-        return ExpCalculator::getPrestigeForLevel(ExpCalculator::getLevelForExp($exp));
+        return self::getPrestigeForLevel(self::getLevelForExp($exp));
     }
 
     /**
@@ -26,7 +26,7 @@ class ExpCalculator {
      * @return BedWarsPrestige|null
      */
     public function getPrestigeForLevel($level) {
-        $prestige = floor($level / ExpCalculator::LEVELS_PER_PRESTIGE);
+        $prestige = floor($level / self::LEVELS_PER_PRESTIGE);
         return BedWarsPrestige::fromID(min($prestige, BedWarsPrestige::HIGHEST_PRESTIGE));
     }
 
@@ -37,20 +37,20 @@ class ExpCalculator {
      * @return float
      */
     public function getLevelForExp($exp) {
-        $prestiges = floor($exp / ExpCalculator::XP_PER_PRESTIGE);
+        $prestiges = floor($exp / self::XP_PER_PRESTIGE);
 
-        $level = $prestiges * ExpCalculator::LEVELS_PER_PRESTIGE;
+        $level = $prestiges * self::LEVELS_PER_PRESTIGE;
 
-        $expWithoutPrestiges = $exp - ($prestiges * ExpCalculator::XP_PER_PRESTIGE);
-        for ($i = 1; $i <= ExpCalculator::EASY_LEVELS; ++$i) {
-            $expForEasyLevel = ExpCalculator::getExpForLevel($i);
+        $expWithoutPrestiges = $exp - ($prestiges * self::XP_PER_PRESTIGE);
+        for ($i = 1; $i <= self::EASY_LEVELS; ++$i) {
+            $expForEasyLevel = self::getExpForLevel($i);
             if ($expWithoutPrestiges < $expForEasyLevel) {
                 break;
             }
             $level++;
             $expWithoutPrestiges -= $expForEasyLevel;
         }
-        $level += floor($expWithoutPrestiges / ExpCalculator::XP_PER_LEVEL);
+        $level += floor($expWithoutPrestiges / self::XP_PER_LEVEL);
 
         return $level;
     }
@@ -58,12 +58,12 @@ class ExpCalculator {
     public function getExpForLevel($level) {
         if ($level == 0) return 0;
 
-        $respectedLevel = ExpCalculator::getLevelRespectingPrestige($level);
-        if ($respectedLevel <= ExpCalculator::EASY_LEVELS) {
+        $respectedLevel = self::getLevelRespectingPrestige($level);
+        if ($respectedLevel <= self::EASY_LEVELS) {
             return self::EASY_LEVELS_XP[$respectedLevel - 1];
         }
 
-        return ExpCalculator::XP_PER_LEVEL;
+        return self::XP_PER_LEVEL;
     }
 
     /**
@@ -72,10 +72,10 @@ class ExpCalculator {
      * @return float|int
      */
     public function getLevelRespectingPrestige($level) {
-        if ($level > BedWarsPrestige::HIGHEST_PRESTIGE * ExpCalculator::LEVELS_PER_PRESTIGE) {
-            return $level - BedWarsPrestige::HIGHEST_PRESTIGE * ExpCalculator::LEVELS_PER_PRESTIGE;
+        if ($level > BedWarsPrestige::HIGHEST_PRESTIGE * self::LEVELS_PER_PRESTIGE) {
+            return $level - BedWarsPrestige::HIGHEST_PRESTIGE * self::LEVELS_PER_PRESTIGE;
         } else {
-            return $level % ExpCalculator::LEVELS_PER_PRESTIGE;
+            return $level % self::LEVELS_PER_PRESTIGE;
         }
     }
 
