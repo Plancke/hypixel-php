@@ -3,8 +3,8 @@
 namespace Plancke\HypixelPHP\responses\booster;
 
 use Plancke\HypixelPHP\classes\APIObject;
-use Plancke\HypixelPHP\classes\gameType\GameType;
-use Plancke\HypixelPHP\classes\gameType\GameTypes;
+use Plancke\HypixelPHP\classes\serverType\ServerType;
+use Plancke\HypixelPHP\classes\serverType\ServerTypes;
 use Plancke\HypixelPHP\exceptions\HypixelPHPException;
 use Plancke\HypixelPHP\fetch\FetchParams;
 use Plancke\HypixelPHP\fetch\Response;
@@ -29,10 +29,10 @@ class Booster extends APIObject {
     }
 
     /**
-     * @return GameType|null
+     * @return ServerType|null
      */
     public function getGameType() {
-        return GameTypes::fromID($this->getGameTypeID());
+        return ServerTypes::fromID($this->getGameTypeID());
     }
 
     /**

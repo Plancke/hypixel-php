@@ -3,8 +3,8 @@
 namespace Plancke\HypixelPHP\responses;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
-use Plancke\HypixelPHP\classes\gameType\GameType;
-use Plancke\HypixelPHP\classes\gameType\GameTypes;
+use Plancke\HypixelPHP\classes\serverType\ServerType;
+use Plancke\HypixelPHP\classes\serverType\ServerTypes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 
 /**
@@ -25,12 +25,12 @@ class Status extends HypixelObject {
     }
 
     /**
-     * @return GameType
+     * @return ServerType
      */
     public function getGameType() {
         $val = $this->get('session.gameType');
         if ($val == null) return null;
-        return GameTypes::fromEnum($val);
+        return ServerTypes::fromEnum($val);
     }
 
     /**

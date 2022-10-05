@@ -3,7 +3,7 @@
 namespace Plancke\HypixelPHP\responses\counts;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
-use Plancke\HypixelPHP\classes\gameType\GameTypes;
+use Plancke\HypixelPHP\classes\serverType\ServerTypes;
 use Plancke\HypixelPHP\classes\HypixelObject;
 
 /**
@@ -21,7 +21,7 @@ class Counts extends HypixelObject {
      */
     public function getGameCounts($gameTypeId) {
         if (!array_key_exists($gameTypeId, $this->games)) {
-            $this->games[$gameTypeId] = new GameCount($this->getHypixelPHP(), $this->getArray(GameTypes::fromID($gameTypeId)->getEnum()));
+            $this->games[$gameTypeId] = new GameCount($this->getHypixelPHP(), $this->getArray(ServerTypes::fromID($gameTypeId)->getEnum()));
         }
         return $this->games[$gameTypeId];
     }

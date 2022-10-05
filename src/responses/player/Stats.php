@@ -3,7 +3,7 @@
 namespace Plancke\HypixelPHP\responses\player;
 
 use Plancke\HypixelPHP\classes\APIObject;
-use Plancke\HypixelPHP\classes\gameType\GameTypes;
+use Plancke\HypixelPHP\classes\serverType\ServerTypes;
 
 /**
  * Class Stats
@@ -16,7 +16,7 @@ class Stats extends APIObject {
      * @return null|GameStats
      */
     public function getGameFromID($id) {
-        $gameType = GameTypes::fromID($id);
+        $gameType = ServerTypes::fromID($id);
         if ($gameType != null) {
             return $this->getGame($gameType->getDb());
         }

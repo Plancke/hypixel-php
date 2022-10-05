@@ -1,14 +1,14 @@
 <?php
 
-namespace Plancke\HypixelPHP\classes\gameType;
+namespace Plancke\HypixelPHP\classes\serverType;
 
 /**
  * Class GameType
- * @package Plancke\HypixelPHP\classes\gameType
+ * @package Plancke\HypixelPHP\classes\serverType
  */
-class GameType {
+class ServerType {
 
-    protected $enum, $db, $name, $short, $id, $boosters;
+    protected $enum, $db, $name, $short, $id;
 
     /**
      * @param string $enum
@@ -16,15 +16,13 @@ class GameType {
      * @param string $name
      * @param string $short
      * @param int $id
-     * @param bool $boosters
      */
-    public function __construct($enum, $db, $name, $short, $id, $boosters = true) {
+    public function __construct($enum, $db, $name, $short, $id) {
         $this->enum = $enum;
         $this->db = $db;
         $this->name = $name;
         $this->short = $short;
         $this->id = $id;
-        $this->boosters = $boosters;
     }
 
     /**
@@ -62,23 +60,4 @@ class GameType {
         return $this->id;
     }
 
-    /**
-     * @return boolean
-     */
-    public function hasBoosters() {
-        return $this->boosters;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray() {
-        return [
-            'enum' => $this->enum,
-            'id' => $this->id,
-            'name' => $this->name,
-            'short' => $this->short,
-            'db' => $this->db
-        ];
-    }
 }
