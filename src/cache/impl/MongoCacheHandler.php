@@ -8,7 +8,6 @@ use MongoDB\Database;
 use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\CacheTypes;
 use Plancke\HypixelPHP\HypixelPHP;
-use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\player\Player;
@@ -64,8 +63,6 @@ class MongoCacheHandler extends FlatFileCacheHandler {
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record.name_lower' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS_UUID)->createIndex(['uuid' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS_NAME)->createIndex(['name_lower' => 1], ['background' => true]);
-
-        $db->selectCollection(CacheTypes::FRIENDS)->createIndex(['record.uuid' => 1], ['background' => true]);
 
         $db->selectCollection(CacheTypes::STATUS)->createIndex(['record.uuid' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::RECENT_GAMES)->createIndex(['record.uuid' => 1], ['background' => true]);
@@ -287,29 +284,6 @@ class MongoCacheHandler extends FlatFileCacheHandler {
     function setGuildIDForName($name, $obj) {
         $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->replaceOne(
             ['name_lower' => strtolower((string)$name)], $this->objToArray($obj), self::UPDATE_OPTIONS
-        );
-    }
-
-    /**
-     * @param $uuid
-     * @return Friends|null
-     */
-    public function getFriends($uuid) {
-        return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getFriends(),
-            $this->selectDB()->selectCollection(CacheTypes::FRIENDS)->findOne(
-                ['record.uuid' => (string)$uuid], self::FIND_OPTIONS
-            )
-        );
-    }
-
-    /**
-     * @param Friends $friends
-     * @throws InvalidArgumentException
-     */
-    public function setFriends(Friends $friends) {
-        $this->selectDB()->selectCollection(CacheTypes::FRIENDS)->replaceOne(
-            ['record.uuid' => (string)$friends->getUUID()], $this->objToArray($friends), self::UPDATE_OPTIONS
         );
     }
 

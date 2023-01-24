@@ -34,8 +34,6 @@ class ResponseAdapter extends Module {
                 return $this->remapField('boosters', $response);
             case FetchTypes::LEADERBOARDS:
                 return $this->remapField('leaderboards', $response);
-            case FetchTypes::FRIENDS:
-                return $this->wrapRecord($response->setData(['list' => $response->getData()['records'], 'uuid' => $response->getData()['uuid']]));
             case FetchTypes::SKYBLOCK_PROFILE:
                 return $this->remapField('profile', $response);
 

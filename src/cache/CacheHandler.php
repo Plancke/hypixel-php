@@ -8,7 +8,6 @@ use Plancke\HypixelPHP\classes\HypixelObject;
 use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\counts\Counts;
-use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
@@ -42,7 +41,6 @@ abstract class CacheHandler extends Module {
         CacheTimes::BOOSTERS => 10 * 60,
         CacheTimes::STATUS => 10 * 60,
         CacheTimes::KEY_INFO => 10 * 60,
-        CacheTimes::FRIENDS => 10 * 60,
         CacheTimes::PUNISHMENT_STATS => 10 * 60,
         CacheTimes::COUNTS => 10 * 60,
 
@@ -167,18 +165,6 @@ abstract class CacheHandler extends Module {
      * @return void
      */
     public abstract function setGuildIDForName($name, $id);
-
-    /**
-     * @param $uuid
-     * @return Friends|null
-     */
-    public abstract function getFriends($uuid);
-
-    /**
-     * @param Friends $friends
-     * @return void
-     */
-    public abstract function setFriends(Friends $friends);
 
     /**
      * @param $uuid

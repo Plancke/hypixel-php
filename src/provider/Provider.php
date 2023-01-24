@@ -6,7 +6,6 @@ use Closure;
 use Plancke\HypixelPHP\classes\Module;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\counts\Counts;
-use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
@@ -55,15 +54,6 @@ class Provider extends Module {
     public function getRecentGames() {
         return function ($HypixelPHP, $data) {
             return new RecentGames($HypixelPHP, $data);
-        };
-    }
-
-    /**
-     * @return Closure
-     */
-    public function getFriends() {
-        return function ($HypixelPHP, $data) {
-            return new Friends($HypixelPHP, $data);
         };
     }
 

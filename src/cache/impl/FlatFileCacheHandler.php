@@ -8,7 +8,6 @@ use Plancke\HypixelPHP\cache\CacheTimes;
 use Plancke\HypixelPHP\cache\CacheTypes;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\counts\Counts;
-use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
@@ -207,25 +206,6 @@ class FlatFileCacheHandler extends CacheHandler {
      */
     public function setGuildIDForName($name, $obj) {
         $this->_setCache(CacheTypes::GUILDS_NAME . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($name), $obj);
-    }
-
-    /**
-     * @param $uuid
-     * @return Friends|null
-     */
-    public function getFriends($uuid) {
-        return $this->wrapProvider(
-            $this->getHypixelPHP()->getProvider()->getFriends(),
-            $this->_getCache(CacheTypes::FRIENDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid))
-        );
-    }
-
-    /**
-     * @param Friends $friends
-     * @throws InvalidArgumentException
-     */
-    public function setFriends(Friends $friends) {
-        $this->_setCache(CacheTypes::FRIENDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($friends->getUUID()), $friends);
     }
 
     /**

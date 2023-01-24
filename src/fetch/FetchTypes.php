@@ -15,7 +15,6 @@ abstract class FetchTypes {
     const GUILD = 'guild';
     const FIND_GUILD = 'findGuild';
 
-    const FRIENDS = 'friends';
     const BOOSTERS = 'boosters';
     const LEADERBOARDS = 'leaderboards';
     const STATUS = 'status';

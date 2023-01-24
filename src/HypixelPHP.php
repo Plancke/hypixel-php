@@ -23,7 +23,6 @@ use Plancke\HypixelPHP\provider\Provider;
 use Plancke\HypixelPHP\resources\ResourceManager;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\counts\Counts;
-use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
@@ -562,39 +561,6 @@ class HypixelPHP {
                         );
                     },
                     $this->getProvider()->getRecentGames()
-                );
-            }
-        }
-        return null;
-    }
-
-    /**
-     * @param array $pairs
-     * @return null|Response|Friends
-     * @throws HypixelPHPException
-     */
-    public function getFriends($pairs = []) {
-        $this->checkPairs($pairs);
-
-        foreach ($pairs as $key => $val) {
-            if ($val == null || $val == '') continue;
-
-            if ($key == FetchParams::FRIENDS_BY_UUID) {
-                if (InputType::getType($val) !== InputType::UUID) {
-                    throw new InvalidUUIDException($val);
-                }
-                $val = Utilities::ensureNoDashesUUID($val);
-
-                return $this->handle(
-                    $this->getCacheHandler()->getFriends($val),
-                    function () use ($key, $val) {
-                        return $this->getFetcher()->fetch(
-                            FetchTypes::FRIENDS,
-                            $this->getFetcher()->createUrl(FetchTypes::FRIENDS, [$key => $val]),
-                            ['headers' => [$this->getAPIKeyHeader()]]
-                        );
-                    },
-                    $this->getProvider()->getFriends()
                 );
             }
         }

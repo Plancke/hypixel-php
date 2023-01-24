@@ -5,7 +5,6 @@ namespace Plancke\HypixelPHP\cache\impl;
 use Plancke\HypixelPHP\cache\CacheHandler;
 use Plancke\HypixelPHP\responses\booster\Boosters;
 use Plancke\HypixelPHP\responses\counts\Counts;
-use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\KeyInfo;
 use Plancke\HypixelPHP\responses\Leaderboards;
@@ -57,13 +56,6 @@ class NoCacheHandler extends CacheHandler {
     }
 
     function getGuildIDForName($name) {
-        return null;
-    }
-
-    function setFriends(Friends $friends) {
-    }
-
-    function getFriends($uuid) {
         return null;
     }
 

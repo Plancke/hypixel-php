@@ -11,7 +11,6 @@ use Plancke\HypixelPHP\fetch\Response;
 use Plancke\HypixelPHP\HypixelPHP;
 use Plancke\HypixelPHP\responses\booster\Booster;
 use Plancke\HypixelPHP\responses\booster\Boosters;
-use Plancke\HypixelPHP\responses\friend\Friends;
 use Plancke\HypixelPHP\responses\guild\Guild;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\Status;
@@ -27,12 +26,11 @@ class Player extends HypixelObject {
 
     /**
      * @var CachedGetter $guild
-     * @var CachedGetter $friends
      * @var CachedGetter $status
      * @var CachedGetter $boosters
      * @var CachedGetter $recentGames
      */
-    protected $guild, $friends, $status, $boosters, $recentGames;
+    protected $guild, $status, $boosters, $recentGames;
 
     /**
      * @param            $data
@@ -44,9 +42,6 @@ class Player extends HypixelObject {
         $player = $this;
         $this->guild = new CachedGetter(function () use ($player) {
             return $player->getHypixelPHP()->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $player->getUUID()]);
-        });
-        $this->friends = new CachedGetter(function () use ($player) {
-            return $player->getHypixelPHP()->getFriends([FetchParams::FRIENDS_BY_UUID => $player->getUUID()]);
         });
         $this->status = new CachedGetter(function () use ($player) {
             // the timestamps indicate player is offline, don't bother requesting status
@@ -60,10 +55,10 @@ class Player extends HypixelObject {
             // actually request the status
             return $player->getHypixelPHP()->getRecentGames([FetchParams::RECENT_GAMES_BY_UUID => $player->getUUID()]);
         });
-        $this->boosters = new CachedGetter(/** @throws HypixelPHPException */ function () use ($player) {
-            $player = $this->getHypixelPHP()->getBoosters();
-            if ($player instanceof Boosters) {
-                return $player->getBoosters($this->getUUID());
+        $this->boosters = new CachedGetter(function () use ($player) {
+            $boosters = $player->getHypixelPHP()->getBoosters();
+            if ($boosters instanceof Boosters) {
+                return $boosters->getBoosters($player->getUUID());
             }
             return [];
         });
@@ -177,15 +172,6 @@ class Player extends HypixelObject {
      */
     public function getUUID() {
         return $this->get('uuid');
-    }
-
-    /**
-     * @return Friends|Response|null
-     * @throws HypixelPHPException
-     * @noinspection PhpDocRedundantThrowsInspection
-     */
-    public function getFriends() {
-        return $this->friends->get();
     }
 
     /**
