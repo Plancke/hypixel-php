@@ -330,11 +330,11 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
-     * @param Counts $gameCounts
+     * @param Counts $counts
      * @throws InvalidArgumentException
      */
-    public function setCounts(Counts $gameCounts) {
-        $this->_setCache(CacheTypes::COUNTS, $gameCounts);
+    public function setCounts(Counts $counts) {
+        $this->_setCache(CacheTypes::COUNTS, $counts);
     }
 
     /**

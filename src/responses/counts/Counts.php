@@ -3,12 +3,12 @@
 namespace Plancke\HypixelPHP\responses\counts;
 
 use Plancke\HypixelPHP\cache\CacheTimes;
-use Plancke\HypixelPHP\classes\serverType\ServerTypes;
 use Plancke\HypixelPHP\classes\HypixelObject;
+use Plancke\HypixelPHP\classes\serverType\ServerTypes;
 
 /**
  * Class Counts
- * @package Plancke\HypixelPHP\responses\gameCounts
+ * @package Plancke\HypixelPHP\responses\counts
  */
 class Counts extends HypixelObject {
 

@@ -241,10 +241,10 @@ abstract class CacheHandler extends Module {
     public abstract function getCounts();
 
     /**
-     * @param Counts $gameCounts
+     * @param Counts $counts
      * @return void
      */
-    public abstract function setCounts(Counts $gameCounts);
+    public abstract function setCounts(Counts $counts);
 
     /**
      * @param $profile_id

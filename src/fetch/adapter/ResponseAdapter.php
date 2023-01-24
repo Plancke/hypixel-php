@@ -40,7 +40,6 @@ class ResponseAdapter extends Module {
             case FetchTypes::STATUS:
             case FetchTypes::PUNISHMENT_STATS:
             case FetchTypes::COUNTS:
-            case FetchTypes::GAME_COUNTS:
             case FetchTypes::RECENT_GAMES:
                 return $this->wrapRecord($response);
 

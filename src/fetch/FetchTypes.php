@@ -22,7 +22,6 @@ abstract class FetchTypes {
     const KEY = 'key';
     const PUNISHMENT_STATS = 'punishmentStats';
     const COUNTS = 'counts';
-    const GAME_COUNTS = 'gameCounts';
 
     const SKYBLOCK_PROFILE = 'skyblock/profile';
 
@@ -39,7 +38,6 @@ abstract class FetchTypes {
             self::KEY,
             self::PUNISHMENT_STATS,
             self::COUNTS,
-            self::GAME_COUNTS,
             self::SKYBLOCK_PROFILE
         ];
     }

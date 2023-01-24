@@ -7,7 +7,7 @@ use Plancke\HypixelPHP\classes\APIObject;
 
 /**
  * Class GameCount
- * @package Plancke\HypixelPHP\responses\gameCounts
+ * @package Plancke\HypixelPHP\responses\counts
  */
 class GameCount extends APIObject {
 

@@ -653,23 +653,6 @@ class HypixelPHP {
     }
 
     /**
-     * @return Counts|Response|null
-     */
-    public function getGameCounts() {
-        return $this->handle(
-            $this->getCacheHandler()->getGameCounts(),
-            function () {
-                return $this->getFetcher()->fetch(
-                    FetchTypes::GAME_COUNTS,
-                    $this->getFetcher()->createUrl(FetchTypes::GAME_COUNTS),
-                    ['headers' => [$this->getAPIKeyHeader()]]
-                );
-            },
-            $this->getProvider()->getGameCounts()
-        );
-    }
-
-    /**
      * @param $profile_id
      * @return SkyBlockProfile|Response|null
      */
