@@ -1,79 +1,26 @@
 {
   "kits": {
     "list": {
-      "RANKED": {
+      "NORMAL": {
         "list": [
           {
-            "PackageName": "kit_ranked_ranked_scout",
-            "Display": "Scout",
-            "SubType": "RANKED",
-            "Icon": {
+            "package": "kit_advanced_solo_armorer",
+            "display": "Armorer",
+            "subType": "ADVANCED",
+            "rarity": "RARE",
+            "icon": {
               "version": 1,
-              "material": "DIAMOND_AXE",
-              "typeId": 279,
+              "material": "GOLD_CHESTPLATE",
+              "typeId": 315,
               "data": 0
             }
           },
           {
-            "PackageName": "kit_ranked_ranked_magician",
-            "Display": "Magician",
-            "SubType": "RANKED",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_SWORD",
-              "typeId": 267,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_ranked_ranked_armorer",
-            "Display": "Armorer",
-            "SubType": "RANKED",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_CHESTPLATE",
-              "typeId": 307,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_ranked_ranked_champion",
-            "Display": "Champion",
-            "SubType": "RANKED",
-            "Icon": {
-              "version": 1,
-              "material": "DIAMOND_SWORD",
-              "typeId": 276,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_ranked_ranked_bowman",
-            "Display": "Bowman",
-            "SubType": "RANKED",
-            "Icon": {
-              "version": 1,
-              "material": "BOW",
-              "typeId": 261,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_ranked_ranked_athlete",
-            "Display": "Athlete",
-            "SubType": "RANKED",
-            "Icon": {
-              "version": 1,
-              "material": "WATER_BUCKET",
-              "typeId": 326,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_blacksmith_ranked_blacksmith",
-            "Display": "Blacksmith",
-            "SubType": "BLACKSMITH",
-            "Icon": {
+            "package": "kit_basic_solo_armorsmith",
+            "display": "Armorsmith",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
               "version": 1,
               "material": "ANVIL",
               "typeId": 145,
@@ -81,10 +28,275 @@
             }
           },
           {
-            "PackageName": "kit_ranked_ranked_healer",
-            "Display": "Healer",
-            "SubType": "RANKED",
-            "Icon": {
+            "package": "kit_basic_solo_baseball-player",
+            "display": "Baseball Player",
+            "subType": "BASIC",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "IRON_HELMET",
+              "typeId": 306,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_cannoneer",
+            "display": "Cannoneer",
+            "subType": "ADVANCED",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "TNT",
+              "typeId": 46,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_ecologist",
+            "display": "Ecologist",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "IRON_AXE",
+              "typeId": 258,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_enchanter",
+            "display": "Enchanter",
+            "subType": "ADVANCED",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "ENCHANTMENT_TABLE",
+              "typeId": 116,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_enderchest_solo_enderchest",
+            "display": "Enderchest",
+            "subType": "ENDERCHEST",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "ENDER_CHEST",
+              "typeId": 130,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_enderman",
+            "display": "Enderman",
+            "subType": "ADVANCED",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "ENDER_PEARL",
+              "typeId": 368,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_farmer",
+            "display": "Farmer",
+            "subType": "ADVANCED",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "IRON_LEGGINGS",
+              "typeId": 308,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_fisherman",
+            "display": "Fisherman",
+            "subType": "BASIC",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "FISHING_ROD",
+              "typeId": 346,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_hunter",
+            "display": "Hunter",
+            "subType": "ADVANCED",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "BOW",
+              "typeId": 261,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_knight",
+            "display": "Knight",
+            "subType": "ADVANCED",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "GOLD_SWORD",
+              "typeId": 283,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_pharaoh",
+            "display": "Pharaoh",
+            "subType": "BASIC",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "GOLD_HELMET",
+              "typeId": 314,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_pyro",
+            "display": "Pyro",
+            "subType": "ADVANCED",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "FLINT_AND_STEEL",
+              "typeId": 259,
+              "data": 35
+            }
+          },
+          {
+            "package": "kit_basic_solo_rookie",
+            "display": "Rookie",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "LEATHER_HELMET",
+              "typeId": 298,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_snowman",
+            "display": "Snowman",
+            "subType": "BASIC",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "SNOW_BALL",
+              "typeId": 332,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_speleologist",
+            "display": "Speleologist",
+            "subType": "BASIC",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "IRON_PICKAXE",
+              "typeId": 257,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_troll",
+            "display": "Troll",
+            "subType": "BASIC",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "WEB",
+              "typeId": 30,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_batguy",
+            "display": "Batguy",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "LEATHER_HELMET",
+              "typeId": 298,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_disco",
+            "display": "Disco",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "JUKEBOX",
+              "typeId": 84,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_energix",
+            "display": "Energix",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "POTION",
+              "typeId": 373,
+              "data": 8
+            }
+          },
+          {
+            "package": "kit_basic_solo_frog",
+            "display": "Frog",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_basic_solo_grenade",
+            "display": "Grenade",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "MONSTER_EGG",
+              "typeId": 383,
+              "data": 50
+            }
+          },
+          {
+            "package": "kit_advanced_solo_guardian",
+            "display": "Guardian",
+            "subType": "ADVANCED",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "OBSIDIAN",
+              "typeId": 49,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_healer",
+            "display": "Healer",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
               "version": 1,
               "material": "CAKE",
               "typeId": 354,
@@ -92,35 +304,235 @@
             }
           },
           {
-            "PackageName": "kit_ranked_ranked_pyromancer",
-            "Display": "Pyromancer",
-            "SubType": "RANKED",
-            "Icon": {
+            "package": "kit_basic_solo_scout",
+            "display": "Scout",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
               "version": 1,
-              "material": "BREWING_STAND_ITEM",
-              "typeId": 379,
+              "material": "POTION",
+              "typeId": 373,
+              "data": 2
+            }
+          },
+          {
+            "package": "kit_basic_solo_princess",
+            "display": "Princess",
+            "subType": "BASIC",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "RED_ROSE",
+              "typeId": 38,
               "data": 0
             }
           },
           {
-            "PackageName": "kit_ranked_ranked_hound",
-            "Display": "Hound",
-            "SubType": "RANKED",
-            "Icon": {
+            "package": "kit_advanced_solo_engineer",
+            "display": "Engineer",
+            "subType": "ADVANCED",
+            "rarity": "RARE",
+            "icon": {
               "version": 1,
-              "material": "MONSTER_EGG",
-              "typeId": 383,
-              "data": 95
+              "material": "REDSTONE",
+              "typeId": 331,
+              "data": 0
             }
           },
           {
-            "PackageName": "kit_ranked_ranked_paladin",
-            "Display": "Paladin",
-            "SubType": "RANKED",
-            "Icon": {
+            "package": "kit_advanced_solo_salmon",
+            "display": "Salmon",
+            "subType": "ADVANCED",
+            "rarity": "LEGENDARY",
+            "icon": {
               "version": 1,
-              "material": "DIAMOND_LEGGINGS",
-              "typeId": 312,
+              "material": "RAW_FISH",
+              "typeId": 349,
+              "data": 1
+            }
+          },
+          {
+            "package": "kit_advanced_solo_pig-rider",
+            "display": "Pig Rider",
+            "subType": "ADVANCED",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "CARROT_STICK",
+              "typeId": 398,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_slime",
+            "display": "Slime",
+            "subType": "ADVANCED",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "SLIME_BLOCK",
+              "typeId": 165,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_jester",
+            "display": "Jester",
+            "subType": "ADVANCED",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_SWORD",
+              "typeId": 276,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_zookeeper",
+            "display": "Zookeeper",
+            "subType": "ADVANCED",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "MONSTER_EGG",
+              "typeId": 383,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_advanced_solo_sloth",
+            "display": "Sloth",
+            "subType": "ADVANCED",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "POTION",
+              "typeId": 373,
+              "data": 9
+            }
+          },
+          {
+            "package": "kit_advanced_solo_magician",
+            "display": "Magician",
+            "subType": "ADVANCED",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "POTION",
+              "typeId": 373,
+              "data": 14
+            }
+          },
+          {
+            "package": "kit_basic_solo_cactus",
+            "display": "Cactus",
+            "subType": "BASIC",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "CACTUS",
+              "typeId": 81,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_basic_solo_archeologist",
+            "display": "Archeologist",
+            "subType": "BASIC",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "GOLD_PICKAXE",
+              "typeId": 285,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_mythical_end-lord",
+            "display": "End Lord",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_monster-trainer",
+            "display": "Monster Trainer",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_nether-lord",
+            "display": "Nether Lord",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_fishmonger",
+            "display": "Fishmonger",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_thundermeister",
+            "display": "Thundermeister",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_chronobreaker",
+            "display": "Chronobreaker",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_cryomancer",
+            "display": "Cryomancer",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_basic_solo_warlock",
+            "display": "Warlock",
+            "subType": "BASIC",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "BREWING_STAND_ITEM",
+              "typeId": 379,
               "data": 0
             }
           }
@@ -129,478 +541,11 @@
       "INSANE": {
         "list": [
           {
-            "PackageName": "kit_defending_team_armorer",
-            "Display": "Armorer",
-            "SubType": "DEFENDING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_CHESTPLATE",
-              "typeId": 307,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_armorsmith",
-            "Display": "Armorsmith",
-            "SubType": "SUPPORTING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "ANVIL",
-              "typeId": 145,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_defending_team_baseball-player",
-            "Display": "Baseball Player",
-            "SubType": "DEFENDING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "CHAINMAIL_HELMET",
-              "typeId": 302,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_mining_team_cannoneer",
-            "Display": "Cannoneer",
-            "SubType": "MINING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "TNT",
-              "typeId": 46,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_ecologist",
-            "Display": "Ecologist",
-            "SubType": "SUPPORTING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "DIAMOND_AXE",
-              "typeId": 279,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_enchanter",
-            "Display": "Enchanter",
-            "SubType": "SUPPORTING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "ENCHANTMENT_TABLE",
-              "typeId": 116,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_enderman",
-            "Display": "Enderman",
-            "SubType": "ATTACKING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "ENDER_PEARL",
-              "typeId": 368,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_defending_team_guardian",
-            "Display": "Guardian",
-            "SubType": "DEFENDING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "OBSIDIAN",
-              "typeId": 49,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_healer",
-            "Display": "Healer",
-            "SubType": "SUPPORTING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "CAKE",
-              "typeId": 354,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_hunter",
-            "Display": "Hunter",
-            "SubType": "ATTACKING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "BOW",
-              "typeId": 261,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_knight",
-            "Display": "Knight",
-            "SubType": "ATTACKING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "GOLD_SWORD",
-              "typeId": 283,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_pharaoh",
-            "Display": "Pharaoh",
-            "SubType": "SUPPORTING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "GOLD_HELMET",
-              "typeId": 314,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_rookie",
-            "Display": "Pro",
-            "SubType": "SUPPORTING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_HELMET",
-              "typeId": 306,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_scout",
-            "Display": "Scout",
-            "SubType": "ATTACKING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "POTION",
-              "typeId": 373,
-              "data": 2
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_snowman",
-            "Display": "Snowman",
-            "SubType": "ATTACKING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "SNOW_BALL",
-              "typeId": 332,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_mining_team_speleologist",
-            "Display": "Speleologist",
-            "SubType": "MINING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "DIAMOND_PICKAXE",
-              "typeId": 278,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_defending_team_batguy",
-            "Display": "Batguy",
-            "SubType": "DEFENDING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_HELMET",
-              "typeId": 306,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_defending_team_disco",
-            "Display": "Disco",
-            "SubType": "DEFENDING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "JUKEBOX",
-              "typeId": 84,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_energix",
-            "Display": "Energix",
-            "SubType": "ATTACKING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "BREWING_STAND_ITEM",
-              "typeId": 379,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_defending_team_frog",
-            "Display": "Frog",
-            "SubType": "DEFENDING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "SKULL_ITEM",
-              "typeId": 397,
-              "data": 3
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_grenade",
-            "Display": "Grenade",
-            "SubType": "ATTACKING",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "MONSTER_EGG",
-              "typeId": 383,
-              "data": 50
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_engineer",
-            "Display": "Engineer",
-            "SubType": "ATTACKING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "REDSTONE",
-              "typeId": 331,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_pig-rider",
-            "Display": "Pig Rider",
-            "SubType": "ATTACKING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "CARROT_STICK",
-              "typeId": 398,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_salmon",
-            "Display": "Salmon",
-            "SubType": "ATTACKING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "RAW_FISH",
-              "typeId": 349,
-              "data": 1
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_slime",
-            "Display": "Slime",
-            "SubType": "ATTACKING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "SLIME_BLOCK",
-              "typeId": 165,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_jester",
-            "Display": "Jester",
-            "SubType": "ATTACKING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "DIAMOND_SWORD",
-              "typeId": 276,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_zookeeper",
-            "Display": "Zookeeper",
-            "SubType": "SUPPORTING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "MONSTER_EGG",
-              "typeId": 383,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_sloth",
-            "Display": "Sloth",
-            "SubType": "ATTACKING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "POTION",
-              "typeId": 373,
-              "data": 10
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_magician",
-            "Display": "Magician",
-            "SubType": "ATTACKING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "POTION",
-              "typeId": 373,
-              "data": 14
-            }
-          },
-          {
-            "PackageName": "kit_enderchest_team_enderchest",
-            "Display": "Enderchest",
-            "SubType": "ENDERCHEST",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "ENDER_CHEST",
-              "typeId": 130,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_defending_team_farmer",
-            "Display": "Farmer",
-            "SubType": "DEFENDING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "DIAMOND_LEGGINGS",
-              "typeId": 312,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_attacking_team_fisherman",
-            "Display": "Fisherman",
-            "SubType": "ATTACKING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "FISHING_ROD",
-              "typeId": 346,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_princess",
-            "Display": "Princess",
-            "SubType": "SUPPORTING",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "RED_ROSE",
-              "typeId": 38,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_pyro",
-            "Display": "Pyro",
-            "SubType": "SUPPORTING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "FLINT_AND_STEEL",
-              "typeId": 259,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_supporting_team_troll",
-            "Display": "Troll",
-            "SubType": "SUPPORTING",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "WEB",
-              "typeId": 30,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_mythical_end-lord",
-            "Display": "End Lord",
-            "SubType": "MYTHICAL",
-            "Icon": {
-              "version": 1,
-              "material": "SKULL_ITEM",
-              "typeId": 397,
-              "data": 3
-            }
-          },
-          {
-            "PackageName": "kit_mythical_monster-trainer",
-            "Display": "Monster Trainer",
-            "SubType": "MYTHICAL",
-            "Icon": {
-              "version": 1,
-              "material": "SKULL_ITEM",
-              "typeId": 397,
-              "data": 3
-            }
-          },
-          {
-            "PackageName": "kit_mythical_nether-lord",
-            "Display": "Nether Lord",
-            "SubType": "MYTHICAL",
-            "Icon": {
-              "version": 1,
-              "material": "SKULL_ITEM",
-              "typeId": 397,
-              "data": 3
-            }
-          }
-        ]
-      },
-      "NEW_RANKED": {
-        "list": [
-          {
-            "PackageName": "kit_normal_new_ranked_archer",
-            "Display": "Archer",
-            "SubType": "NORMAL",
-            "Icon": {
-              "version": 1,
-              "material": "BOW",
-              "typeId": 261,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_normal_new_ranked_armorer",
-            "Display": "Armorer",
-            "SubType": "NORMAL",
-            "Icon": {
+            "package": "kit_defending_team_armorer",
+            "display": "Armorer",
+            "subType": "DEFENDING",
+            "rarity": "COMMON",
+            "icon": {
               "version": 1,
               "material": "DIAMOND_CHESTPLATE",
               "typeId": 311,
@@ -608,21 +553,47 @@
             }
           },
           {
-            "PackageName": "kit_normal_new_ranked_blacksmith",
-            "Display": "Blacksmith",
-            "SubType": "NORMAL",
-            "Icon": {
+            "package": "kit_supporting_team_armorsmith",
+            "display": "Armorsmith",
+            "subType": "SUPPORTING",
+            "rarity": "COMMON",
+            "icon": {
               "version": 1,
-              "material": "EXP_BOTTLE",
-              "typeId": 384,
+              "material": "ANVIL",
+              "typeId": 145,
               "data": 0
             }
           },
           {
-            "PackageName": "kit_normal_new_ranked_brute",
-            "Display": "Brute",
-            "SubType": "NORMAL",
-            "Icon": {
+            "package": "kit_defending_team_baseball-player",
+            "display": "Baseball Player",
+            "subType": "DEFENDING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "CHAINMAIL_HELMET",
+              "typeId": 302,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_mining_team_cannoneer",
+            "display": "Cannoneer",
+            "subType": "MINING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "TNT",
+              "typeId": 46,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_ecologist",
+            "display": "Ecologist",
+            "subType": "SUPPORTING",
+            "rarity": "COMMON",
+            "icon": {
               "version": 1,
               "material": "DIAMOND_AXE",
               "typeId": 279,
@@ -630,32 +601,203 @@
             }
           },
           {
-            "PackageName": "kit_normal_new_ranked_champion",
-            "Display": "Champion",
-            "SubType": "NORMAL",
-            "Icon": {
+            "package": "kit_supporting_team_enchanter",
+            "display": "Enchanter",
+            "subType": "SUPPORTING",
+            "rarity": "RARE",
+            "icon": {
               "version": 1,
-              "material": "DIAMOND_SWORD",
-              "typeId": 276,
+              "material": "ENCHANTMENT_TABLE",
+              "typeId": 116,
               "data": 0
             }
           },
           {
-            "PackageName": "kit_normal_new_ranked_healer",
-            "Display": "Healer",
-            "SubType": "NORMAL",
-            "Icon": {
+            "package": "kit_attacking_team_enderman",
+            "display": "Enderman",
+            "subType": "ATTACKING",
+            "rarity": "LEGENDARY",
+            "icon": {
               "version": 1,
-              "material": "GOLDEN_APPLE",
-              "typeId": 322,
+              "material": "ENDER_PEARL",
+              "typeId": 368,
               "data": 0
             }
           },
           {
-            "PackageName": "kit_normal_new_ranked_paladin",
-            "Display": "Paladin",
-            "SubType": "NORMAL",
-            "Icon": {
+            "package": "kit_defending_team_guardian",
+            "display": "Guardian",
+            "subType": "DEFENDING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "OBSIDIAN",
+              "typeId": 49,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_healer",
+            "display": "Healer",
+            "subType": "SUPPORTING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "CAKE",
+              "typeId": 354,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_hunter",
+            "display": "Hunter",
+            "subType": "ATTACKING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "BOW",
+              "typeId": 261,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_knight",
+            "display": "Knight",
+            "subType": "ATTACKING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "IRON_SWORD",
+              "typeId": 267,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_pharaoh",
+            "display": "Pharaoh",
+            "subType": "SUPPORTING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "GOLD_HELMET",
+              "typeId": 314,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_rookie",
+            "display": "Pro",
+            "subType": "SUPPORTING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "IRON_HELMET",
+              "typeId": 306,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_scout",
+            "display": "Scout",
+            "subType": "ATTACKING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "POTION",
+              "typeId": 373,
+              "data": 2
+            }
+          },
+          {
+            "package": "kit_attacking_team_snowman",
+            "display": "Snowman",
+            "subType": "ATTACKING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "SNOW_BALL",
+              "typeId": 332,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_mining_team_speleologist",
+            "display": "Speleologist",
+            "subType": "MINING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_PICKAXE",
+              "typeId": 278,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_defending_team_batguy",
+            "display": "Batguy",
+            "subType": "DEFENDING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "LEATHER_HELMET",
+              "typeId": 298,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_defending_team_disco",
+            "display": "Disco",
+            "subType": "DEFENDING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "JUKEBOX",
+              "typeId": 84,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_energix",
+            "display": "Energix",
+            "subType": "ATTACKING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "POTION",
+              "typeId": 373,
+              "data": 8
+            }
+          },
+          {
+            "package": "kit_defending_team_cactus",
+            "display": "Cactus",
+            "subType": "DEFENDING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "CACTUS",
+              "typeId": 81,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_archeologist",
+            "display": "Archeologist",
+            "subType": "ATTACKING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "GOLD_PICKAXE",
+              "typeId": 285,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_warlock",
+            "display": "Warlock",
+            "subType": "SUPPORTING",
+            "rarity": "RARE",
+            "icon": {
               "version": 1,
               "material": "BREWING_STAND_ITEM",
               "typeId": 379,
@@ -663,10 +805,372 @@
             }
           },
           {
-            "PackageName": "kit_normal_new_ranked_pyromancer",
-            "Display": "Pyromancer",
-            "SubType": "NORMAL",
-            "Icon": {
+            "package": "kit_defending_team_frog",
+            "display": "Frog",
+            "subType": "DEFENDING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_attacking_team_grenade",
+            "display": "Grenade",
+            "subType": "ATTACKING",
+            "rarity": "COMMON",
+            "icon": {
+              "version": 1,
+              "material": "MONSTER_EGG",
+              "typeId": 383,
+              "data": 50
+            }
+          },
+          {
+            "package": "kit_attacking_team_engineer",
+            "display": "Engineer",
+            "subType": "ATTACKING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "REDSTONE",
+              "typeId": 331,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_pig-rider",
+            "display": "Pig Rider",
+            "subType": "ATTACKING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "CARROT_STICK",
+              "typeId": 398,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_salmon",
+            "display": "Salmon",
+            "subType": "ATTACKING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "RAW_FISH",
+              "typeId": 349,
+              "data": 1
+            }
+          },
+          {
+            "package": "kit_attacking_team_slime",
+            "display": "Slime",
+            "subType": "ATTACKING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "SLIME_BLOCK",
+              "typeId": 165,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_jester",
+            "display": "Jester",
+            "subType": "ATTACKING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_SWORD",
+              "typeId": 276,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_zookeeper",
+            "display": "Zookeeper",
+            "subType": "SUPPORTING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "MONSTER_EGG",
+              "typeId": 383,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_sloth",
+            "display": "Sloth",
+            "subType": "ATTACKING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "POTION",
+              "typeId": 373,
+              "data": 9
+            }
+          },
+          {
+            "package": "kit_attacking_team_magician",
+            "display": "Magician",
+            "subType": "ATTACKING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "POTION",
+              "typeId": 373,
+              "data": 14
+            }
+          },
+          {
+            "package": "kit_enderchest_team_enderchest",
+            "display": "Enderchest",
+            "subType": "ENDERCHEST",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "ENDER_CHEST",
+              "typeId": 130,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_defending_team_farmer",
+            "display": "Farmer",
+            "subType": "DEFENDING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_LEGGINGS",
+              "typeId": 312,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_attacking_team_fisherman",
+            "display": "Fisherman",
+            "subType": "ATTACKING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "FISHING_ROD",
+              "typeId": 346,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_princess",
+            "display": "Princess",
+            "subType": "SUPPORTING",
+            "rarity": "RARE",
+            "icon": {
+              "version": 1,
+              "material": "RED_ROSE",
+              "typeId": 38,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_pyro",
+            "display": "Pyro",
+            "subType": "SUPPORTING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "FLINT_AND_STEEL",
+              "typeId": 259,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_supporting_team_troll",
+            "display": "Troll",
+            "subType": "SUPPORTING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "WEB",
+              "typeId": 30,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_mythical_end-lord",
+            "display": "End Lord",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_monster-trainer",
+            "display": "Monster Trainer",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_nether-lord",
+            "display": "Nether Lord",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_fishmonger",
+            "display": "Fishmonger",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_thundermeister",
+            "display": "Thundermeister",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_chronobreaker",
+            "display": "Chronobreaker",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_mythical_cryomancer",
+            "display": "Cryomancer",
+            "subType": "MYTHICAL",
+            "icon": {
+              "version": 1,
+              "material": "SKULL_ITEM",
+              "typeId": 397,
+              "data": 3
+            }
+          },
+          {
+            "package": "kit_defending_team_golem",
+            "display": "Golem",
+            "subType": "DEFENDING",
+            "rarity": "LEGENDARY",
+            "icon": {
+              "version": 1,
+              "material": "BAKED_POTATO",
+              "typeId": 393,
+              "data": 0
+            }
+          }
+        ]
+      },
+      "NEW_RANKED": {
+        "list": [
+          {
+            "package": "kit_normal_new_ranked_archer",
+            "display": "Archer",
+            "subType": "NORMAL",
+            "icon": {
+              "version": 1,
+              "material": "BOW",
+              "typeId": 261,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_normal_new_ranked_armorer",
+            "display": "Armorer",
+            "subType": "NORMAL",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_CHESTPLATE",
+              "typeId": 311,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_normal_new_ranked_blacksmith",
+            "display": "Blacksmith",
+            "subType": "NORMAL",
+            "icon": {
+              "version": 1,
+              "material": "EXP_BOTTLE",
+              "typeId": 384,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_normal_new_ranked_brute",
+            "display": "Brute",
+            "subType": "NORMAL",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_AXE",
+              "typeId": 279,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_normal_new_ranked_champion",
+            "display": "Champion",
+            "subType": "NORMAL",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_SWORD",
+              "typeId": 276,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_normal_new_ranked_healer",
+            "display": "Healer",
+            "subType": "NORMAL",
+            "icon": {
+              "version": 1,
+              "material": "GOLDEN_APPLE",
+              "typeId": 322,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_normal_new_ranked_paladin",
+            "display": "Paladin",
+            "subType": "NORMAL",
+            "icon": {
+              "version": 1,
+              "material": "BREWING_STAND_ITEM",
+              "typeId": 379,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_normal_new_ranked_pyromancer",
+            "display": "Pyromancer",
+            "subType": "NORMAL",
+            "icon": {
               "version": 1,
               "material": "DIAMOND_BOOTS",
               "typeId": 313,
@@ -675,470 +1179,16 @@
           }
         ]
       },
-      "NORMAL": {
-        "list": [
-          {
-            "PackageName": "kit_advanced_solo_armorer",
-            "Display": "Armorer",
-            "SubType": "ADVANCED",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "GOLD_CHESTPLATE",
-              "typeId": 315,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_armorsmith",
-            "Display": "Armorsmith",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "ANVIL",
-              "typeId": 145,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_baseball-player",
-            "Display": "Baseball Player",
-            "SubType": "BASIC",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_HELMET",
-              "typeId": 306,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_cannoneer",
-            "Display": "Cannoneer",
-            "SubType": "ADVANCED",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "TNT",
-              "typeId": 46,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_ecologist",
-            "Display": "Ecologist",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_AXE",
-              "typeId": 258,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_enchanter",
-            "Display": "Enchanter",
-            "SubType": "ADVANCED",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "ENCHANTMENT_TABLE",
-              "typeId": 116,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_enderchest_solo_enderchest",
-            "Display": "Enderchest",
-            "SubType": "ENDERCHEST",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "ENDER_CHEST",
-              "typeId": 130,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_enderman",
-            "Display": "Enderman",
-            "SubType": "ADVANCED",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "ENDER_PEARL",
-              "typeId": 368,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_farmer",
-            "Display": "Farmer",
-            "SubType": "ADVANCED",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_LEGGINGS",
-              "typeId": 308,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_fisherman",
-            "Display": "Fisherman",
-            "SubType": "BASIC",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "FISHING_ROD",
-              "typeId": 346,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_hunter",
-            "Display": "Hunter",
-            "SubType": "ADVANCED",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "BOW",
-              "typeId": 261,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_knight",
-            "Display": "Knight",
-            "SubType": "ADVANCED",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "GOLD_SWORD",
-              "typeId": 283,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_pharaoh",
-            "Display": "Pharaoh",
-            "SubType": "BASIC",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "GOLD_HELMET",
-              "typeId": 314,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_pyro",
-            "Display": "Pyro",
-            "SubType": "ADVANCED",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "FLINT_AND_STEEL",
-              "typeId": 259,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_rookie",
-            "Display": "Rookie",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "LEATHER_HELMET",
-              "typeId": 298,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_snowman",
-            "Display": "Snowman",
-            "SubType": "BASIC",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "SNOW_BALL",
-              "typeId": 332,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_speleologist",
-            "Display": "Speleologist",
-            "SubType": "BASIC",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "IRON_PICKAXE",
-              "typeId": 257,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_troll",
-            "Display": "Troll",
-            "SubType": "BASIC",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "WEB",
-              "typeId": 30,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_batguy",
-            "Display": "Batguy",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "LEATHER_HELMET",
-              "typeId": 298,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_disco",
-            "Display": "Disco",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "JUKEBOX",
-              "typeId": 84,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_energix",
-            "Display": "Energix",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "BREWING_STAND_ITEM",
-              "typeId": 379,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_frog",
-            "Display": "Frog",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "SKULL_ITEM",
-              "typeId": 397,
-              "data": 3
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_grenade",
-            "Display": "Grenade",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "MONSTER_EGG",
-              "typeId": 383,
-              "data": 50
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_guardian",
-            "Display": "Guardian",
-            "SubType": "ADVANCED",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "OBSIDIAN",
-              "typeId": 49,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_healer",
-            "Display": "Healer",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "CAKE",
-              "typeId": 354,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_scout",
-            "Display": "Scout",
-            "SubType": "BASIC",
-            "Rarity": "COMMON",
-            "Icon": {
-              "version": 1,
-              "material": "POTION",
-              "typeId": 373,
-              "data": 2
-            }
-          },
-          {
-            "PackageName": "kit_basic_solo_princess",
-            "Display": "Princess",
-            "SubType": "BASIC",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "RED_ROSE",
-              "typeId": 38,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_engineer",
-            "Display": "Engineer",
-            "SubType": "ADVANCED",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "REDSTONE",
-              "typeId": 331,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_salmon",
-            "Display": "Salmon",
-            "SubType": "ADVANCED",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "RAW_FISH",
-              "typeId": 349,
-              "data": 1
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_pig-rider",
-            "Display": "Pig Rider",
-            "SubType": "ADVANCED",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "CARROT_STICK",
-              "typeId": 398,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_slime",
-            "Display": "Slime",
-            "SubType": "ADVANCED",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "SLIME_BLOCK",
-              "typeId": 165,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_jester",
-            "Display": "Jester",
-            "SubType": "ADVANCED",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "DIAMOND_SWORD",
-              "typeId": 276,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_zookeeper",
-            "Display": "Zookeeper",
-            "SubType": "ADVANCED",
-            "Rarity": "LEGENDARY",
-            "Icon": {
-              "version": 1,
-              "material": "MONSTER_EGG",
-              "typeId": 383,
-              "data": 0
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_sloth",
-            "Display": "Sloth",
-            "SubType": "ADVANCED",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "POTION",
-              "typeId": 373,
-              "data": 10
-            }
-          },
-          {
-            "PackageName": "kit_advanced_solo_magician",
-            "Display": "Magician",
-            "SubType": "ADVANCED",
-            "Rarity": "RARE",
-            "Icon": {
-              "version": 1,
-              "material": "POTION",
-              "typeId": 373,
-              "data": 14
-            }
-          },
-          {
-            "PackageName": "kit_mythical_end-lord",
-            "Display": "End Lord",
-            "SubType": "MYTHICAL",
-            "Icon": {
-              "version": 1,
-              "material": "SKULL_ITEM",
-              "typeId": 397,
-              "data": 3
-            }
-          },
-          {
-            "PackageName": "kit_mythical_monster-trainer",
-            "Display": "Monster Trainer",
-            "SubType": "MYTHICAL",
-            "Icon": {
-              "version": 1,
-              "material": "SKULL_ITEM",
-              "typeId": 397,
-              "data": 3
-            }
-          },
-          {
-            "PackageName": "kit_mythical_nether-lord",
-            "Display": "Nether Lord",
-            "SubType": "MYTHICAL",
-            "Icon": {
-              "version": 1,
-              "material": "SKULL_ITEM",
-              "typeId": 397,
-              "data": 3
-            }
-          }
-        ]
+      "SPECIAL": {
+        "list": []
       },
       "MEGA": {
         "list": [
           {
-            "PackageName": "kit_mega_mega_armorer",
-            "Display": "Armorer",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_armorer",
+            "display": "Armorer",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "IRON_CHESTPLATE",
               "typeId": 307,
@@ -1146,10 +1196,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_armorsmith",
-            "Display": "Armorsmith",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_armorsmith",
+            "display": "Armorsmith",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "ANVIL",
               "typeId": 145,
@@ -1157,10 +1207,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_baseball-player",
-            "Display": "Baseball Player",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_baseball-player",
+            "display": "Baseball Player",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "IRON_HELMET",
               "typeId": 306,
@@ -1168,10 +1218,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_cannoneer",
-            "Display": "Cannoneer",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_cannoneer",
+            "display": "Cannoneer",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "TNT",
               "typeId": 46,
@@ -1179,10 +1229,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_healer",
-            "Display": "Healer",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_healer",
+            "display": "Healer",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "CAKE",
               "typeId": 354,
@@ -1190,10 +1240,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_hunter",
-            "Display": "Hunter",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_hunter",
+            "display": "Hunter",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "BOW",
               "typeId": 261,
@@ -1201,10 +1251,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_knight",
-            "Display": "Knight",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_knight",
+            "display": "Knight",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "DIAMOND_SWORD",
               "typeId": 276,
@@ -1212,10 +1262,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_paladin",
-            "Display": "Paladin",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_paladin",
+            "display": "Paladin",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "GOLDEN_APPLE",
               "typeId": 322,
@@ -1223,10 +1273,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_scout",
-            "Display": "Scout",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_scout",
+            "display": "Scout",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "IRON_SWORD",
               "typeId": 267,
@@ -1234,10 +1284,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_skeletor",
-            "Display": "Skeletor",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_skeletor",
+            "display": "Skeletor",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "CHAINMAIL_BOOTS",
               "typeId": 305,
@@ -1245,10 +1295,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_witch",
-            "Display": "Witch",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_witch",
+            "display": "Witch",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "BREWING_STAND_ITEM",
               "typeId": 379,
@@ -1256,10 +1306,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_hellhound",
-            "Display": "Hellhound",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_hellhound",
+            "display": "Hellhound",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "DIAMOND_AXE",
               "typeId": 279,
@@ -1267,10 +1317,10 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_fisherman",
-            "Display": "Fisherman",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_fisherman",
+            "display": "Fisherman",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "FISHING_ROD",
               "typeId": 346,
@@ -1278,179 +1328,559 @@
             }
           },
           {
-            "PackageName": "kit_mega_mega_pyromaniac",
-            "Display": "Pyromaniac",
-            "SubType": "MEGA",
-            "Icon": {
+            "package": "kit_mega_mega_pyromaniac",
+            "display": "Pyromaniac",
+            "subType": "MEGA",
+            "icon": {
               "version": 1,
               "material": "FLINT_AND_STEEL",
               "typeId": 259,
               "data": 0
             }
+          },
+          {
+            "package": "kit_mega_mega_enderman",
+            "display": "Enderman",
+            "subType": "MEGA",
+            "icon": {
+              "version": 1,
+              "material": "LEATHER_CHESTPLATE",
+              "typeId": 299,
+              "data": 0
+            }
           }
         ]
       },
-      "SPECIAL": {
-        "list": []
+      "RANKED": {
+        "list": [
+          {
+            "package": "kit_ranked_ranked_scout",
+            "display": "Scout",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_AXE",
+              "typeId": 279,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_magician",
+            "display": "Magician",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "IRON_SWORD",
+              "typeId": 267,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_armorer",
+            "display": "Armorer",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "IRON_CHESTPLATE",
+              "typeId": 307,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_champion",
+            "display": "Champion",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_SWORD",
+              "typeId": 276,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_bowman",
+            "display": "Bowman",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "BOW",
+              "typeId": 261,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_athlete",
+            "display": "Athlete",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "WATER_BUCKET",
+              "typeId": 326,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_blacksmith_ranked_blacksmith",
+            "display": "Blacksmith",
+            "subType": "BLACKSMITH",
+            "icon": {
+              "version": 1,
+              "material": "ANVIL",
+              "typeId": 145,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_healer",
+            "display": "Healer",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "CAKE",
+              "typeId": 354,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_pyromancer",
+            "display": "Pyromancer",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "BREWING_STAND_ITEM",
+              "typeId": 379,
+              "data": 0
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_hound",
+            "display": "Hound",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "MONSTER_EGG",
+              "typeId": 383,
+              "data": 95
+            }
+          },
+          {
+            "package": "kit_ranked_ranked_paladin",
+            "display": "Paladin",
+            "subType": "RANKED",
+            "icon": {
+              "version": 1,
+              "material": "DIAMOND_LEGGINGS",
+              "typeId": 312,
+              "data": 0
+            }
+          }
+        ]
       }
     }
   },
   "prestiges": [
     {
-      "Name": "NONE",
-      "Display": "None",
-      "ChatColor": "GRAY",
-      "RequiredLevel": 1,
-      "Icon": {
+      "name": "NONE",
+      "display": "None",
+      "chatColor": "GRAY",
+      "requiredLevel": 1,
+      "icon": {
         "version": 1,
         "material": "COAL",
         "typeId": 263,
         "data": 0
       },
-      "PrestigeIcon": null
+      "prestigeIcon": null
     },
     {
-      "Name": "IRON",
-      "Display": "Iron",
-      "ChatColor": "WHITE",
-      "RequiredLevel": 5,
-      "Icon": {
+      "name": "IRON",
+      "display": "Iron",
+      "chatColor": "WHITE",
+      "requiredLevel": 5,
+      "icon": {
         "version": 1,
         "material": "IRON_INGOT",
         "typeId": 265,
         "data": 0
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "✙"
     },
     {
-      "Name": "GOLD",
-      "Display": "Gold",
-      "ChatColor": "GOLD",
-      "RequiredLevel": 10,
-      "Icon": {
+      "name": "GOLD",
+      "display": "Gold",
+      "chatColor": "GOLD",
+      "requiredLevel": 10,
+      "icon": {
         "version": 1,
         "material": "GOLD_INGOT",
         "typeId": 266,
         "data": 0
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "❤"
     },
     {
-      "Name": "DIAMOND",
-      "Display": "Diamond",
-      "ChatColor": "AQUA",
-      "RequiredLevel": 15,
-      "Icon": {
+      "name": "DIAMOND",
+      "display": "Diamond",
+      "chatColor": "AQUA",
+      "requiredLevel": 15,
+      "icon": {
         "version": 1,
         "material": "DIAMOND",
         "typeId": 264,
         "data": 0
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "☠"
     },
     {
-      "Name": "EMERALD",
-      "Display": "Emerald",
-      "ChatColor": "DARK_GREEN",
-      "RequiredLevel": 20,
-      "Icon": {
+      "name": "EMERALD",
+      "display": "Emerald",
+      "chatColor": "DARK_GREEN",
+      "requiredLevel": 20,
+      "icon": {
         "version": 1,
         "material": "EMERALD",
         "typeId": 388,
         "data": 0
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "✦"
     },
     {
-      "Name": "SAPPHIRE",
-      "Display": "Sapphire",
-      "ChatColor": "DARK_AQUA",
-      "RequiredLevel": 25,
-      "Icon": {
+      "name": "SAPPHIRE",
+      "display": "Sapphire",
+      "chatColor": "DARK_AQUA",
+      "requiredLevel": 25,
+      "icon": {
         "version": 1,
         "material": "SKULL_ITEM",
         "typeId": 397,
         "data": 3
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "✌"
     },
     {
-      "Name": "RUBY",
-      "Display": "Ruby",
-      "ChatColor": "DARK_RED",
-      "RequiredLevel": 30,
-      "Icon": {
+      "name": "RUBY",
+      "display": "Ruby",
+      "chatColor": "DARK_RED",
+      "requiredLevel": 30,
+      "icon": {
         "version": 1,
         "material": "SKULL_ITEM",
         "typeId": 397,
         "data": 3
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "❦"
     },
     {
-      "Name": "CRYSTAL",
-      "Display": "Crystal",
-      "ChatColor": "LIGHT_PURPLE",
-      "RequiredLevel": 35,
-      "Icon": {
+      "name": "CRYSTAL",
+      "display": "Crystal",
+      "chatColor": "LIGHT_PURPLE",
+      "requiredLevel": 35,
+      "icon": {
         "version": 1,
         "material": "QUARTZ",
         "typeId": 406,
         "data": 0
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "✵"
     },
     {
-      "Name": "OPAL",
-      "Display": "Opal",
-      "ChatColor": "BLUE",
-      "RequiredLevel": 40,
-      "Icon": {
+      "name": "OPAL",
+      "display": "Opal",
+      "chatColor": "BLUE",
+      "requiredLevel": 40,
+      "icon": {
         "version": 1,
         "material": "SKULL_ITEM",
         "typeId": 397,
         "data": 3
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "❣"
     },
     {
-      "Name": "AMETHYST",
-      "Display": "Amethyst",
-      "ChatColor": "DARK_PURPLE",
-      "RequiredLevel": 45,
-      "Icon": {
+      "name": "AMETHYST",
+      "display": "Amethyst",
+      "chatColor": "DARK_PURPLE",
+      "requiredLevel": 45,
+      "icon": {
         "version": 1,
         "material": "SKULL_ITEM",
         "typeId": 397,
         "data": 3
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "☯"
     },
     {
-      "Name": "RAINBOW",
-      "Display": "Rainbow",
-      "ChatColor": "WHITE",
-      "RequiredLevel": 50,
-      "Icon": {
+      "name": "RAINBOW",
+      "display": "Rainbow",
+      "chatColor": "WHITE",
+      "requiredLevel": 50,
+      "icon": {
         "version": 1,
         "material": "SKULL_ITEM",
         "typeId": 397,
         "data": 3
       },
-      "PrestigeIcon": "?"
+      "prestigeIcon": "✺"
     },
     {
-      "Name": "MYTHIC",
-      "Display": "Mythic",
-      "ChatColor": "WHITE",
-      "RequiredLevel": 60,
-      "Icon": {
+      "name": "FIRST_CLASS",
+      "display": "First Class",
+      "chatColor": "GRAY",
+      "requiredLevel": 55,
+      "icon": {
+        "version": 1,
+        "material": "GOLD_INGOT",
+        "typeId": 266,
+        "data": 0
+      },
+      "prestigeIcon": "✈"
+    },
+    {
+      "name": "ASSASSIN",
+      "display": "Assassin",
+      "chatColor": "DARK_RED",
+      "requiredLevel": 60,
+      "icon": {
+        "version": 1,
+        "material": "LEATHER_HELMET",
+        "typeId": 298,
+        "data": 0
+      },
+      "prestigeIcon": "⚰"
+    },
+    {
+      "name": "VETERAN",
+      "display": "Veteran",
+      "chatColor": "RED",
+      "requiredLevel": 65,
+      "icon": {
+        "version": 1,
+        "material": "LEATHER_CHESTPLATE",
+        "typeId": 299,
+        "data": 0
+      },
+      "prestigeIcon": "✠"
+    },
+    {
+      "name": "GOD_LIKE",
+      "display": "God Like",
+      "chatColor": "YELLOW",
+      "requiredLevel": 70,
+      "icon": {
+        "version": 1,
+        "material": "EMERALD_BLOCK",
+        "typeId": 133,
+        "data": 0
+      },
+      "prestigeIcon": "♕"
+    },
+    {
+      "name": "WARRIOR",
+      "display": "Warrior",
+      "chatColor": "WHITE",
+      "requiredLevel": 75,
+      "icon": {
+        "version": 1,
+        "material": "IRON_SWORD",
+        "typeId": 267,
+        "data": 0
+      },
+      "prestigeIcon": "⚡"
+    },
+    {
+      "name": "CAPTAIN",
+      "display": "Captain",
+      "chatColor": "WHITE",
+      "requiredLevel": 80,
+      "icon": {
+        "version": 1,
+        "material": "WATCH",
+        "typeId": 347,
+        "data": 0
+      },
+      "prestigeIcon": "⁂"
+    },
+    {
+      "name": "SOLDIER",
+      "display": "Soldier",
+      "chatColor": "WHITE",
+      "requiredLevel": 85,
+      "icon": {
+        "version": 1,
+        "material": "LEATHER_BOOTS",
+        "typeId": 301,
+        "data": 0
+      },
+      "prestigeIcon": "✰"
+    },
+    {
+      "name": "INFANTRY",
+      "display": "Infantry",
+      "chatColor": "GREEN",
+      "requiredLevel": 90,
+      "icon": {
+        "version": 1,
+        "material": "CHEST",
+        "typeId": 54,
+        "data": 0
+      },
+      "prestigeIcon": "⁑"
+    },
+    {
+      "name": "SERGEANT",
+      "display": "Sergeant",
+      "chatColor": "RED",
+      "requiredLevel": 95,
+      "icon": {
+        "version": 1,
+        "material": "LEATHER_CHESTPLATE",
+        "typeId": 299,
+        "data": 0
+      },
+      "prestigeIcon": "☢"
+    },
+    {
+      "name": "LIEUTENANT",
+      "display": "Lieutenant",
+      "chatColor": "BLUE",
+      "requiredLevel": 100,
+      "icon": {
+        "version": 1,
+        "material": "GOLD_SWORD",
+        "typeId": 283,
+        "data": 0
+      },
+      "prestigeIcon": "✥"
+    },
+    {
+      "name": "ADMIRAL",
+      "display": "Admiral",
+      "chatColor": "GOLD",
+      "requiredLevel": 105,
+      "icon": {
+        "version": 1,
+        "material": "DIAMOND_SWORD",
+        "typeId": 276,
+        "data": 0
+      },
+      "prestigeIcon": "♝"
+    },
+    {
+      "name": "GENERAL",
+      "display": "General",
+      "chatColor": "DARK_BLUE",
+      "requiredLevel": 110,
+      "icon": {
+        "version": 1,
+        "material": "DIAMOND_AXE",
+        "typeId": 279,
+        "data": 0
+      },
+      "prestigeIcon": "♆"
+    },
+    {
+      "name": "VILLAIN",
+      "display": "Villain",
+      "chatColor": "DARK_GRAY",
+      "requiredLevel": 115,
+      "icon": {
+        "version": 1,
+        "material": "LEATHER_HELMET",
+        "typeId": 298,
+        "data": 0
+      },
+      "prestigeIcon": "☁"
+    },
+    {
+      "name": "SKILLED",
+      "display": "Skilled",
+      "chatColor": "LIGHT_PURPLE",
+      "requiredLevel": 120,
+      "icon": {
+        "version": 1,
+        "material": "GOLD_CHESTPLATE",
+        "typeId": 315,
+        "data": 0
+      },
+      "prestigeIcon": "⍟"
+    },
+    {
+      "name": "SNEAKY",
+      "display": "Sneaky",
+      "chatColor": "WHITE",
+      "requiredLevel": 125,
+      "icon": {
+        "version": 1,
+        "material": "ENCHANTED_BOOK",
+        "typeId": 403,
+        "data": 0
+      },
+      "prestigeIcon": "♗"
+    },
+    {
+      "name": "OVERLORD",
+      "display": "Overlord",
+      "chatColor": "RED",
+      "requiredLevel": 130,
+      "icon": {
+        "version": 1,
+        "material": "NETHERRACK",
+        "typeId": 87,
+        "data": 0
+      },
+      "prestigeIcon": "♔"
+    },
+    {
+      "name": "WAR_CHIEF",
+      "display": "War Chief",
+      "chatColor": "GOLD",
+      "requiredLevel": 135,
+      "icon": {
+        "version": 1,
+        "material": "MAGMA_CREAM",
+        "typeId": 378,
+        "data": 0
+      },
+      "prestigeIcon": "♞"
+    },
+    {
+      "name": "WARLOCK",
+      "display": "Warlock",
+      "chatColor": "GREEN",
+      "requiredLevel": 140,
+      "icon": {
+        "version": 1,
+        "material": "BLAZE_ROD",
+        "typeId": 369,
+        "data": 0
+      },
+      "prestigeIcon": "✏"
+    },
+    {
+      "name": "EMPEROR",
+      "display": "Emperor",
+      "chatColor": "GREEN",
+      "requiredLevel": 145,
+      "icon": {
+        "version": 1,
+        "material": "GOLD_HELMET",
+        "typeId": 314,
+        "data": 0
+      },
+      "prestigeIcon": "❈"
+    },
+    {
+      "name": "MYTHIC",
+      "display": "Mythic",
+      "chatColor": "WHITE",
+      "requiredLevel": 150,
+      "icon": {
         "version": 1,
         "material": "SKULL_ITEM",
         "typeId": 397,
         "data": 1
       },
-      "PrestigeIcon": "?_?"
+      "prestigeIcon": "ಠ_ಠ"
     }
   ]
 }
