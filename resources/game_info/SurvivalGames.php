@@ -47,6 +47,13 @@ return array(
                             'cost' => 10000,
                             'networkLevel' => 45,
                         ),
+                    'SHARK' =>
+                        array(
+                            'display' => 'Shark',
+                            'description' => '*Jaws theme plays*',
+                            'cost' => 30000,
+                            'networkLevel' => 40,
+                        ),
                     'REDDRAGON' =>
                         array(
                             'display' => 'RedDragon',
@@ -189,6 +196,11 @@ return array(
                         array(
                             'display' => 'Fisherman',
                             'description' => 'Here - fishy fishy.',
+                        ),
+                    'MILKMAN' =>
+                        array(
+                            'display' => 'Milkman',
+                            'description' => 'Hits the spot!',
                         ),
                     'FLORIST' =>
                         array(
@@ -407,6 +419,13 @@ return array(
                             'package' => 'prestige_taunt',
                             'cost' => 1500,
                         ),
+                    'KILLER_BUNNY' =>
+                        array(
+                            'display' => 'Killer Bunny Taunt',
+                            'description' => 'While taunting, a stack of killer bunnies hover above you to make you look more intimidating.',
+                            'package' => 'killer_bunny_taunt',
+                            'cost' => 'Event Shop Item',
+                        ),
                 ),
         ),
     'victoryDances' =>
@@ -461,6 +480,20 @@ return array(
                             'description' => 'If you win, celebrate by calling down a destructive meteor shower.',
                             'package' => 'meteor_shower_dance',
                             'cost' => 2000,
+                        ),
+                    'LEAPING_BUNNY' =>
+                        array(
+                            'display' => 'Leaping Bunnies Dance',
+                            'description' => 'If you win, celebrate with a bunch of bunnies that can jump really high!',
+                            'package' => 'leaping_bunnies',
+                            'cost' => 'Event Shop Item',
+                        ),
+                    'COLORFUL_CHICKEN_RAIN' =>
+                        array(
+                            'display' => 'Colorful Chicken Rain Dance',
+                            'description' => 'If you win, chickens fly above you and spew out colorful rain in celebration of your victory.',
+                            'package' => 'colorful_chicken_rain',
+                            'cost' => 'Event Shop Item',
                         ),
                 ),
         ),
@@ -524,6 +557,13 @@ return array(
                             'package' => 'finisher_rekt_hologram',
                             'cost' => 100,
                         ),
+                    'RABBIT_GIFT' =>
+                        array(
+                            'display' => 'Rabbit',
+                            'description' => 'A bundle full of surprises!',
+                            'package' => 'finisher_rabbit_gift',
+                            'cost' => 'Event Shop Item',
+                        ),
                 ),
         ),
     'blitzes' =>
@@ -540,7 +580,7 @@ return array(
                     'ASSASSIN' =>
                         array(
                             'display' => 'Assassin',
-                            'description' => 'Teleport to the nearest player and remove half their health.',
+                            'description' => 'Teleport to a random player and instantly damage them.',
                             'package' => 'assassin',
                             'cost' => 10000,
                         ),
@@ -624,7 +664,7 @@ return array(
                     'ROBINHOOD' =>
                         array(
                             'display' => 'Robinhood',
-                            'description' => 'Instakill the first player your arrow hits within 30s.',
+                            'description' => 'Instakill the first player your arrow hits within 15s.',
                             'package' => 'robinhood',
                             'cost' => 10000,
                         ),
@@ -652,7 +692,7 @@ return array(
                     'KOOLMOVE' =>
                         array(
                             'display' => 'Sweg Move',
-                            'description' => 'Teleports everyone back to spawn.',
+                            'description' => 'Starts an early deathmatch.',
                             'package' => 'koolmove',
                             'cost' => 20000,
                         ),
@@ -701,8 +741,29 @@ return array(
                     'RAGNAROK' =>
                         array(
                             'display' => 'Ragnarok',
-                            'description' => 'For the rest of the game all players have only 5 hearts!',
+                            'description' => 'For the rest of the game all enemies have only 7.5 hearts!',
                             'package' => 'ragnarok',
+                            'cost' => 10000,
+                        ),
+                    'GLADIATOR' =>
+                        array(
+                            'display' => 'Gladiator',
+                            'description' => 'Challenge an opponent to a fair fight in the Deathmatch Arena.',
+                            'package' => 'gladiator',
+                            'cost' => 10000,
+                        ),
+                    'ZOOKEEPER' =>
+                        array(
+                            'display' => 'Zookeeper',
+                            'description' => 'Gives you 5 mystery spawn eggs.',
+                            'package' => 'zookeeper',
+                            'cost' => 10000,
+                        ),
+                    'SWITCHEROO' =>
+                        array(
+                            'display' => 'Switcheroo',
+                            'description' => 'Switches your position with that of a random enemy!',
+                            'package' => 'switcheroo',
                             'cost' => 10000,
                         ),
                 ),
@@ -730,11 +791,8 @@ return array(
             'utcHours' =>
                 array(
                     0 => 2,
-                    1 => 6,
-                    2 => 10,
-                    3 => 14,
-                    4 => 18,
-                    5 => 22,
+                    1 => 10,
+                    2 => 18,
                 ),
         ),
 );
