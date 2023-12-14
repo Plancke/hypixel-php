@@ -167,7 +167,7 @@ class FlatFileCacheHandler extends CacheHandler {
             $cacheTime = $this->getCacheTime(CacheTimes::GUILD_NOT_FOUND);
         }
         $timestamp = array_key_exists('timestamp', $cached) ? $cached['timestamp'] : 0;
-        if (CacheUtil::isExpired($timestamp, $cacheTime)) return null;
+        if (CacheUtil::isExpired($timestamp * 1000, $cacheTime * 1000)) return null;
         return $cached['guild'];
     }
 
@@ -195,7 +195,7 @@ class FlatFileCacheHandler extends CacheHandler {
         }
 
         $timestamp = array_key_exists('timestamp', $cached) ? $cached['timestamp'] : 0;
-        if (CacheUtil::isExpired($timestamp, $cacheTime)) return null;
+        if (CacheUtil::isExpired($timestamp * 1000, $cacheTime * 1000)) return null;
         return $cached['guild'];
     }
 
