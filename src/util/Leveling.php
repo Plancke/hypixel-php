@@ -16,9 +16,6 @@ class Leveling {
     const BASE = 10000;
     const GROWTH = 2500;
 
-    /* Constants to generate the total amount of XP to complete a level */
-    const HALF_GROWTH = 0.5 * Leveling::GROWTH;
-
     /* Constants to look up the level from the total amount of XP */
     const REVERSE_PQ_PREFIX = -(Leveling::BASE - 0.5 * Leveling::GROWTH) / Leveling::GROWTH;
     const REVERSE_CONST = Leveling::REVERSE_PQ_PREFIX * Leveling::REVERSE_PQ_PREFIX;
@@ -106,7 +103,7 @@ class Leveling {
         $lv = floor($level);
         $x0 = Leveling::getTotalExpToFullLevel($lv);
         if ($level == $lv) return $x0;
-        return (Leveling:: getTotalExpToFullLevel($lv + 1) - $x0) * ($level % 1) + $x0;
+        return (Leveling::getTotalExpToFullLevel($lv + 1) - $x0) * ($level % 1) + $x0;
     }
 
     /**
@@ -117,7 +114,12 @@ class Leveling {
      * @return float Experience to reach the given level
      */
     static function getTotalExpToFullLevel(float $level) {
-        return (Leveling::HALF_GROWTH * ($level - 2) + Leveling::BASE) * ($level - 1);
+        if ($level == 1) return 0;
+        return Leveling::BASE * ($level - 1) + Leveling::GROWTH * Leveling::sumToN($level - 2);
+    }
+
+    static function sumToN(int $n) {
+        return $n * ($n + 1) / 2;
     }
 
     /**
