@@ -268,6 +268,39 @@
           "CONTROL"
         ],
         "difficulty": 1.0
+      },
+      "SHEEP": {
+        "id": "SHEEP",
+        "display": "Sheep",
+        "description": "",
+        "type": "NORMAL",
+        "categories": [
+          "CONTROL",
+          "SUPPORT"
+        ],
+        "difficulty": 3.0
+      },
+      "ANGEL": {
+        "id": "ANGEL",
+        "display": "Angel",
+        "description": "",
+        "type": "MYTHIC",
+        "categories": [
+          "FIGHTER",
+          "SUPPORT"
+        ],
+        "difficulty": 3.0
+      },
+      "DRAGON": {
+        "id": "DRAGON",
+        "display": "Dragon",
+        "description": "",
+        "type": "MYTHIC",
+        "categories": [
+          "DAMAGE",
+          "RANGED"
+        ],
+        "difficulty": 4.0
       }
     },
     "skills": {

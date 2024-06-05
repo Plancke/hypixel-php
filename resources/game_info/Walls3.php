@@ -15,7 +15,7 @@ return array(
                                     0 => 'RANGED',
                                     1 => 'FIGHTER',
                                 ),
-                            'difficulty' => 3,
+                            'difficulty' => 3.0,
                         ),
                     'ZOMBIE' =>
                         array(
@@ -28,7 +28,7 @@ return array(
                                     0 => 'TANK',
                                     1 => 'SUPPORT',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                             'starter' => true,
                         ),
                     'CREEPER' =>
@@ -42,7 +42,7 @@ return array(
                                     0 => 'DAMAGE',
                                     1 => 'CONTROL',
                                 ),
-                            'difficulty' => 4,
+                            'difficulty' => 4.0,
                         ),
                     'ARCANIST' =>
                         array(
@@ -55,7 +55,7 @@ return array(
                                     0 => 'FIGHTER',
                                     1 => 'DAMAGE',
                                 ),
-                            'difficulty' => 1,
+                            'difficulty' => 1.0,
                         ),
                     'SHAMAN' =>
                         array(
@@ -68,7 +68,7 @@ return array(
                                     0 => 'FIGHTER',
                                     1 => 'CONTROL',
                                 ),
-                            'difficulty' => 3,
+                            'difficulty' => 3.0,
                         ),
                     'DREADLORD' =>
                         array(
@@ -81,7 +81,7 @@ return array(
                                     0 => 'RUSHER',
                                     1 => 'FIGHTER',
                                 ),
-                            'difficulty' => 1,
+                            'difficulty' => 1.0,
                         ),
                     'GOLEM' =>
                         array(
@@ -94,7 +94,7 @@ return array(
                                     0 => 'TANK',
                                     1 => 'FIGHTER',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                         ),
                     'SQUID' =>
                         array(
@@ -107,7 +107,7 @@ return array(
                                     0 => 'TANK',
                                     1 => 'CONTROL',
                                 ),
-                            'difficulty' => 1,
+                            'difficulty' => 1.0,
                         ),
                     'MOLEMAN' =>
                         array(
@@ -120,7 +120,7 @@ return array(
                                     0 => 'MOBILITY',
                                     1 => 'CONTROL',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                         ),
                     'ENDERMAN' =>
                         array(
@@ -133,7 +133,7 @@ return array(
                                     0 => 'MOBILITY',
                                     1 => 'RUSHER',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                             'starter' => true,
                         ),
                     'HEROBRINE' =>
@@ -147,7 +147,7 @@ return array(
                                     0 => 'FIGHTER',
                                     1 => 'DAMAGE',
                                 ),
-                            'difficulty' => 1,
+                            'difficulty' => 1.0,
                             'starter' => true,
                         ),
                     'BLAZE' =>
@@ -161,7 +161,7 @@ return array(
                                     0 => 'RANGED',
                                     1 => 'CONTROL',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                         ),
                     'PIGMAN' =>
                         array(
@@ -174,7 +174,7 @@ return array(
                                     0 => 'FIGHTER',
                                     1 => 'SUPPORT',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                         ),
                     'SPIDER' =>
                         array(
@@ -187,7 +187,7 @@ return array(
                                     0 => 'MOBILITY',
                                     1 => 'RUSHER',
                                 ),
-                            'difficulty' => 3,
+                            'difficulty' => 3.0,
                         ),
                     'WEREWOLF' =>
                         array(
@@ -200,7 +200,7 @@ return array(
                                     0 => 'TANK',
                                     1 => 'FIGHTER',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                         ),
                     'PIRATE' =>
                         array(
@@ -213,7 +213,7 @@ return array(
                                     0 => 'FIGHTER',
                                     1 => 'DAMAGE',
                                 ),
-                            'difficulty' => 3,
+                            'difficulty' => 3.0,
                         ),
                     'PHOENIX' =>
                         array(
@@ -226,7 +226,7 @@ return array(
                                     0 => 'RANGED',
                                     1 => 'SUPPORT',
                                 ),
-                            'difficulty' => 4,
+                            'difficulty' => 4.0,
                         ),
                     'SKELETON' =>
                         array(
@@ -239,7 +239,7 @@ return array(
                                     0 => 'RANGED',
                                     1 => 'MOBILITY',
                                 ),
-                            'difficulty' => 3,
+                            'difficulty' => 3.0,
                             'starter' => true,
                         ),
                     'ASSASSIN' =>
@@ -253,7 +253,7 @@ return array(
                                     0 => 'DAMAGE',
                                     1 => 'RUSHER',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                         ),
                     'RENEGADE' =>
                         array(
@@ -266,7 +266,7 @@ return array(
                                     0 => 'MOBILITY',
                                     1 => 'RANGED',
                                 ),
-                            'difficulty' => 3,
+                            'difficulty' => 3.0,
                         ),
                     'SNOWMAN' =>
                         array(
@@ -279,7 +279,7 @@ return array(
                                     0 => 'CONTROL',
                                     1 => 'FIGHTER',
                                 ),
-                            'difficulty' => 3,
+                            'difficulty' => 3.0,
                         ),
                     'AUTOMATON' =>
                         array(
@@ -292,7 +292,7 @@ return array(
                                     0 => 'CONTROL',
                                     1 => 'TANK',
                                 ),
-                            'difficulty' => 4,
+                            'difficulty' => 4.0,
                         ),
                     'COW' =>
                         array(
@@ -305,7 +305,7 @@ return array(
                                     0 => 'TANK',
                                     1 => 'SUPPORT',
                                 ),
-                            'difficulty' => 2,
+                            'difficulty' => 2.0,
                         ),
                     'SHARK' =>
                         array(
@@ -318,7 +318,46 @@ return array(
                                     0 => 'DAMAGE',
                                     1 => 'CONTROL',
                                 ),
-                            'difficulty' => 1,
+                            'difficulty' => 1.0,
+                        ),
+                    'SHEEP' =>
+                        array(
+                            'id' => 'SHEEP',
+                            'display' => 'Sheep',
+                            'description' => '',
+                            'type' => 'NORMAL',
+                            'categories' =>
+                                array(
+                                    0 => 'CONTROL',
+                                    1 => 'SUPPORT',
+                                ),
+                            'difficulty' => 3.0,
+                        ),
+                    'ANGEL' =>
+                        array(
+                            'id' => 'ANGEL',
+                            'display' => 'Angel',
+                            'description' => '',
+                            'type' => 'MYTHIC',
+                            'categories' =>
+                                array(
+                                    0 => 'FIGHTER',
+                                    1 => 'SUPPORT',
+                                ),
+                            'difficulty' => 3.0,
+                        ),
+                    'DRAGON' =>
+                        array(
+                            'id' => 'DRAGON',
+                            'display' => 'Dragon',
+                            'description' => '',
+                            'type' => 'MYTHIC',
+                            'categories' =>
+                                array(
+                                    0 => 'DAMAGE',
+                                    1 => 'RANGED',
+                                ),
+                            'difficulty' => 4.0,
                         ),
                 ),
             'skills' =>
