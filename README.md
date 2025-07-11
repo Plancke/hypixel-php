@@ -10,7 +10,7 @@ This is a PHP wrapper for the [Hypixel Public API](https://api.hypixel.net)
 
 The preferred method of installing this library is with [Composer](https://getcomposer.org) by running the following from your project root:
 
-    $ composer require "plancke/hypixel-php=^1.4.0"
+    $ composer require "plancke/hypixel-php=^1.5.0"
     
 ## Usage
 
