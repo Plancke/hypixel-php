@@ -15,6 +15,7 @@ abstract class RankTypes {
     const MVP_PLUS = 5;
     const SUPERSTAR = 6;
 
+    const STAFF = 105;
     const ADMIN = 100;
     const GAME_MASTER = 95;
     const MODERATOR = 90;
@@ -43,6 +44,7 @@ abstract class RankTypes {
      */
     public static function getStaffRanks() {
         return [
+            self::STAFF,
             self::ADMIN,
             self::GAME_MASTER,
             self::MODERATOR,
@@ -75,6 +77,7 @@ abstract class RankTypes {
             self::MVP,
             self::MVP_PLUS,
             self::SUPERSTAR,
+            self::STAFF,
             self::ADMIN,
             self::GAME_MASTER,
             self::MODERATOR,
@@ -167,6 +170,12 @@ abstract class RankTypes {
                 case RankTypes::ADMIN:
                     $rank = new Rank(RankTypes::ADMIN, 'ADMIN', [
                         'prefix' => '§c[ADMIN]',
+                        'color' => '§c'
+                    ], true);
+                    break;
+                case RankTypes::STAFF:
+                    $rank = new Rank(RankTypes::STAFF, 'STAFF', [
+                        'prefix' => '§c[§6ዞ§c]',
                         'color' => '§c'
                     ], true);
                     break;
