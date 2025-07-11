@@ -20,7 +20,7 @@
     "issues": "https://github.com/Plancke/hypixel-php/issues"
   },
   "require": {
-    "php": "^7.0",
+    "php": "^7.3|^8.0",
     "ext-curl": "*",
     "ext-json": "*"
   },
