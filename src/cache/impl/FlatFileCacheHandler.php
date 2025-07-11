@@ -146,6 +146,22 @@ class FlatFileCacheHandler extends CacheHandler {
     }
 
     /**
+     * @param $uuid
+     * @return Guild|null
+     */
+    public function getGuildByPlayer($uuid) {
+        throw new InvalidArgumentException("getGuildByPlayer is not implemented in FlatFileCacheHandler");
+    }
+
+    /**
+     * @param $name
+     * @return Guild|null
+     */
+    public function getGuildByName($name) {
+        throw new InvalidArgumentException("getGuildByName is not implemented in FlatFileCacheHandler");
+    }
+
+    /**
      * @param Guild $guild
      * @throws InvalidArgumentException
      */

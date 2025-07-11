@@ -135,6 +135,18 @@ abstract class CacheHandler extends Module {
     public abstract function getGuild($id);
 
     /**
+     * @param $uuid
+     * @return Guild|null
+     */
+    public abstract function getGuildByPlayer($uuid);
+
+    /**
+     * @param $name
+     * @return Guild|null
+     */
+    public abstract function getGuildByName($name);
+
+    /**
      * @param Guild $guild
      * @return void
      */
@@ -143,6 +155,7 @@ abstract class CacheHandler extends Module {
     /**
      * @param $uuid
      * @return Guild|string|null
+     * @deprecated "deprecating findGuild"
      */
     public abstract function getGuildIDForUUID($uuid);
 
@@ -150,12 +163,14 @@ abstract class CacheHandler extends Module {
      * @param $uuid
      * @param $id
      * @return void
+     * @deprecated "deprecating findGuild"
      */
     public abstract function setGuildIDForUUID($uuid, $id);
 
     /**
      * @param $name
      * @return Guild|string|null
+     * @deprecated "deprecating findGuild"
      */
     public abstract function getGuildIDForName($name);
 
@@ -163,6 +178,7 @@ abstract class CacheHandler extends Module {
      * @param $name
      * @param $id
      * @return void
+     * @deprecated "deprecating findGuild"
      */
     public abstract function setGuildIDForName($name, $id);
 

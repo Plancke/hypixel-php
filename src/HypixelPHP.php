@@ -414,89 +414,31 @@ class HypixelPHP {
         foreach ($pairs as $key => $val) {
             if ($val == null || $val == '') continue;
 
-            if ($key == FetchParams::GUILD_BY_PLAYER_UNKNOWN || $key == FetchParams::GUILD_BY_PLAYER_NAME) {
-                return $this->getGuild([FetchParams::GUILD_BY_PLAYER_UUID => $this->getUUIDFromVar($val)]);
-            }
+            $method = null;
 
-            if ($key == FetchParams::GUILD_BY_PLAYER_UUID) {
+            if ($key == FetchParams::GUILD_BY_PLAYER) {
                 if (InputType::getType($val) !== InputType::UUID) {
-                    throw new InvalidUUIDException($val);
+                    $val = $this->getUUIDFromVar($val);
                 }
                 $val = Utilities::ensureNoDashesUUID($val);
-
-                $id = $this->getCacheHandler()->getGuildIDForUUID($val);
-                if ($id != null) {
-                    if ($id instanceof Guild) {
-                        return $id;
-                    } else if (isset($id['guild'])) {
-                        return $this->getGuild([FetchParams::GUILD_BY_ID => $id['guild']]);
-                    } else if (is_string($id)) {
-                        return $this->getGuild([FetchParams::GUILD_BY_ID => $id]);
-                    } else {
-                        return null;
-                    }
-                }
-
-                $response = $this->getFetcher()->fetch(
-                    FetchTypes::FIND_GUILD,
-                    $this->getFetcher()->createUrl(FetchTypes::FIND_GUILD, [$key => $val]),
-                    ['headers' => [$this->getAPIKeyHeader()]]
-                );
-                if ($response->wasSuccessful()) {
-                    $content = [
-                        'timestamp' => time(),
-                        'uuid' => $val,
-                        'guild' => $response->getData()['guild']
-                    ];
-
-                    $this->getCacheHandler()->setGuildIDForUUID($val, $content);
-
-                    return $this->getGuild([FetchParams::GUILD_BY_ID => $content['guild']]);
-                }
+                $method = $this->getCacheHandler()->getGuildByPlayer($val);
+            } else if ($key == FetchParams::GUILD_BY_NAME) {
+                $method = $this->getCacheHandler()->getGuildByName(strtolower((string)$val));
+            } else if ($key == FetchParams::GUILD_BY_ID) {
+                $method = $this->getCacheHandler()->getGuild((string)$val);
             }
 
-            if ($key == FetchParams::GUILD_BY_NAME) {
-                $val = strtolower((string)$val);
-                $id = $this->getCacheHandler()->getGuildIDForName($val);
-                if ($id != null) {
-                    if ($id instanceof Guild) {
-                        return $id;
-                    } else {
-                        return $this->getGuild([FetchParams::GUILD_BY_ID => $id]);
-                    }
-                }
-
-                $response = $this->getFetcher()->fetch(
-                    FetchTypes::FIND_GUILD,
-                    $this->getFetcher()->createUrl(FetchTypes::FIND_GUILD, [$key => $val]),
-                    ['headers' => [$this->getAPIKeyHeader()]]
-                );
-                if ($response->wasSuccessful()) {
-                    $content = [
-                        'timestamp' => time(),
-                        'name_lower' => $val,
-                        'guild' => $response->getData()['guild']
-                    ];
-
-                    $this->getCacheHandler()->setGuildIDForName($val, $content);
-
-                    return $this->getGuild([FetchParams::GUILD_BY_ID => $content['guild']]);
-                }
-            }
-
-            if ($key == FetchParams::GUILD_BY_ID) {
-                return $this->handle(
-                    $this->getCacheHandler()->getGuild((string)$val),
-                    function () use ($key, $val) {
-                        return $this->getFetcher()->fetch(
-                            FetchTypes::GUILD,
-                            $this->getFetcher()->createUrl(FetchTypes::GUILD, [$key => $val]),
-                            ['headers' => [$this->getAPIKeyHeader()]]
-                        );
-                    },
-                    $this->getProvider()->getGuild()
-                );
-            }
+            return $this->handle(
+                $method,
+                function () use ($key, $val) {
+                    return $this->getFetcher()->fetch(
+                        FetchTypes::GUILD,
+                        $this->getFetcher()->createUrl(FetchTypes::GUILD, [$key => $val]),
+                        ['headers' => [$this->getAPIKeyHeader()]]
+                    );
+                },
+                $this->getProvider()->getGuild()
+            );
         }
         return null;
     }

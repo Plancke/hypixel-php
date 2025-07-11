@@ -61,6 +61,7 @@ class MongoCacheHandler extends FlatFileCacheHandler {
 
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record._id' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record.name_lower' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record.members.uuid' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS_UUID)->createIndex(['uuid' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS_NAME)->createIndex(['name_lower' => 1], ['background' => true]);
 
@@ -194,6 +195,32 @@ class MongoCacheHandler extends FlatFileCacheHandler {
             $this->getHypixelPHP()->getProvider()->getGuild(),
             $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
                 ['record._id' => (string)$id], self::FIND_OPTIONS
+            )
+        );
+    }
+
+    /**
+     * @param $uuid
+     * @return Guild|null
+     */
+    public function getGuildByPlayer($uuid) {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getGuild(),
+            $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
+                ['record.members.uuid' => (string)$uuid], self::FIND_OPTIONS
+            )
+        );
+    }
+
+    /**
+     * @param $name
+     * @return Guild|null
+     */
+    public function getGuildByName($name) {
+        return $this->wrapProvider(
+            $this->getHypixelPHP()->getProvider()->getGuild(),
+            $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
+                ['record.name_lower' => strtolower((string)$name)], self::FIND_OPTIONS
             )
         );
     }
