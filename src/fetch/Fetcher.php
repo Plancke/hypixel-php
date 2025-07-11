@@ -15,7 +15,7 @@ use Plancke\HypixelPHP\HypixelPHP;
  */
 abstract class Fetcher extends Module {
 
-    const BASE_URL = 'https://api.hypixel.net/';
+    const BASE_URL = 'https://api.hypixel.net/v2/';
 
     protected $timeOut = 2000;
     protected $responseAdapter, $responseAdapterGetter;
