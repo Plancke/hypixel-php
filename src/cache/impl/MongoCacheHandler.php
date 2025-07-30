@@ -14,7 +14,6 @@ use Plancke\HypixelPHP\responses\player\Player;
 use Plancke\HypixelPHP\responses\RecentGames;
 use Plancke\HypixelPHP\responses\skyblock\SkyBlockProfile;
 use Plancke\HypixelPHP\responses\Status;
-use Plancke\HypixelPHP\util\CacheUtil;
 
 /**
  * Implementation for CacheHandler, stores data in MongoDB
@@ -49,7 +48,7 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      *
      * I'm not entirely sure how performant making this call every time is so I'm not taking any chances
      */
-    public function ensureIndexes() {
+    public function ensureIndexes(): MongoCacheHandler {
         $db = $this->selectDB();
 
         $db->selectCollection(CacheTypes::API_KEYS)->createIndex(['record.key' => 1], ['background' => true]);
@@ -62,13 +61,23 @@ class MongoCacheHandler extends FlatFileCacheHandler {
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record._id' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record.name_lower' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record.members.uuid' => 1], ['background' => true]);
-        $db->selectCollection(CacheTypes::GUILDS_UUID)->createIndex(['uuid' => 1], ['background' => true]);
-        $db->selectCollection(CacheTypes::GUILDS_NAME)->createIndex(['name_lower' => 1], ['background' => true]);
 
         $db->selectCollection(CacheTypes::STATUS)->createIndex(['record.uuid' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::RECENT_GAMES)->createIndex(['record.uuid' => 1], ['background' => true]);
 
         $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['record.profile_id' => 1], ['background' => true]);
+
+        return $this;
+    }
+
+    /**
+     * Cleanup old data
+     */
+    public function cleanup(): MongoCacheHandler {
+        $db = $this->selectDB();
+
+        $db->selectCollection('guilds_uuid')->drop();
+        $db->selectCollection('guilds_name')->drop();
 
         return $this;
     }
@@ -88,6 +97,9 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      * @return Player|null
      */
     public function getPlayer($uuid) {
+        if (empty($uuid)) {
+            throw new InvalidArgumentException("Player UUID cannot be empty");
+        }
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getPlayer(),
             $this->selectDB()->selectCollection(CacheTypes::PLAYERS)->findOne(
@@ -191,6 +203,9 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      * @return Guild|null
      */
     public function getGuild($id) {
+        if (empty($id)) {
+            throw new InvalidArgumentException("Guild ID cannot be empty");
+        }
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getGuild(),
             $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
@@ -204,6 +219,9 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      * @return Guild|null
      */
     public function getGuildByPlayer($uuid) {
+        if (empty($uuid)) {
+            throw new InvalidArgumentException("Guild member cannot be empty");
+        }
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getGuild(),
             $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
@@ -217,6 +235,9 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      * @return Guild|null
      */
     public function getGuildByName($name) {
+        if (empty($name)) {
+            throw new InvalidArgumentException("Guild name cannot be empty");
+        }
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getGuild(),
             $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
@@ -230,87 +251,11 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      * @throws InvalidArgumentException
      */
     public function setGuild(Guild $guild) {
+        if (empty($guild->getID())) {
+            throw new InvalidArgumentException("Guild ID cannot be empty");
+        }
         $this->selectDB()->selectCollection(CacheTypes::GUILDS)->replaceOne(
             ['record._id' => $guild->getID()], $this->objToArray($guild), self::UPDATE_OPTIONS
-        );
-    }
-
-    /**
-     * @param $uuid
-     * @return string|null
-     */
-    function getGuildIDForUUID($uuid) {
-        // TODO Do we really need this collection?
-        //  Could just check members object inside the documents?
-        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS_UUID)->findOne(
-            ['uuid' => (string)$uuid], self::FIND_OPTIONS
-        );
-        if ($data != null) {
-            if (isset($data['uuid']) && $data['uuid'] != null && $data['uuid'] != '') {
-                $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
-            } else {
-                $cacheTime = $this->getCacheTime(CacheTimes::GUILD_NOT_FOUND);
-            }
-            $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
-            if (CacheUtil::isExpired($timestamp, $cacheTime)) return null;
-            return $data['guild'];
-        }
-        return null;
-    }
-
-    /**
-     * @param $uuid
-     * @param $obj
-     * @throws InvalidArgumentException
-     */
-    function setGuildIDForUUID($uuid, $obj) {
-        $this->selectDB()->selectCollection(CacheTypes::GUILDS_UUID)->replaceOne(
-            ['uuid' => (string)$uuid], $this->objToArray($obj), self::UPDATE_OPTIONS
-        );
-    }
-
-    /**
-     * @param $name
-     * @return string|null
-     */
-    function getGuildIDForName($name) {
-        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS)->findOne(
-            ['record.name_lower' => strtolower((string)$name)], self::FIND_OPTIONS
-        );
-        if ($data != null) {
-            $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
-            $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
-
-            if (!CacheUtil::isExpired($timestamp, $cacheTime)) {
-                // it's not expired, return guild directly
-                return $this->wrapProvider($this->getHypixelPHP()->getProvider()->getGuild(), $data);
-            }
-        }
-
-        $data = $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->findOne(
-            ['name_lower' => strtolower((string)$name)], self::FIND_OPTIONS
-        );
-        if ($data != null) {
-            if (isset($data['name_lower']) && $data['name_lower'] != null && $data['name_lower'] != '') {
-                $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
-            } else {
-                $cacheTime = $this->getCacheTime(CacheTimes::GUILD_NOT_FOUND);
-            }
-            $timestamp = array_key_exists('timestamp', $data) ? $data['timestamp'] : 0;
-            if (CacheUtil::isExpired($timestamp, $cacheTime)) return null;
-            return $data['guild'];
-        }
-        return null;
-    }
-
-    /**
-     * @param $name
-     * @param $obj
-     * @throws InvalidArgumentException
-     */
-    function setGuildIDForName($name, $obj) {
-        $this->selectDB()->selectCollection(CacheTypes::GUILDS_NAME)->replaceOne(
-            ['name_lower' => strtolower((string)$name)], $this->objToArray($obj), self::UPDATE_OPTIONS
         );
     }
 
@@ -342,6 +287,9 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      * @return RecentGames|null
      */
     public function getRecentGames($uuid) {
+        if (empty($uuid)) {
+            throw new InvalidArgumentException("Recent games UUID cannot be empty");
+        }
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getRecentGames(),
             $this->selectDB()->selectCollection(CacheTypes::RECENT_GAMES)->findOne(
@@ -365,6 +313,9 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      * @return KeyInfo|null
      */
     public function getKeyInfo($key) {
+        if (empty($key)) {
+            throw new InvalidArgumentException("API key cannot be empty");
+        }
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getKeyInfo(),
             $this->selectDB()->selectCollection(CacheTypes::API_KEYS)->findOne(
@@ -388,6 +339,9 @@ class MongoCacheHandler extends FlatFileCacheHandler {
      * @return SkyBlockProfile|null
      */
     public function getSkyBlockProfile($profile_id) {
+        if (empty($profile_id)) {
+            throw new InvalidArgumentException("SkyBlock profile ID cannot be empty");
+        }
         return $this->wrapProvider(
             $this->getHypixelPHP()->getProvider()->getSkyBlockProfile(),
             $this->selectDB()->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->findOne(

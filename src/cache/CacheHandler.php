@@ -154,36 +154,6 @@ abstract class CacheHandler extends Module {
 
     /**
      * @param $uuid
-     * @return Guild|string|null
-     * @deprecated "deprecating findGuild"
-     */
-    public abstract function getGuildIDForUUID($uuid);
-
-    /**
-     * @param $uuid
-     * @param $id
-     * @return void
-     * @deprecated "deprecating findGuild"
-     */
-    public abstract function setGuildIDForUUID($uuid, $id);
-
-    /**
-     * @param $name
-     * @return Guild|string|null
-     * @deprecated "deprecating findGuild"
-     */
-    public abstract function getGuildIDForName($name);
-
-    /**
-     * @param $name
-     * @param $id
-     * @return void
-     * @deprecated "deprecating findGuild"
-     */
-    public abstract function setGuildIDForName($name, $id);
-
-    /**
-     * @param $uuid
      * @return Status|null
      */
     public abstract function getStatus($uuid);

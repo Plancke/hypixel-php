@@ -171,61 +171,6 @@ class FlatFileCacheHandler extends CacheHandler {
 
     /**
      * @param $uuid
-     * @return string|null
-     */
-    public function getGuildIDForUUID($uuid) {
-        $cached = $this->_getCache(CacheTypes::GUILDS_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid));
-        if ($cached == null) return null;
-
-        if (isset($cached['uuid']) && $cached['uuid'] != null && $cached['uuid'] != '') {
-            $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
-        } else {
-            $cacheTime = $this->getCacheTime(CacheTimes::GUILD_NOT_FOUND);
-        }
-        $timestamp = array_key_exists('timestamp', $cached) ? $cached['timestamp'] : 0;
-        if (CacheUtil::isExpired($timestamp, $cacheTime)) return null;
-        return $cached['guild'];
-    }
-
-    /**
-     * @param $uuid
-     * @param $obj
-     * @throws InvalidArgumentException
-     */
-    public function setGuildIDForUUID($uuid, $obj) {
-        $this->_setCache(CacheTypes::GUILDS_UUID . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($uuid), $obj);
-    }
-
-    /**
-     * @param $name
-     * @return string|null
-     */
-    public function getGuildIDForName($name) {
-        $cached = $this->_getCache(CacheTypes::GUILDS_NAME . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($name));
-        if ($cached == null) return null;
-
-        if (isset($cached['name_lower']) && $cached['name_lower'] != null && $cached['name_lower'] != '') {
-            $cacheTime = $this->getCacheTime(CacheTimes::GUILD);
-        } else {
-            $cacheTime = $this->getCacheTime(CacheTimes::GUILD_NOT_FOUND);
-        }
-
-        $timestamp = array_key_exists('timestamp', $cached) ? $cached['timestamp'] : 0;
-        if (CacheUtil::isExpired($timestamp, $cacheTime)) return null;
-        return $cached['guild'];
-    }
-
-    /**
-     * @param $name
-     * @param $obj
-     * @throws InvalidArgumentException
-     */
-    public function setGuildIDForName($name, $obj) {
-        $this->_setCache(CacheTypes::GUILDS_NAME . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($name), $obj);
-    }
-
-    /**
-     * @param $uuid
      * @return Status|null
      */
     public function getStatus($uuid) {

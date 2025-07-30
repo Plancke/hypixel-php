@@ -45,17 +45,11 @@ class NoCacheHandler extends CacheHandler {
         return null;
     }
 
-    function setGuildIDForUUID($uuid, $id) {
-    }
-
-    function getGuildIDForUUID($uuid) {
+    public function getGuildByPlayer($uuid) {
         return null;
     }
 
-    function setGuildIDForName($name, $id) {
-    }
-
-    function getGuildIDForName($name) {
+    public function getGuildByName($name) {
         return null;
     }
 
