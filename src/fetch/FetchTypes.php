@@ -20,7 +20,7 @@ abstract class FetchTypes {
     const STATUS = 'status';
     const RECENT_GAMES = 'recentGames';
     const KEY = 'key';
-    const PUNISHMENT_STATS = 'punishmentStats';
+    const PUNISHMENT_STATS = 'punishmentstats';
     const COUNTS = 'counts';
 
     const SKYBLOCK_PROFILE = 'skyblock/profile';
