@@ -29,6 +29,7 @@ class DefaultCurlFetcher extends Fetcher {
             curl_setopt($ch, CURLOPT_TIMEOUT_MS, $this->timeOut);
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, $this->timeOut);
             curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+            curl_setopt($ch, CURLOPT_USERAGENT, "HypixelPHP");
             if (array_key_exists('headers', $options)) {
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $options['headers']);
             }
