@@ -376,14 +376,24 @@ class HypixelPHP {
             if ($response instanceof Response) {
                 $data = $response->getData();
 
-                // if there is no record, we assume it's null
-                if ($response->wasSuccessful() && array_key_exists('record', $data)) {
-                    $fetched = $constructor($this, $data);
-                    if ($fetched instanceof HypixelObject) {
-                        $fetched->handleNew($cached);
-                        $fetched->save();
+                if ($response->wasSuccessful()) {
+                    // if there is no record, we assume it's null and in some cases that means delete
+                    $hasRecord = array_key_exists('record', $data) && $data['record'] != null;
+                    if ($hasRecord) {
+                        $fetched = $constructor($this, $data);
 
-                        return $fetched;
+                        if ($fetched instanceof HypixelObject) {
+                            $fetched->handleNew($cached);
+                            $fetched->save();
+
+                            return $fetched;
+                        }
+                    } else {
+                        if ($cached instanceof Guild) {
+                            // TODO handle this in a more abstract manner?
+                            $this->getCacheHandler()->removeGuild($cached->getID());
+                            return null;
+                        }
                     }
                 } else {
                     // fetch was not successful, attach response or

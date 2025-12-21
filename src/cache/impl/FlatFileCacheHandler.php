@@ -93,6 +93,11 @@ class FlatFileCacheHandler extends CacheHandler {
         $filename = $this->baseDirectory . DIRECTORY_SEPARATOR . $filename . '.json';
         $content = json_encode($this->objToArray($obj));
 
+        if ($obj == null) {
+            unlink($filename);
+            return;
+        }
+
         if (!file_exists(dirname($filename))) {
             // create directory
             @mkdir(dirname($filename), 0744, true);
@@ -167,6 +172,14 @@ class FlatFileCacheHandler extends CacheHandler {
      */
     public function setGuild(Guild $guild) {
         $this->_setCache(CacheTypes::GUILDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($guild->getID()), $guild);
+    }
+
+    /**
+     * @param string $guild
+     * @throws InvalidArgumentException
+     */
+    public function removeGuild(string $guild) {
+        $this->_setCache(CacheTypes::GUILDS . DIRECTORY_SEPARATOR . CacheUtil::getCacheFileName($guild), null);
     }
 
     /**

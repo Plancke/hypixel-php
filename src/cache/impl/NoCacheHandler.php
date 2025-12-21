@@ -41,6 +41,9 @@ class NoCacheHandler extends CacheHandler {
     function setGuild(Guild $guild) {
     }
 
+    function removeGuild(string $guild) {
+    }
+
     function getGuild($id) {
         return null;
     }

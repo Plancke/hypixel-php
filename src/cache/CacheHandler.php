@@ -153,6 +153,12 @@ abstract class CacheHandler extends Module {
     public abstract function setGuild(Guild $guild);
 
     /**
+     * @param string $guild
+     * @return void
+     */
+    public abstract function removeGuild(string $guild);
+
+    /**
      * @param $uuid
      * @return Status|null
      */

@@ -260,6 +260,19 @@ class MongoCacheHandler extends FlatFileCacheHandler {
     }
 
     /**
+     * @param string $guild
+     * @return void
+     */
+    public function removeGuild(string $guild) {
+        if (empty($guild)) {
+            throw new InvalidArgumentException("Guild ID cannot be empty");
+        }
+        $this->selectDB()->selectCollection(CacheTypes::GUILDS)->deleteOne(
+            ['record._id' => $guild]
+        );
+    }
+
+    /**
      * @param $uuid
      * @return Status|null
      */
