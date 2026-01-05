@@ -43,7 +43,7 @@ class ExpCalculator {
 
         $expWithoutPrestiges = $exp - ($prestiges * self::XP_PER_PRESTIGE);
         for ($i = 1; $i <= self::EASY_LEVELS; ++$i) {
-            $expForEasyLevel = self::getExpForLevel($i);
+            $expForEasyLevel = self::getExpForLevelFromPrevLevelOfPres($i);
             if ($expWithoutPrestiges < $expForEasyLevel) {
                 break;
             }
@@ -55,10 +55,10 @@ class ExpCalculator {
         return $level;
     }
 
-    public function getExpForLevel($level) {
-        if ($level == 0) return 0;
-
+    public function getExpForLevelFromPrevLevelOfPres($level) {
         $respectedLevel = self::getLevelRespectingPrestige($level);
+        if ($respectedLevel == 0) return 0;
+
         if ($respectedLevel <= self::EASY_LEVELS) {
             return self::EASY_LEVELS_XP[$respectedLevel - 1];
         }
