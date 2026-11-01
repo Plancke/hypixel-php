@@ -17,16 +17,22 @@ class Kart {
     public $FRAME;
 
     function __construct($ENGINE, $TURBOCHARGER, $FRAME) {
-        $this->ENGINE = $this->convert($ENGINE)['GingerbreadPart'];
-        $this->TURBOCHARGER = $this->convert($TURBOCHARGER)['GingerbreadPart'];
-        $this->FRAME = $this->convert($FRAME)['GingerbreadPart'];
+        // Players who never picked a part have no value (or unparseable JSON) here.
+        $this->ENGINE = $this->convert($ENGINE)['GingerbreadPart'] ?? null;
+        $this->TURBOCHARGER = $this->convert($TURBOCHARGER)['GingerbreadPart'] ?? null;
+        $this->FRAME = $this->convert($FRAME)['GingerbreadPart'] ?? null;
+    }
+
+    /** Whether any active part is known. */
+    function hasParts(): bool {
+        return $this->ENGINE !== null || $this->TURBOCHARGER !== null || $this->FRAME !== null;
     }
 
     function convert($input) {
         if (is_string($input)) {
-            return json_decode($this->fix_json($input), true);
+            $input = json_decode($this->fix_json($input), true);
         }
-        return $input;
+        return is_array($input) ? $input : null;
     }
 
     function fix_json($s) {
@@ -78,7 +84,7 @@ class Part {
     }
 
     function getAttributes() {
-        return $this->PART['Attributes'];
+        return $this->PART['Attributes'] ?? [];
     }
 
     function getColor() {
@@ -100,25 +106,26 @@ class Part {
         if ($this->PART == null) return 0;
         if (!array_key_exists('Attributes', $this->PART)) return $LEVEL;
         foreach ($this->PART['Attributes'] as $ATTRIBUTE) {
-            $LEVEL += $ATTRIBUTE['Level'];
+            $LEVEL += (int) ($ATTRIBUTE['Level'] ?? 0);
         }
         return $LEVEL;
     }
 
     function getName() {
+        if ($this->PART == null) return '';
         return $this->getPrefix() . ' ' . ucfirst(strtolower($this->getRarity())) . ' ' . ucfirst(strtolower($this->getType()));
     }
 
     function getPrefix() {
-        return $this->PREFIXES[$this->getLevel()];
+        return $this->PREFIXES[min($this->getLevel(), count($this->PREFIXES) - 1)];
     }
 
     function getRarity() {
-        return $this->PART['PartRarity'];
+        return (string) ($this->PART['PartRarity'] ?? '');
     }
 
     function getType() {
-        return $this->PART['PartType'];
+        return (string) ($this->PART['PartType'] ?? '');
     }
 
     function getAttributeLevel($TYPE) {
