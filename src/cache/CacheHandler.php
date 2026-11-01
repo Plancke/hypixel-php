@@ -27,6 +27,9 @@ abstract class CacheHandler extends Module {
     // cache time to only get cache or null if not present
     const MAX_CACHE_TIME = PHP_INT_MAX;
 
+    // returned by getUUID() while a name is cached as not existing, so it isn't looked up again
+    const UUID_NOT_FOUND = false;
+
     protected $cacheTimes = [
         CacheTimes::RESOURCES => 3 * 60 * 60,
 
@@ -117,7 +120,7 @@ abstract class CacheHandler extends Module {
 
     /**
      * @param $username
-     * @return string|null
+     * @return string|false|null the UUID, {@see CacheHandler::UUID_NOT_FOUND} while the name is cached as not existing, null when unknown
      */
     public abstract function getUUID($username);
 

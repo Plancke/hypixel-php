@@ -220,6 +220,10 @@ class HypixelPHP {
     public function getUUID(string $username) {
         $username = trim(strtolower((string)$username));
         $cached = $this->getCacheHandler()->getUUID($username);
+        if ($cached === CacheHandler::UUID_NOT_FOUND) {
+            // recently looked up and doesn't exist, don't hit the APIs again
+            return null;
+        }
         if ($cached != null) {
             return $cached;
         }
@@ -303,12 +307,17 @@ class HypixelPHP {
                 ['headers' => [$this->getAPIKeyHeader()]]
             );
             if ($response->wasSuccessful()) {
+                // A successful lookup without a record means Hypixel has no such player; cache that
+                // as null too, so the name isn't looked up against every API again on each request.
+                $uuid = $response->getData()['record']['uuid'] ?? null;
                 $obj = [
                     'timestamp' => time(),
                     'name_lowercase' => $username,
-                    'uuid' => Utilities::ensureNoDashesUUID((string)$response->getData()['record']['uuid'])
+                    'uuid' => $uuid !== null ? Utilities::ensureNoDashesUUID((string)$uuid) : null
                 ];
-                $this->getLogger()->log(LOG_DEBUG, "Received UUID from Hypixel for '" . $username . "': " . $obj['uuid']);
+                $this->getLogger()->log(LOG_DEBUG, $uuid !== null
+                    ? "Received UUID from Hypixel for '" . $username . "': " . $obj['uuid']
+                    : "Hypixel has no player for '" . $username . "', saving null!");
                 $this->getCacheHandler()->setPlayerUUID($username, $obj);
                 return $obj['uuid'];
             }

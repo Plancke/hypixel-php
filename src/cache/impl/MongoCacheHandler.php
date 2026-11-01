@@ -141,7 +141,7 @@ class MongoCacheHandler extends FlatFileCacheHandler {
             $this->getHypixelPHP()->getLogger()->log(LOG_DEBUG, "Found name match in PLAYER_UUID! '$diff'");
 
             if ($diff < 0) {
-                return $data['uuid'];
+                return $data['uuid'] ?: self::UUID_NOT_FOUND;
             }
         }
 
