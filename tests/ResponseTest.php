@@ -15,6 +15,9 @@ class ResponseTest extends TestCase {
     function testPlayerCount() {
         // basic check to confirm stuff is getting mapped correctly
         // TODO check api up status or this test will fail
+        if (TestUtil::getAPIKey() === null) {
+            $this->markTestSkipped('Set API_KEY to run the live Hypixel API test.');
+        }
         $counts = TestUtil::getHypixelPHP()->getCounts();
         $this->assertTrue($counts instanceof Counts);
     }

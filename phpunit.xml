@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.3/phpunit.xsd"
-        backupGlobals="false"
-        colors="true"
-        bootstrap="tests/bootstrap.php"
->
-
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         cacheDirectory=".phpunit.cache"
+         colors="true"
+         failOnDeprecation="true"
+         failOnWarning="true">
+    <php>
+        <ini name="error_reporting" value="-1"/>
+    </php>
     <testsuites>
         <testsuite name="Hypixel-PHP Test">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+    <source>
+        <include><directory>src</directory></include>
+    </source>
 </phpunit>

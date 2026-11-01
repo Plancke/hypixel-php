@@ -2,6 +2,7 @@
 
 namespace Plancke\Tests;
 
+use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
 use Plancke\HypixelPHP\util\Validator;
 
@@ -26,9 +27,7 @@ class ValidatorTest extends TestCase {
         $this->assertFalse(Validator::isUsername('hello world')); // spaces
     }
 
-    /**
-     * @depends testUUID
-     */
+    #[Depends('testUUID')]
     function testAPIKey() {
         // any uuid will do but just double checking separately in case anything changes down the line
         $this->assertTrue(Validator::isValidAPIKey('f025c1c7-f55a-4ea0-b8d9-3f47d17dfe0f'));
