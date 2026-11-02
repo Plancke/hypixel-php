@@ -8,21 +8,39 @@ namespace Plancke\HypixelPHP\util\games\skywars;
  */
 class ExpCalculator {
 
+    const LEVEL_CAP = 10000;
     const EASY_LEVEL_EXP = [
-        0, // Level 1
-        20, //20
-        50, //70
-        80, //150
-        100,//250
-        250,//500
-        500,//1000
-        1000,//2000
-        1500,//3500
-        2500,//6000
-        4000,//10000
-        5000//15000
+        0,
+        10,
+        25,
+        50,
+        75,
+        100,
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2500,
+        3000,
+        3500,
+        4000,
+        4500,
+        5000
     ];
-    const EXP_PER_LEVEL = 10000;
+
+    private int $easyLevels;
+    private int $easyLevelExpTotal;
+    private int $expPerLevel;
+
+    public function __construct() {
+        $this->easyLevels = sizeof(self::EASY_LEVEL_EXP);
+        $this->easyLevelExpTotal = array_sum(self::EASY_LEVEL_EXP);
+        $this->expPerLevel = self::EASY_LEVEL_EXP[$this->easyLevels - 1];
+    }
 
     public function getProgressCurrentLevel($exp) {
         $level = $this->getLevelForExp($exp);
@@ -31,42 +49,39 @@ class ExpCalculator {
     }
 
     public function getLevelForExp($exp) {
-        $easyLevelsCount = sizeof(self::EASY_LEVEL_EXP);
-
-        $easyLevelExp = 0;
-        for ($i = 1; $i <= $easyLevelsCount; $i++) {
-            $expPerLevel = $this->getExpForLevel($i);
-            $easyLevelExp += $expPerLevel;
-            if ($exp < $easyLevelExp) {
-                return $i - 1;//57965
+        $exp = (int)$exp;
+        if ($exp < $this->easyLevelExpTotal) {
+            $total = 0;
+            for ($i = 1; $i < $this->easyLevels; $i++) {
+                $total += self::EASY_LEVEL_EXP[$i];
+                if ($exp < $total) {
+                    return $i;
+                }
             }
         }
-        $extraLevels = ($exp - $easyLevelExp) / self::EXP_PER_LEVEL;
-        return $easyLevelsCount + $extraLevels;
+
+        return min($this->easyLevels + intdiv($exp - $this->easyLevelExpTotal, $this->expPerLevel), self::LEVEL_CAP);
     }
 
     public function getExpForLevel($level) {
-        if ($level <= sizeof(self::EASY_LEVEL_EXP)) {
-            return self::EASY_LEVEL_EXP[$level - 1];
+        if ($level < 1) {
+            return 0;
         }
-
-        return self::EXP_PER_LEVEL;
+        if ($level >= $this->easyLevels) {
+            return $this->expPerLevel;
+        }
+        return self::EASY_LEVEL_EXP[$level - 1];
     }
 
     public function getTotalExpForLevel($level) {
-        $easyLevelsCount = sizeof(self::EASY_LEVEL_EXP);
-
-        $totalExp = 0;
-        $easyLevels = min($level, $easyLevelsCount);
-        for ($i = 0; $i < $easyLevels; $i++) {
-            $totalExp += self::EASY_LEVEL_EXP[$i];
+        if ($level <= 1) {
+            return 0;
+        }
+        if ($level <= $this->easyLevels) {
+            return array_sum(array_slice(self::EASY_LEVEL_EXP, 0, $level));
         }
 
-        if ($level > $easyLevelsCount) {
-            $extraLevels = $level - $easyLevelsCount;
-            $totalExp += ($extraLevels * self::EXP_PER_LEVEL);
-        }
-        return $totalExp;
+        return $this->easyLevelExpTotal + ($level - $this->easyLevels) * $this->expPerLevel;
     }
 
     /**
