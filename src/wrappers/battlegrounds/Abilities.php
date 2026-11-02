@@ -43,12 +43,12 @@ class Abilities {
         // Shaman
         Abilities::addAbility(3, 0, new Ability("Lightning Bolt", "Thunderlord", AbilityType::DAMAGE));
         Abilities::addAbility(3, 1, new Ability("Chain Lightning", "Thunderlord", AbilityType::DAMAGE));
-        Abilities::addAbility(3, 2, new Ability("Windfury", "Thunderlord", AbilityType::DAMAGE));
+        Abilities::addAbility(3, 2, new Ability("Windfury Weapon", "Thunderlord", AbilityType::DAMAGE));
         Abilities::addAbility(3, 0, new Ability("Fallen Souls", "Spiritguard", AbilityType::DAMAGE));
         Abilities::addAbility(3, 1, new Ability("Spirit Link", "Spiritguard", AbilityType::DAMAGE));
         Abilities::addAbility(3, 0, new Ability("Earthen Spike", "Earthwarden", AbilityType::DAMAGE));
         Abilities::addAbility(3, 1, new Ability("Boulder", "Earthwarden", AbilityType::DAMAGE));
-        Abilities::addAbility(3, 3, new Ability("Chain Healing", "Earthwarden", AbilityType::HEAL));
+        Abilities::addAbility(3, 3, new Ability("Chain Heal", "Earthwarden", AbilityType::HEAL));
     }
 
     /**
@@ -57,9 +57,9 @@ class Abilities {
      * @param $ability
      */
     protected static function addAbility($class, $slot, $ability) {
-        if (!array_key_exists($class, Abilities::$abilities)) Abilities::$abilities[$class] = [];
+        if (!array_key_exists($class, (array)Abilities::$abilities)) Abilities::$abilities[$class] = [];
         if (!array_key_exists($slot, Abilities::$abilities[$class])) Abilities::$abilities[$class][$slot] = [];
-        array_push(Abilities::$abilities[$class][$slot], $ability);
+        Abilities::$abilities[$class][$slot][] = $ability;
     }
 
 

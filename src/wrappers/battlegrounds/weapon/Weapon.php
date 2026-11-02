@@ -7,7 +7,6 @@ use Plancke\HypixelPHP\wrappers\battlegrounds\Abilities;
 use Plancke\HypixelPHP\wrappers\battlegrounds\Ability;
 use Plancke\HypixelPHP\wrappers\battlegrounds\PlayerClass;
 use Plancke\HypixelPHP\wrappers\battlegrounds\PlayerClasses;
-use Plancke\HypixelPHP\wrappers\battlegrounds\weapon\RarityValues;
 
 /**
  * Class Weapon
@@ -21,13 +20,15 @@ use Plancke\HypixelPHP\wrappers\battlegrounds\weapon\RarityValues;
  * @see{Weapon::getPrefix()}
  * The prefix is determined by the overall score. Lets take a Legendary weapon as an example.
  * We need to know 3 values to start off. MIN, MAX, and PREFIX_COUNT.
- * MIN, MAX are the scores a legendary has at least/most respectively.
+ * MIN, MAX are the sums of the rarity's stat ranges (@see{RarityValues}), plus the range of the
+ * removed ability boost stat, which the prefix brackets still include.
  * PREFIX_COUNT is the amount of prefixes for that Weapon category
  *
  * (MAX - MIN) / PREFIX_COUNT = DIFF
  *
  * DIFF now means the values of a 'slice' in between those MIN/MAX values.
- * To get the prefix we can now get the weapon's TOTAL_SCORE and the corresponding slice will be the weapon's prefix.
+ * TOTAL_SCORE is the sum of the weapon's stats in those ranges, each upgraded and rounded up,
+ * and the first slice it doesn't exceed is the weapon's prefix.
  *
  *
  * 2. Material Name
@@ -50,8 +51,17 @@ use Plancke\HypixelPHP\wrappers\battlegrounds\weapon\RarityValues;
  */
 class Weapon {
 
+    // Ability boost was removed as a stat, but the prefix brackets still include its range.
+    protected const REMOVED_ABILITY_BOOST = [
+        Rarity::COMMON => ['min' => 4, 'max' => 6],
+        Rarity::RARE => ['min' => 6, 'max' => 8],
+        Rarity::EPIC => ['min' => 7, 'max' => 9],
+        Rarity::LEGENDARY => ['min' => 10, 'max' => 15]
+    ];
+
     protected static array $scores = [];
     public static function init(): void {
+        if (self::$scores) return;
         foreach ([Rarity::COMMON, Rarity::RARE, Rarity::EPIC, Rarity::LEGENDARY] as $rarity) {
             $rarityValue = RarityValues::get($rarity);
             if ($rarityValue === null) {
@@ -68,9 +78,11 @@ class Weapon {
                 $min += $statValues['min'];
                 $max += $statValues['max'];
             }
-            self::$scores[$rarity] = ['min' => $min, 'max' => $max];
+            self::$scores[$rarity] = [
+                'min' => $min + self::REMOVED_ABILITY_BOOST[$rarity]['min'],
+                'max' => $max + self::REMOVED_ABILITY_BOOST[$rarity]['max']
+            ];
         }
-        self::$scores[Rarity::LEGENDARY] = ['min' => 595, 'max' => 805];
     }
 
     protected static $prefixes = [
@@ -232,7 +244,7 @@ class Weapon {
         $namesInt = intval(count($names));
 
         $score = $this->getScore();
-        $diff = ($this->getMaxScore() - $this->getMinScore()) / sizeof(Weapon::$prefixes[$this->getCategory()]);
+        $diff = ($this->getMaxScore() - $this->getMinScore()) / $namesInt;
         for ($i = 0; $i < $namesInt; $i++) {
             $left = $this->getMinScore() + $diff * ($i + 1);
             if ($score <= $left) {
@@ -253,9 +265,17 @@ class Weapon {
      * @return int
      */
     public function getScore() {
+        $rarityValues = RarityValues::get($this->getCategory());
+        if ($rarityValues === null) return 0;
+
         $score = 0;
-        foreach (WeaponStats::values() as $stat) {
-            $score += $this->getStatById($stat);
+        foreach (array_keys($rarityValues->getValues()) as $statId) {
+            $stat = WeaponStats::fromID($statId);
+            if (!array_key_exists($stat->getField(), $this->weapon)) continue;
+            $value = $this->getBaseStat($stat);
+            // Upgrades scale the base value by a percentage per level, rounded up.
+            $value = (int)ceil($value * ((100 + $stat->getUpgrade() * $this->getUpgradeAmount()) / 100));
+            $score += $value;
         }
         return $score;
     }
