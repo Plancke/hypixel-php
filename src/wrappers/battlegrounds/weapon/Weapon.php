@@ -7,6 +7,7 @@ use Plancke\HypixelPHP\wrappers\battlegrounds\Abilities;
 use Plancke\HypixelPHP\wrappers\battlegrounds\Ability;
 use Plancke\HypixelPHP\wrappers\battlegrounds\PlayerClass;
 use Plancke\HypixelPHP\wrappers\battlegrounds\PlayerClasses;
+use Plancke\HypixelPHP\wrappers\battlegrounds\weapon\RarityValues;
 
 /**
  * Class Weapon
@@ -49,12 +50,29 @@ use Plancke\HypixelPHP\wrappers\battlegrounds\PlayerClasses;
  */
 class Weapon {
 
-    protected static $scores = [
-        Rarity::COMMON => ['min' => 276, 'max' => 428],
-        Rarity::RARE => ['min' => 359, 'max' => 521],
-        Rarity::EPIC => ['min' => 450, 'max' => 604],
-        Rarity::LEGENDARY => ['min' => 595, 'max' => 805]
-    ];
+    protected static array $scores = [];
+    public static function init(): void {
+        foreach ([Rarity::COMMON, Rarity::RARE, Rarity::EPIC, Rarity::LEGENDARY] as $rarity) {
+            $rarityValue = RarityValues::get($rarity);
+            if ($rarityValue === null) {
+                continue;
+            }
+            $min = 0;
+            $max = 0;
+            foreach (WeaponStats::values() as $statId) {
+                $values = $rarityValue->getValues();
+                if (!array_key_exists($statId, $values)) {
+                    continue;
+                }
+                $statValues = $values[$statId];
+                $min += $statValues['min'];
+                $max += $statValues['max'];
+            }
+            self::$scores[$rarity] = ['min' => $min, 'max' => $max];
+        }
+        self::$scores[Rarity::LEGENDARY] = ['min' => 595, 'max' => 805];
+    }
+
     protected static $prefixes = [
         Rarity::COMMON => [
             "Crumbly", "Flimsy", "Rough", "Honed", "Refined", "Balanced"
@@ -215,14 +233,14 @@ class Weapon {
 
         $score = $this->getScore();
         $diff = ($this->getMaxScore() - $this->getMinScore()) / sizeof(Weapon::$prefixes[$this->getCategory()]);
-
+        var_dump('Weapon Score: ' . $score . ' Brackets: [' . $this->getMinScore() . "," . $this->getMinScore() + $diff . "," . $this->getMinScore() + $diff*2 . "," . $this->getMinScore() + $diff*3 . "].");
         for ($i = 0; $i < $namesInt; $i++) {
             $left = $this->getMinScore() + $diff * ($i + 1);
             if ($score <= $left) {
                 return $names[$i];
             }
         }
-
+        var_dump('Final Prefix: ' . end($names));
         return end($names);
     }
 
@@ -323,3 +341,5 @@ class Weapon {
     }
 
 }
+
+Weapon::init();
