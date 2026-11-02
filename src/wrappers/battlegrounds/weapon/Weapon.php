@@ -233,14 +233,12 @@ class Weapon {
 
         $score = $this->getScore();
         $diff = ($this->getMaxScore() - $this->getMinScore()) / sizeof(Weapon::$prefixes[$this->getCategory()]);
-        var_dump('Weapon Score: ' . $score . ' Brackets: [' . $this->getMinScore() . "," . $this->getMinScore() + $diff . "," . $this->getMinScore() + $diff*2 . "," . $this->getMinScore() + $diff*3 . "].");
         for ($i = 0; $i < $namesInt; $i++) {
             $left = $this->getMinScore() + $diff * ($i + 1);
             if ($score <= $left) {
                 return $names[$i];
             }
         }
-        var_dump('Final Prefix: ' . end($names));
         return end($names);
     }
 
