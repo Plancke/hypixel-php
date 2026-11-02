@@ -46,26 +46,26 @@ class MongoCacheHandler extends FlatFileCacheHandler {
     /**
      * Run this code once to initialize the indexes on the collections
      *
-     * I'm not entirely sure how performant making this call every time is so I'm not taking any chances
+     * I'm not entirely sure how performant making this call every time is, so I'm not taking any chances
      */
     public function ensureIndexes(): MongoCacheHandler {
         $db = $this->selectDB();
 
-        $db->selectCollection(CacheTypes::API_KEYS)->createIndex(['record.key' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::API_KEYS)->createIndex(['record.key' => 1], ['background' => true, 'unique' => true]);
 
-        $db->selectCollection(CacheTypes::PLAYERS)->createIndex(['record.uuid' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::PLAYERS)->createIndex(['record.uuid' => 1], ['background' => true, 'unique' => true]);
         $db->selectCollection(CacheTypes::PLAYERS)->createIndex(['record.playername' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::PLAYERS)->createIndex(['record.knownAliasesLower' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::PLAYER_UUID)->createIndex(['name_lowercase' => 1], ['background' => true]);
 
-        $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record._id' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record._id' => 1], ['background' => true, 'unique' => true]);
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record.name_lower' => 1], ['background' => true]);
         $db->selectCollection(CacheTypes::GUILDS)->createIndex(['record.members.uuid' => 1], ['background' => true]);
 
-        $db->selectCollection(CacheTypes::STATUS)->createIndex(['record.uuid' => 1], ['background' => true]);
-        $db->selectCollection(CacheTypes::RECENT_GAMES)->createIndex(['record.uuid' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::STATUS)->createIndex(['record.uuid' => 1], ['background' => true, 'unique' => true]);
+        $db->selectCollection(CacheTypes::RECENT_GAMES)->createIndex(['record.uuid' => 1], ['background' => true, 'unique' => true]);
 
-        $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['record.profile_id' => 1], ['background' => true]);
+        $db->selectCollection(CacheTypes::SKYBLOCK_PROFILES)->createIndex(['record.profile_id' => 1], ['background' => true, 'unique' => true]);
 
         return $this;
     }
