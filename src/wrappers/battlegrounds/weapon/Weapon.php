@@ -264,6 +264,7 @@ class Weapon {
      * @return int
      */
     public function getMaxScore() {
+        Weapon::init();
         return Weapon::$scores[$this->getCategory()]['max'];
     }
 
@@ -271,6 +272,7 @@ class Weapon {
      * @return int
      */
     public function getMinScore() {
+        Weapon::init();
         return Weapon::$scores[$this->getCategory()]['min'];
     }
 
@@ -339,5 +341,3 @@ class Weapon {
     }
 
 }
-
-Weapon::init();
