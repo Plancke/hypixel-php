@@ -182,6 +182,14 @@ class Weapon {
     }
 
     /**
+     * @param $key
+     * @return bool
+     */
+    public function hasField($key) {
+        return array_key_exists($key, $this->weapon);
+    }
+
+    /**
      * @return int|mixed
      */
     public function getUpgradeAmount() {
@@ -271,7 +279,7 @@ class Weapon {
         $score = 0;
         foreach (array_keys($rarityValues->getValues()) as $statId) {
             $stat = WeaponStats::fromID($statId);
-            if (!array_key_exists($stat->getField(), $this->weapon)) continue;
+            if (!$this->hasField($stat->getField())) continue;
             $value = $this->getBaseStat($stat);
             // Upgrades scale the base value by a percentage per level, rounded up.
             $value = (int)ceil($value * ((100 + $stat->getUpgrade() * $this->getUpgradeAmount()) / 100));
