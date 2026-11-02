@@ -87,6 +87,13 @@ class GameResources extends Resources {
     }
 
     /**
+     * @return Resource
+     */
+    public function getGames() {
+        return $this->requireRemoteResourceFile('games');
+    }
+
+    /**
      * @return SkyBlockResources
      */
     public function getSkyBlock() {
